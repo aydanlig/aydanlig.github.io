@@ -152,6 +152,16 @@ h2 {
 	top: 0;
 }
 
+.legal-pair small {
+	color: #777;
+}
+
+.legal-pair:hover a,
+.legal-pair:focus-within a {
+	color: #a200ff;
+	text-decoration-color: #a200ff;
+}
+
 .support-section a {
 	color: #a200ff;
 	font-weight: 600;
@@ -166,6 +176,22 @@ h2 {
 	font-size: 0.85em;
 	line-height: 1.4;
 	color: #666;
+}
+
+.bottom-links {
+	margin: 0.8rem 0 0.4rem;
+	text-align: center;
+}
+
+.bottom-links .disabled-link {
+	color: #777;
+	text-decoration: line-through;
+}
+
+.footer-nav-link {
+	margin: 0.35rem 0 0.7rem;
+	font-size: 0.9em;
+	text-align: center;
 }
 
 .grid {
