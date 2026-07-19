@@ -256,12 +256,14 @@ h2 {
 }
 
 .support-section a {
-	color: #a200ff;
+	color: inherit;
 	font-weight: 600;
+	text-decoration-color: #a200ff;
 }
 
 .support-section a:hover {
-	color: #7a00c7;
+	color: inherit;
+	text-decoration-color: #a200ff;
 }
 
 .support-note {
@@ -801,6 +803,28 @@ body.store-page .bottom-offers-summary li strong {
 	margin: 0 auto;
 	display: block;
 	max-width: 100%;
+}
+
+.supporters-list {
+	--supporters-per-column: 4;
+	display: grid;
+	grid-auto-flow: column;
+	grid-template-rows: repeat(var(--supporters-per-column), minmax(min-content, max-content));
+	grid-auto-columns: minmax(180px, 1fr);
+	column-gap: 2rem;
+	row-gap: 0.25rem;
+	font-size: clamp(0.9rem, 1.5vw, 1rem);
+	line-height: 1.45;
+	padding-left: 1.35rem;
+	max-width: 100%;
+}
+
+@media (max-width: 760px) {
+	.supporters-list {
+		display: block;
+		font-size: 0.95rem;
+		line-height: 1.5;
+	}
 }
 
 hr {
