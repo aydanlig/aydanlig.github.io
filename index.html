@@ -25,7 +25,7 @@
 	<!-- Social Card stuff -->
 
 	<meta itemprop="name" content="It's Aydan Lig'on!">
-	<meta itemprop="description" content="i make stuff to make people smile and to add value to people's lives">
+	<meta itemprop="description" con`tent="i make stuff to make people smile and to add value to people's lives">
 
 	<!-- Primary Meta Tags --> <!-- this is the default metadata which all websites can draw on -->
 	<meta name="title" content="It's Aydan Lig'on!">
@@ -64,13 +64,13 @@
 				<span class="nav-pop-note social-note">
 					<span class="pop-line"><a href="https://www.instagram.com/smileyfoxyportraits">instagram</a> <span>&middot;</span> <a href="https://www.linkedin.com/in/aydan-lig-on-b07736271/">linkedin</a></span>
 					<span class="pop-line"><a href="https://aydanligon.substack.com/">newsletter</a> <span>&middot;</span> <a href="mailto:aydan@smileyfoxyportraits.com">email</a></span>
-					<span class="pop-line"><a href="http://smileyfoxyportraits.bandcamp.com/">bandcamp</a></span>
+					<span class="pop-line"><a href="http://smileyfoxyportraits.bandcamp.com/">bandcamp</a> <span>&middot;</span> <a href="https://linktr.ee/SmileyFoxyPortraits">linktree</a></span>
 				</span>
 			</span>
 			<span class="nav-dot">&middot;</span>
 			<span class="store-wrap">
 				<a href="/store/index.html">store</a>
-				<a class="donation-pop" href="https://ko-fi.com/SmileyFoxyPortraits">donate</a>
+				<a class="donation-pop" href="https://www.paypal.com/donate/?hosted_button_id=PHBNH7EWH5LXL">donate</a>
 			</span>
 			<span class="nav-dot">&middot;</span>
 			<span class="nav-pop-wrap about-wrap">
@@ -294,6 +294,65 @@
 
 		<p class="footer-nav-link"><a href="#header">&uarr; up</a> <span>&middot;</span> <a class="home-return" href="/">home</a></p>
 	</div>
+
+	<script>
+		(function () {
+			if (!window.matchMedia || !window.matchMedia('(hover: none), (pointer: coarse)').matches) {
+				return;
+			}
+
+			var nav = document.querySelector('#header #nav');
+			if (!nav) {
+				return;
+			}
+
+			var wrappers = Array.prototype.slice.call(nav.querySelectorAll('.nav-pop-wrap, .store-wrap'));
+
+			function closeAll(exceptEl) {
+				wrappers.forEach(function (wrap) {
+					if (wrap !== exceptEl) {
+						wrap.classList.remove('open');
+					}
+				});
+			}
+
+			wrappers.forEach(function (wrap) {
+				var trigger = null;
+				for (var i = 0; i < wrap.children.length; i++) {
+					if (wrap.children[i].tagName === 'A') {
+						trigger = wrap.children[i];
+						break;
+					}
+				}
+				if (!trigger) {
+					return;
+				}
+
+				trigger.addEventListener('click', function (event) {
+					if (!wrap.classList.contains('open')) {
+						event.preventDefault();
+						closeAll(wrap);
+						wrap.classList.add('open');
+						return;
+					}
+
+					closeAll(null);
+				});
+			});
+
+			document.addEventListener('click', function (event) {
+				if (!nav.contains(event.target)) {
+					closeAll(null);
+				}
+			});
+
+			document.addEventListener('keydown', function (event) {
+				if (event.key === 'Escape') {
+					closeAll(null);
+				}
+			});
+		})();
+	</script>
 
 </body>
 

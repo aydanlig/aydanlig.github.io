@@ -181,7 +181,8 @@ h2 {
 	}
 
 	#header #nav .store-wrap:hover .donation-pop,
-	#header #nav .store-wrap:focus-within .donation-pop {
+	#header #nav .store-wrap:focus-within .donation-pop,
+	#header #nav .store-wrap .donation-pop:hover {
 		opacity: 1;
 		transform: translate(-50%, -26px);
 		pointer-events: auto;
@@ -855,26 +856,58 @@ hr {
 	#header #nav .nav-pop-note {
 		min-width: 0;
 		max-width: min(70vw, 250px);
+		left: auto;
+		right: calc(100% + 12px);
+		top: 50%;
+		bottom: auto;
+		transform: translate(8px, -50%);
+		text-align: left;
+		z-index: 6;
 	}
 
 	#header #nav .social-wrap .nav-pop-note {
-		left: auto;
-		right: 0;
-		width: min(78vw, 320px);
-		max-width: calc(100vw - 16px);
-		transform: translate(0, 8px);
+		width: min(64vw, 300px);
+		max-width: calc(100vw - 28px);
+		right: calc(100% - 132px);
+	}
+
+	#header #nav .about-wrap .nav-pop-note {
+		right: calc(100% + 8px);
+		transform: translate(8px, -48%);
+	}
+
+	#header #nav .heart-wrap .nav-pop-note {
+		right: calc(100% + 30px);
 	}
 
 	#header #nav .donation-pop {
 		left: auto;
-		right: 0;
-		transform: translate(0, 8px);
+		right: calc(100% - 2px);
+		top: 50%;
+		bottom: auto;
+		transform: translate(8px, -60%);
+		z-index: 6;
+	}
+
+	#header #nav .nav-pop-wrap:hover .nav-pop-note,
+	#header #nav .nav-pop-wrap:focus-within .nav-pop-note,
+	#header #nav .nav-pop-wrap.open .nav-pop-note,
+	#header #nav .store-wrap:hover .donation-pop,
+	#header #nav .store-wrap:focus-within .donation-pop,
+	#header #nav .store-wrap.open .donation-pop,
+	#header #nav .store-wrap .donation-pop:hover {
+		transform: translate(0, -60%);
 	}
 
 	#header #nav .social-wrap:hover .nav-pop-note,
 	#header #nav .social-wrap:focus-within .nav-pop-note,
-	#header #nav .store-wrap:hover .donation-pop,
-	#header #nav .store-wrap:focus-within .donation-pop {
-		transform: translate(0, -34px);
+	#header #nav .social-wrap.open .nav-pop-note {
+		transform: translate(0, -70%);
+	}
+
+	#header #nav .about-wrap:hover .nav-pop-note,
+	#header #nav .about-wrap:focus-within .nav-pop-note,
+	#header #nav .about-wrap.open .nav-pop-note {
+		transform: translate(0, -42%);
 	}
 }
