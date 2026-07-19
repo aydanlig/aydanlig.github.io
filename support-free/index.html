@@ -20,39 +20,65 @@
 		</ul>
 		<p>My goal is to create more smiles, build meaningful artistic partnerships, and show up at events or networking spaces where people can discover my work.</p>
 		<p>If you want to help in a more direct way, email <a href="mailto:aydan@smileyfoxyportraits.com">aydan@smileyfoxyportraits.com</a>.</p>
+
+		<section class="community-board" data-community-board="support-free">
+			<h2>Advice and ideas board</h2>
+			<p class="community-hint">Ask for business or life advice, share tips, or drop ideas about anything at all. Posts are anonymous.</p>
+			<p class="community-hint">Image uploads and comments are scanned and blocked when unsafe or profane.</p>
+
+			<form class="community-form" autocomplete="off">
+				<label for="support-free-alias">Name (optional)</label>
+				<input id="support-free-alias" name="alias" type="text" maxlength="40" placeholder="Anonymous" />
+
+				<label for="support-free-message">Message</label>
+				<textarea id="support-free-message" name="message" maxlength="600" placeholder="Share your advice, tips, or ideas..." required></textarea>
+
+				<label for="support-free-image">Image (optional)</label>
+				<input id="support-free-image" name="image" type="file" accept="image/*" />
+
+				<button type="submit">Post anonymously</button>
+				<p class="community-status" aria-live="polite"></p>
+			</form>
+
+			<div class="community-list" data-community-list></div>
+		</section>
 	</div>
 
 	<div id="footer">
 		<div class="footer-card">
-			<div class="footer-section">
-				<h3>Connect</h3>
-				<p><a href="https://www.instagram.com/smileyfoxyportraits">Instagram</a></p>
-				<p><a href="https://discord.gg/pQaBQjBv4U">Discord community</a></p>
-				<p><a href="https://linktr.ee/AydanLigon">Linktree</a></p>
-				<p><a href="/where-i-draw/">Where I draw</a></p>
-				<p><a href="mailto:aydan@smileyfoxyportraits.com">Email</a></p>
-			</div>
+<div class="footer-section">
+<h3>Connect</h3>
+<p><a href="/where-i-draw/">Where I draw</a></p>
+<p><a href="mailto:aydan@smileyfoxyportraits.com">Email</a></p>
+<p><a href="https://linktr.ee/AydanLigon">Linktree</a></p>
+<p><a href="https://www.instagram.com/smileyfoxyportraits">Instagram</a></p>
+<p><a href="https://discord.gg/pQaBQjBv4U">Discord community</a></p>
+</div>
 
-			<div class="footer-section support-section">
-				<h3>Support</h3>
-				<p><a href="https://www.patreon.com/Aydan%20Lig'on">Patreon</a></p>
-				<p><a href="https://ko-fi.com/G2G7OCU1Z">Ko-fi</a></p>
-				<p><a href="/thankyou/index.html">Thank you 💖</a></p>
-			</div>
+<div class="footer-section support-section">
+<h3>Contribute</h3>
+<p><a href="/support-free/">Free ways to help</a></p>
+<p><a href="https://ko-fi.com/G2G7OCU1Z">Ko-fi (donation)</a></p>
+<p><a href="/thankyou/index.html">Thank you (supporters)</a></p>
+</div>
 
-			<div class="footer-section">
-				<h3>Legal</h3>
-				<p class="legal-pair"><a href="/ImpressumUndDatenschutz/Impressum.html">Legal Notice</a><br><small>(<a href="/ImpressumUndDatenschutz/Impressum.html">Impressum</a>)</small></p>
-				<p class="legal-pair"><a href="/ImpressumUndDatenschutz/Datenschutz.html">Privacy Policy</a><br><small>(<a href="/ImpressumUndDatenschutz/Datenschutz.html">Datenschutzerklaerung</a>)</small></p>
-				<p><a href="mailto:aydan@smileyfoxyportraits.com?subject=FAQ%20Question">FAQ questions</a></p>
-				<p><a href="mailto:aydan@smileyfoxyportraits.com?subject=Content%20Removal%20Request">Content removal requests</a></p>
-			</div>
-		</div>
+<div class="footer-section">
+<h3>Legal</h3>
+<p class="legal-pair"><a href="/ImpressumUndDatenschutz/Impressum.html">Legal Notice</a><br><small>(<a href="/ImpressumUndDatenschutz/Impressum.html">Impressum</a>)</small></p>
+<p class="legal-pair"><a href="/ImpressumUndDatenschutz/Datenschutz.html">Privacy Policy</a><br><small>(<a href="/ImpressumUndDatenschutz/Datenschutz.html">Datenschutzerklaerung</a>)</small></p>
+<p><a href="mailto:aydan@smileyfoxyportraits.com?subject=Content%20Removal%20Request">Content removal requests</a></p>
+<p><a href="mailto:aydan@smileyfoxyportraits.com?subject=FAQ%20Question">FAQ questions</a></p>
+</div>
+</div>
 
-		<p class="footer-nav-link"><a href="../" onclick="history.back(); return false;">&larr; back</a></p>
+
+		<p class="footer-nav-link"><a href="../" onclick="history.back(); return false;">&larr; back</a> <span>&middot;</span> <a class="home-return" href="/">home</a></p>
 
 		<script type='text/javascript' src='https://storage.ko-fi.com/cdn/widget/Widget_2.js'></script>
 		<script type='text/javascript'>kofiwidget2.init('Support me on Ko-fi', '#72a4f2', 'G2G7OCU1Z'); kofiwidget2.draw();</script>
 	</div>
+	<script defer src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.20.0/dist/tf.min.js"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/nsfwjs@2.4.2/dist/nsfwjs.min.js"></script>
+	<script defer src="/js/community-board.js"></script>
 </body>
 </html>

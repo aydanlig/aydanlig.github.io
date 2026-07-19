@@ -232,7 +232,7 @@ First, I must admit that being a financially sustainable indie is 50% luck. (For
 
 But as poker players know, managing your luck *is* a skill. So, I recommend:
 
-- **[Change careers like Tarzan](https://sive.rs/tarzan).** Do *not* quit your old job until the new one can support you. For example: set up a Patreon for your side-hustle and set it to charging "per thing", until you're ready to do it full-time and switch to "per month". (Or: save enough money that you can afford no income for a while)
+- **[Change careers like Tarzan](https://sive.rs/tarzan).** Do *not* quit your old job until the new one can support you. For example: set up a supporter page for your side-hustle and set it to charging "per thing", until you're ready to do it full-time and switch to "per month". (Or: save enough money that you can afford no income for a while)
 
 - **Make lots of small bets.** Make lots of small projects – *each one "betting" in a different direction* – and when one of them gets more successful than usual, invest slightly more in that direction. For example, [my first Explorable Explanation](https://ncase.me/sight-and-light/) was a gamedev tutorial I made in 3 days, which hit #1 on Hacker News, so now I've been on this direction for 6 years. (Honestly, it's time for a change)
 

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="68" viewBox="0 0 200 68" role="img" aria-labelledby="title desc">
+  <title id="title">Tips link badge</title>
+  <desc id="desc">White card reading tips smiley.</desc>
+  <rect x="1" y="1" width="198" height="66" rx="8" ry="8" fill="#ffffff" stroke="#d7d7d7" stroke-width="2"/>
+  <text x="100" y="43" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="36" fill="#202020">tips :)</text>
+</svg>
