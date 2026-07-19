@@ -110,10 +110,50 @@
 		}
 	}
 
+	function isServerBoard(section) {
+		return String(section.getAttribute("data-backend") || "").toLowerCase() === "server";
+	}
+
+	function getEndpoint(section, attrName, fallbackPath) {
+		return section.getAttribute(attrName) || fallbackPath;
+	}
+
+	async function readJsonResponse(response) {
+		var contentType = response.headers.get("content-type") || "";
+		if (contentType.indexOf("application/json") === -1) {
+			throw new Error("Expected JSON response.");
+		}
+		return response.json();
+	}
+
+	async function postJson(url, payload) {
+		var response = await fetch(url, {
+			method: "POST",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify(payload)
+		});
+		if (!response.ok) {
+			var message = "Request failed.";
+			try {
+				var errorBody = await response.json();
+				message = errorBody && errorBody.error ? errorBody.error : message;
+			} catch (err) {
+				// keep default message
+			}
+			throw new Error(message);
+		}
+		return readJsonResponse(response);
+	}
+
 	function mountBoard(section) {
 		var boardKey = section.getAttribute("data-community-board") || "default";
 		var storageKey = "community-board:" + boardKey;
 		var votedKey = storageKey + ":voted";
+		var serverMode = isServerBoard(section);
+		var liveMode = serverMode;
+		var feedEndpoint = getEndpoint(section, "data-feed-endpoint", "");
+		var postEndpoint = getEndpoint(section, "data-post-endpoint", "");
+		var voteEndpoint = getEndpoint(section, "data-vote-endpoint", "");
 
 		var form = section.querySelector(".community-form");
 		var list = section.querySelector("[data-community-list]");
@@ -148,6 +188,47 @@
 			localStorage.setItem(votedKey, JSON.stringify(map));
 		}
 
+		function loadServerPosts() {
+			if (!feedEndpoint) {
+				return Promise.resolve([]);
+			}
+			return fetch(feedEndpoint)
+				.then(function (response) {
+					if (!response.ok) {
+						throw new Error("Could not load posts.");
+					}
+					return readJsonResponse(response);
+				})
+				.then(function (data) {
+					return Array.isArray(data) ? data : (data.posts || []);
+				});
+		}
+
+		function makeServerImagePayload(file) {
+			return scanImage(file).then(function (result) {
+				if (!result.ok) {
+					throw new Error(result.reason);
+				}
+				return {
+					imageData: result.imageData || "",
+					warning: result.warning || "",
+					imageName: file ? file.name : ""
+				};
+			});
+		}
+
+		function normalizePost(post) {
+			return {
+				id: post.id,
+				alias: post.alias || "Anonymous",
+				message: post.message || "",
+				imageData: post.imageData || "",
+				imageUrl: post.imageUrl || "",
+				upvotes: post.upvotes || 0,
+				createdAt: post.createdAt || Date.now()
+			};
+		}
+
 		function render() {
 			var posts = readPosts();
 			posts.sort(function (a, b) {
@@ -165,7 +246,8 @@
 			var voted = readVoted();
 			var html = posts.map(function (post) {
 				var votedClass = voted[post.id] ? " voted" : "";
-				var imageHtml = post.imageData ? '<img class="community-image" src="' + post.imageData + '" alt="User upload" loading="lazy" />' : "";
+				var imageSrc = post.imageUrl || post.imageData || "";
+				var imageHtml = imageSrc ? '<img class="community-image" src="' + imageSrc + '" alt="User upload" loading="lazy" />' : "";
 				return (
 					'<article class="community-post" data-post-id="' + escapeHtml(post.id) + '">' +
 					'<div class="community-meta">' +
@@ -179,6 +261,58 @@
 			}).join("");
 
 			list.innerHTML = html;
+		}
+
+		function renderServerPosts(posts) {
+			var voted = readVoted();
+			posts = (posts || []).map(normalizePost);
+			posts.sort(function (a, b) {
+				if ((b.upvotes || 0) !== (a.upvotes || 0)) {
+					return (b.upvotes || 0) - (a.upvotes || 0);
+				}
+				return (b.createdAt || 0) - (a.createdAt || 0);
+			});
+
+			if (!posts.length) {
+				list.innerHTML = '<p class="community-empty">No posts yet. Be the first one.</p>';
+				return;
+			}
+
+			var html = posts.map(function (post) {
+				var votedClass = voted[post.id] ? " voted" : "";
+				var imageSrc = post.imageUrl || post.imageData || "";
+				var imageHtml = imageSrc ? '<img class="community-image" src="' + escapeHtml(imageSrc) + '" alt="User upload" loading="lazy" />' : "";
+				return (
+					'<article class="community-post" data-post-id="' + escapeHtml(post.id) + '">' +
+					'<div class="community-meta">' +
+					'<span>' + escapeHtml(post.alias || "Anonymous") + ' - ' + escapeHtml(formatDate(post.createdAt)) + '</span>' +
+					'<button type="button" class="vote-button' + votedClass + '" data-upvote="' + escapeHtml(post.id) + '">▲ ' + (post.upvotes || 0) + '</button>' +
+					'</div>' +
+					'<div class="community-body">' + escapeHtml(post.message) + '</div>' +
+					imageHtml +
+					'</article>'
+				);
+			}).join("");
+
+			list.innerHTML = html;
+		}
+
+		async function refreshServerBoard() {
+			try {
+				var posts = await loadServerPosts();
+				liveMode = true;
+				renderServerPosts(posts);
+				return true;
+			} catch (err) {
+				liveMode = false;
+				status.textContent = "Live wall unavailable right now; using local mode until the server is started.";
+				renderLocalBoard();
+				return false;
+			}
+		}
+
+		function renderLocalBoard() {
+			render();
 		}
 
 		form.addEventListener("submit", async function (event) {
@@ -202,6 +336,45 @@
 				return;
 			}
 
+			if (serverMode && liveMode) {
+				try {
+					var imagePayload = await makeServerImagePayload(file);
+					var createdPost = await postJson(postEndpoint, {
+						alias: alias.slice(0, 40),
+						message: message.slice(0, 600),
+						imageData: imagePayload.imageData || "",
+						imageName: imagePayload.imageName || ""
+					});
+					form.reset();
+					status.textContent = imagePayload.warning || "Posted. Thanks for sharing.";
+					if (createdPost) {
+						await refreshServerBoard();
+					}
+				} catch (err) {
+					liveMode = false;
+					status.textContent = (err.message || "Could not post right now.") + " Using local mode instead.";
+					var imageResult = await scanImage(file);
+					if (!imageResult.ok) {
+						status.textContent = imageResult.reason;
+						return;
+					}
+					var posts = readPosts();
+					posts.push({
+						id: id(),
+						alias: alias.slice(0, 40),
+						message: message.slice(0, 600),
+						imageData: imageResult.imageData || "",
+						upvotes: 0,
+						createdAt: Date.now()
+					});
+					savePosts(posts);
+					form.reset();
+					status.textContent = imageResult.warning || "Posted locally. Thanks for sharing.";
+					renderLocalBoard();
+				}
+				return;
+			}
+
 			var imageResult = await scanImage(file);
 			if (!imageResult.ok) {
 				status.textContent = imageResult.reason;
@@ -221,7 +394,7 @@
 
 			form.reset();
 			status.textContent = imageResult.warning || "Posted. Thanks for sharing.";
-			render();
+			renderLocalBoard();
 		});
 
 		list.addEventListener("click", function (event) {
@@ -241,6 +414,30 @@
 				return;
 			}
 
+			if (serverMode && liveMode) {
+				postJson(voteEndpoint, { id: postId }).then(function () {
+					voted[postId] = true;
+					saveVoted(voted);
+					status.textContent = "Thanks for voting.";
+					refreshServerBoard();
+				}).catch(function (err) {
+					liveMode = false;
+					status.textContent = (err.message || "Could not save your vote.") + " Using local mode instead.";
+					var posts = readPosts();
+					for (var i = 0; i < posts.length; i++) {
+						if (posts[i].id === postId) {
+							posts[i].upvotes = (posts[i].upvotes || 0) + 1;
+							break;
+						}
+					}
+					savePosts(posts);
+					voted[postId] = true;
+					saveVoted(voted);
+					renderLocalBoard();
+				});
+				return;
+			}
+
 			var posts = readPosts();
 			for (var i = 0; i < posts.length; i++) {
 				if (posts[i].id === postId) {
@@ -252,10 +449,14 @@
 			voted[postId] = true;
 			saveVoted(voted);
 			status.textContent = "Thanks for voting.";
-			render();
+			renderLocalBoard();
 		});
 
-		render();
+		if (serverMode) {
+			refreshServerBoard();
+		} else {
+			renderLocalBoard();
+		}
 	}
 
 	document.addEventListener("DOMContentLoaded", function () {
