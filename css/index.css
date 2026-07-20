@@ -224,6 +224,7 @@ h2 {
 }
 
 @media (hover: hover) and (pointer: fine) {
+
 	#header #nav .nav-pop-wrap:hover .nav-pop-note,
 	#header #nav .nav-pop-wrap:focus-within .nav-pop-note {
 		opacity: 1;
@@ -528,109 +529,109 @@ h2 {
 }
 
 .tier-card {
-    border: 1px solid #ddd;
-    border-radius: 20px;
-    overflow: hidden;
-    margin: 1.25em auto;
-    max-width: 740px;
+	border: 1px solid #ddd;
+	border-radius: 20px;
+	overflow: hidden;
+	margin: 1.25em auto;
+	max-width: 740px;
 }
 
 .tier-image {
-    width: 100%;
-    height: 0;
-    padding-bottom: 125%;
-    position: relative;
-    overflow: hidden;
+	width: 100%;
+	height: 0;
+	padding-bottom: 125%;
+	position: relative;
+	overflow: hidden;
 }
 
 .tier-image img {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
 }
 
 body.store-page {
-    background: #ffffff;
-    color: #000000;
-    font-family: inherit;
+	background: #ffffff;
+	color: #000000;
+	font-family: inherit;
 }
 
 body.store-page #content {
-    background: #ffffff;
-    border: 4px solid #000000;
-    border-radius: 30px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+	background: #ffffff;
+	border: 4px solid #000000;
+	border-radius: 30px;
+	box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
 	padding: 14px;
 }
 
 body.store-page h1,
 body.store-page h2 {
-    font-family: inherit;
-    color: #000000;
-    text-shadow: none;
+	font-family: inherit;
+	color: #000000;
+	text-shadow: none;
 }
 
 body.store-page h1 {
-    letter-spacing: 0.12em;
-    font-size: 3rem;
+	letter-spacing: 0.12em;
+	font-size: 3rem;
 }
 
 body.store-page h2 {
-    font-size: 2rem;
+	font-size: 2rem;
 	margin-bottom: 0.2rem;
 }
 
 body.store-page p,
 body.store-page li,
 body.store-page label {
-    letter-spacing: 0.01em;
+	letter-spacing: 0.01em;
 	line-height: 1.5;
 }
 
 body.store-page .store-hero {
-    text-align: center;
+	text-align: center;
 	margin-bottom: 0.45rem;
 }
 
 body.store-page .store-hero h1 {
-    margin: 0;
-    font-size: 2.4rem;
-    display: inline-block;
-    position: relative;
+	margin: 0;
+	font-size: 2.4rem;
+	display: inline-block;
+	position: relative;
 	padding-right: 2.25rem;
 }
 
 body.store-page .store-hero .status {
-    position: absolute;
+	position: absolute;
 	top: -0.5rem;
 	right: -2.25rem;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
 	gap: 0.16rem;
 	min-width: 0;
 	font-size: 0.82rem;
 	letter-spacing: 0.03em;
 	white-space: nowrap;
-    font-weight: bold;
-    border: none;
-    border-radius: 0;
+	font-weight: bold;
+	border: none;
+	border-radius: 0;
 	padding: 0.03rem 0.32rem;
-    background: transparent;
+	background: transparent;
 }
 
 body.store-page .store-hero .status-open {
-    color: #000;
-    background: #fff;
+	color: #000;
+	background: #fff;
 }
 
 body.store-page .store-hero .status-closed {
-    color: #000;
-    background: #fff;
-    border-color: #000;
+	color: #000;
+	background: #fff;
+	border-color: #000;
 }
 
 @media (max-width: 560px) {
@@ -645,15 +646,15 @@ body.store-page .store-hero .status-closed {
 
 body.store-page .store-hero .hero-subtitle {
 	margin: 0.35rem auto 0;
-    max-width: 700px;
-    color: #111;
+	max-width: 700px;
+	color: #111;
 	font-size: 0.95rem;
 	line-height: 1.4;
 }
 
 body.store-page .hero-intro {
 	margin: 0.6rem auto 0.95rem;
-    max-width: 740px;
+	max-width: 740px;
 	font-size: 0.95rem;
 	line-height: 1.45;
 }
@@ -663,96 +664,96 @@ body.store-page .store-upcoming-link {
 }
 
 body.store-page .commission-header {
-    text-align: center;
+	text-align: center;
 	margin-bottom: 0.6rem;
 }
 
 body.store-page .commission-header h2 {
-    font-size: 1.9rem;
-    margin: 0;
+	font-size: 1.9rem;
+	margin: 0;
 }
 
 body.store-page .commission-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
 	gap: 0.6rem;
 	margin-top: 0.7rem;
 }
 
 body.store-page .tier-card {
-    display: flex;
-    flex-direction: column;
-    background: #ffffff;
-    border: none;
-    border-radius: 0;
-    box-shadow: none;
-    overflow: hidden;
-    position: relative;
-    margin: 0;
+	display: flex;
+	flex-direction: column;
+	background: #ffffff;
+	border: none;
+	border-radius: 0;
+	box-shadow: none;
+	overflow: hidden;
+	position: relative;
+	margin: 0;
 }
 
 body.store-page .tier-card::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background: none;
+	content: "";
+	position: absolute;
+	inset: 0;
+	pointer-events: none;
+	background: none;
 }
 
 body.store-page .tier-image {
-    border-bottom: none;
+	border-bottom: none;
 	padding-bottom: 125%;
 }
 
 body.store-page .tier-content {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
+	display: flex;
+	flex-direction: column;
+	flex: 1;
 	padding: 0.55rem 0 0.6rem;
-    text-align: left;
-    position: relative;
-    z-index: 1;
+	text-align: left;
+	position: relative;
+	z-index: 1;
 }
 
 body.store-page .btn-buy {
-    margin-top: auto;
+	margin-top: auto;
 }
 
 body.store-page .price {
-    font-size: 1.4rem;
-    color: #000000;
-    font-weight: bold;
+	font-size: 1.4rem;
+	color: #000000;
+	font-weight: bold;
 	margin: 0.3rem 0 0.45rem;
 }
 
 body.store-page .details-list {
-    list-style: none;
-    padding: 0;
+	list-style: none;
+	padding: 0;
 	margin: 0.45rem 0 0.65rem;
 }
 
 body.store-page .details-list li {
-    padding-left: 1.4rem;
+	padding-left: 1.4rem;
 	margin-bottom: 0.4rem;
-    position: relative;
+	position: relative;
 }
 
 body.store-page .details-list li::before {
-    content: "•";
-    position: absolute;
-    left: 0;
-    color: #000000;
-    font-size: 1rem;
+	content: "•";
+	position: absolute;
+	left: 0;
+	color: #000000;
+	font-size: 1rem;
 }
 
 body.store-page .btn-buy,
 body.store-page .btn-submit {
-    display: inline-block;
-    background: #a200ff;
-    color: #ffffff; 
-    border: none;
-    border-radius: 0;
-    padding: 0.62rem 0.95rem;
+	display: inline-block;
+	background: #a200ff;
+	color: #ffffff;
+	border: none;
+	border-radius: 0;
+	padding: 0.62rem 0.95rem;
 	width: fit-content;
 	margin-left: auto;
 	margin-right: auto;
@@ -763,24 +764,24 @@ body.store-page .btn-submit {
 
 body.store-page .btn-buy:hover,
 body.store-page .btn-submit:hover {
-    transform: translateY(-1px);
-    background: #333333;
+	transform: translateY(-1px);
+	background: #333333;
 	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 body.store-page .booking-form-section {
 	padding: 0.7rem 0;
 	margin-top: 1.1rem;
-    background: #ffffff;
-    border: none;
-    border-radius: 0;
-    overflow: hidden;
+	background: #ffffff;
+	border: none;
+	border-radius: 0;
+	overflow: hidden;
 }
 
 body.store-page .booking-form {
-    max-width: 760px;
-    margin: 0 auto;
-    text-align: left;
+	max-width: 760px;
+	margin: 0 auto;
+	text-align: left;
 }
 
 body.store-page .form-group {
@@ -788,30 +789,30 @@ body.store-page .form-group {
 }
 
 body.store-page .form-group label {
-    display: block;
+	display: block;
 	margin-bottom: 0.2rem;
-    font-weight: bold;
+	font-weight: bold;
 }
 
 body.store-page .form-group input,
 body.store-page .form-group textarea,
 body.store-page .form-group select {
-    width: 100%;
+	width: 100%;
 	padding: 0.58rem 0.7rem;
-    border: 1px solid #d8d8d8;
-    border-radius: 0;
-    background: #ffffff;
+	border: 1px solid #d8d8d8;
+	border-radius: 0;
+	background: #ffffff;
 	margin-bottom: 0.18rem;
-    font-family: inherit;
-    box-sizing: border-box;
+	font-family: inherit;
+	box-sizing: border-box;
 }
 
 body.store-page .bottom-offers-summary {
-    background: #ffffff;
-    border: none;
+	background: #ffffff;
+	border: none;
 	padding: 0.75rem 0;
 	margin: 1rem 0;
-    border-radius: 0;
+	border-radius: 0;
 }
 
 body.store-page .bottom-offers-summary ul {
@@ -838,8 +839,8 @@ body.store-page .bottom-offers-summary li {
 }
 
 body.store-page .bottom-offers-summary li strong {
-    color: inherit;
-    font-weight: 700;
+	color: inherit;
+	font-weight: 700;
 }
 
 .grid>a>div>div {
@@ -881,11 +882,21 @@ body.store-page .bottom-offers-summary li strong {
 }
 
 .sidepage {
-	width: calc(100%-40px);
+	width: calc(100% - 40px);
 	max-width: 787px;
 	padding: 25px;
 	margin: 50px auto;
 	line-height: 1.7em;
+}
+
+.sidepage #nav {
+	margin: 0.8rem 0 1rem;
+	line-height: 1.5;
+}
+
+.sidepage #nav span {
+	color: #666;
+	margin: 0 0.2em;
 }
 
 .sidepage h1 {
