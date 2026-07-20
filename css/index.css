@@ -1,3 +1,4 @@
+/* Global page defaults */
 html,
 body {
 	width: 100%;
@@ -52,6 +53,7 @@ h2 {
 	line-height: 1.0;
 }
 
+/* Main header area and animated profile block */
 #header {
 	margin-top: 15px;
 	height: 182px;
@@ -81,20 +83,29 @@ h2 {
 	font-size: 0.86rem;
 	font-weight: 700;
 	letter-spacing: 0.04em;
-	color: #7d19c5;
+	color: #000;
 	background: rgba(255, 255, 255, 0.9);
 	padding: 4px 8px;
 	border-radius: 4px;
 	white-space: nowrap;
 	text-shadow: none;
 	border: 1px solid rgba(125, 25, 197, 0.28);
-	z-index: 2;
+	text-decoration: underline;
+	text-decoration-color: #a200ff;
+	text-decoration-thickness: 2px;
+	text-underline-offset: 2px;
+	z-index: 8;
+}
+
+#header #Aydan .header-gif-label:hover {
+	color: #000;
+	top: -3px;
 }
 
 #header #Aydan .header-gif-label::after {
 	content: "";
 	position: absolute;
-	left: 16px;
+	left: 40px;
 	bottom: -8px;
 	width: 12px;
 	height: 12px;
@@ -110,6 +121,8 @@ h2 {
 	bottom: 20px;
 }
 
+/* Popover-style nav labels (social/about/heart/store note) */
+
 #header a {
 	color: #000;
 	transition: 0.15s ease-in-out;
@@ -119,6 +132,11 @@ h2 {
 #header a:hover {
 	color: #888;
 	top: -3px;
+}
+
+#header a:focus-visible {
+	outline: 2px solid #a200ff;
+	outline-offset: 2px;
 }
 
 #header #nav a {
@@ -217,7 +235,7 @@ h2 {
 	#header #nav .store-wrap:focus-within .donation-pop,
 	#header #nav .store-wrap .donation-pop:hover {
 		opacity: 1;
-		transform: translate(-50%, -26px);
+		transform: translate(-50%, -28px);
 		pointer-events: auto;
 	}
 }
@@ -231,6 +249,7 @@ h2 {
 	margin-bottom: 50px;
 }
 
+/* Shared footer card layout used across pages */
 #footer {
 	max-width: 680px;
 	text-align: center;
