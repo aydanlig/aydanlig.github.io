@@ -71,6 +71,38 @@ h2 {
 	margin-left: 5px;
 }
 
+#header #Aydan .header-gif-label {
+	position: absolute;
+	top: 0;
+	right: 0;
+	transform: translate(calc(50% - 0.8em), calc(-50% + 0.25em)) rotate(-8deg);
+	transform-origin: center;
+	font-size: 0.86rem;
+	font-weight: 700;
+	letter-spacing: 0.04em;
+	color: #7d19c5;
+	background: rgba(255, 255, 255, 0.9);
+	padding: 4px 8px;
+	border-radius: 4px;
+	white-space: nowrap;
+	text-shadow: none;
+	border: 1px solid rgba(125, 25, 197, 0.28);
+	z-index: 2;
+}
+
+#header #Aydan .header-gif-label::after {
+	content: "";
+	position: absolute;
+	left: 16px;
+	bottom: -8px;
+	width: 12px;
+	height: 12px;
+	background: rgba(255, 255, 255, 0.9);
+	border-right: 1px solid rgba(125, 25, 197, 0.28);
+	border-bottom: 1px solid rgba(125, 25, 197, 0.28);
+	transform: rotate(45deg);
+}
+
 #header #nav {
 	position: absolute;
 	right: 10px;
@@ -441,6 +473,24 @@ h2 {
 	min-height: 154px;
 	margin-bottom: 10px;
 	transition: opacity 0.1s ease-in-out;
+}
+
+.where-grid>a>div>img {
+	width: 100%;
+	height: auto;
+	display: block;
+}
+
+.where-grid .book-portrait-banner {
+	height: 98px;
+	object-fit: cover;
+	object-position: center;
+}
+
+.where-grid .find-public-banner {
+	height: 98px;
+	object-fit: cover;
+	object-position: center;
 }
 
 .grid>a {
@@ -868,7 +918,8 @@ hr {
 	#header #nav .social-wrap .nav-pop-note {
 		width: min(64vw, 300px);
 		max-width: calc(100vw - 28px);
-		right: calc(100% - 132px);
+		right: calc(100% - 152px);
+		transform: translate(22px, 8%);
 	}
 
 	#header #nav .about-wrap .nav-pop-note {

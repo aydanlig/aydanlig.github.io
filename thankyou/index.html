@@ -45,6 +45,207 @@
 
 	<!-- Stylin' keep yourself safe -->
 	<link rel="stylesheet" href="css/index.css" />
+	<style>
+		.gratitude-game {
+			margin: 1.3rem 0 1.8rem;
+			padding: 0.9rem;
+			border: none;
+			border-radius: 12px;
+			background: #fff;
+			position: relative;
+		}
+
+		.gratitude-game h2 {
+			margin: 0 0 0.35rem;
+		}
+
+		.gratitude-game .game-heading-row {
+			display: flex;
+			justify-content: space-between;
+			align-items: baseline;
+			gap: 0.8rem;
+			flex-wrap: wrap;
+		}
+
+		.gratitude-game .minecraft-callout {
+			position: absolute;
+			top: 208px;
+			right: 10px;
+			font-family: "Courier New", monospace;
+			font-size: 0.82rem;
+			font-weight: 700;
+			letter-spacing: 0.06em;
+			text-transform: uppercase;
+			color: #ffd45a;
+			text-shadow: 1px 1px 0 #7b4d00, 2px 2px 0 #3e2500;
+			animation: minecraft-pulse 1.1s ease-in-out infinite;
+			transform-origin: center;
+			z-index: 2;
+		}
+
+		.gratitude-game p {
+			margin-top: 0.2rem;
+		}
+
+		.gratitude-game .game-controls {
+			display: flex;
+			gap: 0.7rem;
+			align-items: center;
+			flex-wrap: wrap;
+			margin: 0.55rem 0;
+		}
+
+		.gratitude-game button {
+			font: inherit;
+			font-weight: 700;
+			padding: 0.38rem 0.75rem;
+			border: 1px solid #999;
+			border-radius: 8px;
+			background: #fff;
+			cursor: pointer;
+		}
+
+		.gratitude-game button:hover {
+			border-color: #a200ff;
+			color: #a200ff;
+		}
+
+		.game-stats {
+			font-size: 0.95rem;
+			color: #333;
+		}
+
+		.game-field {
+			position: relative;
+			height: 235px;
+			border: none;
+			border-radius: 10px;
+			overflow: hidden;
+			background: linear-gradient(180deg, #fff, #faf7ff);
+		}
+
+		.falling-token {
+			position: absolute;
+			top: -28px;
+			left: 0;
+			padding: 0.18rem 0.4rem;
+			border-radius: 999px;
+			font-size: 0.76rem;
+			font-weight: 700;
+			cursor: pointer;
+			user-select: none;
+			white-space: nowrap;
+			border: 1px solid #ddd;
+			background: #fff;
+			color: #444;
+		}
+
+		.falling-token.supporter {
+			border-color: #ff95df;
+			background: #fff0fb;
+			color: #9d1075;
+		}
+
+		.falling-token.bonus {
+			border-color: #8ec5ff;
+			background: #eef6ff;
+			color: #0a4f95;
+			font-size: 0.62rem;
+			padding: 0.1rem 0.22rem;
+		}
+
+		.falling-token.jackpot {
+			border-color: #ffd55d;
+			background: #fff8de;
+			color: #7a5400;
+			font-size: 0.56rem;
+			padding: 0.08rem 0.18rem;
+		}
+
+		.floating-points {
+			position: absolute;
+			font-size: 0.8rem;
+			font-weight: 700;
+			color: #7a5400;
+			pointer-events: none;
+			animation: rise-fade 0.6s ease-out forwards;
+		}
+
+		@keyframes rise-fade {
+			from {
+				opacity: 1;
+				transform: translateY(0);
+			}
+
+			to {
+				opacity: 0;
+				transform: translateY(-16px);
+			}
+		}
+
+		@keyframes minecraft-pulse {
+			0%, 100% {
+				transform: scale(1) rotate(2deg);
+				opacity: 0.95;
+			}
+
+			50% {
+				transform: scale(1.08) rotate(2deg);
+				opacity: 1;
+			}
+		}
+
+		.game-status {
+			margin-top: 0.55rem;
+			font-size: 0.9rem;
+			color: #555;
+			min-height: 1.25em;
+		}
+
+		.prize-popup-backdrop {
+			position: fixed;
+			inset: 0;
+			background: rgba(0, 0, 0, 0.45);
+			display: none;
+			align-items: center;
+			justify-content: center;
+			padding: 16px;
+			z-index: 60;
+		}
+
+		.prize-popup-backdrop.show {
+			display: flex;
+		}
+
+		.prize-popup {
+			max-width: 360px;
+			width: 100%;
+			background: #fff;
+			border-radius: 12px;
+			padding: 0.9rem;
+			box-shadow: 0 18px 36px rgba(0, 0, 0, 0.25);
+		}
+
+		.prize-popup h3 {
+			margin: 0 0 0.4rem;
+		}
+
+		.prize-popup p {
+			margin: 0.35rem 0;
+			line-height: 1.45;
+		}
+
+		.prize-popup button {
+			margin-top: 0.55rem;
+			font: inherit;
+			font-weight: 700;
+			padding: 0.35rem 0.72rem;
+			border: 1px solid #999;
+			border-radius: 8px;
+			background: #fff;
+			cursor: pointer;
+		}
+	</style>
 
 </head>
 
@@ -85,11 +286,35 @@
 			<p><a href="mailto:aydan@smileyfoxyportraits.com?subject=Name%20Listing%20for%20Wall%20of%20Thanks">Send email for listing</a></p>
 		</details>
 
+		<section id="gratitude-game" class="gratitude-game">
+			<div class="game-heading-row">
+				<h2>Mini Game: Catch the Supporters</h2>
+				<span class="minecraft-callout">Catch the stars</span>
+			</div>
+			<p>Catch supporter names plus bonus tokens to score points, and avoid random words. New supporters are pulled from the list above every time this page loads.</p>
+			<div class="game-controls">
+				<button id="start-gratitude-game" type="button">Start game</button>
+				<span class="game-stats">Score: <strong id="game-score">0</strong> | Lives: <strong id="game-lives">❤️❤️❤️</strong> | Time: <strong id="game-time">50</strong>s</span>
+			</div>
+			<div id="game-field" class="game-field" aria-label="Supporters mini game area"></div>
+			<div id="game-status" class="game-status">Reach 1000 points to win the prize popup. Supporters +10, star gives +250, rare blue heart gives +1 life. Catch the stars.</div>
+		</section>
+
+		<div id="prize-popup-backdrop" class="prize-popup-backdrop" role="dialog" aria-modal="true" aria-labelledby="prize-popup-title">
+			<div class="prize-popup">
+				<h3 id="prize-popup-title">You won</h3>
+				<p id="prize-popup-score">I won at Score: <strong>0</strong> | Goal: <strong>1000</strong></p>
+				<p><strong>Prize unlocked at 1000 points:</strong></p>
+				<p>You get a free 1 euro portrait sketch of yourself.</p>
+				<p>Just show me a screenshot of winning on your phone when you meet me live.</p>
+				<button id="close-prize-popup" type="button">Awesome</button>
+			</div>
+		</div>
+
 		<section>
 			<h2>Testimonials and words of encouragement</h2>
 			<script src="https://widget.senja.io/widget/d6fe8496-694d-4daa-b822-0f92ee453875/platform.js" type="text/javascript" async></script>
 			<div class="senja-embed" data-id="d6fe8496-694d-4daa-b822-0f92ee453875" data-mode="shadow" data-lazyload="false" style="display: block; width: 100%;"></div>
-			<p>Give your first testimonial here: <a href="https://senja.io/p/smileyfoxyportraits/r/Testimonial" target="_blank" rel="noopener noreferrer">https://senja.io/p/smileyfoxyportraits/r/Testimonial</a></p>
 		</section>
 
 		<br></br>
@@ -124,7 +349,375 @@
 			<p class="footer-nav-link"><a href="../" onclick="history.back(); return false;">&larr; back</a> <span>&middot;</span> <a class="home-return" href="/">home</a></p>
 
 		<script type='text/javascript' src='https://storage.ko-fi.com/cdn/widget/Widget_2.js'></script>
-			<script type='text/javascript'>kofiwidget2.init('Support me on Ko-fi', '#72a4f2', 'G2G7OCU1Z'); kofiwidget2.draw();</script>
+		<script type='text/javascript'>kofiwidget2.init('Support me on Ko-fi', '#72a4f2', 'G2G7OCU1Z'); kofiwidget2.draw();</script>
+		<script>
+			(function () {
+				var blockedHrefPart = 'senja.io/?utm_medium=powered_by';
+				var blockedText = 'collect testimonials with senja';
+
+				function shouldHideAnchor(a) {
+					if (!a) {
+						return false;
+					}
+					var href = (a.getAttribute('href') || '').toLowerCase();
+					var text = (a.textContent || '').trim().toLowerCase();
+					return href.indexOf(blockedHrefPart) !== -1 || text === blockedText;
+				}
+
+				function hideInRoot(root) {
+					if (!root || !root.querySelectorAll) {
+						return;
+					}
+					var anchors = root.querySelectorAll('a');
+					for (var i = 0; i < anchors.length; i++) {
+						if (shouldHideAnchor(anchors[i])) {
+							anchors[i].style.display = 'none';
+							anchors[i].setAttribute('aria-hidden', 'true');
+						}
+					}
+
+					var nodes = root.querySelectorAll('*');
+					for (var j = 0; j < nodes.length; j++) {
+						if (nodes[j].shadowRoot) {
+							hideInRoot(nodes[j].shadowRoot);
+						}
+					}
+				}
+
+				function runHidePass() {
+					hideInRoot(document);
+				}
+
+				runHidePass();
+				setInterval(runHidePass, 1200);
+
+				var observer = new MutationObserver(function () {
+					runHidePass();
+				});
+				observer.observe(document.documentElement, { childList: true, subtree: true });
+			})();
+
+			(function () {
+				var startBtn = document.getElementById('start-gratitude-game');
+				var field = document.getElementById('game-field');
+				var scoreEl = document.getElementById('game-score');
+				var livesEl = document.getElementById('game-lives');
+				var timeEl = document.getElementById('game-time');
+				var statusEl = document.getElementById('game-status');
+				var prizePopupBackdrop = document.getElementById('prize-popup-backdrop');
+				var closePrizePopupBtn = document.getElementById('close-prize-popup');
+				var prizeScoreEl = document.getElementById('prize-popup-score');
+				var winScore = 1000;
+
+				if (!startBtn || !field || !scoreEl || !livesEl || !timeEl || !statusEl || !prizePopupBackdrop || !closePrizePopupBtn || !prizeScoreEl) {
+					return;
+				}
+
+				var supporters = Array.prototype.map.call(
+					document.querySelectorAll('.supporters-list li'),
+					function (li) { return li.textContent.trim(); }
+				).filter(function (name) { return name.length > 0; });
+
+				var stopWords = {
+					the: true, and: true, with: true, that: true, from: true, this: true, your: true,
+					for: true, have: true, just: true, very: true, much: true, here: true, above: true,
+					would: true, like: true, please: true, page: true, game: true, name: true, listed: true
+				};
+
+				var textSource = Array.prototype.map.call(
+					document.querySelectorAll('.sidepage h2, .sidepage p, .sidepage summary'),
+					function (el) { return el.textContent || ''; }
+				).join(' ');
+
+				var words = textSource
+					.toLowerCase()
+					.match(/[a-z][a-z'-]{3,}/g) || [];
+
+				var uniqueWords = [];
+				var seen = {};
+				words.forEach(function (word) {
+					if (!seen[word] && !stopWords[word]) {
+						seen[word] = true;
+						uniqueWords.push(word);
+					}
+				});
+
+				var score = 0;
+				var lives = 3;
+				var timeLeft = 50;
+				var active = false;
+				var items = [];
+				var spawnTimer = null;
+				var tickTimer = null;
+				var rafId = null;
+				var bonusHeartsSpawned = 0;
+
+				function updateHud() {
+					scoreEl.textContent = String(score);
+					livesEl.textContent = lives > 0 ? new Array(lives + 1).join('❤️') : '0';
+					timeEl.textContent = String(timeLeft);
+				}
+
+				function clearItems() {
+					items.forEach(function (item) {
+						if (item.el && item.el.parentNode) {
+							item.el.parentNode.removeChild(item.el);
+						}
+					});
+					items = [];
+				}
+
+				function showFloatingPoints(x, y, text) {
+					var floater = document.createElement('span');
+					floater.className = 'floating-points';
+					floater.textContent = text;
+					floater.style.left = Math.max(4, x) + 'px';
+					floater.style.top = Math.max(4, y) + 'px';
+					field.appendChild(floater);
+					setTimeout(function () {
+						if (floater.parentNode) {
+							floater.parentNode.removeChild(floater);
+						}
+					}, 650);
+				}
+
+				function chooseToken() {
+					var roll = Math.random();
+					if (supporters.length > 0 && roll < 0.3) {
+						return {
+							text: supporters[Math.floor(Math.random() * supporters.length)],
+							type: 'supporter',
+							points: 10
+						};
+					}
+
+					if (bonusHeartsSpawned < 3 && roll >= 0.3 && roll < 0.315) {
+						return {
+							text: '💙',
+							type: 'bonus',
+							points: 0
+						};
+					}
+
+					if (roll < 0.37) {
+						return {
+							text: '⭐',
+							type: 'jackpot',
+							points: 250
+						};
+					}
+
+					if (uniqueWords.length === 0) {
+						return { text: 'gratitude', type: 'decoy', points: 0 };
+					}
+
+					return {
+						text: uniqueWords[Math.floor(Math.random() * uniqueWords.length)],
+						type: 'decoy',
+						points: 0
+					};
+				}
+
+				function showPrizePopup() {
+					prizePopupBackdrop.classList.add('show');
+				}
+
+				function hidePrizePopup() {
+					prizePopupBackdrop.classList.remove('show');
+				}
+
+				function endGame(message, didWin) {
+					active = false;
+					if (spawnTimer) {
+						clearInterval(spawnTimer);
+						spawnTimer = null;
+					}
+					if (tickTimer) {
+						clearInterval(tickTimer);
+						tickTimer = null;
+					}
+					if (rafId) {
+						cancelAnimationFrame(rafId);
+						rafId = null;
+					}
+					startBtn.disabled = false;
+					statusEl.textContent = message;
+					if (didWin) {
+						prizeScoreEl.innerHTML = 'I won at Score: <strong>' + score + '</strong> | Goal: <strong>' + winScore + '</strong>';
+						showPrizePopup();
+					}
+				}
+
+				function spawnItem() {
+					if (!active) {
+						return;
+					}
+
+					var token = chooseToken();
+					var el = document.createElement('button');
+					el.type = 'button';
+					el.className = 'falling-token';
+					if (token.type === 'supporter') {
+						el.className += ' supporter';
+					}
+					if (token.type === 'bonus') {
+						el.className += ' bonus';
+					}
+					if (token.type === 'jackpot') {
+						el.className += ' jackpot';
+					}
+					el.textContent = token.text;
+					el.setAttribute('aria-label', token.text);
+					field.appendChild(el);
+					if (token.type === 'bonus') {
+						bonusHeartsSpawned += 1;
+					}
+
+					var maxLeft = Math.max(8, field.clientWidth - el.offsetWidth - 8);
+					var item = {
+						el: el,
+						y: -28,
+						left: 8 + Math.random() * maxLeft,
+						speed: 84 + Math.random() * 126,
+						type: token.type,
+						points: token.points
+					};
+					if (item.type === 'jackpot') {
+						item.speed = 250 + Math.random() * 180;
+					}
+					el.style.left = item.left + 'px';
+
+					el.addEventListener('click', function () {
+						if (!active) {
+							return;
+						}
+
+						if (item.type === 'supporter' || item.type === 'jackpot') {
+							score += item.points;
+							if (item.type === 'supporter') {
+								statusEl.textContent = 'Nice! You thanked ' + token.text + ' (+' + item.points + ').';
+							} else {
+								statusEl.textContent = 'Jackpot catch! +' + item.points + ' points!';
+								showFloatingPoints(item.left, item.y, '+250');
+							}
+							if (score >= winScore) {
+								updateHud();
+								item.dead = true;
+								if (el.parentNode) {
+									el.parentNode.removeChild(el);
+								}
+								endGame('You win! Final score: ' + score + '.', true);
+								return;
+							}
+						} else if (item.type === 'bonus') {
+							lives += 1;
+							statusEl.textContent = 'Lucky blue heart! +1 life.';
+						} else {
+							lives -= 1;
+							statusEl.textContent = 'Oops, that was a random word.';
+						}
+
+						updateHud();
+						item.dead = true;
+						if (el.parentNode) {
+							el.parentNode.removeChild(el);
+						}
+
+						if (lives <= 0) {
+							endGame('Game over. Score: ' + score + '. Supporters loaded: ' + supporters.length + '.');
+						}
+					});
+
+					items.push(item);
+				}
+
+				var lastTs = 0;
+				function loop(ts) {
+					if (!active) {
+						return;
+					}
+
+					if (!lastTs) {
+						lastTs = ts;
+					}
+					var dt = (ts - lastTs) / 1000;
+					lastTs = ts;
+
+					for (var i = items.length - 1; i >= 0; i--) {
+						var item = items[i];
+						if (item.dead) {
+							items.splice(i, 1);
+							continue;
+						}
+
+						item.y += item.speed * dt;
+						item.el.style.top = item.y + 'px';
+
+						if (item.y > field.clientHeight) {
+							if (item.type === 'supporter') {
+								lives -= 1;
+								updateHud();
+								statusEl.textContent = 'A supporter slipped by. Catch the names!';
+							}
+							if (item.el.parentNode) {
+								item.el.parentNode.removeChild(item.el);
+							}
+							items.splice(i, 1);
+						}
+					}
+
+					if (lives <= 0) {
+						endGame('Game over. Score: ' + score + '. Supporters loaded: ' + supporters.length + '.');
+						return;
+					}
+
+					rafId = requestAnimationFrame(loop);
+				}
+
+				function startGame() {
+					supporters = Array.prototype.map.call(
+						document.querySelectorAll('.supporters-list li'),
+						function (li) { return li.textContent.trim(); }
+					).filter(function (name) { return name.length > 0; });
+
+					score = 0;
+					lives = 3;
+					timeLeft = 50;
+					active = true;
+					bonusHeartsSpawned = 0;
+					lastTs = 0;
+					startBtn.disabled = true;
+					hidePrizePopup();
+					clearItems();
+					updateHud();
+					statusEl.textContent = 'Supporters loaded: ' + supporters.length + '. Reach ' + winScore + ' points to win. Supporters +10, ⭐ gives +250, rare 💙 gives +1 life. Catch the stars.';
+
+					spawnTimer = setInterval(spawnItem, 320);
+					tickTimer = setInterval(function () {
+						timeLeft -= 1;
+						updateHud();
+						if (timeLeft <= 0) {
+							if (score >= winScore) {
+								endGame('Time! You win with ' + score + ' points.', true);
+							} else {
+								endGame('You survived the full round with ' + score + ' points. Nice stamina! Keep going, you are getting closer to ' + winScore + '.');
+							}
+						}
+					}, 1000);
+
+					rafId = requestAnimationFrame(loop);
+				}
+
+				startBtn.addEventListener('click', startGame);
+				closePrizePopupBtn.addEventListener('click', hidePrizePopup);
+				prizePopupBackdrop.addEventListener('click', function (event) {
+					if (event.target === prizePopupBackdrop) {
+						hidePrizePopup();
+					}
+				});
+				statusEl.textContent = 'Ready. Found ' + supporters.length + ' supporter names and ' + uniqueWords.length + ' page words. Reach ' + winScore + ' points to unlock the prize popup.';
+			})();
+		</script>
 		</div>
 </body>
 
