@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /contact/
+Disallow: /img/
+Disallow: /learnemup/fashionchecklist.html
+
+Sitemap: https://aydanlig.github.io/sitemap.xml

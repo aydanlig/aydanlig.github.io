@@ -49,6 +49,7 @@ h1 {
 h2 {
 	margin-top: 1.25em;
 	margin-bottom: 0;
+	line-height: 1.0;
 }
 
 #header {
@@ -543,7 +544,7 @@ body.store-page #content {
     border: 4px solid #000000;
     border-radius: 30px;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
-    padding: 20px;
+	padding: 14px;
 }
 
 body.store-page h1,
@@ -560,19 +561,19 @@ body.store-page h1 {
 
 body.store-page h2 {
     font-size: 2rem;
-    margin-bottom: 0.4rem;
+	margin-bottom: 0.2rem;
 }
 
 body.store-page p,
 body.store-page li,
 body.store-page label {
     letter-spacing: 0.01em;
-    line-height: 1.65;
+	line-height: 1.5;
 }
 
 body.store-page .store-hero {
     text-align: center;
-    margin-bottom: 0.75rem;
+	margin-bottom: 0.45rem;
 }
 
 body.store-page .store-hero h1 {
@@ -580,23 +581,25 @@ body.store-page .store-hero h1 {
     font-size: 2.4rem;
     display: inline-block;
     position: relative;
-    padding-right: 3rem;
+	padding-right: 2.25rem;
 }
 
 body.store-page .store-hero .status {
     position: absolute;
-    top: -0.6rem;
-    right: -3rem;
+	top: -0.5rem;
+	right: -2.25rem;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 0.25rem;
-    min-width: 3.2rem;
-    font-size: 0.95rem;
+	gap: 0.16rem;
+	min-width: 0;
+	font-size: 0.82rem;
+	letter-spacing: 0.03em;
+	white-space: nowrap;
     font-weight: bold;
     border: none;
     border-radius: 0;
-    padding: 0.05rem 0.5rem;
+	padding: 0.03rem 0.32rem;
     background: transparent;
 }
 
@@ -611,24 +614,38 @@ body.store-page .store-hero .status-closed {
     border-color: #000;
 }
 
+@media (max-width: 560px) {
+	body.store-page .store-hero h1 {
+		padding-right: 0;
+	}
+
+	body.store-page .store-hero .status {
+		display: none;
+	}
+}
+
 body.store-page .store-hero .hero-subtitle {
-    margin: 0.6rem auto 0;
+	margin: 0.35rem auto 0;
     max-width: 700px;
     color: #111;
-    font-size: 1rem;
-    line-height: 1.5;
+	font-size: 0.95rem;
+	line-height: 1.4;
 }
 
 body.store-page .hero-intro {
-    margin: 1rem auto 1.5rem;
+	margin: 0.6rem auto 0.95rem;
     max-width: 740px;
-    font-size: 1rem;
-    line-height: 1.6;
+	font-size: 0.95rem;
+	line-height: 1.45;
+}
+
+body.store-page .store-upcoming-link {
+	margin: 0.15rem 0 0.5rem;
 }
 
 body.store-page .commission-header {
     text-align: center;
-    margin-bottom: 1rem;
+	margin-bottom: 0.6rem;
 }
 
 body.store-page .commission-header h2 {
@@ -639,8 +656,8 @@ body.store-page .commission-header h2 {
 body.store-page .commission-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 1rem;
-    margin-top: 1.25rem;
+	gap: 0.6rem;
+	margin-top: 0.7rem;
 }
 
 body.store-page .tier-card {
@@ -665,14 +682,14 @@ body.store-page .tier-card::before {
 
 body.store-page .tier-image {
     border-bottom: none;
-    padding-bottom: 92%;
+	padding-bottom: 125%;
 }
 
 body.store-page .tier-content {
     display: flex;
     flex-direction: column;
     flex: 1;
-    padding: 0.9rem 0 1rem;
+	padding: 0.55rem 0 0.6rem;
     text-align: left;
     position: relative;
     z-index: 1;
@@ -686,18 +703,18 @@ body.store-page .price {
     font-size: 1.4rem;
     color: #000000;
     font-weight: bold;
-    margin: 0.5rem 0 0.7rem;
+	margin: 0.3rem 0 0.45rem;
 }
 
 body.store-page .details-list {
     list-style: none;
     padding: 0;
-    margin: 0.7rem 0 1rem;
+	margin: 0.45rem 0 0.65rem;
 }
 
 body.store-page .details-list li {
     padding-left: 1.4rem;
-    margin-bottom: 0.7rem;
+	margin-bottom: 0.4rem;
     position: relative;
 }
 
@@ -712,25 +729,29 @@ body.store-page .details-list li::before {
 body.store-page .btn-buy,
 body.store-page .btn-submit {
     display: inline-block;
-    background: #000000;
-    color: #ffffff;
+    background: #a200ff;
+    color: #ffffff; 
     border: none;
     border-radius: 0;
-    padding: 0.8rem 1.2rem;
-    text-decoration: none;
-    transition: transform 0.2s ease, background 0.2s ease;
-    box-shadow: none;
+    padding: 0.62rem 0.95rem;
+	width: fit-content;
+	margin-left: auto;
+	margin-right: auto;
+	text-decoration: none;
+	transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.16);
 }
 
 body.store-page .btn-buy:hover,
 body.store-page .btn-submit:hover {
     transform: translateY(-1px);
     background: #333333;
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 body.store-page .booking-form-section {
-    padding: 1.2rem 0;
-    margin-top: 2rem;
+	padding: 0.7rem 0;
+	margin-top: 1.1rem;
     background: #ffffff;
     border: none;
     border-radius: 0;
@@ -744,12 +765,12 @@ body.store-page .booking-form {
 }
 
 body.store-page .form-group {
-    margin-bottom: 0.8rem;
+	margin-bottom: 0.5rem;
 }
 
 body.store-page .form-group label {
     display: block;
-    margin-bottom: 0.35rem;
+	margin-bottom: 0.2rem;
     font-weight: bold;
 }
 
@@ -757,11 +778,11 @@ body.store-page .form-group input,
 body.store-page .form-group textarea,
 body.store-page .form-group select {
     width: 100%;
-    padding: 0.8rem 0.9rem;
+	padding: 0.58rem 0.7rem;
     border: 1px solid #d8d8d8;
     border-radius: 0;
     background: #ffffff;
-    margin-bottom: 0.3rem;
+	margin-bottom: 0.18rem;
     font-family: inherit;
     box-sizing: border-box;
 }
@@ -769,17 +790,32 @@ body.store-page .form-group select {
 body.store-page .bottom-offers-summary {
     background: #ffffff;
     border: none;
-    padding: 1.2rem 0;
-    margin: 1.8rem 0;
+	padding: 0.75rem 0;
+	margin: 1rem 0;
     border-radius: 0;
 }
 
 body.store-page .bottom-offers-summary ul {
-    margin: 0.8rem 0 1rem 1.2rem;
+	margin: 0.45rem 0 0.65rem 1.1rem;
 }
 
 body.store-page .bottom-offers-summary li {
-    margin-bottom: 0.9rem;
+	margin-bottom: 0.5rem;
+}
+
+@media (max-width: 760px) {
+	body.store-page #content {
+		padding: 11px;
+	}
+
+	body.store-page .commission-container {
+		gap: 0.45rem;
+	}
+
+	body.store-page .booking-form-section {
+		margin-top: 0.8rem;
+		padding: 0.5rem 0;
+	}
 }
 
 body.store-page .bottom-offers-summary li strong {
