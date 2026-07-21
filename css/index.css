@@ -35,6 +35,8 @@ a {
 a:hover {
 	color: #be4dff;
 	top: -2px;
+	padding-bottom: 2px; /* Extends the visual/clickable box 2px down */
+	margin-bottom: -2px;
 }
 
 h1 {
@@ -291,12 +293,15 @@ h2 {
 	text-decoration-thickness: 1.5px;
 	text-underline-offset: 2px;
 	transition: color 0.15s ease-in-out, text-decoration-color 0.15s ease-in-out;
+	
 }
 
 .footer-section a:hover {
 	color: #a200ff;
 	text-decoration-color: #a200ff;
-	top: 0;
+	top: -2px;
+	padding-bottom: 2px; /* Extends the visual/clickable box 2px down */
+	margin-bottom: -2px;
 }
 
 .legal-pair small {
@@ -1027,4 +1032,121 @@ hr {
 	#header #nav .about-wrap.open .nav-pop-note {
 		transform: translate(0, -42%);
 	}
+}
+
+/* 1. Smooth acceleration keyframe (1 clean loop, exponential acceleration) */
+@keyframes spin-ramp {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+/* 2. Infinite top-speed loop */
+@keyframes spin-infinite {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+/* 3. Setup the heart pseudo-element */
+#header #nav .heart-wrap > a.spinning-heart-link::before {
+	content: "💖";
+	display: inline-block;
+}
+
+/* 4. Prevent the link container from moving up on hover */
+#header #nav .heart-wrap > a.spinning-heart-link:hover {
+	top: 0;
+}
+
+/* 5. Chain the ramp animation into the infinite loop on hover */
+#header #nav .heart-wrap > a.spinning-heart-link:hover::before {
+	animation: 
+		spin-ramp 3s cubic-bezier(0.7, 0, 1, 0.1) forwards,
+		spin-infinite 0.08s linear infinite 3s; /* Starts at 3s mark when ramp finishes */
+}
+/* BS SPINNY SHIT */
+/* Smooth barrel roll transition on the body container */
+body {
+	transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Page barrel roll state */
+body.silly-spinning {
+	transform: rotate(360deg);
+}
+
+/* Full-screen backdrop filter overlay attached above document canvas */
+#silly-overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	pointer-events: none;
+	z-index: 999999;
+	backdrop-filter: invert(1) hue-rotate(180deg);
+	-webkit-backdrop-filter: invert(1) hue-rotate(180deg);
+	opacity: 0;
+	transition: opacity 0.8s ease;
+}
+
+/* Active state toggling full color inversion */
+#silly-overlay.active {
+	opacity: 1;
+}
+
+/* 1. Setup the smiley pseudo-element */
+.spinning-smiley {
+	display: inline-block;
+	cursor: pointer; /* Makes it clear you can hover over it */
+}
+
+.spinning-smiley::before {
+	content: ":D";
+	display: inline-block;
+	transform-origin: center center;
+}
+
+/* 2. Chain the ramp animation into the infinite loop on hover */
+.spinning-smiley:hover::before {
+	animation: 
+		spin-ramp 3s cubic-bezier(0.7, 0, 1, 0.1) forwards,
+		spin-infinite 0.08s linear infinite 3s; /* Delay matches the 3s ramp duration */
+}
+
+/* Smooth barrel roll transition on the body container */
+body {
+	transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Page barrel roll state */
+body.silly-spinning {
+	transform: rotate(360deg);
+}
+
+/* Full-screen backdrop filter overlay attached above document canvas */
+#silly-overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	pointer-events: none;
+	z-index: 999999;
+	backdrop-filter: invert(1) hue-rotate(180deg);
+	-webkit-backdrop-filter: invert(1) hue-rotate(180deg);
+	opacity: 0;
+	transition: opacity 0.8s ease;
+}
+
+/* Active state toggling full color inversion */
+#silly-overlay.active {
+	opacity: 1;
 }

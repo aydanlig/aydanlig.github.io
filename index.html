@@ -97,7 +97,7 @@
 			</span>
 			<span class="nav-dot">&middot;</span>
 			<span class="nav-pop-wrap heart-wrap">
-				<a href="/thankyou/index.html" aria-label="Thank you">💖</a>
+				<a href="/thankyou/index.html" aria-label="Thank you" class="spinning-heart-link"></a>
 				<span class="nav-pop-note" aria-hidden="true">
 					<span class="pop-line">wall of thanks</span>
 					<span class="pop-line">testimonials</span>
@@ -112,8 +112,8 @@
 
 		<p style="font-size:1.33em">
 			<b>Hi, I'm Aydan!</b>
-			I do a lil' bit of everything, but the goal is the same:
-			to spread smiles :D
+			I do a lil' bit of everything, but the goal is the same;
+			to spread smiles <span class="spinning-smiley"></span>
 		</p>
 		<p>
 			Wanna know when I make new stuff?
@@ -141,7 +141,7 @@
 			<a href="/where-i-draw/">
 				<div>
 					<img loading="lazy" decoding="async" class="find-public-banner"
-						src="./img/location time calendar.jpg" alt="Clock, calendar, and location pin">
+						src="./img/AydanFind me.png" alt="Clock, calendar, and location pin">
 					<div>Find me in public<span> – see my usual drawing locations, hours, and when I’m likely to be out
 							drawing around Berlin</span></div>
 				</div>
@@ -149,7 +149,7 @@
 
 			<a href="https://www.sumupbookings.com/aydan-ligon-portrait-zeichnung">
 				<div>
-					<img loading="lazy" decoding="async" class="book-portrait-banner" src="./img/Woah banner.jpg"
+					<img loading="lazy" decoding="async" class="book-portrait-banner" src="./img/AydanWoah banneraydand.png"
 						alt="Holy moly get drawn!">
 					<div>Book a portrait<span> – reserve your portrait slot directly through my booking page</span>
 					</div>
@@ -376,7 +376,46 @@
 			});
 		})();
 	</script>
+	<script>
+	(function() {
+		// Attach overlay to <html> so it stays independent of body rotation
+		var overlay = document.createElement('div');
+		overlay.id = 'silly-overlay';
+		document.documentElement.appendChild(overlay);
 
+		// Select links that point home & header badge
+		var homeLinks = document.querySelectorAll('a[href="/"], a.home-return, a.header-gif-label');
+		var headerLabel = document.querySelector('.header-gif-label');
+		var originalText = headerLabel ? headerLabel.textContent : "SmileyFoxyPortraits.com";
+
+		homeLinks.forEach(function(link) {
+			link.addEventListener('click', function(e) {
+				var isHomePage = window.location.pathname === '/' || window.location.pathname === '/index.html';
+
+				if (isHomePage) {
+					e.preventDefault(); // Stop page refresh
+
+					// Toggle active state on and off with each click
+					var isActive = overlay.classList.toggle('active');
+
+					if (isActive) {
+						// Trigger spin and change label text
+						document.body.classList.add('silly-spinning');
+						if (headerLabel) {
+							headerLabel.textContent = "WOAH WHAT!? Did you do that?lol";
+						}
+					} else {
+						// Remove spin and revert label text back to original
+						document.body.classList.remove('silly-spinning');
+						if (headerLabel) {
+							headerLabel.textContent = originalText;
+						}
+					}
+				}
+			});
+		});
+	})();
+</script>
 </body>
 
 </html>
