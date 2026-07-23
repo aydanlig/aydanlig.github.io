@@ -83,7 +83,7 @@
 			<span class="nav-dot">&middot;</span>
 			<span class="store-wrap">
 				<a href="/store/index.html">store</a>
-				<a class="donation-pop" href="https://www.paypal.com/donate/?hosted_button_id=PHBNH7EWH5LXL">toss monies
+				<a class="donation-pop" href="https://ko-fi.com/smileyfoxyportraits">toss monies
 					at me</a>
 			</span>
 			<span class="nav-dot">&middot;</span>
@@ -318,64 +318,36 @@
 	</div>
 
 	<script>
-		(function () {
-			// On touch devices, first tap opens the popover and second tap follows the link.
-			if (!window.matchMedia || !window.matchMedia('(hover: none), (pointer: coarse)').matches) {
-				return;
-			}
+    (function () {
+        // If device has no hover (mobile/touch), ensure links navigate directly on tap
+        var nav = document.querySelector('#header #nav');
+        if (!nav) return;
 
-			var nav = document.querySelector('#header #nav');
-			if (!nav) {
-				return;
-			}
+        var wrappers = nav.querySelectorAll('.nav-pop-wrap, .store-wrap');
 
-			var wrappers = Array.prototype.slice.call(nav.querySelectorAll('.nav-pop-wrap, .store-wrap'));
+        // Allow direct navigation on first tap for links with hrefs
+        wrappers.forEach(function (wrap) {
+            var trigger = wrap.querySelector('a');
+            if (!trigger) return;
 
-			function closeAll(exceptEl) {
-				wrappers.forEach(function (wrap) {
-					if (wrap !== exceptEl) {
-						wrap.classList.remove('open');
-					}
-				});
-			}
+            // Optional: Toggle popovers on touch without blocking link redirects
+            trigger.addEventListener('touchstart', function () {
+                wrappers.forEach(function (other) {
+                    if (other !== wrap) other.classList.remove('open');
+                });
+                wrap.classList.toggle('open');
+            }, { passive: true });
+        });
 
-			wrappers.forEach(function (wrap) {
-				var trigger = null;
-				for (var i = 0; i < wrap.children.length; i++) {
-					if (wrap.children[i].tagName === 'A') {
-						trigger = wrap.children[i];
-						break;
-					}
-				}
-				if (!trigger) {
-					return;
-				}
-
-				trigger.addEventListener('click', function (event) {
-					if (!wrap.classList.contains('open')) {
-						event.preventDefault();
-						closeAll(wrap);
-						wrap.classList.add('open');
-						return;
-					}
-
-					closeAll(null);
-				});
-			});
-
-			document.addEventListener('click', function (event) {
-				if (!nav.contains(event.target)) {
-					closeAll(null);
-				}
-			});
-
-			document.addEventListener('keydown', function (event) {
-				if (event.key === 'Escape') {
-					closeAll(null);
-				}
-			});
-		})();
-	</script>
+        document.addEventListener('click', function (event) {
+            if (!nav.contains(event.target)) {
+                wrappers.forEach(function (wrap) {
+                    wrap.classList.remove('open');
+                });
+            }
+        });
+    })();
+</script>
 	<script>
 	(function() {
 		// Attach overlay to <html> so it stays independent of body rotation
