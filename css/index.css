@@ -126,6 +126,7 @@ h2 {
 	position: absolute;
 	right: 10px;
 	bottom: 20px;
+	z-index: 4;
 }
 
 /* Popover-style nav labels (social/about/heart/store note) */
@@ -286,6 +287,15 @@ h2 {
 	}
 }
 
+@media (max-width: 360px) {
+	#header #nav .nav-pop-note,
+	#header #nav .donation-pop {
+		display: none !important;
+		opacity: 0 !important;
+		pointer-events: none !important;
+	}
+}
+
 #content {
 	padding: 15px 20px 20px 20px;
 	width: calc(100% - 50px);
@@ -295,6 +305,26 @@ h2 {
 	margin-bottom: 50px;
 	position: relative;
 	z-index: 1;
+}
+
+/* Keep homepage section headings on a consistent vertical rhythm */
+body.home-page #content h1 {
+	margin-top: 1.25em;
+	margin-bottom: 0.28em;
+	padding: 0;
+}
+
+body.home-page #content .grid + h1,
+body.home-page #content p + h1 {
+	margin-top: 1.25em;
+}
+
+body.home-page #content h1 + .grid:not(.where-grid) {
+	margin-top: 1px;
+}
+
+body.home-page #content h1 + .grid:not(.where-grid) > a:first-child > div {
+	margin-top: 4px;
 }
 
 body:not(.home-page) #header #Aydan {
@@ -536,10 +566,11 @@ body:not(.home-page) #content {
 	overflow: hidden;
 	/*margin-bottom: -0.5em;*/
 	margin-top: 5px;
+	padding-top: 2px;
 }
 
 .grid>a:first-child>div {
-	margin-top: 20px;
+	margin-top: 10px;
 }
 
 .grid>a>div {
@@ -549,23 +580,32 @@ body:not(.home-page) #content {
 	overflow: hidden;
 	width: 390px;
 	min-height: 154px;
-	margin-bottom: 10px;
+	margin-bottom: 6px;
 	transition: opacity 0.1s ease-in-out;
 }
 
 .grid>a>div>img {
+	box-sizing: border-box;
 	border: 1px solid rgba(200, 200, 200, 0.28);
-	margin-bottom: 4.5px;
+	margin-bottom: 4px;
 }
 
 .grid>a {
 	text-decoration: none;
 	display: inline-block;
 	color: #333;
+	top: 0;
+	padding-bottom: 0;
+	margin-bottom: 0;
+	transition: transform 0.1s ease-in-out, color 0.1s ease-in-out;
 }
 
 .grid>a:hover {
 	color: #333;
+	transform: translateY(-2px);
+	top: 0;
+	padding-bottom: 0;
+	margin-bottom: 0;
 }
 
 .grid>a:hover>div {
@@ -1378,13 +1418,6 @@ html, body {
 
 /* 3. Fix Footer Overlap (Contribute & Legal) */
 @media (max-width: 700px) {
-	#header #nav .nav-pop-note,
-	#header #nav .donation-pop {
-		display: none !important;
-		opacity: 0 !important;
-		pointer-events: none !important;
-	}
-
     .footer-card {
         grid-template-columns: 1fr; /* Stacks sections vertically instead of 3 squished columns */
         gap: 1.5rem;
@@ -1422,15 +1455,14 @@ html, body {
 
 .where-grid > a > div {
     width: 100%;
-	min-height: 154px;
-    margin-bottom: 10px;
+	justify-content: flex-start;
 }
 
 /* Keep top banners on a consistent card system with the rest of the grid */
 .where-grid .book-portrait-banner,
 .where-grid .find-public-banner {
     width: 100%;
-    height: auto;
+	height: auto;
 	object-fit: cover;
     display: block;
 }
