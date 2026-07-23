@@ -12,6 +12,10 @@ body {
 	line-height: 1.4em;
 }
 
+:root {
+	--site-dark-grey: #333;
+}
+
 #header,
 #content,
 #footer {
@@ -72,8 +76,9 @@ h2 {
 	background: url(Header.gif);
 	background-size: 100% 100%;
 	position: relative;
-	bottom: -8px;
-	margin-left: 5px;
+	bottom: -9px;
+	margin-left: 15px;
+	z-index: 3;
 }
 
 #header #Aydan .header-gif-label {
@@ -126,7 +131,7 @@ h2 {
 /* Popover-style nav labels (social/about/heart/store note) */
 
 #header a {
-	color: #000;
+	color: var(--site-dark-grey);
 	transition: 0.15s ease-in-out;
 	text-decoration: none;
 }
@@ -143,7 +148,7 @@ h2 {
 
 #header #nav a {
 	text-decoration: underline;
-	text-decoration-color: #a200ff;
+	text-decoration-color: currentColor;
 	text-decoration-thickness: 2px;
 	text-underline-offset: 2px;
 }
@@ -196,16 +201,27 @@ h2 {
 
 #header #nav .social-note a {
 	color: #666;
-	text-decoration: underline;
-	text-decoration-color: #a200ff;
-	text-decoration-thickness: 1.5px;
-	text-underline-offset: 2px;
+	text-decoration: none;
 	top: 0;
 }
 
 #header #nav .social-note a:hover {
 	color: #a200ff;
 	top: 0;
+}
+
+#header #nav .social-wrap > a {
+	text-decoration: none;
+}
+
+#header #nav .store-wrap > a:first-child,
+#header #nav .about-wrap > a {
+	text-decoration: none;
+}
+
+#header #nav .store-wrap .donation-pop,
+#header #nav .store-wrap .store-donate-link {
+	text-decoration: none;
 }
 
 #header #nav .donation-pop {
@@ -215,8 +231,8 @@ h2 {
 	white-space: nowrap;
 	font-size: 1em;
 	color: #000;
-	text-decoration: underline;
-	text-decoration-color: #a200ff;
+	text-decoration: none;
+	text-decoration-color: currentColor;
 	text-decoration-thickness: 2px;
 	text-underline-offset: 2px;
 	opacity: 0;
@@ -255,21 +271,39 @@ h2 {
 }
 
 @media (max-width: 400px) {
-    #header #Aydan .header-gif-label {
-        font-size: 0.32rem;
-        padding: 2px 5px;
+	#header #nav .social-wrap .social-word {
+		display: none;
+	}
 
-        transform: rotate(-8deg) translate(-44px, -9px);
+    #header #Aydan .header-gif-label {
+		font-size: 0.32rem;
+		padding: 2px 5px;
+		transform: rotate(-8deg) translate(-44px, -9px);
     }
+
+	#header #Aydan .header-gif-label::after {
+		display: block;
+	}
 }
 
 #content {
 	padding: 15px 20px 20px 20px;
 	width: calc(100% - 50px);
 	text-align: center;
-	border: 5px solid #333;
+	border: 5px solid var(--site-dark-grey);
 	border-radius: 25px;
 	margin-bottom: 50px;
+	position: relative;
+	z-index: 1;
+}
+
+body:not(.home-page) #header #Aydan {
+	bottom: -7px;
+	z-index: 3;
+}
+
+body:not(.home-page) #content {
+	z-index: 1;
 }
 
 /* Shared footer card layout used across pages */
@@ -308,9 +342,7 @@ h2 {
 
 .footer-section a {
 	color: #333;
-	text-decoration: underline;
-	text-decoration-color: transparent;
-	text-decoration-thickness: 1.5px;
+	text-decoration: none;
 	text-underline-offset: 2px;
 	transition: color 0.15s ease-in-out, text-decoration-color 0.15s ease-in-out;
 	
@@ -318,7 +350,7 @@ h2 {
 
 .footer-section a:hover {
 	color: #a200ff;
-	text-decoration-color: #a200ff;
+	text-decoration: none;
 	top: -2px;
 	padding-bottom: 2px; /* Extends the visual/clickable box 2px down */
 	margin-bottom: -2px;
@@ -331,18 +363,18 @@ h2 {
 .legal-pair:hover a,
 .legal-pair:focus-within a {
 	color: #a200ff;
-	text-decoration-color: #a200ff;
+	text-decoration: none;
 }
 
 .support-section a {
 	color: inherit;
 	font-weight: 600;
-	text-decoration-color: #a200ff;
+	text-decoration: none;
 }
 
 .support-section a:hover {
 	color: inherit;
-	text-decoration-color: #a200ff;
+	text-decoration: none;
 }
 
 .support-note {
@@ -521,24 +553,6 @@ h2 {
 	transition: opacity 0.1s ease-in-out;
 }
 
-.where-grid>a>div>img {
-	width: 100%;
-	height: auto;
-	display: block;
-}
-
-.where-grid .book-portrait-banner {
-	height: 98px;
-	object-fit: cover;
-	object-position: center;
-}
-
-.where-grid .find-public-banner {
-	height: 98px;
-	object-fit: cover;
-	object-position: center;
-}
-
 .grid>a {
 	text-decoration: none;
 	display: inline-block;
@@ -580,13 +594,13 @@ h2 {
 
 body.store-page {
 	background: #ffffff;
-	color: #000000;
+	color: var(--site-dark-grey);
 	font-family: inherit;
 }
 
 body.store-page #content {
 	background: #ffffff;
-	border: 4px solid #000000;
+	border: 4px solid var(--site-dark-grey);
 	border-radius: 30px;
 	box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
 	padding: 14px;
@@ -595,7 +609,7 @@ body.store-page #content {
 body.store-page h1,
 body.store-page h2 {
 	font-family: inherit;
-	color: #000000;
+	color: var(--site-dark-grey);
 	text-shadow: none;
 }
 
@@ -649,14 +663,14 @@ body.store-page .store-hero .status {
 }
 
 body.store-page .store-hero .status-open {
-	color: #000;
+	color: var(--site-dark-grey);
 	background: #fff;
 }
 
 body.store-page .store-hero .status-closed {
-	color: #000;
+	color: var(--site-dark-grey);
 	background: #fff;
-	border-color: #000;
+	border-color: var(--site-dark-grey);
 }
 
 @media (max-width: 560px) {
@@ -672,7 +686,7 @@ body.store-page .store-hero .status-closed {
 body.store-page .store-hero .hero-subtitle {
 	margin: 0.35rem auto 0;
 	max-width: 700px;
-	color: #111;
+	color: var(--site-dark-grey);
 	font-size: 0.95rem;
 	line-height: 1.4;
 }
@@ -746,7 +760,7 @@ body.store-page .btn-buy {
 
 body.store-page .price {
 	font-size: 1.4rem;
-	color: #000000;
+	color: var(--site-dark-grey);
 	font-weight: bold;
 	margin: 0.3rem 0 0.45rem;
 }
@@ -767,8 +781,22 @@ body.store-page .details-list li::before {
 	content: "•";
 	position: absolute;
 	left: 0;
-	color: #000000;
+	color: var(--site-dark-grey);
 	font-size: 1rem;
+}
+
+body.store-page .store-donate-link .donate-mobile-label {
+	display: none;
+}
+
+@media (max-width: 580px) {
+	body.store-page .store-donate-link .donate-desktop-label {
+		display: none;
+	}
+
+	body.store-page .store-donate-link .donate-mobile-label {
+		display: inline;
+	}
 }
 
 body.store-page .btn-buy,
@@ -881,20 +909,22 @@ body.store-page .bottom-offers-summary li strong {
 }
 
 .web10 {
+	--web10-size: clamp(40px, 8vw, 70px);
+	--web10-offset: clamp(185px, 39vw, 362px);
 	position: absolute;
-	width: 70px;
-	height: 70px;
+	width: var(--web10-size);
+	height: var(--web10-size);
 	background: url(web10.png);
 	background-size: 200% 100%;
-	top: -17px;
+	top: calc(var(--web10-size) * -0.24);
 }
 
 .web10#news {
-	left: calc(50% - 362px);
+	left: calc(50% - var(--web10-offset));
 }
 
 .web10#rss {
-	right: calc(50% - 362px);
+	right: calc(50% - var(--web10-offset));
 	background-position: -100%;
 }
 
@@ -1052,6 +1082,7 @@ hr {
 	#header #nav .about-wrap.open .nav-pop-note {
 		transform: translate(0, -42%);
 	}
+
 }
 
 /* 1. Smooth acceleration keyframe (1 clean loop, exponential acceleration) */
@@ -1075,7 +1106,7 @@ hr {
 }
 
 /* 3. Setup the heart pseudo-element */
-#header #nav .heart-wrap > a.spinning-heart-link::before {
+.spinning-heart-link::before {
 	content: "💖";
 	display: inline-block;
 }
@@ -1086,7 +1117,7 @@ hr {
 }
 
 /* 5. Chain the ramp animation into the infinite loop on hover */
-#header #nav .heart-wrap > a.spinning-heart-link:hover::before {
+.spinning-heart-link:hover::before {
 	animation: 
 		spin-ramp 3s cubic-bezier(0.7, 0, 1, 0.1) forwards,
 		spin-infinite 0.08s linear infinite 3s; /* Starts at 3s mark when ramp finishes */
@@ -1175,6 +1206,7 @@ body.silly-spinning {
 .carousel-container {
     position: relative;
     overflow: hidden;
+	background: #efefef;
 }
 
 .carousel-slides {
@@ -1191,11 +1223,13 @@ body.silly-spinning {
     height: 100%;
     object-fit: cover;
     opacity: 0;
+	visibility: hidden;
     transition: opacity 0.4s ease-in-out;
 }
 
 .carousel-slides img.active {
     opacity: 1;
+	visibility: visible;
     z-index: 1;
 }
 
@@ -1204,19 +1238,21 @@ body.silly-spinning {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.55);
+	background: rgba(20, 20, 20, 0.66);
     color: #ffffff;
-    border: none;
-    font-size: 1.2rem;
-    padding: 0.5rem 0.75rem;
+	border: 1px solid rgba(255, 255, 255, 0.7);
+	font-size: 1.05rem;
+	padding: 0.48rem 0.7rem;
     cursor: pointer;
     z-index: 3;
-    transition: background 0.2s ease;
-    border-radius: 4px;
+	transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+	border-radius: 999px;
+	box-shadow: 0 3px 14px rgba(0, 0, 0, 0.3);
 }
 
 .carousel-arrow:hover {
-    background: #a200ff;
+	background: #5b5b5b;
+	transform: translateY(-50%) scale(1.03);
 }
 
 .prev-arrow {
@@ -1230,16 +1266,54 @@ body.silly-spinning {
 /* Image Counter Badge */
 .carousel-counter {
     position: absolute;
-    bottom: 8px;
-    right: 8px;
-    background: rgba(0, 0, 0, 0.65);
+    top: 10px;
+    right: 10px;
+    background: rgba(20, 20, 20, 0.66);
     color: #ffffff;
-    font-size: 0.75rem;
+    font-size: 0.73rem;
     font-weight: bold;
-    padding: 3px 8px;
+    padding: 4px 9px;
     border-radius: 12px;
     z-index: 3;
     letter-spacing: 0.05em;
+}
+
+.carousel-dots {
+	position: absolute;
+	left: 50%;
+	bottom: 10px;
+	transform: translateX(-50%);
+	display: flex;
+	gap: 0.38rem;
+	z-index: 3;
+}
+
+.carousel-dot {
+	width: 10px;
+	height: 10px;
+	border: 1px solid rgba(255, 255, 255, 0.85);
+	border-radius: 50%;
+	background: rgba(20, 20, 20, 0.45);
+	cursor: pointer;
+	padding: 0;
+	transition: transform 0.18s ease, background 0.18s ease;
+}
+
+.carousel-dot:hover,
+.carousel-dot:focus-visible {
+	background: rgba(20, 20, 20, 0.85);
+	transform: scale(1.12);
+}
+
+.carousel-dot.active {
+	background: #ffffff;
+	border-color: #ffffff;
+}
+
+.carousel-container.carousel-single .carousel-arrow,
+.carousel-container.carousel-single .carousel-counter,
+.carousel-container.carousel-single .carousel-dots {
+	display: none;
 }
 
 /* Tag Layering Above Images */
@@ -1299,6 +1373,13 @@ html, body {
 
 /* 3. Fix Footer Overlap (Contribute & Legal) */
 @media (max-width: 700px) {
+	#header #nav .nav-pop-note,
+	#header #nav .donation-pop {
+		display: none !important;
+		opacity: 0 !important;
+		pointer-events: none !important;
+	}
+
     .footer-card {
         grid-template-columns: 1fr; /* Stacks sections vertically instead of 3 squished columns */
         gap: 1.5rem;
@@ -1323,24 +1404,29 @@ html, body {
     gap: 10px;
 }
 
+.where-grid > a:first-child > div {
+	margin-top: 0;
+}
+
 /* Ensure individual banner links don't stretch or push rows on PC */
 .where-grid > a {
     display: inline-block;
-    width: 375px; /* Fits comfortably side-by-side inside #content without overflowing */
+	width: 390px;
     max-width: 100%;
 }
 
 .where-grid > a > div {
     width: 100%;
+	min-height: 154px;
     margin-bottom: 10px;
 }
 
-/* Maintain full image visibility without cropping or zooming */
+/* Keep top banners on a consistent card system with the rest of the grid */
 .where-grid .book-portrait-banner,
 .where-grid .find-public-banner {
     width: 100%;
     height: auto;
-    object-fit: contain;
+	object-fit: cover;
     display: block;
 }
 
@@ -1374,5 +1460,8 @@ html, body {
         position: static !important;
         display: inline-block !important;
         margin-top: 0.2rem;
+		font-size: 0.95rem !important;
+		font-weight: 700;
+		color: var(--site-dark-grey);
     }
 }

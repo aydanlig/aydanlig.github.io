@@ -69,7 +69,7 @@
         <div id="nav">
 
             <span class="nav-pop-wrap social-wrap">
-                <a href="https://linktr.ee/SmileyFoxyPortraits">social links</a>
+                <a href="https://linktr.ee/SmileyFoxyPortraits"><span class="social-word">social </span>links</a>
                 <span class="nav-pop-note social-note">
                     <span class="pop-line"><a href="https://www.instagram.com/smileyfoxyportraits">instagram</a>
                         <span>&middot;</span> <a
@@ -82,7 +82,7 @@
             </span>
             <span class="nav-dot">&middot;</span>
             <span class="store-wrap">
-                <a href="https://ko-fi.com/smileyfoxyportraits">donate</a>
+                <a class="store-donate-link" href="https://ko-fi.com/smileyfoxyportraits"><span class="donate-desktop-label">toss monies at me</span><span class="donate-mobile-label">donate</span></a>
                 <a class="donation-pop" href="/support-free/">free ways to help</a>
             </span>
             <span class="nav-dot">&middot;</span>
@@ -96,7 +96,7 @@
             </span>
             <span class="nav-dot">&middot;</span>
             <span class="nav-pop-wrap heart-wrap">
-                <a href="/thankyou/index.html" aria-label="Thank you">💖</a>
+                <a href="/thankyou/index.html" aria-label="Thank you" class="spinning-heart-link"></a>
                 <span class="nav-pop-note" aria-hidden="true">
                     <span class="pop-line">wall of thanks</span>
                     <span class="pop-line">testimonials</span>
@@ -207,11 +207,11 @@
             <span class="tag">Studio Work</span>
 
             <div class="carousel-slides">
-                <img class="active" loading="lazy" src="https://via.placeholder.com/400x500?text=Studio+1" alt="Watercolor Canvas Portrait 1">
-                <img loading="lazy" src="https://via.placeholder.com/400x500?text=Studio+2" alt="Watercolor Canvas Portrait 2">
-                <img loading="lazy" src="https://via.placeholder.com/400x500?text=Studio+3" alt="Watercolor Canvas Portrait 3">
-                <img loading="lazy" src="https://via.placeholder.com/400x500?text=Studio+4" alt="Watercolor Canvas Portrait 4">
-                <img loading="lazy" src="https://via.placeholder.com/400x500?text=Studio+5" alt="Watercolor Canvas Portrait 5">
+                <img class="active" loading="lazy" src="./../img/exhibition WIP.jpeg" alt="Watercolor Canvas Portrait 1">
+                <img loading="lazy" src="./../img/exhibition WIP.jpeg" alt="Watercolor Canvas Portrait 2">
+                <img loading="lazy" src="./../img/exhibition WIP.jpeg" alt="Watercolor Canvas Portrait 3">
+                <img loading="lazy" src="./../img/exhibition WIP.jpeg" alt="Watercolor Canvas Portrait 4">
+                <img loading="lazy" src="./../img/exhibition WIP.jpeg" alt="Watercolor Canvas Portrait 5">
             </div>
 
             <button class="carousel-arrow prev-arrow" aria-label="Previous image">&#10094;</button>
@@ -242,11 +242,11 @@
             <span class="tag popular">Custom</span>
 
             <div class="carousel-slides">
-                <img class="active" loading="lazy" src="https://via.placeholder.com/400x500?text=Custom+1" alt="Custom Special Commission 1">
-                <img loading="lazy" src="https://via.placeholder.com/400x500?text=Custom+2" alt="Custom Special Commission 2">
-                <img loading="lazy" src="https://via.placeholder.com/400x500?text=Custom+3" alt="Custom Special Commission 3">
-                <img loading="lazy" src="https://via.placeholder.com/400x500?text=Custom+4" alt="Custom Special Commission 4">
-                <img loading="lazy" src="https://via.placeholder.com/400x500?text=Custom+5" alt="Custom Special Commission 5">
+                <img class="active" loading="lazy" src="./../img/18.07 (3).jpg" alt="Custom Special Commission 1">
+                <img loading="lazy" src="./../img/18.07 (3).jpg" alt="Custom Special Commission 2">
+                <img loading="lazy" src="./../img/18.07 (3).jpg" alt="Custom Special Commission 3">
+                <img loading="lazy" src="./../img/18.07 (3).jpg" alt="Custom Special Commission 4">
+                <img loading="lazy" src="./../img/18.07 (3).jpg" alt="Custom Special Commission 5">
             </div>
 
             <button class="carousel-arrow prev-arrow" aria-label="Previous image">&#10094;</button>
@@ -334,7 +334,7 @@
                     and Muse</li>
             </ul>
             <p>please consider tossing some monies at my tip jar on Ko-fi or buying one of my portraits when you see me
-                out and about in Berlin to support making my projects a reality</p>
+                out and about in Berlin to support this silly berliner artist</p>
         </div>
 
 
@@ -452,7 +452,7 @@
 
         <script type='text/javascript' src='https://storage.ko-fi.com/cdn/widget/Widget_2.js'></script>
         <script
-            type='text/javascript'>kofiwidget2.init('Support me on Ko-fi', '#72a4f2', 'G2G7OCU1Z'); kofiwidget2.draw();</script>
+            type='text/javascript'>kofiwidget2.init('Ko-fi', '#72a4f2', 'G2G7OCU1Z'); kofiwidget2.draw();</script>
     </div>
 
     <script>
@@ -460,7 +460,7 @@
         const carousels = document.querySelectorAll(".carousel-container");
 
         carousels.forEach((carousel) => {
-            const slides = carousel.querySelectorAll(".carousel-slides img");
+                const slides = Array.from(carousel.querySelectorAll(".carousel-slides img"));
             const prevBtn = carousel.querySelector(".prev-arrow");
             const nextBtn = carousel.querySelector(".next-arrow");
             const counter = carousel.querySelector(".carousel-counter");
@@ -468,30 +468,93 @@
             let currentIndex = 0;
             const totalSlides = slides.length;
             let autoTimer = null;
+                const dotsWrap = document.createElement("div");
+                dotsWrap.className = "carousel-dots";
 
-            function updateCarousel(index) {
+                function normalizeSrc(slide) {
+                    const rawSrc = slide.getAttribute("src") || "";
+                    try {
+                        const normalized = new URL(rawSrc, window.location.href);
+                        normalized.hash = "";
+                        return normalized.href;
+                    } catch (error) {
+                        return rawSrc;
+                    }
+                }
+
+                function updateCarousel(index) {
                 slides.forEach((slide, i) => {
                     slide.classList.toggle("active", i === index);
                 });
                 if (counter) {
                     counter.textContent = `${index + 1} / ${totalSlides}`;
                 }
+                    const dots = dotsWrap.querySelectorAll(".carousel-dot");
+                    dots.forEach((dot, i) => {
+                        dot.classList.toggle("active", i === index);
+                    });
             }
 
+                function switchTo(index) {
+                    const nextSlideEl = slides[index];
+                    const apply = function () {
+                        currentIndex = index;
+                        updateCarousel(index);
+                    };
+
+                    if (nextSlideEl.complete && nextSlideEl.naturalWidth > 0) {
+                        apply();
+                        return;
+                    }
+
+                    nextSlideEl.addEventListener("load", apply, { once: true });
+                }
+
+                const uniqueSources = new Set(slides.map(normalizeSrc));
+                const hasMultipleImages = totalSlides > 1 && uniqueSources.size > 1;
+
+                slides.forEach((slide) => {
+                    if (!slide.complete) {
+                        const preloadImg = new Image();
+                        preloadImg.src = slide.src;
+                    }
+                });
+
+                if (!hasMultipleImages) {
+                    carousel.classList.add("carousel-single");
+                    updateCarousel(0);
+                    return;
+                }
+
+                slides.forEach((_, i) => {
+                    const dot = document.createElement("button");
+                    dot.type = "button";
+                    dot.className = "carousel-dot";
+                    dot.setAttribute("aria-label", `Go to image ${i + 1}`);
+                    dot.addEventListener("click", function () {
+                        stopAutoScroll();
+                        switchTo(i);
+                    });
+                    dotsWrap.appendChild(dot);
+                });
+
+                carousel.appendChild(dotsWrap);
+
             function nextSlide() {
-                currentIndex = (currentIndex + 1) % totalSlides;
-                updateCarousel(currentIndex);
+                    const nextIndex = (currentIndex + 1) % totalSlides;
+                    switchTo(nextIndex);
             }
 
             function prevSlide() {
-                currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
-                updateCarousel(currentIndex);
+                    const prevIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+                    switchTo(prevIndex);
             }
 
-            // Start Auto-scrolling every 3.5 seconds
-            autoTimer = setInterval(nextSlide, 3500);
+                updateCarousel(currentIndex);
 
-            // Stop auto-scroll when user clicks arrow buttons
+                // Start auto-scrolling only if there are multiple unique images
+                autoTimer = setInterval(nextSlide, 4000);
+
             function stopAutoScroll() {
                 if (autoTimer) {
                     clearInterval(autoTimer);
