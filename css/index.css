@@ -553,6 +553,11 @@ body:not(.home-page) #content {
 	transition: opacity 0.1s ease-in-out;
 }
 
+.grid>a>div>img {
+	border: 1px solid rgba(200, 200, 200, 0.28);
+	margin-bottom: 4.5px;
+}
+
 .grid>a {
 	text-decoration: none;
 	display: inline-block;
