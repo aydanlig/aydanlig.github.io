@@ -319,57 +319,33 @@
 			</div>
 		</section>
 
-		<!-- ================= WAIT-LIST for originals & prints ================= -->
+		<!-- ================= NEWSLETTER & WARTELISTE (one list, sent via Substack) =================
+		     Substack handles sign-up, confirmation email (double opt-in) and unsubscribing. -->
 		<section class="section section--alt" id="warteliste" aria-labelledby="wait-title">
+			<span id="newsletter"></span>
 			<div class="wrap">
 				<div class="split">
 					<div>
-						<span class="eyebrow">Warteliste</span>
-						<h2 id="wait-title">Originale &amp; Berlin-Prints</h2>
+						<span class="eyebrow">Newsletter &amp; Warteliste</span>
+						<h2 id="wait-title">Originale &amp; Berlin-Prints zuerst</h2>
 						<p>
-							Meine Berlin-Motive in Aquarell und Fineliner gibt es nur in kleiner Stückzahl. Trag dich ein und
-							erfahre als Erste:r, wenn neue Originale oder Prints verfügbar sind. Kein Spam, nur eine kurze
-							Nachricht, wenn es etwas Neues gibt.
+							Meine Berlin-Motive in Aquarell und Fineliner gibt es nur in kleiner Stückzahl. Mit dem Newsletter
+							erfährst du als Erste:r, wenn neue Originale oder Prints verfügbar sind – plus neue Termine,
+							Kunst und Geschichten. Kein Spam, maximal zwei Updates im Monat.
 						</p>
 					</div>
 					<div class="form-card" style="margin-top:0">
-						<form action="https://formsubmit.co/aydan@smileyfoxyportraits.com" method="POST">
-							<input type="hidden" name="_subject" value="Neuer Eintrag: Warteliste Originale & Prints">
-							<input type="hidden" name="_template" value="table">
-							<input type="hidden" name="_next" value="https://smileyfoxyportraits.com/danke.html">
-							<input type="text" name="_honey" style="display:none">
-							<!-- No English captcha page; the hidden _honey field above catches spam bots -->
-							<input type="hidden" name="_captcha" value="false">
-							<div class="form-grid">
-								<div class="field">
-									<label for="w-name">Vorname *</label>
-									<input id="w-name" name="Name" required autocomplete="given-name">
-								</div>
-								<div class="field">
-									<label for="w-email">E-Mail *</label>
-									<input id="w-email" type="email" name="email" required autocomplete="email">
-								</div>
-								<div class="field full">
-									<label for="w-interest">Was interessiert dich?</label>
-									<select id="w-interest" name="Interesse">
-										<option>Alles</option>
-										<option>Originale</option>
-										<option>Prints</option>
-										<option>Berlin-Motive</option>
-									</select>
-								</div>
-							</div>
-							<!-- Proof of consent for emails (UWG § 7). Tip: reply once and ask people to confirm = double opt-in -->
-							<label class="choice" style="margin-top:12px">
-								<input type="checkbox" name="Einwilligung E-Mail" value="Ja" required>
-								<span>Ich möchte per E-Mail über neue Originale und Prints informiert werden. *</span>
-							</label>
-							<p class="form-legal">
-								Deine E-Mail nutze ich nur, um dich über neue Werke zu informieren. Austragen jederzeit per kurzer E-Mail.
-								<a href="/ImpressumUndDatenschutz/Datenschutz.html">Datenschutz</a>
-							</p>
-							<button class="btn btn--fox" type="submit">Auf die Warteliste</button>
-						</form>
+						<h3>Kostenlos eintragen</h3>
+						<ul class="checks">
+							<li>Neue Originale &amp; Prints vor allen anderen</li>
+							<li>Wann und wo ich draußen zeichne</li>
+							<li>Geschichten hinter den Porträts</li>
+						</ul>
+						<a class="btn btn--fox" href="https://aydanligon.substack.com/subscribe">Newsletter &amp; Warteliste abonnieren</a>
+						<p class="form-legal">
+							Die Anmeldung läuft über Substack. Du bekommst eine Bestätigungs-E-Mail und kannst dich jederzeit mit
+							einem Klick wieder abmelden. <a href="/ImpressumUndDatenschutz/Datenschutz.html#m17">Datenschutz</a>
+						</p>
 					</div>
 				</div>
 			</div>
@@ -382,9 +358,9 @@
 		<div class="wrap">
 			<div class="footer-grid">
 				<div class="newsletter">
-					<h3>Newsletter</h3>
-					<p>Max. zwei Updates im Monat – neue Termine, Kunst &amp; Geschichten.</p>
-					<a class="btn btn--fox btn--small" href="https://aydanligon.substack.com/">Newsletter abonnieren</a>
+					<h3>Newsletter &amp; Warteliste</h3>
+					<p>Neue Originale &amp; Prints zuerst, Termine und Geschichten – max. zwei Updates im Monat.</p>
+					<a class="btn btn--fox btn--small" href="https://aydanligon.substack.com/subscribe">Kostenlos abonnieren</a>
 					<p><a href="https://aydanligon.substack.com/archive">Archiv lesen →</a></p>
 				</div>
 				<div>
@@ -404,7 +380,6 @@
 					<p><a href="/thankyou/index.html">Wall of Thanks &amp; Testimonials</a></p>
 					<p><a href="/support-free/">Kostenlos unterstützen</a></p>
 					<p><a href="https://www.paypal.biz/SmileyFoxyPortraitsL">PayPal (Trinkgeld)</a></p>
-					<p><a href="/commission.html#warteliste">Warteliste Originale &amp; Prints</a></p>
 					<p><a href="/bewertung.html">Bewertung abgeben</a></p>
 				</div>
 				<div>
