@@ -8,6 +8,7 @@
 	<!-- Analytics only after opt-in (no cookies by default): see /js/consent.js -->
 	<script src="/js/consent.js" defer></script>
 	<script src="/js/translate.js" defer></script>
+	<script src="/js/forms.js" defer></script>
 
 	<title>Schnellzeichner Berlin & Teambuilding-Workshop | SmileyFoxyPortraits</title>
 	<meta name="description"
@@ -164,7 +165,7 @@
 							</div>
 							<div class="field">
 								<label for="ev-date">Datum *</label>
-								<input id="ev-date" type="date" name="Datum" required>
+								<input id="ev-date" type="date" name="Datum" required data-min-days="0">
 							</div>
 							<div class="field">
 								<label for="ev-location">Ort / Location *</label>
@@ -397,7 +398,7 @@
 							</div>
 							<div class="field">
 								<label for="kk-date">Wunschtermin</label>
-								<input id="kk-date" type="date" name="Wunschtermin">
+								<input id="kk-date" type="date" name="Wunschtermin" data-min-days="0">
 							</div>
 							<div class="field">
 								<label for="kk-place">Ort</label>

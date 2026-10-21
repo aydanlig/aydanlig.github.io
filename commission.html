@@ -8,6 +8,7 @@
 	<!-- Analytics only after opt-in (no cookies by default): see /js/consent.js -->
 	<script src="/js/consent.js" defer></script>
 	<script src="/js/translate.js" defer></script>
+	<script src="/js/forms.js" defer></script>
 
 	<title>Porträt nach Foto malen lassen – Berlin | SmileyFoxyPortraits</title>
 	<meta name="description"
@@ -250,9 +251,10 @@
 								<p class="hint">+10 € je weitere Person / Tier</p>
 							</div>
 							<div class="field">
-								<label for="c-deadline">Deadline</label>
-								<input id="c-deadline" type="date" name="Deadline">
-								<p class="hint">z. B. Geburtstag oder Jahrestag</p>
+								<!-- Earliest date: in 2 weeks (with Express: in 3 days) – set by /js/forms.js -->
+								<label for="c-wish-date">Wunschtermin</label>
+								<input id="c-wish-date" type="date" name="Wunschtermin" data-min-days="14" data-express-min-days="3">
+								<p class="hint">Frühestens in 2 Wochen (mit Express in 3 Tagen), z. B. zum Geburtstag oder Jahrestag.</p>
 							</div>
 							<div class="field">
 								<label for="c-delivery">Lieferung</label>
