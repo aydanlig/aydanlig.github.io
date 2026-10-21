@@ -8,6 +8,10 @@
 	<!-- Analytics only after opt-in (no cookies by default): see /js/consent.js -->
 	<script src="/js/consent.js" defer></script>
 	<script src="/js/translate.js" defer></script>
+	<!-- German date picker (self-hosted flatpickr, MIT license) -->
+	<link rel="stylesheet" href="/css/vendor/flatpickr.min.css">
+	<script src="/js/vendor/flatpickr.min.js" defer></script>
+	<script src="/js/vendor/flatpickr-de.min.js" defer></script>
 	<script src="/js/forms.js" defer></script>
 
 	<title>Schnellzeichner Berlin & Teambuilding-Workshop | SmileyFoxyPortraits</title>
@@ -165,7 +169,7 @@
 							</div>
 							<div class="field">
 								<label for="ev-date">Datum *</label>
-								<input id="ev-date" type="date" name="Datum" required data-min-days="0">
+								<input id="ev-date" type="text" name="Datum" placeholder="TT.MM.JJJJ" autocomplete="off" required data-date-field data-min-days="0">
 							</div>
 							<div class="field">
 								<label for="ev-location">Ort / Location *</label>
@@ -398,7 +402,7 @@
 							</div>
 							<div class="field">
 								<label for="kk-date">Wunschtermin</label>
-								<input id="kk-date" type="date" name="Wunschtermin" data-min-days="0">
+								<input id="kk-date" type="text" name="Wunschtermin" placeholder="TT.MM.JJJJ" autocomplete="off" data-date-field data-min-days="0">
 							</div>
 							<div class="field">
 								<label for="kk-place">Ort</label>

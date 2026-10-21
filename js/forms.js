@@ -1,42 +1,65 @@
 /* =========================================================
-   forms.js – earliest selectable date in date fields
+   forms.js – German date picker (TT.MM.JJJJ) for all date fields
 
-   <input type="date" data-min-days="14">  -> earliest = today + 14 days
-   <input type="date" data-min-days="0">   -> no dates in the past
-   Earlier dates are greyed out in the date picker and can't be sent.
+   Uses flatpickr (self-hosted in /js/vendor, MIT license), so every visitor
+   sees German dates, no matter which language their browser is set to.
+
+   <input type="text" data-date-field data-min-days="14">  -> earliest = today + 14 days
+   <input type="text" data-date-field data-min-days="0">   -> no dates in the past
+   Earlier dates are greyed out and can't be picked.
 
    Optional: data-express-min-days="3" + a checkbox name="Express"
    in the same form -> with Express ticked the earliest date is today + 3.
    ========================================================= */
 (function () {
-	// Date as YYYY-MM-DD in the visitor's local time (what <input type="date"> expects)
-	function isoDate(daysFromToday) {
+	function daysFromToday(days) {
 		var d = new Date();
-		d.setDate(d.getDate() + daysFromToday);
-		var month = String(d.getMonth() + 1).padStart(2, '0');
-		var day = String(d.getDate()).padStart(2, '0');
-		return d.getFullYear() + '-' + month + '-' + day;
+		d.setHours(0, 0, 0, 0);
+		d.setDate(d.getDate() + days);
+		return d;
 	}
 
 	document.addEventListener('DOMContentLoaded', function () {
-		document.querySelectorAll('input[type="date"][data-min-days]').forEach(function (input) {
+		if (!window.flatpickr) return; // without the picker the field stays a normal text field
+
+		document.querySelectorAll('input[data-date-field]').forEach(function (input) {
 			var normalDays = parseInt(input.getAttribute('data-min-days'), 10) || 0;
 			var expressDays = input.getAttribute('data-express-min-days');
-			var express = input.form ? input.form.querySelector('input[name="Express"]') : null;
+			var form = input.form;
+			var express = form ? form.querySelector('input[name="Express"]') : null;
 
-			function update() {
+			var picker = window.flatpickr(input, {
+				locale: 'de',
+				dateFormat: 'd.m.Y',      // what the visitor sees AND what arrives in your email
+				minDate: daysFromToday(normalDays),
+				disableMobile: true       // same German calendar on phones
+			});
+
+			function updateMinDate() {
 				var days = (express && express.checked && expressDays !== null)
 					? parseInt(expressDays, 10)
 					: normalDays;
-				input.min = isoDate(days);
+				var min = daysFromToday(days);
+				picker.set('minDate', min);
 				// A date that is now too early gets cleared, so the visitor picks again
-				if (input.value && input.value < input.min) {
-					input.value = '';
+				if (picker.selectedDates[0] && picker.selectedDates[0] < min) {
+					picker.clear();
 				}
 			}
+			if (express) express.addEventListener('change', updateMinDate);
 
-			update();
-			if (express) express.addEventListener('change', update);
+			// "required" check (the browser can't check read-only picker fields itself)
+			if (input.hasAttribute('required') && form) {
+				form.addEventListener('submit', function (e) {
+					if (!input.value) {
+						e.preventDefault();
+						input.setCustomValidity('Bitte wähle ein Datum.');
+						input.reportValidity();
+						picker.open();
+					}
+				});
+				input.addEventListener('change', function () { input.setCustomValidity(''); });
+			}
 		});
 	});
 })();

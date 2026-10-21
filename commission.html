@@ -8,6 +8,10 @@
 	<!-- Analytics only after opt-in (no cookies by default): see /js/consent.js -->
 	<script src="/js/consent.js" defer></script>
 	<script src="/js/translate.js" defer></script>
+	<!-- German date picker (self-hosted flatpickr, MIT license) -->
+	<link rel="stylesheet" href="/css/vendor/flatpickr.min.css">
+	<script src="/js/vendor/flatpickr.min.js" defer></script>
+	<script src="/js/vendor/flatpickr-de.min.js" defer></script>
 	<script src="/js/forms.js" defer></script>
 
 	<title>Porträt nach Foto malen lassen – Berlin | SmileyFoxyPortraits</title>
@@ -253,7 +257,7 @@
 							<div class="field">
 								<!-- Earliest date: in 2 weeks (with Express: in 3 days) – set by /js/forms.js -->
 								<label for="c-wish-date">Wunschtermin</label>
-								<input id="c-wish-date" type="date" name="Wunschtermin" data-min-days="14" data-express-min-days="3">
+								<input id="c-wish-date" type="text" name="Wunschtermin" placeholder="TT.MM.JJJJ" autocomplete="off" data-date-field data-min-days="14" data-express-min-days="3">
 								<p class="hint">Frühestens in 2 Wochen (mit Express in 3 Tagen), z. B. zum Geburtstag oder Jahrestag.</p>
 							</div>
 							<div class="field">

@@ -555,6 +555,13 @@ body.silly-spinning { transform: rotate(360deg); }
 .legal li { margin-bottom: 0.4em; }
 .legal a { word-break: break-word; }
 
+/* German date picker (flatpickr) in the site colors */
+.field input.flatpickr-input { cursor: pointer; }
+.flatpickr-day.selected,
+.flatpickr-day.selected:hover { background: var(--accent); border-color: var(--accent); }
+.flatpickr-day.today { border-color: var(--fox); }
+.flatpickr-day.flatpickr-disabled { color: #c9bdb4; }
+
 /* Collapsible box (<details>) – used for drawing times */
 .schedule {
 	margin-top: auto;
