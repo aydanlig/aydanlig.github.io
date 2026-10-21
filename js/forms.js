@@ -1,5 +1,7 @@
 /* =========================================================
-   forms.js – German date picker (TT.MM.JJJJ) for all date fields
+   forms.js – helpers for all forms
+   1. "Einen Moment bitte" popup while a form is being sent (see below)
+   2. German date picker (TT.MM.JJJJ) for all date fields
 
    Uses flatpickr (self-hosted in /js/vendor, MIT license), so every visitor
    sees German dates, no matter which language their browser is set to.
@@ -18,6 +20,51 @@
 		d.setDate(d.getDate() + days);
 		return d;
 	}
+
+	/* ---------- "Einen Moment bitte" popup while a form is being sent ----------
+	   formsubmit.co needs ~15 seconds before it shows the thank-you page.
+	   The popup tells visitors to wait and the button is locked against double-sending.
+	   Styles are inside this script, so it also works on the old store page. */
+	function showWaitPopup() {
+		if (document.getElementById('wait-popup')) return;
+		var box = document.createElement('div');
+		box.id = 'wait-popup';
+		box.setAttribute('role', 'alert');
+		box.style.cssText = 'position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;' +
+			'padding:20px;background:rgba(15,12,17,0.65);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif';
+		box.innerHTML =
+			'<div style="max-width:360px;width:100%;background:#FBF7F3;color:#1A1615;border-radius:18px;padding:28px 24px;text-align:center;box-shadow:0 20px 50px rgba(0,0,0,0.3)">' +
+			'<div class="wait-spinner" style="width:42px;height:42px;margin:0 auto 16px;border:4px solid #E2D6CE;border-top-color:#FF6B35;border-radius:50%"></div>' +
+			'<strong style="display:block;font-size:1.15rem;margin-bottom:8px">Einen Moment bitte …</strong>' +
+			'<span style="color:#6B5560;line-height:1.5">Deine Nachricht wird gesendet. Das kann bis zu 15 Sekunden dauern – ' +
+			'bitte schließe die Seite nicht.</span></div>';
+		var style = document.createElement('style');
+		style.textContent = '@keyframes wait-spin{to{transform:rotate(360deg)}}#wait-popup .wait-spinner{animation:wait-spin 0.9s linear infinite}';
+		box.appendChild(style);
+		document.body.appendChild(box);
+	}
+
+	function hideWaitPopup() {
+		var box = document.getElementById('wait-popup');
+		if (box) box.remove();
+		document.querySelectorAll('form[data-sending] [type="submit"]').forEach(function (b) { b.disabled = false; });
+	}
+
+	document.addEventListener('DOMContentLoaded', function () {
+		document.querySelectorAll('form[action*="formsubmit.co"]').forEach(function (form) {
+			form.addEventListener('submit', function (e) {
+				// wait one moment so other checks (e.g. the date check) can stop the sending first
+				setTimeout(function () {
+					if (e.defaultPrevented) return;
+					form.setAttribute('data-sending', '');
+					form.querySelectorAll('[type="submit"]').forEach(function (b) { b.disabled = true; });
+					showWaitPopup();
+				}, 0);
+			});
+		});
+	});
+	// Coming back with the browser's back button: remove the popup again
+	window.addEventListener('pageshow', hideWaitPopup);
 
 	document.addEventListener('DOMContentLoaded', function () {
 		if (!window.flatpickr) return; // without the picker the field stays a normal text field
