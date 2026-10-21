@@ -4,4 +4,4 @@ Disallow: /contact/
 Disallow: /img/
 Disallow: /learnemup/fashionchecklist.html
 
-Sitemap: https://aydanlig.github.io/sitemap.xml
+Sitemap: https://smileyfoxyportraits.com/sitemap.xml

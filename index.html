@@ -1,395 +1,432 @@
 <!doctype html>
-<html>
+<html lang="de">
 
 <head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<!-- Google tag (gtag.js) -->
+	<!-- Google Analytics (unchanged from the old site) -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-XDZB2DQ1KV"></script>
 	<script>
 		window.dataLayer = window.dataLayer || [];
 		function gtag() { dataLayer.push(arguments); }
 		gtag('js', new Date());
-
 		gtag('config', 'G-XDZB2DQ1KV');
 	</script>
 
-	<title>It's Aydan Lig'on! | Artist, Portraits, and Projects</title>
-
-	<!-- Meta -->
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="icon" type="image/png" href="favicon.png" />
-	<link rel="canonical" href="https://aydanlig.github.io/" />
-	<meta name="robots" content="index, follow" />
-	<meta name="author" content="Aydan Lig'on" />
-
-	<!-- Social Card stuff -->
-
-	<meta itemprop="name" content="It's Aydan Lig'on! | Artist, Portraits, and Projects">
-	<meta itemprop="description"
-		content="Portfolio and home of Aydan Lig'on: portraits, public drawing in Berlin, games, music, learning projects, and community updates.">
-
-	<!-- Primary Meta Tags --> <!-- this is the default metadata which all websites can draw on -->
-	<meta name="title" content="It's Aydan Lig'on! | Artist, Portraits, and Projects">
+	<!-- SEO: title + description are what Google shows in search results.
+	     Keep the title under ~60 characters, the description under ~155. -->
+	<!-- Brand + your name come first so Google matches both "SmileyFoxyPortraits" and "Aydan Lig'on" -->
+	<title>SmileyFoxyPortraits – Aydan Lig'on | Live-Porträts Berlin</title>
 	<meta name="description"
-		content="Portfolio and home of Aydan Lig'on: portraits, public drawing in Berlin, games, music, learning projects, and community updates.">
+		content="Aydan Lig'on (SmileyFoxyPortraits): Live-Portraitkunst für Events, expressive Teambuilding-Workshops (Der Kleckerkasten) und Auftrags-Porträts in Berlin.">
+	<meta name="author" content="Aydan Lig'on">
+	<meta name="robots" content="index, follow">
+	<link rel="canonical" href="https://smileyfoxyportraits.com/">
+	<link rel="icon" type="image/png" href="/favicon.png">
 
-	<!-- Open Graph / Facebook --> <!-- this is what Facebook and other social websites will draw on -->
+	<!-- Social cards: what shows up when the link is shared on WhatsApp, LinkedIn, etc.
+	     TODO: replace og:image with a new 1200x630 image when you have one. -->
 	<meta property="og:type" content="website">
-	<meta property="og:url" content="https://aydanlig.github.io/">
-	<meta property="og:title" content="It's Aydan Lig'on! | Artist, Portraits, and Projects">
+	<meta property="og:locale" content="de_DE">
+	<meta property="og:url" content="https://smileyfoxyportraits.com/">
+	<meta property="og:site_name" content="SmileyFoxyPortraits">
+	<meta property="og:title" content="SmileyFoxyPortraits – Aydan Lig'on | Live-Porträts Berlin">
 	<meta property="og:description"
-		content="Portfolio and home of Aydan Lig'on: portraits, public drawing in Berlin, games, music, learning projects, and community updates.">
-	<meta property="og:image" content="https://aydanlig.github.io/img/thumbaydan.png?raw=true">
-
-	<!-- Twitter --> <!-- You can have different summary for Twitter! -->
+		content="Schnellzeichner für Events, expressive Teamevents und Auftrags-Porträts – ich male nicht, wie es aussieht, sondern wie es sich anfühlt.">
+	<meta property="og:image" content="https://smileyfoxyportraits.com/img/thumbaydan.png">
 	<meta name="twitter:card" content="summary_large_image">
-	<meta name="twitter:url" content="https://aydanlig.github.io/">
-	<meta name="twitter:title" content="It's Aydan Lig'on! | Artist, Portraits, and Projects">
-	<meta name="twitter:description"
-		content="Portfolio and home of Aydan Lig'on: portraits, public drawing in Berlin, games, music, learning projects, and community updates.">
-	<meta name="twitter:image" content="https://aydanlig.github.io/img/thumbaydan.png?raw=true">
 
+	<!-- Structured data: tells Google who you are (person), what the business is,
+	     and how the site is named – so searches for your name OR the brand find this page.
+	     "alternateName" covers spellings people might type. -->
+	<script type="application/ld+json">
+	{
+		"@context": "https://schema.org",
+		"@graph": [
+			{
+				"@type": "WebSite",
+				"@id": "https://smileyfoxyportraits.com/#website",
+				"name": "SmileyFoxyPortraits",
+				"alternateName": ["Smiley Foxy Portraits", "Aydan Lig'on"],
+				"url": "https://smileyfoxyportraits.com/"
+			},
+			{
+				"@type": "Person",
+				"@id": "https://smileyfoxyportraits.com/#aydan",
+				"name": "Aydan Lig'on",
+				"alternateName": ["Aydan Ligon", "Aydan Lig on"],
+				"jobTitle": "Künstler & Live-Porträtzeichner",
+				"url": "https://smileyfoxyportraits.com/about/",
+				"email": "aydan@smileyfoxyportraits.com",
+				"sameAs": [
+					"https://www.instagram.com/smileyfoxyportraits",
+					"https://www.linkedin.com/in/aydan-lig-on-b07736271/",
+					"https://aydanligon.substack.com/",
+					"https://smileyfoxyportraits.bandcamp.com/",
+					"https://linktr.ee/SmileyFoxyPortraits"
+				]
+			},
+			{
+				"@type": "ProfessionalService",
+				"name": "SmileyFoxyPortraits",
+				"url": "https://smileyfoxyportraits.com/",
+				"email": "aydan@smileyfoxyportraits.com",
+				"founder": { "@id": "https://smileyfoxyportraits.com/#aydan" },
+				"areaServed": "Berlin",
+				"address": { "@type": "PostalAddress", "addressLocality": "Berlin", "addressCountry": "DE" },
+				"description": "Live-Portraitkunst für Events, expressive Teambuilding-Workshops und Auftrags-Porträts in Berlin."
+			}
+		]
+	}
+	</script>
 
-	<!-- Stylin' -->
-	<link rel="stylesheet" href="css/index.css" />
-
+	<link rel="stylesheet" href="/css/main.css">
 </head>
 
-<body class="home-page">
+<body>
 
-	<div id="header">
-
-		<div id="Aydan">
-			<a class="header-gif-label" href="/">SmileyFoxyPortraits.com</a>
+	<!-- ================= HEADER (same on every new page) ================= -->
+	<header class="site-header">
+		<div class="wrap">
+			<a class="logo" href="/">SmileyFoxy<span>Portraits</span></a>
+			<nav class="main-nav" aria-label="Hauptmenü">
+				<a href="/events.html#live-events">Live-Events</a>
+				<a href="/events.html#kleckerkasten">Kleckerkasten</a>
+				<a href="/commission.html">Porträt-Auftrag</a>
+				<a href="/#ueber-mich">Über mich</a>
+			</nav>
+			<a class="btn btn--small" href="/events.html#anfrage-event">Anfragen</a>
 		</div>
+	</header>
 
-		<div id="nav">
+	<main>
 
-			<span class="nav-pop-wrap social-wrap">
-				<a href="https://linktr.ee/SmileyFoxyPortraits"><span class="social-word">social </span>links</a>
-				<span class="nav-pop-note social-note">
-					<span class="pop-line"><a href="https://www.instagram.com/smileyfoxyportraits">instagram</a>
-						<span>&middot;</span> <a
-							href="https://www.linkedin.com/in/aydan-lig-on-b07736271/">linkedin</a></span>
-					<span class="pop-line"><a href="https://aydanligon.substack.com/">blog</a>
-						<span>&middot;</span> <a href="mailto:aydan@smileyfoxyportraits.com">email</a></span>
-					<span class="pop-line"><a href="https://smileyfoxyportraits.bandcamp.com/">bandcamp</a>
-						<span>&middot;</span> <a href="https://linktr.ee/SmileyFoxyPortraits">linktree</a></span>
-				</span>
-			</span>
-			<span class="nav-dot">&middot;</span>
-			<span class="store-wrap">
-				<a href="/store/index.html">store</a>
-				<a class="donation-pop" href="https://ko-fi.com/smileyfoxyportraits">toss monies
-					at me</a>
-			</span>
-			<span class="nav-dot">&middot;</span>
-			<span class="nav-pop-wrap about-wrap">
-				<a href="/about/index.html">about</a>
-				<span class="nav-pop-note" aria-hidden="true">
-					<span class="pop-line">background and story</span>
-					<span class="pop-line">goals and FAQs</span>
-					<span class="pop-line">professional connections</span>
-				</span>
-			</span>
-			<span class="nav-dot">&middot;</span>
-			<span class="nav-pop-wrap heart-wrap">
-				<a href="/thankyou/index.html" aria-label="Thank you" class="spinning-heart-link"></a>
-				<span class="nav-pop-note" aria-hidden="true">
-					<span class="pop-line">wall of thanks</span>
-					<span class="pop-line">testimonials</span>
-					<span class="pop-line">words of encouragement</span>
-				</span>
-			</span>
-		</div>
-
-	</div>
-
-	<div id="content">
-
-		<p style="font-size:1.33em">
-			<b>Hi, I'm Aydan!</b>
-			I make stuff to spread smiles <span class="spinning-smiley"></span>
-		</p>
-		<p>
-			Wanna know when I make new stuff?
-			Well, the algorithms would rather show you mental-health-eroding clickbait,
-			so let's get around 'em with...
-		</p>
-		<div style="position: relative;">
-			<a href="https://aydanligon.substack.com/">
-				my infrequent blog!</a>
-			<!-- or better yet, <a href="rss">let's do RSS!</a> -->
-			<br>
-			<span style="font-size: 0.8em">
-				max two updates per month
-				&middot;
-				<a href="https://aydanligon.substack.com/archive">see full archive</a>
-			</span>
-
-			<div class="web10" id="news"></div>
-			<div class="web10" id="rss"></div>
-
-		</div>
-
-		<h1>PORTRAITS'N STUFF</h1>
-		<div class="grid where-grid">
-			<a href="/where-i-draw/">
+		<!-- ================= HERO: first thing visitors see ================= -->
+		<section class="hero">
+			<div class="wrap">
 				<div>
-					<img loading="lazy" decoding="async" class="find-public-banner" src="./img/AydanFind me.png"
-						alt="Clock, calendar, and location pin">
-					<div>find me in Berlin<span> – at Branderburger Tor or Mauerpark
-						</span></div>
+					<span class="eyebrow">Aydan Lig'on · Berlin</span>
+					<!-- Only ONE <h1> per page – it's the most important line for Google -->
+					<h1>Ausdrucksstarke <em>Live-Portraitkunst</em> &amp; expressive Teamevents in Berlin</h1>
+					<p class="lead">
+						Ich zeichne Menschen in wenigen Minuten – mit Fineliner, Aquarell und ganz viel Gefühl.
+						Für dein Event, dein Team oder einfach für dich.
+					</p>
+					<div class="btn-row">
+						<a class="btn" href="/events.html#live-events">Event buchen</a>
+						<a class="btn btn--fox" href="/events.html#kleckerkasten">Kleckerkasten Workshop</a>
+					</div>
+					<p class="hero-note">
+						Lieber ein persönliches Porträt? <a href="/commission.html">Hier geht's zum Auftrags-Porträt →</a>
+					</p>
 				</div>
-			</a>
+				<div class="ph ph--4x5">Aydan zeichnet live einen Gast auf einem Event – lachende Gesichter im Hintergrund [1200x1500]</div>
+			</div>
+		</section>
 
-			<a href="./store/index.html">
-				<div>
-					<img loading="lazy" decoding="async" class="book-portrait-banner"
-						src="./img/AydanWoah banneraydand.png" alt="Holy moly get drawn!">
-					<div>book a portrait<span> –  get drawn by Aydan!</span>
+		<!-- ================= SOCIAL PROOF: logos + testimonials ================= -->
+		<section class="section section--alt" aria-labelledby="proof-title">
+			<div class="wrap center">
+				<span class="eyebrow">Vertrauen</span>
+				<h2 id="proof-title">Gezeichnet für Menschen, Teams &amp; Marken</h2>
+
+				<!-- Swap each box for a logo: <img src="/img/logo-xyz.png" alt="Firmenname" class="ph-img ph--logo"> -->
+				<div class="proof-logos">
+					<div class="ph ph--logo">Kunden-Logo 1 [600x200]</div>
+					<div class="ph ph--logo">Kunden-Logo 2 [600x200]</div>
+					<div class="ph ph--logo">Kunden-Logo 3 [600x200]</div>
+					<div class="ph ph--logo">Presse / Erwähnung [600x200]</div>
+					<div class="ph ph--logo">Kunden-Logo 5 [600x200]</div>
+				</div>
+
+				<!-- Senja testimonial widget (same one the old footer used) -->
+				<script src="https://widget.senja.io/widget/fafd6464-279d-4513-b4ef-a8ec99af34cc/platform.js"
+					type="text/javascript" async></script>
+				<div class="senja-embed" data-id="fafd6464-279d-4513-b4ef-a8ec99af34cc" data-mode="shadow"
+					data-lazyload="false" style="display: block; width: 100%;"></div>
+
+				<p style="margin-top:1.5em"><a href="/thankyou/index.html">Alle Stimmen auf der Wall of Thanks ansehen →</a></p>
+			</div>
+		</section>
+
+		<!-- ================= THE 3 SERVICES ================= -->
+		<section class="section" id="angebote" aria-labelledby="services-title">
+			<div class="wrap">
+				<div class="center">
+					<span class="eyebrow">Angebote</span>
+					<h2 id="services-title">Drei Wege zu deiner Kunst</h2>
+					<p class="lead">Ob 300 Gäste, ein Team, das mal durchatmen muss, oder ein ganz persönliches Geschenk.</p>
+				</div>
+
+				<div class="cards">
+					<!-- Service 1 -->
+					<article class="card card--featured">
+						<span class="tag">Für Eventplaner &amp; Firmen</span>
+						<div class="ph ph--3x2">Aydan zeichnet auf einer Messe / Firmenfeier [1200x800]</div>
+						<h3>Live Event Porträts</h3>
+						<p>Schnellzeichner für Firmenfeiern, Messen, Hochzeiten &amp; Festivals. Jeder Gast geht mit einem Original nach Hause.</p>
+						<ul>
+							<li>3–6 Minuten pro Porträt</li>
+							<li>Echte Begegnung statt Fotobox</li>
+							<li>Berlin &amp; Umgebung</li>
+						</ul>
+						<a class="btn" href="/events.html#live-events">Event anfragen</a>
+					</article>
+
+					<!-- Service 2 -->
+					<article class="card">
+						<span class="tag">Für HR &amp; Teamleads</span>
+						<div class="ph ph--3x2">Team malt gemeinsam an einer großen Leinwand, Farbkleckse [1200x800]</div>
+						<h3>Der Kleckerkasten</h3>
+						<p>Expressives Teambuilding: Dein Team malt gemeinsam, baut Stress ab und erschafft ein Kunstwerk fürs Büro.</p>
+						<ul>
+							<li>Keine Vorkenntnisse nötig</li>
+							<li>Geschützter, wertfreier Raum</li>
+							<li>Gemeinsames Leinwand-Kunstwerk</li>
+						</ul>
+						<a class="btn btn--fox" href="/events.html#kleckerkasten">Workshop entdecken</a>
+					</article>
+
+					<!-- Service 3 -->
+					<article class="card">
+						<span class="tag">Für dich privat</span>
+						<div class="ph ph--3x2">Fertiges Aquarell-Porträt neben einem Berlin-Print [1200x800]</div>
+						<h3>Auftrags-Porträts &amp; Prints</h3>
+						<p>Individuelle Porträts nach Foto – in Fineliner oder Aquarell – und Berlin-Motive als Prints.</p>
+						<ul>
+							<li>A5 ab 20 €, A4 ab 40 €</li>
+							<li>Perfekt als Geschenk</li>
+							<li>Auch als Extra zu Events &amp; Workshops</li>
+							<li>Versand oder Abholung</li>
+						</ul>
+						<a class="btn btn--ghost" href="/commission.html">Porträt bestellen</a>
+					</article>
+				</div>
+			</div>
+		</section>
+
+		<!-- ================= STORY & MISSION ================= -->
+		<section class="section section--alt" id="ueber-mich" aria-labelledby="story-title">
+			<div class="wrap">
+				<div class="split">
+					<div class="ph ph--4x5">Portrait von Aydan mit Skizzenbuch, z. B. in der S-Bahn [1200x1500]</div>
+					<div>
+						<span class="eyebrow">Über mich · Meine Mission</span>
+						<h2 id="story-title">Hi, ich bin Aydan Lig'on <span class="spinning-smiley" aria-hidden="true"></span> – und Kunst ist meine Brücke zu Menschen.</h2>
+						<p>
+							Ich hatte schon immer diesen unbändigen Drang, etwas zu erschaffen. Angefangen hat es bei Meetups
+							mit meiner kreativen Familie – und dann in den Berliner Bahnen: Ich habe Fremde gezeichnet und
+							ihnen die Porträts einfach geschenkt.
+						</p>
+						<p>
+							Das Lächeln, die Reaktionen, die Ermutigung – daraus wurde aus einer Leidenschaft ein Business.
+						</p>
+						<blockquote class="big-quote">„Ich male nicht, wie es aussieht – sondern wie es sich anfühlt.“</blockquote>
 					</div>
 				</div>
-			</a>
-		</div>
 
-		<h1>STUFF YOU CAN PLAY</h1>
-		<div class="grid">
-
-			<!--
-			<a href="https://www.youtube.com/watch?v=X8onQoSYx9c">
-				<div>
-					<img loading="lazy" decoding="async" src="img/Insecurity.png"/>
-					<div>adventures with insecurity<span> – a 2D-platformer about insecurity, where <i>you</i> climb your insecurity</span></div>
-				</div>
-			</a>
-			-->
-
-			<a href="https://jellypolizeipop.itch.io/aydans-gallery">
-				<div>
-					<img loading="lazy" decoding="async" src="img/gallery.png" />
-					<div>my childhood & teen 3D-gallery (PC only)<span> – art from 2019-2024</span>
+				<div class="story-steps">
+					<div>
+						<div class="num">01</div>
+						<h3>Warum ich angefangen habe</h3>
+						<p>Weil eine Zeichnung in fünf Minuten zwei Fremde zum Lachen bringen kann. Kunst war für mich immer der schnellste Weg zu echter Verbindung.</p>
+					</div>
+					<div>
+						<div class="num">02</div>
+						<h3>Warum ich weitermache</h3>
+						<p>Um zu zeigen, dass kreative Unabhängigkeit jenseits seelenloser Büro-Routinen möglich ist. Ich habe mir ein Jahr gegeben, ganz für diese Arbeit – und ich gebe 100 %.</p>
+					</div>
+					<div>
+						<div class="num">03</div>
+						<h3>Meine Mission</h3>
+						<p>Echte Gemeinschaft vor Ort und tiefere menschliche Verbindungen schaffen – durch schnelle, ausdrucksstarke Live-Kunst.</p>
 					</div>
 				</div>
-			</a>
+			</div>
+		</section>
 
-			<a href="https://www.youtube.com/watch?v=yt5y8fOAcuo">
-				<div>
-					<img loading="lazy" decoding="async" src="img/faxstastic.png" />
-					<div>Faxtastic<span> – my first and final gamejam entry</span>
+		<!-- ================= BERLIN AESTHETIC ================= -->
+		<section class="section" aria-labelledby="berlin-title">
+			<div class="wrap">
+				<div class="split split--reverse">
+					<div class="ph ph--4x5">Aquarell + Fineliner: Berlin bei Nacht / Morgengrauen [1200x1500]</div>
+					<div>
+						<span class="eyebrow">Berlin-Landschaften</span>
+						<h2 id="berlin-title">Berlin zwischen Tag und Nacht</h2>
+						<p>
+							In Aquarell und Fineliner halte ich fest, wie diese Stadt sich anfühlt: Streetart und Demos,
+							Nachtschwärmer auf dem Heimweg im Morgengrauen, die kleinen Eigenheiten an jeder Ecke.
+						</p>
+						<p>
+							Es ist die rohe Zufälligkeit Berlins – und das ehrliche Gefühl, hier aufgewachsen zu sein.
+						</p>
+						<a class="btn btn--ghost" href="/store/index.html">Prints &amp; Originale ansehen</a>
 					</div>
 				</div>
-			</a>
 
-		</div>
-		<p style="margin-top: 0.2rem; margin-bottom: 0.5rem;"><a href="/projects/index.html">(see all projects)</a></p>
+				<div class="gallery">
+					<div class="ph ph--1x1">Berlin-Motiv: Streetart [1000x1000]</div>
+					<div class="ph ph--1x1">Berlin-Motiv: Nachtleben / Morgengrauen [1000x1000]</div>
+					<div class="ph ph--1x1">Berlin-Motiv: Demo / Straßenszene [1000x1000]</div>
+				</div>
+			</div>
+		</section>
 
+		<!-- ================= ART FOR EVERYONE ================= -->
+		<section class="section section--dark" aria-labelledby="access-title">
+			<div class="wrap">
+				<div class="split">
+					<div>
+						<span class="eyebrow">Kunst für alle</span>
+						<h2 id="access-title">Ein Porträt für einen Euro? Ja.</h2>
+						<p class="big-quote" style="color:#F2EAE4">
+							„Ich male günstig, damit sich jeder meine Kunst leisten kann. Auch ein kleines Kind, das nur einen
+							Euro von seinen Eltern hat, kann ein Porträt von mir mit nach Hause nehmen.“
+						</p>
+						<p>
+							Am liebsten stelle ich mich dafür draußen in den Mauerpark. Das A6-Porträt für 1 € gibt es nur
+							persönlich vor Ort. Wann ich draußen bin, poste ich vorher in meiner Instagram-Story.
+						</p>
+						<p><a href="/bezahlen.html" style="color:var(--fox)">Vor Ort bezahlen: PayPal oder Karte →</a></p>
+						<div class="btn-row">
+							<a class="btn btn--fox" href="/commission.html#vor-ort">Zeiten &amp; Orte ansehen</a>
+							<a class="btn btn--ghost" style="color:#F2EAE4;border-color:#F2EAE4" href="https://www.instagram.com/smileyfoxyportraits">Instagram folgen</a>
+						</div>
+					</div>
+					<div class="ph ph--3x2">Aydan im Mauerpark, Kind bekommt ein Porträt [1200x800]</div>
+				</div>
+			</div>
+		</section>
 
-		<h1>MIXED MEDIA STUFF</h1>
-
-		<div class="grid">
-
-			<a href="https://www.instagram.com/smileyfoxyportraits/reels/">
+		<!-- ================= ORIGIN STORY VIDEO ================= -->
+		<section class="section" aria-labelledby="reel-title">
+			<div class="wrap reel">
+				<!-- VIDEO: replace this box with your reel.
+				     YouTube (privacy-friendly): <iframe src="https://www.youtube-nocookie.com/embed/VIDEO_ID" ...></iframe>
+				     Or a self-hosted file: <video src="/img/reel.mp4" controls playsinline class="ph-img ph--9x16"></video> -->
+				<div class="ph ph--9x16">Reel: Aydans Origin Story – vom Zeichnen in der Bahn zum Business [1080x1920, Hochformat-Video]</div>
 				<div>
-					<img loading="lazy" decoding="async" src="img/igfeed.png" />
-					<div>Instagram<span> – a restaurant once commissioned the rightmost sketch for an exhibition
-							there.</span>
+					<span class="eyebrow">Die Geschichte in 60 Sekunden</span>
+					<h2 id="reel-title">Wie aus Bahn-Skizzen ein Business wurde</h2>
+					<p class="lead">
+						Fremde in der S-Bahn, ein geschenktes Porträt, ein überraschtes Lächeln – schau dir an, wie alles angefangen hat.
+					</p>
+					<div class="btn-row">
+						<a class="btn" href="https://www.instagram.com/smileyfoxyportraits/reels/">Mehr Reels auf Instagram</a>
 					</div>
 				</div>
-			</a>
+			</div>
+		</section>
 
-			<a href="https://youtu.be/cH_DNKr78Eo?si=4KgdzjnMNXz-VPEC">
-				<div>
-					<img loading="lazy" decoding="async" src="img/Astoflo banner.png" />
-					<div>Astolfo angy<span> – short silly animation</span></div>
+		<!-- ================= FINAL CALL TO ACTION ================= -->
+		<section class="section section--alt">
+			<div class="wrap center">
+				<h2>Lass uns etwas zusammen erschaffen.</h2>
+				<p class="lead">Schreib mir kurz, was du vorhast – ich melde mich innerhalb von 48 Stunden.</p>
+				<div class="btn-row">
+					<a class="btn" href="/events.html#anfrage-event">Event buchen</a>
+					<a class="btn btn--fox" href="/events.html#anfrage-kleckerkasten">Kleckerkasten anfragen</a>
+					<a class="btn btn--ghost" href="/commission.html">Porträt bestellen</a>
 				</div>
-			</a>
+			</div>
+		</section>
 
-			<a href="https://aydanligon.bandcamp.com/">
-				<div>
-					<img loading="lazy" decoding="async" src="img/Bad minecraft.png" />
-					<div>Minecraft's broken record<span> – anxiety driven music</span>
-					</div>
+		<!-- ================= FOR THE CURIOUS =================
+		     Personal pages, deliberately small – not the focus of the site. -->
+		<section class="section" style="padding-top:48px" aria-labelledby="curious-title">
+			<div class="wrap">
+				<span class="eyebrow">Für Neugierige</span>
+				<h3 id="curious-title">Noch mehr von mir</h3>
+				<div class="curious">
+					<a href="/about/index.html">
+						<strong>Meine ganze Geschichte</strong>
+						<span>Hintergrund, Ziele &amp; FAQ (Englisch)</span>
+					</a>
+					<a href="/projects/index.html">
+						<strong>Projekte</strong>
+						<span>Spiele, Musik, Animationen &amp; mehr</span>
+					</a>
+					<a href="/bezahlen.html">
+						<strong>Bezahlen &amp; unterstützen</strong>
+						<span>PayPal, Karte (SumUp) oder Ko-fi</span>
+					</a>
 				</div>
-			</a>
+			</div>
+		</section>
 
-			<a href="https://www.youtube.com/watch?v=bgMynxTwTUc">
-				<div>
-					<img loading="lazy" decoding="async" src="img/the end is never the end.png" />
-					<div>DIY animated banner<span> – HTML animation programming shenanigans</span></div>
+	</main>
+
+	<!-- ================= FOOTER (same on every new page) =================
+	     All old links are kept: legal, social, support pages, FAQ. -->
+	<footer class="site-footer">
+		<div class="wrap">
+			<div class="footer-grid">
+				<div class="newsletter">
+					<h3>Newsletter</h3>
+					<p>Max. zwei Updates im Monat – neue Termine, Kunst &amp; Geschichten.</p>
+					<!-- Substack signup box -->
+					<iframe src="https://aydanligon.substack.com/embed" title="Substack Newsletter Anmeldung" loading="lazy"></iframe>
+					<p><a href="https://aydanligon.substack.com/archive">Archiv lesen →</a></p>
 				</div>
-			</a>
 
-		</div>
-
-		<p style="margin-top: 0.2rem; margin-bottom: 0.5rem;"><a
-				href="https://www.instagram.com/smileyfoxyportraits/reels/">(Instagram reels)</a></p>
-
-		<h1>I LIKE THIS STUFF</h1>
-
-		<div class="grid">
-
-			<a href="/learnemup">
 				<div>
-					<img loading="lazy" decoding="async" src="img/learnemup.png" />
-					<div>learn em' up<span> –
-							webpages that facilitate learning through practical exercises
-						</span></div>
+					<h3>Kontakt</h3>
+					<p><a href="mailto:aydan@smileyfoxyportraits.com">E-Mail</a></p>
+					<p><a href="https://www.instagram.com/smileyfoxyportraits">Instagram</a></p>
+					<p><a href="https://www.linkedin.com/in/aydan-lig-on-b07736271/">LinkedIn</a></p>
+					<p><a href="https://linktr.ee/SmileyFoxyPortraits">Linktree</a></p>
+					<p><a href="https://discord.gg/pQaBQjBv4U">Discord: Aydan's Fox Den</a></p>
+					<p><a href="https://smileyfoxyportraits.bandcamp.com/">Bandcamp</a></p>
 				</div>
-			</a>
 
-			<a href="https://ncase.me/mental-health/">
 				<div>
-					<img loading="lazy" decoding="async" src="img/mh.png" />
-					<div>mental health tips ft. anxiety wolf <span> – Nicky's mental health journey, science &amp;
-							practical tips</span></div>
+					<h3>Mehr</h3>
+					<p><a href="/where-i-draw/">Wo ich zeichne</a></p>
+					<p><a href="/store/index.html">Store</a></p>
+					<p><a href="/bezahlen.html">Vor Ort bezahlen</a></p>
+					<p><a href="/about/index.html">Über mich (ausführlich)</a></p>
+					<p><a href="/projects/index.html">Projekte</a></p>
+					<p><a href="/thankyou/index.html">Wall of Thanks &amp; Testimonials</a></p>
+					<p><a href="/support-free/">Kostenlos unterstützen</a></p>
+					<p><a href="https://ko-fi.com/G2G7OCU1Z">Ko-fi (Spenden)</a></p>
 				</div>
-			</a>
 
-			<a
-				href="https://www.reddit.com/r/getdisciplined/comments/lw0bsm/advice_in_my_mid20s_i_was_lost_socially_awkward/">
 				<div>
-					<img loading="lazy" decoding="async" src="img/discipline.png" />
-					<div>r/getdisciplined [Advice]<span> – "practical tips on how to change your life in your
-							20s"</span></div>
+					<h3>Rechtliches</h3>
+					<p><a href="/ImpressumUndDatenschutz/Impressum.html">Impressum</a></p>
+					<p><a href="/ImpressumUndDatenschutz/Datenschutz.html">Datenschutzerklärung</a></p>
+					<p><a href="/about/index.html#toc_10">FAQ</a></p>
+					<p><a href="/about/index.html#toc_15">Löschanfragen</a></p>
 				</div>
-			</a>
-
-			<a href="thankyou/index.html">
-				<div>
-					<img loading="lazy" decoding="async" src="img/wallofthanks.png" />
-					<div>wall of thanks &lt;3<span> – a tribute &amp; game to all who support me on this beautiful
-							journey
-							called life</span></div>
-				</div>
-			</a>
-
-			<p style="margin-top: 0.2rem; margin-bottom: 0.5rem;"><a href="https://ncase.me/">(Thanks Nicky for your
-					website's open-sauceness)</a></p>
-
-			<!--
-			<a href="https://ncase.me/nutshell/">
-				<div>
-					<img loading="lazy" decoding="async" src="img/nutshell.png"/>
-					<div>my favorite qoutes<span> – a collection of my favorite book, movie, and game qoutes - I lovem' :3</span></div>
-				</div>
-			</a>
-			-->
-
-		</div>
-
-		<!--<a href="/cat.gif?raw=true">(something more personal)</a>-->
-
-	</div>
-
-	<div id="footer">
-		<div class="footer-card">
-			<div class="footer-section">
-				<h3>Connect</h3>
-				<p><a href="/where-i-draw/">Where I draw</a></p>
-				<p><a href="mailto:aydan@smileyfoxyportraits.com">Email</a></p>
-				<p><a href="https://linktr.ee/AydanLigon">Linktree</a></p>
-				<p><a href="https://www.instagram.com/smileyfoxyportraits">Instagram</a></p>
-				<p><a href="https://discord.gg/pQaBQjBv4U">Discord Community: Aydan's Fox Den</a></p>
 			</div>
 
-			<div class="footer-section support-section">
-				<h3>Contribute</h3>
-				<p><a href="/support-free/">Free ways to help</a></p>
-				<p><a href="https://ko-fi.com/G2G7OCU1Z">Ko-fi<br>(donations)</a></p>
-				<p><a href="/thankyou/index.html">Thank you (supporters)</a></p>
+			<div class="footer-bottom">
+				<span>© SmileyFoxyPortraits · Aydan Lig'on · Berlin</span>
+				<a href="#">↑ nach oben</a>
 			</div>
-
-			<div class="footer-section">
-				<h3>Legal</h3>
-				<p class="legal-pair"><a href="/ImpressumUndDatenschutz/Impressum.html">Legal Notice</a><br><small>(<a
-							href="/ImpressumUndDatenschutz/Impressum.html">Impressum</a>)</small></p>
-				<p class="legal-pair"><a href="/ImpressumUndDatenschutz/Datenschutz.html">Privacy
-						Policy</a><br><small>(<a
-							href="/ImpressumUndDatenschutz/Datenschutz.html">Datenschutzerklaerung</a>)</small></p>
-				<p><a href="/about/index.html#toc_15">Content removal requests</a></p>
-				<p><a href="/about/index.html#toc_10">FAQ</a></p>
-			</div>
-
 		</div>
+	</footer>
 
-		<script src="https://widget.senja.io/widget/fafd6464-279d-4513-b4ef-a8ec99af34cc/platform.js"
-			type="text/javascript" async></script>
-		<div class="senja-embed" data-id="fafd6464-279d-4513-b4ef-a8ec99af34cc" data-mode="shadow" data-lazyload="false"
-			style="display: block; width: 100%;"></div>
-		<p class="footer-nav-link"><a href="#header">&uarr; up</a> <span>&middot;</span> <a class="home-return"
-				href="/">home</a></p>
-	</div>
-
+	<!-- EASTER EGG: clicking the logo on the homepage spins the page and flips the colors.
+	     Click again to go back to normal. On other pages the logo just links home. -->
 	<script>
 		(function () {
-			// If device has no hover (mobile/touch), ensure links navigate directly on tap
-			var nav = document.querySelector('#header #nav');
-			if (!nav) return;
-
-			var wrappers = nav.querySelectorAll('.nav-pop-wrap, .store-wrap');
-
-			// Allow direct navigation on first tap for links with hrefs
-			wrappers.forEach(function (wrap) {
-				var trigger = wrap.querySelector('a');
-				if (!trigger) return;
-
-				// Optional: Toggle popovers on touch without blocking link redirects
-				trigger.addEventListener('touchstart', function () {
-					wrappers.forEach(function (other) {
-						if (other !== wrap) other.classList.remove('open');
-					});
-					wrap.classList.toggle('open');
-				}, { passive: true });
-			});
-
-			document.addEventListener('click', function (event) {
-				if (!nav.contains(event.target)) {
-					wrappers.forEach(function (wrap) {
-						wrap.classList.remove('open');
-					});
-				}
-			});
-		})();
-	</script>
-	<script>
-		(function () {
-			// Attach overlay to <html> so it stays independent of body rotation
 			var overlay = document.createElement('div');
 			overlay.id = 'silly-overlay';
 			document.documentElement.appendChild(overlay);
 
-			// Select links that point home & header badge
-			var homeLinks = document.querySelectorAll('a[href="/"], a.home-return, a.header-gif-label');
-			var headerLabel = document.querySelector('.header-gif-label');
-			var originalText = headerLabel ? headerLabel.textContent : "SmileyFoxyPortraits.com";
+			var logo = document.querySelector('.logo');
+			var originalHTML = logo.innerHTML;
 
-			homeLinks.forEach(function (link) {
-				link.addEventListener('click', function (e) {
-					var isHomePage = window.location.pathname === '/' || window.location.pathname === '/index.html';
+			logo.addEventListener('click', function (e) {
+				var isHomePage = location.pathname === '/' || location.pathname === '/index.html';
+				if (!isHomePage) return;
+				e.preventDefault();
 
-					if (isHomePage) {
-						e.preventDefault(); // Stop page refresh
-
-						// Toggle active state on and off with each click
-						var isActive = overlay.classList.toggle('active');
-
-						if (isActive) {
-							// Trigger spin and change label text
-							document.body.classList.add('silly-spinning');
-							if (headerLabel) {
-								headerLabel.textContent = "WOAH WHAT!? Did you do that?lol";
-							}
-						} else {
-							// Remove spin and revert label text back to original
-							document.body.classList.remove('silly-spinning');
-							if (headerLabel) {
-								headerLabel.textContent = originalText;
-							}
-						}
-					}
-				});
+				var isActive = overlay.classList.toggle('active');
+				document.body.classList.toggle('silly-spinning', isActive);
+				logo.innerHTML = isActive ? 'WOAH WHAT!? Did you do that? lol' : originalHTML;
 			});
 		})();
 	</script>

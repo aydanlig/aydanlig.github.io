@@ -1,0 +1,533 @@
+/* =========================================================
+   SmileyFoxyPortraits – main.css
+   Used by: index.html, events.html, commission.html
+   (The older subpages still use css/index.css – leave that file alone.)
+
+   HOW TO CHANGE THE LOOK QUICKLY:
+   Edit the colors / fonts in :root below. Everything else uses them.
+   ========================================================= */
+
+:root {
+	/* Palette taken from the Bandcamp page (smileyfoxyportraits.bandcamp.com) */
+	--night: #0F0C11;        /* deepest plum-black: dark sections & footer */
+	--plum: #261E24;         /* dark plum: main buttons */
+	--mauve: #A88B98;        /* dusty mauve: soft text on dark backgrounds */
+	--fox: #FF6B35;          /* bright fox-orange: orange buttons & highlights */
+
+	--ink: #1A1615;          /* main text color (almost black) */
+	--ink-soft: #6B5560;     /* secondary text (darker mauve so it stays readable) */
+	--paper: #F2EAE4;        /* warm cream page background */
+	--card: #FBF7F3;         /* background of cards & forms */
+	--line: #E2D6CE;         /* thin borders */
+	--accent: #C2410C;       /* darker orange for text links (readable on cream) */
+	--accent-dark: #9A3412;  /* link hover */
+	--radius: 18px;          /* roundness of cards */
+	--max: 1120px;           /* max width of page content */
+
+	/* System fonts on purpose: no Google Fonts = no DSGVO trouble, faster loading */
+	--font-body: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+	--font-head: Georgia, "Iowan Old Style", "Times New Roman", serif;
+}
+
+/* ---------- Basics ---------- */
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+	margin: 0;
+	background: var(--paper);
+	color: var(--ink);
+	font-family: var(--font-body);
+	font-size: 18px;
+	line-height: 1.6;
+	overflow-x: hidden;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+
+a { color: var(--accent); }
+a:hover { color: var(--accent-dark); }
+
+h1, h2, h3 {
+	font-family: var(--font-head);
+	line-height: 1.15;
+	margin: 0 0 0.5em;
+}
+
+h1 { font-size: clamp(2rem, 5vw, 3.4rem); }
+h2 { font-size: clamp(1.6rem, 3.5vw, 2.4rem); }
+h3 { font-size: 1.3rem; }
+
+p { margin: 0 0 1em; }
+
+/* .wrap = centers content and keeps it from getting too wide */
+.wrap {
+	width: 100%;
+	max-width: var(--max);
+	margin: 0 auto;
+	padding: 0 20px;
+}
+
+/* .section = one big block of the page with space above/below */
+.section { padding: clamp(56px, 8vw, 96px) 0; }
+.section--alt { background: var(--card); border-block: 1px solid var(--line); }
+.section--dark { background: var(--night); color: #F2EAE4; }
+.section--dark .eyebrow { color: var(--fox); }
+
+/* Small label above headings, e.g. "MEINE MISSION" */
+.eyebrow {
+	display: inline-block;
+	font-size: 0.8rem;
+	font-weight: 700;
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+	color: var(--accent);
+	margin-bottom: 0.6em;
+}
+
+.lead { font-size: 1.15rem; color: var(--ink-soft); max-width: 62ch; }
+.center { text-align: center; }
+.center .lead { margin-inline: auto; }
+
+/* ---------- Buttons ---------- */
+.btn {
+	display: inline-block;
+	padding: 0.85em 1.5em;
+	border-radius: 999px;
+	background: var(--plum);
+	color: #F2EAE4;
+	font-weight: 700;
+	text-decoration: none;
+	border: 2px solid var(--plum);
+	transition: transform 0.15s ease, background 0.15s ease;
+	cursor: pointer;
+	font-size: 1rem;
+	font-family: inherit;
+}
+.btn:hover { background: var(--night); border-color: var(--night); color: var(--fox); transform: translateY(-2px); }
+
+/* Outline version (secondary button) */
+.btn--ghost { background: transparent; color: var(--ink); border-color: var(--ink); }
+.btn--ghost:hover { background: var(--ink); border-color: var(--ink); }
+
+/* Orange version (for the Kleckerkasten) */
+.btn--fox { background: var(--fox); border-color: var(--fox); color: var(--night); }
+.btn--fox:hover { background: #FF8555; border-color: #FF8555; color: var(--night); }
+
+.btn--small { padding: 0.55em 1.1em; font-size: 0.9rem; }
+
+.btn-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 1.5em; }
+.center .btn-row { justify-content: center; }
+
+/* ---------- IMAGE PLACEHOLDERS ----------
+   Each grey box = one image you still need to add.
+   To replace: swap the whole <div class="ph ...">…</div> for
+   <img src="/img/your-file.jpg" alt="what's in the photo" class="ph-img ph--3x2" loading="lazy">
+   The ph--… class keeps the same shape (3x2, 4x5, 16x9, 1x1, 9x16). */
+.ph,
+.ph-img {
+	width: 100%;
+	border-radius: var(--radius);
+	object-fit: cover;
+}
+.ph {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 16px;
+	text-align: center;
+	font-size: 0.85rem;
+	font-weight: 600;
+	color: var(--ink-soft);
+	background:
+		repeating-linear-gradient(45deg, transparent 0 12px, rgba(255, 107, 53, 0.07) 12px 24px),
+		#E9DDD5;
+	border: 2px dashed #CDB9AE;
+}
+.ph--3x2 { aspect-ratio: 3 / 2; }
+.ph--4x5 { aspect-ratio: 4 / 5; }
+.ph--16x9 { aspect-ratio: 16 / 9; }
+.ph--1x1 { aspect-ratio: 1 / 1; }
+.ph--9x16 { aspect-ratio: 9 / 16; max-width: 360px; margin-inline: auto; }
+.ph--logo { aspect-ratio: 3 / 1; font-size: 0.75rem; border-radius: 10px; }
+
+/* ---------- Header / Navigation ---------- */
+.site-header {
+	position: sticky;   /* stays at the top while scrolling */
+	top: 0;
+	z-index: 50;
+	background: rgba(242, 234, 228, 0.92);
+	backdrop-filter: blur(8px);
+	border-bottom: 1px solid var(--line);
+}
+.site-header .wrap {
+	display: flex;
+	align-items: center;
+	gap: 24px;
+	min-height: 68px;
+}
+.logo {
+	font-family: var(--font-head);
+	font-size: 1.3rem;
+	font-weight: 700;
+	color: var(--ink);
+	text-decoration: none;
+	white-space: nowrap;
+}
+.logo span { color: var(--accent); }
+.main-nav { display: flex; gap: 22px; margin-left: auto; }
+.main-nav a {
+	color: var(--ink);
+	text-decoration: none;
+	font-weight: 600;
+	font-size: 0.95rem;
+	white-space: nowrap;
+}
+.main-nav a:hover { color: var(--accent); }
+
+/* ---------- Hero (top of homepage) ---------- */
+.hero { padding: clamp(40px, 7vw, 88px) 0; }
+.hero .wrap {
+	display: grid;
+	grid-template-columns: 1.1fr 0.9fr;
+	gap: clamp(28px, 5vw, 64px);
+	align-items: center;
+}
+.hero h1 em { font-style: normal; color: var(--accent); }
+.hero-note { margin-top: 1.2em; font-size: 0.9rem; color: var(--ink-soft); }
+
+/* ---------- Social proof ---------- */
+.proof-logos {
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	gap: 16px;
+	margin: 1.5em 0 2.5em;
+}
+.quote-grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 20px;
+}
+.quote {
+	background: var(--card);
+	border: 1px solid var(--line);
+	border-radius: var(--radius);
+	padding: 24px;
+	margin: 0;
+}
+.quote p { font-family: var(--font-head); font-size: 1.1rem; }
+.quote cite { font-style: normal; font-size: 0.9rem; color: var(--ink-soft); }
+
+/* ---------- Cards (the 3 services) ---------- */
+.cards {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 24px;
+	margin-top: 2.5em;
+}
+.card {
+	display: flex;
+	flex-direction: column;
+	background: var(--card);
+	border: 1px solid var(--line);
+	border-radius: var(--radius);
+	padding: 20px;
+	transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(31, 27, 36, 0.08); }
+.card .ph, .card .ph-img { margin-bottom: 18px; }
+.card ul { padding-left: 1.1em; margin: 0 0 1.2em; color: var(--ink-soft); }
+.card .btn { margin-top: auto; align-self: flex-start; }
+.card--featured { border: 2px solid var(--accent); }
+.tag {
+	display: inline-block;
+	font-size: 0.75rem;
+	font-weight: 700;
+	padding: 3px 10px;
+	border-radius: 999px;
+	background: #FFE1D4;
+	color: var(--accent-dark);
+	margin-bottom: 10px;
+	align-self: flex-start;
+}
+
+/* ---------- Two columns: text + image ---------- */
+.split {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: clamp(28px, 5vw, 64px);
+	align-items: center;
+}
+.split--reverse > :first-child { order: 2; }
+
+/* Big quote in the story section */
+.big-quote {
+	font-family: var(--font-head);
+	font-size: clamp(1.4rem, 3vw, 2rem);
+	line-height: 1.3;
+	border-left: 4px solid var(--fox);
+	padding-left: 20px;
+	margin: 1.5em 0;
+}
+
+/* Little story steps (Why I started / Why I keep going / Mission) */
+.story-steps {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 24px;
+	margin-top: 2.5em;
+}
+.story-steps > div {
+	background: var(--card);
+	border-radius: var(--radius);
+	border: 1px solid var(--line);
+	padding: 24px;
+}
+.story-steps .num {
+	font-family: var(--font-head);
+	font-size: 2rem;
+	color: var(--fox);
+	line-height: 1;
+	margin-bottom: 8px;
+}
+
+.gallery {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 16px;
+	margin-top: 2em;
+}
+
+/* Checklist with ✓ marks */
+.checks { list-style: none; padding: 0; margin: 1.2em 0; }
+.checks li { position: relative; padding-left: 1.8em; margin-bottom: 0.6em; }
+.checks li::before { content: "✓"; position: absolute; left: 0; color: var(--accent); font-weight: 900; }
+
+/* ---------- Packages (events page) ---------- */
+.price { font-family: var(--font-head); font-size: 1.6rem; margin: 0.2em 0 0.6em; }
+.price small { font-family: var(--font-body); font-size: 0.85rem; color: var(--ink-soft); }
+
+/* 4 cards in a row (commission price list) */
+.cards--4 { grid-template-columns: repeat(4, 1fr); }
+
+/* Style prices inside the A4 card */
+.price-list { list-style: none; padding: 0 !important; margin: 0 0 1.2em; }
+.price-list li { display: flex; justify-content: space-between; gap: 12px; padding: 6px 0; border-bottom: 1px dashed var(--line); }
+.price-list strong { color: var(--ink); white-space: nowrap; }
+
+.tag--fox { background: #EADDE3; color: #5B4450; } /* mauve tag */
+
+/* Small line under the price cards */
+.price-note { text-align: center; font-size: 0.9rem; color: var(--ink-soft); margin-top: 1.5em; }
+
+/* Crossed-out regular price, e.g. <s>1.500 €</s> */
+.price s { color: var(--ink-soft); font-size: 0.7em; margin-right: 6px; }
+
+/* Payment page (bezahlen.html) */
+.pay-prices { max-width: 320px; margin: 1em auto 2em; font-size: 1.2rem; }
+.pay-buttons { display: grid; gap: 12px; max-width: 360px; margin: 0 auto 0.6em; }
+
+/* "Für Neugierige" strip on the homepage – deliberately low-key */
+.curious { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 1.5em; }
+.curious a {
+	display: block;
+	padding: 18px 20px;
+	border: 1px solid var(--line);
+	border-radius: 14px;
+	background: var(--card);
+	color: var(--ink);
+	text-decoration: none;
+}
+.curious a:hover { border-color: var(--accent); color: var(--ink); }
+.curious strong { display: block; margin-bottom: 4px; }
+.curious span { font-size: 0.9rem; color: var(--ink-soft); }
+
+/* ---------- Easter egg: click the logo on the homepage ----------
+   The page does a barrel roll and the colors flip. Click again to undo. */
+body { transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1); }
+body.silly-spinning { transform: rotate(360deg); }
+#silly-overlay {
+	position: fixed;
+	inset: 0;
+	pointer-events: none;
+	z-index: 999999;
+	backdrop-filter: invert(1) hue-rotate(180deg);
+	-webkit-backdrop-filter: invert(1) hue-rotate(180deg);
+	opacity: 0;
+	transition: opacity 0.8s ease;
+}
+#silly-overlay.active { opacity: 1; }
+
+/* Hover the ":D" and it starts spinning faster and faster */
+@keyframes spin-ramp { to { transform: rotate(360deg); } }
+@keyframes spin-infinite { to { transform: rotate(360deg); } }
+.spinning-smiley { display: inline-block; cursor: pointer; }
+.spinning-smiley::before { content: ":D"; display: inline-block; }
+.spinning-smiley:hover::before {
+	animation:
+		spin-ramp 3s cubic-bezier(0.7, 0, 1, 0.1) forwards,
+		spin-infinite 0.08s linear infinite 3s;
+}
+
+/* Collapsible box (<details>) – used for drawing times */
+.schedule {
+	margin-top: auto;
+	border: 1px solid var(--line);
+	border-radius: 12px;
+	padding: 10px 14px;
+	background: #faf7f2;
+	font-size: 0.95rem;
+}
+.schedule summary { cursor: pointer; font-weight: 700; color: var(--accent); }
+.schedule ul { padding-left: 1.1em; margin: 10px 0; color: var(--ink); }
+
+/* Pilot offer box (Kleckerkasten) */
+.pilot {
+	margin-top: 2.5em;
+	background: #fff1e9;
+	border: 2px solid var(--fox);
+	border-radius: var(--radius);
+	padding: clamp(20px, 4vw, 36px);
+}
+.pilot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start; }
+.pilot .checks li::before { color: var(--accent); }
+
+/* ---------- Comparison table (Kleckerkasten) ---------- */
+.table-scroll { overflow-x: auto; margin-top: 2em; } /* lets the table scroll sideways on phones */
+.compare {
+	width: 100%;
+	min-width: 640px;
+	border-collapse: collapse;
+	background: var(--card);
+	border-radius: var(--radius);
+	overflow: hidden;
+	font-size: 0.95rem;
+}
+.compare th, .compare td { padding: 14px 16px; text-align: left; border-bottom: 1px solid var(--line); vertical-align: top; }
+.compare thead th { background: #EDE2DA; font-family: var(--font-head); font-size: 1.05rem; }
+.compare .highlight { background: #fff1e9; font-weight: 600; }
+.compare thead .highlight { background: var(--fox); color: var(--ink); }
+
+/* ---------- Forms ---------- */
+.form-card {
+	background: var(--card);
+	border: 1px solid var(--line);
+	border-radius: var(--radius);
+	padding: clamp(20px, 4vw, 40px);
+	max-width: 760px;
+	margin: 2em auto 0;
+}
+.section--dark .form-card { color: var(--ink); }
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 20px; }
+.form-grid .full { grid-column: 1 / -1; } /* field spans both columns */
+.field label, .field legend { display: block; font-weight: 600; font-size: 0.95rem; margin-bottom: 6px; }
+.field input,
+.field select,
+.field textarea {
+	width: 100%;
+	padding: 12px 14px;
+	border: 1px solid #d6cdbf;
+	border-radius: 10px;
+	background: #fff;
+	font: inherit;
+	font-size: 1rem;
+	color: var(--ink);
+}
+.field input:focus,
+.field select:focus,
+.field textarea:focus { outline: 2px solid var(--accent); outline-offset: 1px; border-color: var(--accent); }
+.field fieldset { border: 0; padding: 0; margin: 0; }
+.hint { font-size: 0.85rem; color: var(--ink-soft); margin-top: 4px; }
+
+/* Style choice boxes (Fineliner / Watercolor) */
+.choice-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.choice-row--3 { grid-template-columns: repeat(3, 1fr); }
+.choice {
+	display: flex;
+	gap: 10px;
+	align-items: flex-start;
+	border: 1px solid #d6cdbf;
+	border-radius: 12px;
+	padding: 14px;
+	cursor: pointer;
+	font-weight: 400;
+}
+.choice:has(input:checked) { border-color: var(--accent); background: #FFF1EA; }
+.choice input { margin-top: 5px; accent-color: var(--accent); }
+
+/* Upload box */
+.upload {
+	border: 2px dashed #cfc5b6;
+	border-radius: 12px;
+	padding: 20px;
+	text-align: center;
+	background: #faf7f2;
+}
+
+.form-legal { font-size: 0.8rem; color: var(--ink-soft); margin-top: 16px; }
+
+/* ---------- Video / reel block ---------- */
+.reel { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: clamp(28px, 5vw, 64px); align-items: center; }
+
+/* ---------- Footer ---------- */
+.site-footer { background: var(--night); color: var(--mauve); padding: 64px 0 32px; font-size: 0.95rem; }
+.site-footer a { color: #F2EAE4; text-decoration: none; }
+.site-footer a:hover { color: var(--fox); }
+.site-footer h3 {
+	font-family: var(--font-body);
+	font-size: 0.8rem;
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+	color: #fff;
+}
+.footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 32px; }
+.footer-grid p { margin: 0 0 0.45em; }
+.newsletter iframe { width: 100%; max-width: 420px; height: 150px; border: 0; border-radius: 12px; background: #fff; }
+.footer-bottom {
+	border-top: 1px solid var(--plum);
+	margin-top: 40px;
+	padding-top: 20px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	gap: 12px;
+	font-size: 0.85rem;
+}
+
+/* =========================================================
+   MOBILE – everything below only applies to smaller screens
+   ========================================================= */
+@media (max-width: 900px) {
+	.hero .wrap,
+	.split,
+	.reel { grid-template-columns: 1fr; }
+	.split--reverse > :first-child { order: 0; }
+	.cards,
+	.story-steps,
+	.quote-grid,
+	.curious { grid-template-columns: 1fr; }
+	.proof-logos { grid-template-columns: repeat(3, 1fr); }
+	.footer-grid { grid-template-columns: 1fr 1fr; }
+	.cards--4,
+	.pilot-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 720px) {
+	/* Nav moves into its own swipeable row under the logo */
+	.site-header .wrap { flex-wrap: wrap; gap: 8px 16px; padding-block: 10px; }
+	.main-nav { order: 3; width: 100%; margin-left: 0; overflow-x: auto; gap: 18px; padding-bottom: 4px; }
+	.site-header .btn--small { margin-left: auto; }
+	.form-grid,
+	.choice-row,
+	.cards--4,
+	.pilot-grid { grid-template-columns: 1fr; }
+	.gallery { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 520px) {
+	body { font-size: 17px; }
+	.footer-grid { grid-template-columns: 1fr; }
+	.proof-logos { grid-template-columns: repeat(2, 1fr); }
+	.btn-row .btn { width: 100%; text-align: center; }
+}
