@@ -1,4 +1,4 @@
-# I Am Bad At Emails
+# Email FAQ
 
 I am become Sisyphus, and the inbox is my boulder. :grinning: :grinning: :grinning: :grinning:
 
@@ -25,9 +25,8 @@ I can't give each email a thoughtful response, but I'd feel dirty giving a *thou
 
 ### I've sent you a fan letter!
 
-Awww 💖 Thank you!  I sincerely mean that.  I most likely won't be able to reply (I Am Bad At Emails) but I promise you I read each fan letter, and put them in a folder labelled "awww", so I can re-read them whenever I'm feeling down:
+Awww 💖 Thank you!  I sincerely mean that.  I most likely won't be able to reply to every message, but I promise you I read each fan letter, and put them in a folder labelled "awww", so I can re-read them whenever I'm feeling down:
 
-![I Am Bad At Emails]()
 
 ### May I reuse/remix your work?
 
@@ -41,7 +40,7 @@ You can get the code/art to all my projects [on Github](https://github.com/ncase
 
 Thank you, and yes! Note that most of my projects already have fan-translations – if you go to the project page, you'll find a list of translations in a sidebar or at the bottom. If your language isn't there, the list will also link to instructions on how to translate it!
 
-(Because I Am Bad At Emails, it'll take me a few weeks to link to your translation online. Sorry!)
+(It may take me a few weeks to link to your translation online. Thank you for your patience!)
 
 ### I noticed your work on platform X – was that allowed?
 
@@ -61,7 +60,7 @@ I'm currently on hiatus, so sadly no!  I'm very flattered though.  But if you'd 
 
 ### I have a suggestion / fix / idea for a project!
 
-If it's a small glitch or typo, thank you so much for catching it! I'll fix it as soon as I can – (that is: a few weeks, coz I Am Bad At Emails) – and I could add you to the credits if you'd like!
+If it's a small glitch or typo, thank you so much for catching it! I'll fix it as soon as I can – (usually within a few weeks) – and I could add you to the credits if you'd like!
 
 If it's a bigger suggestion (like adding another voting method to *Build A Better Ballot* or more strategies to *Evolution of Trust*) sadly I must decline, otherwise I'd do nothing but update all my old works forever. I must leave them as they are, with all their flaws.
 
@@ -254,8 +253,6 @@ So uh, yeah, good luck
 
 Okay! If your question's not answered above, then heeeeere's my email!
 
-// pic - GO AWAY BOTS
 
-It will take me... I have no idea how long to reply! If ever! You know why?
+I read every message, but replies can take a while. Thank you for your patience!
 
-Because *I AM BAD AT EMAILS.*
