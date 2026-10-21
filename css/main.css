@@ -745,3 +745,62 @@ body.silly-spinning { transform: rotate(360deg); }
 	background: #FFF1EA;
 	border-bottom: 1px solid var(--line);
 }
+
+/* =========================================================
+   LABOR – hidden pages for new income streams (/labor/)
+   ========================================================= */
+
+/* "Preview" ribbon at the top of every lab page */
+.lab-ribbon {
+	margin: 0;
+	padding: 8px 16px;
+	text-align: center;
+	font-size: 0.85rem;
+	font-weight: 700;
+	color: #F2EAE4;
+	background: var(--plum);
+}
+
+/* Small status badge on cards ("Vorschau", "Live", …) */
+.badge { display: inline-block; font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: 999px; background: var(--night); color: var(--paper); margin-bottom: 10px; align-self: flex-start; }
+.badge--live { background: #2f7d4f; }
+
+/* Price lines for tiers/products */
+.tier-price { font-family: var(--font-head); font-size: 1.6rem; margin: 0.2em 0 0.4em; }
+.tier-price small { font-family: var(--font-body); font-size: 0.85rem; color: var(--ink-soft); }
+
+/* Advertising label for affiliate links (required: § 5a UWG) */
+.ad-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-soft); border: 1px solid var(--line); border-radius: 4px; padding: 1px 6px; margin-left: 6px; vertical-align: middle; }
+
+/* ---------- Auction (see js/auction.js) ---------- */
+.lots { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-top: 2em; }
+.lot { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px; display: flex; flex-direction: column; gap: 10px; }
+.lot img { border-radius: 12px; aspect-ratio: 4 / 5; object-fit: cover; width: 100%; }
+.lot-bid { font-family: var(--font-head); font-size: 1.8rem; margin: 0; }
+.lot-meta { font-size: 0.9rem; color: var(--ink-soft); display: flex; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
+.lot-countdown { font-weight: 700; color: var(--accent); }
+.lot-ended .lot-countdown { color: var(--ink-soft); }
+.bid-form { display: grid; gap: 8px; margin-top: 6px; }
+.bid-form input { width: 100%; padding: 10px 12px; border: 1px solid #d6cdbf; border-radius: 10px; font: inherit; background: #fff; }
+.bid-status { min-height: 1.2em; font-size: 0.9rem; color: var(--ink-soft); }
+
+/* ---------- Urban artist forum (see js/forum.js) ---------- */
+.forum-bar { display: flex; flex-wrap: wrap; gap: 8px; margin: 1.5em 0; }
+.forum-bar button { font: inherit; font-size: 0.9rem; padding: 0.4em 1em; border-radius: 999px; border: 1px solid var(--line); background: var(--card); cursor: pointer; }
+.forum-bar button.active { background: var(--plum); color: var(--paper); border-color: var(--plum); }
+.threads { display: grid; gap: 12px; }
+.thread { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; }
+.thread h3 { margin: 4px 0 6px; font-size: 1.15rem; }
+.thread-meta { font-size: 0.82rem; color: var(--ink-soft); display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.thread-body, .comment-body { white-space: pre-wrap; word-break: break-word; }
+.thread-actions { display: flex; gap: 10px; margin-top: 10px; flex-wrap: wrap; }
+.link-btn { font: inherit; font-size: 0.88rem; background: none; border: 0; padding: 0; color: var(--accent); cursor: pointer; text-decoration: underline; }
+.comments { margin-top: 12px; padding-left: 14px; border-left: 3px solid var(--line); display: grid; gap: 10px; }
+.comment { font-size: 0.95rem; }
+.comment-form, .thread-form { display: grid; gap: 8px; margin-top: 10px; }
+.comment-form textarea, .thread-form textarea, .thread-form input, .thread-form select, .comment-form input {
+	width: 100%; padding: 10px 12px; border: 1px solid #d6cdbf; border-radius: 10px; font: inherit; background: #fff;
+}
+.comment-form textarea { min-height: 70px; }
+.thread-form textarea { min-height: 120px; }
+.cat-chip { font-size: 0.75rem; font-weight: 700; padding: 2px 8px; border-radius: 999px; background: #FFE1D4; color: var(--accent-dark); }

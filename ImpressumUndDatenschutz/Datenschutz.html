@@ -75,6 +75,7 @@
 			<li><a class="index-link" href="#m104">Blogs und Publikationsmedien</a></li>
 			<li><a class="index-link" href="#m182">Kontakt- und Anfrageverwaltung</a></li>
 			<li><a class="index-link" href="#mBild">Fotos, Porträts und Einwilligungen (Recht am eigenen Bild)</a></li>
+			<li><a class="index-link" href="#mAuktion">Kunst-Auktionen und Forum</a></li>
 			<li><a class="index-link" href="#mPay">Zahlungsdienstleister</a></li>
 			<li><a class="index-link" href="#m17">Newsletter und elektronische Benachrichtigungen</a></li>
 			<li><a class="index-link" href="#m638">Werbliche Kommunikation via E-Mail, Post, Fax oder Telefon</a></li>
@@ -562,7 +563,7 @@
 				Zweck der Kontaktaufnahme und Kommunikation; <span class=""><strong>Rechtsgrundlagen:</strong>
 					Vertragserfüllung und vorvertragliche Anfragen (Art. 6 Abs. 1 S. 1 lit. b) DSGVO), Berechtigte
 					Interessen (Art. 6 Abs. 1 S. 1 lit. f) DSGVO).</span></li>
-			<li><strong>Formulardienst FormSubmit: </strong>Unsere Online-Formulare (Event- und Workshop-Anfragen, Porträt-Bestellungen, Bewertungen und Einwilligungen) werden über den Dienst FormSubmit an unser E-Mail-Postfach weitergeleitet. Dabei werden die eingegebenen Daten, hochgeladene Dateien (z. B. Fotos) sowie technische Daten (z. B. IP-Adresse, Zeitpunkt) an den Anbieter übermittelt und von dort per E-Mail an uns zugestellt. Die Daten können auf Servern in den USA verarbeitet werden; <span class=""><strong>Rechtsgrundlagen:</strong> Vertragserfüllung und vorvertragliche Anfragen (Art. 6 Abs. 1 S. 1 lit. b) DSGVO), Einwilligung (Art. 6 Abs. 1 S. 1 lit. a) DSGVO), Berechtigte Interessen (Art. 6 Abs. 1 S. 1 lit. f) DSGVO); </span><strong>Website:</strong> <a href="https://formsubmit.co" target="_blank">https://formsubmit.co</a>.</li>
+			<li><strong>Formulardienst FormSubmit: </strong>Unsere Online-Formulare (Event- und Workshop-Anfragen, Porträt-Bestellungen, Reservierungen, Vormerkungen, Partner- und Sponsoring-Anfragen, Bewertungen und Einwilligungen) werden über den Dienst FormSubmit an unser E-Mail-Postfach weitergeleitet. Dabei werden die eingegebenen Daten, hochgeladene Dateien (z. B. Fotos) sowie technische Daten (z. B. IP-Adresse, Zeitpunkt) an den Anbieter übermittelt und von dort per E-Mail an uns zugestellt. Die Daten können auf Servern in den USA verarbeitet werden; <span class=""><strong>Rechtsgrundlagen:</strong> Vertragserfüllung und vorvertragliche Anfragen (Art. 6 Abs. 1 S. 1 lit. b) DSGVO), Einwilligung (Art. 6 Abs. 1 S. 1 lit. a) DSGVO), Berechtigte Interessen (Art. 6 Abs. 1 S. 1 lit. f) DSGVO); </span><strong>Website:</strong> <a href="https://formsubmit.co" target="_blank">https://formsubmit.co</a>.</li>
 			<li><strong>Kundenbewertungen (Senja): </strong>Zur Darstellung von Kundenbewertungen kann ein Widget des Dienstes Senja geladen werden. Es wird erst geladen, wenn Sie auf die entsprechende Schaltfläche klicken; erst dann wird Ihre IP-Adresse an Senja übermittelt. Bewertungen, die Kund:innen über Senja oder unser Bewertungsformular abgeben, veröffentlichen wir nur mit deren Einwilligung; <span class=""><strong>Rechtsgrundlagen:</strong> Einwilligung (Art. 6 Abs. 1 S. 1 lit. a) DSGVO), Berechtigte Interessen (Art. 6 Abs. 1 S. 1 lit. f) DSGVO); </span><strong>Website:</strong> <a href="https://senja.io" target="_blank">https://senja.io</a>.</li>
 		</ul>
 
@@ -982,6 +983,33 @@
 			<li><strong>Bandcamp-Musikplayer: </strong>Auf unserer Startseite kann ein Musikplayer von Bandcamp geladen werden. Der Player wird erst geladen, wenn Sie auf „Song anhören" klicken; erst dann wird Ihre IP-Adresse an Bandcamp übermittelt und Bandcamp kann Cookies setzen; <strong>Dienstanbieter:</strong> Bandcamp, USA; <span class=""><strong>Rechtsgrundlagen:</strong> Einwilligung durch Klick (Art. 6 Abs. 1 S. 1 lit. a) DSGVO); </span><strong>Website:</strong> <a href="https://bandcamp.com" target="_blank">https://bandcamp.com</a>; <strong>Datenschutzerklärung:</strong> <a href="https://bandcamp.com/privacy" target="_blank">https://bandcamp.com/privacy</a>.</li>
 			<li><strong>Senja-Widget: </strong>Siehe Abschnitt „Kontakt- und Anfrageverwaltung" (Kundenbewertungen).</li>
 		</ul>
+		<!-- NEW SECTION: auctions + urban artist forum (both stored in Supabase, region Frankfurt) -->
+		<h2 id="mAuktion">Kunst-Auktionen und Forum</h2>
+		<p><strong>Kunst-Auktionen:</strong> Wenn Sie bei einer Auktion bieten, speichern wir Ihren Vornamen, Ihre
+			E-Mail-Adresse, die Höhe Ihres Gebots und den Zeitpunkt in einer Datenbank des Dienstes Supabase
+			(Serverstandort Frankfurt am Main). Öffentlich angezeigt werden nur Ihr Vorname und die Höhe des aktuellen
+			Höchstgebots. Ihre E-Mail-Adresse ist nicht öffentlich einsehbar; wir nutzen sie ausschließlich, um die
+			Auktion abzuwickeln (Benachrichtigung, Zahlung, Versand). Über neue Gebote werden wir per E-Mail
+			(FormSubmit) informiert. Gebotsdaten löschen wir nach Abschluss der Auktion, soweit keine gesetzlichen
+			Aufbewahrungspflichten (z. B. für Rechnungen) bestehen.</p>
+		<p><strong>Urban-Artist-Forum:</strong> Themen und Kommentare im Forum (Name bzw. Künstlername und Text) werden
+			in derselben Datenbank gespeichert und sind öffentlich sichtbar. Bitte veröffentlichen Sie keine Daten, die
+			Sie nicht teilen möchten. Beiträge können gemeldet werden und werden nach mehreren Meldungen automatisch
+			ausgeblendet. Sie können die Löschung Ihrer Beiträge jederzeit per E-Mail verlangen.</p>
+		<ul class="m-elements">
+			<li><strong>Verarbeitete Datenarten:</strong> Bestandsdaten (Vorname/Name), Kontaktdaten (E-Mail-Adresse),
+				Vertragsdaten (Gebote), Inhaltsdaten (Forumsbeiträge), Meta- und Kommunikationsdaten.</li>
+			<li><strong>Betroffene Personen:</strong> Bietende, Forumsnutzer:innen.</li>
+			<li><strong>Zwecke der Verarbeitung:</strong> Durchführung von Auktionen und Kaufverträgen; Bereitstellung einer
+				Austauschplattform; Schutz vor Missbrauch.</li>
+			<li class=""><strong>Rechtsgrundlagen:</strong> Vertragserfüllung und vorvertragliche Maßnahmen
+				(Art. 6 Abs. 1 S. 1 lit. b) DSGVO) für Gebote; Einwilligung durch Absenden (Art. 6 Abs. 1 S. 1 lit. a)
+				DSGVO) für Forumsbeiträge; Berechtigte Interessen (Art. 6 Abs. 1 S. 1 lit. f) DSGVO) für Moderation und
+				Missbrauchsschutz.</li>
+			<li><strong>Dienstanbieter:</strong> Supabase Inc., USA (Datenspeicherung in der EU, Region Frankfurt);
+				<strong>Datenschutzerklärung:</strong> <a href="https://supabase.com/privacy" target="_blank">https://supabase.com/privacy</a>.</li>
+		</ul>
+
 		<!-- NEW SECTION: payment providers -->
 		<h2 id="mPay">Zahlungsdienstleister</h2>
 		<p>Für Zahlungen vor Ort und online bieten wir externe Zahlungsdienstleister an. Wenn Sie über einen dieser Dienste bezahlen, werden Ihre Zahlungsdaten (z. B. Name, Betrag, Kartendaten bzw. Kontoinformationen, Zeitpunkt) direkt vom jeweiligen Anbieter verarbeitet. Wir erhalten nur die Information über die erfolgte Zahlung.</p>
