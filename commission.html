@@ -104,6 +104,7 @@
 								Je nach Wetter und Sonne. Ob ich heute draußen bin, poste ich vorher in meiner
 								<a href="https://www.instagram.com/smileyfoxyportraits">Instagram-Story</a>.
 							</p>
+							<p class="hint"><a href="/where-i-draw/">Alle Orte &amp; Infos →</a></p>
 						</details>
 					</article>
 
@@ -153,6 +154,19 @@
 					und sind daher nach Fertigstellung nicht möglich.<br>
 					<strong>Rabattkarte:</strong> Du hast persönlich eine Karte von mir bekommen? Dann erhältst du 5 € Rabatt auf jedes Angebot.
 				</p>
+
+				<!-- EXTRAS (add-ons) – change the prices here AND in the form below -->
+				<div class="form-card" style="margin-top:2.5em">
+					<h3>Extras</h3>
+					<ul class="price-list">
+						<li><span>Express: fertig in 3 Tagen</span><strong>+10 €</strong></li>
+						<li><span>Geschenkverpackung</span><strong>+5 €</strong></li>
+						<li><span>Rahmen A5 / A4</span><strong>+12 € / +18 €</strong></li>
+						<li><span>Jede weitere Person oder jedes Haustier</span><strong>+10 €</strong></li>
+						<li><span>Ausgearbeiteter Hintergrund oder Stil-Extra</span><strong>+10 €</strong></li>
+					</ul>
+					<p class="hint">Größere Ideen (z. B. Familienbild als Großformat)? Dann lieber direkt <a href="mailto:aydan@smileyfoxyportraits.com">per E-Mail</a>.</p>
+				</div>
 			</div>
 		</section>
 
@@ -224,12 +238,13 @@
 								<label for="c-frame">Rahmen</label>
 								<select id="c-frame" name="Rahmen">
 									<option>Ohne Rahmen</option>
-									<option>Mit Rahmen (Aufpreis)</option>
+									<option>Mit Rahmen (A5 +12 € / A4 +18 €)</option>
 								</select>
 							</div>
 							<div class="field">
 								<label for="c-people">Anzahl Personen / Tiere</label>
 								<input id="c-people" type="number" name="Personen" min="1" value="1">
+								<p class="hint">+10 € je weitere Person / Tier</p>
 							</div>
 							<div class="field">
 								<label for="c-deadline">Deadline</label>
@@ -243,6 +258,26 @@
 									<option>Abholung in Berlin</option>
 									<option>Nur digital (Scan)</option>
 								</select>
+							</div>
+							<!-- Add-ons: each checkbox shows up in your email only if ticked -->
+							<div class="field full">
+								<fieldset>
+									<legend>Extras</legend>
+									<div class="choice-row choice-row--3">
+										<label class="choice">
+											<input type="checkbox" name="Express" value="Ja (+10 €)">
+											<span><strong>Express</strong><br><span class="hint">fertig in 3 Tagen · +10 €</span></span>
+										</label>
+										<label class="choice">
+											<input type="checkbox" name="Geschenkverpackung" value="Ja (+5 €)">
+											<span><strong>Geschenkverpackung</strong><br><span class="hint">+5 €</span></span>
+										</label>
+										<label class="choice">
+											<input type="checkbox" name="Hintergrund-Extra" value="Ja (+10 €)">
+											<span><strong>Hintergrund / Stil-Extra</strong><br><span class="hint">+10 €</span></span>
+										</label>
+									</div>
+								</fieldset>
 							</div>
 							<div class="field full">
 								<label class="choice">
@@ -264,6 +299,54 @@
 						</p>
 						<button class="btn" type="submit">Porträt unverbindlich anfragen</button>
 					</form>
+				</div>
+			</div>
+		</section>
+
+		<!-- ================= WAIT-LIST for originals & prints ================= -->
+		<section class="section section--alt" id="warteliste" aria-labelledby="wait-title">
+			<div class="wrap">
+				<div class="split">
+					<div>
+						<span class="eyebrow">Warteliste</span>
+						<h2 id="wait-title">Originale &amp; Berlin-Prints</h2>
+						<p>
+							Meine Berlin-Motive in Aquarell und Fineliner gibt es nur in kleiner Stückzahl. Trag dich ein und
+							erfahre als Erste:r, wenn neue Originale oder Prints verfügbar sind. Kein Spam, nur eine kurze
+							Nachricht, wenn es etwas Neues gibt.
+						</p>
+					</div>
+					<div class="form-card" style="margin-top:0">
+						<form action="https://formsubmit.co/aydan@smileyfoxyportraits.com" method="POST">
+							<input type="hidden" name="_subject" value="Neuer Eintrag: Warteliste Originale & Prints">
+							<input type="hidden" name="_template" value="table">
+							<input type="text" name="_honey" style="display:none">
+							<div class="form-grid">
+								<div class="field">
+									<label for="w-name">Vorname *</label>
+									<input id="w-name" name="Name" required autocomplete="given-name">
+								</div>
+								<div class="field">
+									<label for="w-email">E-Mail *</label>
+									<input id="w-email" type="email" name="email" required autocomplete="email">
+								</div>
+								<div class="field full">
+									<label for="w-interest">Was interessiert dich?</label>
+									<select id="w-interest" name="Interesse">
+										<option>Alles</option>
+										<option>Originale</option>
+										<option>Prints</option>
+										<option>Berlin-Motive</option>
+									</select>
+								</div>
+							</div>
+							<p class="form-legal">
+								Deine E-Mail nutze ich nur, um dich über neue Werke zu informieren. Austragen jederzeit per kurzer E-Mail.
+								<a href="/ImpressumUndDatenschutz/Datenschutz.html">Datenschutz</a>
+							</p>
+							<button class="btn btn--fox" type="submit">Auf die Warteliste</button>
+						</form>
+					</div>
 				</div>
 			</div>
 		</section>
@@ -298,7 +381,9 @@
 					<p><a href="/projects/index.html">Projekte</a></p>
 					<p><a href="/thankyou/index.html">Wall of Thanks &amp; Testimonials</a></p>
 					<p><a href="/support-free/">Kostenlos unterstützen</a></p>
-					<p><a href="https://ko-fi.com/G2G7OCU1Z">Ko-fi (Spenden)</a></p>
+					<p><a href="https://www.paypal.biz/SmileyFoxyPortraitsL">PayPal (Spenden)</a></p>
+					<p><a href="/commission.html#warteliste">Warteliste Originale &amp; Prints</a></p>
+					<p><a href="/bewertung.html">Bewertung abgeben</a></p>
 				</div>
 				<div>
 					<h3>Rechtliches</h3>

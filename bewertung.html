@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="de">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-XDZB2DQ1KV"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+		gtag('config', 'G-XDZB2DQ1KV');
+	</script>
+
+	<!-- Feedback page: put this link in your Linktree as "Bewertung abgeben".
+	     "noindex" = Google doesn't list it; it's only for customers you send here. -->
+	<title>Bewertung abgeben | SmileyFoxyPortraits</title>
+	<meta name="description" content="Wie war dein Porträt, Event oder Workshop? Teile deine Erfahrung mit SmileyFoxyPortraits.">
+	<meta name="robots" content="noindex, follow">
+	<link rel="canonical" href="https://smileyfoxyportraits.com/bewertung.html">
+	<link rel="icon" type="image/png" href="/favicon.png">
+
+	<link rel="stylesheet" href="/css/main.css">
+</head>
+
+<body>
+
+	<header class="site-header">
+		<div class="wrap">
+			<a class="logo" href="/">SmileyFoxy<span>Portraits</span></a>
+		</div>
+	</header>
+
+	<main>
+		<section class="section">
+			<div class="wrap">
+				<div class="center">
+					<span class="eyebrow">Feedback</span>
+					<h1>Wie war's?</h1>
+					<p class="lead">
+						Dein Feedback hilft mir, besser zu werden, und anderen Menschen, mich zu finden.
+						Es dauert nur eine Minute. Danke!
+					</p>
+				</div>
+
+				<!-- Sends to your email via formsubmit.co, like the other forms.
+				     If you later set up a Senja "collect testimonials" form, you can link to it here instead. -->
+				<div class="form-card">
+					<form action="https://formsubmit.co/aydan@smileyfoxyportraits.com" method="POST" enctype="multipart/form-data">
+						<input type="hidden" name="_subject" value="Neue Bewertung (Website)">
+						<input type="hidden" name="_template" value="table">
+						<input type="text" name="_honey" style="display:none">
+
+						<div class="form-grid">
+							<div class="field">
+								<label for="r-name">Vorname *</label>
+								<input id="r-name" name="Name" required autocomplete="given-name">
+							</div>
+							<div class="field">
+								<label for="r-email">E-Mail (wird nicht veröffentlicht)</label>
+								<input id="r-email" type="email" name="email" autocomplete="email">
+							</div>
+							<div class="field full">
+								<label for="r-what">Was hast du erlebt? *</label>
+								<select id="r-what" name="Erlebnis" required>
+									<option value="">Bitte wählen</option>
+									<option>Live-Porträt draußen (Mauerpark / Brandenburger Tor)</option>
+									<option>Live-Porträts auf einem Event</option>
+									<option>Kleckerkasten-Workshop</option>
+									<option>Auftrags-Porträt</option>
+								</select>
+							</div>
+
+							<!-- Star rating -->
+							<div class="field full">
+								<fieldset>
+									<legend>Wie zufrieden warst du? *</legend>
+									<div class="stars">
+										<label class="choice"><input type="radio" name="Sterne" value="5" required> ★★★★★</label>
+										<label class="choice"><input type="radio" name="Sterne" value="4"> ★★★★</label>
+										<label class="choice"><input type="radio" name="Sterne" value="3"> ★★★</label>
+										<label class="choice"><input type="radio" name="Sterne" value="2"> ★★</label>
+										<label class="choice"><input type="radio" name="Sterne" value="1"> ★</label>
+									</div>
+								</fieldset>
+							</div>
+
+							<div class="field full">
+								<label for="r-text">Deine Worte *</label>
+								<textarea id="r-text" name="Bewertung" rows="5" required
+									placeholder="Was hat dir gefallen? Wie hat sich das Porträt angefühlt? Was kann ich besser machen?"></textarea>
+							</div>
+							<div class="field full">
+								<label for="r-photo">Foto von dir mit dem Porträt (optional)</label>
+								<input id="r-photo" type="file" name="Foto" accept="image/*">
+							</div>
+							<div class="field full">
+								<label class="choice">
+									<input type="checkbox" name="Veröffentlichung" value="Ja, mit Vornamen">
+									<span>Ich bin einverstanden, dass meine Bewertung (und ggf. mein Foto) mit Vornamen auf der Website und auf Instagram gezeigt wird.</span>
+								</label>
+							</div>
+						</div>
+
+						<p class="form-legal">
+							Ohne Häkchen bleibt dein Feedback privat. Details in der
+							<a href="/ImpressumUndDatenschutz/Datenschutz.html">Datenschutzerklärung</a>.
+						</p>
+						<button class="btn" type="submit">Bewertung senden</button>
+					</form>
+				</div>
+
+				<p class="center" style="margin-top:2em"><a href="/thankyou/index.html">Was andere geschrieben haben: Wall of Thanks →</a></p>
+			</div>
+		</section>
+	</main>
+
+	<footer class="site-footer">
+		<div class="wrap footer-bottom" style="margin-top:0;border-top:0">
+			<span>© SmileyFoxyPortraits · Aydan Lig'on · Berlin</span>
+			<span>
+				<a href="/ImpressumUndDatenschutz/Impressum.html">Impressum</a> ·
+				<a href="/ImpressumUndDatenschutz/Datenschutz.html">Datenschutz</a> ·
+				<a href="https://www.instagram.com/smileyfoxyportraits">Instagram</a>
+			</span>
+		</div>
+	</footer>
+
+</body>
+
+</html>

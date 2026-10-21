@@ -1,1 +1,3 @@
 .DS_STORE
+# Outreach PDFs contain private contact info (phone) - never publish
+outreach/
