@@ -730,3 +730,7 @@ body.silly-spinning { transform: rotate(360deg); }
 	.proof-logos { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 	.btn-row .btn { width: 100%; text-align: center; }
 }
+
+/* Reisegewerbekarte front/back in the Impressum (A6 landscape = 148 x 105 mm) */
+.ph--a6 { aspect-ratio: 148 / 105; }
+.card-scan { display: grid; gap: 16px; max-width: 720px; margin: 1em 0 1.5em; } /* large, stacked */
