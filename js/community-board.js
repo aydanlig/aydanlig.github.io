@@ -1,3 +1,20 @@
+/* =========================================================
+   community-board.js – the "Advice and ideas board" (support-free page)
+
+   HOW IT WORKS (no own server needed):
+   - Posts are stored in a free Supabase database (see setup/supabase-board.md).
+   - New posts are HIDDEN until you approve them in the Supabase dashboard
+     (tick "approved"). Only approved posts are shown on the website.
+   - Every new post also emails you (via formsubmit.co), so you know there is
+     something to approve.
+   - As long as Supabase is not set up yet, posts are only emailed to you
+     and visitors are told honestly that their post was sent.
+
+   SETTINGS live on the <section data-community-board ...> tag in the HTML:
+     data-supabase-url   e.g. https://abcd1234.supabase.co
+     data-supabase-key   the public "anon" / "publishable" key (safe to publish)
+     data-notify-email   where new posts are emailed to
+   ========================================================= */
 (function () {
 	"use strict";
 
@@ -6,6 +23,7 @@
 		"nigger", "faggot", "slut", "whore", "motherfucker", "retard"
 	];
 	var MAX_IMAGE_BYTES = 5 * 1024 * 1024;
+	var MAX_IMAGE_SIDE = 800; // images are shrunk to max 800px before saving
 	var NSFW_THRESHOLDS = {
 		Porn: 0.6,
 		Hentai: 0.6,
@@ -34,20 +52,17 @@
 		return false;
 	}
 
-	function id() {
-		return "p_" + Date.now().toString(36) + "_" + Math.random().toString(36).slice(2, 8);
-	}
-
 	function formatDate(ts) {
 		return new Date(ts).toLocaleString();
 	}
 
-	function readAsDataUrl(file) {
+	function loadScript(src) {
 		return new Promise(function (resolve, reject) {
-			var reader = new FileReader();
-			reader.onload = function () { resolve(reader.result); };
-			reader.onerror = reject;
-			reader.readAsDataURL(file);
+			var s = document.createElement("script");
+			s.src = src;
+			s.onload = resolve;
+			s.onerror = reject;
+			document.head.appendChild(s);
 		});
 	}
 
@@ -60,18 +75,28 @@
 		});
 	}
 
+	// The image safety scanner (~2 MB) is only downloaded when someone attaches an image
 	async function getNsfwModel() {
-		if (!window.nsfwjs || !window.tf) {
-			return null;
-		}
 		if (!modelPromise) {
-			modelPromise = window.nsfwjs.load("https://cdn.jsdelivr.net/npm/nsfwjs@2.4.2/dist/model/").catch(function () {
-				return null;
-			});
+			modelPromise = loadScript("https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.20.0/dist/tf.min.js")
+				.then(function () { return loadScript("https://cdn.jsdelivr.net/npm/nsfwjs@2.4.2/dist/nsfwjs.min.js"); })
+				.then(function () { return window.nsfwjs.load("https://cdn.jsdelivr.net/npm/nsfwjs@2.4.2/dist/model/"); })
+				.catch(function () { return null; });
 		}
 		return modelPromise;
 	}
 
+	// Shrink an image to max 800px and turn it into a small JPEG (about 50–150 KB)
+	function shrinkImage(img) {
+		var scale = Math.min(1, MAX_IMAGE_SIDE / Math.max(img.width, img.height));
+		var canvas = document.createElement("canvas");
+		canvas.width = Math.round(img.width * scale);
+		canvas.height = Math.round(img.height * scale);
+		canvas.getContext("2d").drawImage(img, 0, 0, canvas.width, canvas.height);
+		return canvas.toDataURL("image/jpeg", 0.8);
+	}
+
+	// Checks an image for nudity and returns a shrunk version: { ok, imageData, reason }
 	async function scanImage(file) {
 		if (!file) {
 			return { ok: true, imageData: "" };
@@ -86,93 +111,79 @@
 			return { ok: false, reason: "Image filename contains blocked language." };
 		}
 
-		var preview = await readAsDataUrl(file);
-		var model = await getNsfwModel();
-		if (!model) {
-			return { ok: true, imageData: preview, warning: "Image scanner unavailable right now; text filtering still active." };
-		}
-
 		var blobUrl = URL.createObjectURL(file);
 		try {
 			var img = await loadImageFromUrl(blobUrl);
-			var predictions = await model.classify(img);
-			for (var i = 0; i < predictions.length; i++) {
-				var p = predictions[i];
-				if (Object.prototype.hasOwnProperty.call(NSFW_THRESHOLDS, p.className) && p.probability >= NSFW_THRESHOLDS[p.className]) {
-					return { ok: false, reason: "Image blocked by safety filter (" + p.className + ")." };
+			var model = await getNsfwModel();
+			if (model) {
+				var predictions = await model.classify(img);
+				for (var i = 0; i < predictions.length; i++) {
+					var p = predictions[i];
+					if (Object.prototype.hasOwnProperty.call(NSFW_THRESHOLDS, p.className) && p.probability >= NSFW_THRESHOLDS[p.className]) {
+						return { ok: false, reason: "Image blocked by safety filter (" + p.className + ")." };
+					}
 				}
 			}
-			return { ok: true, imageData: preview };
+			// Without the scanner the image is still reviewed by you before it appears
+			return { ok: true, imageData: shrinkImage(img) };
 		} catch (err) {
-			return { ok: false, reason: "Could not scan image. Please try another file." };
+			return { ok: false, reason: "Could not read this image. Please try another file." };
 		} finally {
 			URL.revokeObjectURL(blobUrl);
 		}
 	}
 
-	function isServerBoard(section) {
-		return String(section.getAttribute("data-backend") || "").toLowerCase() === "server";
-	}
+	/* ---------- Supabase (database) ---------- */
 
-	function getEndpoint(section, attrName, fallbackPath) {
-		return section.getAttribute(attrName) || fallbackPath;
-	}
-
-	async function readJsonResponse(response) {
-		var contentType = response.headers.get("content-type") || "";
-		if (contentType.indexOf("application/json") === -1) {
-			throw new Error("Expected JSON response.");
+	function supabaseHeaders(key) {
+		var headers = { "apikey": key, "Content-Type": "application/json" };
+		// Old-style "anon" keys are JWTs (start with "eyJ") and also go in the Authorization header
+		if (key.indexOf("eyJ") === 0) {
+			headers.Authorization = "Bearer " + key;
 		}
-		return response.json();
+		return headers;
 	}
 
-	async function postJson(url, payload) {
-		var response = await fetch(url, {
-			method: "POST",
-			headers: { "Content-Type": "application/json" },
-			body: JSON.stringify(payload)
-		});
+	async function fetchOk(url, options) {
+		var response = await fetch(url, options);
 		if (!response.ok) {
-			var message = "Request failed.";
-			try {
-				var errorBody = await response.json();
-				message = errorBody && errorBody.error ? errorBody.error : message;
-			} catch (err) {
-				// keep default message
-			}
-			throw new Error(message);
+			throw new Error("Request failed (" + response.status + ").");
 		}
-		return readJsonResponse(response);
+		return response;
+	}
+
+	/* ---------- Email notification (formsubmit.co) ---------- */
+
+	function notifyByEmail(email, boardKey, alias, message, hasImage) {
+		if (!email) {
+			return Promise.resolve();
+		}
+		return fetchOk("https://formsubmit.co/ajax/" + encodeURIComponent(email), {
+			method: "POST",
+			headers: { "Content-Type": "application/json", "Accept": "application/json" },
+			body: JSON.stringify({
+				_subject: "New board post (" + boardKey + ") – waiting for approval",
+				_template: "table",
+				Name: alias,
+				Message: message,
+				Image: hasImage ? "yes (see Supabase)" : "no"
+			})
+		});
 	}
 
 	function mountBoard(section) {
 		var boardKey = section.getAttribute("data-community-board") || "default";
-		var storageKey = "community-board:" + boardKey;
-		var votedKey = storageKey + ":voted";
-		var serverMode = isServerBoard(section);
-		var liveMode = serverMode;
-		var feedEndpoint = getEndpoint(section, "data-feed-endpoint", "");
-		var postEndpoint = getEndpoint(section, "data-post-endpoint", "");
-		var voteEndpoint = getEndpoint(section, "data-vote-endpoint", "");
+		var votedKey = "community-board:" + boardKey + ":voted";
+		var dbUrl = (section.getAttribute("data-supabase-url") || "").replace(/\/+$/, "");
+		var dbKey = section.getAttribute("data-supabase-key") || "";
+		var notifyEmail = section.getAttribute("data-notify-email") || "";
+		var hasDatabase = Boolean(dbUrl && dbKey);
 
 		var form = section.querySelector(".community-form");
 		var list = section.querySelector("[data-community-list]");
 		var status = section.querySelector(".community-status");
 		if (!form || !list || !status) {
 			return;
-		}
-
-		function readPosts() {
-			try {
-				var data = localStorage.getItem(storageKey);
-				return data ? JSON.parse(data) : [];
-			} catch (e) {
-				return [];
-			}
-		}
-
-		function savePosts(posts) {
-			localStorage.setItem(storageKey, JSON.stringify(posts));
 		}
 
 		function readVoted() {
@@ -185,147 +196,60 @@
 		}
 
 		function saveVoted(map) {
-			localStorage.setItem(votedKey, JSON.stringify(map));
-		}
-
-		function loadServerPosts() {
-			if (!feedEndpoint) {
-				return Promise.resolve([]);
-			}
-			return fetch(feedEndpoint)
-				.then(function (response) {
-					if (!response.ok) {
-						throw new Error("Could not load posts.");
-					}
-					return readJsonResponse(response);
-				})
-				.then(function (data) {
-					return Array.isArray(data) ? data : (data.posts || []);
-				});
-		}
-
-		function makeServerImagePayload(file) {
-			return scanImage(file).then(function (result) {
-				if (!result.ok) {
-					throw new Error(result.reason);
-				}
-				return {
-					imageData: result.imageData || "",
-					warning: result.warning || "",
-					imageName: file ? file.name : ""
-				};
-			});
-		}
-
-		function normalizePost(post) {
-			return {
-				id: post.id,
-				alias: post.alias || "Anonymous",
-				message: post.message || "",
-				imageData: post.imageData || "",
-				imageUrl: post.imageUrl || "",
-				upvotes: post.upvotes || 0,
-				createdAt: post.createdAt || Date.now()
-			};
-		}
-
-		function render() {
-			var posts = readPosts();
-			posts.sort(function (a, b) {
-				if ((b.upvotes || 0) !== (a.upvotes || 0)) {
-					return (b.upvotes || 0) - (a.upvotes || 0);
-				}
-				return (b.createdAt || 0) - (a.createdAt || 0);
-			});
-
-			if (!posts.length) {
-				list.innerHTML = '<p class="community-empty">No posts yet. Be the first one.</p>';
-				return;
-			}
-
-			var voted = readVoted();
-			var html = posts.map(function (post) {
-				var votedClass = voted[post.id] ? " voted" : "";
-				var imageSrc = post.imageUrl || post.imageData || "";
-				var imageHtml = imageSrc ? '<img class="community-image" src="' + imageSrc + '" alt="User upload" loading="lazy" />' : "";
-				return (
-					'<article class="community-post" data-post-id="' + escapeHtml(post.id) + '">' +
-					'<div class="community-meta">' +
-					'<span>' + escapeHtml(post.alias || "Anonymous") + ' - ' + escapeHtml(formatDate(post.createdAt)) + '</span>' +
-					'<button type="button" class="vote-button' + votedClass + '" data-upvote="' + escapeHtml(post.id) + '">▲ ' + (post.upvotes || 0) + '</button>' +
-					'</div>' +
-					'<div class="community-body">' + escapeHtml(post.message) + '</div>' +
-					imageHtml +
-					'</article>'
-				);
-			}).join("");
-
-			list.innerHTML = html;
-		}
-
-		function renderServerPosts(posts) {
-			var voted = readVoted();
-			posts = (posts || []).map(normalizePost);
-			posts.sort(function (a, b) {
-				if ((b.upvotes || 0) !== (a.upvotes || 0)) {
-					return (b.upvotes || 0) - (a.upvotes || 0);
-				}
-				return (b.createdAt || 0) - (a.createdAt || 0);
-			});
-
-			if (!posts.length) {
-				list.innerHTML = '<p class="community-empty">No posts yet. Be the first one.</p>';
-				return;
-			}
-
-			var html = posts.map(function (post) {
-				var votedClass = voted[post.id] ? " voted" : "";
-				var imageSrc = post.imageUrl || post.imageData || "";
-				var imageHtml = imageSrc ? '<img class="community-image" src="' + escapeHtml(imageSrc) + '" alt="User upload" loading="lazy" />' : "";
-				return (
-					'<article class="community-post" data-post-id="' + escapeHtml(post.id) + '">' +
-					'<div class="community-meta">' +
-					'<span>' + escapeHtml(post.alias || "Anonymous") + ' - ' + escapeHtml(formatDate(post.createdAt)) + '</span>' +
-					'<button type="button" class="vote-button' + votedClass + '" data-upvote="' + escapeHtml(post.id) + '">▲ ' + (post.upvotes || 0) + '</button>' +
-					'</div>' +
-					'<div class="community-body">' + escapeHtml(post.message) + '</div>' +
-					imageHtml +
-					'</article>'
-				);
-			}).join("");
-
-			list.innerHTML = html;
-		}
-
-		async function refreshServerBoard() {
 			try {
-				var posts = await loadServerPosts();
-				liveMode = true;
-				renderServerPosts(posts);
-				return true;
-			} catch (err) {
-				liveMode = false;
-				status.textContent = "Live wall unavailable right now; using local mode until the server is started.";
-				renderLocalBoard();
-				return false;
+				localStorage.setItem(votedKey, JSON.stringify(map));
+			} catch (e) {
+				// voting still works, it just isn't remembered
 			}
 		}
 
-		function renderLocalBoard() {
-			render();
+		function renderPosts(posts) {
+			if (!posts.length) {
+				list.innerHTML = '<p class="community-empty">No posts yet. Be the first one.</p>';
+				return;
+			}
+			var voted = readVoted();
+			list.innerHTML = posts.map(function (post) {
+				var votedClass = voted[post.id] ? " voted" : "";
+				var imageHtml = post.image_data
+					? '<img class="community-image" src="' + escapeHtml(post.image_data) + '" alt="User upload" loading="lazy" />'
+					: "";
+				return (
+					'<article class="community-post" data-post-id="' + escapeHtml(post.id) + '">' +
+					'<div class="community-meta">' +
+					'<span>' + escapeHtml(post.alias || "Anonymous") + ' - ' + escapeHtml(formatDate(post.created_at)) + '</span>' +
+					'<button type="button" class="vote-button' + votedClass + '" data-upvote="' + escapeHtml(post.id) + '">▲ ' + (post.upvotes || 0) + '</button>' +
+					'</div>' +
+					'<div class="community-body">' + escapeHtml(post.message) + '</div>' +
+					imageHtml +
+					'</article>'
+				);
+			}).join("");
+		}
+
+		async function loadPosts() {
+			if (!hasDatabase) {
+				list.innerHTML = '<p class="community-empty">The public board is coming soon. You can already send a post – Aydan reads every one.</p>';
+				return;
+			}
+			try {
+				// Only approved posts are returned (the database itself enforces this)
+				var url = dbUrl + "/rest/v1/board_posts?select=id,alias,message,image_data,upvotes,created_at" +
+					"&board=eq." + encodeURIComponent(boardKey) + "&order=upvotes.desc,created_at.desc&limit=100";
+				var response = await fetchOk(url, { headers: supabaseHeaders(dbKey) });
+				renderPosts(await response.json());
+			} catch (err) {
+				list.innerHTML = '<p class="community-empty">The board could not be loaded right now. Please try again later.</p>';
+			}
 		}
 
 		form.addEventListener("submit", async function (event) {
 			event.preventDefault();
 			status.textContent = "Checking your post...";
 
-			var aliasInput = form.elements.alias;
-			var messageInput = form.elements.message;
-			var imageInput = form.elements.image;
-
-			var alias = (aliasInput && aliasInput.value ? aliasInput.value.trim() : "") || "Anonymous";
-			var message = messageInput && messageInput.value ? messageInput.value.trim() : "";
-			var file = imageInput && imageInput.files ? imageInput.files[0] : null;
+			var alias = (form.elements.alias && form.elements.alias.value.trim()) || "Anonymous";
+			var message = form.elements.message ? form.elements.message.value.trim() : "";
+			var file = form.elements.image && form.elements.image.files ? form.elements.image.files[0] : null;
 
 			if (!message) {
 				status.textContent = "Please add a message before posting.";
@@ -336,127 +260,68 @@
 				return;
 			}
 
-			if (serverMode && liveMode) {
-				try {
-					var imagePayload = await makeServerImagePayload(file);
-					var createdPost = await postJson(postEndpoint, {
-						alias: alias.slice(0, 40),
-						message: message.slice(0, 600),
-						imageData: imagePayload.imageData || "",
-						imageName: imagePayload.imageName || ""
-					});
-					form.reset();
-					status.textContent = imagePayload.warning || "Posted. Thanks for sharing.";
-					if (createdPost) {
-						await refreshServerBoard();
-					}
-				} catch (err) {
-					liveMode = false;
-					status.textContent = (err.message || "Could not post right now.") + " Using local mode instead.";
-					var imageResult = await scanImage(file);
-					if (!imageResult.ok) {
-						status.textContent = imageResult.reason;
-						return;
-					}
-					var posts = readPosts();
-					posts.push({
-						id: id(),
-						alias: alias.slice(0, 40),
-						message: message.slice(0, 600),
-						imageData: imageResult.imageData || "",
-						upvotes: 0,
-						createdAt: Date.now()
-					});
-					savePosts(posts);
-					form.reset();
-					status.textContent = imageResult.warning || "Posted locally. Thanks for sharing.";
-					renderLocalBoard();
-				}
-				return;
-			}
-
 			var imageResult = await scanImage(file);
 			if (!imageResult.ok) {
 				status.textContent = imageResult.reason;
 				return;
 			}
 
-			var posts = readPosts();
-			posts.push({
-				id: id(),
-				alias: alias.slice(0, 40),
-				message: message.slice(0, 600),
-				imageData: imageResult.imageData || "",
-				upvotes: 0,
-				createdAt: Date.now()
-			});
-			savePosts(posts);
+			alias = alias.slice(0, 40);
+			message = message.slice(0, 600);
+			status.textContent = "Sending...";
 
-			form.reset();
-			status.textContent = imageResult.warning || "Posted. Thanks for sharing.";
-			renderLocalBoard();
+			try {
+				if (hasDatabase) {
+					await fetchOk(dbUrl + "/rest/v1/board_posts", {
+						method: "POST",
+						headers: Object.assign(supabaseHeaders(dbKey), { "Prefer": "return=minimal" }),
+						body: JSON.stringify({
+							board: boardKey,
+							alias: alias,
+							message: message,
+							image_data: imageResult.imageData || null
+						})
+					});
+					// The email is just a heads-up; the post is already saved if this fails
+					notifyByEmail(notifyEmail, boardKey, alias, message, Boolean(imageResult.imageData)).catch(function () { });
+					status.textContent = "Thanks! Your post will appear here once Aydan has approved it.";
+				} else {
+					await notifyByEmail(notifyEmail, boardKey, alias, message, Boolean(imageResult.imageData));
+					status.textContent = "Thanks! Your post was sent to Aydan.";
+				}
+				form.reset();
+			} catch (err) {
+				status.textContent = "Could not send your post right now. Please try again later or email aydan@smileyfoxyportraits.com.";
+			}
 		});
 
-		list.addEventListener("click", function (event) {
+		list.addEventListener("click", async function (event) {
 			var button = event.target.closest("[data-upvote]");
-			if (!button) {
+			if (!button || !hasDatabase) {
 				return;
 			}
-
 			var postId = button.getAttribute("data-upvote");
-			if (!postId) {
-				return;
-			}
-
 			var voted = readVoted();
 			if (voted[postId]) {
 				status.textContent = "You already upvoted this post from this browser.";
 				return;
 			}
-
-			if (serverMode && liveMode) {
-				postJson(voteEndpoint, { id: postId }).then(function () {
-					voted[postId] = true;
-					saveVoted(voted);
-					status.textContent = "Thanks for voting.";
-					refreshServerBoard();
-				}).catch(function (err) {
-					liveMode = false;
-					status.textContent = (err.message || "Could not save your vote.") + " Using local mode instead.";
-					var posts = readPosts();
-					for (var i = 0; i < posts.length; i++) {
-						if (posts[i].id === postId) {
-							posts[i].upvotes = (posts[i].upvotes || 0) + 1;
-							break;
-						}
-					}
-					savePosts(posts);
-					voted[postId] = true;
-					saveVoted(voted);
-					renderLocalBoard();
+			try {
+				await fetchOk(dbUrl + "/rest/v1/rpc/upvote_post", {
+					method: "POST",
+					headers: supabaseHeaders(dbKey),
+					body: JSON.stringify({ post_id: postId })
 				});
-				return;
+				voted[postId] = true;
+				saveVoted(voted);
+				status.textContent = "Thanks for voting.";
+				loadPosts();
+			} catch (err) {
+				status.textContent = "Could not save your vote right now.";
 			}
-
-			var posts = readPosts();
-			for (var i = 0; i < posts.length; i++) {
-				if (posts[i].id === postId) {
-					posts[i].upvotes = (posts[i].upvotes || 0) + 1;
-					break;
-				}
-			}
-			savePosts(posts);
-			voted[postId] = true;
-			saveVoted(voted);
-			status.textContent = "Thanks for voting.";
-			renderLocalBoard();
 		});
 
-		if (serverMode) {
-			refreshServerBoard();
-		} else {
-			renderLocalBoard();
-		}
+		loadPosts();
 	}
 
 	document.addEventListener("DOMContentLoaded", function () {

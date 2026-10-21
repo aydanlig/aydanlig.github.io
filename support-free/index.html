@@ -36,10 +36,15 @@
 		<p>My goal is to create more smiles, build meaningful artistic partnerships, and show up at events or networking spaces where people can discover my work.</p>
 		<p>If you want to help in a more direct way, email <a href="mailto:aydan@smileyfoxyportraits.com">aydan@smileyfoxyportraits.com</a>.</p>
 
-		<section class="community-board" data-community-board="support-free">
+		<!-- BOARD SETTINGS: paste your Supabase project URL and public key below (see setup/supabase-board.md).
+		     Leave them empty and posts are only emailed to you. -->
+		<section class="community-board" data-community-board="support-free"
+			data-supabase-url="https://qhvjvalycyqxxyxgecal.supabase.co"
+			data-supabase-key="sb_publishable_F1hnVQPC4g68vXrEsCyBUA_rxOxfZow"
+			data-notify-email="aydan@smileyfoxyportraits.com">
 			<h2>Advice and ideas board</h2>
 			<p class="community-hint">Ask for business or life advice, share tips, or drop ideas about anything at all. Posts are anonymous.</p>
-			<p class="community-hint">Image uploads and comments are scanned and blocked when unsafe or profane.</p>
+			<p class="community-hint">Posts are checked for profanity, images for nudity, and every post is reviewed by me before it appears.</p>
 
 			<form class="community-form" autocomplete="off">
 				<label for="support-free-alias">Name (optional)</label>
@@ -91,8 +96,6 @@
 
 		<a href="https://www.paypal.biz/SmileyFoxyPortraitsL" style="display:inline-block;margin-top:0.6em;padding:0.4em 1em;border-radius:999px;background:#FF6B35;color:#0F0C11;font-weight:700;text-decoration:none">Support me via PayPal</a>
 	</div>
-	<script defer src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.20.0/dist/tf.min.js"></script>
-	<script defer src="https://cdn.jsdelivr.net/npm/nsfwjs@2.4.2/dist/nsfwjs.min.js"></script>
 	<script defer src="/js/community-board.js"></script>
 </body>
 </html>

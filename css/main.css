@@ -221,6 +221,9 @@ p { margin: 0 0 1em; }
 }
 .quote p { font-family: var(--font-head); font-size: 1.1rem; }
 .quote cite { font-style: normal; font-size: 0.9rem; color: var(--ink-soft); }
+/* Two testimonial cards with a photo on top (homepage + where-i-draw) */
+.quote-grid--2 { grid-template-columns: repeat(2, 1fr); max-width: 820px; margin: 0 auto; text-align: left; }
+.quote .ph, .quote .ph-img { margin-bottom: 16px; }
 
 /* ---------- Cards (the 3 services) ---------- */
 .cards {
