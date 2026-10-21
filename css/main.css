@@ -1,7 +1,7 @@
 /* =========================================================
    SmileyFoxyPortraits – main.css
    Used by: index.html, events.html, commission.html
-   (The older subpages still use css/index.css – leave that file alone.)
+   All pages of the site use this one stylesheet.
 
    HOW TO CHANGE THE LOOK QUICKLY:
    Edit the colors / fonts in :root below. Everything else uses them.

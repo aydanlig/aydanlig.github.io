@@ -1,6 +1,5 @@
 User-agent: *
 Allow: /
 Disallow: /img/
-Disallow: /learnemup/fashionchecklist.html
 
 Sitemap: https://smileyfoxyportraits.com/sitemap.xml
