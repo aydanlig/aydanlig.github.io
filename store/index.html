@@ -287,10 +287,10 @@
                     <!-- Redirect to custom thank-you page or home page (Optional) -->
                     <input type="hidden" name="_next" value="https://smileyfoxyportraits.com/danke.html">
                     <input type="text" name="_honey" style="display:none">
+                    <!-- No English captcha page; the hidden _honey field above catches spam bots -->
+                    <input type="hidden" name="_captcha" value="false">
 
-                    <!-- Prevent spam captchas if you prefer (Optional) -->
-                    <!-- <input type="hidden" name="_captcha" value="false"> -->
-
+                    
                     <div class="form-group">
                         <label for="name">Name</label>
                         <input type="text" id="name" name="name" required placeholder="Your name">
