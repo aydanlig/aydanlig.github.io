@@ -102,13 +102,13 @@
 			return { ok: true, imageData: "" };
 		}
 		if (!file.type || file.type.indexOf("image/") !== 0) {
-			return { ok: false, reason: "Only image uploads are allowed." };
+			return { ok: false, reason: "Bitte lade nur Bilder hoch." };
 		}
 		if (file.size > MAX_IMAGE_BYTES) {
-			return { ok: false, reason: "Image is too large. Max file size is 5MB." };
+			return { ok: false, reason: "Das Bild ist zu groß (maximal 5 MB)." };
 		}
 		if (containsTextProfanity(file.name)) {
-			return { ok: false, reason: "Image filename contains blocked language." };
+			return { ok: false, reason: "Der Dateiname enthält unzulässige Wörter." };
 		}
 
 		var blobUrl = URL.createObjectURL(file);
@@ -120,14 +120,14 @@
 				for (var i = 0; i < predictions.length; i++) {
 					var p = predictions[i];
 					if (Object.prototype.hasOwnProperty.call(NSFW_THRESHOLDS, p.className) && p.probability >= NSFW_THRESHOLDS[p.className]) {
-						return { ok: false, reason: "Image blocked by safety filter (" + p.className + ")." };
+						return { ok: false, reason: "Bild vom Sicherheitsfilter blockiert (" + p.className + ")." };
 					}
 				}
 			}
 			// Without the scanner the image is still reviewed by you before it appears
 			return { ok: true, imageData: shrinkImage(img) };
 		} catch (err) {
-			return { ok: false, reason: "Could not read this image. Please try another file." };
+			return { ok: false, reason: "Das Bild konnte nicht gelesen werden. Bitte versuche eine andere Datei." };
 		} finally {
 			URL.revokeObjectURL(blobUrl);
 		}
@@ -162,11 +162,11 @@
 			method: "POST",
 			headers: { "Content-Type": "application/json", "Accept": "application/json" },
 			body: JSON.stringify({
-				_subject: "New board post (" + boardKey + ") – waiting for approval",
+				_subject: "Neuer Board-Beitrag (" + boardKey + ") – wartet auf Freigabe",
 				_template: "table",
 				Name: alias,
-				Message: message,
-				Image: hasImage ? "yes (see Supabase)" : "no"
+				Nachricht: message,
+				Bild: hasImage ? "ja (siehe Supabase)" : "nein"
 			})
 		});
 	}
@@ -205,19 +205,19 @@
 
 		function renderPosts(posts) {
 			if (!posts.length) {
-				list.innerHTML = '<p class="community-empty">No posts yet. Be the first one.</p>';
+				list.innerHTML = '<p class="community-empty">Noch keine Beiträge. Sei die erste Person!</p>';
 				return;
 			}
 			var voted = readVoted();
 			list.innerHTML = posts.map(function (post) {
 				var votedClass = voted[post.id] ? " voted" : "";
 				var imageHtml = post.image_data
-					? '<img class="community-image" src="' + escapeHtml(post.image_data) + '" alt="User upload" loading="lazy" />'
+					? '<img class="community-image" src="' + escapeHtml(post.image_data) + '" alt="Bild aus einem Beitrag" loading="lazy" />'
 					: "";
 				return (
 					'<article class="community-post" data-post-id="' + escapeHtml(post.id) + '">' +
 					'<div class="community-meta">' +
-					'<span>' + escapeHtml(post.alias || "Anonymous") + ' - ' + escapeHtml(formatDate(post.created_at)) + '</span>' +
+					'<span>' + escapeHtml(post.alias || "Anonym") + ' - ' + escapeHtml(formatDate(post.created_at)) + '</span>' +
 					'<button type="button" class="vote-button' + votedClass + '" data-upvote="' + escapeHtml(post.id) + '">▲ ' + (post.upvotes || 0) + '</button>' +
 					'</div>' +
 					'<div class="community-body">' + escapeHtml(post.message) + '</div>' +
@@ -229,7 +229,7 @@
 
 		async function loadPosts() {
 			if (!hasDatabase) {
-				list.innerHTML = '<p class="community-empty">The public board is coming soon. You can already send a post – Aydan reads every one.</p>';
+				list.innerHTML = '<p class="community-empty">Das öffentliche Board kommt bald. Du kannst schon jetzt einen Beitrag senden – Aydan liest jeden.</p>';
 				return;
 			}
 			try {
@@ -239,24 +239,24 @@
 				var response = await fetchOk(url, { headers: supabaseHeaders(dbKey) });
 				renderPosts(await response.json());
 			} catch (err) {
-				list.innerHTML = '<p class="community-empty">The board could not be loaded right now. Please try again later.</p>';
+				list.innerHTML = '<p class="community-empty">Das Board konnte gerade nicht geladen werden. Bitte versuch es später noch einmal.</p>';
 			}
 		}
 
 		form.addEventListener("submit", async function (event) {
 			event.preventDefault();
-			status.textContent = "Checking your post...";
+			status.textContent = "Dein Beitrag wird geprüft …";
 
-			var alias = (form.elements.alias && form.elements.alias.value.trim()) || "Anonymous";
+			var alias = (form.elements.alias && form.elements.alias.value.trim()) || "Anonym";
 			var message = form.elements.message ? form.elements.message.value.trim() : "";
 			var file = form.elements.image && form.elements.image.files ? form.elements.image.files[0] : null;
 
 			if (!message) {
-				status.textContent = "Please add a message before posting.";
+				status.textContent = "Bitte schreib zuerst eine Nachricht.";
 				return;
 			}
 			if (containsTextProfanity(alias) || containsTextProfanity(message)) {
-				status.textContent = "Post blocked: profanity detected in text.";
+				status.textContent = "Beitrag blockiert: Der Text enthält Beleidigungen.";
 				return;
 			}
 
@@ -268,7 +268,7 @@
 
 			alias = alias.slice(0, 40);
 			message = message.slice(0, 600);
-			status.textContent = "Sending...";
+			status.textContent = "Wird gesendet …";
 
 			try {
 				if (hasDatabase) {
@@ -284,14 +284,14 @@
 					});
 					// The email is just a heads-up; the post is already saved if this fails
 					notifyByEmail(notifyEmail, boardKey, alias, message, Boolean(imageResult.imageData)).catch(function () { });
-					status.textContent = "Thanks! Your post will appear here once Aydan has approved it.";
+					status.textContent = "Danke! Dein Beitrag erscheint hier, sobald Aydan ihn freigegeben hat.";
 				} else {
 					await notifyByEmail(notifyEmail, boardKey, alias, message, Boolean(imageResult.imageData));
-					status.textContent = "Thanks! Your post was sent to Aydan.";
+					status.textContent = "Danke! Dein Beitrag wurde an Aydan gesendet.";
 				}
 				form.reset();
 			} catch (err) {
-				status.textContent = "Could not send your post right now. Please try again later or email aydan@smileyfoxyportraits.com.";
+				status.textContent = "Dein Beitrag konnte gerade nicht gesendet werden. Bitte versuch es später noch einmal oder schreib an aydan@smileyfoxyportraits.com.";
 			}
 		});
 
@@ -303,7 +303,7 @@
 			var postId = button.getAttribute("data-upvote");
 			var voted = readVoted();
 			if (voted[postId]) {
-				status.textContent = "You already upvoted this post from this browser.";
+				status.textContent = "Du hast diesen Beitrag schon hochgevotet.";
 				return;
 			}
 			try {
@@ -314,10 +314,10 @@
 				});
 				voted[postId] = true;
 				saveVoted(voted);
-				status.textContent = "Thanks for voting.";
+				status.textContent = "Danke für deine Stimme!";
 				loadPosts();
 			} catch (err) {
-				status.textContent = "Could not save your vote right now.";
+				status.textContent = "Deine Stimme konnte gerade nicht gespeichert werden.";
 			}
 		});
 
