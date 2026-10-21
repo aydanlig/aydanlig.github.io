@@ -7,8 +7,9 @@
    - Bids go through the database function "place_bid". It checks on the
      server that the bid is high enough and the auction is still running,
      so nobody can cheat from the browser.
-   - Bidder emails are stored privately – the page only shows first names.
+   - The last bids are shown with first names only ("get_bids") – emails stay private.
    - A bid in the last 2 minutes extends the auction by 2 minutes (no "sniping").
+   - When the countdown hits zero the bid form closes right away.
    - Every bid also emails you (formsubmit.co).
 
    SETTINGS on <section data-auction ...> in the HTML:
@@ -27,11 +28,17 @@
 		return Number(value).toLocaleString('de-DE', { style: 'currency', currency: 'EUR' });
 	}
 
+	function shortTime(ts) {
+		return new Date(ts).toLocaleString('de-DE', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' });
+	}
+
 	function headers(key) {
 		var h = { apikey: key, 'Content-Type': 'application/json' };
 		if (key.indexOf('eyJ') === 0) h.Authorization = 'Bearer ' + key;
 		return h;
 	}
+
+	function isOver(endsAt) { return new Date(endsAt) <= new Date(); }
 
 	function countdownText(endsAt) {
 		var ms = new Date(endsAt) - new Date();
@@ -45,6 +52,10 @@
 		return 'Noch ' + m + ' Min ' + s + ' Sek';
 	}
 
+	// The bidder's name/email are remembered in THIS browser only, for the next bid
+	function remembered() { try { return JSON.parse(localStorage.getItem('auction-bidder') || '{}'); } catch (e) { return {}; } }
+	function remember(name, email) { try { localStorage.setItem('auction-bidder', JSON.stringify({ name: name, email: email })); } catch (e) { } }
+
 	function mount(section) {
 		var url = (section.getAttribute('data-supabase-url') || '').replace(/\/+$/, '');
 		var key = section.getAttribute('data-supabase-key') || '';
@@ -52,60 +63,85 @@
 		var list = section.querySelector('[data-lots]');
 		if (!list) return;
 
-		if (!url || !key) {
-			list.innerHTML = '<p class="community-empty">Die erste Auktion startet bald. Trag dich in den Newsletter ein, dann verpasst du sie nicht.</p>';
-			return;
-		}
+		var SOON = '<p class="community-empty">Die erste Auktion startet bald. Trag dich in den ' +
+			'<a href="https://aydanligon.substack.com/subscribe">Newsletter</a> ein, dann verpasst du sie nicht.</p>';
+		if (!url || !key) { list.innerHTML = SOON; return; }
 
 		var lots = [];
+		var history = {};   // lot id -> last bids (first names only)
 
 		function minBid(lot) {
 			return lot.current_bid == null ? Number(lot.start_price) : Number(lot.current_bid) + Number(lot.min_increment);
 		}
 
-		function render() {
-			if (!lots.length) {
-				list.innerHTML = '<p class="community-empty">Gerade läuft keine Auktion. Die nächste kündige ich im Newsletter an.</p>';
-				return;
+		function historyHtml(lot) {
+			var bids = history[lot.id];
+			if (!bids || !bids.length) return '';
+			return '<details class="schedule"><summary>Letzte Gebote</summary><ul>' +
+				bids.slice(0, 5).map(function (b) {
+					return '<li>' + escapeHtml(b.bidder_name) + ' – ' + euro(b.amount) + ' <span class="hint">(' + shortTime(b.created_at) + ')</span></li>';
+				}).join('') + '</ul></details>';
+		}
+
+		function formHtml(lot) {
+			if (isOver(lot.ends_at)) {
+				return '<p class="hint"><strong>Auktion beendet.</strong> Die höchstbietende Person bekommt innerhalb von 48 Stunden eine E-Mail.</p>';
 			}
-			list.innerHTML = lots.map(function (lot) {
-				var ended = new Date(lot.ends_at) <= new Date();
-				var img = lot.image_url
-					? '<img src="' + escapeHtml(lot.image_url) + '" alt="' + escapeHtml(lot.title) + '" loading="lazy">'
-					: '<div class="ph ph--4x5">Foto des Kunstwerks</div>';
-				var bidLine = lot.current_bid == null
-					? '<p class="lot-bid">' + euro(lot.start_price) + '</p><span class="hint">Startpreis – noch kein Gebot</span>'
-					: '<p class="lot-bid">' + euro(lot.current_bid) + '</p><span class="hint">Höchstgebot von ' + escapeHtml(lot.current_bidder || 'Anonym') + ' · ' + lot.bid_count + ' Gebot(e)</span>';
-				var form = ended
-					? '<p class="hint"><strong>Auktion beendet.</strong> Die höchstbietende Person wird per E-Mail benachrichtigt.</p>'
-					: '<form class="bid-form" data-lot="' + escapeHtml(lot.id) + '">' +
-						'<input name="name" required maxlength="40" placeholder="Vorname (wird angezeigt)" autocomplete="given-name">' +
-						'<input name="email" type="email" required placeholder="E-Mail (bleibt privat)" autocomplete="email">' +
-						'<input name="amount" type="number" required step="1" min="' + minBid(lot) + '" placeholder="Mindestens ' + euro(minBid(lot)) + '">' +
-						'<label class="choice"><input type="checkbox" name="agree" required> <span>Mein Gebot ist verbindlich. Ich habe die <a href="#regeln">Auktionsregeln</a> gelesen.</span></label>' +
-						'<button class="btn btn--fox" type="submit">Gebot abgeben</button>' +
-						'<p class="bid-status" aria-live="polite"></p>' +
-					'</form>';
-				return '<article class="lot' + (ended ? ' lot-ended' : '') + '">' + img +
-					'<h3 style="margin:0">' + escapeHtml(lot.title) + '</h3>' +
-					(lot.description ? '<p style="margin:0">' + escapeHtml(lot.description) + '</p>' : '') +
-					bidLine +
-					'<div class="lot-meta"><span class="lot-countdown" data-ends="' + escapeHtml(lot.ends_at) + '">' + countdownText(lot.ends_at) + '</span>' +
-					'<span>Mindestschritt ' + euro(lot.min_increment) + '</span></div>' +
-					form + '</article>';
-			}).join('');
+			var me = remembered();
+			var id = escapeHtml(lot.id);
+			return '<form class="bid-form" data-lot="' + id + '">' +
+				'<label class="hint" for="bn-' + id + '">Vorname (wird angezeigt)</label>' +
+				'<input id="bn-' + id + '" name="name" required maxlength="40" autocomplete="given-name" value="' + escapeHtml(me.name || '') + '">' +
+				'<label class="hint" for="be-' + id + '">E-Mail (bleibt privat)</label>' +
+				'<input id="be-' + id + '" name="email" type="email" required autocomplete="email" value="' + escapeHtml(me.email || '') + '">' +
+				'<label class="hint" for="ba-' + id + '">Dein Gebot in € (mindestens ' + euro(minBid(lot)) + ')</label>' +
+				'<input id="ba-' + id + '" name="amount" type="number" inputmode="decimal" required step="0.5" min="' + minBid(lot) + '" value="' + minBid(lot) + '">' +
+				'<label class="choice"><input type="checkbox" name="agree" required> <span>Mein Gebot ist verbindlich. Ich habe die <a href="#regeln">Auktionsregeln</a> gelesen.</span></label>' +
+				'<button class="btn btn--fox" type="submit">Gebot abgeben</button>' +
+				'<p class="bid-status" aria-live="polite"></p>' +
+				'</form>';
+		}
+
+		function lotHtml(lot) {
+			var ended = isOver(lot.ends_at);
+			var img = lot.image_url
+				? '<img src="' + escapeHtml(lot.image_url) + '" alt="' + escapeHtml(lot.title) + '" loading="lazy">'
+				: '<div class="ph ph--4x5">Foto des Kunstwerks</div>';
+			var bidLine = lot.current_bid == null
+				? '<p class="lot-bid">' + euro(lot.start_price) + '</p><span class="hint">Startpreis – noch kein Gebot</span>'
+				: '<p class="lot-bid">' + euro(lot.current_bid) + '</p><span class="hint">Höchstgebot von ' + escapeHtml(lot.current_bidder || 'Anonym') + ' · ' + lot.bid_count + ' Gebot' + (lot.bid_count === 1 ? '' : 'e') + '</span>';
+			return '<article class="lot' + (ended ? ' lot-ended' : '') + '" data-lot-card="' + escapeHtml(lot.id) + '">' + img +
+				'<h3 style="margin:0">' + escapeHtml(lot.title) + '</h3>' +
+				(lot.description ? '<p style="margin:0">' + escapeHtml(lot.description) + '</p>' : '') +
+				bidLine +
+				'<div class="lot-meta"><span class="lot-countdown" data-ends="' + escapeHtml(lot.ends_at) + '">' + countdownText(lot.ends_at) + '</span>' +
+				'<span>Mindestschritt ' + euro(lot.min_increment) + '</span></div>' +
+				historyHtml(lot) + formHtml(lot) + '</article>';
+		}
+
+		function render() {
+			list.innerHTML = lots.length
+				? lots.map(lotHtml).join('')
+				: '<p class="community-empty">Gerade läuft keine Auktion. Die nächste kündige ich im <a href="https://aydanligon.substack.com/subscribe">Newsletter</a> an.</p>';
+		}
+
+		async function loadHistory() {
+			// optional: works once "get_bids" exists in the database; otherwise simply nothing is shown
+			await Promise.all(lots.map(async function (lot) {
+				try {
+					var res = await fetch(url + '/rest/v1/rpc/get_bids', { method: 'POST', headers: headers(key), body: JSON.stringify({ p_lot: lot.id }) });
+					history[lot.id] = res.ok ? await res.json() : [];
+				} catch (e) { history[lot.id] = []; }
+			}));
 		}
 
 		async function load() {
 			try {
 				var res = await fetch(url + '/rest/v1/auction_lots?select=*&active=eq.true&order=ends_at.asc', { headers: headers(key) });
-				// 404 = database tables not set up yet (setup/supabase-labor.md)
-				if (res.status === 404) {
-					list.innerHTML = '<p class="community-empty">Die erste Auktion startet bald. Trag dich in den <a href="https://aydanligon.substack.com/subscribe">Newsletter</a> ein, dann verpasst du sie nicht.</p>';
-					return;
-				}
+				if (res.status === 404) { list.innerHTML = SOON; return; }   // tables not set up yet
 				if (!res.ok) throw new Error();
 				lots = await res.json();
+				await loadHistory();
 				render();
 			} catch (e) {
 				list.innerHTML = '<p class="community-empty">Die Auktionen konnten gerade nicht geladen werden. Bitte versuch es später noch einmal.</p>';
@@ -118,24 +154,26 @@
 			if (!form) return;
 			e.preventDefault();
 			var status = form.querySelector('.bid-status');
+			var button = form.querySelector('button');
 			var name = form.elements.name.value.trim();
 			var email = form.elements.email.value.trim();
 			var amount = Number(form.elements.amount.value);
-			var lot = lots.filter(function (l) { return l.id === form.getAttribute('data-lot'); })[0];
+			var lotId = form.getAttribute('data-lot');
+			var lot = lots.filter(function (l) { return l.id === lotId; })[0];
 			status.textContent = 'Gebot wird geprüft …';
-			form.querySelector('button').disabled = true;
+			button.disabled = true;
 			try {
 				var res = await fetch(url + '/rest/v1/rpc/place_bid', {
-					method: 'POST',
-					headers: headers(key),
-					body: JSON.stringify({ p_lot: form.getAttribute('data-lot'), p_name: name, p_email: email, p_amount: amount })
+					method: 'POST', headers: headers(key),
+					body: JSON.stringify({ p_lot: lotId, p_name: name, p_email: email, p_amount: amount })
 				});
 				var data = await res.json();
 				if (!res.ok || !data || data.ok !== true) {
 					status.textContent = (data && data.message) || 'Das Gebot konnte nicht angenommen werden.';
-					form.querySelector('button').disabled = false;
+					button.disabled = false;
 					return;
 				}
+				remember(name, email);
 				status.textContent = 'Danke! Du bist jetzt Höchstbietende:r mit ' + euro(amount) + '.';
 				if (notify) {
 					fetch('https://formsubmit.co/ajax/' + encodeURIComponent(notify), {
@@ -147,20 +185,23 @@
 				setTimeout(load, 1500);
 			} catch (err) {
 				status.textContent = 'Verbindungsproblem – bitte versuch es noch einmal.';
-				form.querySelector('button').disabled = false;
+				button.disabled = false;
 			}
 		});
 
-		// Tick the countdowns every second, reload bids every 20 seconds
+		// Every second: update countdowns; close the form the moment an auction ends
 		setInterval(function () {
 			list.querySelectorAll('[data-ends]').forEach(function (el) {
 				el.textContent = countdownText(el.getAttribute('data-ends'));
+				var card = el.closest('[data-lot-card]');
+				if (isOver(el.getAttribute('data-ends')) && card && !card.classList.contains('lot-ended')) {
+					var lot = lots.filter(function (l) { return l.id === card.getAttribute('data-lot-card'); })[0];
+					if (lot) card.outerHTML = lotHtml(lot);
+				}
 			});
 		}, 1000);
-		setInterval(function () {
-			// don't reload while someone is typing a bid
-			if (!list.contains(document.activeElement)) load();
-		}, 20000);
+		// Every 20 seconds: fetch new bids (not while someone is typing)
+		setInterval(function () { if (!list.contains(document.activeElement)) load(); }, 20000);
 
 		load();
 	}

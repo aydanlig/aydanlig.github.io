@@ -81,10 +81,12 @@
 				<div class="community-board">
 					<h2 style="margin-top:0">Neues Thema starten</h2>
 					<form class="thread-form" data-new-thread>
+						<!-- invisible spam trap: humans leave it empty, bots fill it -->
+						<input name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px">
 						<select name="category" aria-label="Kategorie"></select>
-						<input name="title" required minlength="3" maxlength="120" placeholder="Titel">
-						<textarea name="body" required maxlength="4000" placeholder="Worum geht's?"></textarea>
-						<input name="author" required maxlength="40" placeholder="Name oder Künstlername">
+						<input name="title" required minlength="3" maxlength="120" placeholder="Titel" aria-label="Titel">
+						<textarea name="body" required maxlength="4000" placeholder="Worum geht's?" aria-label="Text"></textarea>
+						<input name="author" required maxlength="40" placeholder="Name oder Künstlername" aria-label="Name oder Künstlername">
 						<button class="btn" type="submit">Veröffentlichen</button>
 						<p class="community-status" data-forum-status aria-live="polite"></p>
 					</form>

@@ -5,9 +5,11 @@
    - Threads and comments are stored in Supabase ("forum_threads",
      "forum_comments", see setup/supabase-labor.md).
    - Posts appear immediately (it's a conversation). Protection:
-     profanity filter, a "Melden" (report) button on everything, and
-     anything reported 3 times is hidden automatically by the database.
-     You can delete posts any time in the Supabase Table Editor.
+     * profanity filter + reserved names (Aydan, SmileyFoxy, Admin …)
+     * invisible spam trap for bots + 30 s wait between posts
+     * the database itself limits how many posts per minute are possible
+     * "Melden" (report) on everything – 3 reports hide a post automatically
+   - You can delete posts any time in the Supabase Table Editor.
 
    SETTINGS on <section data-forum ...>:
      data-supabase-url, data-supabase-key
@@ -17,6 +19,9 @@
 
 	var CATEGORIES = ['Spots & Genehmigungen', 'Material & Technik', 'Kooperationen', 'Events & Märkte', 'Feedback zu Arbeiten', 'Off-Topic'];
 	var PROFANITY = ['fuck', 'shit', 'bitch', 'asshole', 'cunt', 'nigger', 'faggot', 'whore', 'hurensohn', 'fotze', 'wichser', 'missgeburt', 'schlampe'];
+	var RESERVED = /(aydan|smiley ?foxy|admin|moderator)/i;   // same rule as in the database
+	var COOLDOWN_SECONDS = 30;
+	var PREVIEW_CHARS = 400;                                     // longer posts get "weiterlesen"
 
 	function escapeHtml(text) {
 		return String(text)
@@ -33,11 +38,32 @@
 		return new Date(ts).toLocaleString('de-DE', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' });
 	}
 
+	function plural(n, one, many) { return n + ' ' + (n === 1 ? one : many); }
+
 	function headers(key, extra) {
 		var h = { apikey: key, 'Content-Type': 'application/json' };
 		if (key.indexOf('eyJ') === 0) h.Authorization = 'Bearer ' + key;
 		for (var k in (extra || {})) h[k] = extra[k];
 		return h;
+	}
+
+	// Remember things in this browser only (cooldown, own reports)
+	function store(name, value) { try { localStorage.setItem(name, JSON.stringify(value)); } catch (e) { } }
+	function load(name, fallback) { try { var v = localStorage.getItem(name); return v ? JSON.parse(v) : fallback; } catch (e) { return fallback; } }
+
+	function secondsUntilAllowed() {
+		var last = load('forum-last-post', 0);
+		return Math.max(0, Math.ceil(COOLDOWN_SECONDS - (Date.now() - last) / 1000));
+	}
+
+	// Checks shared by "new thread" and "reply"; returns an error text or ""
+	function validate(author, texts, honeypot) {
+		if (honeypot) return 'Fehler beim Senden.';                    // bots fill the hidden field
+		if (RESERVED.test(author)) return 'Dieser Name ist reserviert. Bitte wähle einen anderen.';
+		if ([author].concat(texts).some(hasProfanity)) return 'Bitte ohne Beleidigungen.';
+		var wait = secondsUntilAllowed();
+		if (wait > 0) return 'Bitte warte noch ' + wait + ' Sekunden, bevor du wieder postest.';
+		return '';
 	}
 
 	function mount(section) {
@@ -49,15 +75,18 @@
 		var status = section.querySelector('[data-forum-status]');
 		var current = 'Alle';
 
-		if (!url || !key) {
-			list.innerHTML = '<p class="community-empty">Das Forum öffnet bald.</p>';
-			if (newForm) newForm.hidden = true;
-			return;
+		function closed(text) {
+			list.innerHTML = '<p class="community-empty">' + text + '</p>';
+			if (newForm) newForm.closest('.community-board').hidden = true;
+			if (bar) bar.hidden = true;
 		}
 
-		// Category filter buttons + category select in the "new thread" form
+		if (!url || !key) { closed('Das Forum öffnet bald.'); return; }
+
+		// Category filter + category select for new threads
 		bar.innerHTML = ['Alle'].concat(CATEGORIES).map(function (c) {
-			return '<button type="button" data-cat="' + escapeHtml(c) + '"' + (c === 'Alle' ? ' class="active"' : '') + '>' + escapeHtml(c) + '</button>';
+			return '<button type="button" data-cat="' + escapeHtml(c) + '" aria-pressed="' + (c === 'Alle') + '"' +
+				(c === 'Alle' ? ' class="active"' : '') + '>' + escapeHtml(c) + '</button>';
 		}).join('');
 		newForm.elements.category.innerHTML = CATEGORIES.map(function (c) { return '<option>' + escapeHtml(c) + '</option>'; }).join('');
 
@@ -65,34 +94,43 @@
 			var b = e.target.closest('[data-cat]');
 			if (!b) return;
 			current = b.getAttribute('data-cat');
-			bar.querySelectorAll('button').forEach(function (x) { x.classList.toggle('active', x === b); });
+			bar.querySelectorAll('button').forEach(function (x) {
+				x.classList.toggle('active', x === b);
+				x.setAttribute('aria-pressed', x === b);
+			});
 			loadThreads();
 		});
 
+		// Talk to Supabase; errors carry the database's message (e.g. "Dieser Name ist reserviert")
 		async function api(path, options) {
 			var res = await fetch(url + '/rest/v1/' + path, options || { headers: headers(key) });
-			if (!res.ok) throw new Error(res.status);
-			return res.status === 204 || res.status === 201 ? null : res.json();
+			if (!res.ok) {
+				var msg = '';
+				try { msg = (await res.json()).message || ''; } catch (e) { }
+				var err = new Error(msg); err.status = res.status; throw err;
+			}
+			return (res.status === 204 || res.status === 201) ? null : res.json();
 		}
 
-		function reportedBefore(id) {
-			try { return (JSON.parse(localStorage.getItem('forum-reported') || '[]')).indexOf(id) !== -1; } catch (e) { return false; }
+		function friendly(err) {
+			if (err.message && !/^\d+$/.test(err.message) && err.message.length < 140 && !/violates|constraint|policy/i.test(err.message)) return err.message;
+			return 'Das hat nicht geklappt. Bitte prüfe deine Eingaben und versuch es noch einmal.';
 		}
-		function rememberReport(id) {
-			try {
-				var l = JSON.parse(localStorage.getItem('forum-reported') || '[]'); l.push(id);
-				localStorage.setItem('forum-reported', JSON.stringify(l));
-			} catch (e) { }
+
+		function bodyHtml(text) {
+			if (text.length <= PREVIEW_CHARS) return '<div class="thread-body">' + escapeHtml(text) + '</div>';
+			return '<div class="thread-body">' + escapeHtml(text.slice(0, PREVIEW_CHARS)) + '<span data-more hidden>' +
+				escapeHtml(text.slice(PREVIEW_CHARS)) + '</span><span data-dots>…</span></div>' +
+				'<button class="link-btn" type="button" data-expand>weiterlesen</button>';
 		}
 
 		function threadHtml(t) {
-			return '<article class="thread" data-thread="' + escapeHtml(t.id) + '">' +
+			return '<article class="thread" data-thread="' + escapeHtml(t.id) + '" data-count="' + t.comment_count + '">' +
 				'<div class="thread-meta"><span class="cat-chip">' + escapeHtml(t.category) + '</span>' +
 				'<span>' + escapeHtml(t.author) + ' · ' + when(t.created_at) + '</span></div>' +
-				'<h3>' + escapeHtml(t.title) + '</h3>' +
-				'<div class="thread-body">' + escapeHtml(t.body) + '</div>' +
+				'<h3>' + escapeHtml(t.title) + '</h3>' + bodyHtml(t.body) +
 				'<div class="thread-actions">' +
-				'<button class="link-btn" type="button" data-open>💬 ' + t.comment_count + ' Kommentar' + (t.comment_count === 1 ? '' : 'e') + ' anzeigen / antworten</button>' +
+				'<button class="link-btn" type="button" data-open aria-expanded="false">💬 ' + plural(t.comment_count, 'Kommentar', 'Kommentare') + ' · antworten</button>' +
 				'<button class="link-btn" type="button" data-report="thread" data-id="' + escapeHtml(t.id) + '">Melden</button>' +
 				'</div><div data-comments hidden></div></article>';
 		}
@@ -105,12 +143,7 @@
 					? threads.map(threadHtml).join('')
 					: '<p class="community-empty">Noch keine Themen hier. Starte das erste!</p>';
 			} catch (e) {
-				// 404 = database tables not set up yet (setup/supabase-labor.md)
-				if (e.message === '404') {
-					list.innerHTML = '<p class="community-empty">Das Forum öffnet bald.</p>';
-					newForm.hidden = true; bar.hidden = true;
-					return;
-				}
+				if (e.status === 404) { closed('Das Forum öffnet bald.'); return; }   // tables not set up yet
 				list.innerHTML = '<p class="community-empty">Das Forum konnte gerade nicht geladen werden.</p>';
 			}
 		}
@@ -119,6 +152,7 @@
 			var box = article.querySelector('[data-comments]');
 			var id = article.getAttribute('data-thread');
 			box.hidden = false;
+			article.querySelector('[data-open]').setAttribute('aria-expanded', 'true');
 			box.innerHTML = '<p class="hint">Lädt …</p>';
 			try {
 				var comments = await api('forum_comments?select=*&thread_id=eq.' + id + '&order=created_at.asc');
@@ -127,27 +161,38 @@
 						return '<div class="comment"><div class="thread-meta"><span>' + escapeHtml(c.author) + ' · ' + when(c.created_at) + '</span>' +
 							'<button class="link-btn" type="button" data-report="comment" data-id="' + escapeHtml(c.id) + '">Melden</button></div>' +
 							'<div class="comment-body">' + escapeHtml(c.body) + '</div></div>';
-					}).join('') : '<p class="hint">Noch keine Kommentare.</p>') +
+					}).join('') : '<p class="hint">Noch keine Kommentare – schreib den ersten.</p>') +
 					'<form class="comment-form" data-reply="' + escapeHtml(id) + '">' +
-					'<input name="author" maxlength="40" placeholder="Name oder Künstlername" required>' +
-					'<textarea name="body" maxlength="2000" placeholder="Deine Antwort …" required></textarea>' +
-					'<button class="btn btn--small" type="submit">Antworten</button></form></div>';
+					'<input name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px">' +
+					'<input name="author" maxlength="40" placeholder="Name oder Künstlername" aria-label="Name oder Künstlername" required>' +
+					'<textarea name="body" maxlength="2000" placeholder="Deine Antwort …" aria-label="Deine Antwort" required></textarea>' +
+					'<button class="btn btn--small" type="submit">Antworten</button>' +
+					'<p class="community-status" aria-live="polite"></p></form></div>';
 			} catch (e) {
 				box.innerHTML = '<p class="hint">Kommentare konnten nicht geladen werden.</p>';
 			}
 		}
 
 		list.addEventListener('click', async function (e) {
+			var more = e.target.closest('[data-expand]');
+			if (more) {
+				var body = more.previousElementSibling;
+				body.querySelector('[data-more]').hidden = false;
+				body.querySelector('[data-dots]').hidden = true;
+				more.remove();
+				return;
+			}
 			var open = e.target.closest('[data-open]');
 			if (open) { openThread(open.closest('.thread')); return; }
 			var rep = e.target.closest('[data-report]');
 			if (rep) {
 				var id = rep.getAttribute('data-id');
-				if (reportedBefore(id)) { rep.textContent = 'Bereits gemeldet'; return; }
-				if (!confirm('Diesen Beitrag melden? Nach 3 Meldungen wird er automatisch ausgeblendet.')) return;
+				var reported = load('forum-reported', []);
+				if (reported.indexOf(id) !== -1) { rep.textContent = 'Bereits gemeldet'; return; }
+				if (!confirm('Diesen Beitrag melden? Nach 3 Meldungen wird er automatisch ausgeblendet und von Aydan geprüft.')) return;
 				try {
 					await api('rpc/report_content', { method: 'POST', headers: headers(key), body: JSON.stringify({ p_kind: rep.getAttribute('data-report'), p_id: id }) });
-					rememberReport(id);
+					reported.push(id); store('forum-reported', reported);
 					rep.textContent = 'Gemeldet – danke!';
 				} catch (err) { rep.textContent = 'Melden fehlgeschlagen'; }
 			}
@@ -158,15 +203,22 @@
 			var form = e.target.closest('[data-reply]');
 			if (!form) return;
 			e.preventDefault();
+			var msg = form.querySelector('.community-status');
 			var author = form.elements.author.value.trim(), body = form.elements.body.value.trim();
-			if (hasProfanity(author) || hasProfanity(body)) { alert('Bitte ohne Beleidigungen.'); return; }
+			var problem = validate(author, [body], form.elements.website.value);
+			if (problem) { msg.textContent = problem; return; }
 			form.querySelector('button').disabled = true;
 			try {
 				await api('forum_comments', { method: 'POST', headers: headers(key, { Prefer: 'return=minimal' }),
 					body: JSON.stringify({ thread_id: form.getAttribute('data-reply'), author: author.slice(0, 40), body: body.slice(0, 2000) }) });
-				openThread(form.closest('.thread'));
+				store('forum-last-post', Date.now());
+				var article = form.closest('.thread');
+				var count = Number(article.getAttribute('data-count')) + 1;     // keep the counter in sync
+				article.setAttribute('data-count', count);
+				article.querySelector('[data-open]').textContent = '💬 ' + plural(count, 'Kommentar', 'Kommentare') + ' · antworten';
+				openThread(article);
 			} catch (err) {
-				alert('Antwort konnte nicht gespeichert werden.');
+				msg.textContent = friendly(err);
 				form.querySelector('button').disabled = false;
 			}
 		});
@@ -176,16 +228,20 @@
 			e.preventDefault();
 			var f = newForm.elements;
 			var data = { category: f.category.value, title: f.title.value.trim().slice(0, 120), body: f.body.value.trim().slice(0, 4000), author: f.author.value.trim().slice(0, 40) };
-			if (hasProfanity(data.title) || hasProfanity(data.body) || hasProfanity(data.author)) { status.textContent = 'Bitte ohne Beleidigungen.'; return; }
+			var problem = validate(data.author, [data.title, data.body], f.website.value);
+			if (problem) { status.textContent = problem; return; }
 			status.textContent = 'Wird veröffentlicht …';
+			newForm.querySelector('button').disabled = true;
 			try {
 				await api('forum_threads', { method: 'POST', headers: headers(key, { Prefer: 'return=minimal' }), body: JSON.stringify(data) });
+				store('forum-last-post', Date.now());
 				newForm.reset();
 				status.textContent = 'Dein Thema ist online!';
 				loadThreads();
 			} catch (err) {
-				status.textContent = 'Konnte nicht veröffentlicht werden. Bitte später noch einmal versuchen.';
+				status.textContent = friendly(err);
 			}
+			newForm.querySelector('button').disabled = false;
 		});
 
 		loadThreads();

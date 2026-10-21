@@ -91,6 +91,20 @@ end; $$;
 revoke all on function public.place_bid(uuid, text, text, numeric) from public;
 grant execute on function public.place_bid(uuid, text, text, numeric) to anon;
 
+-- Öffentliche Gebotshistorie: nur Vorname, Betrag, Zeit – NIE die E-Mail
+create or replace function public.get_bids(p_lot uuid)
+returns table(bidder_name text, amount numeric, created_at timestamptz)
+language sql security definer set search_path = public as $$
+  select b.bidder_name, b.amount, b.created_at
+  from public.auction_bids b
+  join public.auction_lots l on l.id = b.lot_id and l.active = true
+  where b.lot_id = p_lot
+  order by b.amount desc
+  limit 10;
+$$;
+revoke all on function public.get_bids(uuid) from public;
+grant execute on function public.get_bids(uuid) to anon;
+
 -- =========================================================
 -- FORUM
 -- =========================================================
@@ -128,6 +142,35 @@ create policy "read visible comments" on public.forum_comments
   for select to anon using (hidden = false);
 create policy "create comments" on public.forum_comments
   for insert to anon with check (hidden = false and reports = 0);
+
+-- Schutz: Zeitstempel & Zähler setzt immer die Datenbank (niemand kann Beiträge "nach oben pinnen"),
+-- Flut-Bremse (max. 5 neue Themen / 20 Kommentare pro Minute insgesamt),
+-- reservierte Namen (niemand kann sich als Aydan ausgeben)
+create or replace function public.forum_guard()
+returns trigger language plpgsql security definer set search_path = public as $$
+declare recent integer;
+begin
+  if new.author ~* '(aydan|smiley ?foxy|admin|moderator)' then
+    raise exception 'Dieser Name ist reserviert. Bitte wähle einen anderen.';
+  end if;
+  new.created_at := now();
+  new.reports := 0;
+  new.hidden := false;
+  if tg_table_name = 'forum_threads' then
+    new.last_activity := now();
+    new.comment_count := 0;
+    select count(*) into recent from public.forum_threads where created_at > now() - interval '1 minute';
+    if recent >= 5 then raise exception 'Gerade ist viel los – bitte versuch es in einer Minute noch einmal.'; end if;
+  else
+    select count(*) into recent from public.forum_comments where created_at > now() - interval '1 minute';
+    if recent >= 20 then raise exception 'Gerade ist viel los – bitte versuch es in einer Minute noch einmal.'; end if;
+  end if;
+  return new;
+end; $$;
+create trigger forum_threads_guard before insert on public.forum_threads
+  for each row execute function public.forum_guard();
+create trigger forum_comments_guard before insert on public.forum_comments
+  for each row execute function public.forum_guard();
 
 -- Kommentarzähler + "zuletzt aktiv" automatisch aktualisieren
 create or replace function public.forum_after_comment()
@@ -170,7 +213,14 @@ Supabase → **Table Editor** → `auction_lots` → **Insert row**:
 
 Alles andere leer lassen. Sofort sichtbar auf `labor/auktion.html`.
 
-**Nach dem Ende:** Tabelle `auction_bids` → nach `lot_id` filtern → höchstes `amount` = Gewinner:in.
+**Nach dem Ende:** Gewinner:in finden – SQL Editor:
+
+```sql
+select l.title, b.bidder_name, b.bidder_email, b.amount, b.created_at
+from auction_bids b join auction_lots l on l.id = b.lot_id
+where l.title = 'TITEL DES KUNSTWERKS'
+order by b.amount desc limit 1;
+```
 Per E-Mail Zahlung (PayPal/Überweisung) und Versand klären. Danach beim Los `active` auf `false` setzen.
 
 ## 3. Forum moderieren
@@ -183,7 +233,8 @@ Per E-Mail Zahlung (PayPal/Überweisung) und Versand klären. Danach beim Los `a
 
 ## Gut zu wissen
 
-- Kein Login nötig – dadurch ist Spam möglich. Wenn das passiert: melden, sag Claude Bescheid,
-  dann kann ein einfacher Spamschutz ergänzt werden.
+- Kein Login nötig. Eingebauter Schutz: Flut-Bremse in der Datenbank, unsichtbare Spam-Falle und
+  Wartezeit zwischen Beiträgen im Browser, reservierte Namen (Aydan, SmileyFoxy, Admin, Moderator).
+  Wird es trotzdem zu viel: sag Claude Bescheid, dann kommt ein Captcha oder Login dazu.
 - Gebote sind **verbindlich**. Für Privatkäufer gilt trotzdem das 14-tägige Widerrufsrecht
   (Online-Auktionen sind keine „öffentliche Versteigerung“ im Sinne des Gesetzes).
