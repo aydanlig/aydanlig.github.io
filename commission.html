@@ -5,14 +5,8 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<!-- Google Analytics -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=G-XDZB2DQ1KV"></script>
-	<script>
-		window.dataLayer = window.dataLayer || [];
-		function gtag() { dataLayer.push(arguments); }
-		gtag('js', new Date());
-		gtag('config', 'G-XDZB2DQ1KV');
-	</script>
+	<!-- Analytics only after opt-in (no cookies by default): see /js/consent.js -->
+	<script src="/js/consent.js" defer></script>
 
 	<title>Porträt nach Foto malen lassen – Berlin | SmileyFoxyPortraits</title>
 	<meta name="description"
@@ -183,6 +177,7 @@
 					<form action="https://formsubmit.co/aydan@smileyfoxyportraits.com" method="POST" enctype="multipart/form-data">
 						<input type="hidden" name="_subject" value="Neue Porträt-Anfrage (Auftrag)">
 						<input type="hidden" name="_template" value="table">
+						<input type="hidden" name="_next" value="https://smileyfoxyportraits.com/danke.html">
 						<input type="text" name="_honey" style="display:none">
 
 						<div class="form-grid">
@@ -320,6 +315,7 @@
 						<form action="https://formsubmit.co/aydan@smileyfoxyportraits.com" method="POST">
 							<input type="hidden" name="_subject" value="Neuer Eintrag: Warteliste Originale & Prints">
 							<input type="hidden" name="_template" value="table">
+							<input type="hidden" name="_next" value="https://smileyfoxyportraits.com/danke.html">
 							<input type="text" name="_honey" style="display:none">
 							<div class="form-grid">
 								<div class="field">
@@ -360,7 +356,7 @@
 				<div class="newsletter">
 					<h3>Newsletter</h3>
 					<p>Max. zwei Updates im Monat – neue Termine, Kunst &amp; Geschichten.</p>
-					<iframe src="https://aydanligon.substack.com/embed" title="Substack Newsletter Anmeldung" loading="lazy"></iframe>
+					<a class="btn btn--fox btn--small" href="https://aydanligon.substack.com/">Newsletter abonnieren</a>
 					<p><a href="https://aydanligon.substack.com/archive">Archiv lesen →</a></p>
 				</div>
 				<div>
@@ -389,6 +385,8 @@
 					<h3>Rechtliches</h3>
 					<p><a href="/ImpressumUndDatenschutz/Impressum.html">Impressum</a></p>
 					<p><a href="/ImpressumUndDatenschutz/Datenschutz.html">Datenschutzerklärung</a></p>
+					<p><a href="/einwilligung.html">Einwilligung Foto &amp; Video</a></p>
+					<p><a href="#" data-consent-toggle>Statistik-Cookies: aus (erlauben)</a></p>
 					<p><a href="/about/index.html#toc_10">FAQ</a></p>
 					<p><a href="/about/index.html#toc_15">Löschanfragen</a></p>
 				</div>

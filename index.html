@@ -5,14 +5,8 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<!-- Google Analytics (unchanged from the old site) -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=G-XDZB2DQ1KV"></script>
-	<script>
-		window.dataLayer = window.dataLayer || [];
-		function gtag() { dataLayer.push(arguments); }
-		gtag('js', new Date());
-		gtag('config', 'G-XDZB2DQ1KV');
-	</script>
+	<!-- Analytics only after opt-in (no cookies by default): see /js/consent.js -->
+	<script src="/js/consent.js" defer></script>
 
 	<!-- SEO: title + description are what Google shows in search results.
 	     Keep the title under ~60 characters, the description under ~155. -->
@@ -213,7 +207,7 @@
 					<div class="ph ph--4x5">Portrait von Aydan mit Skizzenbuch, z. B. in der S-Bahn [1200x1500]</div>
 					<div>
 						<span class="eyebrow">Über mich · Meine Mission</span>
-						<h2 id="story-title">Hi, ich bin Aydan Lig'on <span class="spinning-smiley" aria-hidden="true"></span> – und Kunst ist meine Brücke zu Menschen.</h2>
+						<h2 id="story-title">Hi, ich bin Aydan Lig'on – und Kunst ist meine Brücke zu Menschen. <span class="spinning-smiley" aria-hidden="true"></span></h2>
 						<p>
 							Ich hatte schon immer diesen unbändigen Drang, etwas zu erschaffen. Angefangen hat es bei Meetups
 							mit meiner kreativen Familie – und dann in den Berliner Bahnen: Ich habe Fremde gezeichnet und
@@ -353,7 +347,7 @@
 					</a>
 				</div>
 
-				<!-- MUSIC – Bandcamp player. To add another track: copy the <iframe> and change the track number.
+				<!-- MUSIC – Bandcamp player. To add another track: copy the <button data-embed-src=…> and change the track number.
 				     (Find it on Bandcamp: Share/Embed -> the number after "track=") -->
 				<div class="music">
 					<img src="/img/Bad%20minecraftalbum%20(2).png" alt="Cover: Bad Minecraft" loading="lazy">
@@ -361,8 +355,9 @@
 						<span class="eyebrow">Musik</span>
 						<h4>Bad Minecraft</h4>
 						<p>Wenn ich nicht zeichne, mache ich Musik – angstgetrieben, ehrlich, ein bisschen kaputt.</p>
-						<iframe title="Bad Minecraft auf Bandcamp" loading="lazy"
-							src="https://bandcamp.com/EmbeddedPlayer/track=4190176389/size=small/bgcol=0f0c11/linkcol=ff6b35/transparent=true/"></iframe>
+						<!-- Click-to-load: Bandcamp only loads after this click (no cookies before) -->
+						<button class="btn btn--fox btn--small" type="button" data-embed-title="Bad Minecraft auf Bandcamp"
+							data-embed-src="https://bandcamp.com/EmbeddedPlayer/track=4190176389/size=small/bgcol=0f0c11/linkcol=ff6b35/transparent=true/">▶ Player laden (Bandcamp)</button>
 						<p style="margin-top:8px"><a href="https://smileyfoxyportraits.bandcamp.com/">Auf Bandcamp anhören →</a></p>
 					</div>
 				</div>
@@ -379,8 +374,7 @@
 				<div class="newsletter">
 					<h3>Newsletter</h3>
 					<p>Max. zwei Updates im Monat – neue Termine, Kunst &amp; Geschichten.</p>
-					<!-- Substack signup box -->
-					<iframe src="https://aydanligon.substack.com/embed" title="Substack Newsletter Anmeldung" loading="lazy"></iframe>
+					<a class="btn btn--fox btn--small" href="https://aydanligon.substack.com/">Newsletter abonnieren</a>
 					<p><a href="https://aydanligon.substack.com/archive">Archiv lesen →</a></p>
 				</div>
 
@@ -412,6 +406,8 @@
 					<h3>Rechtliches</h3>
 					<p><a href="/ImpressumUndDatenschutz/Impressum.html">Impressum</a></p>
 					<p><a href="/ImpressumUndDatenschutz/Datenschutz.html">Datenschutzerklärung</a></p>
+					<p><a href="/einwilligung.html">Einwilligung Foto &amp; Video</a></p>
+					<p><a href="#" data-consent-toggle>Statistik-Cookies: aus (erlauben)</a></p>
 					<p><a href="/about/index.html#toc_10">FAQ</a></p>
 					<p><a href="/about/index.html#toc_15">Löschanfragen</a></p>
 				</div>

@@ -5,14 +5,8 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<!-- Google Analytics -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=G-XDZB2DQ1KV"></script>
-	<script>
-		window.dataLayer = window.dataLayer || [];
-		function gtag() { dataLayer.push(arguments); }
-		gtag('js', new Date());
-		gtag('config', 'G-XDZB2DQ1KV');
-	</script>
+	<!-- Analytics only after opt-in (no cookies by default): see /js/consent.js -->
+	<script src="/js/consent.js" defer></script>
 
 	<!-- Payment page for in-person portraits. Tip: turn this URL into a QR code for your stand.
 	     "noindex" keeps it out of Google – it's only meant for people standing in front of you. -->
@@ -70,6 +64,7 @@
 			<span>
 				<a href="/ImpressumUndDatenschutz/Impressum.html">Impressum</a> ·
 				<a href="/ImpressumUndDatenschutz/Datenschutz.html">Datenschutz</a> ·
+				<a href="#" data-consent-toggle>Statistik-Cookies: aus (erlauben)</a> ·
 				<a href="https://www.instagram.com/smileyfoxyportraits">Instagram</a>
 			</span>
 		</div>

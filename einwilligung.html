@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="de">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- Analytics only after opt-in (no cookies by default): see /js/consent.js -->
+	<script src="/js/consent.js" defer></script>
+
+	<!-- CONSENT PAGE (Recht am eigenen Bild): people can
+	     A) download + print the PDF, sign it, upload it here, or
+	     B) give consent directly with the online form.
+	     Both arrive in your inbox via formsubmit.co. Keep those emails as proof! -->
+	<title>Einwilligung Foto & Video | SmileyFoxyPortraits</title>
+	<meta name="description" content="Einwilligung zur Veröffentlichung von Fotos und Videos (Recht am eigenen Bild) für SmileyFoxyPortraits.">
+	<meta name="robots" content="noindex, follow">
+	<link rel="canonical" href="https://smileyfoxyportraits.com/einwilligung.html">
+	<link rel="icon" type="image/png" href="/favicon.png">
+
+	<link rel="stylesheet" href="/css/main.css">
+</head>
+
+<body>
+
+	<header class="site-header">
+		<div class="wrap">
+			<a class="logo" href="/">SmileyFoxy<span>Portraits</span></a>
+		</div>
+	</header>
+
+	<main>
+		<section class="section">
+			<div class="wrap">
+				<div class="center">
+					<span class="eyebrow">Recht am eigenen Bild</span>
+					<h1>Einwilligung für Fotos &amp; Videos</h1>
+					<p class="lead">
+						Ich zeige Fotos und Videos, auf denen du erkennbar bist, nur mit deiner Erlaubnis. Danke, dass du
+						mir hilfst, meine Arbeit zu zeigen!
+					</p>
+				</div>
+
+				<!-- Two ways to give consent -->
+				<div class="cards" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));">
+					<article class="card">
+						<span class="tag">Weg 1 · Papier</span>
+						<h3>PDF unterschreiben &amp; hochladen</h3>
+						<p>Formular herunterladen, ausdrucken, unterschreiben und hier unten als Foto oder Scan hochladen.</p>
+						<a class="btn btn--ghost" href="/downloads/Einwilligung-Bildrechte-SmileyFoxyPortraits.pdf" download>PDF herunterladen</a>
+					</article>
+					<article class="card card--featured">
+						<span class="tag">Weg 2 · Online</span>
+						<h3>Direkt online zustimmen</h3>
+						<p>Kein Drucker? Fülle einfach das Formular unten aus und bestätige mit Häkchen. Das gilt genauso.</p>
+						<a class="btn" href="#formular">Zum Formular</a>
+					</article>
+				</div>
+
+				<div class="form-card" id="formular">
+					<h3>Einwilligung zur Veröffentlichung</h3>
+					<form action="https://formsubmit.co/aydan@smileyfoxyportraits.com" method="POST" enctype="multipart/form-data">
+						<input type="hidden" name="_subject" value="Neue Einwilligung: Recht am eigenen Bild">
+						<input type="hidden" name="_template" value="table">
+						<input type="hidden" name="_next" value="https://smileyfoxyportraits.com/danke.html">
+						<input type="text" name="_honey" style="display:none">
+
+						<div class="form-grid">
+							<div class="field">
+								<label for="e-name">Vor- und Nachname *</label>
+								<input id="e-name" name="Name" required autocomplete="name">
+							</div>
+							<div class="field">
+								<label for="e-email">E-Mail *</label>
+								<input id="e-email" type="email" name="email" required autocomplete="email">
+								<p class="hint">Für Rückfragen und einen möglichen Widerruf.</p>
+							</div>
+							<div class="field">
+								<label for="e-when">Datum &amp; Ort der Aufnahme</label>
+								<input id="e-when" name="Datum und Ort" placeholder="z. B. 18.07.2026, Mauerpark">
+							</div>
+							<div class="field">
+								<label for="e-what">Beschreibung</label>
+								<input id="e-what" name="Beschreibung" placeholder="z. B. Foto mit meinem Porträt">
+							</div>
+
+							<!-- Upload of the signed PDF (Weg 1) -->
+							<div class="field full">
+								<label for="e-file">Unterschriebenes Formular hochladen (nur bei Weg 1)</label>
+								<div class="upload">
+									<input id="e-file" type="file" name="Unterschriebenes Formular" accept="image/*,application/pdf">
+									<p class="hint">Foto oder Scan des unterschriebenen PDFs. Bei Weg 2 einfach leer lassen.</p>
+								</div>
+							</div>
+
+							<!-- Scope of consent -->
+							<div class="field full">
+								<fieldset>
+									<legend>Ich erlaube die Verwendung für: *</legend>
+									<div class="choice-row">
+										<label class="choice"><input type="checkbox" name="Website" value="Ja"> <span>Website smileyfoxyportraits.com</span></label>
+										<label class="choice"><input type="checkbox" name="Social Media" value="Ja"> <span>Instagram &amp; Social Media</span></label>
+										<label class="choice"><input type="checkbox" name="Druck und PDF" value="Ja"> <span>Druck- &amp; PDF-Materialien (Flyer, Portfolio, Angebote)</span></label>
+										<label class="choice"><input type="checkbox" name="Bewerbungen" value="Ja"> <span>Bewerbungen für Märkte &amp; Ausstellungen</span></label>
+									</div>
+								</fieldset>
+							</div>
+							<div class="field">
+								<label for="e-namedisplay">Namensnennung</label>
+								<select id="e-namedisplay" name="Namensnennung">
+									<option>Mit Vornamen</option>
+									<option>Ohne Namen</option>
+								</select>
+							</div>
+							<div class="field">
+								<label for="e-parent">Bei Minderjährigen: Name der/des Erziehungsberechtigten</label>
+								<input id="e-parent" name="Erziehungsberechtigte Person">
+							</div>
+
+							<div class="field full">
+								<label class="choice">
+									<input type="checkbox" name="Einwilligung" value="Ja, erteilt" required>
+									<span>
+										Ich willige freiwillig und unentgeltlich ein, dass Aydan Lig'on (SmileyFoxyPortraits) die
+										beschriebenen Aufnahmen für die angekreuzten Zwecke verwenden darf. Ich kann diese
+										Einwilligung jederzeit für die Zukunft per E-Mail widerrufen. Bei Minderjährigen bestätigt die
+										erziehungsberechtigte Person die Einwilligung. *
+									</span>
+								</label>
+							</div>
+						</div>
+
+						<p class="form-legal">
+							Bereits gedruckte Materialien und Kopien Dritter können nach einem Widerruf nicht zurückgeholt werden.
+							Im Internet veröffentlichte Aufnahmen sind weltweit abrufbar. Details in der
+							<a href="/ImpressumUndDatenschutz/Datenschutz.html#mBild">Datenschutzerklärung</a>.
+						</p>
+						<button class="btn" type="submit">Einwilligung senden</button>
+					</form>
+				</div>
+			</div>
+		</section>
+	</main>
+
+	<footer class="site-footer">
+		<div class="wrap footer-bottom" style="margin-top:0;border-top:0">
+			<span>© SmileyFoxyPortraits · Aydan Lig'on · Berlin</span>
+			<span>
+				<a href="/ImpressumUndDatenschutz/Impressum.html">Impressum</a> ·
+				<a href="/ImpressumUndDatenschutz/Datenschutz.html">Datenschutz</a> ·
+				<a href="#" data-consent-toggle>Statistik-Cookies: aus (erlauben)</a>
+			</span>
+		</div>
+	</footer>
+
+</body>
+
+</html>

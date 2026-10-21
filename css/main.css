@@ -46,6 +46,9 @@ body {
 
 img { max-width: 100%; height: auto; display: block; }
 
+/* When a link jumps to a section (#kleckerkasten etc.), stop it from hiding under the sticky header */
+[id] { scroll-margin-top: 90px; }
+
 a { color: var(--accent); }
 a:hover { color: var(--accent-dark); }
 
@@ -200,7 +203,7 @@ p { margin: 0 0 1em; }
 /* ---------- Social proof ---------- */
 .proof-logos {
 	display: grid;
-	grid-template-columns: repeat(5, 1fr);
+	grid-template-columns: repeat(5, minmax(0, 1fr)); /* minmax(0,…) = boxes may shrink, no sideways scrolling */
 	gap: 16px;
 	margin: 1.5em 0 2.5em;
 }
@@ -306,7 +309,7 @@ p { margin: 0 0 1em; }
 
 /* ---------- Packages (events page) ---------- */
 .price { font-family: var(--font-head); font-size: 1.6rem; margin: 0.2em 0 0.6em; }
-.price small { font-family: var(--font-body); font-size: 0.85rem; color: var(--ink-soft); }
+.price small { display: block; font-family: var(--font-body); font-size: 0.85rem; color: var(--ink-soft); }
 
 /* 4 cards in a row (commission price list) */
 .cards--4 { grid-template-columns: repeat(4, 1fr); }
@@ -538,6 +541,10 @@ body.silly-spinning { transform: rotate(360deg); }
 }
 .choice:has(input:checked) { border-color: var(--accent); background: #FFF1EA; }
 .choice input { margin-top: 5px; accent-color: var(--accent); }
+/* Checkboxes/radios keep their small size (the 100% width rule above is only for text fields) */
+.field input[type="checkbox"],
+.field input[type="radio"] { width: auto; flex: none; padding: 0; }
+.field label.choice { display: flex; font-weight: 400; } /* box left, text right (overrides the block labels above) */
 
 /* Upload box */
 .upload {
@@ -590,7 +597,7 @@ body.silly-spinning { transform: rotate(360deg); }
 	.story-steps,
 	.quote-grid,
 	.curious { grid-template-columns: 1fr; }
-	.proof-logos { grid-template-columns: repeat(3, 1fr); }
+	.proof-logos { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 	.footer-grid { grid-template-columns: 1fr 1fr; }
 	.cards--4,
 	.pilot-grid,
@@ -601,7 +608,8 @@ body.silly-spinning { transform: rotate(360deg); }
 	/* Nav moves into its own swipeable row under the logo */
 	.site-header .wrap { flex-wrap: wrap; gap: 8px 16px; padding-block: 10px; }
 	.main-nav { order: 3; width: 100%; margin-left: 0; overflow-x: auto; gap: 18px; padding-bottom: 4px; }
-	.site-header .btn--small { margin-left: auto; }
+	.site-header .btn--small { margin-left: auto; padding: 0.45em 0.9em; font-size: 0.8rem; }
+	.logo { font-size: 1.1rem; } /* smaller logo so logo + button fit on one row */
 	.form-grid,
 	.choice-row,
 	.cards--4,
@@ -615,6 +623,6 @@ body.silly-spinning { transform: rotate(360deg); }
 @media (max-width: 520px) {
 	body { font-size: 17px; }
 	.footer-grid { grid-template-columns: 1fr; }
-	.proof-logos { grid-template-columns: repeat(2, 1fr); }
+	.proof-logos { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 	.btn-row .btn { width: 100%; text-align: center; }
 }

@@ -5,14 +5,8 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<!-- Google Analytics -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=G-XDZB2DQ1KV"></script>
-	<script>
-		window.dataLayer = window.dataLayer || [];
-		function gtag() { dataLayer.push(arguments); }
-		gtag('js', new Date());
-		gtag('config', 'G-XDZB2DQ1KV');
-	</script>
+	<!-- Analytics only after opt-in (no cookies by default): see /js/consent.js -->
+	<script src="/js/consent.js" defer></script>
 
 	<!-- Feedback page: put this link in your Linktree as "Bewertung abgeben".
 	     "noindex" = Google doesn't list it; it's only for customers you send here. -->
@@ -51,6 +45,7 @@
 					<form action="https://formsubmit.co/aydan@smileyfoxyportraits.com" method="POST" enctype="multipart/form-data">
 						<input type="hidden" name="_subject" value="Neue Bewertung (Website)">
 						<input type="hidden" name="_template" value="table">
+						<input type="hidden" name="_next" value="https://smileyfoxyportraits.com/danke.html">
 						<input type="text" name="_honey" style="display:none">
 
 						<div class="form-grid">
@@ -123,6 +118,7 @@
 			<span>
 				<a href="/ImpressumUndDatenschutz/Impressum.html">Impressum</a> ·
 				<a href="/ImpressumUndDatenschutz/Datenschutz.html">Datenschutz</a> ·
+				<a href="#" data-consent-toggle>Statistik-Cookies: aus (erlauben)</a> ·
 				<a href="https://www.instagram.com/smileyfoxyportraits">Instagram</a>
 			</span>
 		</div>
