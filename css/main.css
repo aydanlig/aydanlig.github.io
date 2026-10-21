@@ -381,16 +381,9 @@ body.silly-spinning { transform: rotate(360deg); }
 }
 #silly-overlay.active { opacity: 1; }
 
-/* Hover the ":D" and it starts spinning faster and faster */
-@keyframes spin-ramp { to { transform: rotate(360deg); } }
-@keyframes spin-infinite { to { transform: rotate(360deg); } }
-.spinning-smiley { display: inline-block; cursor: pointer; }
-.spinning-smiley::before { content: ":D"; display: inline-block; }
-.spinning-smiley:hover::before {
-	animation:
-		spin-ramp 3s cubic-bezier(0.7, 0, 1, 0.1) forwards,
-		spin-infinite 0.08s linear infinite 3s;
-}
+/* The 😄 next to "Hi, ich bin Aydan" – spins exponentially faster while hovered (see /js/smiley.js) */
+.spinning-smiley { display: inline-block; cursor: pointer; transform-origin: 50% 50%; line-height: 1; }
+.spinning-smiley::before { content: "😄"; }
 
 /* ---------- "Wo & wann" page (where-i-draw) ----------
    Layout idea from akzynth.com/events: list of places -> each place gets
