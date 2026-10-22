@@ -807,3 +807,6 @@ fieldset.field { border: 0; padding: 0; margin: 0; min-width: 0; }
 .comment-form textarea { min-height: 70px; }
 .thread-form textarea { min-height: 120px; }
 .cat-chip { font-size: 0.75rem; font-weight: 700; padding: 2px 8px; border-radius: 999px; background: #FFE1D4; color: var(--accent-dark); }
+
+/* Image shown in its own shape (not cropped): the layout adapts to the photo */
+.ph-img.ph--natural { width: auto; max-width: 100%; height: auto; max-height: 85vh; margin-inline: auto; display: block; }
