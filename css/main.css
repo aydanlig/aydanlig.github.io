@@ -904,3 +904,4 @@ fieldset.field { border: 0; padding: 0; margin: 0; min-width: 0; }
 .multi-option:hover, .multi-option:has(input:checked) { background: #FFF1EA; }
 .multi-option input { margin-top: 5px; accent-color: var(--accent); }
 .multi-option .hint { margin: 0; }
+.card-foot { margin-top: auto; padding-top: 0.6em; } /* button at the bottom of each price card */
