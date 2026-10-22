@@ -850,3 +850,7 @@ fieldset.field { border: 0; padding: 0; margin: 0; min-width: 0; }
 
 /* Photo note placed between two sections (homepage, above the Berlin artworks) */
 .photo-note--section { border-top: 1px solid var(--line); }
+
+/* 1-€ series on the homepage (one picture visible, click for the others) */
+.euro-set .band-set a { display: block; }
+.euro-set .set-badge { top: 10px; right: 10px; font-size: 0.85rem; }

@@ -8,6 +8,7 @@
 	<!-- Analytics only after opt-in (no cookies by default): see /js/consent.js -->
 	<script src="/js/consent.js" defer></script>
 	<script src="/js/translate.js" defer></script>
+	<script src="/js/gallery.js" defer></script>
 	<script src="/js/smiley.js" defer></script>
 
 	<!-- SEO: title + description are what Google shows in search results.
@@ -310,9 +311,16 @@
 							<a class="btn btn--ghost" style="color:#F2EAE4;border-color:#F2EAE4" href="https://www.instagram.com/smileyfoxyportraits">Instagram folgen</a>
 						</div>
 					</div>
-					<!-- A real 1-€ portrait. NOTE TO SELF: turn this into a carousel (like the band series on the About page)
-					     once there are more 1-€ examples – the 2nd one is waiting on the Desktop ("1 euro portrait.png"). -->
-					<img src="/img/fotos/ein-euro-portraet.jpg" alt="1-€-Porträt in schwarzem Marker: ein Paar, sie lehnt den Kopf an seine Schulter" class="ph-img ph--natural" width="706" height="877" loading="lazy" decoding="async">
+					<!-- Real 1-€ portraits as a small series: the first picture shows, the others when clicking (js/gallery.js).
+					     To add one: copy a hidden <a> line, change file name + data-alt, and raise the number in "▣ 3". -->
+					<div class="euro-set" data-lightbox>
+						<div class="band-set" data-set>
+							<a href="/img/fotos/ein-euro-portraet.jpg"><img src="/img/fotos/ein-euro-portraet.jpg" alt="1-€-Porträt in schwarzem Marker: ein Paar, sie lehnt den Kopf an seine Schulter" class="ph-img ph--natural" width="706" height="877" loading="lazy" decoding="async"><span class="set-badge">▣ 3</span></a>
+							<a href="/img/fotos/ein-euro-portraet-kuss.jpg" data-alt="1-€-Porträt in schwarzem Marker: zwei Frauen küssen sich" hidden></a>
+							<a href="/img/fotos/ein-euro-portraet-skizzen.jpg" data-alt="Drei schnelle 1-€-Porträts in Tusche auf Skizzenbuchseiten" hidden></a>
+						</div>
+						<p class="hint" style="color:#F2EAE4;text-align:center;margin-top:8px">Echte 1-€-Porträts · Bild antippen für mehr</p>
+					</div>
 				</div>
 			</div>
 		</section>
