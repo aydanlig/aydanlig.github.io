@@ -905,3 +905,7 @@ fieldset.field { border: 0; padding: 0; margin: 0; min-width: 0; }
 .multi-option input { margin-top: 5px; accent-color: var(--accent); }
 .multi-option .hint { margin: 0; }
 .card-foot { margin-top: auto; padding-top: 0.6em; } /* button at the bottom of each price card */
+
+/* Small, light caption under a photo (e.g. commission page hero) */
+.photo-caption { margin: 0; }
+.photo-caption figcaption { margin-top: 8px; text-align: center; font-size: 0.82rem; color: var(--ink-soft); }
