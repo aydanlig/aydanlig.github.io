@@ -979,3 +979,22 @@ fieldset.field { border: 0; padding: 0; margin: 0; min-width: 0; }
 	.footer-grid { grid-template-columns: repeat(3, 1fr); }
 }
 @media (max-width: 600px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+
+/* Payment page: 3 quick steps (size, tip, pay) */
+.pay-page h1 { font-size: clamp(1.8rem, 6vw, 2.4rem); margin-bottom: 0.6em; }
+.pay-step { text-align: left; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px 18px; margin-top: 14px; }
+.pay-step h2 { font-size: 1.15rem; margin: 0 0 10px; display: flex; align-items: center; gap: 8px; }
+.pay-step h2 span { display: inline-grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; background: var(--night); color: #fff; font: 700 0.85rem var(--font-body); }
+.pay-step--tip { border: 2px solid var(--fox); background: #FFF6F1; }
+.chip-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(70px, 1fr)); gap: 8px; margin: 8px 0; }
+.chip { font: 600 0.95rem var(--font-body); padding: 10px 8px; border-radius: 999px; border: 2px solid var(--ink); background: #fff; color: var(--ink); cursor: pointer; }
+.chip.on { background: var(--ink); color: #fff; }
+.pay-step--tip .chip.on { background: var(--fox); border-color: var(--fox); color: var(--night); }
+.pay-check { display: flex; gap: 8px; align-items: center; font-size: 0.9rem; color: var(--ink-soft); }
+.pay-total { font-size: 1.2rem; margin: 0 0 4px; }
+.pay-total strong { font-size: 1.8rem; color: var(--accent); }
+.pay-step--total .pay-buttons { margin-top: 10px; }
+.pay-next { text-align: left; margin-top: 2em; font-size: 0.95rem; }
+.pay-next p { margin: 0 0 0.7em; }
+.pay-step--tip .chip-row { grid-template-columns: repeat(4, 1fr); }
+.pay-step--tip .chip { padding: 10px 4px; }
