@@ -932,3 +932,4 @@ fieldset.field { border: 0; padding: 0; margin: 0; min-width: 0; }
 .proof-logo--wide { grid-column: span 2; display: flex; align-items: center; gap: 10px; overflow: visible; }
 .proof-logo--wide img:first-child { width: auto; height: 92px; flex: none; }
 .proof-logo--wide img:last-child { flex: 1; min-width: 0; border-radius: 10px; }
+.ref-client-logo { max-width: 200px; margin-top: 1.2em; border: 1px solid var(--line); }
