@@ -1074,3 +1074,12 @@ fieldset.field { border: 0; padding: 0; margin: 0; min-width: 0; }
 .swipe-dots { display: flex; justify-content: center; gap: 8px; margin-top: 10px; }
 .swipe-dots button { width: 10px; height: 10px; padding: 0; border-radius: 50%; border: 0; background: rgba(242, 234, 228, 0.35); cursor: pointer; }
 .swipe-dots button.on { background: var(--fox); }
+
+/* Footer "Rechtliches" on phones: full width, links as a 2x2 grid, small cookie button below */
+@media (max-width: 600px) {
+	.footer-legal { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; gap: 0 16px; }
+	.footer-legal h3 { grid-column: 1 / -1; }
+	.footer-legal .cookie-toggle { grid-column: 1 / -1; margin-top: 10px; }
+	.footer-legal .cookie-toggle a { display: inline-block; font-size: 0.78rem; color: var(--mauve); border: 1px solid #3d2d37; border-radius: 999px; padding: 4px 12px; }
+}
+@media (max-width: 600px) { .site-footer .footer-mail { font-size: 0.68rem; } }
