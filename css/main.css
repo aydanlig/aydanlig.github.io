@@ -1035,3 +1035,4 @@ fieldset.field { border: 0; padding: 0; margin: 0; min-width: 0; }
 @media (max-width: 600px) { .card-pair { grid-template-columns: 1fr; } }
 .gallery--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 760px; }
 .photo-desc { font-style: italic; margin: 0 0 12px; }
+.site-footer .footer-mail { font-size: 0.8rem; color: var(--mauve); overflow-wrap: anywhere; }
