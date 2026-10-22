@@ -854,3 +854,16 @@ fieldset.field { border: 0; padding: 0; margin: 0; min-width: 0; }
 /* 1-€ series on the homepage (one picture visible, click for the others) */
 .euro-set .band-set a { display: block; }
 .euro-set .set-badge { top: 10px; right: 10px; font-size: 0.85rem; }
+
+/* "Bezahlen" button next to "Anfragen" in the header (links to /bezahlen.html: PayPal or card) */
+.site-header .btn--pay { margin-right: -14px; }
+@media (max-width: 720px) { .site-header .btn--pay { margin-right: 0; } }
+.pay-short { display: none; }
+@media (max-width: 520px) {
+	/* phone: the pay button shrinks to a round "€" so logo, EN, € and "Anfragen" fit on one row */
+	.site-header .btn--pay { padding: 0.4em 0.7em; }
+	.pay-long { display: none; }
+	.pay-short { display: inline; }
+}
+@media (max-width: 380px) { .logo { font-size: 0.85rem; } .site-header .wrap { column-gap: 6px; } }
+@media (max-width: 340px) { .logo { font-size: 0.78rem; } .lang-switch, .site-header .btn--small { padding: 0.35em 0.55em; } .site-header .wrap { padding-inline: 12px; } }
