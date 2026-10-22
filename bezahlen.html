@@ -42,10 +42,16 @@
 
 				<div class="pay-step">
 					<h2><span>1</span> Dein Porträt</h2>
-					<div class="chip-row" data-group="size">
-						<button type="button" class="chip" data-price="1">A6 · 1 €</button>
-						<button type="button" class="chip" data-price="15">A5 · 15 €</button>
-						<button type="button" class="chip" data-price="25">A4 · 25 €</button>
+					<!-- All size buttons form one group (only one can be chosen); the labels A6/A5/A4 just sort them -->
+					<div data-group="size">
+						<div class="size-line"><span class="size-label">A6</span>
+							<div class="chip-row"><button type="button" class="chip" data-price="1">1 €</button></div></div>
+						<div class="size-line"><span class="size-label">A5</span>
+							<div class="chip-row"><button type="button" class="chip" data-price="10">10 €</button><button type="button" class="chip" data-price="20">20 €</button></div></div>
+						<div class="size-line"><span class="size-label">A4</span>
+							<div class="chip-row"><button type="button" class="chip" data-price="20">20 €</button><button type="button" class="chip" data-price="40">40 €</button><button type="button" class="chip" data-price="60">60 €</button></div></div>
+						<label class="amount-field">Anderer Preis (wie abgesprochen):
+							<input type="number" inputmode="decimal" min="0" step="0.5" placeholder="€" data-custom="size"></label>
 					</div>
 					<label class="pay-check"><input type="checkbox" id="pay-pack" data-price="1"> Verpackung zum Mitnehmen (+1 €)</label>
 				</div>
@@ -59,6 +65,8 @@
 						<button type="button" class="chip" data-price="5">+5 €</button>
 						<button type="button" class="chip" data-price="10">+10 €</button>
 					</div>
+					<label class="amount-field">Eigener Betrag:
+						<input type="number" inputmode="decimal" min="0" step="0.5" placeholder="€" data-custom="tip"></label>
 					<p class="hint">Findest du, dein Porträt ist mehr wert, als ich verlange? Zahl gern, was es dir wert ist.</p>
 				</div>
 
@@ -106,7 +114,7 @@
 				</ul>
 				END TOP TIPPERS -->
 
-				<p class="price-note">Gemäß § 19 UStG wird keine Umsatzsteuer berechnet. A4 mit Aquarell-Farbe: Preis auf Anfrage.</p>
+				<p class="price-note">Gemäß § 19 UStG wird keine Umsatzsteuer berechnet.</p>
 			</div>
 		</section>
 	</main>
@@ -116,7 +124,10 @@
 		(function () {
 			var sum = document.getElementById('pay-sum'), hint = document.getElementById('pay-sum-hint');
 			var pack = document.getElementById('pay-pack');
+			// value of a group: a typed amount wins, otherwise the chosen button
 			function value(group) {
+				var typed = document.querySelector('[data-custom="' + group + '"]');
+				if (typed && typed.value !== '') return parseFloat(typed.value.replace(',', '.')) || 0;
 				var on = document.querySelector('[data-group="' + group + '"] .chip.on');
 				return on ? parseFloat(on.getAttribute('data-price')) : null;
 			}
@@ -124,12 +135,21 @@
 				var size = value('size');
 				if (size === null) { sum.textContent = '–'; hint.hidden = false; return; }
 				var total = size + (pack.checked ? 1 : 0) + (value('tip') || 0);
-				sum.textContent = total.toLocaleString('de-DE') + ' €';
+				sum.textContent = total.toLocaleString('de-DE', { maximumFractionDigits: 2 }) + ' €';
 				hint.hidden = true;
 			}
-			document.querySelectorAll('.chip-row .chip').forEach(function (chip) {
+			document.querySelectorAll('[data-group] .chip').forEach(function (chip) {
 				chip.addEventListener('click', function () {
-					chip.parentNode.querySelectorAll('.chip').forEach(function (c) { c.classList.toggle('on', c === chip); c.setAttribute('aria-pressed', c === chip); });
+					var group = chip.closest('[data-group]');
+					group.querySelectorAll('.chip').forEach(function (c) { c.classList.toggle('on', c === chip); c.setAttribute('aria-pressed', c === chip); });
+					var typed = document.querySelector('[data-custom="' + group.getAttribute('data-group') + '"]');
+					if (typed) typed.value = '';   // a button click replaces a typed amount
+					update();
+				});
+			});
+			document.querySelectorAll('[data-custom]').forEach(function (input) {
+				input.addEventListener('input', function () {   // typing replaces the chosen button
+					document.querySelectorAll('[data-group="' + input.getAttribute('data-custom') + '"] .chip').forEach(function (c) { c.classList.remove('on'); });
 					update();
 				});
 			});

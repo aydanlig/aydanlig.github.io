@@ -998,3 +998,8 @@ fieldset.field { border: 0; padding: 0; margin: 0; min-width: 0; }
 .pay-next p { margin: 0 0 0.7em; }
 .pay-step--tip .chip-row { grid-template-columns: repeat(4, 1fr); }
 .pay-step--tip .chip { padding: 10px 4px; }
+.size-line { display: grid; grid-template-columns: 36px 1fr; align-items: center; gap: 8px; }
+.size-label { font-weight: 700; }
+.size-line .chip-row { grid-template-columns: repeat(3, 1fr); margin: 4px 0; }
+.amount-field { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; font-size: 0.9rem; color: var(--ink-soft); margin-top: 8px; }
+.amount-field input { width: 110px; padding: 9px 12px; border: 2px solid var(--ink); border-radius: 999px; font: 600 1rem var(--font-body); }
