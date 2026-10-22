@@ -41,19 +41,24 @@
 		<div class="wrap">
 			<a class="logo" href="/">SmileyFoxy<span>Portraits</span></a>
 			<nav class="main-nav" aria-label="Hauptmenü">
-				<a href="/events.html#live-events">Live-Events</a>
+				<a href="/events.html#live-events"><span class="nav-long">Live-</span>Events</a>
 				<a href="/events.html#kleckerkasten">Kleckerkasten</a>
-				<a href="/commission.html">Porträt-Auftrag</a>
+				<a href="/commission.html">Porträt<span class="nav-long">-Auftrag</span></a>
 				<a href="/about/">Über mich</a>
 			</nav>
 			<a class="lang-switch" data-translate lang="en" title="Translate this page to English" href="https://smileyfoxyportraits-com.translate.goog/commission.html?_x_tr_sl=de&_x_tr_tl=en&_x_tr_hl=en">EN</a>
-			<a class="btn btn--small btn--ghost btn--pay" href="/bezahlen.html" title="Vor Ort bezahlen: PayPal oder Karte" aria-label="Bezahlen"><span class="pay-long">Bezahlen</span><span class="pay-short" aria-hidden="true">€</span></a>
 			<a class="btn btn--small" href="#bestellen">Bestellen</a>
 		</div>
 	</header>
 
 
 	<main>
+
+		<!-- PAY STRIP: for people who were just drawn in person (replaces the old header "Bezahlen" button) -->
+		<a class="pay-strip" href="/bezahlen.html">
+			<span>✏️ Du wurdest gerade live von mir gezeichnet und möchtest bezahlen?</span>
+			<strong>Hier klicken →</strong>
+		</a>
 
 		<section class="hero">
 			<div class="wrap">
@@ -364,7 +369,7 @@
 								</label>
 							</div>
 							<div class="field full">
-								<label for="c-notes">Wünsche &amp; Notizen</label>
+								<label for="c-notes">Nachricht / sonstige Wünsche</label>
 								<textarea id="c-notes" name="Notizen" rows="4"
 									placeholder="Wer ist das? Was macht die Person besonders? Hintergrund, Farben, Anlass …"></textarea>
 							</div>

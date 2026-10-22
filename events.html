@@ -42,14 +42,13 @@
 		<div class="wrap">
 			<a class="logo" href="/">SmileyFoxy<span>Portraits</span></a>
 			<nav class="main-nav" aria-label="Hauptmenü">
-				<a href="/events.html#live-events">Live-Events</a>
+				<a href="/events.html#live-events"><span class="nav-long">Live-</span>Events</a>
 				<a href="/events.html#kleckerkasten">Kleckerkasten</a>
-				<a href="/commission.html">Porträt-Auftrag</a>
+				<a href="/commission.html">Porträt<span class="nav-long">-Auftrag</span></a>
 				<a href="/about/">Über mich</a>
 			</nav>
 			<a class="lang-switch" data-translate lang="en" title="Translate this page to English" href="https://smileyfoxyportraits-com.translate.goog/events.html?_x_tr_sl=de&_x_tr_tl=en&_x_tr_hl=en">EN</a>
-			<a class="btn btn--small btn--ghost btn--pay" href="/bezahlen.html" title="Vor Ort bezahlen: PayPal oder Karte" aria-label="Bezahlen"><span class="pay-long">Bezahlen</span><span class="pay-short" aria-hidden="true">€</span></a>
-			<a class="btn btn--small" href="#anfrage-event">Anfragen</a>
+			<a class="btn btn--small" href="#anfrage-kleckerkasten">Anfragen</a>
 		</div>
 	</header>
 	<!-- PHOTO NOTE – delete this block once all grey placeholders are replaced by real photos -->
@@ -219,7 +218,7 @@
 								</label>
 							</div>
 							<div class="field full">
-								<label for="ev-msg">Nachricht</label>
+								<label for="ev-msg">Nachricht / sonstige Wünsche</label>
 								<textarea id="ev-msg" name="Nachricht" rows="4" placeholder="Was ist das Motto? Gibt es Wünsche zum Branding?"></textarea>
 							</div>
 						</div>
@@ -369,6 +368,11 @@
 				<div class="form-card" id="anfrage-kleckerkasten">
 					<h3>Kleckerkasten für Ihr Team anfragen</h3>
 					<p class="hint">Unverbindlich – gerne rufe ich Sie für ein 10-minütiges Kennenlerngespräch zurück.</p>
+					<!-- The header "Anfragen" button lands here first – these links lead to the other two offers -->
+					<p class="other-offers">Sie suchen etwas anderes?
+						<a href="#anfrage-event">Live-Porträts für ein Event anfragen →</a>
+						<a href="/commission.html#bestellen">Ein Porträt bestellen →</a>
+					</p>
 					<form action="https://formsubmit.co/aydan@smileyfoxyportraits.com" method="POST">
 						<input type="hidden" name="_subject" value="Neue Kleckerkasten-Anfrage (Teambuilding)">
 						<input type="hidden" name="_template" value="table">
@@ -438,7 +442,7 @@
 								</label>
 							</div>
 							<div class="field full">
-								<label for="kk-msg">Nachricht</label>
+								<label for="kk-msg">Nachricht / sonstige Wünsche</label>
 								<textarea id="kk-msg" name="Nachricht" rows="4" placeholder="Was beschäftigt Ihr Team gerade?"></textarea>
 							</div>
 						</div>

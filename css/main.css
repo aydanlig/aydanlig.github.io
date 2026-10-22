@@ -933,3 +933,27 @@ fieldset.field { border: 0; padding: 0; margin: 0; min-width: 0; }
 .proof-logo--wide img:first-child { width: auto; height: 92px; flex: none; }
 .proof-logo--wide img:last-child { flex: 1; min-width: 0; border-radius: 10px; }
 .ref-client-logo { max-width: 200px; margin-top: 1.2em; border: 1px solid var(--line); }
+
+/* Phone header: shorter menu labels ("Events", "Porträt") so all four links fit without scrolling */
+@media (max-width: 720px) {
+	.nav-long { display: none; }
+	.main-nav { gap: 14px; justify-content: space-between; overflow-x: visible; }
+	.main-nav a { font-size: 0.9rem; }
+}
+@media (max-width: 360px) { .main-nav a { font-size: 0.82rem; } }
+
+/* Links to the other offers at the top of the Kleckerkasten form */
+.other-offers { display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: center; font-size: 0.9rem; padding: 10px 12px; margin: 10px 0 16px; border-radius: 10px; background: #FFF1EA; }
+.other-offers a { font-weight: 600; }
+
+/* Pay strip at the top of the commission page (for people who were just drawn in person) */
+.pay-strip { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 10px; padding: 10px 16px; background: var(--fox); color: var(--night); text-decoration: none; font-size: 0.95rem; text-align: center; }
+.pay-strip:hover strong { text-decoration: underline; }
+
+/* Newsletter box on the payment page */
+.newsletter-box { margin: 2.5em auto 0; padding: 22px; border-radius: var(--radius); background: var(--night); color: var(--paper); text-align: center; }
+.newsletter-box h2 { margin-top: 0; color: var(--paper); font-size: 1.4rem; }
+.newsletter-box .hint { color: var(--mauve); }
+.newsletter-form { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin: 14px 0 6px; }
+.newsletter-form input { flex: 1 1 220px; max-width: 320px; padding: 12px 14px; border-radius: 999px; border: 0; font: inherit; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
