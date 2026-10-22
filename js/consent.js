@@ -54,8 +54,8 @@
 		document.querySelectorAll('[data-consent-toggle]').forEach(function (el) {
 			function render() {
 				el.textContent = getChoice() === 'yes'
-					? 'Statistik-Cookies: an (ausschalten)'
-					: 'Statistik-Cookies: aus (erlauben)';
+					? 'Statistik-Cookies: an (klicken zum Ausschalten)'
+					: 'Statistik-Cookies: aus (klicken zum Erlauben)';
 			}
 			render();
 			el.addEventListener('click', function (e) {
