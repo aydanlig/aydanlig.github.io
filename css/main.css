@@ -914,3 +914,9 @@ fieldset.field { border: 0; padding: 0; margin: 0; min-width: 0; }
 .terms { max-width: 760px; margin: 0.6em auto 0; font-size: 0.9rem; color: var(--ink-soft); text-align: left; }
 .terms summary { cursor: pointer; text-align: center; font-weight: 700; color: var(--accent); }
 .terms p { margin: 0.7em 0 0; }
+
+/* Referenzen page: photo grids (click = lightbox), info-sheet links, placeholder text */
+.ref-grid { grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); }
+.pdf-links { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 1.4em; }
+.pdf-links .hint { margin: 0 4px 0 0; }
+.placeholder-text { color: var(--ink-soft); font-style: italic; background: #F3E9E2; border: 1px dashed #CDB9AE; border-radius: 8px; padding: 6px 10px; }
