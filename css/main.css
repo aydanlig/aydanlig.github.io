@@ -836,3 +836,9 @@ fieldset.field { border: 0; padding: 0; margin: 0; min-width: 0; }
 /* Small image row on the projects timeline */
 .year-gallery { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; }
 .year-gallery img { max-height: 260px; max-width: 100%; width: auto; height: auto; border-radius: 10px; border: 1px solid var(--line); margin: 0; }
+
+/* Band gallery series (carousels): only the first picture shows, ▣ badge = number of pictures */
+.band-grid a[hidden] { display: none; }
+.band-set a { position: relative; }
+.set-badge { position: absolute; top: 6px; right: 6px; background: rgba(15, 12, 17, 0.8); color: #F2EAE4; font-size: 0.75rem; font-weight: 700; padding: 2px 8px; border-radius: 999px; }
+.lightbox.lb-single .lb-prev, .lightbox.lb-single .lb-next { display: none; }

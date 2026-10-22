@@ -2,6 +2,7 @@
    gallery.js – click a thumbnail to see it large (lightbox)
 
    HTML:  <div data-lightbox> <a href="large.jpg"><img src="small.jpg" alt="…"></a> … </div>
+   Series: <div data-set> <a href="1.jpg"><img …></a> <a href="2.jpg" data-alt="…" data-caption="…" hidden></a> </div>
    - ← / → keys, the arrow buttons or swiping on phones go to the previous/next image
    - Esc, the ✕ button or a click on the dark background closes it
    - Without JavaScript the links simply open the large image
@@ -31,9 +32,11 @@
 		function show(i) {
 			index = (i + links.length) % links.length;
 			var a = links[index], thumb = a.querySelector('img');
+			var alt = a.getAttribute('data-alt') || (thumb ? thumb.alt : '');
 			img.src = a.getAttribute('href');
-			img.alt = thumb ? thumb.alt : '';
-			cap.textContent = (thumb ? thumb.alt : '') + '  (' + (index + 1) + ' / ' + links.length + ')';
+			img.alt = alt;
+			cap.textContent = (a.getAttribute('data-caption') || alt) + (links.length > 1 ? '  (' + (index + 1) + ' / ' + links.length + ')' : '');
+			box.classList.toggle('lb-single', links.length < 2);
 		}
 
 		function open(list, i) {
@@ -51,10 +54,18 @@
 			if (lastFocus) lastFocus.focus();
 		}
 
-		galleries.forEach(function (g) {
-			var list = Array.prototype.slice.call(g.querySelectorAll('a[href]'));
+		// Each [data-set] inside a gallery is its own little carousel (first link visible, the rest hidden);
+		// all other links of the gallery are clicked through together
+		function bind(list) {
 			list.forEach(function (a, i) {
 				a.addEventListener('click', function (e) { e.preventDefault(); open(list, i); });
+			});
+		}
+		galleries.forEach(function (g) {
+			var all = Array.prototype.slice.call(g.querySelectorAll('a[href]'));
+			bind(all.filter(function (a) { return !a.closest('[data-set]'); }));
+			g.querySelectorAll('[data-set]').forEach(function (set) {
+				bind(Array.prototype.slice.call(set.querySelectorAll('a[href]')));
 			});
 		});
 

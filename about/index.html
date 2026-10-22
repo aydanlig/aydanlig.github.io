@@ -217,38 +217,52 @@
 
 			<!-- ================= FÜR NEUGIERIGE: BANDS, LIVE GEZEICHNET =================
 			     Thumbnails (img/musik/band-N-klein.jpg, 600x600) open the large picture (band-N.jpg)
-			     in a lightbox (js/gallery.js). To add one: copy an <a>…</a> line. -->
+			     in a lightbox (js/gallery.js). To add one: copy an <a>…</a> line.
+			     A <div class="band-set" data-set> is a carousel: the first link shows in the grid,
+			     the hidden links (data-alt = description, data-caption = text below) only when clicking through. -->
 			<section class="prose-section" id="bands">
 				<span class="eyebrow">Für Neugierige · Musik</span>
 				<h2>Bands, live gezeichnet</h2>
 				<p>
 					Auf Konzerten sitze ich selten still: Während die Band spielt, zeichne ich sie – mit Fineliner, Tusche
 					und Aquarell, mitten im Bühnenlicht. Manchmal landen die Skizzen danach bei den Musiker:innen selbst.
-					Klick auf ein Bild, um es groß zu sehen.
+					Klick auf ein Bild, um es groß zu sehen. Bilder mit ▣ sind kleine Serien zum Durchklicken.
 				</p>
 				<div class="band-grid" data-lightbox>
-					<a href="/img/musik/band-1.jpg"><img src="/img/musik/band-1-klein.jpg" alt="Tusche-Zeichnung einer Band" width="600" height="600" loading="lazy" decoding="async"></a>
-					<a href="/img/musik/band-2.jpg"><img src="/img/musik/band-2-klein.jpg" alt="Blaues Aquarell eines Gitarristen" width="600" height="600" loading="lazy" decoding="async"></a>
-					<a href="/img/musik/band-3.jpg"><img src="/img/musik/band-3-klein.jpg" alt="Skizze im pinken Bühnenlicht" width="600" height="600" loading="lazy" decoding="async"></a>
+					<div class="band-set" data-set>
+						<a href="/img/musik/band-8.jpg"><img src="/img/musik/band-8-klein.jpg" alt="Vier blaue Konzertskizzen" width="600" height="600" loading="lazy" decoding="async"><span class="set-badge">▣ 4</span></a>
+						<a href="/img/musik/band-9.jpg" data-alt="Blaue Tusche-Skizze mit Schriftzug" hidden></a>
+						<a href="/img/musik/band-10.jpg" data-alt="Blaue Aquarell-Skizze einer Band" hidden></a>
+						<a href="/img/musik/band-11.jpg" data-alt="Hand hält blaue Konzertskizzen neben dem Aquarellkasten" hidden></a>
+					</div>
+					<div class="band-set" data-set>
+						<a href="/img/musik/band-3.jpg" data-caption="Live im Konzert gezeichnet …"><img src="/img/musik/band-3-klein.jpg" alt="Live-Skizze von CEVIL im pinken Bühnenlicht" width="600" height="600" loading="lazy" decoding="async"><span class="set-badge">▣ 2</span></a>
+						<a href="/img/musik/band-7.jpg" data-alt="Dieselbe Skizze, von CEVIL auf Instagram geteilt: „this is the coolest thing ever“" data-caption="… und von CEVIL auf Instagram geteilt." hidden></a>
+					</div>
+					<!-- NOTE TO SELF: this series also belongs together with two photos on Wo & wann ich zeichne:
+					     portraet-an-der-wand-1x1.jpg (the portrait framed at their place) and kunden-mit-aquarell-1x1.jpg (him holding it, Schokoladen) -->
+					<div class="band-set" data-set>
+						<a href="/img/musik/band-15.jpg" data-caption="Der Musiker hat sein Porträt auf Instagram geteilt …"><img src="/img/musik/band-15-klein.jpg" alt="Rot-oranges Aquarell eines Musikers, von ihm auf Instagram geteilt" width="600" height="600" loading="lazy" decoding="async"><span class="set-badge">▣ 2</span></a>
+						<a href="/img/musik/band-1.jpg" data-alt="Tusche-Zeichnung: Aydan und der Musiker, der sein Aquarell-Porträt hochhält" data-caption="… und hier eine Tusche-Zeichnung von uns beiden, wie er es hochhält." hidden></a>
+					</div>
 					<a href="/img/musik/band-4.jpg"><img src="/img/musik/band-4-klein.jpg" alt="Band live auf der Bühne, davor gehaltene Zeichnungen" width="600" height="600" loading="lazy" decoding="async"></a>
 					<a href="/img/musik/band-5.jpg"><img src="/img/musik/band-5-klein.jpg" alt="Bunte Aquarell-Skizzen von Musiker:innen" width="600" height="600" loading="lazy" decoding="async"></a>
 					<a href="/img/musik/band-6.jpg"><img src="/img/musik/band-6-klein.jpg" alt="Drei Aquarell-Porträts von Musikern" width="600" height="600" loading="lazy" decoding="async"></a>
-					<a href="/img/musik/band-7.jpg"><img src="/img/musik/band-7-klein.jpg" alt="Konzertskizze mit dem Kommentar „this is the coolest thing ever“" width="600" height="600" loading="lazy" decoding="async"></a>
-					<a href="/img/musik/band-8.jpg"><img src="/img/musik/band-8-klein.jpg" alt="Vier blaue Konzertskizzen" width="600" height="600" loading="lazy" decoding="async"></a>
-					<a href="/img/musik/band-9.jpg"><img src="/img/musik/band-9-klein.jpg" alt="Blaue Tusche-Skizze mit Schriftzug" width="600" height="600" loading="lazy" decoding="async"></a>
-					<a href="/img/musik/band-10.jpg"><img src="/img/musik/band-10-klein.jpg" alt="Blaue Aquarell-Skizze einer Band" width="600" height="600" loading="lazy" decoding="async"></a>
-					<a href="/img/musik/band-11.jpg"><img src="/img/musik/band-11-klein.jpg" alt="Hand hält blaue Konzertskizzen neben dem Aquarellkasten" width="600" height="600" loading="lazy" decoding="async"></a>
+					<div class="band-set" data-set>
+						<a href="/img/musik/band-22.jpg"><img src="/img/musik/band-22-klein.jpg" alt="Konzertskizzen und Aquarellkasten" width="600" height="600" loading="lazy" decoding="async"><span class="set-badge">▣ 6</span></a>
+						<a href="/img/musik/band-2.jpg" data-alt="Blaues Aquarell eines Gitarristen" hidden></a>
+						<a href="/img/musik/band-18.jpg" data-alt="Musiker mit Mütze, daneben der Aquarellkasten" hidden></a>
+						<a href="/img/musik/band-16.jpg" data-alt="Fineliner-Skizze eines Gitarristen" hidden></a>
+						<a href="/img/musik/band-17.jpg" data-alt="Tusche-Porträt einer Musikerin" hidden></a>
+						<a href="/img/musik/band-21.jpg" data-alt="Viele Konzertskizzen nebeneinander" hidden></a>
+						<!-- MISSING SKETCH of this concert: save it as img/musik/band-23.jpg, copy the line above,
+						     change the number and the data-alt text, and change "▣ 6" to "▣ 7" -->
+					</div>
 					<a href="/img/musik/band-12.jpg"><img src="/img/musik/band-12-klein.jpg" alt="Zarte Aquarell-Skizzen auf einem Holztisch" width="600" height="600" loading="lazy" decoding="async"></a>
 					<a href="/img/musik/band-13.jpg"><img src="/img/musik/band-13-klein.jpg" alt="Musikerin hält ihr live gezeichnetes Porträt" width="600" height="600" loading="lazy" decoding="async"></a>
 					<a href="/img/musik/band-14.jpg"><img src="/img/musik/band-14-klein.jpg" alt="Blaue Skizze einer Gitarristin" width="600" height="600" loading="lazy" decoding="async"></a>
-					<a href="/img/musik/band-15.jpg"><img src="/img/musik/band-15-klein.jpg" alt="Rot-oranges Aquarell eines Gitarristen" width="600" height="600" loading="lazy" decoding="async"></a>
-					<a href="/img/musik/band-16.jpg"><img src="/img/musik/band-16-klein.jpg" alt="Fineliner-Skizze eines Gitarristen" width="600" height="600" loading="lazy" decoding="async"></a>
-					<a href="/img/musik/band-17.jpg"><img src="/img/musik/band-17-klein.jpg" alt="Tusche-Porträt einer Musikerin" width="600" height="600" loading="lazy" decoding="async"></a>
-					<a href="/img/musik/band-18.jpg"><img src="/img/musik/band-18-klein.jpg" alt="Musiker mit Mütze, daneben der Aquarellkasten" width="600" height="600" loading="lazy" decoding="async"></a>
 					<a href="/img/musik/band-19.jpg"><img src="/img/musik/band-19-klein.jpg" alt="Drei Aquarell-Skizzen in Händen" width="600" height="600" loading="lazy" decoding="async"></a>
 					<a href="/img/musik/band-20.jpg"><img src="/img/musik/band-20-klein.jpg" alt="Drei Konzertskizzen in orangem Licht" width="600" height="600" loading="lazy" decoding="async"></a>
-					<a href="/img/musik/band-21.jpg"><img src="/img/musik/band-21-klein.jpg" alt="Viele Konzertskizzen nebeneinander" width="600" height="600" loading="lazy" decoding="async"></a>
-					<a href="/img/musik/band-22.jpg"><img src="/img/musik/band-22-klein.jpg" alt="Konzertskizzen und Aquarellkasten" width="600" height="600" loading="lazy" decoding="async"></a>
 				</div>
 			</section>
 
