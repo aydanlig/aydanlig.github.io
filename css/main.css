@@ -1039,3 +1039,22 @@ fieldset.field { border: 0; padding: 0; margin: 0; min-width: 0; }
 
 /* Impressum / Datenschutz pages (no footer): small legal links at the end */
 .legal-links { text-align: center; font-size: 0.9rem; color: var(--ink-soft); padding: 32px 16px; }
+
+/* About page: selected blog posts */
+.blog-list { list-style: none; padding: 0 !important; }
+.blog-list li { padding: 10px 0; border-bottom: 1px dashed var(--line); }
+.blog-list a { font-weight: 600; }
+.blog-list .hint { display: block; margin-top: 2px; }
+
+/* About page: searchable blog archive + Substack sign-up */
+.archive { margin-top: 1.5em; border: 1px solid var(--line); border-radius: var(--radius); background: var(--card); padding: 14px 16px; }
+.archive summary { cursor: pointer; font-weight: 700; color: var(--accent); }
+.archive-search { width: 100%; margin: 12px 0 8px; padding: 10px 14px; border: 1px solid #d6cdbf; border-radius: 999px; font: inherit; }
+.archive-list { list-style: none; padding: 0 !important; margin: 0; max-height: 440px; overflow-y: auto; }
+.archive-list li { padding: 8px 2px; border-bottom: 1px dashed var(--line); }
+.archive-list li a { font-weight: 600; }
+.archive-list li small { color: var(--ink-soft); white-space: nowrap; }
+.archive-list .archive-year { font-family: var(--font-head); font-weight: 700; font-size: 1.1rem; border-bottom: 0; padding-top: 14px; }
+.archive-subscribe { margin-top: 1.5em; }
+.archive-subscribe p { margin: 0 0 8px; }
+.archive-list .hint { line-height: 1.45; }
