@@ -923,3 +923,9 @@ fieldset.field { border: 0; padding: 0; margin: 0; min-width: 0; }
 
 /* Easter egg (homepage logo click): tiny hint under the "WOAH" text */
 .logo .egg-hint { display: block; font-family: var(--font-body, inherit); font-size: 0.55rem; font-weight: 400; opacity: 0.6; margin-top: 1px; }
+
+/* Real client logo/banner in the "Vertrauen" row: own shape, vertically centred */
+.proof-logos { align-items: center; }
+.proof-logo { display: block; border-radius: 10px; overflow: hidden; transition: transform 0.15s ease; }
+.proof-logo:hover { transform: translateY(-2px); }
+.proof-logo img { display: block; width: 100%; height: auto; }
