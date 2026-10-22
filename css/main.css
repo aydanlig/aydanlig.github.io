@@ -885,3 +885,22 @@ fieldset.field { border: 0; padding: 0; margin: 0; min-width: 0; }
 /* Phone number box that appears when "Express" is ticked (commission form) */
 .express-phone { margin-top: 8px; padding: 10px 12px; border-radius: 10px; background: #FFF1EA; border: 1px solid var(--fox); font-size: 0.9rem; }
 .express-phone[hidden] { display: none; }
+
+/* Dropdown with several checkboxes (commission form "Extras"), looks like the other dropdowns */
+.field .label { display: block; font-weight: 600; font-size: 0.95rem; margin-bottom: 6px; }
+.multi-select { position: relative; }
+.multi-select summary {
+	list-style: none; cursor: pointer; padding: 12px 40px 12px 14px; border: 1px solid #d6cdbf; border-radius: 10px;
+	background: #fff; color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.multi-select summary::-webkit-details-marker { display: none; }
+.multi-select summary::after { content: "▾"; position: absolute; right: 14px; top: 12px; color: var(--ink-soft); }
+.multi-select[open] summary { outline: 2px solid var(--accent); outline-offset: 1px; border-color: var(--accent); }
+.multi-options {
+	position: absolute; z-index: 20; left: 0; right: 0; top: calc(100% + 6px); background: #fff; border: 1px solid #d6cdbf;
+	border-radius: 10px; box-shadow: 0 12px 30px rgba(31, 27, 36, 0.15); padding: 6px; max-height: 340px; overflow-y: auto;
+}
+.field label.multi-option { display: flex; gap: 10px; align-items: flex-start; padding: 8px 10px; border-radius: 8px; cursor: pointer; font-weight: 400; margin: 0; }
+.multi-option:hover, .multi-option:has(input:checked) { background: #FFF1EA; }
+.multi-option input { margin-top: 5px; accent-color: var(--accent); }
+.multi-option .hint { margin: 0; }

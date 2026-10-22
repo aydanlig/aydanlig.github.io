@@ -327,37 +327,22 @@
 									<option>Live bei dir – ich übergebe es direkt vor Ort</option>
 								</select>
 							</div>
-							<!-- Add-ons: each checkbox shows up in your email only if ticked -->
-							<div class="field full">
-								<fieldset>
-									<legend>Extras</legend>
-									<div class="choice-row choice-row--3">
-										<label class="choice">
-											<input type="checkbox" name="Express" value="Ja (+10 €)">
-											<span><strong>Express</strong><br><span class="hint">fertig in 3 Tagen · +10 €</span></span>
-										</label>
-										<label class="choice">
-											<input type="checkbox" name="Geschenkverpackung" value="Ja (+5 €)">
-											<span><strong>Geschenkverpackung</strong><br><span class="hint">+5 €</span></span>
-										</label>
-										<label class="choice">
-											<input type="checkbox" name="Hintergrund-Extra" value="Ja (+10 €)">
-											<span><strong>Hintergrund / Stil-Extra</strong><br><span class="hint">z. B. bunter Aquarell-Hintergrund · +10 €</span></span>
-										</label>
-										<label class="choice">
-											<input type="checkbox" name="Gold" value="Ja (+10 €)">
-											<span><strong>Goldtinte / Blattgold</strong><br><span class="hint">goldene Akzente · +10 €</span></span>
-										</label>
-										<label class="choice">
-											<input type="checkbox" name="Marker-Highlights" value="Ja (+5 €, A5)">
-											<span><strong>Marker-Highlights</strong><br><span class="hint">nur A5 · lässt das Bild richtig hervorstechen · +5 €</span></span>
-										</label>
-										<label class="choice">
-											<input type="checkbox" name="Live bei dir vor Ort" value="Ja – bitte Aufpreis nennen">
-											<span><strong>Live bei dir</strong><br><span class="hint">Ich komme zu dir und zeichne vor Ort · Aufpreis nach Absprache (Ort bitte in die Notizen)</span></span>
-										</label>
+							<!-- EXTRAS as a dropdown with several choices (like "Lieferung", but tick as many as you like).
+							     Each ticked box shows up in your email. Summary text is updated by /js/forms.js. -->
+							<div class="field">
+								<span class="label" id="c-extras-label">Extras</span>
+								<details class="multi-select" data-multi-select>
+									<summary aria-labelledby="c-extras-label" data-empty="Keine Extras">Keine Extras</summary>
+									<div class="multi-options">
+										<label class="multi-option"><input type="checkbox" name="Express" value="Ja (+10 €)"><span><strong>Express</strong><br><span class="hint">fertig in 3 Tagen · +10 €</span></span></label>
+										<label class="multi-option"><input type="checkbox" name="Geschenkverpackung" value="Ja (+5 €)"><span><strong>Geschenkverpackung</strong><br><span class="hint">+5 €</span></span></label>
+										<label class="multi-option"><input type="checkbox" name="Hintergrund-Extra" value="Ja (+10 €)"><span><strong>Hintergrund / Stil-Extra</strong><br><span class="hint">z. B. bunter Aquarell-Hintergrund · +10 €</span></span></label>
+										<label class="multi-option"><input type="checkbox" name="Gold" value="Ja (+10 €)"><span><strong>Goldtinte / Blattgold</strong><br><span class="hint">goldene Akzente · +10 €</span></span></label>
+										<label class="multi-option"><input type="checkbox" name="Marker-Highlights" value="Ja (+5 €, A5)"><span><strong>Marker-Highlights</strong><br><span class="hint">nur A5 · lässt das Bild hervorstechen · +5 €</span></span></label>
+										<label class="multi-option"><input type="checkbox" name="Live bei dir vor Ort" value="Ja – bitte Aufpreis nennen"><span><strong>Live bei dir</strong><br><span class="hint">ich komme zu dir · Aufpreis nach Absprache (Ort bitte in die Notizen)</span></span></label>
 									</div>
-								</fieldset>
+								</details>
+								<p class="hint">Mehrere auswählbar.</p>
 							</div>
 							<!-- Protects you: the customer confirms they may use the photo (copyright + Recht am eigenen Bild) -->
 							<div class="field full">

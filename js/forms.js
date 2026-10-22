@@ -127,4 +127,22 @@
 			toggle();
 		});
 	});
+
+	// Dropdown with several checkboxes (<details data-multi-select>): the closed box lists what is ticked,
+	// a click outside closes it
+	document.addEventListener('DOMContentLoaded', function () {
+		document.querySelectorAll('[data-multi-select]').forEach(function (box) {
+			var summary = box.querySelector('summary');
+			var boxes = box.querySelectorAll('input[type="checkbox"]');
+			function update() {
+				var names = [];
+				boxes.forEach(function (b) { if (b.checked) names.push(b.closest('label').querySelector('strong').textContent); });
+				summary.textContent = names.length ? names.join(', ') : summary.getAttribute('data-empty');
+			}
+			boxes.forEach(function (b) { b.addEventListener('change', update); });
+			document.addEventListener('click', function (e) { if (box.open && !box.contains(e.target)) box.open = false; });
+			document.addEventListener('keydown', function (e) { if (e.key === 'Escape') box.open = false; });
+			update();
+		});
+	});
 })();
