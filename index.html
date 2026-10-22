@@ -132,7 +132,8 @@
 				<h2 id="proof-title">Gezeichnet für Menschen, Teams &amp; Marken</h2>
 
 				<!-- Swap each box for a logo: <img src="/img/logo-xyz.png" alt="Firmenname" class="ph-img ph--logo"> -->
-				<div class="proof-logos">
+				<!-- Add more client logos later (see notizen/TODO.md): copy the Spaghetteria <a>…</a> block -->
+				<div class="proof-logos proof-logos--few">
 					<!-- Saunasplash has no logo, so their banner is used (shown in its own shape, links to their website) -->
 					<!-- Logo (their white logo, recoloured dark) + banner side by side; takes the space of 2 boxes -->
 					<a class="proof-logo proof-logo--wide" href="https://saunasplash.de" target="_blank" rel="noopener" title="Saunasplash-Festival">
@@ -144,8 +145,6 @@
 						data-confirm="Hinweis: Die Spaghetteria in der Berliner Kollwitzstraße hat 2024 geschlossen – das Team, das ich gezeichnet habe, ist mit dem Restaurant nach Amsterdam umgezogen. Der Link führt zur Website der Spaghetteria in den Niederlanden. Weiter zur Website?">
 						<img src="/img/logos/spaghetteria-logo.jpg" alt="Logo der Spaghetteria Pasta-bar" width="765" height="385" loading="lazy" decoding="async">
 					</a>
-					<div class="ph ph--logo">Kunden-Logo 3 [600x200]</div>
-					<div class="ph ph--logo">Presse / Erwähnung [600x200]</div>
 				</div>
 
 				<!-- SENJA WIDGET (switched off for now). Turn it back on once you have 3+ testimonials there:
@@ -323,12 +322,14 @@
 					<!-- Real 1-€ portraits as a small series: the first picture shows, the others when clicking (js/gallery.js).
 					     To add one: copy a hidden <a> line, change file name + data-alt, and raise the number in "▣ 3". -->
 					<div class="euro-set" data-lightbox>
-						<div class="band-set" data-set>
-							<a href="/img/fotos/ein-euro-portraet.jpg"><img src="/img/fotos/ein-euro-portraet.jpg" alt="1-€-Porträt in schwarzem Marker: ein Paar, sie lehnt den Kopf an seine Schulter" class="ph-img ph--natural" width="706" height="877" loading="lazy" decoding="async"><span class="set-badge">▣ 3</span></a>
-							<a href="/img/fotos/ein-euro-portraet-kuss.jpg" data-alt="1-€-Porträt in schwarzem Marker: zwei Frauen küssen sich" hidden></a>
-							<a href="/img/fotos/ein-euro-portraet-skizzen.jpg" data-alt="Drei schnelle 1-€-Porträts in Tusche auf Skizzenbuchseiten" hidden></a>
+						<!-- Swipe row: swipe (phone) or use the dots; a tap opens the big view. To add a portrait: copy an <a>…</a> line. -->
+						<div class="swipe-track" data-set data-swipe>
+							<a href="/img/fotos/ein-euro-portraet.jpg"><img src="/img/fotos/ein-euro-portraet.jpg" alt="1-€-Porträt in schwarzem Marker: ein Paar, sie lehnt den Kopf an seine Schulter" width="706" height="877" loading="lazy" decoding="async"></a>
+							<a href="/img/fotos/ein-euro-portraet-kuss.jpg"><img src="/img/fotos/ein-euro-portraet-kuss.jpg" alt="1-€-Porträt in schwarzem Marker: zwei Frauen küssen sich" width="1400" height="1050" loading="lazy" decoding="async"></a>
+							<a href="/img/fotos/ein-euro-portraet-skizzen.jpg"><img src="/img/fotos/ein-euro-portraet-skizzen.jpg" alt="Drei schnelle 1-€-Porträts in Tusche auf Skizzenbuchseiten" width="607" height="430" loading="lazy" decoding="async"></a>
 						</div>
-						<p class="hint" style="color:#F2EAE4;text-align:center;margin-top:8px">Echte 1-€-Porträts · Bild antippen für mehr</p>
+						<div class="swipe-dots" aria-label="Bild wählen"></div>
+						<p class="hint" style="color:#F2EAE4;text-align:center;margin-top:4px">Echte 1-€-Porträts · wischen für mehr</p>
 					</div>
 				</div>
 			</div>
@@ -490,6 +491,23 @@
 					: originalHTML;
 			});
 		})();
+	</script>
+	<!-- Swipe rows: dots under the row, active dot follows the swiping -->
+	<script>
+		document.querySelectorAll('[data-swipe]').forEach(function (track) {
+			var dots = track.parentNode.querySelector('.swipe-dots'), slides = track.children;
+			Array.prototype.forEach.call(slides, function (slide, i) {
+				var b = document.createElement('button');
+				b.type = 'button'; b.setAttribute('aria-label', 'Bild ' + (i + 1));
+				b.addEventListener('click', function () { track.scrollTo({ left: slide.offsetLeft - track.offsetLeft, behavior: 'smooth' }); });
+				dots.appendChild(b);
+			});
+			function mark() {
+				var i = Math.round(track.scrollLeft / track.clientWidth);
+				Array.prototype.forEach.call(dots.children, function (d, k) { d.classList.toggle('on', k === i); });
+			}
+			track.addEventListener('scroll', mark, { passive: true }); mark();
+		});
 	</script>
 </body>
 

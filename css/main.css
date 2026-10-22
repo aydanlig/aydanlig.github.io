@@ -1058,3 +1058,19 @@ fieldset.field { border: 0; padding: 0; margin: 0; min-width: 0; }
 .archive-subscribe { margin-top: 1.5em; }
 .archive-subscribe p { margin: 0 0 8px; }
 .archive-list .hint { line-height: 1.45; }
+/* Only a few real logos so far: centred, not stretched over 5 columns */
+.proof-logos--few { grid-template-columns: 2fr 1fr; max-width: 640px; margin-inline: auto; }
+@media (max-width: 600px) { .proof-logos--few { grid-template-columns: 1fr; max-width: 360px; } .proof-logos--few .proof-logo--wide { grid-column: auto; } }
+/* (override) few logos: same height, centred in one row; wraps on phones */
+.proof-logos--few { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 20px 28px; max-width: none; }
+.proof-logos--few .proof-logo img, .proof-logos--few .proof-logo--wide img:first-child, .proof-logos--few .proof-logo--wide img:last-child { height: 84px; width: auto; flex: none; }
+@media (max-width: 600px) { .proof-logos--few .proof-logo img, .proof-logos--few .proof-logo--wide img:first-child, .proof-logos--few .proof-logo--wide img:last-child { height: 60px; } }
+
+/* Swipe row (homepage 1-€ portraits): one picture at a time, swipe sideways */
+.swipe-track { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; border-radius: 12px; }
+.swipe-track::-webkit-scrollbar { display: none; }
+.swipe-track a { flex: 0 0 100%; scroll-snap-align: center; display: flex; justify-content: center; align-items: center; }
+.swipe-track img { width: 100%; height: min(70vh, 520px); object-fit: contain; }
+.swipe-dots { display: flex; justify-content: center; gap: 8px; margin-top: 10px; }
+.swipe-dots button { width: 10px; height: 10px; padding: 0; border-radius: 50%; border: 0; background: rgba(242, 234, 228, 0.35); cursor: pointer; }
+.swipe-dots button.on { background: var(--fox); }
