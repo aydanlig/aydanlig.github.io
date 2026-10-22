@@ -1033,3 +1033,4 @@ fieldset.field { border: 0; padding: 0; margin: 0; min-width: 0; }
 .card-pair img { width: 100%; height: auto; border-radius: 10px; border: 1px solid var(--line); box-shadow: 0 6px 18px rgba(31, 27, 36, 0.1); }
 .card-pair figcaption { margin-top: 8px; font-size: 0.88rem; color: var(--ink-soft); }
 @media (max-width: 600px) { .card-pair { grid-template-columns: 1fr; } }
+.gallery--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 760px; }
