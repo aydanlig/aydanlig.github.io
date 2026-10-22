@@ -1148,3 +1148,30 @@ fieldset.field { border: 0; padding: 0; margin: 0; min-width: 0; }
 .edition-total strong { color: var(--accent); font-size: 1.4rem; }
 @media (max-width: 900px) { .edition-steps { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 520px) { .edition-steps { grid-template-columns: 1fr; } }
+
+/* =========================================================
+   FOX EARS – very subtle decoration: two little ears peek up
+   wherever the background colour changes (light band, dark band,
+   footer). Pure CSS, no images to load. To remove: delete this block.
+   ========================================================= */
+.section--alt, .section--dark, .site-footer { position: relative; }
+.section--alt::before, .section--dark::before, .site-footer::before {
+	content: ""; position: absolute; bottom: 100%; right: 9%;
+	width: 64px; height: 22px; pointer-events: none;
+	background: currentColor;
+	-webkit-mask: var(--ears) no-repeat center / contain; mask: var(--ears) no-repeat center / contain;
+	--ears: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 22'%3E%3Cpath d='M4 22 L12 3 Q14 0 16 3 L24 22 Z M40 22 L48 3 Q50 0 52 3 L60 22 Z' fill='black'/%3E%3C/svg%3E");
+}
+/* ears take the colour of the band they belong to */
+.section--alt::before { color: var(--card); bottom: calc(100% - 1px); }
+.section--dark::before, .site-footer::before { color: var(--night); }
+/* every other band: ears on the left instead, a bit smaller – feels random, not repeated */
+.section--alt:nth-of-type(even)::before { right: auto; left: 7%; width: 52px; height: 18px; }
+/* faint inner ear in fox orange on the dark bands only */
+.section--dark::after, .site-footer::after {
+	content: ""; position: absolute; bottom: 100%; right: 9%; width: 64px; height: 22px; pointer-events: none;
+	background: var(--fox); opacity: 0.18;
+	-webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 22'%3E%3Cpath d='M9 22 L13.5 10 Q14 8.5 14.5 10 L19 22 Z M45 22 L49.5 10 Q50 8.5 50.5 10 L55 22 Z' fill='black'/%3E%3C/svg%3E") no-repeat center / contain;
+	mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 22'%3E%3Cpath d='M9 22 L13.5 10 Q14 8.5 14.5 10 L19 22 Z M45 22 L49.5 10 Q50 8.5 50.5 10 L55 22 Z' fill='black'/%3E%3C/svg%3E") no-repeat center / contain;
+}
+@media print { .section--alt::before, .section--dark::before, .site-footer::before, .section--dark::after, .site-footer::after { display: none; } }
