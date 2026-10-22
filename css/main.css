@@ -1020,3 +1020,9 @@ fieldset.field { border: 0; padding: 0; margin: 0; min-width: 0; }
 .addon-combos { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
 .addon-combos span { background: #fff; border: 1px solid var(--line); border-radius: 999px; padding: 4px 12px; font-size: 0.85rem; font-weight: 600; }
 @media (max-width: 720px) { .addon { grid-template-columns: 1fr; } .addon-plus { width: 44px; height: 44px; font-size: 1.6rem; } }
+
+/* Projects timeline: even grid of 4 photos (cropped tiles, click shows the whole photo) */
+.year-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 10px; }
+.year-grid a { display: block; }
+.year-grid img { width: 100%; height: auto; aspect-ratio: 3 / 4; object-fit: cover; max-height: none; margin: 0; border-radius: 10px; }
+@media (max-width: 600px) { .year-grid { grid-template-columns: 1fr 1fr; } }
