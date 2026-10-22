@@ -847,3 +847,6 @@ fieldset.field { border: 0; padding: 0; margin: 0; min-width: 0; }
 .quote-grid--1 { grid-template-columns: 1fr; max-width: 820px; margin: 0 auto; text-align: left; }
 .quote-photos { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px; }
 .quote .quote-photos .ph-img { margin-bottom: 0; }
+
+/* Photo note placed between two sections (homepage, above the Berlin artworks) */
+.photo-note--section { border-top: 1px solid var(--line); }
