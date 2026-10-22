@@ -326,7 +326,7 @@
 								<th scope="row">Preis (½ Tag, ganzes Team)</th>
 								<td>ca. 800–1.800 € zzgl. MwSt.</td>
 								<td>ab ca. 600 € zzgl. MwSt.</td>
-								<td class="highlight">vergleichbar – zum Einführungspreis sogar darunter<br><small>Angebot auf Anfrage</small></td>
+								<td class="highlight"><strong>59 € pro Person</strong> · ab 8 Personen <strong>pauschal 650 €</strong><br><small>Endpreis für den ganzen Workshop · Pilot-Team: −40 %</small></td>
 							</tr>
 							<tr>
 								<th scope="row">Format</th>
@@ -351,16 +351,18 @@
 				</div>
 				<p class="price-note">Marktpreise: typische Honorare Berliner Team-Coaches und Kunsttherapeut:innen, Stand Oktober 2026, ohne Gewähr.</p>
 
-				<!-- PILOT OFFER – update "3 von 3" by hand each time a pilot spot is booked -->
+				<!-- PILOT OFFER – only the very first team. Remove/replace this box once the pilot is booked.
+				     Prices: 59 € per person; from 8 people a flat 650 € for the whole workshop. Pilot: 40 % off. -->
 				<div class="pilot" id="pilot">
 					<div class="pilot-grid">
 						<div>
-							<span class="tag tag--fox">Noch 3 von 3 Plätzen zum Einführungspreis frei</span>
-							<h3>Einführungsangebot für die ersten 3 Teams</h3>
-							<p class="price">Stark vergünstigter Einführungspreis <small>unter dem Preis eines professionellen Team-Coaching-Workshops</small></p>
+							<span class="tag tag--fox">Pilot-Angebot: nur für das erste Team</span>
+							<h3>Pilot-Workshop mit 40 % Rabatt</h3>
+							<p class="price">59 € pro Person <small>für den ganzen Workshop · ab 8 Personen pauschal 650 €</small></p>
 							<p>
-								Ich entwickle den Kleckerkasten aktuell mit ausgewählten Partnern in Berlin weiter. Die ersten
-								drei Unternehmen erhalten den kompletten Workshop zum deutlich reduzierten Einführungspreis.
+								Ich entwickle den Kleckerkasten aktuell mit ausgewählten Partnern in Berlin weiter. Das erste Team
+								erhält den kompletten Workshop als Pilot mit <strong>40 % Rabatt</strong> – also 35,40 € pro Person
+								bzw. 390 € pauschal ab 8 Personen.
 							</p>
 						</div>
 						<div>
@@ -381,14 +383,15 @@
 				</p>
 
 				<!-- KLECKERKASTEN INQUIRY FORM -->
-				<div class="form-card" id="anfrage-kleckerkasten">
+				<!-- The header "Anfragen" button lands here first (id="anfrage-kleckerkasten"):
+				     links to the other two offers, then the Kleckerkasten form -->
+				<p class="other-offers other-offers--above" id="anfrage-kleckerkasten">Sie suchen etwas anderes?
+					<a href="#anfrage-event">Live-Porträts für ein Event anfragen →</a>
+					<a href="/commission.html#bestellen">Ein Porträt bestellen →</a>
+				</p>
+				<div class="form-card" style="margin-top:0">
 					<h3>Kleckerkasten für Ihr Team anfragen</h3>
 					<p class="hint">Unverbindlich – gerne rufe ich Sie für ein 10-minütiges Kennenlerngespräch zurück.</p>
-					<!-- The header "Anfragen" button lands here first – these links lead to the other two offers -->
-					<p class="other-offers">Sie suchen etwas anderes?
-						<a href="#anfrage-event">Live-Porträts für ein Event anfragen →</a>
-						<a href="/commission.html#bestellen">Ein Porträt bestellen →</a>
-					</p>
 					<form action="https://formsubmit.co/aydan@smileyfoxyportraits.com" method="POST">
 						<input type="hidden" name="_subject" value="Neue Kleckerkasten-Anfrage (Teambuilding)">
 						<input type="hidden" name="_template" value="table">
