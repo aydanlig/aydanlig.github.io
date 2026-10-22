@@ -458,7 +458,9 @@
 
 				var isActive = overlay.classList.toggle('active');
 				document.body.classList.toggle('silly-spinning', isActive);
-				logo.innerHTML = isActive ? 'WOAH WHAT!? Did you do that? lol' : originalHTML;
+				logo.innerHTML = isActive
+					? 'WOAH, WAS!? Warst du das? lol<small class="egg-hint">nochmal klicken, um die Farben zurückzudrehen</small>'
+					: originalHTML;
 			});
 		})();
 	</script>

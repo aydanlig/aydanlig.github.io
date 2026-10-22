@@ -920,3 +920,6 @@ fieldset.field { border: 0; padding: 0; margin: 0; min-width: 0; }
 .pdf-links { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 1.4em; }
 .pdf-links .hint { margin: 0 4px 0 0; }
 .placeholder-text { color: var(--ink-soft); font-style: italic; background: #F3E9E2; border: 1px dashed #CDB9AE; border-radius: 8px; padding: 6px 10px; }
+
+/* Easter egg (homepage logo click): tiny hint under the "WOAH" text */
+.logo .egg-hint { display: block; font-family: var(--font-body, inherit); font-size: 0.55rem; font-weight: 400; opacity: 0.6; margin-top: 1px; }
