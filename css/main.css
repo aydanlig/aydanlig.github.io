@@ -957,3 +957,7 @@ fieldset.field { border: 0; padding: 0; margin: 0; min-width: 0; }
 .newsletter-form { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin: 14px 0 6px; }
 .newsletter-form input { flex: 1 1 220px; max-width: 320px; padding: 12px 14px; border-radius: 999px; border: 0; font: inherit; }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* Images shown in their own shape: never taller than ~620px, so pages stay compact */
+.ph-img.ph--natural { max-height: min(85vh, 620px); }
+.tag { white-space: nowrap; }
