@@ -1134,3 +1134,17 @@ fieldset.field { border: 0; padding: 0; margin: 0; min-width: 0; }
 /* Über mich: "Woran ich gerade arbeite" */
 .wip-list { list-style: none; padding: 0 !important; }
 .wip-list li { padding: 10px 0; border-bottom: 1px dashed var(--line); }
+
+/* Lab: print edition shop */
+.edition-bonus { background: #FFF1EA; border-left: 4px solid var(--fox); padding: 10px 14px; border-radius: 8px; }
+.stock-line { font-size: 0.95rem; margin: 0 0 1em; }
+.sold-out { text-decoration: line-through; opacity: 0.6; }
+.edition-steps { counter-reset: step; list-style: none; padding: 0 !important; display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; margin-top: 1.5em; }
+.edition-steps li { counter-increment: step; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px; }
+.edition-steps li::before { content: counter(step); display: inline-grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; background: var(--fox); color: var(--night); font-weight: 700; margin-bottom: 8px; }
+.edition-steps strong { display: block; }
+.edition-steps span { font-size: 0.88rem; color: var(--ink-soft); }
+.edition-total { font-size: 1.15rem; margin: 1em 0 0.6em; }
+.edition-total strong { color: var(--accent); font-size: 1.4rem; }
+@media (max-width: 900px) { .edition-steps { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 520px) { .edition-steps { grid-template-columns: 1fr; } }
