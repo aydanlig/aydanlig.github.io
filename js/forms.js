@@ -109,4 +109,22 @@
 			}
 		});
 	});
+
+	// Express orders: show Aydan's phone number only when "Express" is ticked.
+	// The number is put together here (not written in the HTML) so simple spam bots don't find it.
+	// HTML: <p data-express-phone hidden></p> in the same form as the Express checkbox.
+	document.addEventListener('DOMContentLoaded', function () {
+		document.querySelectorAll('[data-express-phone]').forEach(function (box) {
+			var express = box.form || box.closest('form');
+			express = express ? express.querySelector('input[name="Express"]') : null;
+			if (!express) return;
+			var num = ['+49', '152', '24171137'];
+			var link = '<a href="tel:' + num.join('') + '">' + num.join(' ') + '</a>';
+			box.innerHTML = '⚡ <strong>Express:</strong> Bitte schick die Anfrage ab und melde dich zusätzlich kurz per Anruf oder Nachricht: ' + link +
+				'. E-Mails sehe ich nicht sofort, so geht dein Express-Auftrag nicht unter.';
+			function toggle() { box.hidden = !express.checked; }
+			express.addEventListener('change', toggle);
+			toggle();
+		});
+	});
 })();

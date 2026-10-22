@@ -881,3 +881,7 @@ fieldset.field { border: 0; padding: 0; margin: 0; min-width: 0; }
 .cards--aligned .card-extras > :last-child { margin-bottom: 1.4em; } /* space before the button */
 .cards--aligned .card-foot { align-self: end; }
 .cards--aligned .card-foot .btn { margin-top: 0; }
+
+/* Phone number box that appears when "Express" is ticked (commission form) */
+.express-phone { margin-top: 8px; padding: 10px 12px; border-radius: 10px; background: #FFF1EA; border: 1px solid var(--fox); font-size: 0.9rem; }
+.express-phone[hidden] { display: none; }

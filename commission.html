@@ -314,6 +314,8 @@
 								<label for="c-wish-date">Wunschtermin</label>
 								<input id="c-wish-date" type="text" name="Wunschtermin" placeholder="TT.MM.JJJJ" autocomplete="off" data-date-field data-min-days="14" data-express-min-days="3">
 								<p class="hint">Frühestens in 2 Wochen (mit Express in 3 Tagen), z. B. zum Geburtstag oder Jahrestag.</p>
+								<!-- Shown only when Express is ticked: phone number (filled in by /js/forms.js) -->
+								<p class="express-phone" data-express-phone hidden></p>
 							</div>
 							<div class="field">
 								<label for="c-delivery">Lieferung</label>
