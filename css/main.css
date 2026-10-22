@@ -874,3 +874,10 @@ fieldset.field { border: 0; padding: 0; margin: 0; min-width: 0; }
 .tip-box h2 { margin-top: 0; font-size: 1.4rem; }
 .tip-wall { list-style: none; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
 .tip-wall li { background: var(--paper); border: 1px solid var(--line); border-radius: 999px; padding: 4px 12px; font-weight: 600; }
+
+/* Price cards whose parts line up across the row (commission page):
+   every card = head / main / extras / foot, shared rows via subgrid */
+.cards--aligned > .card { display: grid; grid-row: span 4; grid-template-rows: subgrid; row-gap: 0; }
+.cards--aligned .card-extras > :last-child { margin-bottom: 1.4em; } /* space before the button */
+.cards--aligned .card-foot { align-self: end; }
+.cards--aligned .card-foot .btn { margin-top: 0; }

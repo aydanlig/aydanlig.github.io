@@ -83,82 +83,115 @@
 					<p class="lead">Klare Preise für die Standardformate. Alles darüber hinaus besprechen wir persönlich.</p>
 				</div>
 
-				<div class="cards cards--4">
+				<!-- Each card has 4 parts (head / main / extras / foot). They line up across the cards,
+				     so "Auf Wunsch dazu" and the buttons sit at the same height (CSS: .cards--aligned). -->
+				<div class="cards cards--4 cards--aligned">
 					<!-- In person: cheaper prices, only when I'm drawing outside -->
 					<article class="card" id="vor-ort">
-						<span class="tag">Nur vor Ort</span>
-						<h3>Live draußen</h3>
-						<p class="price">ab 1 €</p>
-						<ul class="price-list">
-							<li><span>A6</span><strong>1 €</strong></li>
-							<li><span>A5</span><strong>15 €</strong></li>
-							<li><span>A4</span><strong>25 €</strong></li>
-						</ul>
-						<p>Live gezeichnet in wenigen Minuten. Diese Preise gibt es nur persönlich, wenn ich draußen zeichne.</p>
-						<p class="hint"><a href="/bezahlen.html">Vor Ort bezahlen: PayPal oder Karte →</a></p>
-
-						<!-- <details> = a box that opens/closes on click, no JavaScript needed -->
-						<details class="schedule">
-							<summary>Wann &amp; wo finde ich dich?</summary>
-							<ul>
-								<li><strong>Freitag:</strong> Brandenburger Tor, 11–14 Uhr</li>
-								<li><strong>Samstag:</strong> Mauerpark, 14–22 Uhr</li>
-								<li><strong>Sonntag:</strong> manchmal im/am Mauerpark, ab 11 Uhr</li>
+						<div class="card-head">
+							<span class="tag">Nur vor Ort</span>
+							<h3>Live draußen</h3>
+							<p class="price">ab 1 €</p>
+						</div>
+						<div class="card-main">
+							<ul class="price-list">
+								<li><span>A6</span><strong>1 €</strong></li>
+								<li><span>A5</span><strong>15 €</strong></li>
+								<li><span>A4</span><strong>25 €</strong></li>
 							</ul>
-							<p class="hint">
-								Je nach Wetter und Sonne. Ob ich heute draußen bin, poste ich vorher in meiner
-								<a href="https://www.instagram.com/smileyfoxyportraits">Instagram-Story</a>.
-							</p>
-							<p class="hint"><a href="/where-i-draw/">Alle Orte &amp; Infos →</a></p>
-						</details>
+						</div>
+						<div class="card-extras">
+							<p>Live gezeichnet in wenigen Minuten. Diese Preise gibt es nur persönlich, wenn ich draußen zeichne.</p>
+						</div>
+						<div class="card-foot">
+							<p class="hint"><a href="/bezahlen.html">Vor Ort bezahlen: PayPal oder Karte →</a></p>
+							<!-- <details> = a box that opens/closes on click, no JavaScript needed -->
+							<details class="schedule">
+								<summary>Wann &amp; wo finde ich dich?</summary>
+								<ul>
+									<li><strong>Freitag:</strong> Brandenburger Tor, 11–14 Uhr</li>
+									<li><strong>Samstag:</strong> Mauerpark, 14–22 Uhr</li>
+									<li><strong>Sonntag:</strong> manchmal im/am Mauerpark, ab 11 Uhr</li>
+								</ul>
+								<p class="hint">
+									Je nach Wetter und Sonne. Ob ich heute draußen bin, poste ich vorher in meiner
+									<a href="https://www.instagram.com/smileyfoxyportraits">Instagram-Story</a>.
+								</p>
+								<p class="hint"><a href="/where-i-draw/">Alle Orte &amp; Infos →</a></p>
+							</details>
+						</div>
 					</article>
 
 					<!-- A5 -->
 					<article class="card">
-						<span class="tag">Bestellbar</span>
-						<h3>A5</h3>
-						<p class="price">20 €</p>
-						<p>Das kleine Porträt nach deinem Foto, in jedem Stil zum gleichen Preis. Ideal als persönliches Geschenk.</p>
-						<p class="hint"><strong>Auf Wunsch dazu:</strong></p>
-						<ul class="price-list">
-							<li><span>Marker-Highlights, damit dein Bild richtig hervorsticht</span><strong>+5 €</strong></li>
-						</ul>
-						<p class="hint">Die Extras vom A4-Porträt (Gold, bunter Hintergrund) gibt es auch für A5.</p>
-						<a class="btn btn--ghost" href="#bestellen">Bestellen</a>
+						<div class="card-head">
+							<span class="tag">Bestellbar</span>
+							<h3>A5</h3>
+							<p class="price">20 €</p>
+						</div>
+						<div class="card-main">
+							<p>Das kleine Porträt nach deinem Foto, in jedem Stil zum gleichen Preis. Ideal als persönliches Geschenk.</p>
+						</div>
+						<div class="card-extras">
+							<p class="hint"><strong>Auf Wunsch dazu:</strong></p>
+							<ul class="price-list">
+								<li><span>Marker-Highlights, damit dein Bild richtig hervorsticht</span><strong>+5 €</strong></li>
+							</ul>
+							<p class="hint">Die Extras vom A4-Porträt (Gold, bunter Hintergrund) gibt es auch für A5.</p>
+						</div>
+						<div class="card-foot">
+							<a class="btn btn--ghost" href="#bestellen">Bestellen</a>
+						</div>
 					</article>
 
 					<!-- A4: price depends on style -->
 					<article class="card card--featured">
-						<span class="tag">Bestellbar</span>
-						<h3>A4</h3>
-						<p class="price">40–60 €</p>
-						<ul class="price-list">
-							<li><span>Fineliner (nur Tusche)</span><strong>40 €</strong></li>
-							<li><span>Aquarell</span><strong>50 €</strong></li>
-							<li><span>Aquarell + Fineliner</span><strong>60 €</strong></li>
-						</ul>
-						<p class="hint"><strong>Auf Wunsch dazu:</strong></p>
-						<ul class="price-list">
-							<li><span>Goldtinte / Blattgold</span><strong>+10 €</strong></li>
-							<li><span>Bunter Aquarell-Hintergrund</span><strong>+10 €</strong></li>
-						</ul>
-						<a class="btn" href="#bestellen">Bestellen</a>
+						<div class="card-head">
+							<span class="tag">Bestellbar</span>
+							<h3>A4</h3>
+							<p class="price">40–60 €</p>
+						</div>
+						<div class="card-main">
+							<ul class="price-list">
+								<li><span>Fineliner (nur Tusche)</span><strong>40 €</strong></li>
+								<li><span>Aquarell</span><strong>50 €</strong></li>
+								<li><span>Aquarell + Fineliner</span><strong>60 €</strong></li>
+							</ul>
+						</div>
+						<div class="card-extras">
+							<p class="hint"><strong>Auf Wunsch dazu:</strong></p>
+							<ul class="price-list">
+								<li><span>Goldtinte / Blattgold</span><strong>+10 €</strong></li>
+								<li><span>Bunter Aquarell-Hintergrund</span><strong>+10 €</strong></li>
+							</ul>
+						</div>
+						<div class="card-foot">
+							<a class="btn" href="#bestellen">Bestellen</a>
+						</div>
 					</article>
 
 					<!-- A3 / A2: direct contact, introductory discount (Einführungsrabatt) -->
 					<article class="card">
-						<span class="tag tag--fox">Einführungsrabatt −70 %</span>
-						<h3>A3 / A2 &amp; Sonderwünsche</h3>
-						<p class="price">auf Anfrage</p>
-						<p>
-							Großformate, andere Stile und Formate, ein richtiges Bild für die Wohnzimmer- oder Bürowand.
-							Das besprechen wir direkt miteinander.
-						</p>
-						<p class="hint">
-							<strong>Einführungsangebot:</strong> Die ersten Großformat-Aufträge per E-Mail erhalten 70 % Rabatt.
-							Ich entwickle dieses Format gerade weiter und gebe den Lernprozess an euch weiter.
-						</p>
-						<a class="btn btn--fox" href="mailto:aydan@smileyfoxyportraits.com?subject=Anfrage%20Gro%C3%9Fformat-Portr%C3%A4t">Per E-Mail anfragen</a>
+						<div class="card-head">
+							<span class="tag tag--fox">Einführungsrabatt −50 %</span>
+							<h3>A3 / A2 &amp; Sonderwünsche</h3>
+							<p class="price">auf Anfrage</p>
+						</div>
+						<div class="card-main">
+							<p>
+								Großformate, andere Stile und Formate, ein richtiges Bild für die Wohnzimmer- oder Bürowand.
+								Das besprechen wir direkt miteinander.
+							</p>
+						</div>
+						<div class="card-extras">
+							<p class="hint">
+								<strong>Einführungsangebot:</strong> Die ersten Großformat-Aufträge per E-Mail erhalten 50 % Rabatt.
+								Ich entwickle dieses Format gerade weiter und gebe den Lernprozess an euch weiter.
+							</p>
+						</div>
+						<div class="card-foot">
+							<a class="btn btn--fox" href="mailto:aydan@smileyfoxyportraits.com?subject=Anfrage%20Gro%C3%9Fformat-Portr%C3%A4t">Per E-Mail anfragen</a>
+						</div>
 					</article>
 				</div>
 
