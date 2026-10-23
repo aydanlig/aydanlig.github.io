@@ -53,99 +53,74 @@
 
 	<main>
 
-		<!-- ================= INTRO + LIST OF PLACES ================= -->
-		<section class="section" style="padding-bottom:24px">
+		<!-- ================= INTRO + SCHEDULE AT A GLANCE ================= -->
+		<section class="section" style="padding-bottom:16px">
 			<div class="wrap">
 				<span class="eyebrow">Live draußen</span>
 				<h1>Wo &amp; wann ich zeichne</h1>
-				<p class="lead">
-					Bei gutem Wetter findest du mich regelmäßig an diesen Orten in Berlin. Live-Porträts gibt es hier ab 1 €:
-					A6 für 1 €, A5 für 10–20 €, A4 für 20–60 €.
-				</p>
-				<p class="hint">
-					Ob ich wirklich draußen bin, hängt von Wetter und Sonne ab. Ich poste es vorher in meiner
-					<a href="https://www.instagram.com/smileyfoxyportraits">Instagram-Story</a>, also schau dort kurz rein, bevor du losgehst.
-				</p>
-				<p class="check-ig">📍 Ganz sicher gehen? Ob und wo genau ich gerade zeichne, steht in meiner <a href="https://www.instagram.com/smileyfoxyportraits">Instagram-Story</a>.
-					Manchmal tauche ich auch spontan an anderen Orten in Berlin auf – vor allem bei Events.
-					<a href="/about/#in-arbeit">Was demnächst dazukommt (z. B. Märkte) →</a></p>
+				<p class="lead">Live-Porträts ab 1 € – A6 1 €, A5 10–20 €, A4 20–60 €. Bei gutem Wetter, bezahlt wird bar, mit Karte oder PayPal.</p>
 
-				<!-- Jump links to each place below -->
-				<nav class="toc" aria-label="Orte">
-					<a href="#mauerpark">Mauerpark · Sa &amp; So</a>
-					<a href="#brandenburger-tor">Brandenburger Tor · ab und zu</a>
-					<a href="#regentage">Regentage</a>
-				</nav>
+				<!-- SCHEDULE: one row per time slot – edit here -->
+				<div class="schedule-table" role="table" aria-label="Zeiten und Orte">
+					<div class="st-row st-row--main" role="row">
+						<span class="st-day" role="cell">Samstag</span>
+						<span class="st-time" role="cell">14–22 Uhr</span>
+						<span class="st-place" role="cell"><a href="#mauerpark">Mauerpark</a> · neben dem Photoautomaten</span>
+						<a class="st-map" role="cell" href="https://maps.app.goo.gl/ZhjvUq1bMy8CyVk18" target="_blank" rel="noopener">Karte ↗</a>
+					</div>
+					<div class="st-row" role="row">
+						<span class="st-day" role="cell">Sonntag</span>
+						<span class="st-time" role="cell">oft ab 11 Uhr</span>
+						<span class="st-place" role="cell"><a href="#mauerpark">Mauerpark</a> · nach Lust &amp; Wetter</span>
+						<a class="st-map" role="cell" href="https://maps.app.goo.gl/ZhjvUq1bMy8CyVk18" target="_blank" rel="noopener">Karte ↗</a>
+					</div>
+					<div class="st-row" role="row">
+						<span class="st-day" role="cell">Ab und zu</span>
+						<span class="st-time" role="cell">ohne festen Termin</span>
+						<span class="st-place" role="cell"><a href="#brandenburger-tor">Brandenburger Tor</a> &amp; spontan bei Events</span>
+						<span class="st-map" role="cell"></span>
+					</div>
+				</div>
+				<p class="check-ig">📍 <strong>Ganz sicher gehen?</strong> Ob und wo genau ich gerade zeichne, steht vorher in meiner
+					<a href="https://www.instagram.com/smileyfoxyportraits">Instagram-Story</a>.</p>
 			</div>
 		</section>
 
-		<!-- ================= PLACES (Mauerpark first) =================
-		     To add a new place: copy one <article class="location"> block and change the text. -->
-		<div class="wrap">
-			<!-- ================= PLACE 1: MAUERPARK ================= -->
-			<article class="location" id="mauerpark">
-				<h2>Mauerpark</h2>
-				<p>
-					Was wäre ein Berliner Wochenende ohne den Mauerpark? Zwischen Flohmarkt, Karaoke und Straßenmusik zeichne
-					ich samstags bis in den Abend – direkt neben dem Photoautomaten
-					(<a href="https://maps.app.goo.gl/ZhjvUq1bMy8CyVk18" target="_blank" rel="noopener">Bernauer Str. 53, Karte</a>). Sonntags bin ich je nach Lust und Wetter oft auch da. Hier entstehen die
-					meisten 1-€-Porträts – Kunst, die sich wirklich jede:r leisten kann.
-				</p>
-				<div class="gallery gallery--2">
-					<img src="/img/fotos/aydan-mauerpark-1x1.jpg" alt="Aydan zeichnet draußen im Mauerpark" class="ph-img ph--1x1" width="1000" height="1000" loading="lazy" decoding="async">
-					<img src="/img/fotos/tusche-portraet-1x1.jpg" alt="Porträt in schwarzer Tusche" class="ph-img ph--1x1" width="1000" height="1000" loading="lazy" decoding="async">
-				</div>
-				<div class="win">
-					<div class="win-bar"><span>oeffnungszeiten.txt</span><span>– □ ×</span></div>
-					<div class="win-body">
-						<strong>Mauerpark</strong><br>
-						<span class="sub">(U Eberswalder Straße / S+U Gesundbrunnen)</span>
-						<p class="when">Samstag</p>
-						<p>14:00 – 22:00 Uhr</p>
-						<!-- Exact spot: Bernauer Str. 53, right next to the photo booth (Photoautomat) at the Mauerpark -->
-						<p><a href="https://maps.app.goo.gl/ZhjvUq1bMy8CyVk18" target="_blank" rel="noopener">📍 Bernauer Str. 53, direkt neben dem Photoautomaten → Google Maps</a></p>
-						<p class="when">Sonntag</p>
-						<p>oft ab 11:00 Uhr, nach Lust &amp; Wetter</p>
-						<span class="sub">wetterabhängig · Infos in der IG-Story</span>
-					</div>
+		<!-- ================= PLACES – to add one: copy an <article class="place"> block ================= -->
+		<div class="wrap places">
+			<article class="place" id="mauerpark">
+				<img src="/img/fotos/aydan-mauerpark-1x1.jpg" alt="Aydan zeichnet draußen im Mauerpark" width="1000" height="1000" loading="lazy" decoding="async">
+				<div>
+					<h2>Mauerpark</h2>
+					<ul class="place-facts">
+						<li><strong>Wann:</strong> Samstag 14–22 Uhr · Sonntag oft ab 11 Uhr</li>
+						<li><strong>Wo genau:</strong> Bernauer Str. 53, direkt neben dem Photoautomaten – <a href="https://maps.app.goo.gl/ZhjvUq1bMy8CyVk18" target="_blank" rel="noopener">Google Maps ↗</a></li>
+						<li><strong>Anfahrt:</strong> U Eberswalder Straße oder S+U Gesundbrunnen</li>
+					</ul>
+					<p>Zwischen Flohmarkt, Karaoke und Straßenmusik entstehen hier die meisten 1-€-Porträts – Kunst, die sich wirklich jede:r leisten kann.</p>
 				</div>
 			</article>
 
-			<!-- ================= PLACE 2: BRANDENBURGER TOR ================= -->
-			<article class="location" id="brandenburger-tor">
-				<h2>Brandenburger Tor</h2>
-				<p>
-					Ab und zu zeichne ich auch mitten im Herzen Berlins, zwischen Tourist:innen, Schulklassen und Berliner:innen –
-					ganz nach Gefühl und ohne festen Termin. Jetzt, wo die Touristensaison vorbei ist, bin ich vor allem im Mauerpark.
-					Wenn ich am Tor bin, steht es in meiner <a href="https://www.instagram.com/smileyfoxyportraits">Instagram-Story</a>.
-				</p>
-				<div class="gallery gallery--2">
-					<!-- HIDDEN until there are photos: remove "hidden" on the two boxes -->
-					<div class="ph ph--1x1" hidden>Aydan zeichnet vor dem Brandenburger Tor [1000x1000]</div>
-					<div class="ph ph--1x1" hidden>Gast hält fertiges Porträt, Tor im Hintergrund [1000x1000]</div>
+			<article class="place place--compact" id="brandenburger-tor">
+				<div>
+					<h2>Brandenburger Tor</h2>
+					<ul class="place-facts">
+						<li><strong>Wann:</strong> ab und zu, ganz nach Gefühl – außerhalb der Touristensaison selten</li>
+						<li><strong>Anfahrt:</strong> S+U Brandenburger Tor</li>
+					</ul>
 				</div>
-				<div class="win">
-					<div class="win-bar"><span>oeffnungszeiten.txt</span><span>– □ ×</span></div>
-					<div class="win-body">
-						<strong>Brandenburger Tor</strong><br>
-						<span class="sub">(S+U Brandenburger Tor)</span>
-						<p class="when">ab und zu</p>
-						<p>ganz nach Gefühl, kein fester Termin</p>
-						<span class="sub">Infos in der IG-Story</span>
-					</div>
-				</div>
+				<!-- HIDDEN until there are photos -->
+				<div class="ph ph--1x1" hidden>Aydan zeichnet vor dem Brandenburger Tor [1000x1000]</div>
 			</article>
 
-			<!-- ================= RAINY DAYS ================= -->
-			<article class="location" id="regentage">
-				<h2>Regentage: Ich suche einen Ort</h2>
-				<p>
-					Bei Regen kann ich draußen nicht zeichnen. Ich suche deshalb ein Café, Restaurant oder einen Raum,
-					in dem ich an Regentagen arbeiten und Porträts anbieten darf. Für Gäste ist das ein kleines Erlebnis,
-					für dich als Gastgeber:in ein Grund mehr, vorbeizukommen.
-				</p>
-				<p>Du kennst jemanden? <a href="mailto:aydan@smileyfoxyportraits.com?subject=Ort%20f%C3%BCr%20Regentage">Schreib mir gern eine E-Mail.</a></p>
+			<article class="place place--compact" id="regentage">
+				<div>
+					<h2>Regentage: Ich suche einen Ort</h2>
+					<p>Bei Regen kann ich draußen nicht zeichnen. Du hast ein Café, Restaurant oder einen Raum, in dem ich an
+						Regentagen Porträts anbieten darf? <a href="mailto:aydan@smileyfoxyportraits.com?subject=Ort%20f%C3%BCr%20Regentage">Schreib mir gern.</a></p>
+				</div>
 			</article>
+			<p class="hint" style="margin:0 0 2em"><a href="/about/#in-arbeit">Demnächst auch auf Berliner Märkten →</a></p>
 		</div>
 
 		<!-- ================= TESTIMONIALS (Senja widget from the old page) ================= -->
