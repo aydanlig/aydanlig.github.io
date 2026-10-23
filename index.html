@@ -118,8 +118,8 @@
 						Für dein Event, dein Team oder einfach für dich.
 					</p>
 					<div class="btn-row">
-						<a class="btn" href="/events.html#live-events">Mich zum Event buchen</a>
-						<a class="btn btn--fox" href="/events.html#kleckerkasten">Kleckerkasten Workshop</a>
+						<a class="btn btn-shine" href="/events.html#live-events">Mich zum Event buchen</a>
+						<a class="btn btn--fox btn-splash" href="/events.html#kleckerkasten">Kleckerkasten Workshop</a>
 					</div>
 					<p class="hero-note">
 						Lieber ein persönliches Porträt? <a href="/commission.html">Hier geht's zum Auftrags-Porträt →</a>
@@ -130,6 +130,8 @@
 				</div>
 				<img src="/img/fotos/aquarell-fineliner-detail-4x5.jpg" alt="Ausdrucksstarkes Porträt in Aquarell und Fineliner von Aydan Lig'on: Mann mit Brille und Bart" class="ph-img ph--4x5" width="960" height="1200" fetchpriority="high" decoding="async">
 			</div>
+			<!-- Scroll hint: gently bouncing arrow, fades out as soon as the visitor scrolls (CSS + 3 lines JS below) -->
+			<a class="scroll-hint" href="#kunst" aria-label="Weiter nach unten: meine Kunst"><span>Meine Kunst</span><b aria-hidden="true">↓</b></a>
 		</section>
 
 		<!-- ================= MY ART: big examples right after the hero =================
@@ -558,6 +560,10 @@
 			}
 			track.addEventListener('scroll', mark, { passive: true }); mark();
 		});
+	</script>
+	<script>
+		// hide the scroll hint once the visitor has started scrolling
+		addEventListener('scroll', function () { document.body.classList.toggle('scrolled', scrollY > 80); }, { passive: true });
 	</script>
 </body>
 

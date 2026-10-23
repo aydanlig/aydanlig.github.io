@@ -1285,3 +1285,39 @@ fieldset.field { border: 0; padding: 0; margin: 0; min-width: 0; }
 	.swipe-arrow--prev { left: 8px; }
 	.swipe-arrow--next { right: 8px; }
 }
+
+/* =========================================================
+   HOMEPAGE MOTION – subtle, and switched off for people who prefer reduced motion.
+   The two buttons take turns (shine at 0s, splash at 3s of a 6s loop) so they never move at the same time.
+   ========================================================= */
+.hero { position: relative; }
+.scroll-hint { position: absolute; left: 50%; bottom: 14px; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center;
+	gap: 0; color: var(--ink-soft); text-decoration: none; font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; transition: opacity 0.4s ease; }
+.scroll-hint b { font-size: 1.6rem; line-height: 0.8; color: var(--fox); animation: hint-bounce 2.2s ease-in-out infinite; }
+body.scrolled .scroll-hint { opacity: 0; pointer-events: none; }
+@keyframes hint-bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(6px); } }
+
+/* "Mich zum Event buchen": a soft light sweep across the button */
+.btn-shine { position: relative; overflow: hidden; }
+.btn-shine::after { content: ""; position: absolute; top: 0; left: -60%; width: 40%; height: 100%;
+	background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.35), transparent); transform: skewX(-20deg); animation: btn-shine 6s ease-in-out infinite; }
+@keyframes btn-shine { 0%, 70% { left: -60%; } 85%, 100% { left: 130%; } }
+
+/* "Kleckerkasten Workshop": a little paint splash wobble, half a loop later */
+.btn-splash { position: relative; }
+.btn-splash::before { content: ""; position: absolute; right: -6px; top: -6px; width: 14px; height: 14px; border-radius: 50% 40% 55% 45%;
+	background: var(--fox); border: 2px solid var(--paper); animation: btn-splash 6s ease-in-out infinite 3s; transform: scale(0); }
+@keyframes btn-splash { 0%, 70%, 100% { transform: scale(0) rotate(0); } 78% { transform: scale(1.15) rotate(20deg); } 88% { transform: scale(0.95) rotate(-10deg); } 95% { transform: scale(0); } }
+.btn-splash { animation: btn-wiggle 6s ease-in-out infinite 3s; }
+@keyframes btn-wiggle { 0%, 72%, 100% { transform: rotate(0); } 76% { transform: rotate(-1.5deg); } 80% { transform: rotate(1.5deg); } 84% { transform: rotate(0); } }
+
+@media (max-width: 720px) { .scroll-hint { bottom: 6px; } }
+@media (prefers-reduced-motion: reduce) {
+	.scroll-hint b, .btn-shine::after, .btn-splash, .btn-splash::before { animation: none; }
+}
+/* scroll hint: pinned to the bottom of the screen on first view, gone after scrolling */
+.scroll-hint { position: fixed; bottom: 16px; z-index: 40; background: rgba(242, 234, 228, 0.92); padding: 6px 14px 4px; border-radius: 999px;
+	box-shadow: 0 4px 14px rgba(31, 27, 36, 0.12); }
+@media (max-width: 720px) { .scroll-hint { bottom: 12px; } }
+.scroll-hint { flex-direction: row; gap: 8px; padding: 8px 16px; bottom: 22px; }
+.scroll-hint b { font-size: 1rem; line-height: 1; }
