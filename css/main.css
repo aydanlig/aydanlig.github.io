@@ -1207,3 +1207,5 @@ fieldset.field { border: 0; padding: 0; margin: 0; min-width: 0; }
 /* Note above forms on the Google-translated page (see js/translate.js) */
 .translate-form-note { background: #FFF1EA; border: 2px solid var(--fox); border-radius: 12px; padding: 12px 14px; margin: 0 0 14px; color: var(--ink); text-align: left; }
 .translate-form-note .btn { margin: 8px 0 4px; }
+/* Homepage hero: "every Saturday" one-liner */
+.saturday-line { margin-top: 14px; padding: 8px 12px; border-radius: 10px; background: var(--card); border: 1px solid var(--line); font-size: 0.92rem; display: inline-block; }
