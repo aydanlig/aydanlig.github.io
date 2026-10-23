@@ -83,9 +83,10 @@
 					<p class="hint" id="pay-sum-hint">Wähle oben dein Format – dann siehst du hier den Betrag zum Eintippen.</p>
 					<div class="pay-buttons">
 						<a class="btn" data-pay href="https://pay.sumup.com/b2c/QMYZ8JO7">Mit Karte zahlen (SumUp)</a>
-						<a class="btn btn--ghost" data-pay href="https://www.paypal.biz/SmileyFoxyPortraitsL">Mit PayPal zahlen</a>
+						<a class="btn btn--ghost" data-pay data-paypal="aydan@smileyfoxyportraits.com" href="https://www.paypal.biz/SmileyFoxyPortraitsL">Mit PayPal zahlen</a>
 					</div>
-					<!-- PayPal (business profile) and SumUp links can't take a pre-filled amount, so the total is copied on tap -->
+					<!-- PayPal opens its checkout with the total already filled in (data-paypal = PayPal login e-mail).
+					     SumUp links can't take an amount, so there the total is copied on tap. -->
 					<p class="pay-copied" id="pay-copied" role="status" hidden></p>
 					<p class="hint">Karte über SumUp hat die geringsten Gebühren, so kommt mehr bei mir an. Bar geht natürlich auch.</p>
 				</div>
@@ -150,10 +151,19 @@
 			var sum = document.getElementById('pay-sum'), hint = document.getElementById('pay-sum-hint');
 			var pack = document.getElementById('pay-pack');
 			var copied = document.getElementById('pay-copied'), currentTotal = null;
-			// Tapping SumUp/PayPal copies the total ("63,50"), so it only has to be pasted into the amount field
+			// Tapping SumUp copies the total ("63,50") to paste; PayPal gets it pre-filled
 			document.querySelectorAll('[data-pay]').forEach(function (link) {
 				link.addEventListener('click', function (e) {
-					if (currentTotal === null || !navigator.clipboard) return;
+					if (currentTotal === null) return;
+					if (link.dataset.paypal) {
+						// PayPal checkout with the amount pre-filled – nothing to type or paste
+						e.preventDefault();
+						window.location.href = 'https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=' + encodeURIComponent(link.dataset.paypal) +
+							'&item_name=' + encodeURIComponent('Porträt SmileyFoxyPortraits') + '&amount=' + currentTotal.toFixed(2) +
+							'&currency_code=EUR&no_shipping=1&lc=DE';
+						return;
+					}
+					if (!navigator.clipboard) return;
 					var amount = currentTotal.toLocaleString('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2, useGrouping: false });
 					e.preventDefault();
 					var go = function () { window.location.href = link.href; };
