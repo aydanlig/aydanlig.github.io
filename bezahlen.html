@@ -44,16 +44,21 @@
 
 				<div class="pay-step">
 					<h2><span>1</span> Dein Porträt</h2>
-					<!-- All size buttons form one group (only one can be chosen); the labels A6/A5/A4 just sort them -->
+					<!-- Size: one choice. Style: optional extra on top (one choice). Prices: edit data-price AND the text. -->
 					<div data-group="size">
-						<div class="size-line"><span class="size-label">A6</span>
-							<div class="chip-row"><button type="button" class="chip" data-price="1">1 €</button></div></div>
-						<div class="size-line"><span class="size-label">A5</span>
-							<div class="chip-row"><button type="button" class="chip" data-price="10">10 €</button><button type="button" class="chip" data-price="20">20 €</button></div></div>
-						<div class="size-line"><span class="size-label">A4</span>
-							<div class="chip-row"><button type="button" class="chip" data-price="20">20 €</button><button type="button" class="chip" data-price="40">40 €</button><button type="button" class="chip" data-price="60">60 €</button></div></div>
+						<div class="chip-row chip-row--3">
+							<button type="button" class="chip" data-price="1">A6 · 1 €</button>
+							<button type="button" class="chip" data-price="10">A5 · 10 €</button>
+							<button type="button" class="chip" data-price="20">A4 · 20 €</button>
+						</div>
 						<label class="amount-field">Anderer Preis (wie abgesprochen):
 							<input type="number" inputmode="decimal" min="0" step="0.5" placeholder="€" data-custom="size"></label>
+					</div>
+					<p class="pay-sub">Stil dazu? <small style="font-weight:400">(Beides = Tusche &amp; Aquarell)</small></p>
+					<div class="chip-row chip-row--3" data-group="style">
+						<button type="button" class="chip" data-price="10">Tusche<br>+10 €</button>
+						<button type="button" class="chip" data-price="20">Aquarell<br>+20 €</button>
+						<button type="button" class="chip" data-price="40">Beides<br>+40 €</button>
 					</div>
 					<label class="pay-check"><input type="checkbox" id="pay-pack" data-price="1"> Verpackung zum Mitnehmen (+1 €)</label>
 				</div>
@@ -135,17 +140,26 @@
 				var on = document.querySelector('[data-group="' + group + '"] .chip.on');
 				return on ? parseFloat(on.getAttribute('data-price')) : null;
 			}
+			// Tip buttons get a little face when chosen: "Kein :/" or "+5 € :D"
+			function faces(group) {
+				group.querySelectorAll('.chip').forEach(function (c) {
+					if (!c.dataset.label) c.dataset.label = c.textContent;
+					c.textContent = c.dataset.label + (c.classList.contains('on') ? (c.getAttribute('data-price') === '0' ? ' :/' : ' :D') : '');
+				});
+			}
 			function update() {
 				var size = value('size');
 				if (size === null) { sum.textContent = '–'; hint.hidden = false; return; }
-				var total = size + (pack.checked ? 1 : 0) + (value('tip') || 0);
+				var total = size + (value('style') || 0) + (pack.checked ? 1 : 0) + (value('tip') || 0);
 				sum.textContent = total.toLocaleString('de-DE', { maximumFractionDigits: 2 }) + ' €';
 				hint.hidden = true;
 			}
 			document.querySelectorAll('[data-group] .chip').forEach(function (chip) {
 				chip.addEventListener('click', function () {
 					var group = chip.closest('[data-group]');
-					group.querySelectorAll('.chip').forEach(function (c) { c.classList.toggle('on', c === chip); c.setAttribute('aria-pressed', c === chip); });
+					var again = chip.classList.contains('on') && group.getAttribute('data-group') === 'style';
+					group.querySelectorAll('.chip').forEach(function (c) { c.classList.toggle('on', c === chip && !again); c.setAttribute('aria-pressed', c === chip && !again); });
+					if (group.getAttribute('data-group') === 'tip') faces(group);
 					var typed = document.querySelector('[data-custom="' + group.getAttribute('data-group') + '"]');
 					if (typed) typed.value = '';   // a button click replaces a typed amount
 					update();
@@ -154,6 +168,7 @@
 			document.querySelectorAll('[data-custom]').forEach(function (input) {
 				input.addEventListener('input', function () {   // typing replaces the chosen button
 					document.querySelectorAll('[data-group="' + input.getAttribute('data-custom') + '"] .chip').forEach(function (c) { c.classList.remove('on'); });
+					if (input.getAttribute('data-custom') === 'tip') faces(document.querySelector('[data-group="tip"]'));
 					update();
 				});
 			});

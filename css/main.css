@@ -1191,3 +1191,6 @@ fieldset.field { border: 0; padding: 0; margin: 0; min-width: 0; }
 .deal-inline s { text-decoration-color: var(--fox); text-decoration-thickness: 2px; }
 .deal-inline strong { color: var(--accent); }
 .deal-row + .deal-row { margin-top: 6px; padding-top: 6px; border-top: 1px dashed var(--line); }
+.chip-row--3 { grid-template-columns: repeat(3, 1fr); }
+.pay-sub { font-weight: 700; margin: 12px 0 0; font-size: 0.95rem; }
+[data-group="style"] .chip { border-radius: 14px; padding: 8px 6px; font-size: 0.85rem; line-height: 1.25; }
