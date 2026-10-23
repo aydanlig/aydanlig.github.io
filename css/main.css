@@ -1325,3 +1325,13 @@ body.scrolled .scroll-hint { opacity: 0; pointer-events: none; }
 @media (max-width: 720px) { .scroll-hint { bottom: 12px; } }
 .scroll-hint { flex-direction: row; gap: 8px; padding: 8px 16px; bottom: 22px; }
 .scroll-hint b { font-size: 1rem; line-height: 1; }
+
+/* ---------- Phone overflow guards (nothing may stick out to the right) ---------- */
+/* long German words in big headings ("Dankbarkeitswand") break with a hyphen instead of overflowing */
+h1, h2, h3 { overflow-wrap: break-word; hyphens: auto; }
+/* grid columns may shrink below their content (images, long words) */
+.split > *, .cards > * { min-width: 0; }
+@media (max-width: 480px) {
+	/* long price labels like "Mengenrabatt nach Absprache" wrap onto 2 lines */
+	.price-list strong { white-space: normal; text-align: right; max-width: 50%; }
+}
