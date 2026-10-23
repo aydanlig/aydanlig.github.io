@@ -1175,3 +1175,6 @@ fieldset.field { border: 0; padding: 0; margin: 0; min-width: 0; }
 	mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 22'%3E%3Cpath d='M9 22 L13.5 10 Q14 8.5 14.5 10 L19 22 Z M45 22 L49.5 10 Q50 8.5 50.5 10 L55 22 Z' fill='black'/%3E%3C/svg%3E") no-repeat center / contain;
 }
 @media print { .section--alt::before, .section--dark::before, .site-footer::before, .section--dark::after, .site-footer::after { display: none; } }
+
+/* Events: Kleckerkasten intro over the full width while there is no workshop photo */
+.kk-intro { max-width: 980px; }
