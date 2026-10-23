@@ -82,9 +82,11 @@
 					<p class="pay-total" aria-live="polite">Gesamt: <strong id="pay-sum">–</strong></p>
 					<p class="hint" id="pay-sum-hint">Wähle oben dein Format – dann siehst du hier den Betrag zum Eintippen.</p>
 					<div class="pay-buttons">
-						<a class="btn" href="https://pay.sumup.com/b2c/QMYZ8JO7">Mit Karte zahlen (SumUp)</a>
-						<a class="btn btn--ghost" href="https://www.paypal.biz/SmileyFoxyPortraitsL">Mit PayPal zahlen</a>
+						<a class="btn" data-pay href="https://pay.sumup.com/b2c/QMYZ8JO7">Mit Karte zahlen (SumUp)</a>
+						<a class="btn btn--ghost" data-pay href="https://www.paypal.biz/SmileyFoxyPortraitsL">Mit PayPal zahlen</a>
 					</div>
+					<!-- PayPal (business profile) and SumUp links can't take a pre-filled amount, so the total is copied on tap -->
+					<p class="pay-copied" id="pay-copied" role="status" hidden></p>
 					<p class="hint">Karte über SumUp hat die geringsten Gebühren, so kommt mehr bei mir an. Bar geht natürlich auch.</p>
 				</div>
 
@@ -147,6 +149,21 @@
 		(function () {
 			var sum = document.getElementById('pay-sum'), hint = document.getElementById('pay-sum-hint');
 			var pack = document.getElementById('pay-pack');
+			var copied = document.getElementById('pay-copied'), currentTotal = null;
+			// Tapping SumUp/PayPal copies the total ("63,50"), so it only has to be pasted into the amount field
+			document.querySelectorAll('[data-pay]').forEach(function (link) {
+				link.addEventListener('click', function (e) {
+					if (currentTotal === null || !navigator.clipboard) return;
+					var amount = currentTotal.toLocaleString('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2, useGrouping: false });
+					e.preventDefault();
+					var go = function () { window.location.href = link.href; };
+					navigator.clipboard.writeText(amount).then(function () {
+						copied.textContent = '✓ ' + amount + ' € kopiert – im nächsten Fenster einfach ins Betragsfeld einfügen.';
+						copied.hidden = false;
+						setTimeout(go, 1200);
+					}, go);
+				});
+			});
 			// value of a group: a typed amount wins, otherwise the chosen button
 			function value(group) {
 				var typed = document.querySelector('[data-custom="' + group + '"]');
@@ -163,9 +180,10 @@
 			}
 			function update() {
 				var size = value('size');
-				if (size === null) { sum.textContent = '–'; hint.hidden = false; return; }
+				if (size === null) { sum.textContent = '–'; hint.hidden = false; currentTotal = null; return; }
 				var total = size + (value('style') || 0) + (pack.checked ? 1 : 0) + (value('tip') || 0);
 				sum.textContent = total.toLocaleString('de-DE', { maximumFractionDigits: 2 }) + ' €';
+				currentTotal = total;
 				hint.hidden = true;
 			}
 			document.querySelectorAll('[data-group] .chip').forEach(function (chip) {

@@ -1351,3 +1351,6 @@ h1, h2, h3 { overflow-wrap: break-word; hyphens: auto; }
 	/* long price labels like "Mengenrabatt nach Absprache" wrap onto 2 lines */
 	.price-list strong { white-space: normal; text-align: right; max-width: 50%; }
 }
+
+/* "Betrag kopiert" note under the pay buttons */
+.pay-copied { max-width: 360px; margin: 0 auto 0.6em; padding: 10px 14px; border-radius: 12px; background: #E8F5EC; color: #1E6B3A; font-weight: 600; font-size: 0.92rem; text-align: center; }
