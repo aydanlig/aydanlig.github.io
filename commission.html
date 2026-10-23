@@ -215,6 +215,7 @@
 						<!-- FRAMES – flat price, same for A5 and A4 (change here AND in the "Rahmen" field of the form) -->
 						<li><span>Rahmen: einfach (schlicht &amp; leicht)</span><strong>+10 €</strong></li>
 						<li><span>Rahmen: hochwertig (dicker, edler Rahmen)</span><strong>+20 €</strong></li>
+						<li><span>Rahmenfarbe nach Wahl: schwarz, weiß oder Holz</span><strong>inklusive</strong></li>
 						<li><span>Jede weitere Person oder jedes Haustier</span><strong>A5 +10 € / A4 +20 €</strong></li>
 						<li><span>Ausgearbeiteter Hintergrund oder Stil-Extra (z. B. bunter Aquarell-Hintergrund)</span><strong>+10 €</strong></li>
 						<li><span>Goldtinte / Blattgold</span><strong>+10 €</strong></li>
@@ -314,8 +315,17 @@
 								<label for="c-frame">Rahmen</label>
 								<select id="c-frame" name="Rahmen">
 									<option>Ohne Rahmen</option>
-									<option>Einfacher Rahmen (+10 €)</option>
-									<option>Hochwertiger, dicker Rahmen (+20 €)</option>
+									<!-- Frame colours: black, white, wood – for both qualities -->
+									<optgroup label="Einfacher Rahmen (+10 €)">
+										<option>Einfacher Rahmen, schwarz (+10 €)</option>
+										<option>Einfacher Rahmen, weiß (+10 €)</option>
+										<option>Einfacher Rahmen, Holz (+10 €)</option>
+									</optgroup>
+									<optgroup label="Hochwertiger, dicker Rahmen (+20 €)">
+										<option>Hochwertiger Rahmen, schwarz (+20 €)</option>
+										<option>Hochwertiger Rahmen, weiß (+20 €)</option>
+										<option>Hochwertiger Rahmen, Holz (+20 €)</option>
+									</optgroup>
 								</select>
 							</div>
 							<div class="field">
