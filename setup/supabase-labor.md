@@ -198,6 +198,23 @@ revoke all on function public.report_content(text, uuid) from public;
 grant execute on function public.report_content(text, uuid) to anon;
 ```
 
+## 1b. Erste Auktion: rote Marker-Skizze (fertig vorbereitet)
+
+Direkt nach Schritt 1 im SQL Editor ausführen. Startpreis und Mindestschritt kannst du vorher ändern.
+Ende: **31.12.2026, 20:00 Uhr** (Berliner Zeit).
+
+```sql
+insert into public.auction_lots (title, description, image_url, start_price, min_increment, ends_at)
+values (
+  'Rote Skizze in 15 Minuten – Original',
+  'Original-Zeichnung mit rotem Marker im Skizzenbuch, live in 15 Minuten gezeichnet. Ca. A5, signiert. Versteigert wird das Original (nicht das Foto).',
+  'https://smileyfoxyportraits.com/img/auktion/rote-skizze-15-minuten.jpg',
+  25,
+  5,
+  '2026-12-31 20:00:00+01'
+);
+```
+
 ## 2. Eine Auktion starten
 
 Supabase → **Table Editor** → `auction_lots` → **Insert row**:

@@ -96,8 +96,8 @@
 				'<input id="be-' + id + '" name="email" type="email" required autocomplete="email" value="' + escapeHtml(me.email || '') + '">' +
 				'<label class="hint" for="ba-' + id + '">Dein Gebot in € (mindestens ' + euro(minBid(lot)) + ')</label>' +
 				'<input id="ba-' + id + '" name="amount" type="number" inputmode="decimal" required step="0.5" min="' + minBid(lot) + '" value="' + minBid(lot) + '">' +
-				'<label class="choice"><input type="checkbox" name="agree" required> <span>Mein Gebot ist verbindlich. Ich habe die <a href="#regeln">Auktionsregeln</a> gelesen.</span></label>' +
-				'<button class="btn btn--fox" type="submit">Gebot abgeben</button>' +
+				'<label class="choice"><input type="checkbox" name="agree" required> <span>Mein Gebot ist ein verbindliches, kostenpflichtiges Kaufangebot. Ich habe die <a href="#regeln">Auktionsregeln</a> und die <a href="/labor/widerruf.html">Widerrufsbelehrung</a> gelesen.</span></label>' +
+				'<button class="btn btn--fox" type="submit">Kostenpflichtig bieten</button>' +
 				'<p class="bid-status" aria-live="polite"></p>' +
 				'</form>';
 		}
