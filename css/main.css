@@ -593,6 +593,22 @@ body.silly-spinning { transform: rotate(360deg); }
 .compare thead th { background: #EDE2DA; font-family: var(--font-head); font-size: 1.05rem; }
 .compare .highlight { background: #fff1e9; font-weight: 600; }
 .compare thead .highlight { background: var(--fox); color: var(--ink); }
+/* Phones: no sideways swiping – every row becomes a small card, with MY offer (Kleckerkasten) on top */
+@media (max-width: 700px) {
+	.table-scroll { overflow: visible; }
+	.compare, .compare tbody { display: block; min-width: 0; background: none; border-radius: 0; overflow: visible; }
+	.compare thead { display: none; }
+	.compare tr { display: flex; flex-direction: column; margin-bottom: 14px; background: var(--card);
+		border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+	.compare tbody th { order: -2; background: #EDE2DA; font-family: var(--font-head); font-size: 1.05rem; padding: 10px 16px; }
+	.compare td { display: block; padding: 10px 16px; }
+	.compare td.highlight { order: -1; border-left: 4px solid var(--fox); }
+	.compare td:not(.highlight) { font-size: 0.88rem; color: var(--ink-soft); }
+	.compare td:nth-of-type(2) { border-bottom: 0; } /* visually the last one (Kleckerkasten moves to the top) */
+	.compare td::before { content: attr(data-label); display: block; font-size: 0.72rem; font-weight: 700;
+		letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 2px; }
+	.compare td.highlight::before { color: var(--accent-dark); }
+}
 
 /* ---------- Forms ---------- */
 .form-card {
