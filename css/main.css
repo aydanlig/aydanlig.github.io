@@ -1203,3 +1203,7 @@ fieldset.field { border: 0; padding: 0; margin: 0; min-width: 0; }
 @media (max-width: 520px) { .pay-qr { flex-direction: column; text-align: center; } }
 .pay-curious { margin-top: 1.8em; color: var(--ink-soft); }
 .pay-curious .btn { margin-left: 6px; vertical-align: middle; }
+
+/* Note above forms on the Google-translated page (see js/translate.js) */
+.translate-form-note { background: #FFF1EA; border: 2px solid var(--fox); border-radius: 12px; padding: 12px 14px; margin: 0 0 14px; color: var(--ink); text-align: left; }
+.translate-form-note .btn { margin: 8px 0 4px; }
