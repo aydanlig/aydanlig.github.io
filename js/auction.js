@@ -52,9 +52,9 @@
 		return 'Noch ' + m + ' Min ' + s + ' Sek';
 	}
 
-	// The bidder's name/email are remembered in THIS browser only, for the next bid
+	// The bidder's name/contact details are remembered in THIS browser only, for the next bid
 	function remembered() { try { return JSON.parse(localStorage.getItem('auction-bidder') || '{}'); } catch (e) { return {}; } }
-	function remember(name, email) { try { localStorage.setItem('auction-bidder', JSON.stringify({ name: name, email: email })); } catch (e) { } }
+	function remember(me) { try { localStorage.setItem('auction-bidder', JSON.stringify(me)); } catch (e) { } }
 
 	function mount(section) {
 		var url = (section.getAttribute('data-supabase-url') || '').replace(/\/+$/, '');
@@ -92,8 +92,16 @@
 			return '<form class="bid-form" data-lot="' + id + '">' +
 				'<label class="hint" for="bn-' + id + '">Vorname (wird angezeigt)</label>' +
 				'<input id="bn-' + id + '" name="name" required maxlength="40" autocomplete="given-name" value="' + escapeHtml(me.name || '') + '">' +
-				'<label class="hint" for="be-' + id + '">E-Mail (bleibt privat)</label>' +
-				'<input id="be-' + id + '" name="email" type="email" required autocomplete="email" value="' + escapeHtml(me.email || '') + '">' +
+				'<fieldset class="bid-contact"><legend class="hint">So erreiche ich dich, wenn du gewinnst – mindestens eins davon (bleibt privat):</legend>' +
+				'<label class="hint" for="be-' + id + '">E-Mail</label>' +
+				'<input id="be-' + id + '" name="email" type="email" autocomplete="email" value="' + escapeHtml(me.email || '') + '">' +
+				'<label class="hint" for="bp-' + id + '">oder Telefon</label>' +
+				'<input id="bp-' + id + '" name="phone" type="tel" autocomplete="tel" value="' + escapeHtml(me.phone || '') + '">' +
+				'<label class="hint" for="bad-' + id + '">oder Lieferadresse für die direkte Übergabe (Straße, Nr., PLZ, Ort)</label>' +
+				'<textarea id="bad-' + id + '" name="address" rows="2" autocomplete="street-address">' + escapeHtml(me.address || '') + '</textarea>' +
+				'<label class="hint" for="bd-' + id + '">Name an der Klingel (bei Lieferadresse)</label>' +
+				'<input id="bd-' + id + '" name="doorbell" value="' + escapeHtml(me.doorbell || '') + '">' +
+				'</fieldset>' +
 				'<label class="hint" for="ba-' + id + '">Dein Gebot in €' + (lot.current_bid == null ? ' – biete, was es dir wert ist' : ' (mehr als ' + euro(lot.current_bid) + ')') + '</label>' +
 				'<input id="ba-' + id + '" name="amount" type="number" inputmode="decimal" required step="0.01" min="' + minBid(lot) + '" placeholder="z. B. 30">' +
 				'<label class="choice"><input type="checkbox" name="agree" required> <span>Mein Gebot ist ein verbindliches, kostenpflichtiges Kaufangebot. Ich habe die <a href="#regeln">Auktionsregeln</a> und die <a href="/labor/widerruf.html">Widerrufsbelehrung</a> gelesen.</span></label>' +
@@ -157,6 +165,17 @@
 			var button = form.querySelector('button');
 			var name = form.elements.name.value.trim();
 			var email = form.elements.email.value.trim();
+			var phone = form.elements.phone.value.trim();
+			var address = form.elements.address.value.trim();
+			var doorbell = form.elements.doorbell.value.trim();
+			if (!email && !phone && !address) {
+				form.querySelector('.bid-status').textContent = 'Bitte hinterlass eine Kontaktmöglichkeit: E-Mail, Telefon oder Lieferadresse.';
+				return;
+			}
+			if (address && !doorbell) {
+				form.querySelector('.bid-status').textContent = 'Bitte gib bei Lieferung auch den Namen an der Klingel an.';
+				return;
+			}
 			var amount = Number(form.elements.amount.value);
 			var lotId = form.getAttribute('data-lot');
 			var lot = lots.filter(function (l) { return l.id === lotId; })[0];
@@ -165,7 +184,7 @@
 			try {
 				var res = await fetch(url + '/rest/v1/rpc/place_bid', {
 					method: 'POST', headers: headers(key),
-					body: JSON.stringify({ p_lot: lotId, p_name: name, p_email: email, p_amount: amount })
+					body: JSON.stringify({ p_lot: lotId, p_name: name, p_email: email, p_phone: phone, p_address: address, p_doorbell: doorbell, p_amount: amount })
 				});
 				var data = await res.json();
 				if (!res.ok || !data || data.ok !== true) {
@@ -173,13 +192,13 @@
 					button.disabled = false;
 					return;
 				}
-				remember(name, email);
+				remember({ name: name, email: email, phone: phone, address: address, doorbell: doorbell });
 				status.textContent = 'Danke! Du bist jetzt Höchstbietende:r mit ' + euro(amount) + '.';
 				if (notify) {
 					fetch('https://formsubmit.co/ajax/' + encodeURIComponent(notify), {
 						method: 'POST',
 						headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-						body: JSON.stringify({ _subject: 'Neues Gebot: ' + (lot ? lot.title : 'Auktion') + ' – ' + euro(amount), Name: name, email: email, Gebot: euro(amount) })
+						body: JSON.stringify({ _subject: 'Neues Gebot: ' + (lot ? lot.title : 'Auktion') + ' – ' + euro(amount), Name: name, email: email || '–', Telefon: phone || '–', Lieferadresse: address ? address + ' (Klingel: ' + doorbell + ')' : '–', Gebot: euro(amount) })
 					}).catch(function () { });
 				}
 				setTimeout(load, 1500);

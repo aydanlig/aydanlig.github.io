@@ -215,6 +215,11 @@ values (
 );
 ```
 
+## 1c. Kontaktdaten beim Bieten (schon eingerichtet am 23.10.2026)
+
+Bieter:innen hinterlassen E-Mail **oder** Telefon **oder** Lieferadresse + Klingelname (mind. eins).
+Die SQL dafür liegt nur lokal; die Funktion `place_bid` hat jetzt 7 Parameter.
+
 ## 2. Eine Auktion starten
 
 Supabase → **Table Editor** → `auction_lots` → **Insert row**:
@@ -233,7 +238,7 @@ Alles andere leer lassen. Sofort sichtbar auf `labor/auktion.html`.
 **Nach dem Ende:** Gewinner:in finden – SQL Editor:
 
 ```sql
-select l.title, b.bidder_name, b.bidder_email, b.amount, b.created_at
+select l.title, b.bidder_name, b.bidder_email, b.bidder_phone, b.bidder_address, b.bidder_doorbell, b.amount, b.created_at
 from auction_bids b join auction_lots l on l.id = b.lot_id
 where l.title = 'TITEL DES KUNSTWERKS'
 order by b.amount desc limit 1;
