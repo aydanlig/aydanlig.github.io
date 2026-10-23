@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<!-- PRIVATE, UNLISTED page for Vilda: not linked anywhere on the site, not in the sitemap, not indexed. -->
+<meta name="robots" content="noindex, nofollow, noarchive">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<title>Our Next 30 Days</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Nunito+Sans:opsz,wght@6..12,400;6..12,700;6..12,800&display=swap">
+<style>
+/* A warm pocket calendar: one band per week, each day says what I do and when I'm free for you. */
+:root {
+  --bg:#fbf6f1; --card:#ffffff; --fg:#2a1f22; --soft:#6f5d63; --line:#eadfd7;
+  --fox:#c94f1d; --free:#2f7a57; --free-bg:#e3f2ea; --part:#9a6212; --part-bg:#fbefd9; --busy:#8a4a5e; --busy-bg:#f3e6ea;
+  --display:"Young Serif", Georgia, serif; --body:"Nunito Sans", system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg:#1b1517; --card:#251d20; --fg:#f4ebe6; --soft:#b9a8ae; --line:#3a2f33;
+  --fox:#ff8a57; --free:#7ccfa6; --free-bg:#1f3329; --part:#f0b45e; --part-bg:#3a2e1a; --busy:#e3a0b6; --busy-bg:#3a2530; color-scheme:dark; } }
+:root[data-theme="dark"] { --bg:#1b1517; --card:#251d20; --fg:#f4ebe6; --soft:#b9a8ae; --line:#3a2f33;
+  --fox:#ff8a57; --free:#7ccfa6; --free-bg:#1f3329; --part:#f0b45e; --part-bg:#3a2e1a; --busy:#e3a0b6; --busy-bg:#3a2530; color-scheme:dark; }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--bg); color:var(--fg); font:16px/1.55 var(--body); }
+.wrap { max-width:820px; margin:0 auto; padding-block:36px 56px;
+  padding-left:max(16px, env(safe-area-inset-left, 0px)); padding-right:max(16px, env(safe-area-inset-right, 0px));
+  display:grid; gap:28px; }
+header h1 { font:400 clamp(2rem,6vw,3rem)/1.1 var(--display); margin:0 0 8px; text-wrap:balance; }
+header p { margin:0; color:var(--soft); max-width:60ch; }
+.rhythm { display:grid; grid-template-columns:repeat(auto-fit,minmax(170px,1fr)); gap:10px; }
+.rhythm div { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:12px 14px; }
+.rhythm strong { display:block; font-size:.78rem; letter-spacing:.06em; text-transform:uppercase; color:var(--fox); }
+.legend { display:flex; flex-wrap:wrap; gap:8px; }
+.pill { display:inline-block; font-weight:800; font-size:.72rem; letter-spacing:.04em; text-transform:uppercase; padding:3px 10px; border-radius:999px; }
+.free .pill, .legend .free { background:var(--free-bg); color:var(--free); }
+.part .pill, .legend .part { background:var(--part-bg); color:var(--part); }
+.busy .pill, .legend .busy { background:var(--busy-bg); color:var(--busy); }
+.week h2 { font:400 1.3rem var(--display); margin:0 0 10px; }
+.days { list-style:none; margin:0; padding:0; display:grid; gap:8px; }
+.day { display:grid; grid-template-columns:56px 1fr; gap:14px; align-items:start; background:var(--card);
+  border:1px solid var(--line); border-left:5px solid var(--line); border-radius:14px; padding:12px 14px; }
+.day.free { border-left-color:var(--free); } .day.part { border-left-color:var(--part); } .day.busy { border-left-color:var(--busy); }
+.day.special .what { font-weight:700; }
+.date { display:grid; justify-items:center; line-height:1.1; font-variant-numeric:tabular-nums; }
+.dow { font-size:.72rem; font-weight:800; text-transform:uppercase; letter-spacing:.08em; color:var(--soft); }
+.num { font:400 1.75rem var(--display); }
+.mon { font-size:.72rem; color:var(--soft); }
+.body { min-width:0; }
+.what { margin:6px 0 4px; }
+.us { margin:0; font-weight:700; color:var(--fox); }
+footer { color:var(--soft); font-size:.92rem; }
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>Our next 30 days</h1>
+  <p>Hey Vilda – here's roughly what I'm up to until 22 November, and when I have time for you. Mondays and Tuesdays are my weekend, and most evenings I'm up for playing games with you. Bold days are the special ones.</p>
+</header>
+<div class="rhythm">
+  <div><strong>Mon &amp; Tue</strong>Study in the morning, then free afternoons and evenings</div>
+  <div><strong>Every Tuesday 17:00</strong>Our gaming evening 💛</div>
+  <div><strong>Wed – Fri</strong>Work days, evenings mostly free (Thursday is my busiest)</div>
+  <div><strong>Sat &amp; Sun</strong>Mauerpark Sat 14–22, Sunday market 8–16 – late evenings still work for a call</div>
+</div>
+<div class="legend"><span class="pill free">Lots of time</span><span class="pill part">Some time</span><span class="pill busy">Busy day</span></div>
+<section class="week"><h2>23 Oct – 25 Oct</h2><ol class="days"><li class="day part special">
+  <div class="date"><span class="dow">Fri</span><span class="num">23</span><span class="mon">Oct</span></div>
+  <div class="body"><span class="pill">Some time</span><p class="what">Today: planning and admin.</p><p class="us">♥ Gaming from the late afternoon 🎮</p></div>
+</li><li class="day busy">
+  <div class="date"><span class="dow">Sat</span><span class="num">24</span><span class="mon">Oct</span></div>
+  <div class="body"><span class="pill">Busy day</span><p class="what">Small tasks in the morning, then drawing live at the Mauerpark 14:00–22:00 (next to the photo booth).</p><p class="us">♥ Busy until 22:00 – a late call afterwards?</p></div>
+</li><li class="day busy">
+  <div class="date"><span class="dow">Sun</span><span class="num">25</span><span class="mon">Oct</span></div>
+  <div class="body"><span class="pill">Busy day</span><p class="what">Up at 7, Sunday market 8:00–16:00, then planning &amp; desk work in the evening.</p><p class="us">♥ Late-evening gaming 🎮</p></div>
+</li></ol></section><section class="week"><h2>26 Oct – 1 Nov</h2><ol class="days"><li class="day free">
+  <div class="date"><span class="dow">Mon</span><span class="num">26</span><span class="mon">Oct</span></div>
+  <div class="body"><span class="pill">Lots of time</span><p class="what">Weekend. Studying 10:00–13:30 (Finanzamt test + driving theory), drawing just for fun at 15:00, guitar in the evening.</p><p class="us">♥ Free from 14:00 – call or game whenever you like 🎮</p></div>
+</li><li class="day free">
+  <div class="date"><span class="dow">Tue</span><span class="num">27</span><span class="mon">Oct</span></div>
+  <div class="body"><span class="pill">Lots of time</span><p class="what">Weekend. Studying 10:00–13:30, then free.</p><p class="us">♥ Our gaming evening from 17:00 💛</p></div>
+</li><li class="day part special">
+  <div class="date"><span class="dow">Wed</span><span class="num">28</span><span class="mon">Oct</span></div>
+  <div class="body"><span class="pill">Some time</span><p class="what">Work day + a 2-hour errand for the move.</p><p class="us">♥ Gaming or a call from about 19:00 🎮</p></div>
+</li><li class="day busy special">
+  <div class="date"><span class="dow">Thu</span><span class="num">29</span><span class="mon">Oct</span></div>
+  <div class="body"><span class="pill">Busy day</span><p class="what">Appointments &amp; admin day: lots of calls and paperwork.</p><p class="us">♥ A short call late in the evening</p></div>
+</li><li class="day part special">
+  <div class="date"><span class="dow">Fri</span><span class="num">30</span><span class="mon">Oct</span></div>
+  <div class="body"><span class="pill">Some time</span><p class="what">Sales day: reaching out to Christmas markets and events.</p><p class="us">♥ Gaming from the late afternoon 🎮</p></div>
+</li><li class="day busy">
+  <div class="date"><span class="dow">Sat</span><span class="num">31</span><span class="mon">Oct</span></div>
+  <div class="body"><span class="pill">Busy day</span><p class="what">Small tasks in the morning, then drawing live at the Mauerpark 14:00–22:00 (next to the photo booth).</p><p class="us">♥ Busy until 22:00 – a late call afterwards?</p></div>
+</li><li class="day busy">
+  <div class="date"><span class="dow">Sun</span><span class="num">1</span><span class="mon">Nov</span></div>
+  <div class="body"><span class="pill">Busy day</span><p class="what">Up at 7, Sunday market 8:00–16:00, then planning &amp; desk work in the evening.</p><p class="us">♥ Late-evening gaming 🎮</p></div>
+</li></ol></section><section class="week"><h2>2 Nov – 8 Nov</h2><ol class="days"><li class="day free">
+  <div class="date"><span class="dow">Mon</span><span class="num">2</span><span class="mon">Nov</span></div>
+  <div class="body"><span class="pill">Lots of time</span><p class="what">Weekend. Studying 10:00–13:30 (Finanzamt test + driving theory), drawing just for fun at 15:00, guitar in the evening.</p><p class="us">♥ Free from 14:00 – call or game whenever you like 🎮</p></div>
+</li><li class="day free special">
+  <div class="date"><span class="dow">Tue</span><span class="num">3</span><span class="mon">Nov</span></div>
+  <div class="body"><span class="pill">Lots of time</span><p class="what">Weekend. Studying in the morning. 15:00: let&#x27;s pick concerts together!</p><p class="us">♥ 15:00 concert planning, our gaming evening from 17:00 💛</p></div>
+</li><li class="day busy special">
+  <div class="date"><span class="dow">Wed</span><span class="num">4</span><span class="mon">Nov</span></div>
+  <div class="body"><span class="pill">Busy day</span><p class="what">Important appointment at 13:30 – I&#x27;m keeping this whole day calm and free of other plans.</p><p class="us">♥ Evening call or a calm game, if I have energy – would love to hear your voice 🫶</p></div>
+</li><li class="day busy special">
+  <div class="date"><span class="dow">Thu</span><span class="num">5</span><span class="mon">Nov</span></div>
+  <div class="body"><span class="pill">Busy day</span><p class="what">Outreach day: emailing companies, event agencies and Christmas markets.</p><p class="us">♥ A short call late in the evening</p></div>
+</li><li class="day part">
+  <div class="date"><span class="dow">Fri</span><span class="num">6</span><span class="mon">Nov</span></div>
+  <div class="body"><span class="pill">Some time</span><p class="what">Lighter work day, maybe working outside.</p><p class="us">♥ Gaming from the late afternoon 🎮</p></div>
+</li><li class="day busy">
+  <div class="date"><span class="dow">Sat</span><span class="num">7</span><span class="mon">Nov</span></div>
+  <div class="body"><span class="pill">Busy day</span><p class="what">Small tasks in the morning, then drawing live at the Mauerpark 14:00–22:00 (next to the photo booth).</p><p class="us">♥ Busy until 22:00 – a late call afterwards?</p></div>
+</li><li class="day busy">
+  <div class="date"><span class="dow">Sun</span><span class="num">8</span><span class="mon">Nov</span></div>
+  <div class="body"><span class="pill">Busy day</span><p class="what">Up at 7, Sunday market 8:00–16:00, then planning &amp; desk work in the evening.</p><p class="us">♥ Late-evening gaming 🎮</p></div>
+</li></ol></section><section class="week"><h2>9 Nov – 15 Nov</h2><ol class="days"><li class="day free">
+  <div class="date"><span class="dow">Mon</span><span class="num">9</span><span class="mon">Nov</span></div>
+  <div class="body"><span class="pill">Lots of time</span><p class="what">Weekend. Studying 10:00–13:30 (Finanzamt test + driving theory), drawing just for fun at 15:00, guitar in the evening.</p><p class="us">♥ Free from 14:00 – call or game whenever you like 🎮</p></div>
+</li><li class="day free">
+  <div class="date"><span class="dow">Tue</span><span class="num">10</span><span class="mon">Nov</span></div>
+  <div class="body"><span class="pill">Lots of time</span><p class="what">Weekend. Studying 10:00–13:30, then free.</p><p class="us">♥ Our gaming evening from 17:00 💛</p></div>
+</li><li class="day part">
+  <div class="date"><span class="dow">Wed</span><span class="num">11</span><span class="mon">Nov</span></div>
+  <div class="body"><span class="pill">Some time</span><p class="what">Work day (desk work, outreach, errands).</p><p class="us">♥ Gaming or a call from about 19:00 🎮</p></div>
+</li><li class="day busy special">
+  <div class="date"><span class="dow">Thu</span><span class="num">12</span><span class="mon">Nov</span></div>
+  <div class="body"><span class="pill">Busy day</span><p class="what">Job fair (Azubimesse) + work.</p><p class="us">♥ Evening gaming 🎮</p></div>
+</li><li class="day busy special">
+  <div class="date"><span class="dow">Fri</span><span class="num">13</span><span class="mon">Nov</span></div>
+  <div class="body"><span class="pill">Busy day</span><p class="what">Another fair (Messe).</p><p class="us">♥ Evening gaming 🎮</p></div>
+</li><li class="day busy">
+  <div class="date"><span class="dow">Sat</span><span class="num">14</span><span class="mon">Nov</span></div>
+  <div class="body"><span class="pill">Busy day</span><p class="what">Small tasks in the morning, then drawing live at the Mauerpark 14:00–22:00 (next to the photo booth).</p><p class="us">♥ Busy until 22:00 – a late call afterwards?</p></div>
+</li><li class="day busy">
+  <div class="date"><span class="dow">Sun</span><span class="num">15</span><span class="mon">Nov</span></div>
+  <div class="body"><span class="pill">Busy day</span><p class="what">Up at 7, Sunday market 8:00–16:00, then planning &amp; desk work in the evening.</p><p class="us">♥ Late-evening gaming 🎮</p></div>
+</li></ol></section><section class="week"><h2>16 Nov – 22 Nov</h2><ol class="days"><li class="day free">
+  <div class="date"><span class="dow">Mon</span><span class="num">16</span><span class="mon">Nov</span></div>
+  <div class="body"><span class="pill">Lots of time</span><p class="what">Weekend. Studying 10:00–13:30 (Finanzamt test + driving theory), drawing just for fun at 15:00, guitar in the evening.</p><p class="us">♥ Free from 14:00 – call or game whenever you like 🎮</p></div>
+</li><li class="day free special">
+  <div class="date"><span class="dow">Tue</span><span class="num">17</span><span class="mon">Nov</span></div>
+  <div class="body"><span class="pill">Lots of time</span><p class="what">Weekend. Studying in the morning, 15:00 concert planning, a friend visits for anime.</p><p class="us">♥ 15:00 concert planning with you, then our gaming evening 💛</p></div>
+</li><li class="day part">
+  <div class="date"><span class="dow">Wed</span><span class="num">18</span><span class="mon">Nov</span></div>
+  <div class="body"><span class="pill">Some time</span><p class="what">Work day (desk work, outreach, errands).</p><p class="us">♥ Gaming or a call from about 19:00 🎮</p></div>
+</li><li class="day busy">
+  <div class="date"><span class="dow">Thu</span><span class="num">19</span><span class="mon">Nov</span></div>
+  <div class="body"><span class="pill">Busy day</span><p class="what">My most productive work day – heads-down until the evening.</p><p class="us">♥ A short call late in the evening</p></div>
+</li><li class="day part">
+  <div class="date"><span class="dow">Fri</span><span class="num">20</span><span class="mon">Nov</span></div>
+  <div class="body"><span class="pill">Some time</span><p class="what">Lighter work day, maybe working outside.</p><p class="us">♥ Gaming from the late afternoon 🎮</p></div>
+</li><li class="day busy">
+  <div class="date"><span class="dow">Sat</span><span class="num">21</span><span class="mon">Nov</span></div>
+  <div class="body"><span class="pill">Busy day</span><p class="what">Small tasks in the morning, then drawing live at the Mauerpark 14:00–22:00 (next to the photo booth).</p><p class="us">♥ Busy until 22:00 – a late call afterwards?</p></div>
+</li><li class="day busy special">
+  <div class="date"><span class="dow">Sun</span><span class="num">22</span><span class="mon">Nov</span></div>
+  <div class="body"><span class="pill">Busy day</span><p class="what">Sunday market, then game day in the evening.</p><p class="us">♥ Late-evening gaming 🎮</p></div>
+</li></ol></section>
+<footer>Plans can shift with weather and work – I'll tell you if something changes. Further ahead: my Finanzamt test is on 16 December.<br><br>💛 Nolla</footer>
+</div>
+</body>
+</html>
