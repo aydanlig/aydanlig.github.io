@@ -1234,3 +1234,4 @@ fieldset.field { border: 0; padding: 0; margin: 0; min-width: 0; }
 }
 .bid-form input[type="checkbox"] { width: auto; flex: none; margin-top: 4px; }
 .bid-form label.choice { display: flex; gap: 10px; align-items: flex-start; }
+.quiet-link { opacity: 0.75; }

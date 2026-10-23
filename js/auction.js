@@ -94,8 +94,8 @@
 				'<input id="bn-' + id + '" name="name" required maxlength="40" autocomplete="given-name" value="' + escapeHtml(me.name || '') + '">' +
 				'<label class="hint" for="be-' + id + '">E-Mail (bleibt privat)</label>' +
 				'<input id="be-' + id + '" name="email" type="email" required autocomplete="email" value="' + escapeHtml(me.email || '') + '">' +
-				'<label class="hint" for="ba-' + id + '">Dein Gebot in € (mindestens ' + euro(minBid(lot)) + ')</label>' +
-				'<input id="ba-' + id + '" name="amount" type="number" inputmode="decimal" required step="0.5" min="' + minBid(lot) + '" value="' + minBid(lot) + '">' +
+				'<label class="hint" for="ba-' + id + '">Dein Gebot in €' + (lot.current_bid == null ? ' – biete, was es dir wert ist' : ' (mehr als ' + euro(lot.current_bid) + ')') + '</label>' +
+				'<input id="ba-' + id + '" name="amount" type="number" inputmode="decimal" required step="0.01" min="' + minBid(lot) + '" placeholder="z. B. 30">' +
 				'<label class="choice"><input type="checkbox" name="agree" required> <span>Mein Gebot ist ein verbindliches, kostenpflichtiges Kaufangebot. Ich habe die <a href="#regeln">Auktionsregeln</a> und die <a href="/labor/widerruf.html">Widerrufsbelehrung</a> gelesen.</span></label>' +
 				'<button class="btn btn--fox" type="submit">Kostenpflichtig bieten</button>' +
 				'<p class="bid-status" aria-live="polite"></p>' +
@@ -108,14 +108,14 @@
 				? '<img src="' + escapeHtml(lot.image_url) + '" alt="' + escapeHtml(lot.title) + '" loading="lazy">'
 				: '<div class="ph ph--4x5">Foto des Kunstwerks</div>';
 			var bidLine = lot.current_bid == null
-				? '<p class="lot-bid">' + euro(lot.start_price) + '</p><span class="hint">Startpreis – noch kein Gebot</span>'
+				? '<p class="lot-bid">Noch kein Gebot</p><span class="hint">Kein Startpreis – du bestimmst, was es wert ist.</span>'
 				: '<p class="lot-bid">' + euro(lot.current_bid) + '</p><span class="hint">Höchstgebot von ' + escapeHtml(lot.current_bidder || 'Anonym') + ' · ' + lot.bid_count + ' Gebot' + (lot.bid_count === 1 ? '' : 'e') + '</span>';
 			return '<article class="lot' + (ended ? ' lot-ended' : '') + '" data-lot-card="' + escapeHtml(lot.id) + '">' + img +
 				'<h3 style="margin:0">' + escapeHtml(lot.title) + '</h3>' +
 				(lot.description ? '<p style="margin:0">' + escapeHtml(lot.description) + '</p>' : '') +
 				bidLine +
 				'<div class="lot-meta"><span class="lot-countdown" data-ends="' + escapeHtml(lot.ends_at) + '">' + countdownText(lot.ends_at) + '</span>' +
-				'<span>Mindestschritt ' + euro(lot.min_increment) + '</span></div>' +
+				(Number(lot.min_increment) >= 1 ? '<span>Mindestschritt ' + euro(lot.min_increment) + '</span>' : '<span>Jedes höhere Gebot zählt</span>') + '</div>' +
 				historyHtml(lot) + formHtml(lot) + '</article>';
 		}
 
