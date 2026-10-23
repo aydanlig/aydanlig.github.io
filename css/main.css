@@ -1178,3 +1178,16 @@ fieldset.field { border: 0; padding: 0; margin: 0; min-width: 0; }
 
 /* Events: Kleckerkasten intro over the full width while there is no workshop photo */
 .kk-intro { max-width: 980px; }
+
+/* Kleckerkasten pilot: crossed-out regular price + big 50 % price */
+.deal { position: relative; background: #fff; border: 2px solid var(--fox); border-radius: 16px; padding: 16px 18px 12px; margin: 10px 0 14px; }
+.deal-badge { position: absolute; top: -16px; right: -10px; background: var(--fox); color: var(--night); font: 800 1.1rem var(--font-body);
+	padding: 8px 12px; border-radius: 999px; transform: rotate(8deg); box-shadow: 0 6px 14px rgba(255, 107, 53, 0.35); }
+.deal-row { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; }
+.deal-old { color: var(--ink-soft); font-size: 1.3rem; text-decoration-color: var(--fox); text-decoration-thickness: 3px; }
+.deal-new { font-family: var(--font-head); font-size: clamp(2.2rem, 6vw, 3rem); font-weight: 700; color: var(--accent); line-height: 1.1; }
+.deal-unit { font-size: 0.95rem; color: var(--ink); }
+.deal small { display: block; margin-top: 8px; color: var(--ink-soft); }
+.deal-inline s { text-decoration-color: var(--fox); text-decoration-thickness: 2px; }
+.deal-inline strong { color: var(--accent); }
+.deal-row + .deal-row { margin-top: 6px; padding-top: 6px; border-top: 1px dashed var(--line); }

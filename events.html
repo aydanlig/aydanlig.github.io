@@ -333,7 +333,7 @@
 								<th scope="row">Preis (½ Tag, ganzes Team)</th>
 								<td>ca. 800–1.800 € zzgl. MwSt.</td>
 								<td>ab ca. 600 € zzgl. MwSt.</td>
-								<td class="highlight"><strong>59 € pro Person</strong> · ab 8 Personen <strong>pauschal 650 €</strong><br><small>Endpreis für den ganzen Workshop · Pilot-Team: −50 %</small></td>
+								<td class="highlight"><strong>59 € pro Person</strong> · ab 8 Personen <strong>pauschal 650 €</strong><br><small>Endpreis für den ganzen Workshop</small><br><span class="deal-inline">Pilot-Team: <s>59 €</s> <strong>29,50 €</strong> · pauschal <s>650 €</s> <strong>325 €</strong></span></td>
 							</tr>
 							<tr>
 								<th scope="row">Format</th>
@@ -366,7 +366,13 @@
 						<div>
 							<span class="tag tag--fox">Pilot-Angebot: nur für das erste Team</span>
 							<h3>Pilot-Workshop: 50 % Rabatt für das erste Team</h3>
-							<p class="price">59 € pro Person <small>für den ganzen Workshop · ab 8 Personen pauschal 650 €</small></p>
+							<!-- Crossed-out price = the real regular price after the pilot (§ 5 UWG: only show prices you actually charge) -->
+							<div class="deal">
+								<span class="deal-badge">−50 %</span>
+								<div class="deal-row"><s class="deal-old">59 €</s><span class="deal-new">29,50 €</span><span class="deal-unit">pro Person</span></div>
+								<div class="deal-row"><s class="deal-old">650 €</s><span class="deal-new">325 €</span><span class="deal-unit">pauschal ab 8 Personen</span></div>
+								<small>Regulärer Preis nach dem Pilot: 59 € pro Person bzw. 650 € pauschal · Endpreise für den ganzen Workshop</small>
+							</div>
 							<p>
 								Ich entwickle den Kleckerkasten aktuell mit ausgewählten Partnern in Berlin weiter. Das erste Team
 								erhält den kompletten Workshop als Pilot zum <strong>halben Preis</strong> – also 29,50 € pro Person
