@@ -1223,3 +1223,14 @@ fieldset.field { border: 0; padding: 0; margin: 0; min-width: 0; }
 @media (max-width: 720px) { .nego { grid-template-columns: 1fr; text-align: left; } .nego .btn { justify-self: start; } }
 .nego-visual span:nth-child(1) { z-index: 2; }
 .nego-visual span:nth-child(3) { z-index: 3; }
+
+/* Auction: a single lot shows image left, bidding right (no huge picture) */
+.lots { grid-template-columns: repeat(auto-fit, minmax(300px, 520px)); justify-content: center; }
+.lot img { max-height: 520px; object-fit: contain; background: #0F0C11; }
+@media (min-width: 900px) {
+	.lots:has(> .lot:only-child) { grid-template-columns: minmax(0, 960px); }
+	.lot:only-child { display: grid; grid-template-columns: 1fr 1fr; column-gap: 28px; align-items: start; }
+	.lot:only-child > img { grid-row: 1 / span 20; max-height: 640px; }
+}
+.bid-form input[type="checkbox"] { width: auto; flex: none; margin-top: 4px; }
+.bid-form label.choice { display: flex; gap: 10px; align-items: flex-start; }
