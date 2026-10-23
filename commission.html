@@ -216,7 +216,8 @@
 						<li><span>Rahmen: einfach (schlicht &amp; leicht)</span><strong>+10 €</strong></li>
 						<li><span>Rahmen: hochwertig (dicker, edler Rahmen)</span><strong>+20 €</strong></li>
 						<li><span>Rahmenfarbe nach Wahl: schwarz, weiß oder Holz</span><strong>inklusive</strong></li>
-						<li><span>Jede weitere Person oder jedes Haustier</span><strong>A5 +10 € / A4 +20 €</strong></li>
+						<li><span>Jede weitere Person oder jedes Haustier auf einem Bild</span><strong>A5 +10 € / A4 +20 €</strong></li>
+						<li><span>Mehrere Porträts oder Gruppenporträts (z. B. Familie, Team)</span><strong>Mengenrabatt nach Absprache</strong></li>
 						<li><span>Ausgearbeiteter Hintergrund oder Stil-Extra (z. B. bunter Aquarell-Hintergrund)</span><strong>+10 €</strong></li>
 						<li><span>Goldtinte / Blattgold</span><strong>+10 €</strong></li>
 						<li><span>Marker-Highlights (nur A5)</span><strong>+5 €</strong></li>
@@ -329,9 +330,15 @@
 								</select>
 							</div>
 							<div class="field">
-								<label for="c-people">Anzahl Personen / Tiere</label>
-								<input id="c-people" type="number" name="Personen" min="1" value="1">
-								<p class="hint">Je weitere Person / Tier: A5 +10 €, A4 +20 €</p>
+								<label for="c-people">Personen / Tiere auf einem Bild</label>
+								<input id="c-people" type="number" name="Personen pro Bild" min="1" value="1">
+								<p class="hint">Gruppenporträt? Je weitere Person / Tier: A5 +10 €, A4 +20 €</p>
+							</div>
+							<!-- Several separate portraits (e.g. whole family, team) – volume discount by arrangement -->
+							<div class="field">
+								<label for="c-count">Anzahl Porträts</label>
+								<input id="c-count" type="number" name="Anzahl Porträts" min="1" value="1">
+								<p class="hint">Mehrere Porträts oder Gruppenporträts? <strong>Mengenrabatt nach Absprache.</strong></p>
 							</div>
 							<div class="field">
 								<!-- Earliest date: in 2 weeks (with Express: in 3 days) – set by /js/forms.js -->
