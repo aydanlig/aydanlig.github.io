@@ -69,7 +69,7 @@
 				</div>
 
 				<div class="pay-step pay-step--tip">
-					<h2><span>2</span> Trinkgeld obendrauf? 💛</h2>
+					<h2><span>2</span> Trinkgeld obendrauf?</h2>
 					<p class="hint">Trinkgelder halten mich am Laufen und zeigen mir, dass meine Kunst geschätzt wird.</p>
 					<div class="chip-row" data-group="tip">
 						<button type="button" class="chip" data-price="0">Kein</button>
@@ -98,7 +98,7 @@
 
 				<!-- NEWSLETTER FUNNEL: right after paying – the email field opens Substack with the address already filled in -->
 				<div class="newsletter-box">
-					<h2>Bleib in Kontakt! 🦊</h2>
+					<h2>Bleib in Kontakt!</h2>
 					<p>
 						Erfahre zuerst, wann und wo ich wieder draußen zeichne, und bekomm neue Originale &amp; Prints vor allen anderen.
 						Kostenlos, höchstens eine E-Mail im Monat.
@@ -113,10 +113,10 @@
 
 				<!-- NEXT STEPS: share + bigger portrait -->
 				<div class="pay-next">
-					<p>📸 Zeig dein Porträt auf Instagram und markiere <a href="https://www.instagram.com/smileyfoxyportraits">@smileyfoxyportraits</a> – ich teile es gern!</p>
-					<p>🖼️ Dir gefällt es? <a href="/commission.html">Ein größeres Porträt bestellen – mit Aquarell, Gold oder Rahmen, nach Foto oder live bei dir →</a></p>
+					<p>Zeig dein Porträt auf Instagram und markiere <a href="https://www.instagram.com/smileyfoxyportraits">@smileyfoxyportraits</a> – ich teile es gern!</p>
+					<p>Dir gefällt es? <a href="/commission.html">Ein größeres Porträt bestellen – mit Aquarell, Gold oder Rahmen, nach Foto oder live bei dir →</a></p>
 					<!-- Senja collection form (same as on the Dankbarkeitswand); testimonials can be shared on Instagram -->
-					<p>💛 <strong>Wenn du extra lieb sein willst:</strong> Schick mir eine kurze Bewertung mit deinem Reaktionsvideo, damit ich sie auf
+					<p><strong>Wenn du extra lieb sein willst:</strong> Schick mir eine kurze Bewertung mit deinem Reaktionsvideo, damit ich sie auf
 						Instagram teilen kann – <a href="https://tr.ee/u1wxA4" target="_blank" rel="noopener">hier geht's zum Bewertungs-Formular →</a></p>
 				</div>
 
@@ -137,7 +137,7 @@
 					<div>
 						<h2>Doch anders entschieden? Jemand anderes zahlt – oder möchte Trinkgeld geben?</h2>
 						<p>Einfach diesen QR-Code scannen – er führt direkt zu dieser Bezahlseite. Perfekt, wenn jemand aus deiner Gruppe
-							oder eine andere Person auch etwas dalassen möchte. 💛</p>
+							oder eine andere Person auch etwas dalassen möchte.</p>
 					</div>
 				</div>
 
@@ -186,13 +186,6 @@
 				var on = document.querySelector('[data-group="' + group + '"] .chip.on');
 				return on ? parseFloat(on.getAttribute('data-price')) : null;
 			}
-			// Tip buttons get a little face when chosen: "Kein :/" or "+5 € :D"
-			function faces(group) {
-				group.querySelectorAll('.chip').forEach(function (c) {
-					if (!c.dataset.label) c.dataset.label = c.textContent;
-					c.textContent = c.dataset.label + (c.classList.contains('on') ? (c.getAttribute('data-price') === '0' ? ' :/' : ' :D') : '');
-				});
-			}
 			// Style extras follow the chosen size (A5 or A4); A6/A7 has none
 			var styleStep = document.querySelector('[data-style-step]');
 			var a6Note = document.querySelector('[data-a6-note]');
@@ -220,7 +213,6 @@
 					var group = chip.closest('[data-group]');
 					var again = chip.classList.contains('on') && group.getAttribute('data-group') === 'style';
 					group.querySelectorAll('.chip').forEach(function (c) { c.classList.toggle('on', c === chip && !again); c.setAttribute('aria-pressed', c === chip && !again); });
-					if (group.getAttribute('data-group') === 'tip') faces(group);
 					if (chip.dataset.size) sizeStyle(chip.dataset.size);
 					var typed = document.querySelector('[data-custom="' + group.getAttribute('data-group') + '"]');
 					if (typed) typed.value = '';   // a button click replaces a typed amount
@@ -230,7 +222,6 @@
 			document.querySelectorAll('[data-custom]').forEach(function (input) {
 				input.addEventListener('input', function () {   // typing replaces the chosen button
 					document.querySelectorAll('[data-group="' + input.getAttribute('data-custom') + '"] .chip').forEach(function (c) { c.classList.remove('on'); });
-					if (input.getAttribute('data-custom') === 'tip') faces(document.querySelector('[data-group="tip"]'));
 					if (input.getAttribute('data-custom') === 'size' && styleStep.hidden) sizeStyle('a5');
 					update();
 				});

@@ -120,7 +120,7 @@
 			if (!express) return;
 			var num = ['+49', '152', '24171137'];
 			var link = '<a href="tel:' + num.join('') + '">' + num.join(' ') + '</a>';
-			box.innerHTML = '⚡ <strong>Express:</strong> Bitte schick die Anfrage ab und melde dich zusätzlich kurz per Anruf oder Nachricht: ' + link +
+			box.innerHTML = '<strong>Express:</strong> Bitte schick die Anfrage ab und melde dich zusätzlich kurz per Anruf oder Nachricht: ' + link +
 				'. E-Mails sehe ich nicht sofort, so geht dein Express-Auftrag nicht unter.';
 			function toggle() { box.hidden = !express.checked; }
 			express.addEventListener('change', toggle);
