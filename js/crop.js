@@ -22,7 +22,8 @@
 	data.desktop = data.desktop || {}; data.phone = data.phone || {};
 
 	function view() { return window.innerWidth < PHONE ? 'phone' : 'desktop'; }
-	function key(img) { return location.pathname.replace(/index\.html$/, '') + '|' + img.getAttribute('src').split('/').pop(); }
+	// the English page (/en/…) shares the framings of its German page
+	function key(img) { return location.pathname.replace(/index\.html$/, '').replace(/^\/en(?=\/)/, '') + '|' + img.getAttribute('src').split('/').pop(); }
 	function round(n) { return Math.round(n * 10) / 10; }
 
 	// remember how each picture looked before, so "reset" can go back to it

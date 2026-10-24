@@ -1,7 +1,7 @@
 /* =========================================================
    translate.js – the "EN" / "DE" button in the header
 
-   Clicking "EN" opens the current page in Google Translate's website proxy
+   Clicking "EN" opens the real English version (/en/…) if the page has one, otherwise the page in Google Translate's website proxy
    (smileyfoxyportraits-com.translate.goog). Nothing from Google loads on our
    site before that click, so the site stays cookie-free.
    On the translated page the same button shows "DE" and leads back here.
@@ -14,18 +14,37 @@
 	var PROXY = 'https://smileyfoxyportraits-com.translate.goog';
 	var PARAMS = '_x_tr_sl=de&_x_tr_tl=en&_x_tr_hl=en';
 
+	// Pages that have a real English version in the /en/ folder (same path, "/en" in front).
+	// When adding an English page: copy the German one to /en/…, translate it, add its path here.
+	var EN_PAGES = ['/', '/events.html', '/commission.html', '/about/', '/contact/', '/where-i-draw/',
+		'/bezahlen.html', '/referenzen/', '/hallo/', '/danke.html'];
+
+	function clean(path) { return path.replace(/index\.html$/, ''); }
+
 	document.addEventListener('DOMContentLoaded', function () {
 		var onTranslatedPage = location.hostname.indexOf('translate.goog') !== -1;
+		var path = clean(location.pathname);
+		var onEnglishPage = path.indexOf('/en/') === 0 || path === '/en';
 
 		document.querySelectorAll('[data-translate]').forEach(function (link) {
-			if (onTranslatedPage) {
+			if (onEnglishPage) {
+				// English page -> the same page in German
+				link.href = clean(path.replace(/^\/en/, '') || '/');
+				link.textContent = 'DE';
+				link.title = 'Deutsche Version dieser Seite';
+				link.setAttribute('lang', 'de');
+			} else if (onTranslatedPage) {
 				// Back to the German original, same page – without the #section, so it opens at the top instead of jumping down
 				link.href = ORIGINAL + location.pathname;
 				link.textContent = 'DE';
 				link.title = 'Zurück zur deutschen Originalseite';
 				link.setAttribute('lang', 'de');
+			} else if (EN_PAGES.indexOf(path) !== -1) {
+				// German page with a real English version: forms work there too
+				link.href = '/en' + path;
+				link.title = 'English version of this page';
 			} else {
-				// Same page, translated to English – without the #section (e.g. #kleckerkasten from the menu), so it opens at the top
+				// No English version yet: Google Translate – without the #section (e.g. #kleckerkasten from the menu), so it opens at the top
 				link.href = PROXY + location.pathname + '?' + PARAMS;
 			}
 		});

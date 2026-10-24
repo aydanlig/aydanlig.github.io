@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- ENGLISH VERSION of /bezahlen.html – keep prices in sync (data-price numbers + visible text). -->
+	<script src="/js/consent.js" defer></script>
+	<script src="/js/translate.js" defer></script>
+
+	<title>Pay | SmileyFoxyPortraits</title>
+	<meta name="description" content="Pay for your live portrait: PayPal or card via SumUp.">
+	<meta name="robots" content="noindex, follow">
+	<link rel="canonical" href="https://smileyfoxyportraits.com/en/bezahlen.html">
+	<link rel="alternate" hreflang="de" href="https://smileyfoxyportraits.com/bezahlen.html">
+	<link rel="alternate" hreflang="en" href="https://smileyfoxyportraits.com/en/bezahlen.html">
+	<link rel="icon" href="/favicon.ico" sizes="48x48">
+	<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="/favicon.png">
+	<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+	<link rel="stylesheet" href="/css/main.css">
+</head>
+
+<body>
+
+	<header class="site-header">
+		<div class="wrap">
+			<a class="logo" href="/en/">SmileyFoxy<span>Portraits</span></a>
+			<a class="lang-switch" data-translate lang="de" title="Deutsche Version dieser Seite" href="/bezahlen.html">DE</a>
+		</div>
+	</header>
+
+	<main>
+		<!-- PAYMENT PAGE – people land here from the QR code right after being drawn. -->
+		<section class="section pay-page">
+			<div class="wrap center" style="max-width:560px">
+				<span class="eyebrow">Thanks for letting me draw you!</span>
+				<h1>Pay for your portrait</h1>
+
+				<div class="pay-step">
+					<h2><span>1</span> Your portrait</h2>
+					<!-- data-a5 / data-a4 = style extra in € (same numbers as on /bezahlen.html) -->
+					<div data-group="size">
+						<div class="chip-row chip-row--3">
+							<button type="button" class="chip" data-price="1" data-size="a6">A6/A7 · €1</button>
+							<button type="button" class="chip" data-price="10" data-size="a5">A5 · €10</button>
+							<button type="button" class="chip" data-price="20" data-size="a4">A4 · €20</button>
+						</div>
+						<label class="amount-field">Different price (as agreed):
+							<input type="number" inputmode="decimal" min="0" step="0.5" placeholder="€" data-custom="size"></label>
+					</div>
+					<div data-style-step>
+						<p class="pay-sub">Add a style? <small style="font-weight:400">(Both = ink &amp; watercolour)</small></p>
+						<div class="chip-row chip-row--3" data-group="style">
+							<button type="button" class="chip" data-price="5" data-a5="5" data-a4="10" data-name="Ink">Ink<br>+€5</button>
+							<button type="button" class="chip" data-price="8" data-a5="8" data-a4="20" data-name="Watercolour">Watercolour<br>+€8</button>
+							<button type="button" class="chip" data-price="10" data-a5="10" data-a4="40" data-name="Both">Both<br>+€10</button>
+						</div>
+					</div>
+					<p class="hint" data-a6-note hidden>A6/A7 is the quick live sketch for €1 – in person only.</p>
+					<label class="pay-check"><input type="checkbox" id="pay-pack" data-price="1"> Packaging to take away (+€1)</label>
+				</div>
+
+				<div class="pay-step pay-step--tip">
+					<h2><span>2</span> Add a tip?</h2>
+					<p class="hint">Tips keep me going and show me that my art is appreciated.</p>
+					<div class="chip-row" data-group="tip">
+						<button type="button" class="chip" data-price="0">None</button>
+						<button type="button" class="chip" data-price="2">+€2</button>
+						<button type="button" class="chip" data-price="5">+€5</button>
+						<button type="button" class="chip" data-price="10">+€10</button>
+					</div>
+					<label class="amount-field">Your own amount:
+						<input type="number" inputmode="decimal" min="0" step="0.5" placeholder="€" data-custom="tip"></label>
+					<p class="hint">Think your portrait is worth more than I'm asking? Feel free to pay what it's worth to you.</p>
+				</div>
+
+				<div class="pay-step pay-step--total">
+					<h2><span>3</span> Pay</h2>
+					<p class="pay-total" aria-live="polite">Total: <strong id="pay-sum">–</strong></p>
+					<p class="hint" id="pay-sum-hint">Choose your size above – then you'll see the amount to enter here.</p>
+					<div class="pay-buttons">
+						<a class="btn" data-pay href="https://pay.sumup.com/b2c/QMYZ8JO7">Pay by card (SumUp)</a>
+						<a class="btn btn--ghost" data-pay data-paypal="aydan@smileyfoxyportraits.com" href="https://www.paypal.biz/SmileyFoxyPortraitsL">Pay with PayPal</a>
+					</div>
+					<p class="pay-copied" id="pay-copied" role="status" hidden></p>
+					<p class="hint">Card via SumUp has the lowest fees, so more of it reaches me. Cash is fine too, of course.</p>
+				</div>
+
+				<div class="newsletter-box">
+					<h2>Stay in touch!</h2>
+					<p>
+						Be the first to know when and where I'm drawing outdoors again, and get new originals &amp; prints before anyone else.
+						Free, one e-mail a month at most.
+					</p>
+					<form class="newsletter-form" action="https://aydanligon.substack.com/subscribe" method="get" target="_blank">
+						<label class="sr-only" for="nl-email">E-mail address</label>
+						<input id="nl-email" type="email" name="email" placeholder="you@email.com" required autocomplete="email">
+						<button class="btn btn--fox" type="submit">Subscribe to the newsletter</button>
+					</form>
+					<p class="hint">You'll confirm the sign-up on Substack afterwards. You can unsubscribe at any time with one click.</p>
+				</div>
+
+				<div class="pay-next">
+					<p>Show off your portrait on Instagram and tag <a href="https://www.instagram.com/smileyfoxyportraits">@smileyfoxyportraits</a> – I'm happy to share it!</p>
+					<p>Like it? <a href="/en/commission.html">Order a bigger portrait – with watercolour, gold or a frame, from a photo or live at your place →</a></p>
+					<p><strong>If you want to be extra kind:</strong> send me a short review with your reaction video so I can share it on
+						Instagram – <a href="https://tr.ee/u1wxA4" target="_blank" rel="noopener">here's the review form →</a></p>
+				</div>
+
+				<p class="hint" style="margin-top:1.5em">
+					If you like, I'll show my most generous tippers right here on this page – just tell me which name to use.
+				</p>
+
+				<div class="pay-qr">
+					<img src="/img/qr-bezahlen.svg" alt="QR code to smileyfoxyportraits.com/bezahlen.html" width="160" height="160">
+					<div>
+						<h2>Changed your mind? Someone else is paying – or wants to leave a tip?</h2>
+						<p>Just scan this QR code – it leads straight to this payment page. Perfect if someone in your group
+							or another person would like to leave something too.</p>
+					</div>
+				</div>
+
+				<p class="pay-curious">Curious what else I do? Click <strong>SmileyFoxyPortraits</strong> at the top left –
+					or here: <a class="btn btn--ghost btn--small" href="/en/">To the homepage →</a></p>
+
+				<p class="price-note">No VAT is charged (small business, § 19 UStG).</p>
+			</div>
+		</section>
+	</main>
+
+	<!-- Total calculator: size + style + packaging + tip (same logic as /bezahlen.html, English texts) -->
+	<script>
+		(function () {
+			var sum = document.getElementById('pay-sum'), hint = document.getElementById('pay-sum-hint');
+			var pack = document.getElementById('pay-pack');
+			var copied = document.getElementById('pay-copied'), currentTotal = null;
+			document.querySelectorAll('[data-pay]').forEach(function (link) {
+				link.addEventListener('click', function (e) {
+					if (currentTotal === null) return;
+					if (link.dataset.paypal) {
+						e.preventDefault();
+						window.location.href = 'https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=' + encodeURIComponent(link.dataset.paypal) +
+							'&item_name=' + encodeURIComponent('Portrait SmileyFoxyPortraits') + '&amount=' + currentTotal.toFixed(2) +
+							'&currency_code=EUR&no_shipping=1&lc=GB';
+						return;
+					}
+					if (!navigator.clipboard) return;
+					var amount = currentTotal.toFixed(2);
+					e.preventDefault();
+					var go = function () { window.location.href = link.href; };
+					navigator.clipboard.writeText(amount).then(function () {
+						copied.textContent = '✓ €' + amount + ' copied – just paste it into the amount field on the next screen.';
+						copied.hidden = false;
+						setTimeout(go, 1200);
+					}, go);
+				});
+			});
+			function value(group) {
+				var typed = document.querySelector('[data-custom="' + group + '"]');
+				if (typed && typed.value !== '') return parseFloat(typed.value.replace(',', '.')) || 0;
+				var on = document.querySelector('[data-group="' + group + '"] .chip.on');
+				return on ? parseFloat(on.getAttribute('data-price')) : null;
+			}
+			var styleStep = document.querySelector('[data-style-step]');
+			var a6Note = document.querySelector('[data-a6-note]');
+			function sizeStyle(key) {
+				var quick = key === 'a6';
+				styleStep.hidden = quick;
+				a6Note.hidden = !quick;
+				document.querySelectorAll('[data-group="style"] .chip').forEach(function (c) {
+					if (quick) { c.classList.remove('on'); c.setAttribute('aria-pressed', false); return; }
+					var extra = c.getAttribute('data-' + key);
+					c.setAttribute('data-price', extra);
+					c.innerHTML = c.dataset.name + '<br>+€' + extra;
+				});
+			}
+			// Tip buttons get a little face when chosen: "None :/" or "+€5 :D"
+			function faces(group) {
+				group.querySelectorAll('.chip').forEach(function (c) {
+					if (!c.dataset.label) c.dataset.label = c.textContent;
+					c.textContent = c.dataset.label + (c.classList.contains('on') ? (c.getAttribute('data-price') === '0' ? ' :/' : ' :D') : '');
+				});
+			}
+			function update() {
+				var size = value('size');
+				if (size === null) { sum.textContent = '–'; hint.hidden = false; currentTotal = null; return; }
+				var total = size + (value('style') || 0) + (pack.checked ? 1 : 0) + (value('tip') || 0);
+				sum.textContent = '€' + total.toLocaleString('en-GB', { maximumFractionDigits: 2 });
+				currentTotal = total;
+				hint.hidden = true;
+			}
+			document.querySelectorAll('[data-group] .chip').forEach(function (chip) {
+				chip.addEventListener('click', function () {
+					var group = chip.closest('[data-group]');
+					var again = chip.classList.contains('on') && group.getAttribute('data-group') === 'style';
+					group.querySelectorAll('.chip').forEach(function (c) { c.classList.toggle('on', c === chip && !again); c.setAttribute('aria-pressed', c === chip && !again); });
+					if (group.getAttribute('data-group') === 'tip') faces(group);
+					if (chip.dataset.size) sizeStyle(chip.dataset.size);
+					var typed = document.querySelector('[data-custom="' + group.getAttribute('data-group') + '"]');
+					if (typed) typed.value = '';
+					update();
+				});
+			});
+			document.querySelectorAll('[data-custom]').forEach(function (input) {
+				input.addEventListener('input', function () {
+					document.querySelectorAll('[data-group="' + input.getAttribute('data-custom') + '"] .chip').forEach(function (c) { c.classList.remove('on'); });
+					if (input.getAttribute('data-custom') === 'tip') faces(document.querySelector('[data-group="tip"]'));
+					if (input.getAttribute('data-custom') === 'size' && styleStep.hidden) sizeStyle('a5');
+					update();
+				});
+			});
+			pack.addEventListener('change', update);
+		})();
+	</script>
+
+	<footer class="site-footer">
+		<div class="wrap footer-bottom" style="margin-top:0;border-top:0">
+			<span>© SmileyFoxyPortraits · Aydan Lig'on · Berlin</span>
+			<span>
+				<a href="/ImpressumUndDatenschutz/Impressum.html">Imprint</a> ·
+				<a href="/ImpressumUndDatenschutz/Datenschutz.html">Privacy</a> ·
+				<a href="https://www.instagram.com/smileyfoxyportraits">Instagram</a>
+			</span>
+		</div>
+	</footer>
+
+</body>
+
+</html>

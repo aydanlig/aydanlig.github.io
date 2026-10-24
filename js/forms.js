@@ -1,7 +1,7 @@
 /* =========================================================
    forms.js – helpers for all forms
    1. "Einen Moment bitte" popup while a form is being sent (see below)
-   2. German date picker (TT.MM.JJJJ) for all date fields
+   2. Date picker (DD.MM.YYYY) for all date fields – German, or English on the /en/ pages
 
    Uses flatpickr (self-hosted in /js/vendor, MIT license), so every visitor
    sees German dates, no matter which language their browser is set to.
@@ -14,6 +14,9 @@
    in the same form -> with Express ticked the earliest date is today + 3.
    ========================================================= */
 (function () {
+	// English pages (<html lang="en">, the /en/ folder) get English texts and an English date picker
+	var EN = (document.documentElement.lang || '').indexOf('en') === 0;
+
 	function daysFromToday(days) {
 		var d = new Date();
 		d.setHours(0, 0, 0, 0);
@@ -35,9 +38,9 @@
 		box.innerHTML =
 			'<div style="max-width:360px;width:100%;background:#FBF7F3;color:#1A1615;border-radius:18px;padding:28px 24px;text-align:center;box-shadow:0 20px 50px rgba(0,0,0,0.3)">' +
 			'<div class="wait-spinner" style="width:42px;height:42px;margin:0 auto 16px;border:4px solid #E2D6CE;border-top-color:#FF6B35;border-radius:50%"></div>' +
-			'<strong style="display:block;font-size:1.15rem;margin-bottom:8px">Einen Moment bitte …</strong>' +
-			'<span style="color:#6B5560;line-height:1.5">Deine Nachricht wird gesendet. Das kann bis zu 15 Sekunden dauern – ' +
-			'bitte schließe die Seite nicht.</span></div>';
+			'<strong style="display:block;font-size:1.15rem;margin-bottom:8px">' + (EN ? 'One moment please …' : 'Einen Moment bitte …') + '</strong>' +
+			'<span style="color:#6B5560;line-height:1.5">' + (EN ? 'Your message is being sent. This can take up to 15 seconds – please don’t close the page.'
+				: 'Deine Nachricht wird gesendet. Das kann bis zu 15 Sekunden dauern – bitte schließe die Seite nicht.') + '</span></div>';
 		var style = document.createElement('style');
 		style.textContent = '@keyframes wait-spin{to{transform:rotate(360deg)}}#wait-popup .wait-spinner{animation:wait-spin 0.9s linear infinite}';
 		box.appendChild(style);
@@ -76,7 +79,7 @@
 			var express = form ? form.querySelector('input[name="Express"]') : null;
 
 			var picker = window.flatpickr(input, {
-				locale: 'de',
+				locale: EN ? 'default' : 'de',   // 'default' = flatpickr's built-in English
 				dateFormat: 'd.m.Y',      // what the visitor sees AND what arrives in your email
 				minDate: daysFromToday(normalDays),
 				disableMobile: true       // same German calendar on phones
@@ -100,7 +103,7 @@
 				form.addEventListener('submit', function (e) {
 					if (!input.value) {
 						e.preventDefault();
-						input.setCustomValidity('Bitte wähle ein Datum.');
+						input.setCustomValidity(EN ? 'Please pick a date.' : 'Bitte wähle ein Datum.');
 						input.reportValidity();
 						picker.open();
 					}
@@ -120,7 +123,9 @@
 			if (!express) return;
 			var num = ['+49', '152', '24171137'];
 			var link = '<a href="tel:' + num.join('') + '">' + num.join(' ') + '</a>';
-			box.innerHTML = '<strong>Express:</strong> Bitte schick die Anfrage ab und melde dich zusätzlich kurz per Anruf oder Nachricht: ' + link +
+			box.innerHTML = EN
+				? '<strong>Express:</strong> Please send the request and also give me a quick call or message: ' + link + '. I don’t see e-mails right away, so this way your express order won’t get lost.'
+				: '<strong>Express:</strong> Bitte schick die Anfrage ab und melde dich zusätzlich kurz per Anruf oder Nachricht: ' + link +
 				'. E-Mails sehe ich nicht sofort, so geht dein Express-Auftrag nicht unter.';
 			function toggle() { box.hidden = !express.checked; }
 			express.addEventListener('change', toggle);
