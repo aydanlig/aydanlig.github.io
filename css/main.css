@@ -1371,7 +1371,6 @@ h1, h2, h3 { overflow-wrap: break-word; hyphens: auto; }
    ART TOUCHES – a little of the watercolour chaos of the paintings, kept subtle so the
    site still reads clean for companies. To remove: delete this block.
    1. soft watercolour splashes behind the top of a page and behind the light bands
-   2. a second, slightly crooked "sketch" line around cards, quotes and forms
    ========================================================= */
 :root {
 	--splash-fox: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Cfilter id='w' x='-25%25' y='-25%25' width='150%25' height='150%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.018' numOctaves='3' seed='7'/%3E%3CfeDisplacementMap in='SourceGraphic' scale='42'/%3E%3CfeGaussianBlur stdDeviation='1.4'/%3E%3C/filter%3E%3Cg filter='url%28%23w%29' fill='%23FF6B35'%3E%3Cellipse cx='200' cy='150' rx='118' ry='82' opacity='.55'/%3E%3Cellipse cx='150' cy='118' rx='62' ry='48' opacity='.35'/%3E%3Cellipse cx='255' cy='185' rx='55' ry='38' opacity='.3'/%3E%3Ccircle cx='335' cy='88' r='13' opacity='.5'/%3E%3Ccircle cx='68' cy='232' r='9' opacity='.5'/%3E%3Ccircle cx='305' cy='245' r='6' opacity='.45'/%3E%3C/g%3E%3C/svg%3E");
@@ -1394,15 +1393,7 @@ h1, h2, h3 { overflow-wrap: break-word; hyphens: auto; }
 /* on phones the picture sits below the text: splash behind it */
 @media (max-width: 900px) { .hero::before { top: auto; bottom: 0; transform: rotate(-8deg); } }
 
-/* hand-drawn feel: slightly uneven corners + a second sketch line that is a little off */
-.card, .quote, .form-card { position: relative; border-radius: 20px 15px 22px 14px / 15px 21px 14px 20px; }
-.card::before, .quote::before, .form-card::before {
-	content: ""; position: absolute; inset: -4px -3px -3px -4px; pointer-events: none;
-	border: 1px solid var(--line); border-radius: 24px 14px 27px 16px / 16px 26px 13px 24px; transform: rotate(-0.5deg);
-}
-.card:nth-child(even)::before, .quote:nth-child(even)::before { inset: -3px -4px -4px -3px; border-radius: 15px 26px 16px 25px / 24px 14px 26px 15px; transform: rotate(0.6deg); }
-.card--featured::before { border-color: var(--fox); opacity: 0.55; }
-@media print { .hero::before, .section--alt::after, .card::before, .quote::before, .form-card::before { display: none; } }
+@media print { .hero::before, .section--alt::after { display: none; } }
 
 /* =========================================================
    KLECKERKASTEN – paint splats all over the background ("kleckern" = to splash paint).
