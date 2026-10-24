@@ -19,14 +19,14 @@
 
 		document.querySelectorAll('[data-translate]').forEach(function (link) {
 			if (onTranslatedPage) {
-				// Back to the German original, same page
-				link.href = ORIGINAL + location.pathname + location.hash;
+				// Back to the German original, same page – without the #section, so it opens at the top instead of jumping down
+				link.href = ORIGINAL + location.pathname;
 				link.textContent = 'DE';
 				link.title = 'Zurück zur deutschen Originalseite';
 				link.setAttribute('lang', 'de');
 			} else {
-				// Same page, translated to English
-				link.href = PROXY + location.pathname + '?' + PARAMS + location.hash;
+				// Same page, translated to English – without the #section (e.g. #kleckerkasten from the menu), so it opens at the top
+				link.href = PROXY + location.pathname + '?' + PARAMS;
 			}
 		});
 
