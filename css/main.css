@@ -1428,3 +1428,21 @@ h1, h2, h3 { overflow-wrap: break-word; hyphens: auto; }
 /* on phones the bubble lines up with the label's left edge and is as wide as the field, so it always stays on screen */
 .field label:has(.info-tip) { position: relative; }
 @media (max-width: 600px) { .info-tip { position: static; } .info-tip-text { left: 0; transform: none; width: 100%; } .info-tip-text::after { display: none; } }
+
+/* Pictures that slowly fade into each other (js/fade.js): the first one keeps the size, the others lie on top */
+.fade-stack { position: relative; display: block; }
+.fade-stack img + img { position: absolute; inset: 0; }
+.fade-stack.js img { opacity: 0; transition: opacity 1.2s ease; }
+.fade-stack.js img.on { opacity: 1; }
+/* the stack is a <span>, so undo the tile-label look (".art-grid span") and let it fill the whole tile */
+.art-grid .fade-stack { position: absolute; inset: 0; left: 0; bottom: 0; padding: 0; background: none; border-radius: 0; z-index: 0; }
+.art-grid a.fit .fade-stack img + img { position: absolute; inset: 0; } /* beats ".art-grid a.fit img" */
+.quote-photos .fade-stack { overflow: hidden; border-radius: 12px; }
+
+/* Über mich: side photo on the right (casual photo next to "Wer bin ich?"); tall phone photos shown 3:4 */
+.side-photo--right { grid-template-columns: 1fr minmax(0, 240px); }
+.side-photo--right > img { order: 2; }
+.side-photo img.photo-crop { aspect-ratio: 3 / 4; object-fit: cover; object-position: 50% 30%; }
+@media (max-width: 600px) { .side-photo--right { grid-template-columns: 1fr; } .side-photo--right > img { order: 0; } }
+.side-photo--small { grid-template-columns: minmax(0, 170px) 1fr; align-items: center; }
+@media (max-width: 600px) { .side-photo--small { grid-template-columns: 120px 1fr; } }
