@@ -1306,11 +1306,13 @@ fieldset.field { border: 0; padding: 0; margin: 0; min-width: 0; }
 @media (hover: hover) and (pointer: fine) {
 	.on-touch { display: none; }
 	.on-mouse { display: inline; }
-	.swipe-arrow { display: grid; place-items: center; position: absolute; top: calc(50% - 40px); width: 42px; height: 42px; border-radius: 50%; border: 0;
-		background: rgba(242, 234, 228, 0.9); color: var(--night); font-size: 1.6rem; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
-	.swipe-arrow:hover { background: var(--fox); }
-	.swipe-arrow--prev { left: 8px; }
-	.swipe-arrow--next { right: 8px; }
+	/* plain arrows without a circle, a little outside the picture (the drawings have different widths,
+	   so a round button never lined up with every picture's edge) */
+	.swipe-arrow { display: grid; place-items: center; position: absolute; top: calc(50% - 40px); width: 36px; height: 56px; border: 0; padding: 0;
+		background: none; color: var(--paper); font-size: 2.6rem; line-height: 1; cursor: pointer; text-shadow: 0 2px 8px rgba(0,0,0,0.6); transition: color 0.15s ease; }
+	.swipe-arrow:hover { color: var(--fox); }
+	.swipe-arrow--prev { left: -18px; }
+	.swipe-arrow--next { right: -18px; }
 }
 
 /* =========================================================
