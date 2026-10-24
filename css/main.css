@@ -1386,28 +1386,18 @@ h1, h2, h3 { overflow-wrap: break-word; hyphens: auto; }
 	--splash-mauve: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Cfilter id='w' x='-25%25' y='-25%25' width='150%25' height='150%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.018' numOctaves='3' seed='23'/%3E%3CfeDisplacementMap in='SourceGraphic' scale='42'/%3E%3CfeGaussianBlur stdDeviation='1.4'/%3E%3C/filter%3E%3Cg filter='url%28%23w%29' fill='%23A88B98'%3E%3Cellipse cx='200' cy='150' rx='118' ry='82' opacity='.55'/%3E%3Cellipse cx='150' cy='118' rx='62' ry='48' opacity='.35'/%3E%3Cellipse cx='255' cy='185' rx='55' ry='38' opacity='.3'/%3E%3Ccircle cx='335' cy='88' r='13' opacity='.5'/%3E%3Ccircle cx='68' cy='232' r='9' opacity='.5'/%3E%3Ccircle cx='305' cy='245' r='6' opacity='.45'/%3E%3C/g%3E%3C/svg%3E");
 }
 .hero { isolation: isolate; overflow: clip; }
-.hero::before {
-	content: ""; position: absolute; z-index: -1; pointer-events: none;
-	top: 50%; right: -8%; width: clamp(320px, 60vw, 800px); aspect-ratio: 4 / 3;
-	background: var(--splash-fox) no-repeat center / contain; opacity: 0.24; transform: translateY(-50%) rotate(-8deg);
-}
 .section--alt { isolation: isolate; overflow-x: clip; } /* clip sideways only, so the fox ears on top stay visible */
-.section--alt::after {
-	content: ""; position: absolute; z-index: -1; pointer-events: none;
-	left: -4%; bottom: -6%; width: clamp(200px, 30vw, 400px); aspect-ratio: 4 / 3;
-	background: var(--splash-mauve) no-repeat center / contain; opacity: 0.2; transform: rotate(12deg);
-}
-.section--alt:nth-of-type(even)::after { left: auto; right: -5%; bottom: auto; top: 6%; background-image: var(--splash-fox); opacity: 0.11; transform: rotate(-20deg) scaleX(-1); }
 
-/* on phones the picture sits below the text: splash behind it */
-@media (max-width: 900px) { .hero::before { top: auto; bottom: 0; transform: rotate(-8deg); } }
-
-@media print { .hero::before, .section--alt::after { display: none; } }
+/* Splashes are placed by js/splashes.js: clusters of three (big, medium, small) on the thirds of a section,
+   never on top of a photo or drawing. The layer sits behind the content. */
+.splash-layer { position: absolute; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; }
+.splash-layer i { position: absolute; display: block; aspect-ratio: 4 / 3; background: no-repeat center / contain; }
+.klecker .splash-layer i { aspect-ratio: 1; }
+@media print { .splash-layer { display: none; } }
 
 /* =========================================================
-   KLECKERKASTEN – paint splats all over the background ("kleckern" = to splash paint).
-   Splats sit mostly along the edges so the text stays readable. To remove: delete this block
-   and the class "klecker" on the section in events.html.
+   KLECKERKASTEN – paint splats in the background ("kleckern" = to splash paint), placed by
+   js/splashes.js (more clusters of three than elsewhere). The --klecks-* images are defined here.
    ========================================================= */
 :root {
 	--klecks-fox: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cfilter id='w'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.05' numOctaves='2' seed='11'/%3E%3CfeDisplacementMap in='SourceGraphic' scale='9'/%3E%3C/filter%3E%3Cg filter='url%28%23w%29' fill='%23FF6B35'%3E%3Ccircle cx='100' cy='100' r='41'/%3E%3Cellipse cx='127' cy='65' rx='33' ry='6' transform='rotate%28308 127 65%29'/%3E%3Cellipse cx='116' cy='141' rx='33' ry='5' transform='rotate%2868 116 141%29'/%3E%3Cellipse cx='114' cy='134' rx='26' ry='5' transform='rotate%2867 114 134%29'/%3E%3Cellipse cx='132' cy='74' rx='32' ry='5' transform='rotate%28321 132 74%29'/%3E%3Cellipse cx='59' cy='113' rx='34' ry='5' transform='rotate%28163 59 113%29'/%3E%3Cellipse cx='114' cy='76' rx='20' ry='7' transform='rotate%28299 114 76%29'/%3E%3Cellipse cx='64' cy='74' rx='31' ry='5' transform='rotate%28216 64 74%29'/%3E%3Cellipse cx='111' cy='130' rx='25' ry='3' transform='rotate%2870 111 130%29'/%3E%3Cellipse cx='136' cy='121' rx='31' ry='5' transform='rotate%2831 136 121%29'/%3E%3Cellipse cx='126' cy='88' rx='23' ry='6' transform='rotate%28335 126 88%29'/%3E%3Ccircle cx='83' cy='170' r='5.1'/%3E%3Ccircle cx='26' cy='153' r='3.5'/%3E%3Ccircle cx='188' cy='76' r='2.0'/%3E%3Ccircle cx='123' cy='190' r='3.9'/%3E%3Ccircle cx='179' cy='90' r='2.3'/%3E%3Ccircle cx='39' cy='35' r='3.1'/%3E%3Ccircle cx='167' cy='141' r='5.9'/%3E%3Ccircle cx='104' cy='27' r='3.0'/%3E%3Ccircle cx='158' cy='142' r='5.2'/%3E%3C/g%3E%3C/svg%3E");
@@ -1418,60 +1408,3 @@ h1, h2, h3 { overflow-wrap: break-word; hyphens: auto; }
 	--klecks-mauve: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cfilter id='w'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.05' numOctaves='2' seed='46'/%3E%3CfeDisplacementMap in='SourceGraphic' scale='9'/%3E%3C/filter%3E%3Cg filter='url%28%23w%29' fill='%23A88B98'%3E%3Ccircle cx='100' cy='100' r='35'/%3E%3Cellipse cx='139' cy='110' rx='35' ry='6' transform='rotate%2814 139 110%29'/%3E%3Cellipse cx='122' cy='132' rx='33' ry='3' transform='rotate%2855 122 132%29'/%3E%3Cellipse cx='108' cy='60' rx='27' ry='3' transform='rotate%28282 108 60%29'/%3E%3Cellipse cx='68' cy='90' rx='26' ry='6' transform='rotate%28198 68 90%29'/%3E%3Cellipse cx='103' cy='65' rx='31' ry='4' transform='rotate%28275 103 65%29'/%3E%3Cellipse cx='56' cy='108' rx='33' ry='6' transform='rotate%28169 56 108%29'/%3E%3Cellipse cx='73' cy='75' rx='28' ry='5' transform='rotate%28223 73 75%29'/%3E%3Cellipse cx='94' cy='71' rx='27' ry='7' transform='rotate%28258 94 71%29'/%3E%3Cellipse cx='71' cy='77' rx='29' ry='5' transform='rotate%28219 71 77%29'/%3E%3Ccircle cx='111' cy='26' r='2.5'/%3E%3Ccircle cx='101' cy='185' r='4.8'/%3E%3Ccircle cx='68' cy='36' r='3.1'/%3E%3Ccircle cx='163' cy='156' r='3.5'/%3E%3Ccircle cx='101' cy='16' r='4.3'/%3E%3Ccircle cx='140' cy='174' r='2.3'/%3E%3Ccircle cx='174' cy='154' r='2.7'/%3E%3C/g%3E%3C/svg%3E");
 }
 .klecker { position: relative; isolation: isolate; overflow-x: clip; }
-.klecker::before {
-	content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; opacity: 0.3;
-	background-image:
-		var(--klecks-ochre),
-		var(--klecks-mauve),
-		var(--klecks-pink),
-		var(--klecks-mauve),
-		var(--klecks-purple),
-		var(--klecks-ochre),
-		var(--klecks-pink),
-		var(--klecks-fox),
-		var(--klecks-fox),
-		var(--klecks-purple),
-		var(--klecks-mauve),
-		var(--klecks-mauve),
-		var(--klecks-blue),
-		var(--klecks-purple),
-		var(--klecks-fox),
-		var(--klecks-blue),
-		var(--klecks-blue),
-		var(--klecks-mauve),
-		var(--klecks-mauve),
-		var(--klecks-fox),
-		var(--klecks-fox),
-		var(--klecks-purple),
-		var(--klecks-pink),
-		var(--klecks-ochre),
-		var(--klecks-blue),
-		var(--klecks-pink),
-		var(--klecks-blue),
-		var(--klecks-blue),
-		var(--klecks-blue),
-		var(--klecks-mauve),
-		var(--klecks-fox),
-		var(--klecks-ochre),
-		var(--klecks-blue),
-		var(--klecks-purple),
-		var(--klecks-blue),
-		var(--klecks-mauve),
-		var(--klecks-fox),
-		var(--klecks-purple),
-		var(--klecks-ochre),
-		var(--klecks-pink),
-		var(--klecks-blue),
-		var(--klecks-pink),
-		var(--klecks-mauve),
-		var(--klecks-fox),
-		var(--klecks-blue),
-		var(--klecks-mauve),
-		var(--klecks-blue),
-		var(--klecks-blue);
-	background-repeat: no-repeat;
-	background-position: 0% 0.5%, 102% 3.0%, 6% 6.1%, 92% 7.4%, 2% 11.5%, 94% 14.0%, -1% 16.6%, 93% 18.8%, -0% 21.3%, 101% 22.9%, 5% 26.9%, 93% 29.8%, 2% 32.0%, 94% 33.7%, 4% 37.7%, 92% 39.4%, -1% 43.2%, 93% 44.7%, 1% 47.7%, 98% 49.5%, 2% 53.4%, 98% 56.3%, 1% 59.4%, 94% 61.3%, 7% 65.4%, 102% 66.6%, 8% 70.9%, 102% 73.0%, -1% 76.8%, 93% 79.2%, -2% 81.6%, 102% 82.7%, 2% 87.3%, 92% 90.1%, 7% 93.4%, 98% 94.7%, -1% 99.5%, 92% 99.5%, 75% 98%, 63% 32%, 48% 90%, 73% 53%, 81% 87%, 49% 52%, 19% 80%, 56% 3%, 54% 67%, 69% 69%;
-	background-size: 135px, 208px, 121px, 137px, 103px, 142px, 192px, 106px, 117px, 115px, 113px, 139px, 209px, 194px, 180px, 129px, 150px, 210px, 141px, 138px, 180px, 105px, 135px, 165px, 94px, 133px, 133px, 129px, 100px, 151px, 166px, 184px, 143px, 94px, 106px, 204px, 137px, 108px, 65px, 53px, 43px, 47px, 47px, 68px, 58px, 55px, 67px, 54px;
-}
-@media (max-width: 720px) { .klecker::before { opacity: 0.24; background-size: 81px, 124px, 72px, 82px, 61px, 85px, 115px, 63px, 70px, 69px, 67px, 83px, 125px, 116px, 108px, 77px, 90px, 126px, 84px, 82px, 108px, 63px, 81px, 99px, 56px, 79px, 79px, 77px, 60px, 90px, 99px, 110px, 85px, 56px, 63px, 122px, 82px, 64px, 39px, 31px, 25px, 28px, 28px, 40px, 34px, 33px, 40px, 32px; } }
-@media print { .klecker::before { display: none; } }
