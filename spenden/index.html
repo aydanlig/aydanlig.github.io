@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="de">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- Cookie-free visitor counter (GoatCounter) + click-to-load embeds: see /js/consent.js -->
+	<script src="/js/consent.js" defer></script>
+	<script src="/js/splashes.js" defer></script>
+	<script src="/js/mail-reveal.js" defer></script>
+	<script src="/js/translate.js" defer></script>
+
+	<!-- DONATE PAGE: linked as "Spenden" in every footer. English twin: /en/spenden/ (old link /donate/ redirects there). -->
+	<title>Spenden – unterstütze meine Kunst | SmileyFoxyPortraits</title>
+	<meta name="description" content="Unterstütze Aydan Lig’ons Kunst mit einer Spende: Überweisung (ohne Gebühren), PayPal oder Karte (SumUp).">
+	<meta name="author" content="Aydan Lig'on">
+	<meta name="robots" content="index, follow">
+	<link rel="canonical" href="https://smileyfoxyportraits.com/spenden/">
+	<link rel="alternate" hreflang="de" href="https://smileyfoxyportraits.com/spenden/">
+	<link rel="alternate" hreflang="en" href="https://smileyfoxyportraits.com/en/spenden/">
+	<link rel="icon" href="/favicon.ico" sizes="48x48">
+	<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="/favicon.png">
+	<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+	<meta property="og:type" content="website">
+	<meta property="og:locale" content="de_DE">
+	<meta property="og:url" content="https://smileyfoxyportraits.com/spenden/">
+	<meta property="og:title" content="Spenden – unterstütze meine Kunst">
+	<meta property="og:description" content="Jeder Euro hilft mir, weiterzuzeichnen – per Überweisung, PayPal oder Karte.">
+	<meta property="og:image" content="https://smileyfoxyportraits.com/img/og-share.jpg">
+	<meta property="og:image:width" content="1200">
+	<meta property="og:image:height" content="630">
+	<meta property="og:image:alt" content="SmileyFoxyPortraits – Live-Porträts ab 1 € in Berlin">
+	<meta name="twitter:card" content="summary_large_image">
+
+	<link rel="stylesheet" href="/css/main.css">
+	<style>
+		.donate-ways { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; margin-top: 28px; text-align: left; }
+		.donate-ways .card { display: flex; flex-direction: column; }
+		.donate-ways .card .btn { margin-top: auto; align-self: stretch; text-align: center; }
+		.donate-ways .tag { white-space: normal; }
+		.bank-rows { margin: 0.4em 0 1.2em; display: grid; gap: 6px; }
+		.bank-rows div { display: grid; gap: 1px; }
+		.bank-rows span { font-size: 0.8rem; color: var(--ink-soft); }
+		.bank-rows strong { font-variant-numeric: tabular-nums; word-break: break-word; }
+		.copy-btn { cursor: pointer; }
+		.donate-ideas { list-style: none; padding: 0; margin: 1.2em auto 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 10px; max-width: 760px; }
+		.donate-ideas li { background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; font-size: 0.95rem; }
+	</style>
+</head>
+
+<body>
+
+	<!-- ================= HEADER ================= -->
+	<header class="site-header">
+		<div class="wrap">
+			<a class="logo" href="/">SmileyFoxy<span>Portraits</span></a>
+			<nav class="main-nav" aria-label="Hauptmenü">
+				<a href="/events.html#live-events"><span class="nav-long">Live-</span>Events</a>
+				<a href="/events.html#kleckerkasten">Kleckerkasten</a>
+				<a href="/commission.html">Porträt<span class="nav-long">-Auftrag</span></a>
+				<a href="/about/">Über mich</a>
+			</nav>
+			<a class="lang-switch" data-translate lang="en" title="English version of this page" href="/en/spenden/">EN</a>
+			<a class="btn btn--small" href="/events.html#anfrage-kleckerkasten">Anfragen</a>
+		</div>
+	</header>
+
+
+	<main>
+
+		<!-- 3 WAYS TO DONATE: bank transfer first + highlighted (no fees), then PayPal, then card (SumUp) -->
+		<section class="section">
+			<div class="wrap center">
+				<span class="eyebrow">Spenden</span>
+				<h1>Unterstütze meine Kunst</h1>
+				<p class="lead" style="margin-inline:auto">
+					Danke, dass du hier bist! Ich habe mir ein Jahr gegeben, um herauszufinden, ob ich von meiner Kunst
+					leben kann – und gerade ist das Geld knapp. Wenn dich meine Zeichnungen schon mal zum Lächeln gebracht
+					haben, kannst du mir mit einer Spende helfen, weiterzumachen. Jeder Euro zählt, egal wie klein.
+				</p>
+				<ul class="donate-ideas" aria-label="Wofür deine Spende reicht">
+					<li>3 € · ein Kaffee an einem langen Mauerpark-Tag</li>
+					<li>10 € · ein Block Aquarellpapier</li>
+					<li>25 € · neue Pinsel &amp; Tusche</li>
+					<li>50 € · eine Standgebühr auf dem Markt</li>
+				</ul>
+
+				<div class="donate-ways">
+					<div class="card card--featured">
+						<span class="tag">Empfohlen · keine Gebühren</span>
+						<h3>Überweisung</h3>
+						<p>Am liebsten so: Bei einer Überweisung kommt jeder Cent bei mir an.</p>
+						<div class="bank-rows">
+							<div><span>Kontoinhaber</span><strong>Aydan Lig'on</strong></div>
+							<div><span>IBAN</span><strong id="iban">DE22 1005 0000 1071 8209 46</strong></div>
+							<div><span>BIC · Bank</span><strong>BELADEBEXXX · Berliner Sparkasse</strong></div>
+							<div><span>Verwendungszweck</span><strong>Spende Kunst</strong></div>
+						</div>
+						<button class="btn btn--fox copy-btn" type="button" data-copy="DE22100500001071820946">IBAN kopieren</button>
+					</div>
+
+					<div class="card">
+						<span class="tag">Schnell &amp; einfach</span>
+						<h3>PayPal</h3>
+						<p>Mit deinem PayPal-Konto oder Karte. Den Betrag wählst du auf der nächsten Seite.</p>
+						<a class="btn" href="https://www.paypal.biz/SmileyFoxyPortraitsL" target="_blank" rel="noopener">Mit PayPal spenden</a>
+					</div>
+
+					<div class="card">
+						<span class="tag">Karte · Apple Pay · Google Pay</span>
+						<h3>SumUp</h3>
+						<p>Derselbe Kartenleser wie an meinem Stand – ohne Konto. Einfach einen beliebigen Betrag eingeben.</p>
+						<a class="btn" href="https://pay.sumup.com/b2c/QMYZ8JO7" target="_blank" rel="noopener">Mit Karte spenden</a>
+					</div>
+				</div>
+
+				<p class="hint" style="margin-top:22px">
+					Deine Spende ist ein persönliches Geschenk für meine Kunst – kein Kauf und keine steuerlich absetzbare
+					Spende (ich kann keine Spendenquittung ausstellen).
+					Möchtest du mit deinem Namen auf meine <a href="/thankyou/">Dankbarkeitswand</a>?
+					<a href="mailto:aydan@smileyfoxyportraits.com?subject=Dankbarkeitswand">Schreib mir einfach</a>.
+				</p>
+			</div>
+		</section>
+
+		<section class="section section--alt">
+			<div class="wrap prose">
+				<h2 style="margin-top:0">Gerade kein Geld? So hilfst du kostenlos</h2>
+				<ul>
+					<li><strong>Teile</strong> <a href="https://smileyfoxyportraits.com">smileyfoxyportraits.com</a> mit jemandem, der eine Feier, ein Event oder einen Teamtag plant.</li>
+					<li><strong>Du kennst ein Team?</strong> Mein <a href="/events.html#kleckerkasten">Kleckerkasten-Workshop</a> sucht sein erstes Pilot-Team – zum halben Preis.</li>
+					<li><strong>Schreib eine Bewertung</strong>, wenn ich dich schon mal gezeichnet habe: <a href="https://tr.ee/u1wxA4" target="_blank" rel="noopener">tr.ee/u1wxA4</a> (2 Minuten).</li>
+					<li><strong>Komm vorbei</strong> – jeden Samstag 14–22 Uhr im Mauerpark. <a href="/where-i-draw/">Wo &amp; wann ich zeichne →</a></li>
+				</ul>
+				<p>Mehr Ideen: <a href="/support-free/">Kostenlos unterstützen →</a></p>
+				<p>Danke – Kunst macht mich glücklich, und du bist ein Teil davon. <br>Aydan</p>
+			</div>
+		</section>
+
+	</main>
+
+	<!-- ================= FOOTER ================= -->
+	<footer class="site-footer">
+		<div class="wrap">
+			<!-- NEWSLETTER BAND: the email field opens Substack with the address already filled in -->
+			<div class="footer-newsletter">
+				<div>
+					<h3>Bleib in Kontakt</h3>
+					<p>Erfahre zuerst, wann und wo ich zeichne – und sichere dir neue Originale &amp; Prints vor allen anderen.
+						Kostenlos, höchstens eine E-Mail im Monat. <a href="https://aydanligon.substack.com/archive">Archiv lesen →</a></p>
+				</div>
+				<form class="newsletter-form" action="https://aydanligon.substack.com/subscribe" method="get" target="_blank">
+					<label class="sr-only" for="footer-email">E-Mail-Adresse</label>
+					<input id="footer-email" type="email" name="email" placeholder="deine@email.de" required autocomplete="email">
+					<button class="btn btn--fox" type="submit">Kostenlos abonnieren</button>
+				</form>
+			</div>
+
+			<!-- LINK COLUMNS: offers · about me · support · contact · legal -->
+			<div class="footer-grid">
+				<div>
+					<h3>Angebote</h3>
+					<p><a href="/events.html#live-events">Live-Porträts für Events</a></p>
+					<p><a href="/events.html#kleckerkasten">Kleckerkasten-Workshop</a></p>
+					<p><a href="/commission.html">Porträt-Auftrag</a></p>
+					<p><a href="/where-i-draw/">Wo &amp; wann ich zeichne</a></p>
+					<p><a href="/referenzen/">Referenzen</a></p>
+				</div>
+
+				<div>
+					<h3>Über mich</h3>
+					<p><a href="/about/">Meine Geschichte</a></p>
+					<p><a href="/projects/index.html">Projekte</a></p>
+					<p><a href="https://smileyfoxyportraits.bandcamp.com/">Musik auf Bandcamp</a></p>
+					<p><a href="/thankyou/index.html">Dankbarkeitswand &amp; Bewertungen</a></p>
+					<p><a href="/about/#faq">Fragen und Antworten</a></p>
+				</div>
+
+				<div>
+					<h3>Unterstützen</h3>
+					<p><a href="/bezahlen.html">Vor Ort bezahlen</a></p>
+					<p><a href="/spenden/">Spenden</a></p>
+					<p><a href="https://tr.ee/u1wxA4" target="_blank" rel="noopener">Kostenlos: Bewertung abgeben</a></p>
+					<p><a href="/support-free/">Kostenlos unterstützen</a></p>
+				</div>
+
+				<div>
+					<h3>Kontakt</h3>
+					<p><a href="/contact/">Kontaktseite</a></p>
+					<p><a href="mailto:aydan@smileyfoxyportraits.com">E-Mail</a><br><a class="footer-mail" href="mailto:aydan@smileyfoxyportraits.com">aydan@smileyfoxyportraits.com</a></p>
+					<p><a href="https://www.instagram.com/smileyfoxyportraits">Instagram</a></p>
+					<p><a href="https://aydanligon.substack.com/subscribe">Newsletter</a><br><a class="footer-mail" href="https://aydanligon.substack.com/subscribe">max. 1 E-Mail im Monat</a></p>
+				</div>
+
+				<div class="footer-legal">
+					<h3>Rechtliches</h3>
+					<p><a href="/ImpressumUndDatenschutz/Impressum.html">Impressum</a></p>
+					<p><a href="/ImpressumUndDatenschutz/Datenschutz.html">Datenschutzerklärung</a></p>
+					<p><a href="/einwilligung.html">Einwilligung Foto &amp; Video</a></p>
+					<p><a href="/about/#kontakt">Löschanfragen</a></p>
+				</div>
+			</div>
+
+			<div class="footer-bottom">
+				<span>© SmileyFoxyPortraits · Aydan Lig'on · Berlin</span>
+				<a href="#">↑ nach oben</a>
+			</div>
+		</div>
+	</footer>
+
+	<script>
+		// "IBAN kopieren" button
+		document.querySelectorAll('[data-copy]').forEach(function (btn) {
+			btn.addEventListener('click', function () {
+				var done = function () { btn.textContent = 'Kopiert ✓'; setTimeout(function () { btn.textContent = 'IBAN kopieren'; }, 2000); };
+				if (navigator.clipboard) navigator.clipboard.writeText(btn.dataset.copy).then(done, function () { btn.textContent = btn.dataset.copy; });
+				else btn.textContent = btn.dataset.copy;
+			});
+		});
+	</script>
+
+</body>
+
+</html>
