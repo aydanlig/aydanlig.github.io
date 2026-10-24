@@ -1199,13 +1199,17 @@ fieldset.field { border: 0; padding: 0; margin: 0; min-width: 0; }
 .section--dark::before, .site-footer::before { color: var(--night); }
 /* every other band: ears on the left instead, a bit smaller – feels random, not repeated */
 .section--alt:nth-of-type(even)::before { right: auto; left: 7%; width: 52px; height: 18px; }
-/* faint inner ear in fox orange on the dark bands only */
+/* inner ear on the dark bands + footer: the colour of whatever sits above them (cream page by default),
+   so the black ears read clearly instead of melting into the dark band */
 .section--dark::after, .site-footer::after {
 	content: ""; position: absolute; bottom: 100%; right: 9%; width: 64px; height: 22px; pointer-events: none;
-	background: var(--fox); opacity: 0.18;
+	background: var(--paper);
 	-webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 22'%3E%3Cpath d='M9 22 L13.5 10 Q14 8.5 14.5 10 L19 22 Z M45 22 L49.5 10 Q50 8.5 50.5 10 L55 22 Z' fill='black'/%3E%3C/svg%3E") no-repeat center / contain;
 	mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 22'%3E%3Cpath d='M9 22 L13.5 10 Q14 8.5 14.5 10 L19 22 Z M45 22 L49.5 10 Q50 8.5 50.5 10 L55 22 Z' fill='black'/%3E%3C/svg%3E") no-repeat center / contain;
 }
+/* above it is a light card band instead of the page: use that colour */
+.section--alt + .section--dark::after,
+main:has(> .section--alt:last-of-type) + .site-footer::after { background: var(--card); }
 @media print { .section--alt::before, .section--dark::before, .site-footer::before, .section--dark::after, .site-footer::after { display: none; } }
 
 /* Events: Kleckerkasten intro over the full width while there is no workshop photo */
