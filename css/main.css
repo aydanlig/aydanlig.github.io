@@ -1355,6 +1355,10 @@ body.scrolled .scroll-hint { opacity: 0; pointer-events: none; }
 @media (max-width: 720px) { .scroll-hint { bottom: 12px; } }
 .scroll-hint { flex-direction: row; gap: 8px; padding: 8px 16px; bottom: 22px; }
 .scroll-hint b { font-size: 1rem; line-height: 1; }
+/* stronger: a saturated fox-orange pill, so it doesn't blend into the cream background */
+.scroll-hint { background: #FF5A1F; color: var(--night); font-weight: 800; box-shadow: 0 6px 18px rgba(255, 90, 31, 0.45); }
+.scroll-hint b { color: var(--night); }
+.scroll-hint:hover { background: #F04A0E; }
 
 /* ---------- Phone overflow guards (nothing may stick out to the right) ---------- */
 /* long German words in big headings ("Dankbarkeitswand") break with a hyphen instead of overflowing */
