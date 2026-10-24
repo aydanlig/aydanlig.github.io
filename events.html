@@ -229,13 +229,23 @@
 									<option>Mehr als 4 m²</option>
 									<option>Noch unklar</option>
 								</select>
-								<p class="hint">Ideal: ca. 2–4 m² für einen Klapptisch (1,30 m) und Sitzplätze für Gäste.</p>
+								<p class="hint">Ideal: ca. 2–4 m² für einen Klapptisch (1,35 m) und Sitzplätze für Gäste.</p>
+							</div>
+							<!-- How the event is paid – shows up as "Abrechnung" in the request e-mail -->
+							<div class="field full">
+								<label for="ev-pricing">Abrechnung</label>
+								<select id="ev-pricing" name="Abrechnung">
+									<option>Pauschale: Sie zahlen einen Festpreis, ich zeichne Ihre Gäste das ganze Event über kostenlos (plus Materialkosten – können in der Pauschale enthalten sein)</option>
+									<option>Gäste zahlen selbst: direkt vor Ort über Ihr oder mein Kassensystem</option>
+									<option>Ehrenamtlich: kostenlose Porträts auf Spendenbasis (Gäste können bar oder mit Karte spenden)</option>
+									<option>Sonstiges – bitte unten in die Nachricht schreiben</option>
+								</select>
 							</div>
 							<div class="field">
 								<label for="ev-time">Gewünschte Uhrzeit</label>
 								<input id="ev-time" name="Uhrzeit" placeholder="z. B. 18–21 Uhr">
 							</div>
-							<!-- Add-on "Auftrags-Porträts" – the box at the end of the page ticks this for the visitor -->
+							<!-- Optional: commission portraits from photos on top of the event / workshop -->
 							<div class="field full">
 								<label class="choice">
 									<input type="checkbox" id="ev-addon" name="Auftrags-Porträts" value="Ja – bitte beraten">
@@ -436,10 +446,15 @@
 								<input id="kk-phone" type="tel" name="Telefon" autocomplete="tel">
 							</div>
 							<div class="field">
-								<label for="kk-portraits">Live-Porträts dazubuchen?</label>
+								<!-- ?-bubble: hover (mouse) or tap (phone) shows the text; .info-tip in css/main.css -->
+								<label for="kk-portraits">Live-Porträts dazubuchen?
+									<span class="info-tip" tabindex="0" role="button" aria-label="Info zu Live-Porträts" aria-describedby="kk-portraits-tip">?<span class="info-tip-text" id="kk-portraits-tip" role="tooltip">Ich zeichne Ihr Team zusätzlich live. Je nach Bedarf bringe ich
+										meine Kunstmaterialien und meinen mobilen Stand (Tisch, 1,35 m) mit – oder nur das Nötigste an Zeichenmaterial,
+										wenn bei Ihnen schon ein Platz vorhanden ist.</span></span></label>
 								<select id="kk-portraits" name="Live-Porträts">
 									<option>Nein</option>
-									<option>Ja</option>
+									<option>Ja – mit Kunstmaterial und mobilem Stand (Tisch, 1,35 m)</option>
+									<option>Ja – nur Zeichenmaterial nach Bedarf</option>
 									<option>Vielleicht – bitte beraten</option>
 								</select>
 							</div>
@@ -468,7 +483,7 @@
 									<option>Feier / Teamtag</option>
 								</select>
 							</div>
-							<!-- Add-on "Auftrags-Porträts" – the box at the end of the page ticks this for the visitor -->
+							<!-- Optional: commission portraits from photos on top of the event / workshop -->
 							<div class="field full">
 								<label class="choice">
 									<input type="checkbox" id="kk-addon" name="Auftrags-Porträts" value="Ja – bitte beraten">
@@ -497,32 +512,6 @@
 			</div>
 		</section>
 
-		<!-- ================= ADD-ON: portraits to go with an event or workshop =================
-		     Light card (not a dark band), so it reads as an extra to A and B above, not as part of the footer -->
-		<section class="section" style="padding-top:0">
-			<div class="wrap">
-				<div class="addon">
-					<div class="addon-plus" aria-hidden="true">+</div>
-					<div>
-						<span class="eyebrow">Extra zu A &amp; B</span>
-						<h2>Dazu buchbar: Auftrags-Porträts</h2>
-						<p>
-							Abschiedsgeschenk, Jubiläum oder Team-Porträt fürs Büro: Ausführliche Porträts nach Foto lassen sich mit
-							jedem Live-Event und jedem Kleckerkasten-Workshop kombinieren.
-						</p>
-						<!-- Asks first which request the visitor is making; the button jumps to that form and ticks its
-						     "Auftrags-Porträts dazubuchen" box (js/forms.js, data-addon). Without JavaScript it is a normal jump link. -->
-						<p class="addon-ask"><strong>Welche Anfrage stellen Sie?</strong></p>
-						<div class="addon-combos">
-							<a href="#anfrage-event" data-addon="ev-addon">A · Live-Event + Porträts</a>
-							<a href="#anfrage-kleckerkasten" data-addon="kk-addon">B · Kleckerkasten + Porträts</a>
-						</div>
-						<p class="hint addon-note">Anfrage schon abgeschickt? Dann einfach auf meine Antwort-E-Mail antworten, ich ergänze die Porträts.
-							Nur Porträts ohne Event: <a href="/commission.html">zum Porträt-Auftrag →</a></p>
-					</div>
-				</div>
-			</div>
-		</section>
 
 	</main>
 
