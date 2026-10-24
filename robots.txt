@@ -1,5 +1,7 @@
 User-agent: *
 Allow: /
-Disallow: /img/
+# Artwork in /img/ may show up in Google Images; only the Photoshop source and the Reisegewerbekarte stay out
+Disallow: /img/PSD/
+Disallow: /img/fotos/reisegewerbekarte-
 
 Sitemap: https://smileyfoxyportraits.com/sitemap.xml

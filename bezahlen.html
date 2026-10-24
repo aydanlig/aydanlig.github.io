@@ -44,22 +44,27 @@
 
 				<div class="pay-step">
 					<h2><span>1</span> Dein Porträt</h2>
-					<!-- Size: one choice. Style: optional extra on top (one choice). Prices: edit data-price AND the text. -->
+					<!-- Size: one choice. Style: optional extra on top (one choice), its price depends on the size:
+					     data-a5 / data-a4 = extra in €. A5 stays 10–20 €, A4 20–60 €. A6/A7 (1 €) = quick live sketch, no style extra.
+					     Prices: edit the data numbers here; the button text updates itself. -->
 					<div data-group="size">
 						<div class="chip-row chip-row--3">
-							<button type="button" class="chip" data-price="1">A6 · 1 €</button>
-							<button type="button" class="chip" data-price="10">A5 · 10 €</button>
-							<button type="button" class="chip" data-price="20">A4 · 20 €</button>
+							<button type="button" class="chip" data-price="1" data-size="a6">A6/A7 · 1 €</button>
+							<button type="button" class="chip" data-price="10" data-size="a5">A5 · 10 €</button>
+							<button type="button" class="chip" data-price="20" data-size="a4">A4 · 20 €</button>
 						</div>
 						<label class="amount-field">Anderer Preis (wie abgesprochen):
 							<input type="number" inputmode="decimal" min="0" step="0.5" placeholder="€" data-custom="size"></label>
 					</div>
-					<p class="pay-sub">Stil dazu? <small style="font-weight:400">(Beides = Tusche &amp; Aquarell)</small></p>
-					<div class="chip-row chip-row--3" data-group="style">
-						<button type="button" class="chip" data-price="10">Tusche<br>+10 €</button>
-						<button type="button" class="chip" data-price="20">Aquarell<br>+20 €</button>
-						<button type="button" class="chip" data-price="40">Beides<br>+40 €</button>
+					<div data-style-step>
+						<p class="pay-sub">Stil dazu? <small style="font-weight:400">(Beides = Tusche &amp; Aquarell)</small></p>
+						<div class="chip-row chip-row--3" data-group="style">
+							<button type="button" class="chip" data-price="5" data-a5="5" data-a4="10" data-name="Tusche">Tusche<br>+5 €</button>
+							<button type="button" class="chip" data-price="8" data-a5="8" data-a4="20" data-name="Aquarell">Aquarell<br>+8 €</button>
+							<button type="button" class="chip" data-price="10" data-a5="10" data-a4="40" data-name="Beides">Beides<br>+10 €</button>
+						</div>
 					</div>
+					<p class="hint" data-a6-note hidden>A6/A7 ist die schnelle Live-Skizze für 1 € – nur vor Ort.</p>
 					<label class="pay-check"><input type="checkbox" id="pay-pack" data-price="1"> Verpackung zum Mitnehmen (+1 €)</label>
 				</div>
 
@@ -188,6 +193,20 @@
 					c.textContent = c.dataset.label + (c.classList.contains('on') ? (c.getAttribute('data-price') === '0' ? ' :/' : ' :D') : '');
 				});
 			}
+			// Style extras follow the chosen size (A5 or A4); A6/A7 has none
+			var styleStep = document.querySelector('[data-style-step]');
+			var a6Note = document.querySelector('[data-a6-note]');
+			function sizeStyle(key) {
+				var quick = key === 'a6';
+				styleStep.hidden = quick;
+				a6Note.hidden = !quick;
+				document.querySelectorAll('[data-group="style"] .chip').forEach(function (c) {
+					if (quick) { c.classList.remove('on'); c.setAttribute('aria-pressed', false); return; }
+					var extra = c.getAttribute('data-' + key);
+					c.setAttribute('data-price', extra);
+					c.innerHTML = c.dataset.name + '<br>+' + extra + ' €';
+				});
+			}
 			function update() {
 				var size = value('size');
 				if (size === null) { sum.textContent = '–'; hint.hidden = false; currentTotal = null; return; }
@@ -202,6 +221,7 @@
 					var again = chip.classList.contains('on') && group.getAttribute('data-group') === 'style';
 					group.querySelectorAll('.chip').forEach(function (c) { c.classList.toggle('on', c === chip && !again); c.setAttribute('aria-pressed', c === chip && !again); });
 					if (group.getAttribute('data-group') === 'tip') faces(group);
+					if (chip.dataset.size) sizeStyle(chip.dataset.size);
 					var typed = document.querySelector('[data-custom="' + group.getAttribute('data-group') + '"]');
 					if (typed) typed.value = '';   // a button click replaces a typed amount
 					update();
@@ -211,6 +231,7 @@
 				input.addEventListener('input', function () {   // typing replaces the chosen button
 					document.querySelectorAll('[data-group="' + input.getAttribute('data-custom') + '"] .chip').forEach(function (c) { c.classList.remove('on'); });
 					if (input.getAttribute('data-custom') === 'tip') faces(document.querySelector('[data-group="tip"]'));
+					if (input.getAttribute('data-custom') === 'size' && styleStep.hidden) sizeStyle('a5');
 					update();
 				});
 			});
