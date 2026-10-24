@@ -1446,3 +1446,9 @@ h1, h2, h3 { overflow-wrap: break-word; hyphens: auto; }
 @media (max-width: 600px) { .side-photo--right { grid-template-columns: 1fr; } .side-photo--right > img { order: 0; } }
 .side-photo--small { grid-template-columns: minmax(0, 170px) 1fr; align-items: center; }
 @media (max-width: 600px) { .side-photo--small { grid-template-columns: 120px 1fr; } }
+
+/* Über mich: the cartoon banner a friend drew of me */
+.cartoon-banner { margin: 1.4em 0; }
+.cartoon-banner img { width: 100%; height: auto; border-radius: 12px; border: 1px solid var(--line); background: #fff; }
+.cartoon-banner figcaption { margin-top: 6px; text-align: center; }
+.personal-grid { grid-template-columns: repeat(2, minmax(0, 260px)); }
