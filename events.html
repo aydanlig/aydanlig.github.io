@@ -179,6 +179,7 @@
 						<input type="hidden" name="_captcha" value="false">
 
 						<div class="form-grid">
+							<!-- Who: name + company, e-mail + phone -->
 							<div class="field">
 								<label for="ev-name">Name *</label>
 								<input id="ev-name" name="Name" required autocomplete="name">
@@ -195,19 +196,16 @@
 								<label for="ev-phone">Telefon</label>
 								<input id="ev-phone" type="tel" name="Telefon" autocomplete="tel">
 							</div>
+							<!-- When: date next to time -->
 							<div class="field">
 								<label for="ev-date">Datum *</label>
 								<input id="ev-date" type="text" name="Datum" placeholder="TT.MM.JJJJ" autocomplete="off" required data-date-field data-min-days="2">
 							</div>
 							<div class="field">
-								<label for="ev-location">Ort / Location *</label>
-								<input id="ev-location" name="Ort" required placeholder="z. B. Berlin-Mitte, Hotel XY">
+								<label for="ev-time">Gewünschte Uhrzeit</label>
+								<input id="ev-time" name="Uhrzeit" placeholder="z. B. 18–21 Uhr">
 							</div>
-							<div class="field">
-								<label for="ev-guests">Anzahl Gäste</label>
-								<input id="ev-guests" type="number" name="Gäste" min="1" placeholder="z. B. 120 – Saunasplash: 1.500+">
-								<p class="hint">Auch große Events: Beim Saunasplash-Festival 2026 habe ich für über 1.500 Gäste gezeichnet.</p>
-							</div>
+							<!-- What: kind of event next to the number of guests -->
 							<div class="field">
 								<label for="ev-type">Art des Events *</label>
 								<select id="ev-type" name="Eventart" required>
@@ -220,6 +218,16 @@
 									<option>Private Feier</option>
 									<option>Sonstiges</option>
 								</select>
+							</div>
+							<div class="field">
+								<label for="ev-guests">Anzahl Gäste</label>
+								<input id="ev-guests" type="number" name="Gäste" min="1" placeholder="z. B. 120 – Saunasplash: 1.500+">
+								<p class="hint">Auch große Events: Beim Saunasplash-Festival 2026 habe ich für über 1.500 Gäste gezeichnet.</p>
+							</div>
+							<!-- Where: location next to the space for the drawing station -->
+							<div class="field">
+								<label for="ev-location">Ort / Location *</label>
+								<input id="ev-location" name="Ort" required placeholder="z. B. Berlin-Mitte, Hotel XY">
 							</div>
 							<div class="field">
 								<!-- How much space the organiser can offer for the drawing station -->
@@ -236,15 +244,11 @@
 							<div class="field full">
 								<label for="ev-pricing">Abrechnung</label>
 								<select id="ev-pricing" name="Abrechnung">
-									<option>Pauschale: Sie zahlen einen Festpreis, ich zeichne Ihre Gäste das ganze Event über kostenlos (plus Materialkosten – können in der Pauschale enthalten sein)</option>
-									<option>Gäste zahlen selbst: direkt vor Ort über Ihr oder mein Kassensystem</option>
-									<option>Ehrenamtlich: kostenlose Porträts auf Spendenbasis (Gäste können bar oder mit Karte spenden)</option>
+									<option>Pauschale: Festpreis von Ihnen, für Ihre Gäste kostenlos (Material inklusive)</option>
+									<option>Gäste zahlen selbst vor Ort (über Ihr oder mein Kassensystem)</option>
+									<option>Ehrenamtlich: kostenlos für Gäste, auf Spendenbasis (bar oder Karte)</option>
 									<option>Sonstiges – bitte unten in die Nachricht schreiben</option>
 								</select>
-							</div>
-							<div class="field">
-								<label for="ev-time">Gewünschte Uhrzeit</label>
-								<input id="ev-time" name="Uhrzeit" placeholder="z. B. 18–21 Uhr">
 							</div>
 							<!-- Optional: commission portraits from photos on top of the event / workshop -->
 							<div class="field full">
