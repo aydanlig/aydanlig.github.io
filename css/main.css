@@ -904,10 +904,12 @@ fieldset.field { border: 0; padding: 0; margin: 0; min-width: 0; }
 
 /* Dropdown with several checkboxes (commission form "Extras"), looks like the other dropdowns */
 .field .label { display: block; font-weight: 600; font-size: 0.95rem; margin-bottom: 6px; }
-.multi-select { position: relative; }
+/* min-width: 0 + wrapping text: many ticked extras make the box taller, never wider than its column */
+.field:has(.multi-select) { min-width: 0; }
+.multi-select { position: relative; min-width: 0; }
 .multi-select summary {
 	list-style: none; cursor: pointer; padding: 12px 40px 12px 14px; border: 1px solid #d6cdbf; border-radius: 10px;
-	background: #fff; color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+	background: #fff; color: var(--ink); overflow-wrap: anywhere;
 }
 .multi-select summary::-webkit-details-marker { display: none; }
 .multi-select summary::after { content: "▾"; position: absolute; right: 14px; top: 12px; color: var(--ink-soft); }
