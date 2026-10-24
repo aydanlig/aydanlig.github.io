@@ -1,77 +1,40 @@
 /* =========================================================
-   consent.js – cookie-free by default, NO popup.
+   consent.js – cookie-free, NO popup, nothing to agree to.
 
-   1. Google Analytics only loads if the visitor switched it on.
-      Any link/button with  data-consent-toggle  becomes that switch
-      (it's in every footer and on the Datenschutz page).
-      The choice is remembered in the browser (localStorage, no cookie).
+   1. Visitor counter: GoatCounter (goatcounter.com) – counts page views without cookies,
+      without local storage and without storing IP addresses, so no consent switch is needed.
+      Stats: https://smileyfoxyportraits.goatcounter.com
+      Your own visits: open any page once with #toggle-goatcounter at the end of the address
+      to stop counting yourself in that browser (same again to switch it back on).
 
    2. Click-to-load embeds: a button with  data-embed-src="https://..."
       is replaced by that iframe only when clicked (e.g. the Bandcamp player),
       so nothing from that service loads before the visitor wants it.
    ========================================================= */
 (function () {
-	var GA_ID = 'G-XDZB2DQ1KV';
-	var KEY = 'sfp-analytics';
+	var COUNTER = 'https://smileyfoxyportraits.goatcounter.com/count';
 
-	function getChoice() {
-		try { return localStorage.getItem(KEY); } catch (e) { return null; }
-	}
-
-	function setChoice(value) {
-		try { localStorage.setItem(KEY, value); } catch (e) { }
-	}
-
-	function loadAnalytics() {
-		if (window.__sfpGaLoaded) return;
-		window.__sfpGaLoaded = true;
+	// the private, unlisted page is never counted
+	if (location.pathname.indexOf('/our-days') !== 0) {
 		var s = document.createElement('script');
 		s.async = true;
-		s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+		s.src = 'https://gc.zgo.at/count.js';
+		s.setAttribute('data-goatcounter', COUNTER);
 		document.head.appendChild(s);
-		window.dataLayer = window.dataLayer || [];
-		window.gtag = function () { window.dataLayer.push(arguments); };
-		window.gtag('js', new Date());
-		window.gtag('config', GA_ID);
 	}
 
-	// Remove Google Analytics cookies when the visitor switches it off again
-	function deleteAnalyticsCookies() {
-		var domain = location.hostname.replace(/^www\./, '');
-		document.cookie.split(';').forEach(function (c) {
-			var name = c.split('=')[0].trim();
-			if (name.indexOf('_ga') === 0) {
-				document.cookie = name + '=; Max-Age=0; path=/';
-				document.cookie = name + '=; Max-Age=0; path=/; domain=.' + domain;
-			}
-		});
-	}
-
-	if (getChoice() === 'yes') loadAnalytics();
+	// Clean-up from the old Google Analytics switch: forget the saved choice and remove old _ga cookies
+	try { localStorage.removeItem('sfp-analytics'); } catch (e) { }
+	var domain = location.hostname.replace(/^www\./, '');
+	document.cookie.split(';').forEach(function (c) {
+		var name = c.split('=')[0].trim();
+		if (name.indexOf('_ga') === 0) {
+			document.cookie = name + '=; Max-Age=0; path=/';
+			document.cookie = name + '=; Max-Age=0; path=/; domain=.' + domain;
+		}
+	});
 
 	document.addEventListener('DOMContentLoaded', function () {
-		// The on/off switch
-		document.querySelectorAll('[data-consent-toggle]').forEach(function (el) {
-			function render() {
-				el.textContent = getChoice() === 'yes'
-					? 'Statistik-Cookies: an (klicken zum Ausschalten)'
-					: 'Statistik-Cookies: aus (klicken zum Erlauben)';
-			}
-			render();
-			el.addEventListener('click', function (e) {
-				e.preventDefault();
-				if (getChoice() === 'yes') {
-					setChoice('no');
-					deleteAnalyticsCookies();
-					location.reload(); // reload so Google Analytics is fully gone
-				} else {
-					setChoice('yes');
-					loadAnalytics();
-					render();
-				}
-			});
-		});
-
 		// Click-to-load embeds
 		document.querySelectorAll('[data-embed-src]').forEach(function (btn) {
 			btn.addEventListener('click', function () {
