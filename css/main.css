@@ -1434,6 +1434,7 @@ h1, h2, h3 { overflow-wrap: break-word; hyphens: auto; }
 .fade-stack img + img { position: absolute; inset: 0; }
 .fade-stack.js img { opacity: 0; transition: opacity 1.2s ease; }
 .fade-stack.js img.on { opacity: 1; }
+.fade-stack.js img:not(.on) { pointer-events: none; } /* clicks/drags go to the picture you see */
 /* the stack is a <span>, so undo the tile-label look (".art-grid span") and let it fill the whole tile */
 .art-grid .fade-stack { position: absolute; inset: 0; left: 0; bottom: 0; padding: 0; background: none; border-radius: 0; z-index: 0; }
 .art-grid a.fit .fade-stack img + img { position: absolute; inset: 0; } /* beats ".art-grid a.fit img" */
@@ -1452,3 +1453,19 @@ h1, h2, h3 { overflow-wrap: break-word; hyphens: auto; }
 .cartoon-banner img { width: 100%; height: auto; border-radius: 12px; border: 1px solid var(--line); background: #fff; }
 .cartoon-banner figcaption { margin-top: 6px; text-align: center; }
 .personal-grid { grid-template-columns: repeat(2, minmax(0, 260px)); }
+
+/* =========================================================
+   CROP MODE (js/crop.js) – only active with #zuschnitt in the address
+   ========================================================= */
+.swipe-track a, .art-grid a { overflow: hidden; }
+.crop-edit .crop-target { cursor: grab; touch-action: none; outline: 2px dashed var(--fox); outline-offset: -2px; }
+.crop-edit .crop-target:active { cursor: grabbing; }
+.crop-edit .art-grid a:hover img { transform: none; }
+.crop-bar { position: fixed; z-index: 100; left: 50%; bottom: 14px; transform: translateX(-50%); display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; justify-content: center;
+	width: min(960px, calc(100% - 24px)); padding: 10px 14px; border-radius: 14px; background: var(--night); color: #F2EAE4; font-size: 0.85rem; box-shadow: 0 10px 30px rgba(0,0,0,0.35); }
+.crop-bar .crop-help { color: var(--mauve); }
+.crop-bar button { font: inherit; font-weight: 700; padding: 6px 12px; border-radius: 999px; border: 0; background: var(--fox); color: var(--night); cursor: pointer; }
+.crop-bar button[data-act="end"] { background: #3a2f37; color: #F2EAE4; }
+.crop-bar .crop-info { flex-basis: 100%; text-align: center; color: #9be29b; min-height: 1em; }
+.crop-switch { position: absolute; z-index: 3; top: 8px; right: 8px; width: 34px; height: 34px; border-radius: 50%; border: 0; background: var(--fox); color: var(--night); font-weight: 800; cursor: pointer; }
+.euro-set .crop-switch { top: 8px; right: 8px; }

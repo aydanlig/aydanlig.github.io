@@ -19,6 +19,7 @@
 			// start the stacks a little apart, so they don't all change at the same moment
 			setTimeout(function () {
 				setInterval(function () {
+					if (document.documentElement.classList.contains('crop-edit')) return;   // paused while framing (js/crop.js)
 					imgs[i].classList.remove('on');
 					i = (i + 1) % imgs.length;
 					imgs[i].classList.add('on');
