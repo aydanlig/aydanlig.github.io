@@ -1037,6 +1037,11 @@ fieldset.field { border: 0; padding: 0; margin: 0; min-width: 0; }
 .addon-plus { width: 54px; height: 54px; border-radius: 50%; display: grid; place-items: center; background: var(--fox); color: var(--night); font: 700 2rem/1 var(--font-body); }
 .addon-combos { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
 .addon-combos span { background: #fff; border: 1px solid var(--line); border-radius: 999px; padding: 4px 12px; font-size: 0.85rem; font-weight: 600; }
+/* the two choices are buttons now: they jump to form A or B and tick "Auftrags-Porträts dazubuchen" there */
+.addon-ask { margin: 14px 0 0; }
+.addon-combos a { background: #fff; border: 2px solid var(--fox); border-radius: 999px; padding: 6px 14px; font-size: 0.9rem; font-weight: 700; color: var(--ink); text-decoration: none; transition: background 0.15s ease; }
+.addon-combos a:hover { background: var(--fox); color: var(--night); }
+.addon-note { margin: 10px 0 0; }
 @media (max-width: 720px) { .addon { grid-template-columns: 1fr; } .addon-plus { width: 44px; height: 44px; font-size: 1.6rem; } }
 
 /* Projects timeline: even grid of 4 photos (cropped tiles, click shows the whole photo) */

@@ -145,4 +145,15 @@
 			update();
 		});
 	});
+
+	// Add-on buttons (events page, "Dazu buchbar: Auftrags-Porträts"): <a href="#form" data-addon="checkbox-id">
+	// jumps to that request form and ticks its "Auftrags-Porträts dazubuchen" box
+	document.addEventListener('DOMContentLoaded', function () {
+		document.querySelectorAll('[data-addon]').forEach(function (link) {
+			link.addEventListener('click', function () {
+				var box = document.getElementById(link.getAttribute('data-addon'));
+				if (box) box.checked = true;
+			});
+		});
+	});
 })();

@@ -234,6 +234,13 @@
 								<label for="ev-time">Gewünschte Uhrzeit</label>
 								<input id="ev-time" name="Uhrzeit" placeholder="z. B. 18–21 Uhr">
 							</div>
+							<!-- Add-on "Auftrags-Porträts" – the box at the end of the page ticks this for the visitor -->
+							<div class="field full">
+								<label class="choice">
+									<input type="checkbox" id="ev-addon" name="Auftrags-Porträts" value="Ja – bitte beraten">
+									<span>Auftrags-Porträts nach Foto dazubuchen (z. B. Abschiedsgeschenk, Jubiläum, Team-Porträt)</span>
+								</label>
+							</div>
 							<div class="field full">
 								<label class="choice">
 									<input type="checkbox" name="Rabattkarte" value="Ja – 50 € Rabatt">
@@ -460,6 +467,13 @@
 									<option>Feier / Teamtag</option>
 								</select>
 							</div>
+							<!-- Add-on "Auftrags-Porträts" – the box at the end of the page ticks this for the visitor -->
+							<div class="field full">
+								<label class="choice">
+									<input type="checkbox" id="kk-addon" name="Auftrags-Porträts" value="Ja – bitte beraten">
+									<span>Auftrags-Porträts nach Foto dazubuchen (z. B. Abschiedsgeschenk, Jubiläum, Team-Porträt)</span>
+								</label>
+							</div>
 							<div class="field full">
 								<label class="choice">
 									<input type="checkbox" name="Rabattkarte" value="Ja – 50 € Rabatt">
@@ -493,14 +507,18 @@
 						<h2>Dazu buchbar: Auftrags-Porträts</h2>
 						<p>
 							Abschiedsgeschenk, Jubiläum oder Team-Porträt fürs Büro: Ausführliche Porträts nach Foto lassen sich mit
-							jedem Live-Event und jedem Kleckerkasten-Workshop kombinieren – einfach in der Anfrage dazuschreiben.
+							jedem Live-Event und jedem Kleckerkasten-Workshop kombinieren.
 						</p>
+						<!-- Asks first which request the visitor is making; the button jumps to that form and ticks its
+						     "Auftrags-Porträts dazubuchen" box (js/forms.js, data-addon). Without JavaScript it is a normal jump link. -->
+						<p class="addon-ask"><strong>Welche Anfrage stellen Sie?</strong></p>
 						<div class="addon-combos">
-							<span>A · Live-Event + Porträts</span>
-							<span>B · Kleckerkasten + Porträts</span>
+							<a href="#anfrage-event" data-addon="ev-addon">A · Live-Event + Porträts</a>
+							<a href="#anfrage-kleckerkasten" data-addon="kk-addon">B · Kleckerkasten + Porträts</a>
 						</div>
+						<p class="hint addon-note">Anfrage schon abgeschickt? Dann einfach auf meine Antwort-E-Mail antworten, ich ergänze die Porträts.
+							Nur Porträts ohne Event: <a href="/commission.html">zum Porträt-Auftrag →</a></p>
 					</div>
-					<a class="btn btn--ghost" href="/commission.html">Zum Porträt-Auftrag →</a>
 				</div>
 			</div>
 		</section>
