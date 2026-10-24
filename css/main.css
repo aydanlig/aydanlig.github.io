@@ -1183,7 +1183,12 @@ fieldset.field { border: 0; padding: 0; margin: 0; min-width: 0; }
 	--ears: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 22'%3E%3Cpath d='M4 22 L12 3 Q14 0 16 3 L24 22 Z M40 22 L48 3 Q50 0 52 3 L60 22 Z' fill='black'/%3E%3C/svg%3E");
 }
 /* ears take the colour of the band they belong to */
-.section--alt::before { color: var(--card); bottom: calc(100% - 1px); }
+/* light bands have a thin divider line on top: their ears are drawn with the same line as an outline,
+   so the divider runs up and around the ears (colours = --card fill, --line outline) */
+.section--alt::before {
+	bottom: 100%; -webkit-mask: none; mask: none;
+	background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 22'%3E%3Cpath d='M4 22 L12 3 Q14 0 16 3 L24 22 Z M40 22 L48 3 Q50 0 52 3 L60 22 Z' fill='%23FBF7F3'/%3E%3Cpath d='M4 22 L12 3 Q14 0 16 3 L24 22 M40 22 L48 3 Q50 0 52 3 L60 22' fill='none' stroke='%23E2D6CE' stroke-width='1' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E") no-repeat center bottom / contain;
+}
 .section--dark::before, .site-footer::before { color: var(--night); }
 /* every other band: ears on the left instead, a bit smaller – feels random, not repeated */
 .section--alt:nth-of-type(even)::before { right: auto; left: 7%; width: 52px; height: 18px; }
