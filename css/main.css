@@ -1093,7 +1093,9 @@ fieldset.field { border: 0; padding: 0; margin: 0; min-width: 0; }
 .swipe-track { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; border-radius: 12px; }
 .swipe-track::-webkit-scrollbar { display: none; }
 .swipe-track a { flex: 0 0 100%; scroll-snap-align: center; display: flex; justify-content: center; align-items: center; }
-.swipe-track img { width: 100%; height: min(70vh, 520px); object-fit: contain; }
+/* all slides cropped to the same 4:3 shape, so every picture fills the row edge to edge and the arrows
+   always sit at the same spot next to it (portrait drawings: crop position set on the <img>, e.g. style="object-position: 50% 25%") */
+.swipe-track img { width: 100%; height: auto; aspect-ratio: 4 / 3; max-height: min(70vh, 520px); object-fit: cover; }
 .swipe-dots { display: flex; justify-content: center; gap: 8px; margin-top: 10px; }
 .swipe-dots button { width: 10px; height: 10px; padding: 0; border-radius: 50%; border: 0; background: rgba(242, 234, 228, 0.35); cursor: pointer; }
 .swipe-dots button.on { background: var(--fox); }
@@ -1320,8 +1322,10 @@ main:has(> .section--alt:last-of-type) + .site-footer::after { background: var(-
 	.swipe-arrow { display: grid; place-items: center; position: absolute; top: calc(50% - 40px); width: 36px; height: 56px; border: 0; padding: 0;
 		background: none; color: var(--paper); font-size: 2.6rem; line-height: 1; cursor: pointer; text-shadow: 0 2px 8px rgba(0,0,0,0.6); transition: color 0.15s ease; }
 	.swipe-arrow:hover { color: var(--fox); }
-	.swipe-arrow--prev { left: -18px; }
-	.swipe-arrow--next { right: -18px; }
+	.swipe-arrow--prev { left: -34px; }
+	.swipe-arrow--next { right: -34px; }
+	/* less room next to the slider on smaller screens: arrows a bit closer, still never past the page edge */
+	@media (max-width: 1240px) { .swipe-arrow--prev { left: -18px; } .swipe-arrow--next { right: -18px; } }
 }
 
 /* =========================================================
