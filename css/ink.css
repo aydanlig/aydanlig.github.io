@@ -1,0 +1,218 @@
+/* =========================================================
+   SmileyFoxyPortraits – ink.css  ("Tusche & Aquarell" look)
+   Loaded on every page right AFTER main.css, so it wins over it.
+
+   What it adds:
+   - paper grain on the page background
+   - a brush font for headings (Caveat Brush, self-hosted = no Google Fonts / DSGVO trouble)
+   - smeared ink strokes under headings and between sections
+   - alcohol-ink blooms behind sections, the hero picture and the footer
+   - art framed with an ink edge and a watercolour wash shadow, so it pops off the page
+   - hand-drawn wobbly edges on buttons, cards and labels
+
+   The pictures live in /img/ink/ (small SVGs). To switch the whole look off,
+   remove the ink.css <link> line from the pages.
+   ========================================================= */
+
+@font-face {
+	font-family: "Ink Brush";
+	src: url("/css/fonts/caveat-brush-latin.woff2") format("woff2");
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+
+:root {
+	--font-ink: "Ink Brush", "Segoe Print", "Bradley Hand", var(--font-head);
+	--teal: #1F8A8A;
+	--violet: #7B4FD1;
+	--rose: #E0457B;
+	/* hand-drawn shapes: no two corners the same */
+	--wobble: 16px 26px 14px 30px / 30px 14px 26px 16px;
+	--wobble-soft: 22px 8px 26px 10px / 10px 24px 8px 20px;
+	--paper-grain: url("/img/ink/paper.svg");
+	--smear: url("/img/ink/smear.svg");
+	--divider: url("/img/ink/divider.svg");
+	--wash: url("/img/ink/wash.svg");
+	--bloom-warm: url("/img/ink/bloom-warm.svg");
+	--bloom-cool: url("/img/ink/bloom-cool.svg");
+	--bloom-plum: url("/img/ink/bloom-plum.svg");
+}
+
+/* ---------- Paper ---------- */
+body { background-image: var(--paper-grain); }
+::selection { background: rgba(255, 107, 53, 0.35); color: var(--ink); }
+
+/* ---------- Ink typography ---------- */
+h1, h2, h3, .logo {
+	font-family: var(--font-ink);
+	font-weight: 400;
+	letter-spacing: 0.01em;
+	/* a hint of ink bleeding into the paper */
+	text-shadow: 0.4px 0.6px 1.2px rgba(26, 22, 21, 0.28);
+}
+h1 { font-size: clamp(2.6rem, 6vw, 4.3rem); line-height: 1.02; }
+h2 { font-size: clamp(2.2rem, 4.8vw, 3.3rem); line-height: 1.05; }
+h3 { font-size: 1.7rem; line-height: 1.1; }
+.section--dark h1, .section--dark h2, .section--dark h3 { text-shadow: 0 0 6px rgba(255, 107, 53, 0.18); }
+
+/* highlighted words sit on a watercolour stroke instead of being plain orange */
+.hero h1 em, h2 em {
+	color: var(--ink);
+	padding: 0 0.12em;
+	margin: 0 -0.05em;
+	background: var(--wash) no-repeat 0 78% / 100% 62%;
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+}
+.section--dark h2 em { color: #F2EAE4; }
+
+/* eyebrow = little handwritten note above a heading */
+.eyebrow {
+	font-family: var(--font-ink);
+	font-size: 1.45rem;
+	font-weight: 400;
+	letter-spacing: 0.02em;
+	text-transform: none;
+	transform: rotate(-2deg);
+	transform-origin: left center;
+	display: inline-block;
+}
+.center .eyebrow { transform-origin: center; }
+
+/* smeared ink stroke under every section heading */
+.section h2::after {
+	content: "";
+	display: block;
+	width: min(240px, 62%);
+	height: 16px;
+	margin-top: 0.22em;
+	background: var(--ink);
+	-webkit-mask: var(--smear) no-repeat center / 100% 100%;
+	mask: var(--smear) no-repeat center / 100% 100%;
+	opacity: 0.88;
+}
+.section .center h2::after, .section h2.center::after, .section .wrap.center h2::after { margin-inline: auto; }
+.section--dark h2::after { background: var(--fox); }
+
+/* logo: brush lettering, "Portraits" in fox ink */
+.logo { font-size: 1.75rem; line-height: 1; }
+
+/* ---------- Section dividers + alcohol-ink blooms ---------- */
+/* an ink smear dragged across the top of every section after the first */
+main > .section:not(:first-child) {
+	background-image: var(--divider);
+	background-repeat: no-repeat;
+	background-position: top 6px center;
+	background-size: min(920px, 88%) 34px;
+}
+/* light bands: no hard border lines any more, blooms bleed in from the edges */
+.section--alt { border-block: 0; }
+main > .section--alt:not(:first-child),
+.section--alt {
+	background-color: var(--card);
+	background-image: var(--divider), var(--bloom-cool), var(--bloom-warm), var(--paper-grain);
+	background-repeat: no-repeat, no-repeat, no-repeat, repeat;
+	background-position: top 6px center, left -170px top 18%, right -190px bottom -120px, 0 0;
+	background-size: min(920px, 88%) 34px, 380px, 440px, auto;
+}
+main > .section--alt:nth-of-type(even) {
+	background-image: var(--divider), var(--bloom-plum), var(--bloom-warm), var(--paper-grain);
+	background-position: top 6px center, right -180px top 12%, left -200px bottom -140px, 0 0;
+}
+/* dark bands: glowing ink pooled in the corners */
+.section--dark, main > .section--dark:not(:first-child) {
+	background-image: var(--bloom-plum), var(--bloom-cool);
+	background-repeat: no-repeat, no-repeat;
+	background-position: right -220px top -160px, left -240px bottom -200px;
+	background-size: 560px, 520px;
+}
+.site-footer {
+	background-image: var(--bloom-plum);
+	background-repeat: no-repeat;
+	background-position: right -260px bottom -260px;
+	background-size: 640px;
+}
+
+/* hero: a big warm bloom bleeding out from behind the main portrait */
+.hero {
+	background-image: var(--bloom-warm), var(--bloom-cool);
+	background-repeat: no-repeat, no-repeat;
+	background-position: right -140px top -120px, left -260px bottom -220px;
+	background-size: min(760px, 70vw), 520px;
+}
+
+/* ---------- The art: ink-edged, with a watercolour wash behind ---------- */
+.photo-caption img, .hero .ph-img, .art-grid a, .card .ph-img, .quote-photos img, .gallery img, .portfolio-grid img {
+	border-radius: var(--wobble-soft);
+	box-shadow: 0 0 0 2px rgba(26, 22, 21, 0.88), 9px 11px 0 -1px rgba(255, 107, 53, 0.5), 0 22px 44px -22px rgba(38, 30, 36, 0.6);
+}
+.photo-caption img { transform: rotate(0.6deg); }
+.photo-caption figcaption { font-family: var(--font-ink); font-size: 1.15rem; line-height: 1.25; color: var(--ink-soft); }
+
+/* each tile in the art grid gets its own colour of wash */
+.art-grid { gap: 22px; }
+.art-grid a:nth-child(4n+2) { box-shadow: 0 0 0 2px rgba(26, 22, 21, 0.88), -9px 11px 0 -1px rgba(123, 79, 209, 0.45), 0 22px 44px -22px rgba(38, 30, 36, 0.6); }
+.art-grid a:nth-child(4n+3) { box-shadow: 0 0 0 2px rgba(26, 22, 21, 0.88), 9px 11px 0 -1px rgba(31, 138, 138, 0.45), 0 22px 44px -22px rgba(38, 30, 36, 0.6); }
+.art-grid a:nth-child(4n+4) { box-shadow: 0 0 0 2px rgba(26, 22, 21, 0.88), -9px 11px 0 -1px rgba(224, 69, 123, 0.45), 0 22px 44px -22px rgba(38, 30, 36, 0.6); }
+.art-grid a { transition: transform 0.25s ease; } /* overflow stays hidden: the outline + wash are box-shadows, drawn outside anyway */
+.art-grid a:hover { transform: rotate(-0.6deg) translateY(-3px); }
+/* labels on the art: handwritten on a scrap of ink */
+.art-grid a > span:last-child {
+	font-family: var(--font-ink);
+	font-size: 1.15rem;
+	font-weight: 400;
+	padding: 2px 12px 4px;
+	border-radius: var(--wobble);
+	background: rgba(26, 22, 21, 0.86);
+	transform: rotate(-1.5deg);
+	left: 12px;
+	bottom: 12px;
+}
+
+/* ---------- Buttons: brush-drawn edges ---------- */
+.btn {
+	border-radius: var(--wobble);
+	box-shadow: 3px 4px 0 var(--fox);
+}
+.btn--fox { box-shadow: 3px 4px 0 var(--ink); }
+.btn--ghost { box-shadow: 3px 4px 0 rgba(255, 107, 53, 0.55); }
+.btn:hover { box-shadow: 5px 6px 0 var(--fox); }
+.btn--fox:hover { box-shadow: 5px 6px 0 var(--ink); }
+.section--dark .btn--fox, .site-footer .btn--fox { box-shadow: 3px 4px 0 var(--violet); }
+.btn--small { box-shadow: 2px 3px 0 var(--fox); }
+
+/* ---------- Cards, quotes, forms: torn paper with an ink outline ---------- */
+.card, .form-card, .quote, .saturday-line {
+	border-radius: var(--wobble-soft);
+	border: 1.5px solid rgba(26, 22, 21, 0.55);
+	background-image: var(--paper-grain);
+}
+.card { box-shadow: 6px 8px 0 -2px rgba(168, 139, 152, 0.35); }
+.card--featured { box-shadow: 7px 9px 0 -2px rgba(255, 107, 53, 0.5); }
+.tag { border-radius: var(--wobble); }
+
+/* ---------- Small things ---------- */
+/* links: underline looks drawn with a fine liner */
+main a:not(.btn):not(.proof-logo):not([class*="art"]) {
+	text-decoration-thickness: 1.5px;
+	text-underline-offset: 0.18em;
+	text-decoration-color: rgba(194, 65, 12, 0.55);
+}
+
+@media (max-width: 700px) {
+	h1 { font-size: clamp(2.5rem, 11vw, 3.2rem); }
+	.logo { font-size: 1.4rem; }
+	/* phone: text first, picture below, so the blooms sit behind the picture, not the text */
+	.hero { background-image: var(--bloom-warm); background-size: 115vw; background-position: right -45vw bottom 40px; }
+	.section--alt { background-size: min(920px, 88%) 34px, 260px, 300px, auto; }
+	.art-grid { gap: 16px; }
+}
+@media (max-width: 420px) {
+	.logo { font-size: 1.2rem; }
+}
+
+@media print {
+	body, .hero, .section, .section--alt, .section--dark, .site-footer { background-image: none !important; }
+	.section h2::after { display: none; }
+}
