@@ -6,9 +6,11 @@
 
 /* ---------- Hero: the drawing gets the bigger half ---------- */
 .hero .wrap { max-width: 1320px; grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); }
-/* as big as the column allows, but never taller than the screen (keeps the 4:5 shape) */
-.hero .photo-caption img { width: min(100%, calc((100vh - 190px) * 0.8)); height: auto; margin-inline: auto; display: block; border-radius: 6px; }
-.hero h1 { font-size: clamp(2rem, 3.6vw, 3.1rem); }
+/* as big as the column allows, but never taller than the screen (keeps the drawing's shape) */
+.hero .photo-caption img { width: min(100%, calc((100vh - 190px) * 0.73)); height: auto; margin-inline: auto; display: block; border-radius: 6px; }
+.hero .photo-caption picture { display: block; }
+.hero h1 { font-size: clamp(2rem, 3.6vw, 3.1rem); hyphens: manual; } /* narrower column: no "Live-Por-trätkunst" splits */
+.hero { padding-bottom: clamp(72px, 9vw, 110px); } /* room for the "Meine Kunst" scroll hint under the caption */
 
 /* ---------- "Meine Kunst": almost edge to edge, tall tiles ---------- */
 .art-show > .wrap { max-width: 1680px; padding-inline: clamp(8px, 2vw, 32px); }
@@ -20,6 +22,9 @@
 	margin-top: 1.2em;
 }
 .art-grid a { border-radius: 4px; }
+/* the space around a drawing is bare paper, not a blurred, darkened copy of the picture */
+.art-grid a.fit { background: var(--card); }
+.art-grid a.fit::before { background: var(--paper-grain, none), var(--card); filter: none; inset: 0; }
 /* labels stay small and only come up fully on hover (always visible on touch screens) */
 .art-grid span:not(.fade-stack) { font-size: 0.72rem; padding: 3px 9px; opacity: 0.75; transition: opacity 0.2s ease; }
 .art-grid a:hover span:not(.fade-stack) { opacity: 1; }
@@ -38,7 +43,8 @@
 @media (max-width: 900px) {
 	.hero .wrap { grid-template-columns: 1fr; }
 	.hero .photo-caption { order: -1; } /* art first, text below */
-	.hero .photo-caption img { width: min(100%, calc(78vh * 0.8)); }
+	.scroll-hint { display: none; } /* the drawing up top already says "art here", and the hint would sit on the heading */
+	.hero .photo-caption img { width: min(100%, calc(78vh * 0.73)); }
 	.art-grid { grid-template-columns: 1fr 1fr; grid-template-rows: 72vh 46vh 46vh; }
 	.art-grid .art-big { grid-column: 1 / -1; grid-row: auto; }
 }

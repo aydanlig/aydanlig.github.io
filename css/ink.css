@@ -151,7 +151,7 @@ main > .section--alt:nth-of-type(even) {
 .photo-caption figcaption { font-family: var(--font-ink); font-size: 1.15rem; line-height: 1.25; color: var(--ink-soft); }
 
 /* each tile in the art grid gets its own colour of wash */
-.art-grid { gap: 22px; }
+.art-grid { gap: 14px; } /* tight like a gallery wall, but room for the washes */
 .art-grid a:nth-child(4n+2) { box-shadow: 0 0 0 2px rgba(26, 22, 21, 0.88), -9px 11px 0 -1px rgba(123, 79, 209, 0.45), 0 22px 44px -22px rgba(38, 30, 36, 0.6); }
 .art-grid a:nth-child(4n+3) { box-shadow: 0 0 0 2px rgba(26, 22, 21, 0.88), 9px 11px 0 -1px rgba(31, 138, 138, 0.45), 0 22px 44px -22px rgba(38, 30, 36, 0.6); }
 .art-grid a:nth-child(4n+4) { box-shadow: 0 0 0 2px rgba(26, 22, 21, 0.88), -9px 11px 0 -1px rgba(224, 69, 123, 0.45), 0 22px 44px -22px rgba(38, 30, 36, 0.6); }
@@ -203,10 +203,10 @@ main a:not(.btn):not(.proof-logo):not([class*="art"]) {
 @media (max-width: 700px) {
 	h1 { font-size: clamp(2.5rem, 11vw, 3.2rem); }
 	.logo { font-size: 1.4rem; }
-	/* phone: text first, picture below, so the blooms sit behind the picture, not the text */
-	.hero { background-image: var(--bloom-warm); background-size: 115vw; background-position: right -45vw bottom 40px; }
+	/* phone: the picture comes first (art-focus.css), so the bloom sits up there behind it, not behind the text */
+	.hero { background-image: var(--bloom-warm); background-size: 115vw; background-position: right -45vw top 0; }
+	.photo-caption img { transform: none; } /* edge to edge: a tilted picture would show its corners */
 	.section--alt { background-size: min(920px, 88%) 34px, 260px, 300px, auto; }
-	.art-grid { gap: 16px; }
 }
 @media (max-width: 420px) {
 	.logo { font-size: 1.2rem; }
