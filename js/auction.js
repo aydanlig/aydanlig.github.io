@@ -63,8 +63,8 @@
 		var list = section.querySelector('[data-lots]');
 		if (!list) return;
 
-		var SOON = '<p class="community-empty">Die erste Auktion startet bald. Trag dich in den ' +
-			'<a href="https://aydanligon.substack.com/subscribe">Newsletter</a> ein, dann verpasst du sie nicht.</p>';
+		var SOON = '<p class="community-empty">Die erste Auktion startet bald. Trag dich in meine ' +
+			'<a href="https://aydanligon.substack.com/subscribe">E-Mail-Liste</a> ein, dann verpasst du sie nicht.</p>';
 		if (!url || !key) { list.innerHTML = SOON; return; }
 
 		var lots = [];
@@ -130,7 +130,7 @@
 		function render() {
 			list.innerHTML = lots.length
 				? lots.map(lotHtml).join('')
-				: '<p class="community-empty">Gerade läuft keine Auktion. Die nächste kündige ich im <a href="https://aydanligon.substack.com/subscribe">Newsletter</a> an.</p>';
+				: '<p class="community-empty">Gerade läuft keine Auktion. Die nächste kündige ich über meine <a href="https://aydanligon.substack.com/subscribe">E-Mail-Liste</a> an.</p>';
 		}
 
 		async function loadHistory() {
