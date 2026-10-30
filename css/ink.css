@@ -6,7 +6,7 @@
    - paper grain on the page background
    - a brush font for headings (Caveat Brush, self-hosted = no Google Fonts / DSGVO trouble)
    - smeared ink strokes under headings and between sections
-   - alcohol-ink blooms behind sections, the hero picture and the footer
+   - alcohol-ink blooms behind sections and the hero picture
    - art framed with an ink edge and a watercolour wash shadow, so it pops off the page
    - hand-drawn wobbly edges on buttons, cards and labels
 
@@ -126,12 +126,6 @@ main > .section--alt:nth-of-type(even) {
 	background-repeat: no-repeat, no-repeat;
 	background-position: right -220px top -160px, left -240px bottom -200px;
 	background-size: 560px, 520px;
-}
-.site-footer {
-	background-image: var(--bloom-plum);
-	background-repeat: no-repeat;
-	background-position: right -260px bottom -260px;
-	background-size: 640px;
 }
 
 /* hero: a big warm bloom bleeding out from behind the main portrait */

@@ -29,6 +29,24 @@
 .art-grid span:not(.fade-stack) { font-size: 0.72rem; padding: 3px 9px; opacity: 0.75; transition: opacity 0.2s ease; }
 .art-grid a:hover span:not(.fade-stack) { opacity: 1; }
 
+/* small note on each tile: the picture holds still on hover (js/fade.js) and opens big on click */
+.art-grid a::after {
+	content: "⤢ Klicken zum Vergrößern";
+	position: absolute; top: 10px; right: 10px; z-index: 2;
+	padding: 3px 10px; border-radius: 999px;
+	background: rgba(251, 247, 243, 0.92); color: var(--ink);
+	font-size: 0.72rem; font-weight: 700;
+	opacity: 0; transform: translateY(-4px); transition: opacity 0.2s ease, transform 0.2s ease;
+	pointer-events: none;
+}
+:lang(en) .art-grid a::after { content: "⤢ Click to zoom in"; }
+.art-grid a:hover::after, .art-grid a:focus-visible::after { opacity: 1; transform: none; }
+/* touch screens have no hover: show a small "tap" note all the time */
+@media (hover: none) {
+	.art-grid a::after { content: "⤢ Tippen"; opacity: 0.85; transform: none; }
+	:lang(en) .art-grid a::after { content: "⤢ Tap"; }
+}
+
 /* ---------- Band gallery (About) + Referenzen: bigger thumbnails ---------- */
 .band-grid { grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr)); gap: 6px; }
 .band-grid a { border-radius: 4px; }
