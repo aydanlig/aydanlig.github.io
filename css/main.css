@@ -1054,6 +1054,8 @@ fieldset.field { border: 0; padding: 0; margin: 0; min-width: 0; }
 .gallery--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 760px; }
 .photo-desc { font-style: italic; margin: 0 0 12px; }
 .site-footer .footer-mail { font-size: 0.8rem; color: var(--mauve); overflow-wrap: anywhere; }
+/* Footer label + sub-line as one link: hovering either part highlights both */
+.site-footer .footer-pair:hover .footer-mail { color: var(--fox); }
 
 /* Impressum / Datenschutz pages (no footer): small legal links at the end */
 .legal-links { text-align: center; font-size: 0.9rem; color: var(--ink-soft); padding: 32px 16px; }
@@ -1902,7 +1904,7 @@ button.btn { font-family: inherit; }
 .fg summary::after { content: " ▾"; }
 .fg details[open] summary::after { content: " ▴"; }
 .fg details a { display: block; padding: 2px 0; font-size: .92rem; color: #E7DCE1; }
-.fg .footer-mail { font-size: .82rem; color: var(--mauve); }
+.fg .footer-mail { display: block; font-size: .82rem; color: var(--mauve); }
 @media (max-width: 900px) { .footer-groups { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 520px) { .footer-groups { grid-template-columns: 1fr 1fr; gap: 20px 16px; } .site-footer--big { padding-top: 70px; } }
 @media (prefers-reduced-motion: reduce) { .footer-anim { display: none; } }
