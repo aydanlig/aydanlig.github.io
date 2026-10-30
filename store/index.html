@@ -3,18 +3,215 @@
 
 <head>
 	<meta charset="utf-8">
-	<!-- The old store page moved: portraits & prices are now on /commission.html.
-	     This page only forwards old links and bookmarks there (and keeps it out of Google). -->
-	<title>Weiterleitung zu Porträt-Aufträgen | SmileyFoxyPortraits</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="/js/consent.js" defer></script>
+	<script src="/js/splashes.js" defer></script>
+	<script src="/js/mail-reveal.js" defer></script>
+	<script src="/js/translate.js" defer></script>
+	<script src="/js/gallery.js" defer></script>
+
+	<!-- SHOP (was only a redirect to /commission.html before). noindex until the first real product is in. -->
+	<title>Originale &amp; Prints | SmileyFoxyPortraits</title>
+	<meta name="description" content="Originale, Druck-Edition und Berlin-Prints von Aydan Lig'on (SmileyFoxyPortraits) – bald hier, jetzt schon auf der Warteliste.">
+	<meta name="author" content="Aydan Lig'on">
 	<meta name="robots" content="noindex, follow">
-	<link rel="canonical" href="https://smileyfoxyportraits.com/commission.html">
-	<meta http-equiv="refresh" content="0; url=/commission.html">
+	<link rel="canonical" href="https://smileyfoxyportraits.com/store/">
+	<link rel="alternate" hreflang="de" href="https://smileyfoxyportraits.com/store/">
+	<link rel="alternate" hreflang="en" href="https://smileyfoxyportraits.com/en/store/">
+	<link rel="icon" href="/favicon.ico" sizes="48x48">
+	<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="/favicon.png">
+	<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+	<meta property="og:type" content="website">
+	<meta property="og:locale" content="de_DE">
+	<meta property="og:url" content="https://smileyfoxyportraits.com/store/">
+	<meta property="og:site_name" content="SmileyFoxyPortraits">
+	<meta property="og:title" content="Originale &amp; Prints | SmileyFoxyPortraits">
+	<meta property="og:description" content="Originale, Druck-Edition und Berlin-Prints von Aydan Lig'on (SmileyFoxyPortraits) – bald hier, jetzt schon auf der Warteliste.">
+	<meta property="og:image" content="https://smileyfoxyportraits.com/img/og-share.jpg?v=2">
+	<meta property="og:image:width" content="1200">
+	<meta property="og:image:height" content="630">
+	<meta name="twitter:card" content="summary_large_image">
+
+	<link rel="stylesheet" href="/css/main.css">
+	<link rel="stylesheet" href="/css/art-focus.css">
+	<link rel="stylesheet" href="/css/ink.css">
 </head>
 
 <body>
-	<p>Diese Seite ist umgezogen: <a href="/commission.html">Porträt-Aufträge &amp; Preise</a>.</p>
-	<!-- Legal links (required on every page) -->
-	<p style="font-size:0.85rem"><a href="/ImpressumUndDatenschutz/Impressum.html">Impressum</a> · <a href="/ImpressumUndDatenschutz/Datenschutz.html">Datenschutzerklärung</a></p>
+
+	<header class="site-header">
+		<div class="wrap">
+			<a class="logo" href="/">SmileyFoxy<span>Portraits</span></a>
+			<nav class="main-nav" aria-label="Hauptmenü">
+				<a href="/portfolio.html">Portfolio</a>
+				<a href="/events.html#live-events"><span class="nav-long">Live-</span>Events</a>
+				<a href="/events.html#kleckerkasten">Kleckerkasten</a>
+				<a href="/commission.html">Porträt<span class="nav-long">-Auftrag</span></a>
+				<a href="/about/">Über mich</a>
+			</nav>
+			<a class="lang-switch" data-translate lang="en" title="English version of this page" href="/en/store/">EN</a>
+			<a class="btn btn--small" href="/events.html#anfrage-kleckerkasten">Anfragen</a>
+		</div>
+	</header>
+
+
+	<main>
+
+		<!-- ================= SHOP INTRO ==========
+		     Still being built: every grey box / yellow text is a PLATZHALTER (number in the little ink tag).
+		     "noindex" stays until the first real product is in – then switch robots to "index, follow" and add it to sitemap.xml. -->
+		<section class="section hero">
+			<div class="wrap">
+				<div>
+					<span class="eyebrow">Originale &amp; Prints</span>
+					<h1>Kunst für <em>deine Wand</em></h1>
+					<p class="lead">Originale aus dem Skizzenbuch, eine kleine Druck-Edition und bald die Berlin-Serie als Prints. Der Shop ist im Aufbau – wer auf der Warteliste steht, ist zuerst dran.</p>
+					<div class="btn-row">
+						<a class="btn" href="/commission.html#warteliste">Auf die Warteliste</a>
+						<a class="btn btn--ghost" href="/labor/auktion.html">Zur laufenden Auktion</a>
+					</div>
+				</div>
+				<figure class="photo-caption">
+					<img src="/img/art/rote-skizze-15-minuten-1070.jpg" alt="Rote Original-Skizze, live in 15 Minuten gezeichnet" class="ph-img" width="1070" height="1700" fetchpriority="high" decoding="async">
+					<figcaption>Dieses Original wird gerade versteigert – ohne Startpreis, bis 31.12.2026.</figcaption>
+				</figure>
+			</div>
+		</section>
+
+		<!-- ================= PRODUCTS – to add one: copy an <article class="card"> block ================= -->
+		<section class="section" id="produkte" aria-labelledby="shop-title">
+			<div class="wrap">
+				<div class="center">
+					<span class="eyebrow">Bald zu haben</span>
+					<h2 id="shop-title">Was es geben wird</h2>
+				</div>
+				<div class="cards">
+					<!-- PLATZHALTER P24: DRUCK-EDITION 01 – motif photo, name, format/paper/edition size, price, and the real buy link
+					     (order form or SumUp link) in place of the waiting-list link on the button. Details: notizen/edition-ablauf.md -->
+					<article class="card card--featured">
+						<span class="tag tag--fox">Limitiert</span>
+						<div class="ph ph--4x5" data-ph="P24">Druck-Edition 01: Foto vom Druck [1200x1500]</div>
+						<h3>Druck-Edition 01: <span class="ph-text">Motiv</span></h3>
+						<ul>
+							<li><span class="ph-text">Format · Papier · Auflage (z. B. A4 · Hahnemühle · 30 Stück, signiert &amp; nummeriert)</span></li>
+							<li>Preis: <span class="ph-text">___ €</span></li>
+							<li>Noch: <span class="ph-text">__ / __</span></li>
+						</ul>
+						<a class="btn btn--fox" href="/commission.html#warteliste">Vormerken</a>
+					</article>
+
+					<!-- PLATZHALTER P25: ORIGINALS – a photo of 2–3 sketchbook originals you'd sell, and a price range -->
+					<article class="card">
+						<span class="tag">Unikate</span>
+						<div class="ph ph--4x5" data-ph="P25">Originale aus dem Skizzenbuch: Foto [1200x1500]</div>
+						<h3>Originale</h3>
+						<p>Echte Zeichnungen in Tusche und Aquarell – jede gibt es nur einmal.</p>
+						<ul><li>Preis: <span class="ph-text">ab ___ €</span></li></ul>
+						<a class="btn btn--ghost" href="mailto:aydan@smileyfoxyportraits.com?subject=Original%20kaufen">Original anfragen</a>
+					</article>
+
+					<!-- PLATZHALTER P26: BERLIN PRINTS – once the series "Berlin zwischen Tag und Nacht" is scanned: one picture + real Gelato prices.
+					     Then link the button to /labor/berlin-prints.html (and take that page out of the Labor). -->
+					<article class="card">
+						<span class="tag">Print on demand</span>
+						<div class="ph ph--4x5" data-ph="P26">Berlin zwischen Tag und Nacht: Print-Foto [1200x1500]</div>
+						<h3>Berlin-Prints</h3>
+						<p>Die Aquarell-Serie „Berlin zwischen Tag und Nacht“ als Poster, in Museumsqualität oder gerahmt.</p>
+						<ul><li>Preis: <span class="ph-text">A4 ab ___ € · A3 ab ___ € · 50×70 ab ___ €</span></li></ul>
+						<a class="btn btn--ghost" href="/commission.html#warteliste">Bescheid bekommen</a>
+					</article>
+				</div>
+			</div>
+		</section>
+
+		<!-- ================= SHIPPING + LEGAL ================= -->
+		<section class="section section--alt" aria-labelledby="ship-title">
+			<div class="wrap prose">
+				<h2 id="ship-title">Versand &amp; Abholung</h2>
+				<!-- PLATZHALTER P27: check the shipping costs (TODO: "Versandkosten prüfen") -->
+				<p><span class="ph-text" data-ph="P27">Versand 4,90 € · mit Rahmen 6,90 € · Abholung in Berlin kostenlos</span></p>
+				<p>Lieber ein Porträt von dir oder deinen Liebsten? <a href="/commission.html">Porträt-Auftrag →</a></p>
+				<!-- PLATZHALTER P28: have the cancellation policy checked before selling (TODO: Widerrufsbelehrung prüfen lassen) -->
+				<p class="hint"><span class="ph-text" data-ph="P28">Widerrufsbelehrung</span>: <a href="/labor/widerruf.html">/labor/widerruf.html</a> · Gemäß § 19 UStG wird keine Umsatzsteuer berechnet.</p>
+			</div>
+		</section>
+
+	</main>
+
+	<footer class="site-footer">
+		<div class="wrap">
+			<!-- NEWSLETTER BAND: the email field opens Substack with the address already filled in -->
+			<div class="footer-newsletter">
+				<div>
+					<h3>Bleib in Kontakt</h3>
+					<p>Erfahre zuerst, wann und wo ich zeichne – und sichere dir neue Originale &amp; Prints vor allen anderen.
+						Kostenlos, höchstens eine E-Mail im Monat. <a href="https://aydanligon.substack.com/archive">Archiv lesen →</a></p>
+					<!-- PLATZHALTER P05: your thank-you for signing up (same text in every footer – search & replace "P05") -->
+					<p class="newsletter-gift">🎁 Dankeschön fürs Eintragen: <span class="ph-text" data-ph="P05">gratis Handy-Hintergrundbild eines Berlin-Motivs</span></p>
+				</div>
+				<form class="newsletter-form" action="https://aydanligon.substack.com/subscribe" method="get" target="_blank">
+					<label class="sr-only" for="footer-email">E-Mail-Adresse</label>
+					<input id="footer-email" type="email" name="email" placeholder="deine@email.de" required autocomplete="email">
+					<button class="btn btn--fox" type="submit">Kostenlos abonnieren</button>
+				</form>
+			</div>
+
+			<!-- LINK COLUMNS: offers · about me · support · contact · legal -->
+			<div class="footer-grid">
+				<div>
+					<h3>Angebote</h3>
+					<p><a href="/events.html#live-events">Live-Porträts für Events</a></p>
+					<p><a href="/events.html#kleckerkasten">Kleckerkasten-Workshop</a></p>
+					<p><a href="/commission.html">Porträt-Auftrag</a></p>
+					<p><a href="/where-i-draw/">Wo &amp; wann ich zeichne</a></p>
+					<p><a href="/referenzen/">Referenzen</a></p>
+					<p><a href="/portfolio.html">Portfolio</a></p>
+					<p><a href="/store/">Originale &amp; Prints</a></p>
+				</div>
+
+				<div>
+					<h3>Über mich</h3>
+					<p><a href="/about/">Meine Geschichte</a></p>
+					<p><a href="/projects/index.html">Projekte</a></p>
+					<p><a href="https://smileyfoxyportraits.bandcamp.com/">Musik auf Bandcamp</a></p>
+					<p><a href="/thankyou/index.html">Dankbarkeitswand &amp; Bewertungen</a></p>
+					<p><a href="/about/#faq">Fragen und Antworten</a></p>
+				</div>
+
+				<div>
+					<h3>Unterstützen</h3>
+					<p><a href="/bezahlen.html">Vor Ort bezahlen</a></p>
+					<p><a href="/spenden/">Spenden</a></p>
+					<p><a href="https://tr.ee/u1wxA4" target="_blank" rel="noopener">Kostenlos: Bewertung abgeben</a></p>
+					<p><a href="/support-free/">Kostenlos unterstützen</a></p>
+				</div>
+
+				<div>
+					<h3>Kontakt</h3>
+					<p><a href="/contact/">Kontaktseite</a></p>
+					<p><a href="mailto:aydan@smileyfoxyportraits.com">E-Mail</a><br><a class="footer-mail" href="mailto:aydan@smileyfoxyportraits.com">aydan@smileyfoxyportraits.com</a></p>
+					<p><a href="https://www.instagram.com/smileyfoxyportraits">Instagram</a></p>
+					<p><a href="https://aydanligon.substack.com/subscribe">E-Mail-Liste</a><br><a class="footer-mail" href="https://aydanligon.substack.com/subscribe">max. 1 E-Mail im Monat</a></p>
+				</div>
+
+				<div class="footer-legal">
+					<h3>Rechtliches</h3>
+					<p><a href="/ImpressumUndDatenschutz/Impressum.html">Impressum</a></p>
+					<p><a href="/ImpressumUndDatenschutz/Datenschutz.html">Datenschutzerklärung</a></p>
+					<p><a href="/einwilligung.html">Einwilligung Foto &amp; Video</a></p>
+					<p><a href="/about/#kontakt">Löschanfragen</a></p>
+				</div>
+			</div>
+
+			<div class="footer-bottom">
+				<span>© SmileyFoxyPortraits · Aydan Lig'on · Berlin</span>
+				<a href="#">↑ nach oben</a>
+			</div>
+		</div>
+	</footer>
+
 </body>
 
 </html>

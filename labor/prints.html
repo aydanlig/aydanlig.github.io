@@ -33,6 +33,7 @@
 	<meta name="twitter:card" content="summary_large_image">
 
 	<link rel="stylesheet" href="/css/main.css">
+	<link rel="stylesheet" href="/css/ink.css">
 	<script src="/js/forms.js" defer></script>
 </head>
 
@@ -40,12 +41,14 @@
 
 	<header class="site-header">
 		<div class="wrap">
-			<a class="logo" href="/">SmileyFoxy<span>Portraits</span></a>
+			<a class="logo" href="/" aria-label="SmileyFoxyPortraits – Startseite"><span class="logo-ph" title="Platzhalter: hier kommt dein gemaltes Fuchs-Logo hin (img/logo.png)">Logo</span><span class="logo-word">SmileyFoxy<span>Portraits</span></span></a>
 			<nav class="main-nav" aria-label="Hauptmenü">
+				<a class="nav-art" href="/portfolio.html">Kunst</a>
 				<a href="/events.html#live-events"><span class="nav-long">Live-</span>Events</a>
 				<a href="/events.html#kleckerkasten">Kleckerkasten</a>
 				<a href="/commission.html">Porträt<span class="nav-long">-Auftrag</span></a>
 				<a href="/about/">Über mich</a>
+				<a class="nav-shop" href="/shop/">Shop</a>
 			</nav>
 			<a class="lang-switch" data-translate lang="en" title="Translate this page to English" href="https://smileyfoxyportraits-com.translate.goog/labor/prints.html?_x_tr_sl=de&_x_tr_tl=en&_x_tr_hl=en">EN</a>
 			<a class="btn btn--small" href="/events.html#anfrage-kleckerkasten">Anfragen</a>
@@ -76,24 +79,20 @@
 			</div>
 		</section>
 
-		<!-- PRICES ARE SUGGESTIONS – change them here AND in the form below -->
+		<!-- No prices yet (30.10.2026 – the old ones were AI suggestions). Add them here AND in the form below. -->
 		<section class="section section--alt">
 			<div class="wrap">
 				<div class="cards cards--4">
 					<article class="card">
 						<span class="badge">Offene Edition</span>
 						<h3>Kunstdruck</h3>
-						<p class="tier-price">ab 25 €</p>
-						<ul class="price-list">
-							<li><span>A4</span><strong>25 €</strong></li>
-							<li><span>A3</span><strong>39 €</strong></li>
-						</ul>
-						<p>Hochwertiger Druck auf mattem Fine-Art-Papier. Unbegrenzt nachbestellbar.</p>
+						<p class="tier-price">Preis folgt</p>
+						<p>A4 oder A3. Hochwertiger Druck auf mattem Fine-Art-Papier. Unbegrenzt nachbestellbar.</p>
 					</article>
 					<article class="card card--featured">
 						<span class="badge">Limitiert</span>
 						<h3>Limitierte Edition</h3>
-						<p class="tier-price">69 € <small>A3</small></p>
+						<p class="tier-price">Preis folgt <small>A3</small></p>
 						<p>Nur <strong>50 Exemplare</strong> pro Motiv, von Hand nummeriert und signiert, mit Echtheitszertifikat.</p>
 						<!-- Update by hand when prints are sold -->
 						<p class="hint">Noch verfügbar: 50 von 50</p>
@@ -108,7 +107,7 @@
 					<article class="card">
 						<span class="badge">Merch</span>
 						<h3>Jutebeutel</h3>
-						<p class="tier-price">19 €</p>
+						<p class="tier-price">Preis folgt</p>
 						<p>Robuste Baumwolltasche mit einem Berlin-Motiv – Kunst, die mitkommt.</p>
 					</article>
 				</div>
@@ -150,10 +149,10 @@
 							<div class="field">
 								<label for="p-item">Produkt *</label>
 								<select id="p-item" name="Produkt" required>
-									<option>Kunstdruck A4 – 25 €</option>
-									<option>Kunstdruck A3 – 39 €</option>
-									<option>Limitierte Edition A3 – 69 €</option>
-									<option>Jutebeutel – 19 €</option>
+									<option>Kunstdruck A4</option>
+									<option>Kunstdruck A3</option>
+									<option>Limitierte Edition A3</option>
+									<option>Jutebeutel</option>
 									<option>Original – Preis auf Anfrage</option>
 								</select>
 							</div>
@@ -184,6 +183,7 @@
 		     (e.g. img/footer-aquarell.mp4 → <video class="footer-anim" src="…" autoplay muted loop playsinline></video>) -->
 		<img class="footer-anim" src="/img/footer-aquarell-platzhalter.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
 		<div class="footer-shade"></div>
+		<span class="ph-label footer-anim-label">Platzhalter · Aquarell-Video</span>
 		<div class="wrap">
 			<!-- BIG "FOLLOW ME" -->
 			<div class="follow-big">
@@ -206,6 +206,8 @@
 					<h3>Bleib in Kontakt 🦊</h3>
 					<p>Erfahre zuerst, wann und wo ich zeichne – und sichere dir neue Originale &amp; Prints vor allen anderen.
 						Kostenlos, höchstens eine E-Mail im Monat. <a href="https://aydanligon.substack.com/archive">Archiv lesen →</a></p>
+					<!-- PLATZHALTER P05: your thank-you for signing up (same text in every footer – search & replace "P05") -->
+					<p class="newsletter-gift">🎁 Dankeschön fürs Eintragen: <span class="ph-text" data-ph="P05">gratis Handy-Hintergrundbild eines Berlin-Motivs</span></p>
 				</div>
 				<form class="newsletter-form" action="https://aydanligon.substack.com/subscribe" method="get" target="_blank">
 					<label class="sr-only" for="footer-email">E-Mail-Adresse</label>
@@ -226,6 +228,7 @@
 						<a href="/portfolio.html">Meine Kunst (Portfolio)</a>
 						<a href="/where-i-draw/">Wo &amp; wann ich zeichne</a>
 						<a href="/referenzen/">Referenzen</a>
+						<a href="/store/">Originale &amp; Prints</a>
 					</details>
 				</div>
 				<div class="fg">

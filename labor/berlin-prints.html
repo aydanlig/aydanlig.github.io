@@ -33,6 +33,7 @@
 	<meta name="twitter:card" content="summary_large_image">
 
 	<link rel="stylesheet" href="/css/main.css">
+	<link rel="stylesheet" href="/css/ink.css">
 	<script src="/js/forms.js" defer></script>
 </head>
 
@@ -40,12 +41,14 @@
 
 	<header class="site-header">
 		<div class="wrap">
-			<a class="logo" href="/">SmileyFoxy<span>Portraits</span></a>
+			<a class="logo" href="/" aria-label="SmileyFoxyPortraits – Startseite"><span class="logo-ph" title="Platzhalter: hier kommt dein gemaltes Fuchs-Logo hin (img/logo.png)">Logo</span><span class="logo-word">SmileyFoxy<span>Portraits</span></span></a>
 			<nav class="main-nav" aria-label="Hauptmenü">
+				<a class="nav-art" href="/portfolio.html">Kunst</a>
 				<a href="/events.html#live-events"><span class="nav-long">Live-</span>Events</a>
 				<a href="/events.html#kleckerkasten">Kleckerkasten</a>
 				<a href="/commission.html">Porträt<span class="nav-long">-Auftrag</span></a>
 				<a href="/about/">Über mich</a>
+				<a class="nav-shop" href="/shop/">Shop</a>
 			</nav>
 			<a class="lang-switch" data-translate lang="en" title="Translate this page to English" href="https://smileyfoxyportraits-com.translate.goog/labor/berlin-prints.html?_x_tr_sl=de&_x_tr_tl=en&_x_tr_hl=en">EN</a>
 			<a class="btn btn--small" href="/events.html#anfrage-kleckerkasten">Anfragen</a>
@@ -102,7 +105,7 @@
 			</div>
 		</section>
 
-		<!-- ================= PRODUCTS – prices: change here AND in data-prices below ================= -->
+		<!-- ================= PRODUCTS – no prices yet (30.10.2026, old ones were AI suggestions). To add: here AND data-prices="A4,A3,50x70" on the radios below ================= -->
 		<section class="section" id="formate">
 			<div class="wrap">
 				<h2 class="center">Drei Arten, es aufzuhängen</h2>
@@ -110,10 +113,10 @@
 					<article class="card">
 						<span class="tag">Einstieg</span>
 						<h3>Poster</h3>
-						<p class="price">ab 19 €</p>
+						<p class="price">Preis folgt</p>
 						<ul class="checks">
 							<li>Premium-Mattpapier, kräftige Farben</li>
-							<li>A4 19 € · A3 25 € · 50×70 cm 35 €</li>
+							<li>A4, A3 oder 50×70 cm</li>
 							<li>Passt in jeden Standard-Rahmen</li>
 						</ul>
 						<a class="btn btn--ghost" href="#bestellen" data-pick="Poster">Poster wählen</a>
@@ -121,10 +124,10 @@
 					<article class="card card--featured">
 						<span class="tag tag--fox">Für Aquarell empfohlen</span>
 						<h3>Museumsqualität</h3>
-						<p class="price">ab 29 €</p>
+						<p class="price">Preis folgt</p>
 						<ul class="checks">
 							<li>Schweres, mattes Kunstdruckpapier</li>
-							<li>A4 29 € · A3 39 € · 50×70 cm 55 €</li>
+							<li>A4, A3 oder 50×70 cm</li>
 							<li>Zeigt die Papierstruktur wie beim Original</li>
 						</ul>
 						<a class="btn" href="#bestellen" data-pick="Museumsqualität">Museumsqualität wählen</a>
@@ -132,10 +135,10 @@
 					<article class="card">
 						<span class="tag">Fertig zum Aufhängen</span>
 						<h3>Gerahmt</h3>
-						<p class="price">ab 49 €</p>
+						<p class="price">Preis folgt</p>
 						<ul class="checks">
 							<li>Museumspapier im Holzrahmen</li>
-							<li>A4 49 € · A3 65 € · 50×70 cm 95 €</li>
+							<li>A4, A3 oder 50×70 cm</li>
 							<li>Rahmen schwarz, weiß, Eiche oder Walnuss</li>
 						</ul>
 						<a class="btn btn--ghost" href="#bestellen" data-pick="Gerahmt">Gerahmt wählen</a>
@@ -189,12 +192,12 @@
 									<legend>Art *</legend>
 									<!-- data-prices = A4, A3, 50×70 (same order as the size field) -->
 									<div class="choice-row choice-row--3">
-										<label class="choice"><input type="radio" name="Art" value="Poster" data-prices="19,25,35" required>
-											<span><strong>Poster</strong><br><span class="hint">ab 19 €</span></span></label>
-										<label class="choice"><input type="radio" name="Art" value="Museumsqualität" data-prices="29,39,55">
-											<span><strong>Museum</strong><br><span class="hint">ab 29 €</span></span></label>
-										<label class="choice"><input type="radio" name="Art" value="Gerahmt" data-prices="49,65,95">
-											<span><strong>Gerahmt</strong><br><span class="hint">ab 49 €</span></span></label>
+										<label class="choice"><input type="radio" name="Art" value="Poster" required>
+											<span><strong>Poster</strong></span></label>
+										<label class="choice"><input type="radio" name="Art" value="Museumsqualität">
+											<span><strong>Museum</strong></span></label>
+										<label class="choice"><input type="radio" name="Art" value="Gerahmt">
+											<span><strong>Gerahmt</strong></span></label>
 									</div>
 								</fieldset>
 							</div>
@@ -235,7 +238,7 @@
 										<a href="/ImpressumUndDatenschutz/Datenschutz.html" target="_blank">Datenschutzerklärung</a> gelesen. *</span></label>
 							</div>
 						</div>
-						<p class="edition-total">Summe: <strong data-sum>–</strong> <small>(Endpreis inkl. Versand)</small></p>
+						<p class="edition-total">Preis: <strong data-sum>folgt mit der Rechnung</strong></p>
 						<button class="btn btn--fox" type="submit">Bestellen – Rechnung folgt per E-Mail</button>
 					</form>
 				</div>
@@ -250,7 +253,7 @@
 					var art = form.querySelector('input[name="Art"]:checked');
 					var out = form.querySelector('[data-sum]');
 					form.querySelector('#p-frame').disabled = !art || art.value !== 'Gerahmt';
-					if (!art) { out.textContent = '–'; return; }
+					if (!art || !art.hasAttribute('data-prices')) return; // no prices yet: price comes with the invoice
 					var price = parseFloat(art.getAttribute('data-prices').split(',')[form.querySelector('#p-size').selectedIndex]);
 					var qty = Math.max(1, parseInt(form.querySelector('#p-qty').value, 10) || 1);
 					var ship = parseFloat(form.querySelector('#p-delivery').selectedOptions[0].getAttribute('data-price')) || 0;
@@ -278,6 +281,7 @@
 		     (e.g. img/footer-aquarell.mp4 → <video class="footer-anim" src="…" autoplay muted loop playsinline></video>) -->
 		<img class="footer-anim" src="/img/footer-aquarell-platzhalter.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
 		<div class="footer-shade"></div>
+		<span class="ph-label footer-anim-label">Platzhalter · Aquarell-Video</span>
 		<div class="wrap">
 			<!-- BIG "FOLLOW ME" -->
 			<div class="follow-big">
@@ -300,6 +304,8 @@
 					<h3>Bleib in Kontakt 🦊</h3>
 					<p>Erfahre zuerst, wann und wo ich zeichne – und sichere dir neue Originale &amp; Prints vor allen anderen.
 						Kostenlos, höchstens eine E-Mail im Monat. <a href="https://aydanligon.substack.com/archive">Archiv lesen →</a></p>
+					<!-- PLATZHALTER P05: your thank-you for signing up (same text in every footer – search & replace "P05") -->
+					<p class="newsletter-gift">🎁 Dankeschön fürs Eintragen: <span class="ph-text" data-ph="P05">gratis Handy-Hintergrundbild eines Berlin-Motivs</span></p>
 				</div>
 				<form class="newsletter-form" action="https://aydanligon.substack.com/subscribe" method="get" target="_blank">
 					<label class="sr-only" for="footer-email">E-Mail-Adresse</label>
@@ -320,6 +326,7 @@
 						<a href="/portfolio.html">Meine Kunst (Portfolio)</a>
 						<a href="/where-i-draw/">Wo &amp; wann ich zeichne</a>
 						<a href="/referenzen/">Referenzen</a>
+						<a href="/store/">Originale &amp; Prints</a>
 					</details>
 				</div>
 				<div class="fg">

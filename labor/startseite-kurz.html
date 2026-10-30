@@ -44,6 +44,7 @@
 	<meta name="twitter:card" content="summary_large_image">
 
 	<link rel="stylesheet" href="/css/main.css">
+	<link rel="stylesheet" href="/css/ink.css">
 </head>
 
 <body>
@@ -51,12 +52,14 @@
 	<!-- ================= HEADER (same on every new page) ================= -->
 	<header class="site-header">
 		<div class="wrap">
-			<a class="logo" href="/">SmileyFoxy<span>Portraits</span></a>
+			<a class="logo" href="/" aria-label="SmileyFoxyPortraits – Startseite"><span class="logo-ph" title="Platzhalter: hier kommt dein gemaltes Fuchs-Logo hin (img/logo.png)">Logo</span><span class="logo-word">SmileyFoxy<span>Portraits</span></span></a>
 			<nav class="main-nav" aria-label="Hauptmenü">
+				<a class="nav-art" href="/portfolio.html">Kunst</a>
 				<a href="/events.html#live-events"><span class="nav-long">Live-</span>Events</a>
 				<a href="/events.html#kleckerkasten">Kleckerkasten</a>
 				<a href="/commission.html">Porträt<span class="nav-long">-Auftrag</span></a>
 				<a href="/about/">Über mich</a>
+				<a class="nav-shop" href="/shop/">Shop</a>
 			</nav>
 			<a class="lang-switch" data-translate lang="en" title="Translate this page to English" href="https://smileyfoxyportraits-com.translate.goog/?_x_tr_sl=de&_x_tr_tl=en&_x_tr_hl=en">EN</a>
 			<a class="btn btn--small" href="/events.html#anfrage-kleckerkasten">Anfragen</a>
@@ -231,7 +234,7 @@
 					<img src="/img/fotos/aydan-profil.jpg" alt="Aydan Lig'on, der Künstler hinter SmileyFoxyPortraits" class="ph-img ph--natural" width="900" height="1200" loading="lazy" decoding="async">
 					<div>
 						<span class="eyebrow">Über mich · Meine Mission</span>
-						<h2 id="story-title">Hi, ich bin Aydan Lig'on – und Kunst ist meine Brücke zu Menschen. <span class="spinning-smiley" aria-hidden="true"></span></h2>
+						<h2 id="story-title">Hi, ich bin Aydan Lig'on – und Kunst ist meine Brücke zu Menschen.</h2>
 						<p>
 							Ich hatte schon immer diesen unbändigen Drang, etwas zu erschaffen. Angefangen hat es bei den Zeichen-Meetups
 							der Kunstgruppe „Creative Session“, damals meine kreative Familie – und dann in den Berliner Bahnen: Ich habe Fremde gezeichnet und
@@ -316,6 +319,7 @@
 		     (e.g. img/footer-aquarell.mp4 → <video class="footer-anim" src="…" autoplay muted loop playsinline></video>) -->
 		<img class="footer-anim" src="/img/footer-aquarell-platzhalter.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
 		<div class="footer-shade"></div>
+		<span class="ph-label footer-anim-label">Platzhalter · Aquarell-Video</span>
 		<div class="wrap">
 			<!-- BIG "FOLLOW ME" -->
 			<div class="follow-big">
@@ -338,6 +342,8 @@
 					<h3>Bleib in Kontakt 🦊</h3>
 					<p>Erfahre zuerst, wann und wo ich zeichne – und sichere dir neue Originale &amp; Prints vor allen anderen.
 						Kostenlos, höchstens eine E-Mail im Monat. <a href="https://aydanligon.substack.com/archive">Archiv lesen →</a></p>
+					<!-- PLATZHALTER P05: your thank-you for signing up (same text in every footer – search & replace "P05") -->
+					<p class="newsletter-gift">🎁 Dankeschön fürs Eintragen: <span class="ph-text" data-ph="P05">gratis Handy-Hintergrundbild eines Berlin-Motivs</span></p>
 				</div>
 				<form class="newsletter-form" action="https://aydanligon.substack.com/subscribe" method="get" target="_blank">
 					<label class="sr-only" for="footer-email">E-Mail-Adresse</label>
@@ -358,6 +364,7 @@
 						<a href="/portfolio.html">Meine Kunst (Portfolio)</a>
 						<a href="/where-i-draw/">Wo &amp; wann ich zeichne</a>
 						<a href="/referenzen/">Referenzen</a>
+						<a href="/store/">Originale &amp; Prints</a>
 					</details>
 				</div>
 				<div class="fg">
