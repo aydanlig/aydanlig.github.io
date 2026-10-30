@@ -3,6 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="robots" content="noindex, noarchive, nosnippet">
 	<title>Infoblatt – Angebote auf einen Blick · SmileyFoxyPortraits</title>
 	<meta name="description" content="Alle Angebote von SmileyFoxyPortraits auf einen Blick: Auftrags-Porträts, Live-Porträts für Events und der Kleckerkasten-Teamworkshop in Berlin – mit Preisen und Infoblättern als PDF.">
 	<link rel="canonical" href="https://smileyfoxyportraits.com/infoblatt/">
@@ -61,6 +62,8 @@
 		.box p { margin: 0 0 8px; }
 		.contact { margin: 28px 0 40px; display: flex; flex-wrap: wrap; gap: 10px 24px; align-items: center; }
 		.contact strong { font-family: Georgia, serif; font-size: 1.15rem; }
+		.phone { flex-basis: 100%; display: flex; flex-wrap: wrap; gap: 8px 10px; align-items: center; }
+		.phone-num { font-weight: 600; margin-right: 6px; }
 		footer { border-top: 1px solid var(--line); color: var(--muted); font-size: .85rem; padding: 18px 0 28px; }
 		footer a { color: var(--muted); }
 	</style>
@@ -154,6 +157,7 @@
 			<a href="mailto:aydan@smileyfoxyportraits.com">aydan@smileyfoxyportraits.com</a>
 			<a href="/">smileyfoxyportraits.com</a>
 			<a href="https://www.instagram.com/smileyfoxyportraits/">Instagram @smileyfoxyportraits</a>
+			<div class="phone" id="phone"><button type="button" class="btn btn--ghost" id="phone-show">Telefonnummer anzeigen</button></div>
 		</div>
 	</main>
 
@@ -164,5 +168,27 @@
 		</div>
 	</footer>
 
+	<script>
+		// Number is only assembled after a click, so it never appears in the HTML for scrapers
+		document.getElementById('phone-show').addEventListener('click', function () {
+			var c = [32,20,14,14,32,14,23,17,17,26,14,38,23];
+			var n = c.slice().reverse().map(function (v) { return (v - 11) / 3; }).join('');
+			var href = { wa: 'https://wa.me/' + n, sig: 'https://signal.me/#p/+' + n, tg: 'https://t.me/+' + n, sms: 'sms:+' + n, tel: 'tel:+' + n };
+			var box = document.getElementById('phone');
+			box.textContent = '';
+			var num = document.createElement('span');
+			num.className = 'phone-num';
+			num.textContent = '+' + n.slice(0, 2) + ' ' + n.slice(2, 5) + ' ' + n.slice(5);
+			box.appendChild(num);
+			[['WhatsApp','wa'],['Signal','sig'],['Telegram','tg'],['SMS','sms'],['Anrufen','tel']].forEach(function (l) {
+				var a = document.createElement('a');
+				a.className = 'btn btn--ghost';
+				a.href = href[l[1]];
+				a.textContent = l[0];
+				if (l[1] === 'wa' || l[1] === 'sig' || l[1] === 'tg') { a.target = '_blank'; a.rel = 'noopener'; }
+				box.appendChild(a);
+			});
+		});
+	</script>
 </body>
 </html>
