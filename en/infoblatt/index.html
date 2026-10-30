@@ -31,12 +31,18 @@
 		.lang { font-size: .9rem; }
 		h1 { font-family: Georgia, serif; font-size: clamp(1.8rem, 5vw, 2.6rem); line-height: 1.15; margin: 40px 0 10px; }
 		.lead { color: var(--muted); font-size: 1.1rem; max-width: 680px; margin: 0 0 28px; }
-		.intro { display: grid; grid-template-columns: 1fr 300px; gap: 28px; align-items: center; margin: 0 0 28px; }
-		.intro .lead { margin: 0; }
-		.art { margin: 0; }
-		.art img { display: block; width: 100%; height: auto; border-radius: 14px; box-shadow: 0 6px 24px rgba(0,0,0,.18); }
-		.art figcaption { color: var(--muted); font-size: .85rem; margin-top: 8px; }
-		@media (max-width: 700px) { .intro { grid-template-columns: 1fr; } .art { max-width: 340px; } }
+		.examples { margin: 0 0 28px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; }
+		.examples summary { cursor: pointer; padding: 14px 20px; font-family: Georgia, serif; font-size: 1.15rem; font-weight: 700; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+		.examples summary::-webkit-details-marker { display: none; }
+		.examples summary::after { content: "+"; color: var(--accent-dark); font-size: 1.4rem; line-height: 1; }
+		.examples[open] summary::after { content: "–"; }
+		.examples summary small { font-family: "Segoe UI", system-ui, sans-serif; font-weight: 400; font-size: .85rem; color: var(--muted); margin-left: 8px; }
+		.gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; padding: 0 20px 20px; }
+		.gallery a { display: block; position: relative; border-radius: 10px; overflow: hidden; aspect-ratio: 4 / 5; background: var(--soft); }
+		.gallery img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .3s; }
+		.gallery a:hover img { transform: scale(1.04); }
+		.gallery span { position: absolute; left: 6px; bottom: 6px; background: rgba(26,22,21,.72); color: #fff; font-size: .72rem; padding: 2px 8px; border-radius: 999px; }
+		@media (max-width: 560px) { .gallery { grid-template-columns: repeat(2, 1fr); } }
 		.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 18px; }
 		.card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 22px; display: flex; flex-direction: column; }
 		.tag { font-size: .75rem; letter-spacing: .08em; text-transform: uppercase; color: var(--accent-dark); font-weight: 700; }
@@ -70,14 +76,23 @@
 
 	<main class="wrap">
 		<h1>All my offers at a glance</h1>
-		<div class="intro">
-			<p class="lead">I'm Aydan Lig'on, a portrait artist in Berlin. I draw people with fineliner and watercolour: live at events, from a photo as a gift, or for whole teams. Here's a short summary of every offer, each with a detailed info sheet as a PDF (in German).</p>
-			<!-- Same art example as the homepage hero -->
-			<figure class="art">
-				<img src="/img/fotos/aquarell-fineliner-detail-4x5.jpg" alt="Expressive portrait in watercolour and fineliner by Aydan Lig'on: man with glasses and a beard" width="960" height="1200" decoding="async">
-				<figcaption>Drawn in 25 minutes – he sat as my model for 10 minutes at Mauerpark. Most live portraits take 5–15 minutes.</figcaption>
-			</figure>
-		</div>
+		<p class="lead">I'm Aydan Lig'on, a portrait artist in Berlin. I draw people with fineliner and watercolour: live at events, from a photo as a gift, or for whole teams. Here's a short summary of every offer, each with a detailed info sheet as a PDF (in German).</p>
+
+		<!-- Collapsed by default; images only load when opened -->
+		<details class="examples">
+			<summary>Examples of my work <small>ink &amp; watercolour</small></summary>
+			<div class="gallery">
+				<a href="/img/fotos/aquarell-fineliner-detail-4x5.jpg"><img src="/img/fotos/aquarell-fineliner-detail-4x5.jpg" alt="Watercolour and fineliner portrait: man with glasses and a beard" loading="lazy" decoding="async"><span>Watercolour & fineliner</span></a>
+				<a href="/img/fotos/tusche-portraet-4x5.jpg"><img src="/img/fotos/tusche-portraet-4x5.jpg" alt="Expressive portrait in black ink" loading="lazy" decoding="async"><span>Ink</span></a>
+				<a href="/img/fotos/aquarell-gitarre-papier.jpg"><img src="/img/fotos/aquarell-gitarre-papier.jpg" alt="Watercolour portrait with fineliner: guitarist in a sketchbook" loading="lazy" decoding="async"><span>Watercolour & fineliner</span></a>
+				<a href="/img/fotos/tusche-portraet-2.jpg"><img src="/img/fotos/tusche-portraet-2.jpg" alt="Serious ink portrait in a sketchbook" loading="lazy" decoding="async"><span>Ink</span></a>
+				<a href="/img/fotos/goldig-aquarell-1x1.jpg"><img src="/img/fotos/goldig-aquarell-1x1.jpg" alt="Watercolour portrait of a musician in a sketchbook" loading="lazy" decoding="async"><span>Watercolour</span></a>
+				<a href="/img/fotos/goldig-tusche-1x1.jpg"><img src="/img/fotos/goldig-tusche-1x1.jpg" alt="Ink drawing of a musician" loading="lazy" decoding="async"><span>Ink</span></a>
+				<a href="/img/fotos/a5-marker-fineliner-aquarell.jpg"><img src="/img/fotos/a5-marker-fineliner-aquarell.jpg" alt="A5 portrait in marker, fineliner and watercolour: person with a beanie" loading="lazy" decoding="async"><span>A5: marker, fineliner & watercolour</span></a>
+				<a href="/img/fotos/aquarell-kleckse-4x5.jpg"><img src="/img/fotos/aquarell-kleckse-4x5.jpg" alt="Expressive portrait with blue paint splashes and black ink" loading="lazy" decoding="async"><span>Ink & watercolour</span></a>
+				<a href="/img/fotos/gerahmtes-paar-3x4.jpg"><img src="/img/fotos/gerahmtes-paar-3x4.jpg" alt="Framed couple portrait in ink and watercolour" loading="lazy" decoding="async"><span>Commission, framed</span></a>
+			</div>
+		</details>
 
 		<div class="cards">
 			<section class="card">
