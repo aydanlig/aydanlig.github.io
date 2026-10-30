@@ -317,8 +317,6 @@ main a:not(.btn):not(.proof-logo):not([class*="art"]) {
 .quote-grid--2 + .quote-grid--2, .quote-grid--1 + .quote-grid--2 { margin-top: 28px; }
 .quote.ph-block { text-align: left; }
 .kk-intro.split { max-width: none; }
-#brandenburger-tor { grid-template-columns: 1fr 260px; }
-@media (max-width: 700px) { #brandenburger-tor { grid-template-columns: 1fr; } #brandenburger-tor .ph { max-width: 320px; } }
 /* phone menu: 5 links now (Portfolio added) – a little tighter so they fit on one line */
 @media (max-width: 600px) { .main-nav { gap: 8px; } .main-nav a { font-size: 0.86rem; } }
 @media (max-width: 360px) { .main-nav a { font-size: 0.76rem; } }
