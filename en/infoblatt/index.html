@@ -31,6 +31,12 @@
 		.lang { font-size: .9rem; }
 		h1 { font-family: Georgia, serif; font-size: clamp(1.8rem, 5vw, 2.6rem); line-height: 1.15; margin: 40px 0 10px; }
 		.lead { color: var(--muted); font-size: 1.1rem; max-width: 680px; margin: 0 0 28px; }
+		.intro { display: grid; grid-template-columns: 1fr 300px; gap: 28px; align-items: center; margin: 0 0 28px; }
+		.intro .lead { margin: 0; }
+		.art { margin: 0; }
+		.art img { display: block; width: 100%; height: auto; border-radius: 14px; box-shadow: 0 6px 24px rgba(0,0,0,.18); }
+		.art figcaption { color: var(--muted); font-size: .85rem; margin-top: 8px; }
+		@media (max-width: 700px) { .intro { grid-template-columns: 1fr; } .art { max-width: 340px; } }
 		.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 18px; }
 		.card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 22px; display: flex; flex-direction: column; }
 		.tag { font-size: .75rem; letter-spacing: .08em; text-transform: uppercase; color: var(--accent-dark); font-weight: 700; }
@@ -61,7 +67,14 @@
 
 	<main class="wrap">
 		<h1>All my offers at a glance</h1>
-		<p class="lead">I'm Aydan Lig'on, a portrait artist in Berlin. I draw people with fineliner and watercolour: live at events, from a photo as a gift, or for whole teams. Here's a short summary of every offer, each with a detailed info sheet as a PDF (in German).</p>
+		<div class="intro">
+			<p class="lead">I'm Aydan Lig'on, a portrait artist in Berlin. I draw people with fineliner and watercolour: live at events, from a photo as a gift, or for whole teams. Here's a short summary of every offer, each with a detailed info sheet as a PDF (in German).</p>
+			<!-- Same art example as the homepage hero -->
+			<figure class="art">
+				<img src="/img/fotos/aquarell-fineliner-detail-4x5.jpg" alt="Expressive portrait in watercolour and fineliner by Aydan Lig'on: man with glasses and a beard" width="960" height="1200" decoding="async">
+				<figcaption>Drawn in 25 minutes – he sat as my model for 10 minutes at Mauerpark. Most live portraits take 5–15 minutes.</figcaption>
+			</figure>
+		</div>
 
 		<div class="cards">
 			<section class="card">

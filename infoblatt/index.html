@@ -31,6 +31,12 @@
 		.lang { font-size: .9rem; }
 		h1 { font-family: Georgia, serif; font-size: clamp(1.8rem, 5vw, 2.6rem); line-height: 1.15; margin: 40px 0 10px; }
 		.lead { color: var(--muted); font-size: 1.1rem; max-width: 680px; margin: 0 0 28px; }
+		.intro { display: grid; grid-template-columns: 1fr 300px; gap: 28px; align-items: center; margin: 0 0 28px; }
+		.intro .lead { margin: 0; }
+		.art { margin: 0; }
+		.art img { display: block; width: 100%; height: auto; border-radius: 14px; box-shadow: 0 6px 24px rgba(0,0,0,.18); }
+		.art figcaption { color: var(--muted); font-size: .85rem; margin-top: 8px; }
+		@media (max-width: 700px) { .intro { grid-template-columns: 1fr; } .art { max-width: 340px; } }
 		.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 18px; }
 		.card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 22px; display: flex; flex-direction: column; }
 		.tag { font-size: .75rem; letter-spacing: .08em; text-transform: uppercase; color: var(--accent-dark); font-weight: 700; }
@@ -61,7 +67,14 @@
 
 	<main class="wrap">
 		<h1>Meine Angebote auf einen Blick</h1>
-		<p class="lead">Ich bin Aydan Lig'on, Porträtkünstler in Berlin. Ich zeichne Menschen mit Fineliner und Aquarell: live auf Events, nach Foto als Geschenk oder für ganze Teams. Hier finden Sie alle Angebote kurz zusammengefasst, jeweils mit ausführlichem Infoblatt als PDF.</p>
+		<div class="intro">
+			<p class="lead">Ich bin Aydan Lig'on, Porträtkünstler in Berlin. Ich zeichne Menschen mit Fineliner und Aquarell: live auf Events, nach Foto als Geschenk oder für ganze Teams. Hier finden Sie alle Angebote kurz zusammengefasst, jeweils mit ausführlichem Infoblatt als PDF.</p>
+			<!-- Same art example as the homepage hero -->
+			<figure class="art">
+				<img src="/img/fotos/aquarell-fineliner-detail-4x5.jpg" alt="Ausdrucksstarkes Porträt in Aquarell und Fineliner von Aydan Lig'on: Mann mit Brille und Bart" width="960" height="1200" decoding="async">
+				<figcaption>In 25 Minuten gezeichnet – Modell gesessen hat er 10 Minuten im Mauerpark. Die meisten Live-Porträts dauern 5–15 Minuten.</figcaption>
+			</figure>
+		</div>
 
 		<div class="cards">
 			<section class="card">
