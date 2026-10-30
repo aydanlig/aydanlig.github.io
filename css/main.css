@@ -2019,3 +2019,10 @@ button.btn { font-family: inherit; }
 .pf-text .series-nav a:hover { color: var(--fox); }
 .follow-big .eyebrow { display: block; margin-bottom: .2em; }
 /* END REDESIGN 3 */
+
+/* Phone header: six menu links (Kunst … Shop) no longer fit in one row – let them wrap into two centred rows
+   instead of pushing the page sideways */
+@media (max-width: 720px) {
+	.main-nav { flex-wrap: wrap; justify-content: center; gap: 4px 16px; overflow-x: visible; }
+}
+@media (max-width: 360px) { .main-nav { column-gap: 12px; } }
