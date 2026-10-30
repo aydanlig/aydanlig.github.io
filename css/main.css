@@ -1355,9 +1355,14 @@ body.scrolled .scroll-hint { opacity: 0; pointer-events: none; }
 .btn-splash { animation: btn-wiggle 6s ease-in-out infinite 3s; }
 @keyframes btn-wiggle { 0%, 72%, 100% { transform: rotate(0); } 76% { transform: rotate(-1.5deg); } 80% { transform: rotate(1.5deg); } 84% { transform: rotate(0); } }
 
+/* "Spenden" in the short footer of the pay-on-site page: the heart beats now and then, the word wiggles along */
+.footer-donate { display: inline-block; font-weight: 700; color: var(--fox) !important; animation: btn-wiggle 5s ease-in-out infinite 1.5s; }
+.footer-donate b { display: inline-block; animation: donate-beat 5s ease-in-out infinite 1.5s; }
+@keyframes donate-beat { 0%, 70%, 100% { transform: scale(1); } 75% { transform: scale(1.35); } 80% { transform: scale(1); } 85% { transform: scale(1.25); } 90% { transform: scale(1); } }
+
 @media (max-width: 720px) { .scroll-hint { bottom: 6px; } }
 @media (prefers-reduced-motion: reduce) {
-	.scroll-hint b, .btn-shine::after, .btn-splash, .btn-splash::before { animation: none; }
+	.scroll-hint b, .btn-shine::after, .btn-splash, .btn-splash::before, .footer-donate, .footer-donate b { animation: none; }
 }
 /* scroll hint: pinned to the bottom of the screen on first view, gone after scrolling */
 .scroll-hint { position: fixed; bottom: 16px; z-index: 40; background: rgba(242, 234, 228, 0.92); padding: 6px 14px 4px; border-radius: 999px;
