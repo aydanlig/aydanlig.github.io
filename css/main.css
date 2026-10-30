@@ -1456,38 +1456,3 @@ h1, h2, h3 { overflow-wrap: break-word; hyphens: auto; }
 .crop-bar .crop-info { flex-basis: 100%; text-align: center; color: #9be29b; min-height: 1em; }
 .crop-switch { position: absolute; z-index: 3; top: 8px; right: 8px; width: 34px; height: 34px; border-radius: 50%; border: 0; background: var(--fox); color: var(--night); font-weight: 800; cursor: pointer; }
 .euro-set .crop-switch { top: 8px; right: 8px; }
-
-/* ---------- NEW FOOTER (ported from the redesign): full screen high, moving watercolour behind, big "follow me", smart link groups ---------- */
-.site-footer--big { min-height: 100vh; display: flex; flex-direction: column; justify-content: flex-end; padding: 90px 0 26px; isolation: isolate; color: #E7DCE1; }
-.footer-anim { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; filter: blur(5px) saturate(1.25) brightness(1.15); clip-path: inset(0); }
-.site-footer--big::before { z-index: 2; }
-.site-footer--big > .footer-shade { position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(15, 12, 17, .15), rgba(15, 12, 17, .45) 40%, rgba(15, 12, 17, .9) 80%); }
-.follow-big { text-align: center; margin: auto 0 48px; padding-top: 30px; }
-.follow-big .eyebrow { color: var(--fox); font-size: 1.6rem; }
-.follow-handle { display: inline-block; font-family: var(--font-head); font-weight: 800; font-size: clamp(1.45rem, 7.2vw, 6.8rem); line-height: 1; letter-spacing: -.035em;
-	color: #FBF3EA !important; text-decoration: none; overflow-wrap: anywhere; transition: color .2s ease, transform .2s ease; }
-.follow-handle:hover { color: var(--fox) !important; transform: rotate(-1.5deg) scale(1.02); }
-.follow-big p { max-width: 54ch; margin: 14px auto 0; color: #E7DCE1; }
-.follow-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 14px; margin-top: 20px; }
-.follow-links a { padding: 8px 16px; border: 2px solid rgba(251, 243, 234, .5); border-radius: 999px; font-weight: 700; font-size: .92rem; }
-.follow-links a:hover { border-color: var(--fox); }
-.site-footer--big .footer-newsletter { background: rgba(15, 12, 17, .55); backdrop-filter: blur(4px); }
-/* link groups: 2–3 most important links always visible, the rest in "mehr" */
-.footer-groups { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 26px; margin-top: 34px; }
-.fg h3 { margin: 0 0 8px; }
-.fg > a { display: block; padding: 3px 0; font-weight: 700; color: #FBF3EA; }
-.fg details { margin-top: 4px; }
-.fg summary { cursor: pointer; list-style: none; font-size: .88rem; color: var(--mauve); }
-.fg summary::-webkit-details-marker { display: none; }
-.fg summary::after { content: " ▾"; }
-.fg details[open] summary::after { content: " ▴"; }
-.fg details a { display: block; padding: 2px 0; font-size: .92rem; color: #E7DCE1; }
-.fg .footer-mail { font-size: .82rem; color: var(--mauve); }
-@media (max-width: 900px) { .footer-groups { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (max-width: 520px) { .footer-groups { grid-template-columns: 1fr 1fr; gap: 20px 16px; } .site-footer--big { padding-top: 70px; } }
-@media (prefers-reduced-motion: reduce) { .footer-anim { display: none; } }
-.fg.footer-legal { display: block; grid-column: auto; }
-@media (max-width: 520px) { .fg.footer-legal { grid-column: 1 / -1; } }
-.site-footer--big::after { display: none; }
-.follow-big .eyebrow { margin-bottom: 10px; }
-@media (max-width: 520px) { .follow-big .eyebrow { font-size: 1.05rem; } }
