@@ -40,12 +40,14 @@
 
 	<header class="site-header">
 		<div class="wrap">
-			<a class="logo" href="/">SmileyFoxy<span>Portraits</span></a>
+			<a class="logo" href="/" aria-label="SmileyFoxyPortraits – Startseite"><span class="logo-ph" title="Platzhalter: hier kommt dein gemaltes Fuchs-Logo hin (img/logo.png)">Logo</span><span class="logo-word">SmileyFoxy<span>Portraits</span></span></a>
 			<nav class="main-nav" aria-label="Hauptmenü">
+				<a class="nav-art" href="/portfolio.html">Kunst</a>
 				<a href="/events.html#live-events"><span class="nav-long">Live-</span>Events</a>
 				<a href="/events.html#kleckerkasten">Kleckerkasten</a>
 				<a href="/commission.html">Porträt<span class="nav-long">-Auftrag</span></a>
 				<a href="/about/">Über mich</a>
+				<a class="nav-shop" href="/shop/">Shop</a>
 			</nav>
 			<a class="lang-switch" data-translate lang="en" title="Translate this page to English" href="https://smileyfoxyportraits-com.translate.goog/labor/prints.html?_x_tr_sl=de&_x_tr_tl=en&_x_tr_hl=en">EN</a>
 			<a class="btn btn--small" href="/events.html#anfrage-kleckerkasten">Anfragen</a>
@@ -178,8 +180,29 @@
 	</main>
 
 	<!-- ================= FOOTER (same on every page) ================= -->
-	<footer class="site-footer">
+	<footer class="site-footer site-footer--big">
+		<!-- FULL-HEIGHT FOOTER (idea: wimpykid.com): moving watercolour behind, big "follow me", link groups.
+		     PLACEHOLDER ANIMATION: replace img/footer-aquarell-platzhalter.webp with your own filmed watercolour loop
+		     (e.g. img/footer-aquarell.mp4 → <video class="footer-anim" src="…" autoplay muted loop playsinline></video>) -->
+		<img class="footer-anim" src="/img/footer-aquarell-platzhalter.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
+		<div class="footer-shade"></div>
+		<span class="ph-label footer-anim-label">Platzhalter · Aquarell-Video</span>
 		<div class="wrap">
+			<!-- BIG "FOLLOW ME" -->
+			<div class="follow-big">
+				<p class="eyebrow">Folge mir auf Instagram</p>
+				<a class="follow-handle" href="https://www.instagram.com/smileyfoxyportraits" target="_blank" rel="noopener">@smileyfoxyportraits</a>
+				<p>Wo ich heute zeichne, frische Bilder und die Geschichten dahinter – jeden Tag in meiner Story.</p>
+				<p class="follow-mail"><a href="mailto:aydan@smileyfoxyportraits.com">aydan@smileyfoxyportraits.com</a></p>
+				<div class="follow-links">
+					<a href="https://www.instagram.com/smileyfoxyportraits" target="_blank" rel="noopener">Instagram</a>
+					<a href="https://www.youtube.com/@SmileyFoxyPortraits" target="_blank" rel="noopener">YouTube</a>
+					<a href="https://aydanligon.substack.com" target="_blank" rel="noopener">Blog (Substack)</a>
+					<a href="https://discord.gg/pQaBQjBv4U" target="_blank" rel="noopener">Discord: Fox Den</a>
+					<a href="https://smileyfoxyportraits.bandcamp.com/" target="_blank" rel="noopener">Musik</a>
+				</div>
+			</div>
+
 			<!-- NEWSLETTER BAND: the email field opens Substack with the address already filled in -->
 			<div class="footer-newsletter">
 				<div>
@@ -194,51 +217,59 @@
 				</form>
 			</div>
 
-			<!-- LINK COLUMNS: offers · about me · support · contact · legal -->
-			<div class="footer-grid">
-				<div>
+			<!-- LINK GROUPS: the most important links are always visible, the rest sits under "mehr".
+			     Impressum + Datenschutz stay visible on purpose (must be reachable with one click). -->
+			<nav class="footer-groups" aria-label="Alle Seiten">
+				<div class="fg">
 					<h3>Angebote</h3>
-					<p><a href="/events.html#live-events">Live-Porträts für Events</a></p>
-					<p><a href="/events.html#kleckerkasten">Kleckerkasten-Workshop</a></p>
-					<p><a href="/commission.html">Porträt-Auftrag</a></p>
-					<p><a href="/where-i-draw/">Wo &amp; wann ich zeichne</a></p>
-					<p><a href="/referenzen/">Referenzen</a></p>
+					<a href="/events.html#live-events">Live-Porträts für Events</a>
+					<a href="/events.html#kleckerkasten">Kleckerkasten-Workshop</a>
+					<a href="/commission.html">Porträt-Auftrag</a>
+					<details><summary>mehr</summary>
+						<a href="/portfolio.html">Meine Kunst (Portfolio)</a>
+						<a href="/where-i-draw/">Wo &amp; wann ich zeichne</a>
+						<a href="/referenzen/">Referenzen</a>
+					</details>
 				</div>
-
-				<div>
+				<div class="fg">
 					<h3>Über mich</h3>
-					<p><a href="/about/">Meine Geschichte</a></p>
-					<p><a href="/projects/index.html">Projekte</a></p>
-					<p><a href="https://smileyfoxyportraits.bandcamp.com/">Musik auf Bandcamp</a></p>
-					<p><a href="/thankyou/index.html">Dankbarkeitswand &amp; Bewertungen</a></p>
-					<p><a href="/about/#faq">Fragen und Antworten</a></p>
+					<a href="/about/">Meine Geschichte</a>
+					<a href="/about/#faq">Fragen &amp; Antworten</a>
+					<details><summary>mehr</summary>
+						<a href="/projects/index.html">Projekte</a>
+						<a href="https://smileyfoxyportraits.bandcamp.com/">Musik auf Bandcamp</a>
+						<a href="/thankyou/index.html">Dankbarkeitswand &amp; Bewertungen</a>
+					</details>
 				</div>
-
-				<div>
+				<div class="fg">
 					<h3>Unterstützen</h3>
-					<p><a href="/bezahlen.html">Vor Ort bezahlen</a></p>
-					<p><a href="/spenden/">Spenden</a></p>
-					<p><a href="https://tr.ee/u1wxA4" target="_blank" rel="noopener">Kostenlos: Bewertung abgeben</a></p>
-					<p><a href="/support-free/">Kostenlos unterstützen</a></p>
+					<a href="/bezahlen.html">Vor Ort bezahlen</a>
+					<a href="/spenden/">Spenden</a>
+					<details><summary>mehr</summary>
+						<a href="https://tr.ee/u1wxA4" target="_blank" rel="noopener">Kostenlos: Bewertung abgeben</a>
+						<a href="/support-free/">Kostenlos unterstützen</a>
+					</details>
 				</div>
-
-				<div>
+				<div class="fg">
 					<h3>Kontakt</h3>
-					<p><a href="/contact/">Kontaktseite</a></p>
-					<p><a href="mailto:aydan@smileyfoxyportraits.com">E-Mail</a><br><a class="footer-mail" href="mailto:aydan@smileyfoxyportraits.com">aydan@smileyfoxyportraits.com</a></p>
-					<p><a href="https://www.instagram.com/smileyfoxyportraits">Instagram</a></p>
-					<p><a href="https://discord.gg/pQaBQjBv4U">Discord</a><br><a class="footer-mail" href="https://discord.gg/pQaBQjBv4U">Aydan's Fox Den</a></p>
-					<p><a href="https://aydanligon.substack.com">Substack</a><br><a class="footer-mail" href="https://aydanligon.substack.com">Blog &amp; E-Mail-Liste</a></p>
+					<a href="mailto:aydan@smileyfoxyportraits.com">E-Mail</a><a class="footer-mail" href="mailto:aydan@smileyfoxyportraits.com">aydan@<wbr>smileyfoxyportraits.com</a>
+					<a href="/contact/">Kontaktseite</a>
+					<details><summary>mehr</summary>
+						<a href="https://www.instagram.com/smileyfoxyportraits">Instagram</a>
+						<a href="https://discord.gg/pQaBQjBv4U">Discord: Aydan's Fox Den</a>
+						<a href="https://aydanligon.substack.com/subscribe">E-Mail-Liste (max. 1 E-Mail im Monat)</a>
+					</details>
 				</div>
-
-				<div class="footer-legal">
+				<div class="fg footer-legal">
 					<h3>Rechtliches</h3>
-					<p><a href="/ImpressumUndDatenschutz/Impressum.html">Impressum</a></p>
-					<p><a href="/ImpressumUndDatenschutz/Datenschutz.html">Datenschutzerklärung</a></p>
-					<p><a href="/einwilligung.html">Einwilligung Foto &amp; Video</a></p>
-					<p><a href="/about/#kontakt">Löschanfragen</a></p>
+					<a href="/ImpressumUndDatenschutz/Impressum.html">Impressum</a>
+					<a href="/ImpressumUndDatenschutz/Datenschutz.html">Datenschutzerklärung</a>
+					<details><summary>mehr</summary>
+						<a href="/einwilligung.html">Einwilligung Foto &amp; Video</a>
+						<a href="/about/#kontakt">Löschanfragen</a>
+					</details>
 				</div>
-			</div>
+			</nav>
 
 			<div class="footer-bottom">
 				<span>© SmileyFoxyPortraits · Aydan Lig'on · Berlin</span>
