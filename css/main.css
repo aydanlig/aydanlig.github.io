@@ -923,6 +923,8 @@ fieldset.field { border: 0; padding: 0; margin: 0; min-width: 0; }
 .multi-option input { margin-top: 5px; accent-color: var(--accent); }
 .multi-option .hint { margin: 0; }
 .card-foot { margin-top: auto; padding-top: 0.6em; } /* button at the bottom of each price card */
+.card-foot--hint { min-height: 6.8em; display: flex; flex-direction: column; align-items: flex-start; } /* same height with or without a hint line, so buttons line up */
+.card-foot--hint .btn { margin-top: 0; }
 
 /* Small, light caption under a photo (e.g. commission page hero) */
 .photo-caption { margin: 0; }

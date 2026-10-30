@@ -37,6 +37,16 @@
 		.examples summary::-webkit-details-marker { display: none; }
 		.examples summary::after { content: "+"; color: var(--accent-dark); font-size: 1.4rem; line-height: 1; }
 		.examples[open] summary::after { content: "–"; }
+		.examples summary::after { width: 32px; height: 32px; flex: none; border-radius: 50%; background: var(--soft); display: inline-flex; align-items: center; justify-content: center; }
+		.examples .open-hint { margin-left: auto; margin-right: 12px; font-family: "Segoe UI", system-ui, sans-serif; font-weight: 600; font-size: .85rem; color: var(--accent-dark); white-space: nowrap; }
+		.examples[open] .open-hint { display: none; }
+		.examples:not([open]) { animation: examples-glow 2.4s ease-in-out infinite; }
+		.examples:not([open]) summary::after { animation: examples-nudge 2.4s ease-in-out infinite; }
+		.examples[open] .gallery { animation: examples-drop .35s ease-out; }
+		@keyframes examples-glow { 0%, 100% { box-shadow: 0 0 0 0 rgba(255, 107, 53, 0); } 50% { box-shadow: 0 0 0 4px rgba(255, 107, 53, .28); } }
+		@keyframes examples-nudge { 0%, 55%, 100% { transform: translateY(0); } 65% { transform: translateY(5px); } 75% { transform: translateY(0); } 85% { transform: translateY(3px); } }
+		@keyframes examples-drop { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: none; } }
+		@media (prefers-reduced-motion: reduce) { .examples, .examples summary::after, .examples .gallery { animation: none !important; } }
 		.examples summary small { font-family: "Segoe UI", system-ui, sans-serif; font-weight: 400; font-size: .85rem; color: var(--muted); margin-left: 8px; }
 		.gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; padding: 0 20px 20px; }
 		.gallery a { display: block; position: relative; border-radius: 10px; overflow: hidden; aspect-ratio: 4 / 5; background: var(--soft); }
@@ -83,7 +93,7 @@
 
 		<!-- Collapsed by default; images only load when opened -->
 		<details class="examples">
-			<summary>Examples of my work <small>ink &amp; watercolour</small></summary>
+			<summary>Examples of my work <small>ink &amp; watercolour</small><span class="open-hint">Tap to open</span></summary>
 			<div class="gallery">
 				<a href="/img/fotos/aquarell-fineliner-detail-4x5.jpg"><img src="/img/fotos/aquarell-fineliner-detail-4x5.jpg" alt="Watercolour and fineliner portrait: man with glasses and a beard" loading="lazy" decoding="async"><span>Watercolour & fineliner</span></a>
 				<a href="/img/fotos/tusche-portraet-4x5.jpg"><img src="/img/fotos/tusche-portraet-4x5.jpg" alt="Expressive portrait in black ink" loading="lazy" decoding="async"><span>Ink</span></a>
