@@ -45,8 +45,11 @@
 		.card ul { margin: 0 0 14px; padding-left: 18px; }
 		.card li { margin: 4px 0; }
 		.price { background: var(--soft); border-radius: 10px; padding: 10px 12px; font-size: .95rem; margin: 0 0 16px; }
-		.btn { margin-top: auto; display: inline-block; text-align: center; background: var(--accent); color: #fff; text-decoration: none; font-weight: 600; padding: 11px 16px; border-radius: 999px; }
+		.actions { margin-top: auto; display: flex; flex-direction: column; gap: 8px; }
+		.btn { display: inline-block; text-align: center; background: var(--accent); color: #fff; text-decoration: none; font-weight: 600; padding: 11px 16px; border-radius: 999px; }
 		.btn:hover { background: var(--accent-dark); }
+		.btn--ghost { background: transparent; color: var(--accent-dark); border: 1.5px solid var(--line); font-weight: 600; padding: 9px 16px; font-size: .95rem; }
+		.btn--ghost:hover { background: var(--soft); border-color: var(--accent); }
 		.box { background: var(--soft); border-radius: 14px; padding: 22px; margin: 28px 0 0; }
 		.box h2 { font-family: Georgia, serif; font-size: 1.3rem; margin: 0 0 8px; }
 		.box p { margin: 0 0 8px; }
@@ -87,7 +90,10 @@
 					<li>Staff portraits in one consistent style, e.g. for your team page</li>
 				</ul>
 				<p class="price">A5: €20 · A4: €40–60 · larger formats and team packages on request</p>
-				<a class="btn" href="/downloads/infoblatt-portraets-privat-und-teams.pdf">Info sheet (PDF)</a>
+				<div class="actions">
+					<a class="btn" href="/downloads/infoblatt-portraets-privat-und-teams.pdf">Info sheet (PDF)</a>
+					<a class="btn btn--ghost" href="/en/commission.html#bestellen">Book this offer</a>
+				</div>
 			</section>
 
 			<section class="card">
@@ -100,7 +106,10 @@
 					<li>Trade fair &amp; full day: up to about 90 portraits a day</li>
 				</ul>
 				<p class="price">Individual quote within 48 hours. A table and two chairs are all I need.</p>
-				<a class="btn" href="/downloads/infoblatt-live-portraits-events.pdf">Info sheet (PDF)</a>
+				<div class="actions">
+					<a class="btn" href="/downloads/infoblatt-live-portraits-events.pdf">Info sheet (PDF)</a>
+					<a class="btn btn--ghost" href="/en/events.html#anfrage-event">Book this offer</a>
+				</div>
 			</section>
 
 			<section class="card">
@@ -113,7 +122,10 @@
 					<li>A large shared artwork for your space</li>
 				</ul>
 				<p class="price">€59 per person · from 11 people €650 flat · materials included</p>
-				<a class="btn" href="/downloads/infoblatt-kleckerkasten-teamworkshop.pdf">Info sheet (PDF)</a>
+				<div class="actions">
+					<a class="btn" href="/downloads/infoblatt-kleckerkasten-teamworkshop.pdf">Info sheet (PDF)</a>
+					<a class="btn btn--ghost" href="/en/events.html#anfrage-kleckerkasten">Book this offer</a>
+				</div>
 			</section>
 		</div>
 
