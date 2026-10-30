@@ -104,7 +104,7 @@
 			</div>
 		</section>
 
-		<!-- ================= PRODUCTS – prices: change here AND in data-prices below ================= -->
+		<!-- ================= PRODUCTS – no prices yet (30.10.2026, old ones were AI suggestions). To add: here AND data-prices="A4,A3,50x70" on the radios below ================= -->
 		<section class="section" id="formate">
 			<div class="wrap">
 				<h2 class="center">Drei Arten, es aufzuhängen</h2>
@@ -112,10 +112,10 @@
 					<article class="card">
 						<span class="tag">Einstieg</span>
 						<h3>Poster</h3>
-						<p class="price">ab 19 €</p>
+						<p class="price">Preis folgt</p>
 						<ul class="checks">
 							<li>Premium-Mattpapier, kräftige Farben</li>
-							<li>A4 19 € · A3 25 € · 50×70 cm 35 €</li>
+							<li>A4, A3 oder 50×70 cm</li>
 							<li>Passt in jeden Standard-Rahmen</li>
 						</ul>
 						<a class="btn btn--ghost" href="#bestellen" data-pick="Poster">Poster wählen</a>
@@ -123,10 +123,10 @@
 					<article class="card card--featured">
 						<span class="tag tag--fox">Für Aquarell empfohlen</span>
 						<h3>Museumsqualität</h3>
-						<p class="price">ab 29 €</p>
+						<p class="price">Preis folgt</p>
 						<ul class="checks">
 							<li>Schweres, mattes Kunstdruckpapier</li>
-							<li>A4 29 € · A3 39 € · 50×70 cm 55 €</li>
+							<li>A4, A3 oder 50×70 cm</li>
 							<li>Zeigt die Papierstruktur wie beim Original</li>
 						</ul>
 						<a class="btn" href="#bestellen" data-pick="Museumsqualität">Museumsqualität wählen</a>
@@ -134,10 +134,10 @@
 					<article class="card">
 						<span class="tag">Fertig zum Aufhängen</span>
 						<h3>Gerahmt</h3>
-						<p class="price">ab 49 €</p>
+						<p class="price">Preis folgt</p>
 						<ul class="checks">
 							<li>Museumspapier im Holzrahmen</li>
-							<li>A4 49 € · A3 65 € · 50×70 cm 95 €</li>
+							<li>A4, A3 oder 50×70 cm</li>
 							<li>Rahmen schwarz, weiß, Eiche oder Walnuss</li>
 						</ul>
 						<a class="btn btn--ghost" href="#bestellen" data-pick="Gerahmt">Gerahmt wählen</a>
@@ -191,12 +191,12 @@
 									<legend>Art *</legend>
 									<!-- data-prices = A4, A3, 50×70 (same order as the size field) -->
 									<div class="choice-row choice-row--3">
-										<label class="choice"><input type="radio" name="Art" value="Poster" data-prices="19,25,35" required>
-											<span><strong>Poster</strong><br><span class="hint">ab 19 €</span></span></label>
-										<label class="choice"><input type="radio" name="Art" value="Museumsqualität" data-prices="29,39,55">
-											<span><strong>Museum</strong><br><span class="hint">ab 29 €</span></span></label>
-										<label class="choice"><input type="radio" name="Art" value="Gerahmt" data-prices="49,65,95">
-											<span><strong>Gerahmt</strong><br><span class="hint">ab 49 €</span></span></label>
+										<label class="choice"><input type="radio" name="Art" value="Poster" required>
+											<span><strong>Poster</strong></span></label>
+										<label class="choice"><input type="radio" name="Art" value="Museumsqualität">
+											<span><strong>Museum</strong></span></label>
+										<label class="choice"><input type="radio" name="Art" value="Gerahmt">
+											<span><strong>Gerahmt</strong></span></label>
 									</div>
 								</fieldset>
 							</div>
@@ -237,7 +237,7 @@
 										<a href="/ImpressumUndDatenschutz/Datenschutz.html" target="_blank">Datenschutzerklärung</a> gelesen. *</span></label>
 							</div>
 						</div>
-						<p class="edition-total">Summe: <strong data-sum>–</strong> <small>(Endpreis inkl. Versand)</small></p>
+						<p class="edition-total">Preis: <strong data-sum>folgt mit der Rechnung</strong></p>
 						<button class="btn btn--fox" type="submit">Bestellen – Rechnung folgt per E-Mail</button>
 					</form>
 				</div>
@@ -252,7 +252,7 @@
 					var art = form.querySelector('input[name="Art"]:checked');
 					var out = form.querySelector('[data-sum]');
 					form.querySelector('#p-frame').disabled = !art || art.value !== 'Gerahmt';
-					if (!art) { out.textContent = '–'; return; }
+					if (!art || !art.hasAttribute('data-prices')) return; // no prices yet: price comes with the invoice
 					var price = parseFloat(art.getAttribute('data-prices').split(',')[form.querySelector('#p-size').selectedIndex]);
 					var qty = Math.max(1, parseInt(form.querySelector('#p-qty').value, 10) || 1);
 					var ship = parseFloat(form.querySelector('#p-delivery').selectedOptions[0].getAttribute('data-price')) || 0;

@@ -89,7 +89,7 @@
 					<article class="card card--featured">
 						<span class="tag tag--fox">Nur 30 Stück</span>
 						<h3>Limitierte Edition</h3>
-						<p class="price">65 €</p>
+						<p class="price">Preis folgt</p>
 						<ul class="checks">
 							<li>Von Hand nummeriert (z. B. 7/30) und signiert</li>
 							<li>Mit Echtheitszertifikat</li>
@@ -101,7 +101,7 @@
 					<article class="card">
 						<span class="tag">Unbegrenzt</span>
 						<h3>Offene Edition</h3>
-						<p class="price">45 €</p>
+						<p class="price">Preis folgt</p>
 						<ul class="checks">
 							<li>Signiert</li>
 							<li>Gleiches Motiv, gleiche Druckqualität</li>
@@ -150,10 +150,10 @@
 								<fieldset>
 									<legend>Edition *</legend>
 									<div class="choice-row">
-										<label class="choice"><input type="radio" name="Edition" value="Limitierte Edition" data-price="65" required>
-											<span><strong>Limitiert</strong><br><span class="hint">nummeriert &amp; signiert · 65 €</span></span></label>
-										<label class="choice"><input type="radio" name="Edition" value="Offene Edition" data-price="45">
-											<span><strong>Offen</strong><br><span class="hint">signiert · 45 €</span></span></label>
+										<label class="choice"><input type="radio" name="Edition" value="Limitierte Edition" required>
+											<span><strong>Limitiert</strong><br><span class="hint">nummeriert &amp; signiert</span></span></label>
+										<label class="choice"><input type="radio" name="Edition" value="Offene Edition">
+											<span><strong>Offen</strong><br><span class="hint">signiert</span></span></label>
 									</div>
 								</fieldset>
 							</div>
@@ -182,7 +182,7 @@
 										<a href="/ImpressumUndDatenschutz/Datenschutz.html" target="_blank">Datenschutzerklärung</a> gelesen. *</span></label>
 							</div>
 						</div>
-						<p class="edition-total">Summe: <strong data-sum>–</strong> <small>(Endpreis inkl. Versand)</small></p>
+						<p class="edition-total">Preis: <strong data-sum>folgt mit der Rechnung</strong></p>
 						<button class="btn btn--fox" type="submit">Bestellen – Rechnung folgt per E-Mail</button>
 						<p class="hint">Ausverkauft? Wenn die limitierte Edition vergriffen ist, melde ich mich und biete dir die offene Edition an.</p>
 					</form>
@@ -209,7 +209,7 @@
 			function update() {
 				var ed = form.querySelector('input[name="Edition"]:checked');
 				var out = form.querySelector('[data-sum]');
-				if (!ed) { out.textContent = '–'; return; }
+				if (!ed || !ed.hasAttribute('data-price')) return; // no prices yet (30.10.2026): price comes with the invoice
 				var qty = Math.max(1, parseInt(form.querySelector('#e-qty').value, 10) || 1);
 				var ship = parseFloat(form.querySelector('#e-delivery').selectedOptions[0].getAttribute('data-price')) || 0;
 				var sum = qty * parseFloat(ed.getAttribute('data-price')) + ship;
