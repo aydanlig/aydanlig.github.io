@@ -8,12 +8,10 @@
 
    Where:  .hero          – 1 cluster  (top of a page)
            .section--alt  – 1 cluster  (light bands)
-           .klecker       – 3, 6 or 9 clusters (Kleckerkasten: "kleckern" = splash paint)
-   The splash pictures are CSS variables in css/main.css (--splash-*, --klecks-*).
+   The splash pictures are CSS variables in css/main.css (--splash-*).
    ========================================================= */
 (function () {
 	var SOFT = ['--splash-fox', '--splash-mauve', '--splash-fox'];
-	var KLECKS = ['--klecks-fox', '--klecks-purple', '--klecks-blue', '--klecks-pink', '--klecks-ochre', '--klecks-mauve'];
 	var IMAGES = 'img, picture, video, iframe, canvas, svg, .ph, .ph-img, .band-grid, .swipe-track';
 	var GAP = 18; // minimum distance between a splash and a picture, in px
 
@@ -37,7 +35,6 @@
 		var box = section.getBoundingClientRect();
 		var W = box.width, H = box.height;
 		if (!W || !H) return;
-		var klecker = section.classList.contains('klecker');
 		var hero = section.classList.contains('hero');
 		var random = rng(index * 7 + 3);
 
@@ -47,11 +44,10 @@
 			return { left: r.left - box.left, right: r.right - box.left, top: r.top - box.top, bottom: r.bottom - box.top };
 		}).filter(function (r) { return r.right > r.left && r.bottom > r.top; });
 
-		// how many clusters: always a multiple of three on the Kleckerkasten, one elsewhere
-		var clusters = klecker ? 3 * Math.max(1, Math.min(3, Math.round(H / 1200))) : 1;
-		var size = klecker ? Math.max(90, Math.min(200, W * 0.2)) : Math.max(160, Math.min(hero ? 380 : 300, W * (hero ? 0.32 : 0.26)));
-		var colours = klecker ? KLECKS : SOFT;
-		var opacity = klecker ? 0.32 : (hero ? 0.24 : 0.18);
+		var clusters = 1;
+		var size = Math.max(160, Math.min(hero ? 380 : 300, W * (hero ? 0.32 : 0.26)));
+		var colours = SOFT;
+		var opacity = hero ? 0.24 : 0.18;
 
 		// "thirds" spots across the width: the two edges first (least in the way of text), then 1/3 and 2/3
 		var xs = [0.06, 0.94, 0.33, 0.67];
@@ -94,7 +90,7 @@
 	}
 
 	function all() {
-		document.querySelectorAll('.hero, .section--alt, .klecker').forEach(place);
+		document.querySelectorAll('.hero, .section--alt').forEach(place);
 	}
 
 	var timer;
