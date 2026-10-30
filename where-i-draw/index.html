@@ -46,6 +46,7 @@
 		<div class="wrap">
 			<a class="logo" href="/">SmileyFoxy<span>Portraits</span></a>
 			<nav class="main-nav" aria-label="Hauptmenü">
+				<a href="/portfolio.html">Portfolio</a>
 				<a href="/events.html#live-events"><span class="nav-long">Live-</span>Events</a>
 				<a href="/events.html#kleckerkasten">Kleckerkasten</a>
 				<a href="/commission.html">Porträt<span class="nav-long">-Auftrag</span></a>
@@ -117,8 +118,8 @@
 						<li><strong>Anfahrt:</strong> S+U Brandenburger Tor</li>
 					</ul>
 				</div>
-				<!-- HIDDEN until there are photos -->
-				<div class="ph ph--1x1" hidden>Aydan zeichnet vor dem Brandenburger Tor [1000x1000]</div>
+				<!-- PLATZHALTER P22: photo of you drawing at the Brandenburg Gate -->
+				<div class="ph ph--1x1" data-ph="P22">Aydan zeichnet vor dem Brandenburger Tor [1000x1000]</div>
 			</article>
 
 			<article class="place place--compact" id="regentage">
@@ -128,7 +129,35 @@
 						Regentagen Porträts anbieten darf? <a href="mailto:aydan@smileyfoxyportraits.com?subject=Ort%20f%C3%BCr%20Regentage">Schreib mir gern.</a></p>
 				</div>
 			</article>
-			<p class="hint" style="margin:0 0 2em"><a href="/about/#in-arbeit">Demnächst auch auf Berliner Märkten →</a></p>
+			<!-- PLATZHALTER P23: MARKETS – one row per market date. Copy a row, fill in date, time, market name + a Google Maps link
+			     (like the Mauerpark row at the top: <a class="st-map" role="cell" href="…" target="_blank" rel="noopener">Karte ↗</a>). -->
+			<article class="place place--compact ph-block" id="maerkte" data-ph="P23">
+				<div>
+					<h2>Berliner Märkte</h2>
+					<p>Mit meinem mobilen Porträt-Stand bin ich bald auch auf Berliner Märkten. Die nächsten Termine:</p>
+					<div class="schedule-table" role="table" aria-label="Markttermine">
+						<div class="st-row" role="row">
+							<span class="st-day ph-text" role="cell">Datum</span>
+							<span class="st-time ph-text" role="cell">__–__ Uhr</span>
+							<span class="st-place ph-text" role="cell">Name des Markts · Bezirk</span>
+							<span class="st-map" role="cell"></span>
+						</div>
+						<div class="st-row" role="row">
+							<span class="st-day ph-text" role="cell">Datum</span>
+							<span class="st-time ph-text" role="cell">__–__ Uhr</span>
+							<span class="st-place ph-text" role="cell">Name des Markts · Bezirk</span>
+							<span class="st-map" role="cell"></span>
+						</div>
+						<div class="st-row" role="row">
+							<span class="st-day ph-text" role="cell">Datum</span>
+							<span class="st-time ph-text" role="cell">__–__ Uhr</span>
+							<span class="st-place ph-text" role="cell">Name des Markts · Bezirk</span>
+							<span class="st-map" role="cell"></span>
+						</div>
+					</div>
+				</div>
+			</article>
+
 		</div>
 
 		<!-- ================= TESTIMONIALS (Senja widget from the old page) ================= -->
@@ -205,6 +234,8 @@
 					<h3>Bleib in Kontakt 🦊</h3>
 					<p>Erfahre zuerst, wann und wo ich zeichne – und sichere dir neue Originale &amp; Prints vor allen anderen.
 						Kostenlos, höchstens eine E-Mail im Monat. <a href="https://aydanligon.substack.com/archive">Archiv lesen →</a></p>
+					<!-- PLATZHALTER P05: your thank-you for signing up (same text in every footer – search & replace "P05") -->
+					<p class="newsletter-gift">🎁 Dankeschön fürs Eintragen: <span class="ph-text" data-ph="P05">gratis Handy-Hintergrundbild eines Berlin-Motivs</span></p>
 				</div>
 				<form class="newsletter-form" action="https://aydanligon.substack.com/subscribe" method="get" target="_blank">
 					<label class="sr-only" for="footer-email">E-Mail-Adresse</label>
@@ -225,6 +256,7 @@
 						<a href="/portfolio.html">Meine Kunst (Portfolio)</a>
 						<a href="/where-i-draw/">Wo &amp; wann ich zeichne</a>
 						<a href="/referenzen/">Referenzen</a>
+						<a href="/store/">Originale &amp; Prints</a>
 					</details>
 				</div>
 				<div class="fg">

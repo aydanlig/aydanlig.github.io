@@ -4,25 +4,39 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="/js/consent.js" defer></script>
+	<script src="/js/splashes.js" defer></script>
+	<script src="/js/mail-reveal.js" defer></script>
+	<script src="/js/translate.js" defer></script>
+	<script src="/js/gallery.js" defer></script>
 
-	<!-- PORTFOLIO for market stand applications (Kunstmärkte, Flohmärkte, Festivals).
-	     Send the link, or open it and click "Als PDF speichern" to attach it to an application.
-	     "noindex" until the placeholders are replaced with real photos. -->
+	<!-- PORTFOLIO: the art first, then the stand facts for market applications ("Als PDF speichern" prints it). -->
 	<title>Portfolio | SmileyFoxyPortraits – Aydan Lig'on</title>
-	<meta name="description" content="Portfolio von Aydan Lig'on (SmileyFoxyPortraits): Live-Porträts in Fineliner und Aquarell, Berlin-Motive und Marktstand.">
-	<meta name="robots" content="noindex, follow">
+	<meta name="description" content="Portfolio von Aydan Lig'on (SmileyFoxyPortraits): Porträts in Fineliner, Tusche und Aquarell, live gezeichnet in Berlin – plus Infos zum Marktstand.">
+	<meta name="author" content="Aydan Lig'on">
+	<meta name="robots" content="index, follow">
 	<link rel="canonical" href="https://smileyfoxyportraits.com/portfolio.html">
+	<link rel="alternate" hreflang="de" href="https://smileyfoxyportraits.com/portfolio.html">
+	<link rel="alternate" hreflang="en" href="https://smileyfoxyportraits.com/en/portfolio.html">
 	<link rel="icon" href="/favicon.ico" sizes="48x48">
 	<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
 	<link rel="icon" type="image/png" sizes="96x96" href="/favicon.png">
 	<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
+	<meta property="og:type" content="website">
+	<meta property="og:locale" content="de_DE">
+	<meta property="og:url" content="https://smileyfoxyportraits.com/portfolio.html">
+	<meta property="og:site_name" content="SmileyFoxyPortraits">
+	<meta property="og:title" content="Portfolio | SmileyFoxyPortraits – Aydan Lig'on">
+	<meta property="og:description" content="Portfolio von Aydan Lig'on (SmileyFoxyPortraits): Porträts in Fineliner, Tusche und Aquarell, live gezeichnet in Berlin – plus Infos zum Marktstand.">
+	<meta property="og:image" content="https://smileyfoxyportraits.com/img/og-share.jpg?v=2">
+	<meta property="og:image:width" content="1200">
+	<meta property="og:image:height" content="630">
+	<meta name="twitter:card" content="summary_large_image">
+
 	<link rel="stylesheet" href="/css/main.css">
+	<link rel="stylesheet" href="/css/art-focus.css">
 	<link rel="stylesheet" href="/css/ink.css">
-	<script src="/js/consent.js" defer></script>
-	<script src="/js/splashes.js" defer></script>
-	<script src="/js/mail-reveal.js" defer></script>
-	<script src="/js/translate.js" defer></script>
 </head>
 
 <body>
@@ -30,79 +44,141 @@
 	<header class="site-header">
 		<div class="wrap">
 			<a class="logo" href="/">SmileyFoxy<span>Portraits</span></a>
-			<!-- Opens the browser's print dialog -> choose "Als PDF speichern" -->
-			<a class="lang-switch" data-translate lang="en" title="Translate this page to English" href="https://smileyfoxyportraits-com.translate.goog/portfolio.html?_x_tr_sl=de&_x_tr_tl=en&_x_tr_hl=en">EN</a>
-			<button class="btn btn--small no-print" onclick="window.print()">Als PDF speichern</button>
+			<nav class="main-nav" aria-label="Hauptmenü">
+				<a href="/portfolio.html">Portfolio</a>
+				<a href="/events.html#live-events"><span class="nav-long">Live-</span>Events</a>
+				<a href="/events.html#kleckerkasten">Kleckerkasten</a>
+				<a href="/commission.html">Porträt<span class="nav-long">-Auftrag</span></a>
+				<a href="/about/">Über mich</a>
+			</nav>
+			<a class="lang-switch" data-translate lang="en" title="English version of this page" href="/en/portfolio.html">EN</a>
+			<a class="btn btn--small" href="/events.html#anfrage-kleckerkasten">Anfragen</a>
 		</div>
 	</header>
-	<!-- PHOTO NOTE – delete this block once all grey placeholders are replaced by real photos -->
-	<p class="photo-note">Die grauen Bildplatzhalter ersetze ich in Kürze durch echte Fotos.</p>
 
 
 	<main>
 
-		<!-- ================= SHORT PROFILE ================= -->
-		<section class="section" style="padding-bottom:32px">
-			<div class="wrap split">
-				<div>
-					<span class="eyebrow">Portfolio · Marktstand</span>
-					<h1>SmileyFoxyPortraits</h1>
-					<p class="lead">
-						Ausdrucksstarke Live-Porträts in Fineliner und Aquarell, gezeichnet in wenigen Minuten,
-						direkt vor Ort. Von Aydan Lig'on, Berlin.
-					</p>
-					<p>
-						„Ich zeichne nach Gefühl – und suche für jeden Menschen das Bild, das genau zu ihm passt.“ Meine Porträts sind bewusst günstig,
-						damit sich jede:r Kunst leisten kann – schon ab einem Euro. Am Stand entsteht so ein ständiger Treffpunkt, der Besucher:innen anzieht und verweilen lässt.
-					</p>
-				</div>
-				<img src="/img/fotos/aydan-am-stand.jpg" alt="Aydan zeichnet an seinem Stand auf dem Saunasplash-Event" class="ph-img ph--natural" width="1400" height="1050" fetchpriority="high" decoding="async">
-			</div>
-
-			<!-- Key facts market organisers usually ask for – fill in the ___ -->
+		<!-- ================= INTRO + ARTIST STATEMENT ================= -->
+		<section class="section hero portfolio-hero">
 			<div class="wrap">
-				<div class="facts">
-					<div><strong>Live-Porträts</strong><span>A6 · A5 · A4, ca. 5 Min. (schnell) bis 15 Min. (ausführlich) pro Porträt</span></div>
-					<div><strong>1 € – 60 €</strong><span>Preise vor Ort (A6/A7 1 € nur live, A5 10–20 €, A4 20–60 €)</span></div>
-					<div><strong>Stand flexibel</strong><span>Standard: Klapptisch (1,35 m), ein Stuhl für mich, eine Bank oder 2 Stühle für Gäste. Für größere Märkte anpassbar; kein Strom nötig</span></div>
-					<div><strong>Erfahrung</strong><span>Mauerpark, Brandenburger Tor, Events mit 1.500+ Gästen</span></div>
+				<div>
+					<span class="eyebrow">Portfolio · Aydan Lig'on · Berlin</span>
+					<h1>Gezeichnet <em>nach Gefühl</em></h1>
+					<p class="lead">Ausdrucksstarke Porträts in Fineliner, Tusche und Aquarell – live vor Ort, auf der Bühne oder nach Foto.</p>
+				<!-- PLATZHALTER P04: KÜNSTLER-STATEMENT (Entwurf von Claude – in deinen eigenen Worten umschreiben).
+				     Steht genauso auf /about/ und /portfolio.html (+ EN). Danach class="ph-block" und data-ph entfernen. -->
+				<div class="statement ph-block" data-ph="P04">
+					<span class="eyebrow">Künstler-Statement · Entwurf</span>
+					<p>Ich zeichne Menschen nach Gefühl – nicht so, wie sie auf einem Foto aussehen, sondern so, wie sie sich in diesem
+						Moment anfühlen. Mit Fineliner, Tusche und Aquarell arbeite ich schnell und direkt: Linien dürfen verwischen,
+						Farbe darf auslaufen, der Zufall gehört dazu.</p>
+					<p>Meine Themen sind Menschen, Berlin und die kurzen Live-Momente dazwischen – im Mauerpark, auf Konzerten, auf
+						Festivals. Jedes Porträt entsteht vor Ort, in wenigen Minuten, im direkten Gegenüber.</p>
 				</div>
+					<div class="btn-row no-print">
+						<a class="btn" href="/commission.html">Porträt in Auftrag geben</a>
+						<a class="btn btn--ghost" href="/events.html#live-events">Für ein Event buchen</a>
+						<!-- Opens the print dialog -> "Als PDF speichern": handy for market stand applications -->
+						<button class="btn btn--ghost" type="button" onclick="window.print()">Als PDF speichern</button>
+					</div>
+				</div>
+				<figure class="photo-caption">
+					<picture><source type="image/webp" srcset="/img/art/tusche-portraet-brille-blau-900.webp 900w, /img/art/tusche-portraet-brille-blau-1410.webp 1410w" sizes="(max-width: 900px) 100vw, 50vw"><img src="/img/art/tusche-portraet-brille-blau-1410.jpg" srcset="/img/art/tusche-portraet-brille-blau-900.jpg 900w, /img/art/tusche-portraet-brille-blau-1410.jpg 1410w" sizes="(max-width: 900px) 100vw, 50vw" alt="Porträt in Aquarell und Fineliner: Mann mit Brille und Bart" class="ph-img" width="1410" height="1940" fetchpriority="high" decoding="async"></picture>
+					<figcaption>25 Minuten, Mauerpark. Tusche, Fineliner, ein Hauch Blau.</figcaption>
+				</figure>
 			</div>
 		</section>
 
-		<!-- ================= WORK SAMPLES ================= -->
-		<section class="section section--alt" style="padding-top:40px">
+		<!-- ================= SELECTED WORK: the art, big ================= -->
+		<section class="section" id="arbeiten" aria-labelledby="work-title">
 			<div class="wrap">
-				<h2>Arbeitsproben</h2>
+				<div class="center">
+					<span class="eyebrow">Ausgewählte Arbeiten</span>
+					<h2 id="work-title">Tusche, Aquarell &amp; alles dazwischen</h2>
+				</div>
+				<!-- ART WALL: click = big view (js/gallery.js). To add a piece: copy an <a>…</a> line. -->
+				<div class="art-wall" data-lightbox>
+					<a href="/img/art/aquarell-gitarrist-980.jpg"><img src="/img/art/aquarell-gitarrist-980.jpg" alt="Aquarell-Porträt mit Fineliner: Gitarrist im Skizzenbuch" width="980" height="1405" loading="lazy" decoding="async"><span>Aquarell &amp; Fineliner</span></a>
+					<a href="/img/art/tusche-portraet-verwischt-895.jpg"><img src="/img/art/tusche-portraet-verwischt-895.jpg" alt="Tusche-Porträt, mit dem Pinsel verwischt" width="895" height="1438" loading="lazy" decoding="async"><span>Tusche, verwischt</span></a>
+					<a href="/img/art/tusche-aquarell-kleckse-1185.jpg"><img src="/img/art/tusche-aquarell-kleckse-1185.jpg" alt="Tusche-Porträt vor blauen Aquarell-Klecksen" width="1185" height="1185" loading="lazy" decoding="async"><span>Tusche &amp; Kleckse</span></a>
+					<a href="/img/art/tusche-gruppe-blau-1010.jpg"><img src="/img/art/tusche-gruppe-blau-1010.jpg" alt="Familie in schwarzer Tusche vor blauem Aquarell" width="1010" height="1335" loading="lazy" decoding="async"><span>Familie in Tusche</span></a>
+					<a href="/img/art/aquarell-saunasplash-portraets-1115.jpg"><img src="/img/art/aquarell-saunasplash-portraets-1115.jpg" alt="Live gezeichnete Aquarell-Porträts vom Saunasplash" width="1115" height="780" loading="lazy" decoding="async"><span>Live beim Saunasplash</span></a>
+					<a href="/img/art/rote-skizze-15-minuten-1070.jpg"><img src="/img/art/rote-skizze-15-minuten-1070.jpg" alt="Rote Skizze, live in 15 Minuten gezeichnet" width="1070" height="1700" loading="lazy" decoding="async"><span>Rot, 15 Min. · in der Auktion</span></a>
+					<a href="/img/art/kuli-skizze-bahn-850.jpg"><img src="/img/art/kuli-skizze-bahn-850.jpg" alt="Kugelschreiber-Skizze, in der Bahn gezeichnet" width="850" height="1320" loading="lazy" decoding="async"><span>Kuli, in der Bahn</span></a>
+				</div>
+				<p class="center hint"><a href="/about/#bands">Konzert-Zeichnungen ansehen →</a></p>
+			</div>
+		</section>
 
-				<h3>Fineliner-Porträts</h3>
+		<!-- ================= MORE SAMPLES (photos of real commissions) ================= -->
+		<section class="section section--alt" aria-labelledby="samples-title">
+			<div class="wrap">
+				<h2 id="samples-title">Arbeitsproben</h2>
+				<h3>Fineliner</h3>
 				<div class="portfolio-grid">
 					<img src="/img/fotos/tusche-portraet-4x5.jpg" alt="Porträt in schwarzer Tusche" class="ph-img ph--4x5" width="1200" height="1500" loading="lazy" decoding="async">
 					<img src="/img/fotos/gerahmtes-paar-4x5.jpg" alt="Gerahmtes Porträt eines Paares in Fineliner, daneben Tusche-Skizzen und ein Fotostreifen" class="ph-img ph--4x5" width="1200" height="1500" loading="lazy" decoding="async">
 					<img src="/img/fotos/gruppe-tusche-4x5.jpg" alt="Gruppenporträt in Tusche mit blauem Aquarell" class="ph-img ph--4x5" width="1200" height="1500" loading="lazy" decoding="async">
 				</div>
-
 				<h3 style="margin-top:1.5em">Aquarell</h3>
 				<div class="portfolio-grid">
 					<img src="/img/fotos/aquarell-kleckse-4x5.jpg" alt="Aquarell-Porträt mit blauen Farbklecksen" class="ph-img ph--4x5" width="1200" height="1500" loading="lazy" decoding="async">
 					<img src="/img/fotos/aquarell-gitarre-4x5.jpg" alt="Aquarell-Porträt eines Gitarristen im Skizzenbuch" class="ph-img ph--4x5" width="1200" height="1500" loading="lazy" decoding="async">
 					<img src="/img/fotos/aquarell-fineliner-detail-4x5.jpg" alt="Detail eines Porträts in Aquarell und Fineliner" class="ph-img ph--4x5" width="1200" height="1500" loading="lazy" decoding="async">
 				</div>
-
 				<h3 style="margin-top:1.5em">Berlin-Motive &amp; Prints</h3>
+				<p class="hint">Die Serie „Berlin zwischen Tag und Nacht“ entsteht gerade.
+					<a href="/store/">Originale &amp; Prints →</a></p>
 				<div class="portfolio-grid">
-					<div class="ph ph--4x5">Berlin bei Nacht / Morgengrauen [1200x1500]</div>
-					<div class="ph ph--4x5">Streetart / Straßenszene [1200x1500]</div>
-					<div class="ph ph--4x5">Prints im Verkaufsformat [1200x1500]</div>
+					<!-- PLATZHALTER P01 -->
+					<div class="ph ph--4x5" data-ph="P01">Berlin bei Nacht / Morgengrauen<br>Aquarell + Fineliner [1200x1500]</div>
+					<!-- PLATZHALTER P02 -->
+					<div class="ph ph--4x5" data-ph="P02">Streetart / Straßenszene [1200x1500]</div>
+					<!-- PLATZHALTER P03 -->
+					<div class="ph ph--4x5" data-ph="P03">Print im Verkaufsformat (Foto vom fertigen Druck) [1200x1500]</div>
 				</div>
 			</div>
 		</section>
 
-		<!-- ================= THE STAND ================= -->
-		<section class="section" style="padding-top:40px">
+		<!-- ================= GALLERY EXHIBITION ================= -->
+		<section class="section" id="ausstellung" aria-labelledby="exhibition-title">
 			<div class="wrap">
-				<h2>Der Stand</h2>
-				<div class="gallery">
+				<span class="eyebrow">Ausstellung</span>
+				<h2 id="exhibition-title"><!-- PLATZHALTER P29 --><span class="ph-text" data-ph="P29">Name der Ausstellung</span></h2>
+				<p><!-- PLATZHALTER P30 --><span class="ph-text" data-ph="P30">Galerie / Ort, Stadt · Datum (von–bis)</span></p>
+				<p><!-- PLATZHALTER P31 --><span class="ph-text" data-ph="P31">2–3 Sätze: worum es in der Ausstellung ging, welche Arbeiten du gezeigt hast und mit wem du ausgestellt hast.</span></p>
+				<div class="portfolio-grid">
+					<!-- PLATZHALTER P32 -->
+					<div class="ph ph--4x5" data-ph="P32">Ausgestellte Arbeit 1<br>(Foto vom Original) [1200x1500]</div>
+					<!-- PLATZHALTER P33 -->
+					<div class="ph ph--4x5" data-ph="P33">Ausgestellte Arbeit 2<br>(Foto vom Original) [1200x1500]</div>
+					<!-- PLATZHALTER P34 -->
+					<div class="ph ph--4x5" data-ph="P34">Ausgestellte Arbeit 3<br>(Foto vom Original) [1200x1500]</div>
+				</div>
+				<div class="gallery" style="margin-top:1.6em">
+					<!-- PLATZHALTER P35 -->
+					<div class="ph ph--3x2" data-ph="P35">Raumansicht: deine Arbeiten an der Wand [1200x800]</div>
+					<!-- PLATZHALTER P36 -->
+					<div class="ph ph--3x2" data-ph="P36">Vernissage: Gäste vor deinen Bildern [1200x800]</div>
+					<!-- PLATZHALTER P37 -->
+					<div class="ph ph--3x2" data-ph="P37">Du bei der Ausstellung / Plakat oder Einladung [1200x800]</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- ================= THE STAND (for market organisers) ================= -->
+		<section class="section" id="stand" aria-labelledby="stand-title">
+			<div class="wrap">
+				<span class="eyebrow">Für Märkte &amp; Veranstalter</span>
+				<h2 id="stand-title">Der Stand</h2>
+				<div class="facts">
+					<div><strong>Live-Porträts</strong><span>A6 · A5 · A4, ca. 5 Min. (schnell) bis 15 Min. (ausführlich) pro Porträt</span></div>
+					<div><strong>1 € – 60 €</strong><span>Preise vor Ort (A6/A7 1 € nur live, A5 10–20 €, A4 20–60 €)</span></div>
+					<div><strong>Stand flexibel</strong><span>Standard: Klapptisch (1,35 m), ein Stuhl für mich, eine Bank oder 2 Stühle für Gäste. Für größere Märkte anpassbar; kein Strom nötig</span></div>
+					<div><strong>Erfahrung</strong><span>Mauerpark, Brandenburger Tor, Events mit 1.500+ Gästen</span></div>
+				</div>
+				<div class="gallery" style="margin-top:1.6em">
 					<img src="/img/fotos/stand-zelt-3x2.jpg" alt="Aydans Porträt-Stand komplett von vorne" class="ph-img ph--3x2" width="1200" height="800" loading="lazy" decoding="async">
 					<img src="/img/fotos/stand-tisch-3x2.jpg" alt="Preisschild und Beispielporträts auf Aydans Zeichentisch" class="ph-img ph--3x2" width="1200" height="800" loading="lazy" decoding="async">
 					<img src="/img/fotos/gaeste-mit-portraets-3x2.jpg" alt="Gäste mit ihren frisch gezeichneten Porträts" class="ph-img ph--3x2" width="1200" height="800" loading="lazy" decoding="async">
@@ -145,6 +221,8 @@
 					<h3>Bleib in Kontakt 🦊</h3>
 					<p>Erfahre zuerst, wann und wo ich zeichne – und sichere dir neue Originale &amp; Prints vor allen anderen.
 						Kostenlos, höchstens eine E-Mail im Monat. <a href="https://aydanligon.substack.com/archive">Archiv lesen →</a></p>
+					<!-- PLATZHALTER P05: your thank-you for signing up (same text in every footer – search & replace "P05") -->
+					<p class="newsletter-gift">🎁 Dankeschön fürs Eintragen: <span class="ph-text" data-ph="P05">gratis Handy-Hintergrundbild eines Berlin-Motivs</span></p>
 				</div>
 				<form class="newsletter-form" action="https://aydanligon.substack.com/subscribe" method="get" target="_blank">
 					<label class="sr-only" for="footer-email">E-Mail-Adresse</label>
@@ -165,6 +243,7 @@
 						<a href="/portfolio.html">Meine Kunst (Portfolio)</a>
 						<a href="/where-i-draw/">Wo &amp; wann ich zeichne</a>
 						<a href="/referenzen/">Referenzen</a>
+						<a href="/store/">Originale &amp; Prints</a>
 					</details>
 				</div>
 				<div class="fg">

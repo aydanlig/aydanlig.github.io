@@ -43,6 +43,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://smileyfoxyportraits.com/portfolio.html</loc>
+    <lastmod>2026-10-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://smileyfoxyportraits.com/referenzen/</loc>
     <lastmod>2026-10-22</lastmod>
     <changefreq>monthly</changefreq>
@@ -84,6 +90,7 @@
 	<url><loc>https://smileyfoxyportraits.com/en/about/</loc></url>
 	<url><loc>https://smileyfoxyportraits.com/en/contact/</loc></url>
 	<url><loc>https://smileyfoxyportraits.com/en/where-i-draw/</loc></url>
+	<url><loc>https://smileyfoxyportraits.com/en/portfolio.html</loc></url>
 	<url><loc>https://smileyfoxyportraits.com/en/referenzen/</loc></url>
 	<url><loc>https://smileyfoxyportraits.com/en/spenden/</loc></url>
 </urlset>
