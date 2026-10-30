@@ -96,6 +96,8 @@
 	</script>
 
 	<link rel="stylesheet" href="/css/main.css">
+	<link rel="stylesheet" href="/css/art-focus.css">
+	<link rel="stylesheet" href="/css/ink.css">
 </head>
 
 <body>
@@ -278,21 +280,22 @@
 		</section>
 
 		<!-- ================= SKETCHBOOK: a loose wall of real drawings (click = big view, js/gallery.js) ================= -->
-		<section class="section section--alt" id="kunst" aria-labelledby="art-title">
+		<section class="section section--alt art-show" id="kunst" aria-labelledby="art-title">
 			<div class="wrap">
 				<div class="center">
 					<span class="eyebrow">Aus dem Skizzenbuch</span>
 					<h2 id="art-title">Gezeichnet nach Gefühl</h2>
 				</div>
-				<div class="sketch-wall" data-lightbox>
-					<a href="/img/fotos/aquarell-gitarre-papier.jpg"><img src="/img/fotos/aquarell-gitarre-papier.jpg" alt="Aquarell-Porträt mit Fineliner: Gitarrist im Skizzenbuch" width="690" height="1075" loading="lazy" decoding="async"><span>Aquarell &amp; Fineliner</span></a>
-					<a href="/img/fotos/tusche-portraet-4x5.jpg"><img src="/img/fotos/tusche-portraet-4x5.jpg" alt="Ausdrucksstarkes Porträt in schwarzer Tusche" width="1080" height="1350" loading="lazy" decoding="async"><span>Tusche</span></a>
-					<a href="/img/musik/band-3-buehne.jpg"><img src="/img/musik/band-3-buehne.jpg" alt="Live-Skizze der Band CEVIL im pinken Bühnenlicht" loading="lazy" decoding="async"><span>CEVIL – live auf der Bühne</span></a>
-					<a href="/img/fotos/spaghettaria-3.jpg"><img src="/img/fotos/spaghettaria-3.jpg" alt="Gerahmtes Porträt in blauer Tusche: junger Mann mit Mütze" loading="lazy" decoding="async"><span>Mitarbeiter-Porträt, gerahmt</span></a>
-					<a href="/img/fotos/goldig-aquarell-1x1.jpg"><img src="/img/fotos/goldig-aquarell-1x1.jpg" alt="Aquarell-Porträt in Orange: Gitarrist von Revolte Tanzbein" width="1000" height="1000" loading="lazy" decoding="async"><span>Vor dem Schokoladen</span></a>
-					<a href="/img/musik/band-7.jpg"><img src="/img/musik/band-7-klein.jpg" alt="Aquarell-Skizze eines Gitarristen, von CEVIL geteilt: „this is the coolest thing ever“" loading="lazy" decoding="async"><span>„the coolest thing ever“</span></a>
-					<a href="/img/fotos/crayon-portraet.jpg"><img src="/img/fotos/crayon-portraet.jpg" alt="Porträt in Wachsmalkreide: Mann mit langen Haaren und Bart" loading="lazy" decoding="async"><span>Crayon-Aquarell</span></a>
-					<a href="/img/fotos/gerahmtes-paar-3x4.jpg"><img src="/img/fotos/gerahmtes-paar-3x4.jpg" alt="Gerahmtes Paar-Porträt in Tusche und Aquarell mit Skizzen und Fotostreifen" width="675" height="900" loading="lazy" decoding="async"><span>Auftrag, gerahmt</span></a>
+				<!-- Main tile: paper-only crop (img/fotos/aquarell-gitarre-papier.jpg), object-position = which part stays visible (x% y%).
+			     Tiles with class="fit" (all of them now): the whole picture is shown, with a blurred copy of it (--bg) filling the rest of the tile. -->
+				<div class="art-grid" data-lightbox>
+					<!-- main tile fades between the watercolour + fineliner drawings (js/fade.js) -->
+					<a class="art-big fit" href="/img/art/aquarell-gitarrist-980.jpg" style="--bg: url('/img/art/aquarell-gitarrist-980.jpg')"><span class="fade-stack" data-fade="5000"><img src="/img/art/aquarell-gitarrist-980.jpg" alt="Aquarell-Porträt mit Fineliner: Gitarrist im Skizzenbuch" width="980" height="1405" loading="lazy" decoding="async"><img src="/img/fotos/aquarell-gitarre-2-papier.jpg" alt="Aquarell mit Fineliner: Gitarrist mit zwei Gitarren, „Bro has not one but two guitars“" width="774" height="1200" loading="lazy" decoding="async"><img src="/img/fotos/a5-marker-fineliner-aquarell.jpg" alt="A5-Porträt mit Marker, Fineliner und Aquarell: Person mit Mütze" width="900" height="1200" loading="lazy" decoding="async"></span><span>Aquarell &amp; Fineliner</span></a>
+					<a class="fit" href="/img/art/tusche-portraet-verwischt-895.jpg" style="--bg: url('/img/art/tusche-portraet-verwischt-895.jpg')"><span class="fade-stack" data-fade="6000"><img src="/img/art/tusche-portraet-verwischt-895.jpg" alt="Tusche-Porträt, mit dem Pinsel verwischt" width="895" height="1438" loading="lazy" decoding="async"><img src="/img/art/tusche-aquarell-kleckse-900.jpg" alt="Tusche-Porträt vor blauen Aquarell-Klecksen" width="900" height="900" loading="lazy" decoding="async"><img src="/img/art/tusche-gruppe-blau-900.jpg" alt="Familie in schwarzer Tusche vor blauem Aquarell" width="900" height="1190" loading="lazy" decoding="async"></span><span>Tusche &amp; Aquarell</span></a>
+					<!-- CEVIL: concert sketch, our selfie with her signed album, her Instagram share (js/fade.js) -->
+					<a class="fit" href="/img/musik/band-3-buehne.jpg" style="--bg: url('/img/musik/band-3-buehne.jpg')"><span class="fade-stack" data-fade="5000"><img src="/img/musik/band-3-buehne.jpg" alt="Live-Skizze der Band CEVIL im pinken Bühnenlicht" width="739" height="1260" loading="lazy" decoding="async"><img src="/img/musik/cevil-selfie.jpg" alt="Selfie: Aydan und CEVIL nach dem Konzert, mit ihrem signierten Album" width="1050" height="1400" loading="lazy" decoding="async"><img src="/img/musik/band-7.jpg" alt="Die Live-Skizze, von CEVIL auf Instagram geteilt: „this is the coolest thing ever“" loading="lazy" decoding="async"></span><span>CEVIL – live auf der Bühne</span></a>
+					<a class="fit" href="/img/fotos/gerahmtes-paar-3x4.jpg" style="--bg: url('/img/fotos/gerahmtes-paar-3x4.jpg')"><img src="/img/fotos/gerahmtes-paar-3x4.jpg" alt="Gerahmtes Paar-Porträt in Tusche und Aquarell mit Skizzen und Fotostreifen" width="675" height="900" loading="lazy" decoding="async"><span>Auftrag, gerahmt</span></a>
+					<a class="fit" href="/img/art/aquarell-saunasplash-portraets-1115.jpg" style="--bg: url('/img/art/aquarell-saunasplash-portraets-900.jpg')"><img src="/img/art/aquarell-saunasplash-portraets-900.jpg" alt="Live gezeichnete Aquarell-Porträts vom Saunasplash" width="900" height="630" loading="lazy" decoding="async"><span>Live beim Saunasplash</span></a>
 				</div>
 				<p class="center"><a class="btn-portfolio" href="/portfolio.html">Alle Arbeiten ansehen <b aria-hidden="true">→</b></a></p>
 			</div>
@@ -307,7 +310,7 @@
 				</figure>
 				<div class="statement-text">
 					<span class="eyebrow">Warum ich so zeichne</span>
-					<h2 id="story-title">Kunst ist meine Brücke zu Menschen. <span class="spinning-smiley" aria-hidden="true"></span></h2>
+					<h2 id="story-title">Kunst ist meine Brücke zu Menschen.</h2>
 					<p class="first">Ich zeichne nach Gefühl, nicht nach Lineal – und suche für jeden Menschen das Bild, das genau zu ihm passt.</p>
 					<p>
 						Meine Porträts entstehen live, in wenigen Minuten, direkt vor dir: mit Fineliner und Tusche, die klar und ernst wirken,
@@ -346,8 +349,21 @@
 					<a class="proof-logo" href="https://cevil.de" target="_blank" rel="noopener" title="CEVIL – Cinematic Pop, live im Konzert gezeichnet">
 						<img src="/img/logos/cevil-logo.png" alt="Logo von CEVIL – Cinematic Pop" width="412" height="161" loading="lazy" decoding="async">
 					</a>
+					<!-- PLATZHALTER P13 + P14: next client logos (only with their OK). Replace each box with an <a class="proof-logo">…</a> block like the ones above. -->
+					<div class="proof-logo ph ph--logo" data-ph="P13">Nächstes Kunden-Logo</div>
+					<div class="proof-logo ph ph--logo" data-ph="P14">Nächstes Kunden-Logo</div>
 				</div>
-				<!-- TESTIMONIAL – Get the person's OK first (smileyfoxyportraits.com/einwilligung.html). -->
+				<!-- PLATZHALTER P15: first press mention (newspaper, blog, radio …) – name + link -->
+				<p class="hint" style="margin-top:1em">Bekannt aus: <span class="ph-text" data-ph="P15">Name der Zeitung / des Blogs + Link</span></p>
+
+				<!-- SENJA WIDGET (switched off on purpose – the testimonials there are too personal for now).
+				     To show it again: delete this comment's start and end markers.
+				<script src="https://widget.senja.io/widget/fafd6464-279d-4513-b4ef-a8ec99af34cc/platform.js" type="text/javascript" async></script>
+				<div class="senja-embed" data-id="fafd6464-279d-4513-b4ef-a8ec99af34cc" data-mode="shadow" data-lazyload="false" style="display: block; width: 100%;"></div>
+				-->
+				<!-- TESTIMONIAL – one real reaction from Instagram: the same musician in both photos.
+				     NOTE TO SELF: same story as the orange watercolour series on the About page (band-15 + band-1).
+				     Paste his quote + first name. Get his OK first (smileyfoxyportraits.com/einwilligung.html). -->
 				<div class="quote-grid quote-grid--1">
 					<figure class="quote">
 						<div class="quote-photos">
@@ -359,8 +375,114 @@
 						<cite>– Barbara, Ehefrau des gezeichneten Musikers von Revolte Tanzbein, auf Instagram (September 2026)</cite>
 					</figure>
 				</div>
+				<!-- PLATZHALTER P16 + P17: two more voices (photo of person + portrait, quote, first name, where/when).
+				     Ask with tr.ee/u1wxA4 after drawing; get the OK via smileyfoxyportraits.com/einwilligung.html -->
+				<div class="quote-grid quote-grid--2">
+					<figure class="quote ph-block" data-ph="P16">
+						<div class="ph ph--1x1">Foto: Person mit ihrem Porträt [1000x1000]</div>
+						<p><span class="ph-text">„Zitat aus der Bewertung …“</span></p>
+						<cite>– <span class="ph-text">Vorname, Anlass/Ort (Monat Jahr)</span></cite>
+					</figure>
+					<figure class="quote ph-block" data-ph="P17">
+						<div class="ph ph--1x1">Foto: Person mit ihrem Porträt [1000x1000]</div>
+						<p><span class="ph-text">„Zitat aus der Bewertung …“</span></p>
+						<cite>– <span class="ph-text">Vorname, Anlass/Ort (Monat Jahr)</span></cite>
+					</figure>
+				</div>
+
 				<!-- HIDDEN for now (see notizen/TODO.md): show again once the Dankbarkeitswand has more reviews – remove "hidden" -->
 				<p style="margin-top:1.5em" hidden><a href="/thankyou/index.html">Alle Stimmen auf der Dankbarkeitswand ansehen →</a></p>
+			</div>
+		</section>
+
+		<!-- ================= BERLIN AESTHETIC ================= -->
+		<!-- PHOTO NOTE – the Berlin artworks are still being painted; delete this line once the boxes below are real pictures -->
+		<p class="photo-note photo-note--section">Die Berlin-Motive male ich gerade – die grauen Platzhalter ersetze ich bald durch die fertigen Bilder.</p>
+		<!-- Switched ON with placeholders (P06–P09): swap each box for the finished picture -->
+		<section class="section" id="berlin" aria-labelledby="berlin-title">
+			<div class="wrap">
+				<div class="split split--reverse">
+					<!-- PLATZHALTER P06 -->
+					<div class="ph ph--4x5" data-ph="P06">Aquarell + Fineliner: Berlin bei Nacht / Morgengrauen [1200x1500]</div>
+					<div>
+						<span class="eyebrow">Berlin-Landschaften</span>
+						<h2 id="berlin-title">Berlin zwischen Tag und Nacht</h2>
+						<p>
+							In Aquarell und Fineliner halte ich fest, wie diese Stadt sich anfühlt: Streetart und Demos,
+							Nachtschwärmer auf dem Heimweg im Morgengrauen, die kleinen Eigenheiten an jeder Ecke.
+						</p>
+						<p>
+							Es ist die rohe Zufälligkeit Berlins – und das ehrliche Gefühl, hier aufgewachsen zu sein.
+						</p>
+						<a class="btn btn--ghost" href="/commission.html#warteliste">E-Mail-Liste &amp; Warteliste</a>
+					</div>
+				</div>
+
+				<div class="gallery">
+					<!-- PLATZHALTER P07, P08, P09 -->
+					<div class="ph ph--1x1" data-ph="P07">Berlin-Motiv: Streetart [1000x1000]</div>
+					<div class="ph ph--1x1" data-ph="P08">Berlin-Motiv: Nachtleben / Morgengrauen [1000x1000]</div>
+					<div class="ph ph--1x1" data-ph="P09">Berlin-Motiv: Demo / Straßenszene [1000x1000]</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- ================= ART FOR EVERYONE ================= -->
+		<section class="section section--dark" aria-labelledby="access-title">
+			<div class="wrap">
+				<div class="split">
+					<div>
+						<span class="eyebrow">Kunst für alle</span>
+						<h2 id="access-title">Ein Porträt für einen Euro? Ja.</h2>
+						<p class="big-quote" style="color:#F2EAE4">
+							„Ich gestalte meine Kunstwerke preiswert, sodass sie für jedermann zugänglich sind. Schon für einen
+							Euro kann jede:r ein Porträt von mir mit nach Hause nehmen.“
+						</p>
+						<p>
+							Am liebsten stelle ich mich dafür draußen in den Mauerpark. Das A6-Porträt für 1 € gibt es nur
+							persönlich vor Ort. Wann ich draußen bin, poste ich vorher in meiner Instagram-Story – wer ganz sicher gehen will, wo genau ich gerade zeichne, schaut dort kurz rein.
+						</p>
+						<p><a href="/bezahlen.html" style="color:var(--fox)">Vor Ort bezahlen: PayPal oder Karte →</a></p>
+						<div class="btn-row">
+							<a class="btn btn--fox" href="/where-i-draw/">Zeiten &amp; Orte ansehen</a>
+							<a class="btn btn--ghost" style="color:#F2EAE4;border-color:#F2EAE4" href="https://www.instagram.com/smileyfoxyportraits">Instagram folgen</a>
+						</div>
+					</div>
+					<!-- Real 1-€ portraits as a small series: the first picture shows, the others when clicking (js/gallery.js).
+					     To add one: copy a hidden <a> line, change file name + data-alt, and raise the number in "▣ 3". -->
+					<div class="euro-set" data-lightbox>
+						<!-- Swipe row: swipe (phone) or use the dots; a tap opens the big view. To add a portrait: copy an <a>…</a> line. -->
+						<div class="swipe-track" data-set data-swipe>
+							<a href="/img/fotos/ein-euro-portraet.jpg"><img src="/img/fotos/ein-euro-portraet.jpg" alt="1-€-Porträt in schwarzem Marker: ein Paar, sie lehnt den Kopf an seine Schulter" width="706" height="877" style="aspect-ratio: 1 / 1; object-position: 50% 20%" loading="lazy" decoding="async"></a>
+							<a href="/img/fotos/ein-euro-portraet-kuss.jpg"><img src="/img/fotos/ein-euro-portraet-kuss.jpg" alt="1-€-Porträt in schwarzem Marker: zwei Frauen küssen sich" width="1400" height="1050" loading="lazy" decoding="async"></a>
+							<a href="/img/fotos/ein-euro-portraet-skizzen.jpg"><img src="/img/fotos/ein-euro-portraet-skizzen.jpg" alt="Drei schnelle 1-€-Porträts in Tusche auf Skizzenbuchseiten" width="607" height="430" loading="lazy" decoding="async"></a>
+							<!-- PLATZHALTER P11 + P12: more 1-€ portraits – replace each box with an <a href="…"><img …></a> line like the ones above -->
+							<div class="ph" data-ph="P11">Noch ein 1-€-Porträt [1200x900]</div>
+							<div class="ph" data-ph="P12">Noch ein 1-€-Porträt [1200x900]</div>
+						</div>
+						<div class="swipe-dots" aria-label="Bild wählen"></div>
+						<p class="hint" style="color:#F2EAE4;text-align:center;margin-top:4px">Echte 1-€-Porträts · <span class="on-touch">wischen für mehr</span><span class="on-mouse">Pfeile oder Punkte für mehr</span></p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- ================= ORIGIN STORY VIDEO (switched ON with placeholder P10) ================= -->
+		<section class="section" id="reel" aria-labelledby="reel-title">
+			<div class="wrap reel">
+				<!-- PLATZHALTER P10 – VIDEO: replace this box with your reel (1080x1920).
+				     Self-hosted file (best, no cookies): <video src="/img/reel.mp4" controls playsinline preload="none" poster="/img/reel-poster.jpg" class="ph-img ph--9x16"></video> -->
+				<div class="ph ph--9x16" data-ph="P10">Reel: Aydans Origin Story – vom Zeichnen in der Bahn zum Business [1080x1920, Hochformat-Video]</div>
+				<div>
+					<span class="eyebrow">Die Geschichte in 60 Sekunden</span>
+					<h2 id="reel-title">Wie aus Bahn-Skizzen ein Business wurde</h2>
+					<p class="lead">
+						Fremde in der S-Bahn, ein geschenktes Porträt, ein überraschtes Lächeln – schau dir an, wie alles angefangen hat.
+					</p>
+					<div class="btn-row">
+						<a class="btn" href="https://www.instagram.com/smileyfoxyportraits/reels/">Mehr Reels auf Instagram</a>
+					</div>
+				</div>
 			</div>
 		</section>
 
@@ -377,8 +499,6 @@
 				</div>
 			</div>
 		</section>
-
-	</main>
 
 	<!-- ================= FOOTER (same on every new page) =================
 	     All old links are kept: legal, social, support pages, FAQ. -->
@@ -411,6 +531,8 @@
 					<h3>Bleib in Kontakt 🦊</h3>
 					<p>Erfahre zuerst, wann und wo ich zeichne – und sichere dir neue Originale &amp; Prints vor allen anderen.
 						Kostenlos, höchstens eine E-Mail im Monat. <a href="https://aydanligon.substack.com/archive">Archiv lesen →</a></p>
+					<!-- PLATZHALTER P05: your thank-you for signing up (same text in every footer – search & replace "P05") -->
+					<p class="newsletter-gift">🎁 Dankeschön fürs Eintragen: <span class="ph-text" data-ph="P05">gratis Handy-Hintergrundbild eines Berlin-Motivs</span></p>
 				</div>
 				<form class="newsletter-form" action="https://aydanligon.substack.com/subscribe" method="get" target="_blank">
 					<label class="sr-only" for="footer-email">E-Mail-Adresse</label>
@@ -431,6 +553,7 @@
 						<a href="/portfolio.html">Meine Kunst (Portfolio)</a>
 						<a href="/where-i-draw/">Wo &amp; wann ich zeichne</a>
 						<a href="/referenzen/">Referenzen</a>
+						<a href="/store/">Originale &amp; Prints</a>
 					</details>
 				</div>
 				<div class="fg">

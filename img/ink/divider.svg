@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 70" preserveAspectRatio="none">
+	<!-- section divider: a long ink smear dragged across the page, with a watercolour wash bleeding under it -->
+	<filter id="d" x="-2%" y="-60%" width="104%" height="220%">
+		<feTurbulence type="fractalNoise" baseFrequency="0.0025 0.32" numOctaves="2" seed="21" result="streak"/>
+		<feColorMatrix in="streak" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -2.2 2.1" result="dry"/>
+		<feComposite in="SourceGraphic" in2="dry" operator="in" result="cut"/>
+		<feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="5" result="edge"/>
+		<feDisplacementMap in="cut" in2="edge" scale="9"/>
+	</filter>
+	<filter id="w" x="-5%" y="-100%" width="110%" height="300%">
+		<feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="3" seed="12"/>
+		<feDisplacementMap in="SourceGraphic" scale="30"/>
+		<feGaussianBlur stdDeviation="3"/>
+	</filter>
+	<g filter="url(#w)" opacity=".5">
+		<ellipse cx="300" cy="40" rx="260" ry="14" fill="#FF6B35" opacity=".45"/>
+		<ellipse cx="760" cy="34" rx="300" ry="12" fill="#7B4FD1" opacity=".3"/>
+		<ellipse cx="1040" cy="42" rx="140" ry="10" fill="#1F8A8A" opacity=".35"/>
+	</g>
+	<path filter="url(#d)" fill="#1A1615" d="M40 30 C200 20 420 24 600 23 C800 22 980 22 1150 28 C1170 30 1186 35 1192 40 C1100 46 960 47 760 47 C560 47 300 49 120 50 C70 50 30 48 14 43 C20 36 28 32 40 30 Z"/>
+	<g fill="#1A1615">
+		<circle cx="1176" cy="22" r="3"/><circle cx="1160" cy="54" r="1.8"/><circle cx="18" cy="24" r="2.2"/><circle cx="64" cy="58" r="1.4"/><circle cx="610" cy="16" r="1.6"/>
+	</g>
+</svg>

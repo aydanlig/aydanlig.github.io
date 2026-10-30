@@ -1,0 +1,345 @@
+/* =========================================================
+   SmileyFoxyPortraits – ink.css  ("Tusche & Aquarell" look)
+   Loaded on every page right AFTER main.css, so it wins over it.
+
+   What it adds:
+   - paper grain on the page background
+   - a brush font for headings (Caveat Brush, self-hosted = no Google Fonts / DSGVO trouble)
+   - smeared ink strokes under headings and between sections
+   - alcohol-ink blooms behind sections and the hero picture
+   - art framed with an ink edge and a watercolour wash shadow, so it pops off the page
+   - hand-drawn wobbly edges on buttons, cards and labels
+
+   The pictures live in /img/ink/ (small SVGs). To switch the whole look off,
+   remove the ink.css <link> line from the pages.
+   ========================================================= */
+
+@font-face {
+	font-family: "Ink Brush";
+	src: url("/css/fonts/caveat-brush-latin.woff2") format("woff2");
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+
+:root {
+	--font-ink: "Ink Brush", "Segoe Print", "Bradley Hand", var(--font-head);
+	--teal: #1F8A8A;
+	--violet: #7B4FD1;
+	--rose: #E0457B;
+	/* hand-drawn shapes: no two corners the same */
+	--wobble: 16px 26px 14px 30px / 30px 14px 26px 16px;
+	--wobble-soft: 22px 8px 26px 10px / 10px 24px 8px 20px;
+	--paper-grain: url("/img/ink/paper.svg");
+	--smear: url("/img/ink/smear.svg");
+	--divider: url("/img/ink/divider.svg");
+	--wash: url("/img/ink/wash.svg");
+	--bloom-warm: url("/img/ink/bloom-warm.svg");
+	--bloom-cool: url("/img/ink/bloom-cool.svg");
+	--bloom-plum: url("/img/ink/bloom-plum.svg");
+}
+
+/* ---------- Paper ---------- */
+body { background-image: var(--paper-grain); }
+::selection { background: rgba(255, 107, 53, 0.35); color: var(--ink); }
+
+/* ---------- Ink typography ---------- */
+h1, h2, h3, .logo {
+	font-family: var(--font-ink);
+	font-weight: 400;
+	letter-spacing: 0.01em;
+	/* a hint of ink bleeding into the paper */
+	text-shadow: 0.4px 0.6px 1.2px rgba(26, 22, 21, 0.28);
+}
+h1 { font-size: clamp(2.6rem, 6vw, 4.3rem); line-height: 1.02; }
+h2 { font-size: clamp(2.2rem, 4.8vw, 3.3rem); line-height: 1.05; }
+h3 { font-size: 1.7rem; line-height: 1.1; }
+.section--dark h1, .section--dark h2, .section--dark h3 { text-shadow: 0 0 6px rgba(255, 107, 53, 0.18); }
+
+/* highlighted words sit on a watercolour stroke instead of being plain orange */
+.hero h1 em, h2 em {
+	color: var(--ink);
+	padding: 0 0.12em;
+	margin: 0 -0.05em;
+	background: var(--wash) no-repeat 0 78% / 100% 62%;
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+}
+.section--dark h2 em { color: #F2EAE4; }
+
+/* eyebrow = little handwritten note above a heading */
+.eyebrow {
+	font-family: var(--font-ink);
+	font-size: 1.45rem;
+	font-weight: 400;
+	letter-spacing: 0.02em;
+	text-transform: none;
+	transform: rotate(-2deg);
+	transform-origin: left center;
+	display: inline-block;
+}
+.center .eyebrow { transform-origin: center; }
+
+/* smeared ink stroke under every section heading */
+.section h2::after {
+	content: "";
+	display: block;
+	width: min(240px, 62%);
+	height: 16px;
+	margin-top: 0.22em;
+	background: var(--ink);
+	-webkit-mask: var(--smear) no-repeat center / 100% 100%;
+	mask: var(--smear) no-repeat center / 100% 100%;
+	opacity: 0.88;
+}
+.section .center h2::after, .section h2.center::after, .section .wrap.center h2::after { margin-inline: auto; }
+.section--dark h2::after { background: var(--fox); }
+
+/* logo: brush lettering, "Portraits" in fox ink */
+.logo { font-size: 1.75rem; line-height: 1; }
+
+/* ---------- Section dividers + alcohol-ink blooms ---------- */
+/* an ink smear dragged across the top of every section after the first */
+main > .section:not(:first-child) {
+	background-image: var(--divider);
+	background-repeat: no-repeat;
+	background-position: top 6px center;
+	background-size: min(920px, 88%) 34px;
+}
+/* light bands: no hard border lines any more, blooms bleed in from the edges */
+.section--alt { border-block: 0; }
+main > .section--alt:not(:first-child),
+.section--alt {
+	background-color: var(--card);
+	background-image: var(--divider), var(--bloom-cool), var(--bloom-warm), var(--paper-grain);
+	background-repeat: no-repeat, no-repeat, no-repeat, repeat;
+	background-position: top 6px center, left -170px top 18%, right -190px bottom -120px, 0 0;
+	background-size: min(920px, 88%) 34px, 380px, 440px, auto;
+}
+main > .section--alt:nth-of-type(even) {
+	background-image: var(--divider), var(--bloom-plum), var(--bloom-warm), var(--paper-grain);
+	background-position: top 6px center, right -180px top 12%, left -200px bottom -140px, 0 0;
+}
+/* dark bands: glowing ink pooled in the corners */
+.section--dark, main > .section--dark:not(:first-child) {
+	background-image: var(--bloom-plum), var(--bloom-cool);
+	background-repeat: no-repeat, no-repeat;
+	background-position: right -220px top -160px, left -240px bottom -200px;
+	background-size: 560px, 520px;
+}
+
+/* hero: a big warm bloom bleeding out from behind the main portrait */
+.hero {
+	background-image: var(--bloom-warm), var(--bloom-cool);
+	background-repeat: no-repeat, no-repeat;
+	background-position: right -140px top -120px, left -260px bottom -220px;
+	background-size: min(760px, 70vw), 520px;
+}
+
+/* ---------- The art: ink-edged, with a watercolour wash behind ---------- */
+.photo-caption img, .hero .ph-img, .art-grid a, .card .ph-img, .quote-photos img, .gallery img, .portfolio-grid img {
+	border-radius: var(--wobble-soft);
+	box-shadow: 0 0 0 2px rgba(26, 22, 21, 0.88), 9px 11px 0 -1px rgba(255, 107, 53, 0.5), 0 22px 44px -22px rgba(38, 30, 36, 0.6);
+}
+.photo-caption img { transform: rotate(0.6deg); }
+.photo-caption figcaption { font-family: var(--font-ink); font-size: 1.15rem; line-height: 1.25; color: var(--ink-soft); }
+
+/* each tile in the art grid gets its own colour of wash */
+.art-grid { gap: 14px; } /* tight like a gallery wall, but room for the washes */
+.art-grid a:nth-child(4n+2) { box-shadow: 0 0 0 2px rgba(26, 22, 21, 0.88), -9px 11px 0 -1px rgba(123, 79, 209, 0.45), 0 22px 44px -22px rgba(38, 30, 36, 0.6); }
+.art-grid a:nth-child(4n+3) { box-shadow: 0 0 0 2px rgba(26, 22, 21, 0.88), 9px 11px 0 -1px rgba(31, 138, 138, 0.45), 0 22px 44px -22px rgba(38, 30, 36, 0.6); }
+.art-grid a:nth-child(4n+4) { box-shadow: 0 0 0 2px rgba(26, 22, 21, 0.88), -9px 11px 0 -1px rgba(224, 69, 123, 0.45), 0 22px 44px -22px rgba(38, 30, 36, 0.6); }
+.art-grid a { transition: transform 0.25s ease; } /* overflow stays hidden: the outline + wash are box-shadows, drawn outside anyway */
+.art-grid a:hover { transform: rotate(-0.6deg) translateY(-3px); }
+/* labels on the art: handwritten on a scrap of ink */
+.art-grid a > span:last-child {
+	font-family: var(--font-ink);
+	font-size: 1.15rem;
+	font-weight: 400;
+	padding: 2px 12px 4px;
+	border-radius: var(--wobble);
+	background: rgba(26, 22, 21, 0.86);
+	transform: rotate(-1.5deg);
+	left: 12px;
+	bottom: 12px;
+}
+
+/* ---------- Buttons: brush-drawn edges ---------- */
+.btn {
+	border-radius: var(--wobble);
+	box-shadow: 3px 4px 0 var(--fox);
+}
+.btn--fox { box-shadow: 3px 4px 0 var(--ink); }
+.btn--ghost { box-shadow: 3px 4px 0 rgba(255, 107, 53, 0.55); }
+.btn:hover { box-shadow: 5px 6px 0 var(--fox); }
+.btn--fox:hover { box-shadow: 5px 6px 0 var(--ink); }
+.section--dark .btn--fox, .site-footer .btn--fox { box-shadow: 3px 4px 0 var(--violet); }
+.btn--small { box-shadow: 2px 3px 0 var(--fox); }
+
+/* ---------- Cards, quotes, forms: torn paper with an ink outline ---------- */
+.card, .form-card, .quote, .saturday-line {
+	border-radius: var(--wobble-soft);
+	border: 1.5px solid rgba(26, 22, 21, 0.55);
+	background-image: var(--paper-grain);
+}
+.card { box-shadow: 6px 8px 0 -2px rgba(168, 139, 152, 0.35); }
+.card--featured { box-shadow: 7px 9px 0 -2px rgba(255, 107, 53, 0.5); }
+.tag { border-radius: var(--wobble); }
+
+/* ---------- Small things ---------- */
+/* links: underline looks drawn with a fine liner */
+main a:not(.btn):not(.proof-logo):not([class*="art"]) {
+	text-decoration-thickness: 1.5px;
+	text-underline-offset: 0.18em;
+	text-decoration-color: rgba(194, 65, 12, 0.55);
+}
+
+@media (max-width: 700px) {
+	h1 { font-size: clamp(2.5rem, 11vw, 3.2rem); }
+	.logo { font-size: 1.4rem; }
+	/* phone: the picture comes first (art-focus.css), so the bloom sits up there behind it, not behind the text */
+	.hero { background-image: var(--bloom-warm); background-size: 115vw; background-position: right -45vw top 0; }
+	.photo-caption img { transform: none; } /* edge to edge: a tilted picture would show its corners */
+	.section--alt { background-size: min(920px, 88%) 34px, 260px, 300px, auto; }
+}
+@media (max-width: 420px) {
+	.logo { font-size: 1.2rem; }
+}
+
+@media print {
+	body, .hero, .section, .section--alt, .section--dark, .site-footer { background-image: none !important; }
+	.section h2::after { display: none; }
+}
+
+/* =========================================================
+   PLATZHALTER – everything that is still missing on the site.
+   Each one carries a number (data-ph="P07") that shows as a little ink tag,
+   and an HTML comment "PLATZHALTER P07" right above it, so you can search the code for it.
+   Filling one in: replace the box/text, then delete the data-ph attribute (or the whole
+   placeholder element). The full list lives in the pull request "Build out the site from the TODO".
+   ========================================================= */
+.ph {
+	position: relative;
+	font-family: var(--font-ink);
+	font-size: 1.25rem;
+	font-weight: 400;
+	line-height: 1.25;
+	color: var(--ink-soft);
+	border: 2px dashed rgba(26, 22, 21, 0.45);
+	border-radius: var(--wobble-soft);
+	background:
+		radial-gradient(ellipse at 85% 90%, rgba(31, 138, 138, 0.2), transparent 55%),
+		radial-gradient(ellipse at 10% 8%, rgba(255, 107, 53, 0.2), transparent 50%),
+		radial-gradient(ellipse at 90% 10%, rgba(123, 79, 209, 0.12), transparent 45%),
+		var(--paper-grain), #EFE4DC;
+}
+.ph-text, .ph-block { position: relative; }
+/* a sentence that still needs your words: sits on a yellow highlighter wash */
+.ph-text {
+	background: linear-gradient(transparent 38%, rgba(255, 214, 92, 0.55) 38% 92%, transparent 92%);
+	outline: 1.5px dashed rgba(194, 65, 12, 0.55);
+	outline-offset: 2px;
+	border-radius: 3px;
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+}
+/* a whole paragraph / card that is a draft or still empty */
+.ph-block {
+	padding: 22px 18px 16px;
+	border: 2px dashed rgba(194, 65, 12, 0.6);
+	border-radius: var(--wobble-soft);
+	background: rgba(255, 214, 92, 0.13);
+}
+/* the number tag */
+.ph[data-ph]::before, .ph-block[data-ph]::before, .ph-text[data-ph]::before {
+	content: "✎ " attr(data-ph);
+	position: absolute;
+	top: -12px;
+	left: 10px;
+	z-index: 2;
+	padding: 1px 9px 2px;
+	font: 400 0.95rem/1.2 var(--font-ink);
+	color: #FFF6EE;
+	background: var(--ink);
+	border-radius: var(--wobble);
+	transform: rotate(-3deg);
+	white-space: nowrap;
+	pointer-events: none;
+}
+.ph-text[data-ph]::before { position: relative; top: -0.15em; left: 0; margin-right: 6px; font-size: 0.8rem; vertical-align: middle; }
+.section--dark .ph { color: var(--ink-soft); }
+.section--dark .ph-block { background: rgba(255, 214, 92, 0.08); }
+.section--dark .ph-text, .site-footer .ph-text { color: var(--ink); background: rgba(255, 214, 92, 0.9); outline-color: rgba(255, 214, 92, 0.6); }
+/* placeholder logo slot in the logo row */
+.proof-logos--few .proof-logo.ph { width: 200px; height: 84px; min-height: 0; aspect-ratio: auto; flex: none; padding: 8px; font-size: 1rem; }
+@media (max-width: 600px) { .proof-logos--few .proof-logo.ph { width: 150px; height: 60px; font-size: 0.9rem; } }
+.proof-logo.ph { overflow: visible; }
+/* logo placeholders (P13, P14) in the redesign's single logo line: same height as the real logos */
+.proof-line .proof-logo.ph { width: 180px; height: 64px; min-height: 0; aspect-ratio: auto; flex: none; padding: 6px; font-size: 0.9rem; }
+.newsletter-gift { margin-top: 0.5em; font-size: 0.95rem; }
+
+/* ---------- Art wall (portfolio): big pieces in loose columns, like pinned to a studio wall ---------- */
+.art-wall { columns: 3 280px; column-gap: 24px; margin-top: 1.6em; }
+.art-wall > a, .art-wall > .ph { display: block; break-inside: avoid; margin: 0 0 26px; }
+.art-wall > a {
+	position: relative;
+	overflow: hidden;
+	border-radius: var(--wobble-soft);
+	box-shadow: 0 0 0 2px rgba(26, 22, 21, 0.88), 9px 11px 0 -1px rgba(255, 107, 53, 0.5), 0 22px 44px -22px rgba(38, 30, 36, 0.6);
+	transition: transform 0.25s ease;
+}
+.art-wall > a:nth-child(3n+2) { box-shadow: 0 0 0 2px rgba(26, 22, 21, 0.88), -9px 11px 0 -1px rgba(123, 79, 209, 0.45), 0 22px 44px -22px rgba(38, 30, 36, 0.6); }
+.art-wall > a:nth-child(3n+3) { box-shadow: 0 0 0 2px rgba(26, 22, 21, 0.88), 9px 11px 0 -1px rgba(31, 138, 138, 0.45), 0 22px 44px -22px rgba(38, 30, 36, 0.6); }
+.art-wall > a:hover { transform: rotate(-0.6deg) translateY(-3px); }
+.art-wall img { display: block; width: 100%; height: auto; }
+.art-wall > a > span {
+	position: absolute; left: 12px; bottom: 12px;
+	font: 400 1.1rem/1.2 var(--font-ink); color: #F2EAE4;
+	padding: 2px 12px 4px; border-radius: var(--wobble);
+	background: rgba(26, 22, 21, 0.86); transform: rotate(-1.5deg);
+}
+.statement { margin-top: 1.4em; }
+.statement p { font-size: 1.08rem; }
+.statement .eyebrow { margin-bottom: 0.3em; }
+@media (max-width: 700px) {
+	.art-wall { column-gap: 0; }
+	.art-wall > a { margin-inline: -16px; border-radius: 0; box-shadow: none; }
+	.art-wall > a:hover { transform: none; }
+}
+@media print { .no-print { display: none !important; } .art-wall > a { box-shadow: none; } }
+/* placeholder slides in swipe rows + tags that would be cut off by overflow:hidden */
+.swipe-track > .ph { flex: 0 0 100%; aspect-ratio: 4 / 3; max-height: min(70vh, 520px); scroll-snap-align: center; border-radius: 0; }
+.swipe-track > .ph::before, .art-grid .ph::before { top: 8px; }
+.quote-grid--2 + .quote-grid--2, .quote-grid--1 + .quote-grid--2 { margin-top: 28px; }
+.quote.ph-block { text-align: left; }
+.kk-intro.split { max-width: none; }
+#brandenburger-tor { grid-template-columns: 1fr 260px; }
+@media (max-width: 700px) { #brandenburger-tor { grid-template-columns: 1fr; } #brandenburger-tor .ph { max-width: 320px; } }
+/* phone menu: 5 links now (Portfolio added) – a little tighter so they fit on one line */
+@media (max-width: 600px) { .main-nav { gap: 8px; } .main-nav a { font-size: 0.86rem; } }
+@media (max-width: 360px) { .main-nav a { font-size: 0.76rem; } }
+
+/* =========================================================
+   SITE REVIEW FIXES (scale + readability)
+   ========================================================= */
+/* brush headings: no automatic word splits like "Brü-cke" or "ex-pressive"; a word only breaks if it really can't fit */
+h1, h2, h3 { hyphens: manual; -webkit-hyphens: manual; overflow-wrap: break-word; }
+.legal h1 { hyphens: auto; -webkit-hyphens: auto; }
+
+/* phones: the ink blooms only peek in from the corners, so they never sit under text or buttons */
+@media (max-width: 700px) {
+	main > .section--alt:not(:first-child), .section--alt,
+	main > .section--alt:nth-of-type(even) {
+		background-position: top 6px center, left -150px top -120px, right -170px bottom -150px, 0 0;
+		background-size: min(920px, 88%) 34px, 230px, 260px, auto;
+	}
+	.section--dark, main > .section--dark:not(:first-child) {
+		background-position: right -230px top -210px, left -240px bottom -230px;
+		background-size: 340px, 320px;
+	}
+	.site-footer { background-position: right -230px bottom -230px; background-size: 340px; }
+	.hero { background-size: 90vw; background-position: right -48vw top -42vw; }
+}
+/* placeholder labels never force a box wider than its column */
+.ph { min-width: 0; overflow-wrap: anywhere; }
+@media (max-width: 420px) { .ph { font-size: 1.05rem; padding: 10px; } }
