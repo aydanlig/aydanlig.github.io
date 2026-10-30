@@ -172,7 +172,7 @@
 						return;
 					}
 					if (!navigator.clipboard) return;
-					var amount = currentTotal.toLocaleString('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2, useGrouping: false });
+					var amount = currentTotal.toFixed(2);   // point as decimal separator so it pastes cleanly into SumUp/PayPal
 					e.preventDefault();
 					var go = function () { window.location.href = link.href; };
 					navigator.clipboard.writeText(amount).then(function () {
