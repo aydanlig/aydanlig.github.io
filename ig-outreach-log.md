@@ -17,3 +17,18 @@
 | 2026-11-01 | @flowmarktfantasia | Flowmarkt Nowkölln | collab/market | Neukölln | https://instagram.com/flowmarktfantasia |
 | 2026-11-01 | @studiostellar.berlin | Studio Stellar | collab/studio-gallery | Kreuzberg | https://instagram.com/studiostellar.berlin |
 | 2026-11-01 | @berlindrawingroom | Berlin Drawing Room | collab/workshops | Berlin (unverified district) | https://instagram.com/berlindrawingroom |
+| 2026-11-02 | @ballhauswedding | Ballhaus Wedding | event booker | Wedding | https://instagram.com/ballhauswedding |
+| 2026-11-02 | @cantinerie.berlin | Cantinerie | event booker | Berlin (AEG site) | https://instagram.com/cantinerie.berlin |
+| 2026-11-02 | @weekendevents.berlin | Weekend Corporate Events | event booker | Berlin | https://instagram.com/weekendevents.berlin |
+| 2026-11-02 | @maerchenhochzeitberlin | Märchenhochzeit Maria Oswald | event booker | Berlin | https://instagram.com/maerchenhochzeitberlin |
+| 2026-11-02 | @kugelbar.wedding | kugelbar.berlin | cafe/bar | Wedding | https://instagram.com/kugelbar.wedding |
+| 2026-11-02 | @die.wein | DiE WEiN | wine bar | Schöneberg | https://instagram.com/die.wein |
+| 2026-11-02 | @cookeryconceptberlin | Cookery Concept Store & Café | concept store/cafe | Schöneberg | https://instagram.com/cookeryconceptberlin |
+| 2026-11-02 | @goettlichberlin | Göttlich Berlin Wedding | cafe | Wedding | https://instagram.com/goettlichberlin |
+| 2026-11-02 | @buchhandlung_mackensen | Buchhandlung Mackensen | bookshop | Schöneberg | https://instagram.com/buchhandlung_mackensen |
+| 2026-11-02 | @districtone.berlin | DISTRICT ONE | team/community | Schöneberg | https://instagram.com/districtone.berlin |
+| 2026-11-02 | @familienzentrum_wattstrasse | Familienzentrum Wattstraße | team/community | Wedding (Brunnenviertel) | https://instagram.com/familienzentrum_wattstrasse |
+| 2026-11-02 | @stadtteilzentrum_pankow | Stadtteilzentrum Pankow | team/community | Pankow | https://instagram.com/stadtteilzentrum_pankow |
+| 2026-11-02 | @weddingmarkt | Weddingmarkt | collab/market | Wedding | https://instagram.com/weddingmarkt |
+| 2026-11-02 | @treptow_ateliers_ev | Treptow-Ateliers e.V. | collab/studio-house | Treptow | https://instagram.com/treptow_ateliers_ev |
+| 2026-11-02 | @radunkel | Radunkel Illustration | collab/illustrator | Berlin | https://instagram.com/radunkel |
