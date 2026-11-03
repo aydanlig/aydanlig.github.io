@@ -365,3 +365,15 @@ h1, h2, h3 { hyphens: manual; -webkit-hyphens: manual; overflow-wrap: break-word
 .stance--for li::before { content: "✓"; color: var(--teal); }
 .stance--against li::before { content: "✗"; color: var(--rose); }
 .stance strong { display: block; font-family: var(--font-ink); font-weight: 400; font-size: 1.35rem; line-height: 1.15; margin-bottom: 0.15em; }
+
+/* ---------- About: "what I want to be world-class at" – big brush numbers ---------- */
+.goal-list { list-style: none; counter-reset: goal; padding: 0; margin: 1em 0 0; }
+.goal-list li { counter-increment: goal; position: relative; padding: 0 0 0 3.2rem; margin-bottom: 1.3em; min-height: 3rem; }
+.goal-list li::before {
+	content: counter(goal);
+	position: absolute; left: 0; top: -0.35em;
+	width: 2.5rem; text-align: center;
+	font-family: var(--font-ink); font-size: 2.8rem; line-height: 1; color: var(--ink);
+	background: var(--wash) no-repeat center 70% / 100% 55%;
+}
+.goal-list strong { display: block; font-family: var(--font-ink); font-weight: 400; font-size: 1.45rem; line-height: 1.15; margin-bottom: 0.1em; }
