@@ -343,3 +343,37 @@ h1, h2, h3 { hyphens: manual; -webkit-hyphens: manual; overflow-wrap: break-word
 /* placeholder labels never force a box wider than its column */
 .ph { min-width: 0; overflow-wrap: anywhere; }
 @media (max-width: 420px) { .ph { font-size: 1.05rem; padding: 10px; } }
+
+/* ---------- About: "what I stand for – and against" ---------- */
+.stance-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 22px; margin-top: 1.2em; }
+.stance {
+	position: relative;
+	padding: 22px 22px 14px;
+	border: 2px solid var(--ink);
+	border-radius: var(--wobble);
+	background-color: var(--card);
+	background-repeat: no-repeat, repeat;
+	background-size: 240px, auto;
+	box-shadow: 4px 5px 0 rgba(26, 22, 21, 0.85);
+}
+.stance--for { background-image: var(--bloom-cool), var(--paper-grain); background-position: right -150px top -150px, 0 0; }
+.stance--against { background-image: var(--bloom-plum), var(--paper-grain); background-position: right -150px bottom -150px, 0 0; border-radius: var(--wobble-soft); }
+.stance h3 { margin: 0 0 0.4em; font-size: 2rem; }
+.stance ul { list-style: none; padding: 0; margin: 0; }
+.stance li { position: relative; padding-left: 1.9em; margin-bottom: 1em; }
+.stance li::before { position: absolute; left: 0; top: -0.1em; font-family: var(--font-ink); font-size: 1.6rem; line-height: 1; }
+.stance--for li::before { content: "✓"; color: var(--teal); }
+.stance--against li::before { content: "✗"; color: var(--rose); }
+.stance strong { display: block; font-family: var(--font-ink); font-weight: 400; font-size: 1.35rem; line-height: 1.15; margin-bottom: 0.15em; }
+
+/* ---------- About: "what I want to be world-class at" – big brush numbers ---------- */
+.goal-list { list-style: none; counter-reset: goal; padding: 0; margin: 1em 0 0; }
+.goal-list li { counter-increment: goal; position: relative; padding: 0 0 0 3.2rem; margin-bottom: 1.3em; min-height: 3rem; }
+.goal-list li::before {
+	content: counter(goal);
+	position: absolute; left: 0; top: -0.35em;
+	width: 2.5rem; text-align: center;
+	font-family: var(--font-ink); font-size: 2.8rem; line-height: 1; color: var(--ink);
+	background: var(--wash) no-repeat center 70% / 100% 55%;
+}
+.goal-list strong { display: block; font-family: var(--font-ink); font-weight: 400; font-size: 1.45rem; line-height: 1.15; margin-bottom: 0.1em; }
