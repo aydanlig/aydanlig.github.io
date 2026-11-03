@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- Cookie-free visitor counter (GoatCounter) + click-to-load embeds: see /js/consent.js -->
+	<script src="/js/consent.js" defer></script>
+	<script src="/js/translate.js" defer></script>
+	<script src="/js/smiley.js" defer></script>
+	<script src="/js/bestellt.js" defer></script>
+
+	<!-- ORDER RECEIVED + PAY: the order form on commission.html sends people here
+	     (en/bestellt.html?nr=SFP-…&sum=63.90). The same link is in their confirmation e-mail,
+	     so they can also pay later. Pay buttons: /js/bestellt.js -->
+	<title>Order received – pay now | SmileyFoxyPortraits</title>
+	<meta name="robots" content="noindex, follow">
+	<link rel="alternate" hreflang="de" href="https://smileyfoxyportraits.com/bestellt.html">
+	<link rel="alternate" hreflang="en" href="https://smileyfoxyportraits.com/en/bestellt.html">
+	<link rel="icon" href="/favicon.ico" sizes="48x48">
+	<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="/favicon.png">
+	<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+	<link rel="stylesheet" href="/css/main.css">
+	<link rel="stylesheet" href="/css/ink.css">
+	<link rel="stylesheet" href="/css/order.css">
+</head>
+
+<body>
+
+	<header class="site-header">
+		<div class="wrap">
+			<a class="logo" href="/en/" aria-label="SmileyFoxyPortraits – Home"><span class="logo-ph" title="Placeholder: your painted fox logo goes here (img/logo.png)">Logo</span><span class="logo-word">SmileyFoxy<span>Portraits</span></span></a>
+			<a class="lang-switch" data-translate lang="de" title="Deutsche Version dieser Seite" href="/bestellt.html">DE</a>
+		</div>
+	</header>
+
+	<main>
+		<section class="section order-section order-done">
+			<div class="wrap center" style="max-width:620px">
+				<span class="eyebrow">Order received</span>
+				<h1>Thank you! <span class="spinning-smiley" aria-hidden="true"></span></h1>
+				<p class="lead">Your order <strong data-order-nr></strong> has reached me. The confirmation is on its way to your inbox (just in case, check your spam folder too).</p>
+
+				<div class="pay-step pay-step--total">
+					<h2><span>✓</span> Last step: pay</h2>
+					<p class="pay-total" aria-live="polite">Amount: <strong data-order-sum>as in your confirmation</strong></p>
+					<div class="pay-buttons">
+						<a class="btn btn--fox" data-pay-paypal data-paypal="aydan@smileyfoxyportraits.com" href="https://www.paypal.biz/SmileyFoxyPortraitsL">Pay with PayPal</a>
+						<a class="btn btn--ghost" data-pay-card href="https://pay.sumup.com/b2c/QMYZ8JO7">Pay by card (SumUp)</a>
+					</div>
+					<p class="pay-copied" data-pay-copied role="status" hidden></p>
+					<p class="hint">With PayPal the amount is already filled in. With card it's copied when you tap, you just paste it –
+						please put your order number <strong data-order-nr-plain></strong> in the note.</p>
+					<p class="hint">Want to pay later? No problem, the link is also in your confirmation e-mail.</p>
+				</div>
+
+				<ol class="order-after" style="text-align:left;max-width:520px;margin-inline:auto">
+					<li><strong>Payment arrives</strong> – then I start painting.</li>
+					<li><strong>Sneak peek</strong> – before it's sent, you get a photo of the finished piece by e-mail.</li>
+					<li><strong>On its way</strong> – by post, for pick-up in Berlin or as a scan.</li>
+				</ol>
+
+				<p class="hint" style="margin-top:2em">Questions or forgot something? Just reply to the confirmation e-mail or write to
+					<a href="mailto:aydan@smileyfoxyportraits.com">aydan@smileyfoxyportraits.com</a>.</p>
+				<div class="btn-row" style="justify-content:center">
+					<a class="btn btn--ghost" href="https://www.instagram.com/smileyfoxyportraits">Watch me paint on Instagram</a>
+				</div>
+				<p class="price-note">No VAT is charged under § 19 UStG (small business rule).</p>
+			</div>
+		</section>
+	</main>
+
+	<footer class="site-footer">
+		<div class="wrap footer-bottom" style="margin-top:0;border-top:0">
+			<span>© SmileyFoxyPortraits · Aydan Lig'on · Berlin</span>
+			<span>
+				<a href="/ImpressumUndDatenschutz/Impressum.html">Imprint</a> ·
+				<a href="/ImpressumUndDatenschutz/Datenschutz.html">Privacy</a>
+			</span>
+		</div>
+	</footer>
+
+</body>
+
+</html>
