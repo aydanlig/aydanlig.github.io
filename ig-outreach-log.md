@@ -32,3 +32,18 @@
 | 2026-11-02 | @weddingmarkt | Weddingmarkt | collab/market | Wedding | https://instagram.com/weddingmarkt |
 | 2026-11-02 | @treptow_ateliers_ev | Treptow-Ateliers e.V. | collab/studio-house | Treptow | https://instagram.com/treptow_ateliers_ev |
 | 2026-11-02 | @radunkel | Radunkel Illustration | collab/illustrator | Berlin | https://instagram.com/radunkel |
+| 2026-11-03 | @hoteloderbergerberlin | Hotel Oderberger Berlin | event booker (hotel) | Prenzlauer Berg | https://instagram.com/hoteloderbergerberlin |
+| 2026-11-03 | @labelleeventberlin | La Belle Event Berlin | event booker | Berlin | https://instagram.com/labelleeventberlin |
+| 2026-11-03 | @hotelbrandiesberlin | Hotel Brandies Berlin | event booker (hotel) | Charlottenburg | https://instagram.com/hotelbrandiesberlin |
+| 2026-11-03 | @true_moments_hochzeiten | True Moments Hochzeiten (Kristin Weiß) | event booker | Berlin | https://instagram.com/true_moments_hochzeiten |
+| 2026-11-03 | @berlindesignmarket | Berlin Design Market | collab/market | Berlin | https://instagram.com/berlindesignmarket |
+| 2026-11-03 | @fuchs_und_hase_cocktailbar | Fuchs & Hase | cafe/bar | Lichterfelde | https://instagram.com/fuchs_und_hase_cocktailbar |
+| 2026-11-03 | @bar.perlou | PERLOU | cafe/bar | Moabit | https://instagram.com/bar.perlou |
+| 2026-11-03 | @triiio.berlin | TRIIIO | wine bar | Berlin | https://instagram.com/triiio.berlin |
+| 2026-11-03 | @sets_berlin | SETS Café | cafe/bar | Charlottenburg | https://instagram.com/sets_berlin |
+| 2026-11-03 | @cafe_de_lucre | Cafe de Lucre | cafe/bar | Charlottenburg | https://instagram.com/cafe_de_lucre |
+| 2026-11-03 | @garage127.de | GARAGE 127 | team/community | Charlottenburg | https://instagram.com/garage127.de |
+| 2026-11-03 | @mi_mundo_kindercafe | Mi Mundo Kindercafé | team/community | Spandau | https://instagram.com/mi_mundo_kindercafe |
+| 2026-11-03 | @kindercafe.kreuzzwerg | Kindercafé Kreuzzwerg | team/community | Kreuzberg | https://instagram.com/kindercafe.kreuzzwerg |
+| 2026-11-03 | @galerie.kungerkiez | Galerie Kungerkiez | collab/gallery | Alt-Treptow | https://instagram.com/galerie.kungerkiez |
+| 2026-11-03 | @kommunalegalerieberlin | Kommunale Galerie Berlin | collab/gallery | Charlottenburg-Wilmersdorf | https://instagram.com/kommunalegalerieberlin |
