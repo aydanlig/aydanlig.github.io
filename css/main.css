@@ -1488,3 +1488,6 @@ h1, h2, h3 { overflow-wrap: break-word; hyphens: auto; }
 .gallery-more[open] > summary { margin-bottom: 0; }
 @media (max-width: 1000px) { .gallery-grid { grid-template-columns: repeat(3, 1fr); } }
 @media (max-width: 480px) { .gallery-grid { gap: 8px; } .gallery-grid a, .gallery-grid a::before { border-radius: 10px; } }
+/* Galerie tiles that hold a stand-in sketch until the real (celebrity) drawing is finished */
+.gallery-tag { position: absolute; z-index: 2; left: 8px; right: 8px; bottom: 8px; background: rgba(15, 12, 17, 0.8); color: #F2EAE4;
+	font-size: 0.72rem; font-weight: 700; line-height: 1.25; padding: 4px 8px; border-radius: 8px; text-align: center; }
