@@ -1466,3 +1466,25 @@ h1, h2, h3 { overflow-wrap: break-word; hyphens: auto; }
 .crop-bar .crop-info { flex-basis: 100%; text-align: center; color: #9be29b; min-height: 1em; }
 .crop-switch { position: absolute; z-index: 3; top: 8px; right: 8px; width: 34px; height: 34px; border-radius: 50%; border: 0; background: var(--fox); color: var(--night); font-weight: 800; cursor: pointer; }
 .euro-set .crop-switch { top: 8px; right: 8px; }
+
+/* Homepage "Galerie" at the very top: 15 tiles + 45 more under "Mehr ansehen" (<details>).
+   Pictures: img/galerie/galerie-01.jpg … galerie-60.jpg. A missing file shows the numbered placeholder box. */
+.top-gallery { padding-top: clamp(32px, 5vw, 56px); }
+.gallery-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-top: 1.4em; }
+.gallery-grid a { position: relative; display: block; aspect-ratio: 4 / 5; overflow: hidden; border-radius: 14px; background: #000; }
+.gallery-grid img { position: relative; z-index: 1; width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease; }
+.gallery-grid a:hover img { transform: scale(1.04); }
+/* placeholder (only visible while the picture file is missing) */
+.gallery-grid a::before { content: "Bild " attr(data-n); position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+	font-weight: 700; color: var(--ink-soft); border: 2px dashed #CDB9AE; border-radius: 14px;
+	background: repeating-linear-gradient(45deg, transparent 0 12px, rgba(255, 107, 53, 0.07) 12px 24px), #E9DDD5; }
+.gallery-grid a.is-empty { pointer-events: none; }
+.gallery-grid a.is-empty img { display: none; }
+.gallery-more { margin-top: 1.4em; }
+.gallery-more > summary { display: table; margin: 0 auto; cursor: pointer; list-style: none; font-weight: 700; color: var(--accent);
+	padding: 10px 22px; border: 2px solid currentColor; border-radius: 999px; }
+.gallery-more > summary::-webkit-details-marker { display: none; }
+.gallery-more > summary span { font-weight: 400; color: var(--ink-soft); }
+.gallery-more[open] > summary { margin-bottom: 0; }
+@media (max-width: 1000px) { .gallery-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 480px) { .gallery-grid { gap: 8px; } .gallery-grid a, .gallery-grid a::before { border-radius: 10px; } }

@@ -116,6 +116,91 @@
 
 	<main>
 
+		<!-- ================= GALERIE: 60 artworks at the very top (15 visible + 45 under "Mehr ansehen") =================
+		     HOW TO ADD A PICTURE: save it as img/galerie/galerie-01.jpg … galerie-60.jpg (two digits, .jpg).
+		     That's it – no code change needed. An empty number shows a numbered placeholder box,
+		     and as soon as the file exists the picture appears there. Click = big view (js/gallery.js).
+		     Optional: replace the alt="…" text of a tile with a short description of the picture (good for Google). -->
+		<section class="section top-gallery" id="galerie" aria-labelledby="gallery-title">
+			<div class="wrap">
+				<div class="center">
+					<span class="eyebrow">Galerie</span>
+					<h2 id="gallery-title">Meine Kunst</h2>
+				</div>
+				<div data-lightbox>
+				<!-- PICTURES 1–15: always visible -->
+				<div class="gallery-grid">
+					<a href="/img/galerie/galerie-01.jpg" data-n="01"><img src="/img/galerie/galerie-01.jpg" alt="Kunstwerk 01 (Platzhalter – Beschreibung eintragen)" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('is-empty')"></a>
+					<a href="/img/galerie/galerie-02.jpg" data-n="02"><img src="/img/galerie/galerie-02.jpg" alt="Kunstwerk 02 (Platzhalter – Beschreibung eintragen)" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('is-empty')"></a>
+					<a href="/img/galerie/galerie-03.jpg" data-n="03"><img src="/img/galerie/galerie-03.jpg" alt="Kunstwerk 03 (Platzhalter – Beschreibung eintragen)" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('is-empty')"></a>
+					<a href="/img/galerie/galerie-04.jpg" data-n="04"><img src="/img/galerie/galerie-04.jpg" alt="Kunstwerk 04 (Platzhalter – Beschreibung eintragen)" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('is-empty')"></a>
+					<a href="/img/galerie/galerie-05.jpg" data-n="05"><img src="/img/galerie/galerie-05.jpg" alt="Kunstwerk 05 (Platzhalter – Beschreibung eintragen)" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('is-empty')"></a>
+					<a href="/img/galerie/galerie-06.jpg" data-n="06"><img src="/img/galerie/galerie-06.jpg" alt="Kunstwerk 06 (Platzhalter – Beschreibung eintragen)" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('is-empty')"></a>
+					<a href="/img/galerie/galerie-07.jpg" data-n="07"><img src="/img/galerie/galerie-07.jpg" alt="Kunstwerk 07 (Platzhalter – Beschreibung eintragen)" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('is-empty')"></a>
+					<a href="/img/galerie/galerie-08.jpg" data-n="08"><img src="/img/galerie/galerie-08.jpg" alt="Kunstwerk 08 (Platzhalter – Beschreibung eintragen)" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('is-empty')"></a>
+					<a href="/img/galerie/galerie-09.jpg" data-n="09"><img src="/img/galerie/galerie-09.jpg" alt="Kunstwerk 09 (Platzhalter – Beschreibung eintragen)" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('is-empty')"></a>
+					<a href="/img/galerie/galerie-10.jpg" data-n="10"><img src="/img/galerie/galerie-10.jpg" alt="Kunstwerk 10 (Platzhalter – Beschreibung eintragen)" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('is-empty')"></a>
+					<a href="/img/galerie/galerie-11.jpg" data-n="11"><img src="/img/galerie/galerie-11.jpg" alt="Kunstwerk 11 (Platzhalter – Beschreibung eintragen)" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('is-empty')"></a>
+					<a href="/img/galerie/galerie-12.jpg" data-n="12"><img src="/img/galerie/galerie-12.jpg" alt="Kunstwerk 12 (Platzhalter – Beschreibung eintragen)" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('is-empty')"></a>
+					<a href="/img/galerie/galerie-13.jpg" data-n="13"><img src="/img/galerie/galerie-13.jpg" alt="Kunstwerk 13 (Platzhalter – Beschreibung eintragen)" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('is-empty')"></a>
+					<a href="/img/galerie/galerie-14.jpg" data-n="14"><img src="/img/galerie/galerie-14.jpg" alt="Kunstwerk 14 (Platzhalter – Beschreibung eintragen)" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('is-empty')"></a>
+					<a href="/img/galerie/galerie-15.jpg" data-n="15"><img src="/img/galerie/galerie-15.jpg" alt="Kunstwerk 15 (Platzhalter – Beschreibung eintragen)" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('is-empty')"></a>
+				</div>
+				<!-- PICTURES 16–60: folded away, open with "Mehr ansehen" -->
+				<details class="gallery-more">
+					<summary>Mehr ansehen <span>(45 weitere Bilder)</span></summary>
+					<div class="gallery-grid">
+						<a href="/img/galerie/galerie-16.jpg" data-n="16"><img src="/img/galerie/galerie-16.jpg" alt="Kunstwerk 16 (Platzhalter – Beschreibung eintragen)" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('is-empty')"></a>
+						<a href="/img/galerie/galerie-17.jpg" data-n="17"><img src="/img/galerie/galerie-17.jpg" alt="Kunstwerk 17 (Platzhalter – Beschreibung eintragen)" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('is-empty')"></a>
+						<a href="/img/galerie/galerie-18.jpg" data-n="18"><img src="/img/galerie/galerie-18.jpg" alt="Kunstwerk 18 (Platzhalter – Beschreibung eintragen)" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('is-empty')"></a>
+						<a href="/img/galerie/galerie-19.jpg" data-n="19"><img src="/img/galerie/galerie-19.jpg" alt="Kunstwerk 19 (Platzhalter – Beschreibung eintragen)" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('is-empty')"></a>
+						<a href="/img/galerie/galerie-20.jpg" data-n="20"><img src="/img/galerie/galerie-20.jpg" alt="Kunstwerk 20 (Platzhalter – Beschreibung eintragen)" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('is-empty')"></a>
+						<a href="/img/galerie/galerie-21.jpg" data-n="21"><img src="/img/galerie/galerie-21.jpg" alt="Kunstwerk 21 (Platzhalter – Beschreibung eintragen)" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('is-empty')"></a>
+						<a href="/img/galerie/galerie-22.jpg" data-n="22"><img src="/img/galerie/galerie-22.jpg" alt="Kunstwerk 22 (Platzhalter – Beschreibung eintragen)" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('is-empty')"></a>
+						<a href="/img/galerie/galerie-23.jpg" data-n="23"><img src="/img/galerie/galerie-23.jpg" alt="Kunstwerk 23 (Platzhalter – Beschreibung eintragen)" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('is-empty')"></a>
+						<a href="/img/galerie/galerie-24.jpg" data-n="24"><img src="/img/galerie/galerie-24.jpg" alt="Kunstwerk 24 (Platzhalter – Beschreibung eintragen)" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('is-empty')"></a>
+						<a href="/img/galerie/galerie-25.jpg" data-n="25"><img src="/img/galerie/galerie-25.jpg" alt="Kunstwerk 25 (Platzhalter – Beschreibung eintragen)" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('is-empty')"></a>
+						<a href="/img/galerie/galerie-26.jpg" data-n="26"><img src="/img/galerie/galerie-26.jpg" alt="Kunstwerk 26 (Platzhalter – Beschreibung eintragen)" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('is-empty')"></a>
+						<a href="/img/galerie/galerie-27.jpg" data-n="27"><img src="/img/galerie/galerie-27.jpg" alt="Kunstwerk 27 (Platzhalter – Beschreibung eintragen)" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('is-empty')"></a>
+						<a href="/img/galerie/galerie-28.jpg" data-n="28"><img src="/img/galerie/galerie-28.jpg" alt="Kunstwerk 28 (Platzhalter – Beschreibung eintragen)" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('is-empty')"></a>
+						<a href="/img/galerie/galerie-29.jpg" data-n="29"><img src="/img/galerie/galerie-29.jpg" alt="Kunstwerk 29 (Platzhalter – Beschreibung eintragen)" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('is-empty')"></a>
+						<a href="/img/galerie/galerie-30.jpg" data-n="30"><img src="/img/galerie/galerie-30.jpg" alt="Kunstwerk 30 (Platzhalter – Beschreibung eintragen)" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('is-empty')"></a>
+						<a href="/img/galerie/galerie-31.jpg" data-n="31"><img src="/img/galerie/galerie-31.jpg" alt="Kunstwerk 31 (Platzhalter – Beschreibung eintragen)" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('is-empty')"></a>
+						<a href="/img/galerie/galerie-32.jpg" data-n="32"><img src="/img/galerie/galerie-32.jpg" alt="Kunstwerk 32 (Platzhalter – Beschreibung eintragen)" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('is-empty')"></a>
+						<a href="/img/galerie/galerie-33.jpg" data-n="33"><img src="/img/galerie/galerie-33.jpg" alt="Kunstwerk 33 (Platzhalter – Beschreibung eintragen)" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('is-empty')"></a>
+						<a href="/img/galerie/galerie-34.jpg" data-n="34"><img src="/img/galerie/galerie-34.jpg" alt="Kunstwerk 34 (Platzhalter – Beschreibung eintragen)" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('is-empty')"></a>
+						<a href="/img/galerie/galerie-35.jpg" data-n="35"><img src="/img/galerie/galerie-35.jpg" alt="Kunstwerk 35 (Platzhalter – Beschreibung eintragen)" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('is-empty')"></a>
+						<a href="/img/galerie/galerie-36.jpg" data-n="36"><img src="/img/galerie/galerie-36.jpg" alt="Kunstwerk 36 (Platzhalter – Beschreibung eintragen)" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('is-empty')"></a>
+						<a href="/img/galerie/galerie-37.jpg" data-n="37"><img src="/img/galerie/galerie-37.jpg" alt="Kunstwerk 37 (Platzhalter – Beschreibung eintragen)" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('is-empty')"></a>
+						<a href="/img/galerie/galerie-38.jpg" data-n="38"><img src="/img/galerie/galerie-38.jpg" alt="Kunstwerk 38 (Platzhalter – Beschreibung eintragen)" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('is-empty')"></a>
+						<a href="/img/galerie/galerie-39.jpg" data-n="39"><img src="/img/galerie/galerie-39.jpg" alt="Kunstwerk 39 (Platzhalter – Beschreibung eintragen)" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('is-empty')"></a>
+						<a href="/img/galerie/galerie-40.jpg" data-n="40"><img src="/img/galerie/galerie-40.jpg" alt="Kunstwerk 40 (Platzhalter – Beschreibung eintragen)" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('is-empty')"></a>
+						<a href="/img/galerie/galerie-41.jpg" data-n="41"><img src="/img/galerie/galerie-41.jpg" alt="Kunstwerk 41 (Platzhalter – Beschreibung eintragen)" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('is-empty')"></a>
+						<a href="/img/galerie/galerie-42.jpg" data-n="42"><img src="/img/galerie/galerie-42.jpg" alt="Kunstwerk 42 (Platzhalter – Beschreibung eintragen)" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('is-empty')"></a>
+						<a href="/img/galerie/galerie-43.jpg" data-n="43"><img src="/img/galerie/galerie-43.jpg" alt="Kunstwerk 43 (Platzhalter – Beschreibung eintragen)" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('is-empty')"></a>
+						<a href="/img/galerie/galerie-44.jpg" data-n="44"><img src="/img/galerie/galerie-44.jpg" alt="Kunstwerk 44 (Platzhalter – Beschreibung eintragen)" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('is-empty')"></a>
+						<a href="/img/galerie/galerie-45.jpg" data-n="45"><img src="/img/galerie/galerie-45.jpg" alt="Kunstwerk 45 (Platzhalter – Beschreibung eintragen)" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('is-empty')"></a>
+						<a href="/img/galerie/galerie-46.jpg" data-n="46"><img src="/img/galerie/galerie-46.jpg" alt="Kunstwerk 46 (Platzhalter – Beschreibung eintragen)" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('is-empty')"></a>
+						<a href="/img/galerie/galerie-47.jpg" data-n="47"><img src="/img/galerie/galerie-47.jpg" alt="Kunstwerk 47 (Platzhalter – Beschreibung eintragen)" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('is-empty')"></a>
+						<a href="/img/galerie/galerie-48.jpg" data-n="48"><img src="/img/galerie/galerie-48.jpg" alt="Kunstwerk 48 (Platzhalter – Beschreibung eintragen)" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('is-empty')"></a>
+						<a href="/img/galerie/galerie-49.jpg" data-n="49"><img src="/img/galerie/galerie-49.jpg" alt="Kunstwerk 49 (Platzhalter – Beschreibung eintragen)" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('is-empty')"></a>
+						<a href="/img/galerie/galerie-50.jpg" data-n="50"><img src="/img/galerie/galerie-50.jpg" alt="Kunstwerk 50 (Platzhalter – Beschreibung eintragen)" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('is-empty')"></a>
+						<a href="/img/galerie/galerie-51.jpg" data-n="51"><img src="/img/galerie/galerie-51.jpg" alt="Kunstwerk 51 (Platzhalter – Beschreibung eintragen)" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('is-empty')"></a>
+						<a href="/img/galerie/galerie-52.jpg" data-n="52"><img src="/img/galerie/galerie-52.jpg" alt="Kunstwerk 52 (Platzhalter – Beschreibung eintragen)" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('is-empty')"></a>
+						<a href="/img/galerie/galerie-53.jpg" data-n="53"><img src="/img/galerie/galerie-53.jpg" alt="Kunstwerk 53 (Platzhalter – Beschreibung eintragen)" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('is-empty')"></a>
+						<a href="/img/galerie/galerie-54.jpg" data-n="54"><img src="/img/galerie/galerie-54.jpg" alt="Kunstwerk 54 (Platzhalter – Beschreibung eintragen)" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('is-empty')"></a>
+						<a href="/img/galerie/galerie-55.jpg" data-n="55"><img src="/img/galerie/galerie-55.jpg" alt="Kunstwerk 55 (Platzhalter – Beschreibung eintragen)" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('is-empty')"></a>
+						<a href="/img/galerie/galerie-56.jpg" data-n="56"><img src="/img/galerie/galerie-56.jpg" alt="Kunstwerk 56 (Platzhalter – Beschreibung eintragen)" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('is-empty')"></a>
+						<a href="/img/galerie/galerie-57.jpg" data-n="57"><img src="/img/galerie/galerie-57.jpg" alt="Kunstwerk 57 (Platzhalter – Beschreibung eintragen)" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('is-empty')"></a>
+						<a href="/img/galerie/galerie-58.jpg" data-n="58"><img src="/img/galerie/galerie-58.jpg" alt="Kunstwerk 58 (Platzhalter – Beschreibung eintragen)" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('is-empty')"></a>
+						<a href="/img/galerie/galerie-59.jpg" data-n="59"><img src="/img/galerie/galerie-59.jpg" alt="Kunstwerk 59 (Platzhalter – Beschreibung eintragen)" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('is-empty')"></a>
+						<a href="/img/galerie/galerie-60.jpg" data-n="60"><img src="/img/galerie/galerie-60.jpg" alt="Kunstwerk 60 (Platzhalter – Beschreibung eintragen)" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('is-empty')"></a>
+					</div>
+				</details>
+				</div>
+			</div>
+		</section>
+
 		<!-- ================= HERO: first thing visitors see ================= -->
 		<section class="hero">
 			<div class="wrap">

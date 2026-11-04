@@ -58,7 +58,12 @@
 		// all other links of the gallery are clicked through together
 		function bind(list) {
 			list.forEach(function (a, i) {
-				a.addEventListener('click', function (e) { e.preventDefault(); open(list, i); });
+				a.addEventListener('click', function (e) {
+					e.preventDefault();
+					// skip placeholder tiles whose picture file doesn't exist yet (homepage Galerie)
+					var ok = list.filter(function (l) { return !l.classList.contains('is-empty'); });
+					open(ok, Math.max(0, ok.indexOf(a)));
+				});
 			});
 		}
 		galleries.forEach(function (g) {
