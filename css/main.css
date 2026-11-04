@@ -1491,3 +1491,20 @@ h1, h2, h3 { overflow-wrap: break-word; hyphens: auto; }
 /* Galerie tiles that hold a stand-in sketch until the real (celebrity) drawing is finished */
 .gallery-tag { position: absolute; z-index: 2; left: 8px; right: 8px; bottom: 8px; background: rgba(15, 12, 17, 0.8); color: #F2EAE4;
 	font-size: 0.72rem; font-weight: 700; line-height: 1.25; padding: 4px 8px; border-radius: 8px; text-align: center; }
+
+/* Small line under the logo: "Seit 6 Jahren Porträts" (every page) */
+.logo { display: inline-block; line-height: 1.1; }
+.logo-since { display: block; margin-top: 2px; font-family: var(--font-body); font-size: 0.62rem; font-weight: 600; letter-spacing: 0.03em; color: var(--ink-soft); }
+@media (max-width: 520px) { .logo-since { font-size: 0.56rem; } }
+
+/* Sensitivity note under the style moods */
+.sensitive-note { margin-top: 1.2em; padding-left: 14px; border-left: 3px solid var(--fox); }
+
+/* Homepage "6 Jahre" timeline: 4 steps */
+.story-steps--4 { grid-template-columns: repeat(4, 1fr); }
+@media (max-width: 1000px) { .story-steps--4 { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 600px) { .story-steps--4 { grid-template-columns: 1fr; } }
+.story-steps a { color: var(--accent); }
+
+/* credits line under the concert sketches */
+.band-credits { margin-top: 1em; }
