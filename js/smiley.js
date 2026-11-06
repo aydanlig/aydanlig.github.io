@@ -2,20 +2,37 @@
    smiley.js – the 😄 that spins faster and faster
 
    While the mouse is over a .spinning-smiley it spins forever and its speed
-   keeps growing exponentially (it doubles roughly every second).
+   keeps growing (it doubles roughly every second) up to a top speed, and then
+   it stays at that top speed.
+   Why a fairly low top speed: a screen only draws ~60 pictures a second. Above
+   ~1800°/s the smiley turns almost a full circle between two pictures, so the
+   eye sees it slow down or even spin backwards (the "wagon wheel" effect).
+   A little speech bubble ("hover over me!") invites people to try it.
    On phones: tap to start, tap again to stop.
    Visitors who turned on "reduce motion" in their system don't get the spin.
    ========================================================= */
 (function () {
 	var START_SPEED = 90;     // degrees per second at the beginning (a quarter turn)
 	var GROWTH = 2;           // speed multiplies by this every second -> exponential
-	var MAX_SPEED = 20000;    // safety cap so the browser never gets absurd numbers
+	var MAX_SPEED = 1440;     // top speed (4 turns a second) – faster looks like it slows down, see above
 
 	if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+	var noHover = window.matchMedia && window.matchMedia('(hover: none)').matches;
 
 	document.addEventListener('DOMContentLoaded', function () {
 		document.querySelectorAll('.spinning-smiley').forEach(function (el) {
 			var angle = 0, frame = null, startTime = 0, lastTime = 0;
+
+			// speech bubble: wrap the smiley so the bubble can sit right above it
+			var wrap = document.createElement('span');
+			wrap.className = 'smiley-wrap';
+			el.parentNode.insertBefore(wrap, el);
+			wrap.appendChild(el);
+			var bubble = document.createElement('span');
+			bubble.className = 'smiley-bubble';
+			bubble.setAttribute('aria-hidden', 'true');
+			bubble.textContent = noHover ? 'tap me!' : 'hover over me!';
+			wrap.appendChild(bubble);
 
 			function tick(now) {
 				var seconds = (now - startTime) / 1000;
@@ -28,6 +45,7 @@
 
 			function start() {
 				if (frame) return;
+				wrap.classList.add('is-spinning', 'was-spun');
 				startTime = lastTime = performance.now();
 				frame = requestAnimationFrame(tick);
 			}
@@ -35,6 +53,7 @@
 			function stop() {
 				cancelAnimationFrame(frame);
 				frame = null;
+				wrap.classList.remove('is-spinning');
 				angle = 0;
 				el.style.transform = '';
 			}
