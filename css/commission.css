@@ -1,0 +1,63 @@
+/* =========================================================
+   commission.css – extras for the portrait commission page only
+   (commission.html + en/commission.html). Loaded after main.css.
+   ========================================================= */
+
+/* ---------- Style guide: "Welcher Stil passt zu dir?" (opens on click) ---------- */
+.style-guide { max-width: 980px; margin: 1.6em auto 0; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); }
+.style-guide > summary { cursor: pointer; list-style: none; padding: 14px 20px; font-weight: 700; color: var(--accent); text-align: center; }
+.style-guide > summary::-webkit-details-marker { display: none; }
+.style-guide > summary::after { content: " ▾"; }
+.style-guide[open] > summary::after { content: " ▴"; }
+.style-guide > summary span { font-weight: 400; color: var(--ink-soft); margin-left: 6px; }
+.style-guide-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; padding: 4px 20px 0; }
+.style-guide figure { margin: 0; }
+.style-guide img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 10px; border: 1px solid var(--line); }
+.style-guide figcaption { margin-top: 8px; font-size: 0.9rem; line-height: 1.45; color: var(--ink-soft); }
+.style-guide figcaption strong { display: block; color: var(--ink); font-size: 1rem; }
+.style-guide figcaption em { font-style: normal; font-weight: 700; color: var(--accent-dark); }
+.style-guide > .hint { padding: 0 20px 16px; margin-top: 14px; text-align: center; }
+@media (max-width: 860px) { .style-guide-grid { grid-template-columns: 1fr 1fr; } }
+
+/* ---------- A4 card: two real examples with their price ---------- */
+.price-examples { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 0 0 1.2em; }
+.price-examples figure { margin: 0; }
+.price-examples img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; border-radius: 8px; border: 1px solid var(--line); }
+.price-examples figcaption { margin-top: 4px; font-size: 0.78rem; text-align: center; color: var(--ink-soft); }
+
+/* ---------- "1 € nur samstags": eyecatcher with a bouncing coin + ink splash ---------- */
+.one-euro { position: relative; display: flex; align-items: center; gap: 12px; margin: 0 0 1em; padding: 10px 12px;
+	border-radius: 14px; background: #FFF1EA; border: 2px dashed var(--fox); font-size: 0.92rem; line-height: 1.35; }
+.one-euro-coin { position: relative; flex: none; display: grid; place-items: center; width: 52px; height: 52px; border-radius: 50%;
+	background: var(--fox); color: var(--night); font: 800 1rem var(--font-head); box-shadow: 0 4px 0 #C2410C;
+	animation: coin-hop 3.2s ease-in-out infinite; }
+/* the ink splash that blooms behind the coin */
+.one-euro-coin::before { content: ""; position: absolute; inset: -8px; z-index: -1; border-radius: 46% 54% 38% 62% / 55% 40% 60% 45%;
+	background: var(--plum); opacity: 0; animation: coin-splash 3.2s ease-out infinite; }
+@keyframes coin-hop {
+	0%, 60%, 100% { transform: translateY(0) rotate(0); }
+	68% { transform: translateY(-10px) rotate(-12deg); }
+	76% { transform: translateY(0) rotate(8deg); }
+	82% { transform: translateY(-4px) rotate(-4deg); }
+	88% { transform: translateY(0) rotate(0); }
+}
+@keyframes coin-splash { 0%, 70% { opacity: 0; transform: scale(0.6) rotate(0); } 76% { opacity: 0.45; transform: scale(1.15) rotate(25deg); } 100% { opacity: 0; transform: scale(1.45) rotate(40deg); } }
+@media (prefers-reduced-motion: reduce) { .one-euro-coin, .one-euro-coin::before { animation: none; } }
+
+/* ---------- Extras: wide box, grouped in columns so it is quick to scan ---------- */
+.extras-box { max-width: 980px; margin: 2.5em auto 0; padding: clamp(20px, 4vw, 34px); background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); }
+.extras-box > h3 { margin-bottom: 0.8em; }
+.extras-groups { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 36px; }
+.extras-groups h4 { margin: 0.6em 0 0.2em; font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); }
+.extras-groups .price-list { margin-bottom: 0.6em; }
+.extras-groups .price-list span small { display: block; font-size: 0.8rem; color: var(--ink-soft); }
+.extras-groups .hint { margin: 0 0 0.6em; }
+.extras-live { margin: 1em 0 0; padding-top: 1em; border-top: 1px solid var(--line); }
+@media (max-width: 720px) { .extras-groups { grid-template-columns: 1fr; } }
+
+/* ---------- Form: "Weiß ich noch nicht" spans the whole style row; feeling quick-picks ---------- */
+.choice--wide { grid-column: 1 / -1; }
+.feel-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.feel-chips button { font: inherit; font-size: 0.85rem; padding: 5px 12px; border-radius: 999px; border: 1px solid #d6cdbf; background: #fff; color: var(--ink); cursor: pointer; }
+.feel-chips button:hover, .feel-chips button[aria-pressed="true"] { border-color: var(--accent); background: #FFF1EA; }
+.form-grid [hidden] { display: none !important; }
