@@ -1512,3 +1512,36 @@ h1, h2, h3 { overflow-wrap: break-word; hyphens: auto; }
 /* "Mehr Kunst ansehen": the first tile is the big highlight piece (2x2) */
 .gallery-grid { grid-auto-flow: dense; }
 .gallery-grid a.hl { grid-column: span 2; grid-row: span 2; aspect-ratio: auto; }
+
+/* ---------- Galerie page (/galerie/): works shown in a frame with a white mat ---------- */
+.galerie-count { color: var(--ink-soft); font-size: 0.95rem; margin: 0.4em 0 0; }
+.frame-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 28px 22px; margin-top: 1.4em; align-items: start; }
+.frame { margin: 0; }
+.frame-art {
+	display: block; padding: 14px; background: #fff;
+	border: 10px solid #2B2226;            /* the frame itself */
+	box-shadow: 0 1px 0 #5B4450 inset, 0 10px 22px rgba(15, 12, 17, 0.18);
+	transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.frame-art img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
+.frame-art:hover { transform: translateY(-3px); box-shadow: 0 1px 0 #5B4450 inset, 0 16px 30px rgba(15, 12, 17, 0.24); }
+.frame figcaption { margin-top: 10px; font-size: 0.92rem; line-height: 1.4; display: flex; flex-direction: column; gap: 2px; }
+.frame figcaption span { color: var(--ink-soft); }
+.frame-consent { font-size: 0.82rem; font-weight: 600; text-decoration: none; color: #2F7A4A; }
+.project-cards { grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); }
+.project-cards .ph-img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; border-radius: 12px; }
+.invite-list { padding-left: 1.1em; margin: 1em 0 0; }
+.invite-list li { margin-bottom: 0.6em; }
+.section--dark .invite-list a { color: var(--fox); }
+
+/* ---------- Consent register (/einwilligungen/) ---------- */
+.table-scroll { overflow-x: auto; margin-top: 1.5em; }
+.consent-table { width: 100%; border-collapse: collapse; background: var(--card); border: 1px solid var(--line); border-radius: 12px; font-size: 0.95rem; }
+.consent-table th, .consent-table td { padding: 10px 12px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: middle; }
+.consent-table th { font-family: var(--font-head); background: var(--paper); }
+.consent-table .signature { max-height: 48px; width: auto; }
+.consent-table .signed { color: #2F7A4A; font-weight: 600; }
+.consent-empty td { color: var(--ink-soft); font-style: italic; }
+#bekannt-werden .lead { color: var(--mauve); }
+#bekannt-werden .btn--ghost { color: #F2EAE4; border-color: rgba(242, 234, 228, 0.5); }
+#bekannt-werden .btn--ghost:hover { border-color: var(--fox); color: var(--fox); }
