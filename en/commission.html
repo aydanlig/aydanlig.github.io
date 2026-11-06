@@ -11,6 +11,8 @@
 	<script src="/js/splashes.js" defer></script>
 	<script src="/js/mail-reveal.js" defer></script>
 	<script src="/js/translate.js" defer></script>
+	<script src="/js/termine.js" defer></script>
+	<script src="/js/nav.js" defer></script>
 	<link rel="stylesheet" href="/css/vendor/flatpickr.min.css">
 	<script src="/js/vendor/flatpickr.min.js" defer></script>
 	<script src="/js/forms.js" defer></script>
@@ -46,6 +48,12 @@
 <body>
 
 	<!-- ================= HEADER (same on every English page) ================= -->
+	<!-- LIVE BAR: where & when I draw – the next date comes from js/termine.js -->
+	<div class="live-bar">
+		<div class="wrap">
+			<a href="/en/where-i-draw/"><span class="live-bar-dot" aria-hidden="true"></span><span data-next-gig><strong>Live:</strong> Sat 2–10 pm Mauerpark · Thu Kollwitzplatz market · Christmas markets &amp; gigs</span><span class="live-bar-more">Where &amp; when →</span></a>
+		</div>
+	</div>
 	<header class="site-header">
 		<div class="wrap">
 			<a class="logo" href="/en/">SmileyFoxy<span>Portraits</span><small class="logo-since">Drawing portraits for 6 years</small></a>
@@ -53,7 +61,19 @@
 				<a href="/en/events.html#live-events"><span class="nav-long">Live </span>Events</a>
 				<a href="/en/events.html#kleckerkasten">Kleckerkasten</a>
 				<a href="/en/commission.html"><span class="nav-long">Commission a </span>Portrait</a>
-				<a href="/en/about/">About me</a>
+				<div class="nav-more">
+					<a href="/en/about/">About me</a><button class="nav-more-toggle" type="button" aria-expanded="false" aria-label="Show more: dates, references, blog and more"><span aria-hidden="true">▾</span></button>
+					<div class="nav-more-menu">
+						<a href="/en/where-i-draw/">Where &amp; when I draw</a>
+						<a href="/en/where-i-draw/#termine">Upcoming dates</a>
+						<a href="/labor/auktion.html" hreflang="de">First auction (German)</a>
+						<a href="/en/referenzen/">References</a>
+						<a href="/en/about/#bands">Bands drawn live</a>
+						<a href="/en/about/#blog">Blog</a>
+						<a href="/en/commission.html#warteliste">Email list &amp; waitlist</a>
+						<a href="/en/about/#faq">FAQ</a>
+					</div>
+				</div>
 			</nav>
 			<a class="lang-switch" data-translate lang="de" title="Deutsche Version dieser Seite" href="/commission.html">DE</a>
 			<a class="btn btn--small" href="#bestellen">Order</a>
@@ -119,9 +139,13 @@
 							<details class="schedule">
 								<summary>When &amp; where can I find you?</summary>
 								<ul>
-									<li><strong>Now and then:</strong> Brandenburg Gate, whenever I feel like it</li>
 									<li><strong>Saturday:</strong> <a href="https://maps.app.goo.gl/ZhjvUq1bMy8CyVk18" target="_blank" rel="noopener">Mauerpark, next to the photo booth (Bernauer Str. 53)</a>, 2–10 pm</li>
-									<li><strong>Sunday:</strong> sometimes in/at Mauerpark, from 11 am</li>
+									<li><strong>Thursday:</strong> organic market at Kollwitzplatz, approx. 12–7 pm (on selected Thursdays)</li>
+									<li><strong>Sunday:</strong> at a weekly market</li>
+									<li><strong>During Advent:</strong> Christmas markets, e.g. at Charlottenburg Palace from 5 pm</li>
+									<li><strong>Gig nights:</strong> after the show at Schokoladen (Ackerstr. 169)</li>
+									<li><strong>Now and then:</strong> Brandenburg Gate, whenever I feel like it</li>
+									<li><a href="/en/where-i-draw/#termine">All upcoming dates →</a></li>
 								</ul>
 								<p class="hint">
 									Depending on the weather and sunshine. I post in my

@@ -10,6 +10,8 @@
 	<script src="/js/splashes.js" defer></script>
 	<script src="/js/mail-reveal.js" defer></script>
 	<script src="/js/translate.js" defer></script>
+	<script src="/js/termine.js" defer></script>
+	<script src="/js/nav.js" defer></script>
 
 	<title>Wo & wann ich zeichne – Mauerpark Berlin | SmileyFoxyPortraits</title>
 	<meta name="description"
@@ -41,6 +43,12 @@
 <body>
 
 	<!-- ================= HEADER ================= -->
+	<!-- LIVE BAR: where & when I draw – the next date comes from js/termine.js -->
+	<div class="live-bar">
+		<div class="wrap">
+			<a href="/where-i-draw/"><span class="live-bar-dot" aria-hidden="true"></span><span data-next-gig><strong>Live:</strong> Sa 14–22 Uhr Mauerpark · Do Ökomarkt Kollwitzplatz · Weihnachtsmärkte &amp; Konzerte</span><span class="live-bar-more">Wo &amp; wann →</span></a>
+		</div>
+	</div>
 	<header class="site-header">
 		<div class="wrap">
 			<a class="logo" href="/">SmileyFoxy<span>Portraits</span><small class="logo-since">Seit 6 Jahren Porträts</small></a>
@@ -48,7 +56,19 @@
 				<a href="/events.html#live-events"><span class="nav-long">Live-</span>Events</a>
 				<a href="/events.html#kleckerkasten">Kleckerkasten</a>
 				<a href="/commission.html">Porträt<span class="nav-long">-Auftrag</span></a>
-				<a href="/about/">Über mich</a>
+				<div class="nav-more">
+					<a href="/about/">Über mich</a><button class="nav-more-toggle" type="button" aria-expanded="false" aria-label="Mehr anzeigen: Termine, Referenzen, Blog und mehr"><span aria-hidden="true">▾</span></button>
+					<div class="nav-more-menu">
+						<a href="/where-i-draw/">Wo &amp; wann ich zeichne</a>
+						<a href="/where-i-draw/#termine">Termine &amp; Kalender</a>
+						<a href="/labor/auktion.html">Erste Auktion</a>
+						<a href="/referenzen/">Referenzen</a>
+						<a href="/about/#bands">Bands, live gezeichnet</a>
+						<a href="/about/#blog">Blog</a>
+						<a href="/commission.html#warteliste">E-Mail-Liste &amp; Warteliste</a>
+						<a href="/about/#faq">Fragen &amp; Antworten</a>
+					</div>
+				</div>
 			</nav>
 			<a class="lang-switch" data-translate lang="en" title="English version of this page" href="/en/where-i-draw/">EN</a>
 			<a class="btn btn--small" href="/events.html#anfrage-kleckerkasten">Anfragen</a>
@@ -76,10 +96,28 @@
 						<a class="st-map" role="cell" href="https://maps.app.goo.gl/ZhjvUq1bMy8CyVk18" target="_blank" rel="noopener">Karte ↗</a>
 					</div>
 					<div class="st-row" role="row">
+						<span class="st-day" role="cell">Donnerstag</span>
+						<span class="st-time" role="cell">ca. 12–19 Uhr</span>
+						<span class="st-place" role="cell"><a href="#kollwitzplatz">Ökomarkt Kollwitzplatz</a> · an ausgewählten Donnerstagen</span>
+						<a class="st-map" role="cell" href="https://maps.google.com/?q=%C3%96komarkt+Kollwitzplatz+Berlin" target="_blank" rel="noopener">Karte ↗</a>
+					</div>
+					<div class="st-row" role="row">
 						<span class="st-day" role="cell">Sonntag</span>
-						<span class="st-time" role="cell">oft ab 11 Uhr</span>
-						<span class="st-place" role="cell"><a href="#mauerpark">Mauerpark</a> · nach Lust &amp; Wetter</span>
-						<a class="st-map" role="cell" href="https://maps.app.goo.gl/ZhjvUq1bMy8CyVk18" target="_blank" rel="noopener">Karte ↗</a>
+						<span class="st-time" role="cell">wechselnd</span>
+						<span class="st-place" role="cell">Wochenmarkt · welcher, steht vorher in der Instagram-Story</span>
+						<span class="st-map" role="cell"></span>
+					</div>
+					<div class="st-row" role="row">
+						<span class="st-day" role="cell">Advent</span>
+						<span class="st-time" role="cell">ab 17 Uhr</span>
+						<span class="st-place" role="cell"><a href="#weihnachtsmarkt">Weihnachtsmarkt am Schloss Charlottenburg</a> &amp; ZK/U Gütermarkt · <a href="#termine">Termine</a></span>
+						<a class="st-map" role="cell" href="https://maps.google.com/?q=Weihnachtsmarkt+Schloss+Charlottenburg" target="_blank" rel="noopener">Karte ↗</a>
+					</div>
+					<div class="st-row" role="row">
+						<span class="st-day" role="cell">Konzertabende</span>
+						<span class="st-time" role="cell">nach der Show</span>
+						<span class="st-place" role="cell"><a href="#schokoladen">Schokoladen</a> · ich zeichne die Band live, danach dich</span>
+						<a class="st-map" role="cell" href="https://maps.google.com/?q=Schokoladen+Ackerstra%C3%9Fe+169+Berlin" target="_blank" rel="noopener">Karte ↗</a>
 					</div>
 					<div class="st-row" role="row">
 						<span class="st-day" role="cell">Ab und zu</span>
@@ -93,6 +131,17 @@
 			</div>
 		</section>
 
+		<!-- ================= NÄCHSTE TERMINE – edit the list in js/termine.js ================= -->
+		<section class="section" id="termine" style="padding-block:8px 32px">
+			<div class="wrap">
+				<h2>Nächste Termine</h2>
+				<p>Märkte, Weihnachtsmärkte und Bands, die ich live zeichne – vergangene Termine verschwinden von allein.</p>
+				<div data-termine>
+					<p class="hint">Die aktuellen Termine stehen in meiner <a href="https://www.instagram.com/smileyfoxyportraits">Instagram-Story</a>.</p>
+				</div>
+			</div>
+		</section>
+
 		<!-- ================= PLACES – to add one: copy an <article class="place"> block ================= -->
 		<div class="wrap places">
 			<article class="place" id="mauerpark">
@@ -100,11 +149,45 @@
 				<div>
 					<h2>Mauerpark</h2>
 					<ul class="place-facts">
-						<li><strong>Wann:</strong> Samstag 14–22 Uhr · Sonntag oft ab 11 Uhr</li>
+						<li><strong>Wann:</strong> jeden Samstag 14–22 Uhr</li>
 						<li><strong>Wo genau:</strong> Bernauer Str. 53, direkt neben dem Photoautomaten – <a href="https://maps.app.goo.gl/ZhjvUq1bMy8CyVk18" target="_blank" rel="noopener">Google Maps ↗</a></li>
 						<li><strong>Anfahrt:</strong> U Eberswalder Straße oder S+U Gesundbrunnen</li>
 					</ul>
 					<p>Zwischen Flohmarkt, Karaoke und Straßenmusik gibt es hier samstags die 1-€-Schnellskizze – Kunst, die sich wirklich jede:r leisten kann.</p>
+				</div>
+			</article>
+
+			<article class="place place--compact" id="kollwitzplatz">
+				<div>
+					<h2>Ökomarkt am Kollwitzplatz</h2>
+					<ul class="place-facts">
+						<li><strong>Wann:</strong> an ausgewählten Donnerstagen, ca. 12–19 Uhr (Jan–März bis 18 Uhr) – <a href="#termine">Termine</a></li>
+						<li><strong>Wo genau:</strong> Kollwitzplatz, Prenzlauer Berg – <a href="https://maps.google.com/?q=%C3%96komarkt+Kollwitzplatz+Berlin" target="_blank" rel="noopener">Google Maps ↗</a></li>
+						<li><strong>Anfahrt:</strong> U Senefelderplatz</li>
+					</ul>
+				</div>
+			</article>
+
+			<article class="place place--compact" id="weihnachtsmarkt">
+				<div>
+					<h2>Weihnachtsmärkte</h2>
+					<ul class="place-facts">
+						<li><strong>Schloss Charlottenburg:</strong> im Pagodenzelt, an ausgewählten Abenden ab 17 Uhr – <a href="#termine">Termine</a></li>
+						<li><strong>ZK/U Gütermarkt:</strong> Winterweihnachtsedition am So 13.12., Siemensstr. 27 (Moabit)</li>
+					</ul>
+					<p>Ein Porträt als Weihnachtsgeschenk, live gezeichnet, während du Glühwein trinkst.</p>
+				</div>
+			</article>
+
+			<article class="place place--compact" id="schokoladen">
+				<div>
+					<h2>Konzerte im Schokoladen</h2>
+					<ul class="place-facts">
+						<li><strong>Wann:</strong> an Konzertabenden – welche Bands, steht bei den <a href="#termine">Terminen</a></li>
+						<li><strong>Wo genau:</strong> Schokoladen, Ackerstr. 169, Berlin-Mitte – <a href="https://maps.google.com/?q=Schokoladen+Ackerstra%C3%9Fe+169+Berlin" target="_blank" rel="noopener">Google Maps ↗</a></li>
+					</ul>
+					<p>Während des Sets zeichne ich die Band live. Nach der Show zeichne ich gern auch dich – sprich mich einfach an.
+						<a href="/about/#bands">Bands, die ich schon gezeichnet habe →</a></p>
 				</div>
 			</article>
 
@@ -127,7 +210,6 @@
 						Regentagen Porträts anbieten darf? <a href="mailto:aydan@smileyfoxyportraits.com?subject=Ort%20f%C3%BCr%20Regentage">Schreib mir gern.</a></p>
 				</div>
 			</article>
-			<p class="hint" style="margin:0 0 2em"><a href="/about/#in-arbeit">Demnächst auch auf Berliner Märkten →</a></p>
 		</div>
 
 		<!-- ================= TESTIMONIALS (Senja widget from the old page) ================= -->

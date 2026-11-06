@@ -10,6 +10,8 @@
 	<script src="/js/splashes.js" defer></script>
 	<script src="/js/mail-reveal.js" defer></script>
 	<script src="/js/translate.js" defer></script>
+	<script src="/js/termine.js" defer></script>
+	<script src="/js/nav.js" defer></script>
 	<script src="/js/gallery.js" defer></script>
 
 	<title>Über mich – Aydan Lig'on | SmileyFoxyPortraits</title>
@@ -40,6 +42,12 @@
 
 <body>
 
+	<!-- LIVE BAR: where & when I draw – the next date comes from js/termine.js -->
+	<div class="live-bar">
+		<div class="wrap">
+			<a href="/where-i-draw/"><span class="live-bar-dot" aria-hidden="true"></span><span data-next-gig><strong>Live:</strong> Sa 14–22 Uhr Mauerpark · Do Ökomarkt Kollwitzplatz · Weihnachtsmärkte &amp; Konzerte</span><span class="live-bar-more">Wo &amp; wann →</span></a>
+		</div>
+	</div>
 	<header class="site-header">
 		<div class="wrap">
 			<a class="logo" href="/">SmileyFoxy<span>Portraits</span><small class="logo-since">Seit 6 Jahren Porträts</small></a>
@@ -47,7 +55,19 @@
 				<a href="/events.html#live-events"><span class="nav-long">Live-</span>Events</a>
 				<a href="/events.html#kleckerkasten">Kleckerkasten</a>
 				<a href="/commission.html">Porträt<span class="nav-long">-Auftrag</span></a>
-				<a href="/about/">Über mich</a>
+				<div class="nav-more">
+					<a href="/about/">Über mich</a><button class="nav-more-toggle" type="button" aria-expanded="false" aria-label="Mehr anzeigen: Termine, Referenzen, Blog und mehr"><span aria-hidden="true">▾</span></button>
+					<div class="nav-more-menu">
+						<a href="/where-i-draw/">Wo &amp; wann ich zeichne</a>
+						<a href="/where-i-draw/#termine">Termine &amp; Kalender</a>
+						<a href="/labor/auktion.html">Erste Auktion</a>
+						<a href="/referenzen/">Referenzen</a>
+						<a href="/about/#bands">Bands, live gezeichnet</a>
+						<a href="/about/#blog">Blog</a>
+						<a href="/commission.html#warteliste">E-Mail-Liste &amp; Warteliste</a>
+						<a href="/about/#faq">Fragen &amp; Antworten</a>
+					</div>
+				</div>
 			</nav>
 			<a class="lang-switch" data-translate lang="en" title="English version of this page" href="/en/about/">EN</a>
 			<a class="btn btn--small" href="/events.html#anfrage-kleckerkasten">Anfragen</a>
@@ -60,7 +80,7 @@
 
 		<!-- ================= INTRO ================= -->
 		<section class="section" style="padding-bottom:24px">
-			<div class="wrap split">
+			<div class="wrap split split--top">
 				<div>
 					<span class="eyebrow">Über mich</span>
 					<h1>Hi, ich bin Aydan.</h1>
@@ -70,6 +90,7 @@
 					</p>
 					<!-- Jump links to the sections below -->
 					<nav class="toc" aria-label="Inhalt">
+						<a href="#termine">Termine</a>
 						<a href="#referenzen">Referenzen</a>
 						<a href="#wer-bin-ich">Wer bin ich?</a>
 						<a href="#ziel">Mein Ziel</a>
@@ -80,7 +101,27 @@
 						<a href="#kontakt">Kontakt</a>
 					</nav>
 				</div>
-				<img src="/img/fotos/aydan-profil.jpg" alt="Aydan Lig'on, der Künstler hinter SmileyFoxyPortraits" class="ph-img ph--natural" width="900" height="1200" fetchpriority="high" decoding="async">
+				<figure class="intro-photo">
+					<img src="/img/fotos/aydan-profil.jpg" alt="Aydan Lig'on, der Künstler hinter SmileyFoxyPortraits" width="900" height="1200" fetchpriority="high" decoding="async">
+					<figcaption>
+						Ich zeichne aus Freude am Zeichnen. Und weil ich ein sehr feinfühliger Mensch bin, fällt es mir leicht,
+						dich zu fragen, wie du festgehalten werden möchtest: mit dem Gefühl, das ich gerade bei dir spüre – oder
+						lieber stark und ernst.
+					</figcaption>
+				</figure>
+			</div>
+		</section>
+
+		<!-- ================= NÄCHSTE TERMINE – edit the list in js/termine.js ================= -->
+		<section class="section" id="termine" style="padding-block:8px 36px">
+			<div class="wrap">
+				<span class="eyebrow">Live erleben</span>
+				<h2 style="margin-top:0">Hier zeichne ich als Nächstes</h2>
+				<p>Märkte, Weihnachtsmärkte und Bands, die ich live zeichne. Komm vorbei – und lass dich gleich mitzeichnen.
+					Jeden Samstag bin ich außerdem 14–22 Uhr im Mauerpark.</p>
+				<div data-termine data-limit="6">
+					<p class="hint">Die aktuellen Termine stehen auf <a href="/where-i-draw/">Wo &amp; wann ich zeichne</a> und in meiner <a href="https://www.instagram.com/smileyfoxyportraits">Instagram-Story</a>.</p>
+				</div>
 			</div>
 		</section>
 
@@ -120,7 +161,7 @@
 				<span class="eyebrow">In Arbeit</span>
 				<h2 style="margin-top:0">Woran ich gerade arbeite</h2>
 				<ul class="wip-list">
-					<li><strong>Berliner Märkte:</strong> Bald bin ich mit meinem mobilen Porträt-Stand auch auf regulären Berliner Märkten. Welche und wann, steht auf <a href="https://www.instagram.com/smileyfoxyportraits">Instagram</a>.</li>
+					<li><strong>Berliner Märkte:</strong> Mit meinem mobilen Porträt-Stand bin ich jetzt auch auf Märkten: auf dem Weihnachtsmarkt am Schloss Charlottenburg und donnerstags auf dem Ökomarkt am Kollwitzplatz – <a href="#termine">alle Termine</a>.</li>
 					<li><strong>Erste Auktion:</strong> Eine rote Original-Skizze, live in 15 Minuten gezeichnet – ohne Startpreis, <a href="/labor/auktion.html">mitbieten bis 31.12.2026</a>.</li>
 					<li><strong>Pilot-Team für den Kleckerkasten:</strong> Das erste Team bekommt den Workshop zum halben Preis – <a href="/events.html#pilot">mehr dazu</a>.</li>
 					<li><strong>„Berlin zwischen Tag und Nacht“:</strong> eine Aquarell-Serie über Streetart, Demos und Morgengrauen – später auch als Prints.</li>
@@ -149,7 +190,6 @@
 				<p>
 					Beim Zeichnen frage ich gern nach dem Stil: Tusche und Fineliner wirken ernst und klar, Aquarell verspielt
 					und ein bisschen chaotisch – beides zusammen zeigt einen vielschichtigen Charakter.
-					Ich zeichne aus Freude am Zeichnen. Und weil ich ein sehr feinfühliger Mensch bin, fällt es mir leicht, Menschen zu fragen, wie sie festgehalten werden möchten: mit dem Gefühl, das ich gerade bei ihnen spüre – oder lieber stark und ernst.
 				</p>
 				<p>
 					Gerade bekommt die Kunst meine volle Zeit: draußen zeichnen, Events und der Kleckerkasten. Bis September 2027
