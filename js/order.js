@@ -33,10 +33,12 @@
 		ship: 'Shipping', pickup: 'Pick-up in Berlin', digital: 'Digital only (scan)',
 		discount: 'Discount card', total: 'Total', none: '–',
 		subject: 'New ORDER',
-		auto: function (nr, sum, link) {
+		now: 'now', afterSketch: 'after the sketch', afterLines: 'after the linework', payNow: 'Due now',
+		auto: function (nr, sum, plan) {
 			return 'Thank you for your order! Order number: ' + nr + ' · Total: ' + sum +
-				'\n\nIf you haven’t paid yet, you can do it here: ' + link +
-				'\n\nI start painting as soon as the payment is in. Before I send the portrait, you get a photo of it by e-mail. ' +
+				'\n\nYour payments:\n' + plan +
+				'\n\nI start painting as soon as the first payment is in. Before each next payment you get a photo of the sketch or linework, ' +
+				'and before I send the portrait, a photo of the finished piece. ' +
 				'Questions? Just reply to this e-mail.\n\nAydan · SmileyFoxyPortraits';
 		},
 		thanks: '/en/bestellt.html', money: function (n) { return '€' + n.toFixed(2); }
@@ -51,10 +53,12 @@
 		ship: 'Versand', pickup: 'Abholung in Berlin', digital: 'Nur digital (Scan)',
 		discount: 'Rabattkarte', total: 'Gesamt', none: '–',
 		subject: 'Neue BESTELLUNG',
-		auto: function (nr, sum, link) {
+		now: 'jetzt', afterSketch: 'nach der Skizze', afterLines: 'nach der Linework', payNow: 'Jetzt zu zahlen',
+		auto: function (nr, sum, plan) {
 			return 'Danke für deine Bestellung! Bestellnummer: ' + nr + ' · Gesamt: ' + sum +
-				'\n\nFalls du noch nicht bezahlt hast, geht das hier: ' + link +
-				'\n\nSobald die Zahlung da ist, fange ich an zu malen. Bevor ich das Porträt verschicke, bekommst du ein Foto davon per E-Mail. ' +
+				'\n\nDeine Zahlungen:\n' + plan +
+				'\n\nSobald die erste Zahlung da ist, fange ich an zu malen. Vor jeder weiteren Zahlung bekommst du ein Foto von der Skizze bzw. der Linework, ' +
+				'und bevor ich das Porträt verschicke, ein Foto vom fertigen Bild. ' +
 				'Fragen? Antworte einfach auf diese E-Mail.\n\nAydan · SmileyFoxyPortraits';
 		},
 		thanks: '/bestellt.html',
@@ -149,8 +153,33 @@
 		}).join('') : '<li class="hint">' + T.pickSize + '</li>';
 		summaries.forEach(function (el) { el.innerHTML = html; });
 		totals.forEach(function (el) { el.textContent = s.ready ? T.money(s.total) : T.none; });
+
+		// payment plan: each card shows its own amounts, the price box shows what is due now
+		s.parts = parts(s.total, planShare());
+		$$('[name="Zahlungsweise"]').forEach(function (r) {
+			var out = r.closest('label').querySelector('[data-plan-amount]');
+			if (out) out.textContent = s.ready ? parts(s.total, num(r.getAttribute('data-share'))).map(function (p) { return T.money(p[0]) + ' ' + p[1]; }).join(' · ') : '';
+		});
+		$$('[data-order-now]', document).forEach(function (el) {
+			el.textContent = s.ready ? T.money(s.parts[0][0]) : T.none;
+			var row = el.closest('[data-order-now-row]');
+			if (row) row.hidden = !s.ready || s.parts.length === 1;
+		});
 		return s;
 	}
+	/* Payment plan (radio name="Zahlungsweise" data-share="100|50|20"):
+	   100 % now · or 50 % now + 50 % after the linework · or 20 % now + 30 % after the sketch + 50 % after the linework */
+	function planShare() {
+		var r = $('[name="Zahlungsweise"]:checked');
+		return r ? num(r.getAttribute('data-share')) : 100;
+	}
+	function parts(total, share) {
+		var cents = Math.round(total * 100), at = function (p) { return Math.round(cents * p / 100); };
+		if (share === 20) return [[at(20) / 100, T.now], [(at(50) - at(20)) / 100, T.afterSketch], [(cents - at(50)) / 100, T.afterLines]];
+		if (share === 50) return [[at(50) / 100, T.now], [(cents - at(50)) / 100, T.afterLines]];
+		return [[cents / 100, T.now]];
+	}
+
 	function esc(t) { return String(t).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
 
 	form.addEventListener('change', render);
@@ -312,13 +341,20 @@
 		var nr = 'SFP-' + String(d.getFullYear()).slice(2) + ('0' + (d.getMonth() + 1)).slice(-2) + ('0' + d.getDate()).slice(-2) +
 			'-' + Math.random().toString(36).slice(2, 6).toUpperCase();
 		var sum = T.money(s.total);
-		var payLink = location.origin + T.thanks + '?nr=' + encodeURIComponent(nr) + '&sum=' + s.total.toFixed(2);
+		// one pay link per instalment (same pay page, part number + amount in the link)
+		var links = s.parts.map(function (p, i) {
+			return location.origin + T.thanks + '?nr=' + encodeURIComponent(nr) + '&sum=' + p[0].toFixed(2) +
+				(s.parts.length > 1 ? '&part=' + (i + 1) + '&of=' + s.parts.length + '&total=' + s.total.toFixed(2) : '');
+		});
+		var plan = s.parts.map(function (p, i) { return (i + 1) + '. ' + T.money(p[0]) + ' ' + p[1] + ': ' + links[i]; }).join('\n');
 		set('Bestellnummer', nr);
 		set('Gesamtpreis', sum);
+		set('Jetzt zu zahlen', T.money(s.parts[0][0]));
+		set('Zahlungsplan', plan.replace(/\n/g, ' | '));
 		set('Preisaufstellung', s.lines.map(function (l) { return l[0] + ': ' + T.money(l[1]); }).join(' | '));
-		set('_subject', T.subject + ' ' + nr + ' – ' + sum);
-		set('_next', payLink);
-		set('_autoresponse', T.auto(nr, sum, payLink));
+		set('_subject', T.subject + ' ' + nr + ' – ' + sum + (s.parts.length > 1 ? ' (' + planShare() + ' % vorab)' : ''));
+		set('_next', links[0]);
+		set('_autoresponse', T.auto(nr, sum, plan));
 		set('_replyto', ($('[name="email"]') || {}).value || '');
 		try { sessionStorage.setItem('sfp-order', JSON.stringify({ nr: nr, sum: s.total, lines: s.lines })); } catch (err) { /* private mode: page still works from the link */ }
 	});
