@@ -1543,3 +1543,20 @@ h1, h2, h3 { overflow-wrap: break-word; hyphens: auto; }
 	.kpi th, .kpi td { border: 0; padding: 4px 14px; }
 	.kpi td::before { content: attr(data-label); display: block; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; color: var(--ink-soft); }
 }
+/* ---------- About: goals ("weltklasse") + values ("wofür ich stehe") ---------- */
+.goal-list { list-style: none; counter-reset: goal; padding: 0; margin: 1em 0 0; }
+.goal-list li { counter-increment: goal; position: relative; padding-left: 3.2rem; margin-bottom: 1.3em; min-height: 3rem; }
+.goal-list li::before {
+	content: counter(goal);
+	position: absolute; left: 0; top: -0.2em; width: 2.5rem; text-align: center;
+	font-family: var(--font-head); font-size: 2.6rem; font-weight: 700; line-height: 1; color: var(--accent);
+}
+.goal-list strong, .stance strong { display: block; font-family: var(--font-head); font-size: 1.2rem; line-height: 1.2; margin-bottom: 0.15em; }
+.stance-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 22px; margin-top: 1.2em; }
+.stance { padding: 22px 22px 14px; border: 2px solid var(--ink); border-radius: 16px; background: var(--card); box-shadow: 4px 5px 0 rgba(26, 22, 21, 0.85); }
+.stance h3 { margin: 0 0 0.5em; }
+.stance ul { list-style: none; padding: 0; margin: 0; }
+.stance li { position: relative; padding-left: 1.8em; margin-bottom: 1em; }
+.stance li::before { position: absolute; left: 0; top: 0; font-size: 1.2rem; font-weight: 700; line-height: 1.3; }
+.stance--for li::before { content: "✓"; color: #1F8A8A; }
+.stance--against li::before { content: "✗"; color: #E0457B; }
