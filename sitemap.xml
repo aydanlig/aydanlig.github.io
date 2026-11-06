@@ -86,4 +86,10 @@
 	<url><loc>https://smileyfoxyportraits.com/en/where-i-draw/</loc></url>
 	<url><loc>https://smileyfoxyportraits.com/en/referenzen/</loc></url>
 	<url><loc>https://smileyfoxyportraits.com/en/spenden/</loc></url>
+  <url>
+    <loc>https://smileyfoxyportraits.com/jobs/</loc>
+    <lastmod>2026-11-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
 </urlset>
