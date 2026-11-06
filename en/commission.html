@@ -547,12 +547,21 @@
 								<div class="order-review">
 									<ul class="price-list" data-order-summary></ul>
 									<p class="order-total">Total: <strong data-order-total>–</strong></p>
+									<p class="order-total order-total--now" data-order-now-row hidden>Due now: <strong data-order-now>–</strong></p>
 									<p class="hint">Final price, no VAT (§ 19 UStG).</p>
+								</div>
+
+								<!-- PAYMENT PLAN – share of the total paid now (data-share). Logic: /js/order.js (function parts) -->
+								<p class="order-label">How would you like to pay?</p>
+								<div class="order-choices order-choices--3 order-plan">
+									<label class="order-card"><input type="radio" name="Zahlungsweise" value="100 % vorab" data-share="100" checked><span class="order-card-body"><strong>100 % upfront <em>preferred</em></strong><span class="hint">All at once – so I can focus fully on the painting.</span><span class="order-plan-amount" data-plan-amount></span></span></label>
+									<label class="order-card"><input type="radio" name="Zahlungsweise" value="50 % vorab, Rest nach der Linework" data-share="50"><span class="order-card-body"><strong>50 % upfront</strong><span class="hint">You see the finished linework (ink lines), then pay the rest.</span><span class="order-plan-amount" data-plan-amount></span></span></label>
+									<label class="order-card"><input type="radio" name="Zahlungsweise" value="20 % vorab, 30 % nach der Skizze, Rest nach der Linework" data-share="20"><span class="order-card-body"><strong>20 % upfront</strong><span class="hint">You see the sketch first, then the linework, and pay the next part each time.</span><span class="order-plan-amount" data-plan-amount></span></span></label>
 								</div>
 								<ol class="order-after">
 									<li><strong>Order</strong> – you get a confirmation e-mail straight away.</li>
-									<li><strong>Pay</strong> – right in the next step with PayPal or card.</li>
-									<li><strong>I paint</strong> – you get a photo of the finished piece before it's sent.</li>
+									<li><strong>Pay</strong> – your (first) payment right in the next step with PayPal or card.</li>
+									<li><strong>I paint</strong> – with 20 % / 50 % you get a photo of the sketch or linework with the link for the next part, and a photo of the finished piece before it's sent.</li>
 								</ol>
 								<label class="order-check">
 									<input type="checkbox" name="Bedingungen" value="Akzeptiert" required>
@@ -571,6 +580,7 @@
 							<details class="order-sum" open>
 								<summary><span>Your price</span> <strong data-order-total aria-live="polite">–</strong></summary>
 								<ul class="price-list" data-order-summary></ul>
+								<p class="order-now" data-order-now-row hidden><span>Due now</span> <strong data-order-now>–</strong></p>
 							</details>
 						</aside>
 					</div>
@@ -715,6 +725,7 @@
 					<p><a href="/en/spenden/">Donate</a></p>
 					<p><a href="/en/bezahlen.html">Pay on the spot</a></p>
 					<p><a href="https://tr.ee/u1wxA4" target="_blank" rel="noopener">Free: leave a review</a></p>
+					<p><a href="https://www.google.com/preferences/source?q=smileyfoxyportraits.com" target="_blank" rel="noopener">Free: pick me as a preferred source on Google</a></p>
 					<p><a href="/support-free/">Support for free (German)</a></p>
 				</div>
 

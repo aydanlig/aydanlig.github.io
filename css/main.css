@@ -1573,8 +1573,16 @@ h1, h2, h3 { overflow-wrap: break-word; hyphens: auto; }
 .smiley-wrap.is-spinning .smiley-bubble, .smiley-wrap.was-spun .smiley-bubble { opacity: 0; }
 @keyframes bubble-pop { 0%, 100% { transform: translateY(-50%) translateX(0) rotate(-3deg); } 50% { transform: translateY(-50%) translateX(5px) rotate(2deg); } }
 @media (max-width: 520px) { .smiley-bubble { font-size: .72rem; padding: 6px 9px; } }
+@media (max-width: 520px) {
+	/* phones: the bubble sits under the smiley, right-aligned, so it never sticks out of the screen */
+	.smiley-bubble { left: auto; right: -4px; top: calc(100% + 10px); transform: none; animation-name: bubble-pop-phone; }
+	.smiley-bubble::after { right: 12px; top: auto; bottom: 100%; transform: none; border-right-color: transparent; border-bottom-color: var(--night); }
+	/* room under the heading so the bubble doesn't cover the text below */
+	:is(h1, h2, h3, p):has(> .smiley-wrap) { margin-bottom: 1.6em; }
+}
+@keyframes bubble-pop-phone { 0%, 100% { transform: translateY(0) rotate(-2deg); } 50% { transform: translateY(3px) rotate(2deg); } }
 @media (prefers-reduced-motion: reduce) { .smiley-bubble { animation: none; } }
-=======
+
 /* ---------- Jobs page (/jobs/) ---------- */
 .jobs { display: grid; gap: 28px; }
 .job { padding: 28px; }

@@ -570,12 +570,21 @@
 								<div class="order-review">
 									<ul class="price-list" data-order-summary></ul>
 									<p class="order-total">Gesamt: <strong data-order-total>–</strong></p>
+									<p class="order-total order-total--now" data-order-now-row hidden>Jetzt zu zahlen: <strong data-order-now>–</strong></p>
 									<p class="hint">Endpreis, keine Umsatzsteuer (§ 19 UStG).</p>
+								</div>
+
+								<!-- PAYMENT PLAN – share of the total paid now (data-share). Logic: /js/order.js (function parts) -->
+								<p class="order-label">Wie möchtest du zahlen?</p>
+								<div class="order-choices order-choices--3 order-plan">
+									<label class="order-card"><input type="radio" name="Zahlungsweise" value="100 % vorab" data-share="100" checked><span class="order-card-body"><strong>100 % vorab <em>am liebsten</em></strong><span class="hint">Alles auf einmal – so kann ich mich ganz aufs Malen konzentrieren.</span><span class="order-plan-amount" data-plan-amount></span></span></label>
+									<label class="order-card"><input type="radio" name="Zahlungsweise" value="50 % vorab, Rest nach der Linework" data-share="50"><span class="order-card-body"><strong>50 % vorab</strong><span class="hint">Du siehst die fertige Linework (Tusche-Linien) und zahlst dann den Rest.</span><span class="order-plan-amount" data-plan-amount></span></span></label>
+									<label class="order-card"><input type="radio" name="Zahlungsweise" value="20 % vorab, 30 % nach der Skizze, Rest nach der Linework" data-share="20"><span class="order-card-body"><strong>20 % vorab</strong><span class="hint">Du siehst erst die Skizze, dann die Linework, und zahlst jeweils den nächsten Teil.</span><span class="order-plan-amount" data-plan-amount></span></span></label>
 								</div>
 								<ol class="order-after">
 									<li><strong>Bestellen</strong> – du bekommst sofort eine Bestätigung per E-Mail.</li>
-									<li><strong>Bezahlen</strong> – direkt im nächsten Schritt mit PayPal oder Karte.</li>
-									<li><strong>Ich male</strong> – du bekommst ein Foto vom fertigen Bild, bevor es verschickt wird.</li>
+									<li><strong>Bezahlen</strong> – deine (erste) Zahlung direkt im nächsten Schritt mit PayPal oder Karte.</li>
+									<li><strong>Ich male</strong> – bei 20 % / 50 % bekommst du ein Foto von Skizze bzw. Linework mit dem Link für den nächsten Teil, und vor dem Versand ein Foto vom fertigen Bild.</li>
 								</ol>
 								<label class="order-check">
 									<input type="checkbox" name="Bedingungen" value="Akzeptiert" required>
@@ -594,6 +603,7 @@
 							<details class="order-sum" open>
 								<summary><span>Dein Preis</span> <strong data-order-total aria-live="polite">–</strong></summary>
 								<ul class="price-list" data-order-summary></ul>
+								<p class="order-now" data-order-now-row hidden><span>Jetzt zu zahlen</span> <strong data-order-now>–</strong></p>
 							</details>
 						</aside>
 					</div>
@@ -742,6 +752,7 @@
 					<p><a href="/spenden/">Spenden</a></p>
 					<p><a href="/bezahlen.html">Vor Ort bezahlen</a></p>
 					<p><a href="https://tr.ee/u1wxA4" target="_blank" rel="noopener">Kostenlos: Bewertung abgeben</a></p>
+					<p><a href="https://www.google.com/preferences/source?q=smileyfoxyportraits.com" target="_blank" rel="noopener">Kostenlos: bei Google als bevorzugte Quelle wählen</a></p>
 					<p><a href="/support-free/">Kostenlos unterstützen</a></p>
 				</div>
 

@@ -3,7 +3,7 @@
    Loaded after main.css and ink.css. Logic: /js/order.js
    ========================================================= */
 
-.order-section { position: relative; isolation: isolate; }
+.order-section { position: relative; isolation: isolate; overflow-x: clip; } /* the ink bloom must not make the page scroll sideways */
 .order-section::before {           /* alcohol-ink bloom behind the order form */
 	content: ""; position: absolute; inset: 380px -12% auto auto; width: min(560px, 60vw); aspect-ratio: 1;
 	background: var(--bloom-cool, none) no-repeat center / contain; opacity: 0.55; z-index: -1; pointer-events: none;
@@ -167,3 +167,13 @@
 	.order-extras { grid-template-columns: 1fr; }
 	.order-nav .btn, .order-submit .btn { flex: 1 1 auto; text-align: center; }
 }
+
+/* ---------- payment plan (100 / 50 / 20 % upfront) ---------- */
+.order-plan .order-card-body { gap: 4px; }
+.order-plan-amount { margin-top: 6px; font-weight: 700; font-size: 0.9rem; color: var(--ink); }
+.order-plan-amount:empty { display: none; }
+.order-total--now { margin-top: 4px; font-size: 1rem; }
+.order-total--now strong { font-size: 1.6rem; color: var(--ink); }
+.order-now { display: flex; justify-content: space-between; align-items: baseline; margin: 10px 0 0; padding-top: 8px;
+	border-top: 1px solid rgba(242, 234, 228, 0.3); font-weight: 700; }
+.order-now strong { color: var(--fox); font-size: 1.25rem; }
