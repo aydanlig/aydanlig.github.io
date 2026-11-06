@@ -3,7 +3,7 @@
    Loaded after main.css and ink.css. Logic: /js/order.js
    ========================================================= */
 
-.order-section { position: relative; isolation: isolate; }
+.order-section { position: relative; isolation: isolate; overflow-x: clip; } /* the ink bloom must not make the page scroll sideways */
 .order-section::before {           /* alcohol-ink bloom behind the order form */
 	content: ""; position: absolute; inset: 380px -12% auto auto; width: min(560px, 60vw); aspect-ratio: 1;
 	background: var(--bloom-cool, none) no-repeat center / contain; opacity: 0.55; z-index: -1; pointer-events: none;
