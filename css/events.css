@@ -1,0 +1,63 @@
+/* =========================================================
+   Extra styles for the events page (Live-Event-Porträts + Kleckerkasten)
+   and the "Anfragen" dropdown in the header. Loaded after main.css.
+   ========================================================= */
+
+/* ---------- "Anfragen" dropdown in the header (<details>, see js/ask-menu.js) ---------- */
+.ask-menu { position: relative; }
+.ask-menu > summary { list-style: none; cursor: pointer; user-select: none; }
+.ask-menu > summary::-webkit-details-marker { display: none; }
+.ask-menu > summary span { display: inline-block; margin-left: 2px; transition: transform 0.15s ease; }
+.ask-menu[open] > summary span { transform: rotate(180deg); }
+.ask-menu-list {
+	position: absolute; right: 0; top: calc(100% + 10px); z-index: 60;
+	width: min(270px, calc(100vw - 32px));
+	background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+	box-shadow: 0 18px 40px rgba(31, 27, 36, 0.16); padding: 6px;
+}
+.ask-menu-list a { display: block; padding: 9px 12px; border-radius: 10px; color: var(--ink); text-decoration: none; }
+.ask-menu-list a:hover, .ask-menu-list a:focus-visible { background: #FFE1D4; }
+.ask-menu-list strong { display: block; font-size: 0.92rem; }
+.ask-menu-list small { display: block; font-size: 0.78rem; color: var(--ink-soft); }
+
+/* ---------- A · Live-Event-Porträts ---------- */
+.live-intro .lead { margin-bottom: 1em; }
+.live-stats { list-style: none; padding: 0; margin: 1.6em 0 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+.live-stats li { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 10px 8px; text-align: center; }
+.live-stats strong { display: block; font-family: var(--font-head); font-size: 1.35rem; color: var(--accent); line-height: 1.1; }
+.live-stats span { display: block; font-size: 0.75rem; color: var(--ink-soft); line-height: 1.25; margin-top: 4px; }
+
+.live-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 2.5em; }
+.live-strip img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 12px; display: block; }
+
+.live-subtitle { margin: 2.4em 0 0; font-family: var(--font-head); font-size: clamp(1.3rem, 2.6vw, 1.7rem); }
+.live-subtitle + .story-steps { margin-top: 1.2em; }
+
+.style-pick { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 1.2em; }
+.style-pick > div { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px 22px; }
+.style-pick h4 { margin: 0.35em 0 0.3em; font-size: 1.1rem; }
+.style-pick p { margin: 0; color: var(--ink-soft); }
+.style-time { display: inline-block; font-size: 0.78rem; font-weight: 700; padding: 3px 10px; border-radius: 999px; background: #FFE1D4; color: var(--accent-dark); }
+
+.live-audience { margin-top: 2em; }
+
+/* "2× gebucht" in the top right corner of a package card */
+.card--count { position: relative; }
+.card-count { position: absolute; top: 14px; right: 14px; font-size: 0.75rem; font-weight: 700; padding: 3px 10px;
+	border-radius: 999px; background: var(--night); color: var(--paper); }
+
+.live-faq { max-width: 760px; margin: 0 auto; }
+.live-faq .live-subtitle { margin-bottom: 0.8em; }
+
+/* ---------- B · Kleckerkasten ---------- */
+.kk-split { align-items: start; }
+.kk-split > img { border-radius: var(--radius); }
+.kk-nachstellung { background: #FFF6EF; border-left: 4px solid var(--fox); padding: 10px 14px; border-radius: 0 10px 10px 0; }
+
+@media (max-width: 900px) {
+	.live-strip { grid-template-columns: repeat(2, 1fr); }
+	.live-stats { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+	.style-pick { grid-template-columns: 1fr; }
+}
