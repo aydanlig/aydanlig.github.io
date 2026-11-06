@@ -1512,3 +1512,19 @@ h1, h2, h3 { overflow-wrap: break-word; hyphens: auto; }
 /* "Mehr Kunst ansehen": the first tile is the big highlight piece (2x2) */
 .gallery-grid { grid-auto-flow: dense; }
 .gallery-grid a.hl { grid-column: span 2; grid-row: span 2; aspect-ratio: auto; }
+
+/* ---------- Jobs page (/jobs/) ---------- */
+.jobs { display: grid; gap: 28px; }
+.job { padding: 28px; }
+.job:hover { transform: none; }
+.job h2 { margin: 0 0 0.4em; }
+.job-role { font-size: 1.05rem; margin: 0 0 1em; }
+.job-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 4px 32px; }
+.job-grid h3 { margin: 0.6em 0 0; font-size: 1.05rem; }
+.job-grid .checks { margin: 0.6em 0 0.8em; }
+.job-grid .checks li { margin-bottom: 0.4em; }
+.job-deal { background: var(--paper); border-radius: 12px; padding: 4px 16px; border: 1px dashed var(--line); }
+@media (max-width: 720px) {
+	.job { padding: 20px; }
+	.job-grid { grid-template-columns: 1fr; }
+}
