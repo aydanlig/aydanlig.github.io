@@ -1,0 +1,169 @@
+/* =========================================================
+   order.css – the self-serve portrait order on commission.html (+ /en/)
+   Loaded after main.css and ink.css. Logic: /js/order.js
+   ========================================================= */
+
+.order-section { position: relative; isolation: isolate; }
+.order-section::before {           /* alcohol-ink bloom behind the order form */
+	content: ""; position: absolute; inset: 380px -12% auto auto; width: min(560px, 60vw); aspect-ratio: 1;
+	background: var(--bloom-cool, none) no-repeat center / contain; opacity: 0.55; z-index: -1; pointer-events: none;
+}
+.order { max-width: 1080px; margin: 2em auto 0; }
+
+/* ---------- progress ---------- */
+.order-progress { list-style: none; padding: 0; margin: 0 0 18px; display: none; gap: 8px; counter-reset: none; }
+.order--steps .order-progress { display: grid; grid-template-columns: repeat(4, 1fr); }
+.order-progress button {
+	width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px;
+	padding: 10px 8px; border: 2px solid var(--line); border-radius: var(--wobble-soft, 14px);
+	background: var(--card); color: var(--ink-soft); font: 600 0.92rem var(--font-body); cursor: pointer;
+}
+.order-progress span {
+	display: inline-grid; place-items: center; width: 26px; height: 26px; border-radius: 50%;
+	background: var(--line); color: var(--ink); font-size: 0.85rem; flex: none;
+}
+.order-progress .is-on { border-color: var(--ink); color: var(--ink); background: #fff; }
+.order-progress .is-on span { background: var(--fox); color: var(--night); }
+.order-progress .is-done span { background: var(--ink); color: #fff; }
+.order-progress .is-done span::after { content: "✓"; }
+.order-progress .is-done span { font-size: 0; }
+.order-progress .is-done span::after { font-size: 0.85rem; }
+
+/* ---------- layout: steps + live price ---------- */
+.order-layout { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 22px; align-items: start; }
+.order-step {
+	border: 1px solid var(--line); border-radius: var(--wobble, var(--radius));
+	background: var(--card); padding: clamp(18px, 3.5vw, 34px); margin: 0 0 18px; min-width: 0;
+	box-shadow: 0 18px 40px -28px rgba(38, 30, 36, 0.45);
+}
+.order-step legend {
+	float: left; width: 100%; padding: 0; margin: 0 0 14px;
+	font-family: var(--font-ink, var(--font-head)); font-size: clamp(1.7rem, 3.6vw, 2.3rem); line-height: 1.1;
+}
+.order-step legend:focus { outline: none; }
+.order-step legend + * { clear: both; }
+.order-num {
+	display: inline-grid; place-items: center; width: 1.25em; height: 1.25em; margin-right: 6px;
+	border-radius: 46% 54% 50% 50% / 55% 45% 55% 45%; background: var(--fox); color: var(--night); font-size: 0.8em;
+}
+.order-label { font-weight: 700; margin: 1.3em 0 8px; clear: both; }
+.order-label .hint { font-weight: 400; }
+
+/* ---------- choice cards (size, style, frame) ---------- */
+.order-choices { display: grid; gap: 12px; }
+.order-choices--2 { grid-template-columns: repeat(2, 1fr); }
+.order-choices--3 { grid-template-columns: repeat(3, 1fr); }
+.order-card {
+	position: relative; display: flex; flex-direction: column; cursor: pointer; overflow: hidden;
+	border: 2px solid var(--line); border-radius: var(--wobble-soft, 14px); background: #fff;
+	transition: border-color 0.15s, transform 0.15s, box-shadow 0.15s;
+}
+.order-card:hover { border-color: var(--ink-soft); transform: translateY(-2px); }
+.order-card input { position: absolute; opacity: 0; pointer-events: none; }
+.order-card-body { display: flex; flex-direction: column; gap: 2px; padding: 12px 14px; }
+.order-card-body strong { font-size: 1.02rem; }
+.order-card-body em { font-style: normal; color: var(--accent); white-space: nowrap; }
+.order-card-body .hint { margin: 0; }
+.order-card:has(input:checked) { border-color: var(--fox); background: #FFF4EC; box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.22); }
+.order-card:has(input:checked)::after {
+	content: "✓"; position: absolute; top: 8px; right: 8px; width: 28px; height: 28px; display: grid; place-items: center;
+	border-radius: 50%; background: var(--fox); color: var(--night); font-weight: 800;
+}
+.order-card:has(input:focus-visible) { outline: 3px solid var(--accent); outline-offset: 2px; }
+/* the art is the star: big picture on the style cards */
+.order-card--art img { display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; background: var(--line); }
+
+.order-people { margin-top: 1.4em; max-width: 520px; }
+.order-people input { max-width: 120px; }
+
+/* ---------- frame colours / extras / questions ---------- */
+.order-pills { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; margin-top: 12px; }
+.order-pills .order-label { margin: 0; }
+.order-pills label, .order-q label { display: inline-flex; align-items: center; gap: 6px; cursor: pointer; }
+.order-pills input, .order-q input, .order-extras input, .order-check input { accent-color: var(--accent); width: 18px; height: 18px; flex: none; }
+.order-extras { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; margin-bottom: 1.4em; }
+.order-extras label {
+	display: flex; gap: 10px; align-items: flex-start; padding: 10px 12px; cursor: pointer;
+	border: 1px solid var(--line); border-radius: 12px; background: #fff;
+}
+.order-extras label:has(input:checked) { border-color: var(--fox); background: #FFF4EC; }
+.order-extras label.is-off { opacity: 0.45; cursor: not-allowed; }
+.order-extras input { margin-top: 2px; }
+.order-q { margin-top: 1.2em; }
+.order-q .order-label { margin: 0 0 6px; }
+.order-q label { display: flex; margin: 4px 0; }
+.order-check { display: flex; gap: 10px; align-items: flex-start; margin-top: 1.3em; cursor: pointer; }
+.order-check input { margin-top: 3px; }
+.order-step .form-grid { margin-top: 1.2em; }
+.order-step [hidden] { display: none !important; }
+
+/* ---------- photos ---------- */
+.photo-drop { display: none; }
+.order--js-photos .photo-drop { display: block; position: relative; }
+.order--js-photos .photo-slots { display: none; }
+.photo-slots { display: grid; gap: 8px; }
+.photo-drop input { position: absolute; inset: 0; opacity: 0; width: 100%; cursor: pointer; }
+.photo-drop label {
+	display: flex; flex-direction: column; align-items: center; gap: 4px; text-align: center; cursor: pointer;
+	padding: 28px 16px; border: 2px dashed var(--ink-soft); border-radius: var(--wobble, 16px);
+	background: rgba(255, 255, 255, 0.7) var(--wash, none) no-repeat center / 80% auto;
+}
+.photo-drop label strong { font-family: var(--font-ink, inherit); font-size: 1.6rem; font-weight: 400; color: var(--accent); }
+.photo-drop.is-over label, .photo-drop input:focus-visible + label { border-color: var(--fox); background-color: #FFF4EC; }
+.photo-list { list-style: none; padding: 0; margin: 12px 0 0; display: flex; flex-wrap: wrap; gap: 10px; }
+.photo-list:empty { display: none; }
+.photo-list li { position: relative; }
+.photo-list img { display: block; width: 110px; height: 110px; object-fit: cover; border-radius: 12px; border: 2px solid var(--ink); transform: rotate(-1deg); }
+.photo-list li:nth-child(2) img { transform: rotate(1.2deg); }
+.photo-remove {
+	position: absolute; top: -8px; right: -8px; width: 28px; height: 28px; border-radius: 50%; border: 0;
+	background: var(--ink); color: #fff; font-size: 1.1rem; line-height: 1; cursor: pointer;
+}
+.photo-note:empty { display: none; }
+.photo-tips { margin: 10px 0 0; padding-left: 1.2em; font-size: 0.88rem; color: var(--ink-soft); }
+
+/* ---------- review + submit ---------- */
+.order-review { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; }
+.order-review .price-list { margin: 0; }
+.order-total { display: flex; justify-content: space-between; align-items: baseline; margin: 10px 0 0; font-size: 1.15rem; font-weight: 700; }
+.order-total strong { font-family: var(--font-ink, inherit); font-size: 2rem; font-weight: 400; color: var(--accent); }
+.order-after { margin: 1.2em 0 0; padding-left: 1.3em; }
+.order-after li { margin: 4px 0; }
+.order-nav, .order-submit { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; margin-top: 1.6em; clear: both; }
+.order-nav .btn:only-child { margin-left: auto; }
+.order-submit .btn--fox { margin-left: auto; font-size: 1.08rem; }
+
+/* ---------- live price ---------- */
+.order-aside { position: sticky; top: 90px; }
+.order-sum {
+	background: var(--night); color: #F2EAE4; border-radius: var(--wobble-soft, 16px); padding: 16px 18px;
+	box-shadow: 0 18px 40px -24px rgba(15, 12, 17, 0.7);
+}
+.order-sum summary { display: flex; justify-content: space-between; align-items: baseline; cursor: pointer; list-style: none; font-weight: 700; }
+.order-sum summary::-webkit-details-marker { display: none; }
+.order-sum summary strong { font-family: var(--font-ink, inherit); font-size: 2rem; font-weight: 400; color: var(--fox); }
+.order-sum .price-list { margin: 10px 0 0; font-size: 0.9rem; }
+.order-sum .price-list li { border-bottom-color: rgba(242, 234, 228, 0.18); }
+.order-sum .price-list strong { color: #fff; }
+.order-sum .hint { color: var(--mauve); }
+
+/* no JavaScript: all steps under each other, no price box */
+.order:not(.order--steps) .order-aside { display: none; }
+.order:not(.order--steps) .order-layout { grid-template-columns: 1fr; }
+
+@media (max-width: 860px) {
+	.order-section::before { display: none; }
+	.order-layout { grid-template-columns: 1fr; }
+	/* the price sits as a bar at the bottom of the screen */
+	.order-aside { position: sticky; top: auto; bottom: 10px; order: 2; z-index: 5; }
+	.order-sum:not([open]) .price-list { display: none; }
+	.order-progress button { font-size: 0; gap: 0; padding: 8px 4px; }
+	.order-progress button span { font-size: 0.85rem; }
+}
+@media (max-width: 640px) {
+	.order-choices--3 { grid-template-columns: 1fr; }
+	.order-choices--3 .order-card--art { flex-direction: row; align-items: center; }
+	.order-card--art img { width: 128px; flex: none; aspect-ratio: 4 / 5; }
+	.order-extras { grid-template-columns: 1fr; }
+	.order-nav .btn, .order-submit .btn { flex: 1 1 auto; text-align: center; }
+}
