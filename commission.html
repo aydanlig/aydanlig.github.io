@@ -16,6 +16,7 @@
 	<script src="/js/vendor/flatpickr-de.min.js" defer></script>
 	<script src="/js/forms.js" defer></script>
 	<script src="/js/commission.js" defer></script>
+	<script src="/js/order.js" defer></script>
 
 	<title>Porträt nach Foto malen lassen – Berlin | SmileyFoxyPortraits</title>
 	<meta name="description"
@@ -43,6 +44,7 @@
 
 	<link rel="stylesheet" href="/css/main.css">
 	<link rel="stylesheet" href="/css/commission.css">
+	<link rel="stylesheet" href="/css/order.css">
 </head>
 
 <body>
@@ -82,7 +84,7 @@
 						und zeichne dich direkt vor Ort.
 					</p>
 					<div class="btn-row">
-						<a class="btn" href="#bestellen">Jetzt anfragen</a>
+						<a class="btn" href="#bestellen">Jetzt bestellen</a>
 					</div>
 				</div>
 				<!-- Image with a small caption underneath (what it is + price) -->
@@ -179,7 +181,7 @@
 							<p>Das kleine Porträt nach deinem Foto, in jedem Stil zum gleichen Preis. Ideal als persönliches Geschenk.</p>
 						</div>
 						<div class="card-foot">
-							<a class="btn btn--ghost" href="#bestellen">Bestellen</a>
+							<a class="btn btn--ghost" href="#bestellen" data-order-size="A5">Bestellen</a>
 						</div>
 					</article>
 
@@ -216,7 +218,7 @@
 							</ul>
 						</div>
 						<div class="card-foot">
-							<a class="btn" href="#bestellen">Bestellen</a>
+							<a class="btn" href="#bestellen" data-order-size="A4">Bestellen</a>
 						</div>
 					</article>
 
@@ -283,7 +285,7 @@
 					</div>
 					<!-- Live at the customer's place: surcharge on purpose not shown (depends on distance etc.) -->
 					<p class="hint extras-live"><strong>Live bei dir?</strong> Ich komme auch nach Hause, ins Büro oder an deinen Lieblingsort und zeichne dich vor Ort –
-						Aufpreis nach Absprache. Wähle dafür im Formular „Ich lass mich lieber live zeichnen“.</p>
+						Aufpreis nach Absprache. <a href="#live-termin">Live-Termin anfragen →</a></p>
 				</div>
 				<details class="terms">
 					<summary>Rabattkarte, Versand &amp; Bedingungen</summary>
@@ -301,220 +303,362 @@
 			</div>
 		</section>
 
-		<!-- ORDER / INQUIRY FORM
-		     enctype="multipart/form-data" is needed so the photo upload gets sent along. -->
-		<section class="section" id="bestellen" aria-labelledby="form-title">
+		<!-- ================= SELF-SERVE ORDER =================
+		     4 steps with a live price, photo upload and everything I need – no e-mail back and forth.
+		     Logic: /js/order.js · look: /css/order.css · after sending: /bestellt.html (pay page).
+		     PRICES: change the data-… numbers on the inputs AND the visible text next to them
+		     (and the price cards above). enctype="multipart/form-data" is needed for the photos. -->
+		<section class="section order-section" id="bestellen" aria-labelledby="form-title">
 			<div class="wrap">
 				<div class="center">
-					<h2 id="form-title">Porträt anfragen</h2>
-					<p class="lead">Unverbindlich: Ich melde mich mit Preis und Zeitplan und schicke dir eine Rechnung, bevor du etwas bezahlst.</p>
+					<span class="eyebrow">In 4 Schritten · ca. 3 Minuten</span>
+					<h2 id="form-title">Porträt bestellen</h2>
+					<p class="lead">Wähle aus, sieh sofort den Preis, lade dein Foto hoch und bezahle direkt. Ich habe danach alles, was ich brauche, und fange an zu malen.</p>
 				</div>
 
-				<div class="form-card">
-					<form action="https://formsubmit.co/aydan@smileyfoxyportraits.com" method="POST" enctype="multipart/form-data">
-						<input type="hidden" name="_subject" value="Neue Porträt-Anfrage (Auftrag)">
-						<input type="hidden" name="_template" value="table">
-						<input type="hidden" name="_next" value="https://smileyfoxyportraits.com/danke.html">
-						<input type="text" name="_honey" style="display:none">
-						<!-- No English captcha page; the hidden _honey field above catches spam bots -->
-						<input type="hidden" name="_captcha" value="false">
+				<form class="order" data-order action="https://formsubmit.co/aydan@smileyfoxyportraits.com" method="POST" enctype="multipart/form-data">
+					<input type="hidden" name="_subject" value="Neue BESTELLUNG (Porträt)">
+					<input type="hidden" name="_template" value="table">
+					<input type="hidden" name="_next" value="https://smileyfoxyportraits.com/bestellt.html">
+					<input type="hidden" name="_captcha" value="false">
+					<input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+					<input type="hidden" name="Sprache" value="Deutsch">
+					<!-- filled in by /js/order.js when sending -->
+					<input type="hidden" name="Bestellnummer" value="">
+					<input type="hidden" name="Gesamtpreis" value="">
+					<input type="hidden" name="Preisaufstellung" value="">
 
-						<div class="form-grid">
-							<div class="field">
-								<label for="c-name">Name *</label>
-								<input id="c-name" name="Name" required autocomplete="name">
-							</div>
-							<div class="field">
-								<label for="c-email">E-Mail *</label>
-								<input id="c-email" type="email" name="email" required autocomplete="email">
-							</div>
+					<ol class="order-progress" aria-label="Schritte">
+						<li><button type="button" data-step-dot><span>1</span> Bild</button></li>
+						<li><button type="button" data-step-dot><span>2</span> Extras</button></li>
+						<li><button type="button" data-step-dot><span>3</span> Foto &amp; Infos</button></li>
+						<li><button type="button" data-step-dot><span>4</span> Bezahlen</button></li>
+					</ol>
 
-							<!-- Photo OR live: "Ich lass mich lieber live zeichnen" swaps the photo upload for an appointment request
-							     (fields with data-show-when are shown/hidden by /js/forms.js) -->
-							<div class="field full">
-								<fieldset>
-									<legend>Foto oder live?</legend>
-									<div class="choice-row">
-										<label class="choice">
-											<input type="radio" name="Vorlage" value="Nach Foto" checked>
-											<span><strong>Nach deinem Foto</strong><br><span class="hint">Du schickst mir ein Bild, ich male in Ruhe.</span></span>
-										</label>
-										<label class="choice">
-											<input type="radio" name="Vorlage" value="Lieber live zeichnen lassen">
-											<span><strong>Ich lass mich lieber live zeichnen</strong><br><span class="hint">Wir machen einen Termin aus, an jedem Tag der Woche.</span></span>
-										</label>
-									</div>
-								</fieldset>
-							</div>
+					<div class="order-layout">
+						<div class="order-steps">
 
-							<!-- Photo upload -->
-							<div class="field full" data-show-when="Vorlage=Nach Foto">
-								<label for="c-photo">Dein Foto</label>
-								<div class="upload">
-									<input id="c-photo" type="file" name="Foto" accept="image/*">
-									<p class="hint">Gut ausgeleuchtet, Gesicht gut sichtbar. Du kannst mir Fotos auch später per E-Mail schicken.</p>
+							<!-- STEP 1: size + style -->
+							<fieldset class="order-step" data-step>
+								<legend><span class="order-num">1</span> Größe &amp; Stil</legend>
+
+								<p class="order-label">Größe</p>
+								<div class="order-choices order-choices--2">
+									<label class="order-card">
+										<input type="radio" name="Größe" value="A5" required>
+										<span class="order-card-body">
+											<strong>A5</strong>
+											<span class="hint">14,8 × 21 cm · jeder Stil 20 €</span>
+										</span>
+									</label>
+									<label class="order-card">
+										<input type="radio" name="Größe" value="A4" checked>
+										<span class="order-card-body">
+											<strong>A4</strong>
+											<span class="hint">21 × 29,7 cm · 28–40 € je nach Stil</span>
+										</span>
+									</label>
 								</div>
-							</div>
+								<p class="hint">Größer als A4 oder eine ganz eigene Idee? <a href="#preise">Großformat &amp; Sonderwünsche per E-Mail →</a></p>
 
-							<!-- Live appointment: any day of the week -->
-							<div class="field" data-show-when="Vorlage=Lieber live zeichnen lassen" hidden>
-								<label for="c-live-date">Wunschtag für den Live-Termin</label>
-								<input id="c-live-date" type="text" name="Live-Termin" placeholder="TT.MM.JJJJ" autocomplete="off" data-date-field data-min-days="1">
-								<p class="hint">Jeder Wochentag ist möglich, ich bestätige dir den Termin per E-Mail.</p>
-							</div>
-							<div class="field" data-show-when="Vorlage=Lieber live zeichnen lassen" hidden>
-								<label for="c-live-time">Ort</label>
-								<select id="c-live-time" name="Live-Ort">
-									<option>Bei dir (zu Hause, Büro …) – Aufpreis nach Absprache</option>
-									<option>An meinem Stand (z. B. Mauerpark)</option>
-									<option>Anderer Ort – schreib ihn in die Nachricht</option>
-								</select>
-								<p class="hint">Uhrzeit gern in die Nachricht unten, z. B. „ab 17 Uhr“.</p>
-							</div>
-
-							<!-- Style choice. Prices = A4; A5 is the same price in every style. -->
-							<div class="field full">
-								<fieldset>
-									<legend>Stil *</legend>
-									<p class="hint" style="margin-top:0">Ich zeichne nach Gefühl – der Stil bestimmt die Stimmung deines Porträts. <a href="#preise" data-open-style-guide>Wirkung &amp; Beispiele ansehen</a></p>
-									<div class="choice-row choice-row--3">
-										<label class="choice">
-											<input type="radio" name="Stil" value="Tusche (Fineliner &amp; Pinseltinte)" required>
-											<span><strong>Tusche</strong><br><span class="hint">Fineliner &amp; Pinseltinte · klar, ruhig oder stark &amp; ernst · A4: 28 €</span></span>
-										</label>
-										<label class="choice">
-											<input type="radio" name="Stil" value="Aquarell">
-											<span><strong>Aquarell</strong><br><span class="hint">verspielt, fröhlich, ein bisschen chaotisch · A4: 34 €</span></span>
-										</label>
-										<label class="choice">
-											<input type="radio" name="Stil" value="Aquarell + Tusche">
-											<span><strong>Aquarell + Tusche</strong><br><span class="hint">vielschichtig – Strenge &amp; Offenheit zugleich · A4: 40 €</span></span>
-										</label>
-										<label class="choice choice--wide">
-											<input type="radio" name="Stil" value="Weiß ich noch nicht – such du aus">
-											<span><strong>Weiß ich noch nicht</strong> <span class="hint">· such du nach Gefühl aus</span></span>
-										</label>
-									</div>
-								</fieldset>
-							</div>
-
-							<!-- Feeling: free text + quick-pick words (a click adds the word, see /js/forms.js data-feel-chips) -->
-							<div class="field full">
-								<label for="c-feel">Welches Gefühl soll dein Bild ausstrahlen?</label>
-								<input id="c-feel" name="Gefühl" placeholder="z. B. fröhlich und leicht, oder lieber stark und ernst">
-								<div class="feel-chips" data-feel-chips="c-feel">
-									<button type="button">fröhlich</button>
-									<button type="button">verspielt</button>
-									<button type="button">ruhig</button>
-									<button type="button">zart</button>
-									<button type="button">stark</button>
-									<button type="button">ernst</button>
-									<button type="button">nachdenklich</button>
-									<button type="button">wild</button>
+								<p class="order-label">Stil <span class="hint">– ich zeichne nach Gefühl, der Stil bestimmt die Stimmung · <a href="#preise" data-open-style-guide>Wirkung &amp; Beispiele</a></span></p>
+								<div class="order-choices order-choices--3">
+									<label class="order-card order-card--art">
+										<input type="radio" name="Stil" value="Tusche (Fineliner &amp; Pinseltinte)" data-label="Tusche" data-a5="20" data-a4="28" required>
+										<img src="/img/galerie/galerie-01.jpg" alt="" width="1082" height="1600" loading="lazy" decoding="async">
+										<span class="order-card-body">
+											<strong>Tusche <em data-style-price></em></strong>
+											<span class="hint">Fineliner &amp; Pinseltinte · klar, ruhig oder stark &amp; ernst</span>
+										</span>
+									</label>
+									<label class="order-card order-card--art">
+										<input type="radio" name="Stil" value="Aquarell" data-label="Aquarell" data-a5="20" data-a4="34">
+										<img src="/img/art/aquarell-gitarrist-980.webp" alt="" width="980" height="1405" loading="lazy" decoding="async">
+										<span class="order-card-body">
+											<strong>Aquarell <em data-style-price></em></strong>
+											<span class="hint">verspielt, fröhlich, ein bisschen chaotisch</span>
+										</span>
+									</label>
+									<label class="order-card order-card--art">
+										<input type="radio" name="Stil" value="Aquarell + Tusche" data-label="Aquarell + Tusche" data-a5="20" data-a4="40">
+										<img src="/img/art/tusche-portraet-brille-blau-900.webp" alt="" width="900" height="1238" loading="lazy" decoding="async">
+										<span class="order-card-body">
+											<strong>Aquarell + Tusche <em data-style-price></em></strong>
+											<span class="hint">vielschichtig – Strenge &amp; Offenheit zugleich</span>
+										</span>
+									</label>
 								</div>
-							</div>
 
-							<!-- Only A5 and A4 are orderable here. A6 = in person only, A3/A2 = email. -->
-							<div class="field">
-								<label for="c-size">Größe *</label>
-								<select id="c-size" name="Größe" required>
-									<option>A5 (14,8 × 21 cm) – 20 €, jeder Stil</option>
-									<option selected>A4 (21 × 29,7 cm) – 28–40 €</option>
-								</select>
-								<p class="hint">Größer als A4? <a href="#preise">Bitte per E-Mail anfragen.</a></p>
-							</div>
-							<!-- Extras fields below are in the same order as the "Extras" box above -->
-							<div class="field">
-								<label for="c-people">Personen / Tiere auf einem Bild</label>
-								<input id="c-people" type="number" name="Personen pro Bild" min="1" value="1">
-								<p class="hint">Je weitere Person / Tier: A5 +10 €, A4 +20 €</p>
-							</div>
-							<!-- Several separate portraits (e.g. whole family, team) – volume discount by arrangement -->
-							<div class="field">
-								<label for="c-count">Anzahl Porträts</label>
-								<input id="c-count" type="number" name="Anzahl Porträts" min="1" value="1">
-								<p class="hint">Mehrere Porträts? <strong>Mengenrabatt.</strong></p>
-							</div>
-							<!-- EXTRAS as a dropdown with several choices (like "Lieferung", but tick as many as you like).
-							     Each ticked box shows up in your email. Summary text is updated by /js/forms.js. -->
-							<div class="field">
-								<span class="label" id="c-extras-label">Extras</span>
-								<details class="multi-select" data-multi-select>
-									<summary aria-labelledby="c-extras-label" data-empty="Keine Extras">Keine Extras</summary>
-									<div class="multi-options">
-										<label class="multi-option"><input type="checkbox" name="Aquarell-Hintergrund" value="Ja (+10 €)"><span><strong>Bunter Aquarell-Hintergrund</strong><br><span class="hint">+10 €</span></span></label>
-										<label class="multi-option"><input type="checkbox" name="Gold" value="Ja (+30 €)"><span><strong>Goldtinte / Blattgold</strong><br><span class="hint">goldene Akzente · +30 €</span></span></label>
-										<label class="multi-option"><input type="checkbox" name="Geschenkverpackung" value="Ja (+5 €)"><span><strong>Geschenkverpackung</strong><br><span class="hint">+5 €</span></span></label>
-										<label class="multi-option"><input type="checkbox" name="Express" value="Ja (+10 €)"><span><strong>Expresslieferung</strong><br><span class="hint">fertig in 3 Tagen · +10 €</span></span></label>
-										<label class="multi-option"><input type="checkbox" name="Leinwand / Druck" value="Ja – bitte Angebot (Größe + Lieferadresse in die Notizen)"><span><strong>Leinwand / Druck</strong><br><span class="hint">zusätzlich, z. B. direkt an deinen Lieblingsmenschen in der Ferne · Angebot vorab</span></span></label>
-										<label class="multi-option"><input type="checkbox" name="Bildrechte Werbung" value="Ja (+150 €, mit Namensnennung)"><span><strong>Bildrechte für Werbung</strong><br><span class="hint">mit Namensnennung · einmalig +150 €</span></span></label>
-										<label class="multi-option"><input type="checkbox" name="Total Buyout" value="Ja (+400 €)"><span><strong>Total Buyout</strong><br><span class="hint">exklusiv, ohne Namensnennung · einmalig +400 €</span></span></label>
+								<!-- Feeling: free text + quick-pick words (a click adds the word, see /js/commission.js) -->
+								<div class="field order-feel">
+									<label for="o-feel">Welches Gefühl soll dein Bild ausstrahlen? <span class="hint">(optional)</span></label>
+									<input id="o-feel" name="Gefühl" placeholder="z. B. fröhlich und leicht, oder lieber stark und ernst">
+									<div class="feel-chips" data-feel-chips="o-feel">
+										<button type="button">fröhlich</button>
+										<button type="button">verspielt</button>
+										<button type="button">ruhig</button>
+										<button type="button">zart</button>
+										<button type="button">stark</button>
+										<button type="button">ernst</button>
+										<button type="button">nachdenklich</button>
+										<button type="button">wild</button>
 									</div>
-								</details>
-								<p class="hint">Mehrere auswählbar.</p>
-							</div>
-							<div class="field">
-								<label for="c-frame">Rahmen</label>
-								<select id="c-frame" name="Rahmen">
-									<option>Ohne Rahmen</option>
-									<!-- Frame colours: black, white, wood – for both qualities -->
-									<optgroup label="Einfacher Rahmen (+10 €)">
-										<option>Einfacher Rahmen, schwarz (+10 €)</option>
-										<option>Einfacher Rahmen, weiß (+10 €)</option>
-										<option>Einfacher Rahmen, Holz (+10 €)</option>
-									</optgroup>
-									<optgroup label="Hochwertiger, dicker Rahmen (+20 €)">
-										<option>Hochwertiger Rahmen, schwarz (+20 €)</option>
-										<option>Hochwertiger Rahmen, weiß (+20 €)</option>
-										<option>Hochwertiger Rahmen, Holz (+20 €)</option>
-									</optgroup>
-								</select>
-							</div>
-							<div class="field" data-show-when="Vorlage=Nach Foto">
-								<!-- Earliest date: in 2 weeks (with Express: in 3 days) – set by /js/forms.js -->
-								<label for="c-wish-date">Fertig bis</label>
-								<input id="c-wish-date" type="text" name="Wunschtermin" placeholder="TT.MM.JJJJ" autocomplete="off" data-date-field data-min-days="14" data-express-min-days="3">
-								<p class="hint">Frühestens in 2 Wochen (mit Express in 3 Tagen), z. B. zum Geburtstag oder Jahrestag.</p>
-								<!-- Shown only when Express is ticked: phone number (filled in by /js/forms.js) -->
-								<p class="express-phone" data-express-phone hidden></p>
-							</div>
-							<div class="field">
-								<label for="c-delivery">Lieferung</label>
-								<select id="c-delivery" name="Lieferung">
-									<option>Versand in Deutschland (4,90 €, mit Rahmen 6,90 €)</option>
-									<option>Abholung in Berlin (kostenlos)</option>
-									<option>Versand ins Ausland (Kosten auf Anfrage)</option>
-									<option>Nur digital (Scan)</option>
-									<option>Live – ich übergebe es direkt vor Ort</option>
-								</select>
-							</div>
-							<!-- Protects you: the customer confirms they may use the photo (copyright + Recht am eigenen Bild) -->
-							<div class="field full">
-								<label class="choice">
-									<input type="checkbox" name="Bildrechte" value="Bestätigt">
-									<span>Ich darf das Foto verwenden (z. B. selbst aufgenommen) und die abgebildeten Personen sind mit dem Porträt einverstanden.</span>
+									<p class="hint">Unsicher beim Stil? Nimm einfach einen und schreib das Gefühl hier rein – passt ein anderer Stil besser, melde ich mich.</p>
+								</div>
+
+								<div class="field order-people">
+									<label for="o-people">Wie viele Personen / Tiere sind auf dem Bild?</label>
+									<input id="o-people" type="number" name="Personen pro Bild" min="1" max="8" value="1" inputmode="numeric" data-a5="10" data-a4="20" required>
+									<p class="hint">Jede weitere Person oder jedes Haustier: +<span data-people-price>20 €</span>. Mehrere einzelne Porträts? Bestell einfach mehrmals – für Familien &amp; Teams gibt's <a href="mailto:aydan@smileyfoxyportraits.com?subject=Mengenrabatt">Mengenrabatt</a>.</p>
+								</div>
+							</fieldset>
+
+							<!-- STEP 2: frame, extras, delivery -->
+							<fieldset class="order-step" data-step>
+								<legend><span class="order-num">2</span> Rahmen, Extras &amp; Lieferung</legend>
+
+								<p class="order-label">Rahmen</p>
+								<div class="order-choices order-choices--3">
+									<label class="order-card"><input type="radio" name="Rahmen" value="Ohne Rahmen" data-price="0" data-label="Ohne Rahmen" checked><span class="order-card-body"><strong>Ohne</strong><span class="hint">nur das Bild</span></span></label>
+									<label class="order-card"><input type="radio" name="Rahmen" value="Einfacher Rahmen" data-price="10" data-label="Einfacher Rahmen"><span class="order-card-body"><strong>Einfach +10 €</strong><span class="hint">schlicht &amp; leicht</span></span></label>
+									<label class="order-card"><input type="radio" name="Rahmen" value="Hochwertiger Rahmen" data-price="20" data-label="Hochwertiger Rahmen"><span class="order-card-body"><strong>Hochwertig +20 €</strong><span class="hint">dicker, edler Rahmen</span></span></label>
+								</div>
+								<div class="order-pills" data-frame-colours hidden>
+									<span class="order-label">Rahmenfarbe (inklusive):</span>
+									<label><input type="radio" name="Rahmenfarbe" value="Schwarz" data-label="schwarz" checked> Schwarz</label>
+									<label><input type="radio" name="Rahmenfarbe" value="Weiß" data-label="weiß"> Weiß</label>
+									<label><input type="radio" name="Rahmenfarbe" value="Holz" data-label="Holz"> Holz</label>
+								</div>
+
+								<p class="order-label">Extras <span class="hint">– mehrere möglich</span></p>
+								<div class="order-extras">
+									<label><input type="checkbox" name="Hintergrund-Extra" value="Ja (+10 €)" data-extra data-price="10" data-label="Bunter Aquarell-Hintergrund"><span><strong>Bunter Aquarell-Hintergrund</strong> +10 €</span></label>
+									<label><input type="checkbox" name="Gold" value="Ja (+30 €)" data-extra data-price="30" data-label="Goldtinte / Blattgold"><span><strong>Goldtinte / Blattgold</strong> +30 €</span></label>
+									<label><input type="checkbox" name="Geschenkverpackung" value="Ja (+5 €)" data-extra data-price="5" data-label="Geschenkverpackung"><span><strong>Geschenkverpackung</strong> +5 €</span></label>
+									<label><input type="checkbox" name="Express" value="Ja (+10 €)" data-extra data-price="10" data-label="Expresslieferung (fertig in 3 Tagen)"><span><strong>Expresslieferung</strong> +10 € <span class="hint">fertig in 3 Tagen</span></span></label>
+									<!-- not in the price: printed on demand, the price depends on the size, so a quote follows by e-mail -->
+									<label><input type="checkbox" name="Leinwand / Druck" value="Ja – bitte Angebot (Größe + Adresse in die Notizen)"><span><strong>Zusätzlich als Leinwand / Druck</strong> <span class="hint">Angebot kommt separat, z. B. für Fernbeziehungen</span></span></label>
+								</div>
+
+								<!-- IMAGE RIGHTS (mostly for businesses) – same prices as the extras list above -->
+								<div class="order-q">
+									<p class="order-label">Nutzung des Bildes</p>
+									<label><input type="radio" name="Bildrechte Nutzung" value="Privat / mit Namensnennung (inklusive)" checked> Privat oder mit Namensnennung – inklusive</label>
+									<label><input type="radio" name="Bildrechte Nutzung" value="Werbung (+150 €)" data-extra data-price="150" data-label="Bildrechte für Werbung, mit Namensnennung"> Für Werbung, mit Namensnennung – einmalig +150 €</label>
+									<label><input type="radio" name="Bildrechte Nutzung" value="Total Buyout (+400 €)" data-extra data-price="400" data-label="Total Buyout"> Total Buyout: exklusiv, ohne Namensnennung – einmalig +400 €</label>
+								</div>
+
+								<div class="form-grid">
+									<div class="field">
+										<label for="o-delivery">Lieferung</label>
+										<select id="o-delivery" name="Lieferung">
+											<option value="Versand in Deutschland" data-price="4.90" data-price-framed="6.90" data-label="Versand in Deutschland" data-address>Versand in Deutschland – 4,90 € (mit Rahmen 6,90 €)</option>
+											<option value="Abholung in Berlin" data-price="0" data-label="Abholung in Berlin">Abholung in Berlin – kostenlos</option>
+											<option value="Nur digital (Scan)" data-price="0" data-label="Nur digital (Scan per E-Mail)">Nur digital: Scan per E-Mail – kostenlos</option>
+										</select>
+										<p class="hint">Ins Ausland? <a href="mailto:aydan@smileyfoxyportraits.com?subject=Porträt%20mit%20Versand%20ins%20Ausland">Kurz schreiben</a>, dann nenne ich dir die Versandkosten.</p>
+									</div>
+									<div class="field">
+										<!-- Earliest date: in 2 weeks (with Express: in 3 days) – set by /js/forms.js -->
+										<label for="o-wish-date">Bis wann brauchst du es? <span class="hint">(optional)</span></label>
+										<input id="o-wish-date" type="text" name="Wunschtermin" placeholder="TT.MM.JJJJ" autocomplete="off" data-date-field data-min-days="14" data-express-min-days="3">
+										<p class="hint">Frühestens in 2 Wochen, mit Express in 3 Tagen.</p>
+										<p class="express-phone" data-express-phone hidden></p>
+									</div>
+								</div>
+
+								<label class="order-check">
+									<input type="checkbox" name="Rabattkarte" value="Ja – 5 € Rabatt" data-price="-5">
+									<span>Ich habe persönlich eine Karte von Aydan bekommen (−5 €)</span>
 								</label>
-							</div>
-							<div class="field full">
-								<label class="choice">
-									<input type="checkbox" name="Rabattkarte" value="Ja – 5 € Rabatt">
-									<span>Ich habe eine Karte von Aydan bekommen (5 € Rabatt)</span>
+							</fieldset>
+
+							<!-- STEP 3: photos + everything I need to paint and send it -->
+							<fieldset class="order-step" data-step data-photo-step>
+								<legend><span class="order-num">3</span> Dein Foto &amp; deine Infos</legend>
+
+								<p class="live-instead"><strong>Ich lass mich lieber live zeichnen:</strong> Dann brauchst du kein Foto. <a href="#live-termin">Termin an einem Tag deiner Wahl anfragen →</a></p>
+								<p class="order-label">Fotos <span class="hint">– 1 bis 3 Stück</span></p>
+								<!-- With JavaScript: the drop zone below (photos get shrunk for fast upload).
+								     Without: the three plain file fields. -->
+								<div class="photo-drop">
+									<input type="file" accept="image/*" multiple data-photo-drop id="o-photos" aria-describedby="o-photo-tips">
+									<label for="o-photos">
+										<strong>Fotos auswählen</strong> oder hierher ziehen
+										<span class="hint">vom Handy direkt aus der Galerie</span>
+									</label>
+								</div>
+								<ul class="photo-list" data-photo-list></ul>
+								<p class="hint photo-note" data-photo-note role="status"></p>
+								<div class="photo-slots">
+									<input type="file" name="Foto 1" accept="image/*" data-photo-slot aria-label="Foto 1">
+									<input type="file" name="Foto 2" accept="image/*" data-photo-slot aria-label="Foto 2">
+									<input type="file" name="Foto 3" accept="image/*" data-photo-slot aria-label="Foto 3">
+								</div>
+								<ul class="photo-tips" id="o-photo-tips">
+									<li>Gesicht gut sichtbar, gern bei Tageslicht</li>
+									<li>Mehrere Personen? Gern ein Foto von allen zusammen, plus Einzelfotos</li>
+									<li>Handyfotos sind perfekt – ich verkleinere sie automatisch</li>
+								</ul>
+
+								<div class="form-grid">
+									<div class="field">
+										<label for="o-name">Dein Name *</label>
+										<input id="o-name" name="Name" required autocomplete="name">
+									</div>
+									<div class="field">
+										<label for="o-email">E-Mail *</label>
+										<input id="o-email" type="email" name="email" required autocomplete="email">
+										<p class="hint">Hierhin kommen Bestätigung &amp; Foto vom fertigen Bild.</p>
+									</div>
+									<div class="field">
+										<label for="o-phone">Handy <span class="hint">(optional, nur für Rückfragen)</span></label>
+										<input id="o-phone" type="tel" name="Telefon" autocomplete="tel">
+									</div>
+									<div class="field">
+										<label for="o-who">Wer ist auf dem Bild? <span class="hint">(optional)</span></label>
+										<input id="o-who" name="Wer ist auf dem Bild" placeholder="z. B. meine Oma Renate und ihr Hund">
+									</div>
+								</div>
+
+								<div class="form-grid" data-address-fields>
+									<div class="field full">
+										<label for="o-street">Lieferadresse: Straße &amp; Hausnummer *</label>
+										<input id="o-street" name="Straße" autocomplete="street-address" data-needed>
+									</div>
+									<div class="field">
+										<label for="o-zip">PLZ *</label>
+										<input id="o-zip" name="PLZ" autocomplete="postal-code" inputmode="numeric" pattern="[0-9]{5}" title="5-stellige PLZ" data-needed>
+									</div>
+									<div class="field">
+										<label for="o-city">Ort *</label>
+										<input id="o-city" name="Ort" autocomplete="address-level2" data-needed>
+									</div>
+									<div class="field full">
+										<label for="o-recipient">Empfänger:in, falls nicht du <span class="hint">(z. B. direkt ans Geburtstagskind)</span></label>
+										<input id="o-recipient" name="Empfänger" autocomplete="off">
+									</div>
+								</div>
+
+								<div class="field">
+									<label for="o-notes">Was soll ich wissen? <span class="hint">(optional)</span></label>
+									<textarea id="o-notes" name="Notizen" rows="3" placeholder="Anlass, Lieblingsfarben, was die Person besonders macht, ein Satz auf dem Bild …"></textarea>
+								</div>
+
+								<!-- These two questions replace the usual e-mail back and forth -->
+								<div class="order-q">
+									<p class="order-label">Wenn ich bei einem Detail unsicher bin …</p>
+									<label><input type="radio" name="Kreative Freiheit" value="Aydan entscheidet nach Gefühl" checked> entscheide du nach Gefühl, ich lass mich überraschen</label>
+									<label><input type="radio" name="Kreative Freiheit" value="Bitte kurz nachfragen"> frag mich bitte kurz (dauert dann evtl. etwas länger)</label>
+								</div>
+								<div class="order-q">
+									<p class="order-label">Darf ich das fertige Bild auf Instagram zeigen?</p>
+									<label><input type="radio" name="Instagram" value="Ja, gern" checked> Ja, gern</label>
+									<label><input type="radio" name="Instagram" value="Ja, aber ohne Namen"> Ja, aber ohne Namen</label>
+									<label><input type="radio" name="Instagram" value="Nein, bitte privat"> Nein, bitte privat</label>
+								</div>
+
+								<label class="order-check">
+									<input type="checkbox" name="Bildrechte" value="Bestätigt" required>
+									<span>Ich darf das Foto verwenden (z. B. selbst aufgenommen) und die abgebildeten Personen sind mit dem Porträt einverstanden. *</span>
 								</label>
-							</div>
-							<div class="field full">
-								<label for="c-notes">Nachricht / sonstige Wünsche</label>
-								<textarea id="c-notes" name="Notizen" rows="4"
-									placeholder="Wer ist das? Was macht die Person besonders? Hintergrund, Farben, Anlass …"></textarea>
-							</div>
+							</fieldset>
+
+							<!-- STEP 4: check & order with obligation to pay (German "Button-Lösung", § 312j BGB) -->
+							<fieldset class="order-step" data-step>
+								<legend><span class="order-num">4</span> Prüfen &amp; bezahlen</legend>
+								<div class="order-review">
+									<ul class="price-list" data-order-summary></ul>
+									<p class="order-total">Gesamt: <strong data-order-total>–</strong></p>
+									<p class="hint">Endpreis, keine Umsatzsteuer (§ 19 UStG).</p>
+								</div>
+								<ol class="order-after">
+									<li><strong>Bestellen</strong> – du bekommst sofort eine Bestätigung per E-Mail.</li>
+									<li><strong>Bezahlen</strong> – direkt im nächsten Schritt mit PayPal oder Karte.</li>
+									<li><strong>Ich male</strong> – du bekommst ein Foto vom fertigen Bild, bevor es verschickt wird.</li>
+								</ol>
+								<label class="order-check">
+									<input type="checkbox" name="Bedingungen" value="Akzeptiert" required>
+									<span>Ich weiß: Jedes Porträt ist ein handgemaltes Unikat, deshalb sind nach Fertigstellung keine Überarbeitungen möglich,
+										und als Einzelanfertigung gibt es kein Widerrufsrecht (§ 312g Abs. 2 Nr. 1 BGB). Meine Angaben und Fotos werden nur
+										für diesen Auftrag verwendet (<a href="/ImpressumUndDatenschutz/Datenschutz.html">Datenschutz</a>). *</span>
+								</label>
+								<div class="order-submit">
+									<button class="btn btn--fox" type="submit">Zahlungspflichtig bestellen</button>
+								</div>
+							</fieldset>
 						</div>
 
-						<p class="form-legal">
-							Mit dem Absenden stimmst du zu, dass deine Angaben und dein Foto nur zur Bearbeitung des Auftrags verwendet
-							werden. Details in der <a href="/ImpressumUndDatenschutz/Datenschutz.html">Datenschutzerklärung</a>.
-							Da jedes Porträt von Hand gemalt wird, sind nach Fertigstellung keine Überarbeitungen möglich.
-							Als Einzelanfertigung besteht kein Widerrufsrecht (§ 312g Abs. 2 Nr. 1 BGB).
-						</p>
-						<button class="btn" type="submit">Porträt unverbindlich anfragen</button>
+						<!-- Live price: sidebar on big screens, bar at the bottom on phones -->
+						<aside class="order-aside" aria-label="Dein Preis">
+							<details class="order-sum" open>
+								<summary><span>Dein Preis</span> <strong data-order-total aria-live="polite">–</strong></summary>
+								<ul class="price-list" data-order-summary></ul>
+							</details>
+						</aside>
+					</div>
+				</form>
+			</div>
+		</section>
+		<!-- LIVE APPOINTMENT: "Ich lass mich lieber live zeichnen" – any day of the week, no photo needed.
+		     Separate small form, because the price (travel, place) is agreed by e-mail first. -->
+		<section class="section" id="live-termin" aria-labelledby="live-title">
+			<div class="wrap">
+				<div class="center">
+					<span class="eyebrow">Statt Foto</span>
+					<h2 id="live-title">Ich lass mich lieber live zeichnen</h2>
+					<p class="lead">Such dir einen Tag aus, jeder Wochentag ist möglich. Ich zeichne dich bei dir zu Hause, im Büro, an deinem Lieblingsort oder an meinem Stand.</p>
+				</div>
+				<div class="form-card">
+					<form action="https://formsubmit.co/aydan@smileyfoxyportraits.com" method="POST">
+						<input type="hidden" name="_subject" value="Neue Anfrage: Live-Porträt-Termin">
+						<input type="hidden" name="_template" value="table">
+						<input type="hidden" name="_next" value="https://smileyfoxyportraits.com/danke.html">
+						<input type="hidden" name="_captcha" value="false">
+						<input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+						<div class="form-grid">
+							<div class="field">
+								<label for="l-name">Name *</label>
+								<input id="l-name" name="Name" required autocomplete="name">
+							</div>
+							<div class="field">
+								<label for="l-email">E-Mail *</label>
+								<input id="l-email" type="email" name="email" required autocomplete="email">
+							</div>
+							<div class="field">
+								<label for="l-date">Wunschtag *</label>
+								<input id="l-date" type="text" name="Live-Termin" placeholder="TT.MM.JJJJ" autocomplete="off" data-date-field data-min-days="1" required>
+								<p class="hint">Jeder Wochentag, ich bestätige dir den Termin per E-Mail.</p>
+							</div>
+							<div class="field">
+								<label for="l-place">Wo?</label>
+								<select id="l-place" name="Live-Ort">
+									<option>Bei dir (zu Hause, Büro …) – Aufpreis nach Absprache</option>
+									<option>An meinem Stand (z. B. Mauerpark)</option>
+									<option>Anderer Ort – steht in der Nachricht</option>
+								</select>
+							</div>
+							<div class="field">
+								<label for="l-size">Größe &amp; Stil</label>
+								<select id="l-size" name="Größe und Stil">
+									<option>A5 – 20 €, jeder Stil</option>
+									<option selected>A4 Tusche – 28 €</option>
+									<option>A4 Aquarell – 34 €</option>
+									<option>A4 Aquarell + Tusche – 40 €</option>
+									<option>Weiß ich noch nicht</option>
+								</select>
+							</div>
+							<div class="field">
+								<label for="l-people">Wie viele Personen?</label>
+								<input id="l-people" type="number" name="Personen" min="1" value="1">
+							</div>
+							<div class="field full">
+								<label for="l-notes">Uhrzeit, Anlass, Gefühl fürs Bild <span class="hint">(optional)</span></label>
+								<textarea id="l-notes" name="Notizen" rows="3" placeholder="z. B. ab 17 Uhr, Geburtstag meiner Schwester, fröhlich und leicht"></textarea>
+							</div>
+						</div>
+						<p class="form-legal">Unverbindlich: Ich melde mich mit Termin und Preis. Deine Angaben nutze ich nur für diese Anfrage (<a href="/ImpressumUndDatenschutz/Datenschutz.html">Datenschutz</a>).</p>
+						<button class="btn" type="submit">Live-Termin anfragen</button>
 					</form>
 				</div>
 			</div>

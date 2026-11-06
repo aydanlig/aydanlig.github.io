@@ -1,28 +1,9 @@
 /* =========================================================
    commission.js – small helpers for the commission form (DE + EN)
-   1. data-show-when="Name=Value": a field is only shown while the radio "Name" has that value
-      (photo upload vs. live appointment)
-   2. data-feel-chips="input-id": clicking a word adds/removes it in the feeling field
-   3. a[data-open-style-guide]: opens the style guide box before jumping to it
+   1. data-feel-chips="input-id": clicking a word adds/removes it in the feeling field
+   2. a[data-open-style-guide]: opens the style guide box before jumping to it
    ========================================================= */
 document.addEventListener('DOMContentLoaded', function () {
-	document.querySelectorAll('form').forEach(function (form) {
-		var parts = form.querySelectorAll('[data-show-when]');
-		if (!parts.length) return;
-		function update() {
-			parts.forEach(function (el) {
-				var rule = el.getAttribute('data-show-when').split('=');
-				var checked = form.querySelector('input[name="' + rule[0] + '"]:checked');
-				var show = !!checked && checked.value === rule.slice(1).join('=');
-				el.hidden = !show;
-				// hidden fields are not sent along, so the email only shows what applies
-				el.querySelectorAll('input, select, textarea').forEach(function (f) { f.disabled = !show; });
-			});
-		}
-		form.addEventListener('change', update);
-		update();
-	});
-
 	document.querySelectorAll('[data-feel-chips]').forEach(function (box) {
 		var input = document.getElementById(box.getAttribute('data-feel-chips'));
 		if (!input) return;

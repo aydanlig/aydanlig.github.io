@@ -61,3 +61,7 @@
 .feel-chips button { font: inherit; font-size: 0.85rem; padding: 5px 12px; border-radius: 999px; border: 1px solid #d6cdbf; background: #fff; color: var(--ink); cursor: pointer; }
 .feel-chips button:hover, .feel-chips button[aria-pressed="true"] { border-color: var(--accent); background: #FFF1EA; }
 .form-grid [hidden] { display: none !important; }
+
+/* ---------- Order form (from /css/order.css): feeling field + "lieber live" note ---------- */
+.order-feel { margin-top: 1.2em; }
+.live-instead { margin: 0 0 1.2em; padding: 12px 14px; border-radius: 12px; background: #FFF1EA; border: 1px dashed var(--fox); font-size: 0.95rem; }
