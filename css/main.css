@@ -1513,6 +1513,36 @@ h1, h2, h3 { overflow-wrap: break-word; hyphens: auto; }
 .gallery-grid { grid-auto-flow: dense; }
 .gallery-grid a.hl { grid-column: span 2; grid-row: span 2; aspect-ratio: auto; }
 
+/* ---------- Jobs page (/jobs/) ---------- */
+.jobs { display: grid; gap: 28px; }
+.job { padding: 28px; }
+.job:hover { transform: none; }
+.job h2 { margin: 0 0 0.4em; }
+.job-role { font-size: 1.05rem; margin: 0 0 1em; }
+.job-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 4px 32px; }
+.job-grid h3 { margin: 0.6em 0 0; font-size: 1.05rem; }
+.job-grid .checks { margin: 0.6em 0 0.8em; }
+.job-grid .checks li { margin-bottom: 0.4em; }
+.job-deal { background: var(--paper); border-radius: 12px; padding: 4px 16px; border: 1px dashed var(--line); }
+@media (max-width: 720px) {
+	.job { padding: 20px; }
+	.job-grid { grid-template-columns: 1fr; }
+}
+.job-kpi-title { margin: 1.2em 0 0.5em; font-size: 1.05rem; }
+.kpi-wrap { overflow-x: auto; }
+.kpi { width: 100%; border-collapse: collapse; font-size: 0.93rem; background: var(--paper); border-radius: 12px; overflow: hidden; }
+.kpi th, .kpi td { padding: 10px 14px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--line); }
+.kpi thead th { background: #EDE2DA; font-size: 0.8rem; letter-spacing: 0.04em; text-transform: uppercase; }
+.kpi tbody th { width: 22%; }
+.kpi td:last-child { width: 30%; }
+.job-extra { margin: 1em 0 0; }
+@media (max-width: 720px) {
+	.kpi, .kpi tbody, .kpi tr, .kpi th, .kpi td { display: block; width: auto !important; }
+	.kpi thead { display: none; }
+	.kpi tr { border-bottom: 1px solid var(--line); padding: 6px 0; }
+	.kpi th, .kpi td { border: 0; padding: 4px 14px; }
+	.kpi td::before { content: attr(data-label); display: block; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; color: var(--ink-soft); }
+}
 /* ---------- About: goals ("weltklasse") + values ("wofür ich stehe") ---------- */
 .goal-list { list-style: none; counter-reset: goal; padding: 0; margin: 1em 0 0; }
 .goal-list li { counter-increment: goal; position: relative; padding-left: 3.2rem; margin-bottom: 1.3em; min-height: 3rem; }
