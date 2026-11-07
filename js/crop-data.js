@@ -1,14 +1,153 @@
-/* =========================================================
-   crop-data.js – how each picture is framed (written by the crop mode, js/crop.js)
-
-   Don't edit by hand: open the page with  #zuschnitt  at the end of the address,
-   frame the pictures, click "Datei herunterladen" and replace this file with the download
-   (or click "Werte kopieren" and paste it here / send it to Claude).
-
-   Format: "page|picture file": [x %, y %, zoom]   – per view: desktop and phone (narrower than 700 px).
-   A picture that is not listed is shown as before (whole picture / its default crop).
-   ========================================================= */
+/* crop-data.js – written by the secret crop mode (js/crop.js). Don't edit by hand.
+   "page|picture": { x, y = focus %, z = zoom, r = frame width/height, b = blurred fill }, per view (phone = narrower than 700 px) */
 window.SFP_CROPS = {
-	"desktop": {},
+	"desktop": {
+		"/|tusche-portraet-4x5.jpg": {
+			"x": 48.75,
+			"y": 7.647,
+			"z": 1
+		},
+		"/|band-3-buehne.jpg": {
+			"x": 22.813,
+			"y": 7.353,
+			"z": 1
+		},
+		"/|band-7.jpg": {
+			"x": 59.063,
+			"y": 52.353,
+			"z": 1
+		},
+		"/|cevil-selfie.jpg": {
+			"x": 49.375,
+			"y": 26.176,
+			"z": 1
+		},
+		"/|gerahmtes-paar-3x4.jpg": {
+			"x": 26.25,
+			"y": 47.647,
+			"z": 1
+		},
+		"/|aquarell-gitarre-papier.jpg": {
+			"x": 51.442,
+			"y": 53.468,
+			"z": 1,
+			"b": 1,
+			"r": 0.599
+		},
+		"/|ein-euro-portraet-kuss.jpg": {
+			"x": 58.576,
+			"y": 100,
+			"z": 1.259,
+			"b": 1,
+			"r": 2.248
+		},
+		"/|ein-euro-portraet.jpg": {
+			"x": 50.833,
+			"y": 6.176,
+			"z": 1,
+			"b": 1
+		},
+		"/|kunst-02.jpg": {
+			"x": 50,
+			"y": 50,
+			"z": 1.166
+		},
+		"/|kunst-09a.jpg": {
+			"x": 47.6,
+			"y": 59.216,
+			"z": 1
+		},
+		"/|kunst-09b.jpg": {
+			"x": 53.36,
+			"y": 18.129,
+			"z": 1
+		},
+		"/|galerie-01.jpg": {
+			"x": 12.646,
+			"y": 6.851,
+			"z": 1.166
+		},
+		"/|insta-3.jpg": {
+			"x": 58.174,
+			"y": 86.662,
+			"z": 1.36
+		},
+		"/|kunst-01.jpg": {
+			"x": 52.415,
+			"y": 49.234,
+			"z": 1.259
+		},
+		"/|insta-2.jpg": {
+			"x": 50,
+			"y": 49.228,
+			"z": 1
+		},
+		"/|kunst-03.jpg": {
+			"x": 58.57,
+			"y": 7.762,
+			"z": 1.166
+		},
+		"/|skizze-02.jpg": {
+			"x": 58.363,
+			"y": 38.364,
+			"z": 1.08
+		},
+		"/|galerie-04.jpg": {
+			"x": 57.998,
+			"y": 28.139,
+			"z": 1.166
+		},
+		"/|gruppe-tusche-4x5.jpg": {
+			"x": 71.122,
+			"y": 8.436,
+			"z": 1.08
+		},
+		"/|insta-5.jpg": {
+			"x": 55.978,
+			"y": 43.393,
+			"z": 1.259
+		},
+		"/|skizze-03.jpg": {
+			"x": 43.642,
+			"y": 35.758,
+			"z": 1,
+			"b": 1
+		},
+		"/|galerie-05.jpg": {
+			"x": 50,
+			"y": 43.693,
+			"z": 1.166
+		},
+		"/|skizze-05.jpg": {
+			"x": 77.17,
+			"y": 27.155,
+			"z": 1.08
+		},
+		"/|kunst-05.jpg": {
+			"x": 59.203,
+			"y": 48.564,
+			"z": 1.469
+		},
+		"/|skizze-08.jpg": {
+			"x": 50.364,
+			"y": 46.218,
+			"z": 1.166
+		},
+		"/|kunst-06.jpg": {
+			"x": 34.902,
+			"y": 68.758,
+			"z": 1.587
+		},
+		"/|galerie-07.jpg": {
+			"x": 66.798,
+			"y": 30.468,
+			"z": 1.36
+		},
+		"/|skizze-07.jpg": {
+			"x": 39.002,
+			"y": 21.59,
+			"z": 1.469
+		}
+	},
 	"phone": {}
 };
