@@ -2131,3 +2131,19 @@ details.has-bottom-close[open] > summary { list-style: none; }
 details.has-bottom-close[open] > summary::-webkit-details-marker { display: none; }
 details.has-bottom-close[open] > summary::marker { content: ""; }
 details.has-bottom-close[open] > summary .open-hint { display: none; }
+
+/* Hero Saturday line: "nächste Termine" dropdown + map hover preview */
+.saturday-line { position: relative; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+.next-dates { display: inline-block; }
+.next-dates summary { display: inline; cursor: pointer; text-decoration: underline; list-style: none; }
+.next-dates summary::-webkit-details-marker { display: none; }
+.next-dates summary::after { content: " ▾"; font-size: .8em; }
+.next-dates[open] summary::after { content: " ▴"; }
+.next-dates ul { list-style: none; margin: .6em 0 .3em; padding: 0; display: grid; gap: .35em; }
+.next-dates li { display: flex; gap: .6em; font-size: .88rem; }
+.next-dates .t-date { min-width: 4.8em; font-weight: 600; }
+.next-dates .nd-all { font-size: .85rem; }
+.map-peek { position: absolute; left: 0; bottom: calc(100% + 8px); width: 300px; height: 200px; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,.2); opacity: 0; transform: translateY(6px); pointer-events: none; transition: opacity .2s, transform .2s; z-index: 20; }
+.map-peek.on { opacity: 1; transform: none; }
+.map-peek iframe { width: 100%; height: 100%; border: 0; }
+@media (prefers-reduced-motion: reduce) { .map-peek { transition: none; } }

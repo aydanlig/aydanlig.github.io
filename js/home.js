@@ -32,4 +32,32 @@
 		});
 	});
 
+	/* ---------- 2. "nächste Termine" dropdown: next 4 dates from the #termine list ---------- */
+	var nd = document.querySelector('.next-dates ul');
+	if (nd) {
+		var today = new Date(); today.setHours(0, 0, 0, 0);
+		var items = [].filter.call(document.querySelectorAll('.termine-list li[data-date]'), function (li) {
+			return new Date(li.getAttribute('data-date') + 'T23:59:59') >= today;
+		}).slice(0, 4);
+		items.forEach(function (li) { nd.appendChild(li.cloneNode(true)); });
+		if (!items.length) nd.parentNode.querySelector('summary').textContent += en ? ' (none planned)' : ' (gerade keine)';
+	}
+
+	/* ---------- 3. Hover on "Karte": Google Maps preview of my spot ---------- */
+	if (window.matchMedia('(hover: hover)').matches) {
+		document.querySelectorAll('a[data-photoautomat]').forEach(function (a) {
+			var box;
+			a.addEventListener('mouseenter', function () {
+				if (!box) {
+					box = document.createElement('span');
+					box.className = 'map-peek';
+					box.innerHTML = '<iframe title="Mauerpark" loading="lazy" src="https://maps.google.com/maps?q=Photoautomat%20Mauerpark%2C%20Bernauer%20Str.%2063%2C%20Berlin&z=16&output=embed"></iframe>';
+					a.parentNode.insertBefore(box, a.nextSibling);
+				}
+				box.classList.add('on');
+			});
+			a.addEventListener('mouseleave', function () { box && box.classList.remove('on'); });
+		});
+	}
+
 })();
