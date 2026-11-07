@@ -55,7 +55,7 @@
 /* "2× gebucht" in the top right corner of a package card */
 .card--count { position: relative; }
 .card-count { position: absolute; top: 14px; right: 14px; font-size: 0.75rem; font-weight: 700; padding: 3px 10px;
-	border-radius: 999px; background: var(--night); color: var(--paper); }
+	border-radius: 999px; background: var(--night); color: var(--on-dark, var(--paper)); }
 
 .live-faq { max-width: 760px; margin: 0 auto; }
 .live-faq .live-subtitle { margin-bottom: 0.8em; }
