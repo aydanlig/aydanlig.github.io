@@ -10,6 +10,7 @@
 	<script src="/js/splashes.js" defer></script>
 	<script src="/js/mail-reveal.js" defer></script>
 	<script src="/js/translate.js" defer></script>
+	<script src="/js/termine.js" defer></script>
 
 	<title>Wo & wann ich zeichne – Mauerpark Berlin | SmileyFoxyPortraits</title>
 	<meta name="description"
@@ -43,7 +44,7 @@
 	<!-- ================= HEADER ================= -->
 	<header class="site-header">
 		<div class="wrap">
-			<a class="logo" href="/">SmileyFoxy<span>Portraits</span><small class="logo-since">Seit 6 Jahren Porträts</small></a>
+			<a class="logo" href="/">SmileyFoxy<span>Portraits</span><small class="logo-since">Porträts seit 2020</small></a>
 			<nav class="main-nav" aria-label="Hauptmenü">
 				<a href="/events.html#live-events"><span class="nav-long">Live-</span>Events</a>
 				<a href="/events.html#kleckerkasten">Kleckerkasten</a>
@@ -65,7 +66,7 @@
 			<div class="wrap">
 				<span class="eyebrow">Live draußen</span>
 				<h1>Wo &amp; wann ich zeichne</h1>
-				<p class="lead">Live-Porträts: A5 10–20 €, A4 20–60 €. Nur samstags im Mauerpark: die A6/A7-Schnellskizze für 1 € – Kunst für alle. Bei gutem Wetter, bezahlt wird bar, mit Karte oder PayPal.</p>
+				<p class="lead">Live-Porträts: A6/A7 5 €, A5 ab 15 €, A4 ab 28 €. Nur samstags im Mauerpark: die A6/A7-Schnellskizze für 1 € – Kunst für alle. Bei gutem Wetter, bezahlt wird bar, mit Karte oder PayPal.</p>
 
 				<!-- SCHEDULE: one row per time slot – edit here -->
 				<div class="schedule-table" role="table" aria-label="Zeiten und Orte">
@@ -90,6 +91,92 @@
 				</div>
 				<p class="check-ig"><strong>Ganz sicher gehen?</strong> Ob und wo genau ich gerade zeichne, steht vorher in meiner
 					<a href="https://www.instagram.com/smileyfoxyportraits">Instagram-Story</a>.</p>
+				<!-- UPCOMING DATES (from the Successes log / Todoist). Past rows hide themselves via /js/termine.js.
+				     To add one: copy a row, set data-until to its (last) day. -->
+				<div id="termine" class="termine">
+					<h2 style="margin:1.4em 0 .2em">Nächste Termine</h2>
+					<p class="hint" style="margin:0">Zusätzlich zu Mauerpark: Weihnachtsmärkte und Konzerte, bei denen ich live zeichne. Komm vorbei!</p>
+					<div class="schedule-table" role="table" aria-label="Nächste Termine">
+						<div class="st-row" role="row" data-until="2026-11-16">
+							<span class="st-day" role="cell">Mo 16.11.</span>
+							<span class="st-time" role="cell">abends</span>
+							<span class="st-place" role="cell">Konzert: ILA + I Love You Honey Bunny · Schokoladen, Mitte</span>
+							<a class="st-map" role="cell" href="https://www.google.com/maps/search/?api=1&amp;query=Schokoladen%2C%20Ackerstra%C3%9Fe%20169%2C%2010115%20Berlin" target="_blank" rel="noopener">Karte ↗</a>
+						</div>
+						<div class="st-row" role="row" data-until="2026-11-21">
+							<span class="st-day" role="cell">Sa 21.11.</span>
+							<span class="st-time" role="cell">abends</span>
+							<span class="st-place" role="cell">Konzert: Buster Beat · Schokoladen, Mitte (Mauerpark an dem Tag kürzer)</span>
+							<a class="st-map" role="cell" href="https://www.google.com/maps/search/?api=1&amp;query=Schokoladen%2C%20Ackerstra%C3%9Fe%20169%2C%2010115%20Berlin" target="_blank" rel="noopener">Karte ↗</a>
+						</div>
+						<div class="st-row" role="row" data-until="2026-11-25">
+							<span class="st-day" role="cell">Mi 25.11.</span>
+							<span class="st-time" role="cell">ab 17 Uhr</span>
+							<span class="st-place" role="cell">Weihnachtsmarkt am Schloss Charlottenburg · im Pagodenzelt</span>
+							<a class="st-map" role="cell" href="https://www.google.com/maps/search/?api=1&amp;query=Weihnachtsmarkt%20Schloss%20Charlottenburg%2C%20Spandauer%20Damm%2020%2C%2014059%20Berlin" target="_blank" rel="noopener">Karte ↗</a>
+						</div>
+						<div class="st-row" role="row" data-until="2026-11-25">
+							<span class="st-day" role="cell">Mi 25.11.</span>
+							<span class="st-time" role="cell">ab 20:30 Uhr</span>
+							<span class="st-place" role="cell">Konzert: deadPEASNTS + Samt Martin · Junction Bar, Kreuzberg</span>
+							<a class="st-map" role="cell" href="https://www.google.com/maps/search/?api=1&amp;query=Junction%20Bar%2C%20Gneisenaustra%C3%9Fe%2018%2C%2010961%20Berlin" target="_blank" rel="noopener">Karte ↗</a>
+						</div>
+						<div class="st-row" role="row" data-until="2026-11-30">
+							<span class="st-day" role="cell">Mo 30.11.</span>
+							<span class="st-time" role="cell">ab 17 Uhr</span>
+							<span class="st-place" role="cell">Weihnachtsmarkt am Schloss Charlottenburg · im Pagodenzelt</span>
+							<a class="st-map" role="cell" href="https://www.google.com/maps/search/?api=1&amp;query=Weihnachtsmarkt%20Schloss%20Charlottenburg%2C%20Spandauer%20Damm%2020%2C%2014059%20Berlin" target="_blank" rel="noopener">Karte ↗</a>
+						</div>
+						<div class="st-row" role="row" data-until="2026-12-06">
+							<span class="st-day" role="cell">So 06.12.</span>
+							<span class="st-time" role="cell">Uhrzeit folgt</span>
+							<span class="st-place" role="cell">Winterbasar der Regenbogenfabrik · Kreuzberg</span>
+							<a class="st-map" role="cell" href="https://www.google.com/maps/search/?api=1&amp;query=Regenbogenfabrik%2C%20Lausitzer%20Stra%C3%9Fe%2021a%2C%2010999%20Berlin" target="_blank" rel="noopener">Karte ↗</a>
+						</div>
+						<div class="st-row" role="row" data-until="2026-12-09">
+							<span class="st-day" role="cell">Mi 09.12.</span>
+							<span class="st-time" role="cell">ab 17 Uhr</span>
+							<span class="st-place" role="cell">Weihnachtsmarkt am Schloss Charlottenburg · im Pagodenzelt</span>
+							<a class="st-map" role="cell" href="https://www.google.com/maps/search/?api=1&amp;query=Weihnachtsmarkt%20Schloss%20Charlottenburg%2C%20Spandauer%20Damm%2020%2C%2014059%20Berlin" target="_blank" rel="noopener">Karte ↗</a>
+						</div>
+						<div class="st-row" role="row" data-until="2026-12-14">
+							<span class="st-day" role="cell">Mo 14.12.</span>
+							<span class="st-time" role="cell">ab 17 Uhr</span>
+							<span class="st-place" role="cell">Weihnachtsmarkt am Schloss Charlottenburg · im Pagodenzelt</span>
+							<a class="st-map" role="cell" href="https://www.google.com/maps/search/?api=1&amp;query=Weihnachtsmarkt%20Schloss%20Charlottenburg%2C%20Spandauer%20Damm%2020%2C%2014059%20Berlin" target="_blank" rel="noopener">Karte ↗</a>
+						</div>
+						<div class="st-row" role="row" data-until="2026-12-20">
+							<span class="st-day" role="cell">So 20.12.</span>
+							<span class="st-time" role="cell">12–19 Uhr</span>
+							<span class="st-place" role="cell">Advents-Ökomarkt am Kollwitzplatz · Prenzlauer Berg</span>
+							<a class="st-map" role="cell" href="https://www.google.com/maps/search/?api=1&amp;query=Kollwitzplatz%2C%2010435%20Berlin" target="_blank" rel="noopener">Karte ↗</a>
+						</div>
+						<div class="st-row" role="row" data-until="2026-12-21">
+							<span class="st-day" role="cell">Mo 21.12.</span>
+							<span class="st-time" role="cell">ab 17 Uhr</span>
+							<span class="st-place" role="cell">Weihnachtsmarkt am Schloss Charlottenburg · im Pagodenzelt</span>
+							<a class="st-map" role="cell" href="https://www.google.com/maps/search/?api=1&amp;query=Weihnachtsmarkt%20Schloss%20Charlottenburg%2C%20Spandauer%20Damm%2020%2C%2014059%20Berlin" target="_blank" rel="noopener">Karte ↗</a>
+						</div>
+						<div class="st-row" role="row" data-until="2027-01-27">
+							<span class="st-day" role="cell">Mi 27.01.27</span>
+							<span class="st-time" role="cell">abends</span>
+							<span class="st-place" role="cell">Konzert: Euroteuro · Schokoladen, Mitte</span>
+							<a class="st-map" role="cell" href="https://www.google.com/maps/search/?api=1&amp;query=Schokoladen%2C%20Ackerstra%C3%9Fe%20169%2C%2010115%20Berlin" target="_blank" rel="noopener">Karte ↗</a>
+						</div>
+						<div class="st-row" role="row" data-until="2027-01-30">
+							<span class="st-day" role="cell">Fr+Sa 29.–30.01.27</span>
+							<span class="st-time" role="cell">abends</span>
+							<span class="st-place" role="cell">BE NOISE Live Battles (Bandcontest) · Ort folgt</span>
+							<span class="st-map" role="cell"></span>
+						</div>
+						<div class="st-row" role="row" data-until="2027-03-11">
+							<span class="st-day" role="cell">Do 11.03.27</span>
+							<span class="st-time" role="cell">abends</span>
+							<span class="st-place" role="cell">Konzert: Death By Horse · Schokoladen, Mitte</span>
+							<a class="st-map" role="cell" href="https://www.google.com/maps/search/?api=1&amp;query=Schokoladen%2C%20Ackerstra%C3%9Fe%20169%2C%2010115%20Berlin" target="_blank" rel="noopener">Karte ↗</a>
+						</div>
+					</div>
+				</div>
 			</div>
 		</section>
 
@@ -150,7 +237,7 @@
 							<img src="/img/fotos/portraet-an-der-wand-1x1.jpg" alt="Dasselbe Porträt hängt jetzt gerahmt bei ihm zu Hause an der Wand" class="ph-img ph--1x1" width="1000" height="1000" loading="lazy" decoding="async">
 						</div>
 						<p class="hint photo-desc">Ein Musiker der Band Revolte Tanzbein, live gezeichnet vor dem <a href="https://www.schokoladen-mitte.de/">Schokoladen</a> in Berlin, Aydans Lieblings-Konzertort. Heute hängt das Porträt gerahmt bei ihm zu Hause.</p>
-						<p>„Goldig 🫶🏻💖❤️“</p>
+						<p>„Goldig ❤️ ❤️ ❤️“</p>
 						<cite>– Barbara, Ehefrau des gezeichneten Musikers von Revolte Tanzbein, auf Instagram (September 2026)</cite>
 					</figure>
 				</div>
@@ -167,7 +254,7 @@
 				<h2 class="center" style="margin-top:0">Mehr als Schnellskizzen</h2>
 				<div class="more-offers">
 					<a href="/events.html#live-events"><span>🎉</span><strong>Live-Porträts für Events</strong><small>Firmenfeier, Party, Geburtstag</small></a>
-					<a href="/events.html#kleckerkasten"><span>🎨</span><strong>Kleckerkasten-Workshop</strong><small>Teambuilding – Pilot-Team −50 %</small></a>
+					<a href="/events.html#kleckerkasten"><span>🎨</span><strong>Kleckerkasten-Workshop</strong><small>Teambuilding – Pilot-Team −20 € p. P.</small></a>
 					<a href="/commission.html"><span>🖼️</span><strong>Porträt-Auftrag</strong><small>nach Foto oder live bei dir</small></a>
 				</div>
 				<p class="center hint" style="margin-top:1em">Und just for fun: <a href="/labor/auktion.html">eine Original-Skizze wird gerade versteigert – ohne Startpreis →</a></p>
@@ -218,13 +305,14 @@
 					<p><a href="/spenden/">Spenden</a></p>
 					<p><a href="/bezahlen.html">Vor Ort bezahlen</a></p>
 					<p><a href="https://tr.ee/u1wxA4" target="_blank" rel="noopener">Kostenlos: Bewertung abgeben</a></p>
+					<p><a href="https://www.google.com/preferences/source?q=smileyfoxyportraits.com" target="_blank" rel="noopener">Kostenlos: bei Google als bevorzugte Quelle wählen</a></p>
 					<p><a href="/support-free/">Kostenlos unterstützen</a></p>
 				</div>
 
 				<div>
 					<h3>Kontakt</h3>
 					<p><a href="/contact/">Kontaktseite</a></p>
-					<p><a class="footer-pair" href="mailto:aydan@smileyfoxyportraits.com">Schreib mir eine E-Mail<br><span class="footer-mail">aydan@smileyfoxyportraits.com</span></a></p>
+					<p><a class="footer-pair" href="mailto:aydan@smileyfoxyportraits.com">Schreib mir eine E-Mail<br><span class="footer-mail">aydan@<wbr>smileyfoxyportraits.com</span></a></p>
 					<p><a href="https://www.instagram.com/smileyfoxyportraits">Instagram</a></p>
 					<p><a class="footer-pair" href="https://aydanligon.substack.com/subscribe">E-Mail-Liste<br><span class="footer-mail">max. 1 E-Mail im Monat</span></a></p>
 				</div>

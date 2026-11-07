@@ -40,7 +40,7 @@
 
 	<header class="site-header">
 		<div class="wrap">
-			<a class="logo" href="/">SmileyFoxy<span>Portraits</span><small class="logo-since">Seit 6 Jahren Porträts</small></a>
+			<a class="logo" href="/">SmileyFoxy<span>Portraits</span><small class="logo-since">Porträts seit 2020</small></a>
 			<nav class="main-nav" aria-label="Hauptmenü">
 				<a href="/events.html#live-events"><span class="nav-long">Live-</span>Events</a>
 				<a href="/events.html#kleckerkasten">Kleckerkasten</a>
@@ -87,7 +87,7 @@
 					<article class="card card--featured">
 						<span class="tag tag--fox">Nur 30 Stück</span>
 						<h3>Limitierte Edition</h3>
-						<p class="price">65 €</p>
+						<p class="price">Preis folgt</p>
 						<ul class="checks">
 							<li>Von Hand nummeriert (z. B. 7/30) und signiert</li>
 							<li>Mit Echtheitszertifikat</li>
@@ -99,7 +99,7 @@
 					<article class="card">
 						<span class="tag">Unbegrenzt</span>
 						<h3>Offene Edition</h3>
-						<p class="price">45 €</p>
+						<p class="price">Preis folgt</p>
 						<ul class="checks">
 							<li>Signiert</li>
 							<li>Gleiches Motiv, gleiche Druckqualität</li>
@@ -148,10 +148,10 @@
 								<fieldset>
 									<legend>Edition *</legend>
 									<div class="choice-row">
-										<label class="choice"><input type="radio" name="Edition" value="Limitierte Edition" data-price="65" required>
-											<span><strong>Limitiert</strong><br><span class="hint">nummeriert &amp; signiert · 65 €</span></span></label>
-										<label class="choice"><input type="radio" name="Edition" value="Offene Edition" data-price="45">
-											<span><strong>Offen</strong><br><span class="hint">signiert · 45 €</span></span></label>
+										<label class="choice"><input type="radio" name="Edition" value="Limitierte Edition" required>
+											<span><strong>Limitiert</strong><br><span class="hint">nummeriert &amp; signiert</span></span></label>
+										<label class="choice"><input type="radio" name="Edition" value="Offene Edition">
+											<span><strong>Offen</strong><br><span class="hint">signiert</span></span></label>
 									</div>
 								</fieldset>
 							</div>
@@ -180,7 +180,7 @@
 										<a href="/ImpressumUndDatenschutz/Datenschutz.html" target="_blank">Datenschutzerklärung</a> gelesen. *</span></label>
 							</div>
 						</div>
-						<p class="edition-total">Summe: <strong data-sum>–</strong> <small>(Endpreis inkl. Versand)</small></p>
+						<p class="edition-total">Preis: <strong data-sum>folgt mit der Rechnung</strong></p>
 						<button class="btn btn--fox" type="submit">Bestellen – Rechnung folgt per E-Mail</button>
 						<p class="hint">Ausverkauft? Wenn die limitierte Edition vergriffen ist, melde ich mich und biete dir die offene Edition an.</p>
 					</form>
@@ -207,7 +207,7 @@
 			function update() {
 				var ed = form.querySelector('input[name="Edition"]:checked');
 				var out = form.querySelector('[data-sum]');
-				if (!ed) { out.textContent = '–'; return; }
+				if (!ed || !ed.hasAttribute('data-price')) return; // no prices yet (30.10.2026): price comes with the invoice
 				var qty = Math.max(1, parseInt(form.querySelector('#e-qty').value, 10) || 1);
 				var ship = parseFloat(form.querySelector('#e-delivery').selectedOptions[0].getAttribute('data-price')) || 0;
 				var sum = qty * parseFloat(ed.getAttribute('data-price')) + ship;
@@ -269,13 +269,14 @@
 					<p><a href="/spenden/">Spenden</a></p>
 					<p><a href="/bezahlen.html">Vor Ort bezahlen</a></p>
 					<p><a href="https://tr.ee/u1wxA4" target="_blank" rel="noopener">Kostenlos: Bewertung abgeben</a></p>
+					<p><a href="https://www.google.com/preferences/source?q=smileyfoxyportraits.com" target="_blank" rel="noopener">Kostenlos: bei Google als bevorzugte Quelle wählen</a></p>
 					<p><a href="/support-free/">Kostenlos unterstützen</a></p>
 				</div>
 
 				<div>
 					<h3>Kontakt</h3>
 					<p><a href="/contact/">Kontaktseite</a></p>
-					<p><a class="footer-pair" href="mailto:aydan@smileyfoxyportraits.com">Schreib mir eine E-Mail<br><span class="footer-mail">aydan@smileyfoxyportraits.com</span></a></p>
+					<p><a class="footer-pair" href="mailto:aydan@smileyfoxyportraits.com">Schreib mir eine E-Mail<br><span class="footer-mail">aydan@<wbr>smileyfoxyportraits.com</span></a></p>
 					<p><a href="https://www.instagram.com/smileyfoxyportraits">Instagram</a></p>
 					<p><a href="https://discord.gg/pQaBQjBv4U">Discord</a><br><a class="footer-mail" href="https://discord.gg/pQaBQjBv4U">Aydan's Fox Den</a></p>
 					<p><a href="https://aydanligon.substack.com">Substack</a><br><a class="footer-mail" href="https://aydanligon.substack.com">Blog &amp; E-Mail-Liste</a></p>

@@ -31,7 +31,7 @@
 
 	<header class="site-header">
 		<div class="wrap">
-			<a class="logo" href="/en/">SmileyFoxy<span>Portraits</span><small class="logo-since">Drawing portraits for 6 years</small></a>
+			<a class="logo" href="/en/">SmileyFoxy<span>Portraits</span><small class="logo-since">Portraits since 2020</small></a>
 			<a class="lang-switch" data-translate lang="de" title="Deutsche Version dieser Seite" href="/bestellt.html">DE</a>
 		</div>
 	</header>
@@ -41,11 +41,12 @@
 			<div class="wrap center" style="max-width:620px">
 				<span class="eyebrow">Order received</span>
 				<h1>Thank you! <span class="spinning-smiley" aria-hidden="true"></span></h1>
-				<p class="lead">Your order <strong data-order-nr></strong> has reached me. The confirmation is on its way to your inbox (just in case, check your spam folder too).</p>
+				<p class="lead" data-first-only>Your order <strong data-order-nr></strong> has reached me. The confirmation is on its way to your inbox (just in case, check your spam folder too).</p>
 
 				<div class="pay-step pay-step--total">
 					<h2><span>✓</span> Last step: pay</h2>
 					<p class="pay-total" aria-live="polite">Amount: <strong data-order-sum>as in your confirmation</strong></p>
+					<p class="hint" data-order-part hidden></p>
 					<div class="pay-buttons">
 						<a class="btn btn--fox" data-pay-paypal data-paypal="aydan@smileyfoxyportraits.com" href="https://www.paypal.biz/SmileyFoxyPortraitsL">Pay with PayPal</a>
 						<a class="btn btn--ghost" data-pay-card href="https://pay.sumup.com/b2c/QMYZ8JO7">Pay by card (SumUp)</a>

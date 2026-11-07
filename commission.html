@@ -15,6 +15,7 @@
 	<script src="/js/vendor/flatpickr.min.js" defer></script>
 	<script src="/js/vendor/flatpickr-de.min.js" defer></script>
 	<script src="/js/forms.js" defer></script>
+	<script src="/js/commission.js" defer></script>
 	<script src="/js/order.js" defer></script>
 
 	<title>Porträt nach Foto malen lassen – Berlin | SmileyFoxyPortraits</title>
@@ -42,6 +43,7 @@
 	<meta name="twitter:card" content="summary_large_image">
 
 	<link rel="stylesheet" href="/css/main.css">
+	<link rel="stylesheet" href="/css/commission.css">
 	<link rel="stylesheet" href="/css/order.css">
 </head>
 
@@ -50,7 +52,7 @@
 	<!-- ================= HEADER ================= -->
 	<header class="site-header">
 		<div class="wrap">
-			<a class="logo" href="/">SmileyFoxy<span>Portraits</span><small class="logo-since">Seit 6 Jahren Porträts</small></a>
+			<a class="logo" href="/">SmileyFoxy<span>Portraits</span><small class="logo-since">Porträts seit 2020</small></a>
 			<nav class="main-nav" aria-label="Hauptmenü">
 				<a href="/events.html#live-events"><span class="nav-long">Live-</span>Events</a>
 				<a href="/events.html#kleckerkasten">Kleckerkasten</a>
@@ -100,12 +102,37 @@
 				<div class="center">
 					<span class="eyebrow">Preise</span>
 					<h2 id="prices-title">Von der Samstags-Skizze bis zum Bild für die Bürowand</h2>
-					<p class="lead">Klare Preise für die Standardformate. Alles darüber hinaus besprechen wir persönlich.</p>
+					<p class="lead">Mir geht es darum, die Kunst und den Stil zu finden, die zu dir passen – und zu dem Gefühl, das dein Bild tragen soll.</p>
 				</div>
+
+				<!-- STYLE GUIDE: opens on click. Each style: example work + what it does to the mood.
+				     To swap an example: change the img src (pictures live in img/kunst, img/galerie, img/fotos). -->
+				<details class="style-guide">
+					<summary>Welcher Stil passt zu dir? <span>Wirkung &amp; Beispiele</span></summary>
+					<div class="style-guide-grid">
+						<figure>
+							<img src="/img/galerie/galerie-01.jpg" alt="Feine Fineliner-Zeichnung: junge Frau mit Locken" width="1082" height="1600" loading="lazy" decoding="async">
+							<figcaption><strong>Fineliner + Highlight</strong>Feine Linien mit einem Farbakzent, z. B. ihre blauen Augen. Wirkt <em>ruhig, klar und zart</em>.</figcaption>
+						</figure>
+						<figure>
+							<img src="/img/fotos/tusche-portraet-4x5.jpg" alt="Ausdrucksstarkes Pinseltinten-Porträt eines Mannes in Schwarz" width="1080" height="1350" loading="lazy" decoding="async">
+							<figcaption><strong>Pinseltinte</strong>Kräftige schwarze Flächen und Kontraste. Wirkt <em>stark, ernst und intensiv</em>.</figcaption>
+						</figure>
+						<figure>
+							<img src="/img/kunst/kunst-06.jpg" alt="Blaues Aquarell eines Gitarristen" width="1200" height="1600" loading="lazy" decoding="async">
+							<figcaption><strong>Aquarell</strong>Fließende Farbe, die eigene Wege geht. Wirkt <em>verspielt, fröhlich und lebendig</em>.</figcaption>
+						</figure>
+						<figure>
+							<img src="/img/kunst/kunst-02.jpg" alt="Tusche-Porträt eines Mannes mit Brille und Bart, blaue Aquarellfläche" width="1478" height="1600" loading="lazy" decoding="async">
+							<figcaption><strong>Aquarell + Tusche</strong>Klare Linien treffen auf freie Farbe. Wirkt <em>vielschichtig</em> – Strenge und Offenheit zugleich.</figcaption>
+						</figure>
+					</div>
+					<p class="hint">Noch unsicher? Schreib im Formular einfach, welches Gefühl dein Bild ausstrahlen soll – ich wähle dann den passenden Stil für dich.</p>
+				</details>
 
 				<!-- Each card: head / main / (extras) / foot – the foot (button) always sits at the bottom of the card -->
 				<div class="cards">
-					<!-- In person: cheaper prices, only when I'm drawing outside -->
+					<!-- In person: prices as on the pay page (/bezahlen.html), only when I'm drawing outside -->
 					<article class="card" id="vor-ort">
 						<div class="card-head">
 							<span class="tag">Nur vor Ort</span>
@@ -114,9 +141,10 @@
 						</div>
 						<div class="card-main">
 							<ul class="price-list">
+								<li><span>A6/A7 Schnellskizze</span><strong>5 €</strong></li>
 								<li><span>A6/A7 · nur samstags im Mauerpark</span><strong>1 €</strong></li>
-								<li><span>A5</span><strong>10–20 €</strong></li>
-								<li><span>A4</span><strong>20–60 €</strong></li>
+								<li><span>A5</span><strong>15 €</strong></li>
+								<li><span>A4</span><strong>28 €</strong></li>
 							</ul>
 						</div>
 						<div class="card-extras">
@@ -146,35 +174,29 @@
 						<div class="card-head">
 							<span class="tag">Bestellbar</span>
 							<h3>A5</h3>
-							<p class="price">20 € <small>Startpreis 2026 · ab 2027 regulär 35 €</small></p>
+							<p class="price">20 €</p>
 						</div>
 						<div class="card-main">
-							<p>Das kleine Porträt nach deinem Foto, in jedem Stil zum gleichen Preis. Ideal als persönliches Geschenk.</p>
+							<p>Das kleine Porträt nach deinem Foto, in jedem Stil 20 € (Pinseltinte 30 €). Ideal als Geschenk.</p>
 						</div>
 						<div class="card-foot">
 							<a class="btn btn--ghost" href="#bestellen" data-order-size="A5">Bestellen</a>
 						</div>
 					</article>
 
-					<!-- A4: price depends on style -->
+					<!-- A4: price depends on style. Change prices here AND in the form (Stil + Größe). -->
 					<article class="card card--featured">
 						<div class="card-head">
 							<span class="tag">Bestellbar</span>
 							<h3>A4</h3>
-							<p class="price">40–60 € <small>Startpreis 2026 · ab 2027 regulär ab 75 €</small></p>
+							<p class="price">28–50 €</p>
 						</div>
 						<div class="card-main">
 							<ul class="price-list">
-								<li><span>Fineliner (nur Tusche)</span><strong>40 €</strong></li>
-								<li><span>Aquarell</span><strong>50 €</strong></li>
-								<li><span>Aquarell + Fineliner</span><strong>60 €</strong></li>
-							</ul>
-						</div>
-						<div class="card-extras">
-							<p class="hint"><strong>Auf Wunsch dazu:</strong></p>
-							<ul class="price-list">
-								<li><span>Goldtinte / Blattgold</span><strong>+10 €</strong></li>
-								<li><span>Bunter Aquarell-Hintergrund</span><strong>+10 €</strong></li>
+								<li><span>Fineliner + Highlight <span class="info info--img" tabindex="0" aria-label="Beispiel ansehen">?<span class="info-pop"><img src="/img/galerie/galerie-01.jpg" alt="Beispiel: Fineliner-Porträt einer jungen Frau mit Locken" width="1082" height="1600" loading="lazy" decoding="async"></span></span></span><strong>28 €</strong></li>
+								<li><span>Pinseltinte <span class="info info--img" tabindex="0" aria-label="Beispiel ansehen">?<span class="info-pop"><img src="/img/fotos/tusche-portraet-4x5.jpg" alt="Beispiel: Pinseltinten-Porträt eines Mannes" width="1080" height="1350" loading="lazy" decoding="async"></span></span></span><strong>38 €</strong></li>
+								<li><span>Aquarell <span class="info info--img" tabindex="0" aria-label="Beispiel ansehen">?<span class="info-pop"><img src="/img/kunst/kunst-06.jpg" alt="Beispiel: blaues Aquarell eines Gitarristen" width="1200" height="1600" loading="lazy" decoding="async"></span></span></span><strong>34 €</strong></li>
+								<li><span>Aquarell + Tusche <span class="info info--img" tabindex="0" aria-label="Beispiel ansehen">?<span class="info-pop"><img src="/img/kunst/kunst-02.jpg" alt="Beispiel: Tusche-Porträt mit blauer Aquarellfläche" width="1478" height="1600" loading="lazy" decoding="async"></span></span></span><strong>50 €</strong></li>
 							</ul>
 						</div>
 						<div class="card-foot">
@@ -185,14 +207,14 @@
 				</div>
 
 
-				<!-- NEGOTIABLE: bigger formats & special wishes – price by conversation (replaces the old A3/A2 card) -->
+				<!-- NEGOTIABLE: bigger formats & special wishes (replaces the old A3/A2 card) -->
 				<div class="nego">
 					<div class="nego-visual" aria-hidden="true"><span>A3</span><span>A2</span><span>?</span></div>
 					<div class="nego-text">
 						<span class="eyebrow">Großformat &amp; Sonderwünsche</span>
 						<h3>Größer, anders, ganz besonders? Lass uns reden.</h3>
 						<p>A3, A2, ein Familienbild für die Wohnzimmerwand oder eine Idee, die in keine Box passt – der Preis ist
-							<strong>Verhandlungssache</strong>. Erzähl mir, was du dir vorstellst, und wir finden gemeinsam einen Preis, der passt.</p>
+							<strong>verhandelbar</strong>. Erzähl mir von deiner Idee, und wir finden gemeinsam einen Weg zu deiner Kunst, der dir maßgeschneidert ist.</p>
 					</div>
 					<a class="btn btn--fox" href="mailto:aydan@smileyfoxyportraits.com?subject=Anfrage%20Gro%C3%9Fformat%20%2F%20Sonderwunsch">Wunsch schreiben</a>
 				</div>
@@ -204,36 +226,57 @@
 					Endpreise ohne Umsatzsteuer (§ 19 UStG) · Versand 4,90 € (mit Rahmen 6,90 €) · Einzelanfertigung: kein Widerrufsrecht.
 				</p>
 
-				<!-- EXTRAS (add-ons) – change the prices here AND in the form below -->
-				<div class="form-card" style="margin-top:2.5em">
+				<!-- EXTRAS (add-ons), grouped so they are quick to scan.
+				     Change a price here AND in the "Extras" / "Rahmen" fields of the form below (same order there). -->
+				<div class="extras-box">
 					<h3>Extras</h3>
-					<ul class="price-list">
-						<li><span>Express: fertig in 3 Tagen</span><strong>+10 €</strong></li>
-						<li><span>Geschenkverpackung</span><strong>+5 €</strong></li>
-						<!-- FRAMES – flat price, same for A5 and A4 (change here AND in the "Rahmen" field of the form) -->
-						<li><span>Rahmen: einfach (schlicht &amp; leicht)</span><strong>+10 €</strong></li>
-						<li><span>Rahmen: hochwertig (dicker, edler Rahmen)</span><strong>+20 €</strong></li>
-						<li><span>Rahmenfarbe nach Wahl: schwarz, weiß oder Holz</span><strong>inklusive</strong></li>
-						<li><span>Jede weitere Person oder jedes Haustier auf einem Bild</span><strong>A5 +10 € / A4 +20 €</strong></li>
-						<li><span>Mehrere Porträts oder Gruppenporträts (z. B. Familie, Team)</span><strong>Mengenrabatt nach Absprache</strong></li>
-						<li><span>Ausgearbeiteter Hintergrund oder Stil-Extra (z. B. bunter Aquarell-Hintergrund)</span><strong>+10 €</strong></li>
-						<li><span>Goldtinte / Blattgold</span><strong>+10 €</strong></li>
-						<li><span>Marker-Highlights (nur A5)</span><strong>+5 €</strong></li>
-						<li><span>Bildrechte für Werbung (Anzeigen, Plakate, Verpackung, bezahlte Posts)</span><strong>+150 € pauschal</strong></li>
-						<li><span>Total Buyout (exklusive, unbegrenzte Nutzung ohne Namensnennung; das Urheberrecht bleibt bei mir)</span><strong>+400 € pauschal</strong></li>
-						<!-- CANVAS / PRINT COPY – printed on demand (Gelato), price depends on size, so: quote first -->
-						<li><span>Dein Porträt zusätzlich als Leinwand oder gerahmter Druck</span><strong>Preis je nach Größe</strong></li>
-					</ul>
-					<p class="hint"><strong>Für Fernbeziehungen &amp; Geschenke:</strong> Du lässt dich zeichnen, um deinem Lieblingsmenschen in der Ferne
-						ein Stück von dir zu schenken? Dann behältst du das Original – und eine Leinwand oder ein gerahmter Druck davon geht direkt
-						zu ihr oder ihm nach Hause, auch ins Ausland. Gedruckt wird im Land der Empfängerin oder des Empfängers, das spart lange
-						Versandwege. Kreuz bei der Bestellung einfach „Leinwand / Druck“ an, das Angebot dafür bekommst du separat.</p>
+					<div class="extras-groups">
+						<div>
+							<h4>Mehr auf dem Bild</h4>
+							<ul class="price-list">
+								<li><span>Jede weitere Person oder jedes Haustier</span><strong>A5 +10 € · A4 +20 €</strong></li>
+								<li><span>Mehrere Porträts (Familie, Team)</span><strong>Mengenrabatt</strong></li>
+							</ul>
+						</div>
+						<div>
+							<h4>Farbe &amp; Tinte</h4>
+							<ul class="price-list">
+								<li><span>Bunter Aquarell-Hintergrund</span><strong>+10 €</strong></li>
+								<li><span>Goldtinte / Blattgold</span><strong>+30 €</strong></li>
+								<li><span>+1 Überarbeitung<small>gibt's zurück, wenn keine nötig ist</small></span><strong>+25 €</strong></li>
+							</ul>
+						</div>
+						<div>
+							<h4>Rahmen &amp; Lieferung</h4>
+							<ul class="price-list">
+								<!-- FRAMES – flat price, same for A5 and A4 -->
+								<li><span>Rahmen einfach / hochwertig<small>schwarz, weiß oder Holz</small></span><strong>+10 € / +20 €</strong></li>
+								<li><span>Handgebaut mit meinem Opa (Tischler)<small>nach deinen Wünschen</small></span><strong>+50 €</strong></li>
+								<li><span>Geschenkverpackung</span><strong>+5 €</strong></li>
+								<li><span>Expresslieferung<small>fertig in 3 Tagen</small></span><strong>+10 €</strong></li>
+								<!-- CANVAS / PRINT COPY – printed on demand (Gelato), price depends on size, so: quote first -->
+								<li><span>Zusätzlich als Leinwand oder gerahmter Druck<small>auch direkt an jemanden in der Ferne, gedruckt im Land der Empfänger:in</small></span><strong>je nach Größe</strong></li>
+							</ul>
+						</div>
+						<div>
+							<h4>Nutzungsrechte</h4>
+							<ul class="price-list">
+								<li><span>Bildrechte für Werbung, mit Namensnennung</span><strong>+150 €</strong></li>
+								<li><span>Total Buyout: exklusiv, ohne Namensnennung</span><strong>+400 €</strong></li>
+							</ul>
+						</div>
+						<div class="extras-tiers">
+							<h4>Rundum-Behandlung</h4>
+							<ul class="price-list">
+								<li><span>Queen<small>Story-Gespräch, Fortschrittsfotos, Kunstkauf-Zertifikat</small></span><strong>+100 €</strong></li>
+								<li><span>Majesty<small>+ Größe passend zu deinem Zuhause, Opa-Rahmen, Making-of-Hefter</small></span><strong>+1.000 €</strong></li>
+								<li><span>Godlike<small>+ eigenes Studio fürs Projekt, mehrere Sitzungen, alle Skizzen dazu</small></span><strong>+2.000 €</strong></li>
+							</ul>
+						</div>
+					</div>
 					<!-- Live at the customer's place: surcharge on purpose not shown (depends on distance etc.) -->
-					<p class="hint"><strong>Live bei dir oder größere Ideen</strong> (z. B. Familienbild als Großformat)? Ich komme auch zu dir nach Hause,
-						ins Büro oder an deinen Lieblingsort und zeichne dich vor Ort – Aufpreis nach Absprache. Schreib mir dafür am besten direkt
-						<a href="mailto:aydan@smileyfoxyportraits.com">per E-Mail</a>.</p>
+					<p class="hint extras-live"><strong>Live bei dir?</strong> Zuhause, im Büro oder am Lieblingsort – Aufpreis nach Absprache. <a href="#live-termin" style="white-space: nowrap">Termin anfragen →</a></p>
 				</div>
-
 				<details class="terms">
 					<summary>Rabattkarte, Versand &amp; Bedingungen</summary>
 					<p><strong>Rabattkarte:</strong> Du hast persönlich eine Karte von mir bekommen? Dann erhältst du 5 € Rabatt auf jedes Porträt
@@ -241,8 +284,8 @@
 					<!-- SHIPPING COSTS – change the amounts here AND in the "Lieferung" field of the form below -->
 					<p><strong>Versand innerhalb Deutschlands:</strong> 4,90 €, mit Rahmen 6,90 € (stabil verpackt). Abholung in Berlin kostenlos.
 						Versand ins Ausland auf Anfrage.</p>
-					<p><strong>Keine Überarbeitungen:</strong> Jedes Porträt ist ein handgemaltes Unikat. Änderungen würden ein komplett neues Bild bedeuten
-						und sind daher nach Fertigstellung nicht möglich.</p>
+					<p><strong>Überarbeitungen:</strong> Jedes Porträt ist ein handgemaltes Unikat. Ohne das Extra „+1 Überarbeitung“ (25 €) sind nach Fertigstellung
+						keine Änderungen möglich. Brauchst du die Überarbeitung nicht, bekommst du die 25 € zurück.</p>
 					<p><strong>Kein Widerrufsrecht:</strong> Auftrags-Porträts werden individuell nach deinen Wünschen angefertigt.
 						Für solche Einzelanfertigungen besteht kein gesetzliches Widerrufsrecht (§ 312g Abs. 2 Nr. 1 BGB).
 						Deine gesetzlichen Gewährleistungsrechte bleiben unberührt.</p>
@@ -260,7 +303,7 @@
 				<div class="center">
 					<span class="eyebrow">In 4 Schritten · ca. 3 Minuten</span>
 					<h2 id="form-title">Porträt bestellen</h2>
-					<p class="lead">Wähle aus, sieh sofort den Preis, lade dein Foto hoch und bezahle direkt. Ich habe danach alles, was ich brauche, und fange an zu malen.</p>
+					<p class="lead">Auswählen, Foto hochladen, bezahlen – dann fange ich an zu malen.</p>
 				</div>
 
 				<form class="order" data-order action="https://formsubmit.co/aydan@smileyfoxyportraits.com" method="POST" enctype="multipart/form-data">
@@ -295,31 +338,39 @@
 										<input type="radio" name="Größe" value="A5" required>
 										<span class="order-card-body">
 											<strong>A5</strong>
-											<span class="hint">14,8 × 21 cm · jeder Stil 20 €</span>
+											<span class="hint">14,8 × 21 cm · ab 20 €</span>
 										</span>
 									</label>
 									<label class="order-card">
 										<input type="radio" name="Größe" value="A4" checked>
 										<span class="order-card-body">
 											<strong>A4</strong>
-											<span class="hint">21 × 29,7 cm · 40–60 € je nach Stil</span>
+											<span class="hint">21 × 29,7 cm · 28–50 €</span>
 										</span>
 									</label>
 								</div>
-								<p class="hint">Größer als A4 oder eine ganz eigene Idee? <a href="#preise">Großformat &amp; Sonderwünsche per E-Mail →</a></p>
+								<p class="hint">Größer als A4? <a href="#preise">Großformat anfragen →</a></p>
 
-								<p class="order-label">Stil <span class="hint">– ich zeichne nach Gefühl, der Stil bestimmt die Stimmung</span></p>
-								<div class="order-choices order-choices--3">
+								<p class="order-label">Stil <span class="info" tabindex="0" data-tip="Ich zeichne nach Gefühl – der Stil bestimmt die Stimmung deines Porträts.">?</span> <span class="hint"><a href="#preise" data-open-style-guide>Wirkung &amp; Beispiele</a></span></p>
+								<div class="order-choices order-choices--4">
 									<label class="order-card order-card--art">
-										<input type="radio" name="Stil" value="Fineliner" data-label="Fineliner" data-a5="20" data-a4="40" required>
-										<img src="/img/art/tusche-portraet-brille-blau-900.webp" alt="" width="900" height="1238" loading="lazy" decoding="async">
+										<input type="radio" name="Stil" value="Fineliner + Highlight" data-label="Fineliner + Highlight" data-a5="20" data-a4="28" required>
+										<img src="/img/galerie/galerie-01.jpg" alt="" width="1082" height="1600" loading="lazy" decoding="async">
 										<span class="order-card-body">
-											<strong>Fineliner <em data-style-price></em></strong>
-											<span class="hint">nur Tusche · klar &amp; ernst</span>
+											<strong>Fineliner + Highlight <em data-style-price></em></strong>
+											<span class="hint">feine Linien, ein Farbakzent (z. B. ihre blauen Augen)</span>
 										</span>
 									</label>
 									<label class="order-card order-card--art">
-										<input type="radio" name="Stil" value="Aquarell" data-label="Aquarell" data-a5="20" data-a4="50">
+										<input type="radio" name="Stil" value="Pinseltinte" data-label="Pinseltinte" data-a5="30" data-a4="38">
+										<img src="/img/fotos/tusche-portraet-4x5.jpg" alt="" width="1080" height="1350" loading="lazy" decoding="async">
+										<span class="order-card-body">
+											<strong>Pinseltinte <em data-style-price></em></strong>
+											<span class="hint">kräftige Flächen · stark &amp; ernst</span>
+										</span>
+									</label>
+									<label class="order-card order-card--art">
+										<input type="radio" name="Stil" value="Aquarell" data-label="Aquarell" data-a5="20" data-a4="34">
 										<img src="/img/art/aquarell-gitarrist-980.webp" alt="" width="980" height="1405" loading="lazy" decoding="async">
 										<span class="order-card-body">
 											<strong>Aquarell <em data-style-price></em></strong>
@@ -327,19 +378,33 @@
 										</span>
 									</label>
 									<label class="order-card order-card--art">
-										<input type="radio" name="Stil" value="Aquarell + Fineliner" data-label="Aquarell + Fineliner" data-a5="20" data-a4="60">
-										<img src="/img/art/tusche-aquarell-kleckse-900.webp" alt="" width="900" height="900" loading="lazy" decoding="async">
+										<input type="radio" name="Stil" value="Aquarell + Tusche" data-label="Aquarell + Tusche" data-a5="20" data-a4="50">
+										<img src="/img/art/tusche-portraet-brille-blau-900.webp" alt="" width="900" height="1238" loading="lazy" decoding="async">
 										<span class="order-card-body">
-											<strong>Aquarell + Fineliner <em data-style-price></em></strong>
-											<span class="hint">vielschichtig – Strenge &amp; Offenheit zugleich</span>
+											<strong>Aquarell + Tusche <em data-style-price></em></strong>
+											<span class="hint">vielschichtig · klar &amp; frei zugleich</span>
 										</span>
 									</label>
+								</div>
+
+								<!-- Feeling: free text + quick-pick words (a click adds the word, see /js/commission.js) -->
+								<div class="field order-feel">
+									<label for="o-feel">Welches Gefühl soll dein Bild ausstrahlen? <span class="info" tabindex="0" data-tip="Unsicher beim Stil? Nimm einen und schreib das Gefühl hier rein – passt ein anderer Stil besser, melde ich mich.">?</span></label>
+									<input id="o-feel" name="Gefühl" placeholder="Dein eigenes Gefühl – oder tippe unten eins an">
+									<div class="feel-chips" data-feel-chips="o-feel">
+										<button type="button">fröhlich</button>
+										<button type="button">ruhig</button>
+										<button type="button">stark</button>
+										<button type="button">verträumt</button>
+										<button type="button">wild</button>
+										<button type="button">melancholisch</button>
+									</div>
 								</div>
 
 								<div class="field order-people">
 									<label for="o-people">Wie viele Personen / Tiere sind auf dem Bild?</label>
 									<input id="o-people" type="number" name="Personen pro Bild" min="1" max="8" value="1" inputmode="numeric" data-a5="10" data-a4="20" required>
-									<p class="hint">Jede weitere Person oder jedes Haustier: +<span data-people-price>20 €</span>. Mehrere einzelne Porträts? Bestell einfach mehrmals – für Familien &amp; Teams gibt's <a href="mailto:aydan@smileyfoxyportraits.com?subject=Mengenrabatt">Mengenrabatt</a>.</p>
+									<p class="hint">Je weitere Person / Tier +<span data-people-price>20 €</span> · Familie oder Team? <a href="mailto:aydan@smileyfoxyportraits.com?subject=Mengenrabatt">Mengenrabatt</a></p>
 								</div>
 							</fieldset>
 
@@ -348,10 +413,15 @@
 								<legend><span class="order-num">2</span> Rahmen, Extras &amp; Lieferung</legend>
 
 								<p class="order-label">Rahmen</p>
-								<div class="order-choices order-choices--3">
+								<div class="order-choices order-choices--4 order-frames">
 									<label class="order-card"><input type="radio" name="Rahmen" value="Ohne Rahmen" data-price="0" data-label="Ohne Rahmen" checked><span class="order-card-body"><strong>Ohne</strong><span class="hint">nur das Bild</span></span></label>
 									<label class="order-card"><input type="radio" name="Rahmen" value="Einfacher Rahmen" data-price="10" data-label="Einfacher Rahmen"><span class="order-card-body"><strong>Einfach +10 €</strong><span class="hint">schlicht &amp; leicht</span></span></label>
 									<label class="order-card"><input type="radio" name="Rahmen" value="Hochwertiger Rahmen" data-price="20" data-label="Hochwertiger Rahmen"><span class="order-card-body"><strong>Hochwertig +20 €</strong><span class="hint">dicker, edler Rahmen</span></span></label>
+									<label class="order-card"><input type="radio" name="Rahmen" value="Handgebaut mit Opa" data-price="50" data-label="Rahmen handgebaut mit meinem Opa" data-frame-custom><span class="order-card-body"><strong>Handgebaut +50 €</strong><span class="hint">von meinem Opa, Tischler</span></span></label>
+								</div>
+								<div class="field" data-frame-wish hidden>
+									<label for="o-frame-wish">Deine Wünsche für den Rahmen</label>
+									<textarea id="o-frame-wish" name="Rahmen-Wünsche" rows="2" placeholder="z. B. helles Eichenholz, schmal, mit kleiner Kerbe oben"></textarea>
 								</div>
 								<div class="order-pills" data-frame-colours hidden>
 									<span class="order-label">Rahmenfarbe (inklusive):</span>
@@ -363,37 +433,53 @@
 								<p class="order-label">Extras <span class="hint">– mehrere möglich</span></p>
 								<div class="order-extras">
 									<label><input type="checkbox" name="Hintergrund-Extra" value="Ja (+10 €)" data-extra data-price="10" data-label="Bunter Aquarell-Hintergrund"><span><strong>Bunter Aquarell-Hintergrund</strong> +10 €</span></label>
-									<label><input type="checkbox" name="Gold" value="Ja (+10 €)" data-extra data-price="10" data-label="Goldtinte / Blattgold"><span><strong>Goldtinte / Blattgold</strong> +10 €</span></label>
-									<label><input type="checkbox" name="Marker-Highlights" value="Ja (+5 €, A5)" data-extra data-only="a5" data-price="5" data-label="Marker-Highlights"><span><strong>Marker-Highlights</strong> +5 € <span class="hint">(nur A5)</span></span></label>
+									<label><input type="checkbox" name="Gold" value="Ja (+30 €)" data-extra data-price="30" data-label="Goldtinte / Blattgold"><span><strong>Goldtinte / Blattgold</strong> +30 €</span></label>
 									<label><input type="checkbox" name="Geschenkverpackung" value="Ja (+5 €)" data-extra data-price="5" data-label="Geschenkverpackung"><span><strong>Geschenkverpackung</strong> +5 €</span></label>
-									<label><input type="checkbox" name="Express" value="Ja (+10 €)" data-extra data-price="10" data-label="Express (fertig in 3 Tagen)"><span><strong>Express</strong> +10 € <span class="hint">fertig in 3 Tagen</span></span></label>
+									<label><input type="checkbox" name="Express" value="Ja (+10 €)" data-extra data-price="10" data-label="Expresslieferung (fertig in 3 Tagen)"><span><strong>Expresslieferung</strong> +10 € <span class="hint">fertig in 3 Tagen</span></span></label>
+									<label><input type="checkbox" name="Überarbeitung" value="Ja (+25 €, zurück wenn nicht nötig)" data-extra data-price="25" data-label="+1 Überarbeitung"><span><strong>+1 Überarbeitung</strong> +25 € <span class="info" tabindex="0" data-tip="Du kannst eine Änderung am fertigen Bild wünschen. Brauchst du sie nicht, bekommst du die 25 € zurück.">?</span></span></label>
 									<!-- not in the price: printed on demand, the price depends on the size, so a quote follows by e-mail -->
-									<label><input type="checkbox" name="Leinwand / Druck" value="Ja – bitte Angebot (Größe + Adresse in die Notizen)"><span><strong>Zusätzlich als Leinwand / Druck</strong> <span class="hint">Angebot kommt separat, z. B. für Fernbeziehungen</span></span></label>
+									<label><input type="checkbox" name="Leinwand / Druck" value="Ja – bitte Angebot (Größe + Adresse in die Notizen)"><span><strong>Zusätzlich als Leinwand / Druck</strong> <span class="info" tabindex="0" data-tip="Das Angebot kommt separat. Ideal für Fernbeziehungen: Der Druck geht direkt an deinen Lieblingsmenschen.">?</span></span></label>
 								</div>
 
 								<!-- IMAGE RIGHTS (mostly for businesses) – same prices as the extras list above -->
+								<!-- TIERS: the all-round treatment. The text in data-tier-info shows once a tier is picked. -->
+								<p class="order-label">Rundum-Behandlung</p>
+								<div class="order-pills order-tiers">
+									<label><input type="radio" name="Rundum-Behandlung" value="Keine" checked> Keine</label>
+									<label><input type="radio" name="Rundum-Behandlung" value="Queen (+100 €)" data-extra data-price="100" data-label="Queen-Behandlung" data-tier-info="Queen: Ich male dein Bild zugeschnitten auf deine Geschichte, nach einem kurzen Gespräch. Du bekommst Fortschrittsfotos und ein Kunstkauf-Zertifikat."> Queen +100 €</label>
+									<label><input type="radio" name="Rundum-Behandlung" value="Majesty (+1.000 €)" data-extra data-price="1000" data-label="Majesty-Behandlung" data-tier-info="Majesty: alles von Queen, dazu eine handverlesene Größe, die zu deinem Zuhause passt, ein Rahmen, den ich mit meinem Opa (Tischler) von Hand baue, und ein Making-of-Hefter mit Kunstkauf-Zertifikat."> Majesty +1.000 €</label>
+									<label><input type="radio" name="Rundum-Behandlung" value="Godlike (+2.000 €)" data-extra data-price="2000" data-label="Godlike-Behandlung" data-tier-info="Godlike: alles von Majesty, dazu miete ich ein Studio nur für dein Projekt, nehme die besten Materialien, wir machen mehrere Sitzungen und du bekommst alle Vorskizzen dazu."> Godlike +2.000 €</label>
+								</div>
+								<p class="tier-info" data-tier-box hidden></p>
+
 								<div class="order-q">
 									<p class="order-label">Nutzung des Bildes</p>
-									<label><input type="radio" name="Bildrechte Nutzung" value="Privat / mit Namensnennung (inklusive)" checked> Privat oder mit Namensnennung – inklusive</label>
-									<label><input type="radio" name="Bildrechte Nutzung" value="Werbung (+150 €)" data-extra data-price="150" data-label="Bildrechte für Werbung"> Für Werbung (Anzeigen, Plakate, Verpackung, bezahlte Posts) +150 €</label>
-									<label><input type="radio" name="Bildrechte Nutzung" value="Total Buyout (+400 €)" data-extra data-price="400" data-label="Total Buyout"> Total Buyout (exklusiv, unbegrenzt, ohne Namensnennung) +400 €</label>
+									<label><input type="radio" name="Bildrechte Nutzung" value="Privat" checked> Privat</label>
+									<label><input type="radio" name="Bildrechte Nutzung" value="Werbung, mit Namensnennung (+150 €)" data-extra data-price="150" data-label="Bildrechte für Werbung, mit Namensnennung"> Werbung, mit Namensnennung +150 €</label>
+									<label><input type="radio" name="Bildrechte Nutzung" value="Total Buyout (+400 €)" data-extra data-price="400" data-label="Total Buyout"> Total Buyout, ohne Namensnennung +400 €</label>
 								</div>
 
 								<div class="form-grid">
 									<div class="field">
 										<label for="o-delivery">Lieferung</label>
-										<select id="o-delivery" name="Lieferung">
+										<select id="o-delivery" name="Lieferung" required>
+											<option value="" selected disabled>Bitte wählen</option>
 											<option value="Versand in Deutschland" data-price="4.90" data-price-framed="6.90" data-label="Versand in Deutschland" data-address>Versand in Deutschland – 4,90 € (mit Rahmen 6,90 €)</option>
-											<option value="Abholung in Berlin" data-price="0" data-label="Abholung in Berlin">Abholung in Berlin – kostenlos</option>
+											<option value="Abholung in Berlin" data-price="0" data-label="Abholung in Berlin">Abholung in Berlin oder samstags im Mauerpark – kostenlos</option>
 											<option value="Nur digital (Scan)" data-price="0" data-label="Nur digital (Scan per E-Mail)">Nur digital: Scan per E-Mail – kostenlos</option>
 										</select>
-										<p class="hint">Ins Ausland? <a href="mailto:aydan@smileyfoxyportraits.com?subject=Porträt%20mit%20Versand%20ins%20Ausland">Kurz schreiben</a>, dann nenne ich dir die Versandkosten.</p>
+										<p class="hint">Ins Ausland? <a href="mailto:aydan@smileyfoxyportraits.com?subject=Porträt%20mit%20Versand%20ins%20Ausland">Kurz schreiben</a></p>
+										<!-- Scan only + a frame in the cart: ask whether the frame should stay (see /js/order.js) -->
+										<div class="scan-frame" data-scan-frame hidden>
+											<p>Nur der Scan, aber ein Rahmen im Warenkorb – Rahmen behalten?</p>
+											<button type="button" class="btn btn--small" data-keep-frame>Behalten</button>
+											<button type="button" class="btn btn--small btn--ghost" data-drop-frame>Rahmen entfernen</button>
+										</div>
 									</div>
 									<div class="field">
 										<!-- Earliest date: in 2 weeks (with Express: in 3 days) – set by /js/forms.js -->
-										<label for="o-wish-date">Bis wann brauchst du es? <span class="hint">(optional)</span></label>
-										<input id="o-wish-date" type="text" name="Wunschtermin" placeholder="TT.MM.JJJJ" autocomplete="off" data-date-field data-min-days="14" data-express-min-days="3">
-										<p class="hint">Frühestens in 2 Wochen, mit Express in 3 Tagen.</p>
+										<label for="o-wish-date">Bis wann? <span class="info" tabindex="0" data-tip="Optional. Frühestens in 2 Wochen, mit Express in 3 Tagen. Du kannst das Datum eintippen (TT.MM.JJJJ) oder wählen.">?</span></label>
+										<input id="o-wish-date" type="text" name="Wunschtermin" placeholder="TT.MM.JJJJ" autocomplete="off" inputmode="numeric" data-date-field data-date-typeable data-min-days="14" data-express-min-days="3">
 										<p class="express-phone" data-express-phone hidden></p>
 									</div>
 								</div>
@@ -408,6 +494,7 @@
 							<fieldset class="order-step" data-step data-photo-step>
 								<legend><span class="order-num">3</span> Dein Foto &amp; deine Infos</legend>
 
+								<p class="live-instead">Lieber live gezeichnet werden? <a href="#live-termin">Termin anfragen →</a></p>
 								<p class="order-label">Fotos <span class="hint">– 1 bis 3 Stück</span></p>
 								<!-- With JavaScript: the drop zone below (photos get shrunk for fast upload).
 								     Without: the three plain file fields. -->
@@ -425,11 +512,7 @@
 									<input type="file" name="Foto 2" accept="image/*" data-photo-slot aria-label="Foto 2">
 									<input type="file" name="Foto 3" accept="image/*" data-photo-slot aria-label="Foto 3">
 								</div>
-								<ul class="photo-tips" id="o-photo-tips">
-									<li>Gesicht gut sichtbar, gern bei Tageslicht</li>
-									<li>Mehrere Personen? Gern ein Foto von allen zusammen, plus Einzelfotos</li>
-									<li>Handyfotos sind perfekt – ich verkleinere sie automatisch</li>
-								</ul>
+								<p class="hint" id="o-photo-tips">Gesicht gut sichtbar, gern bei Tageslicht. Handyfotos sind perfekt.</p>
 
 								<div class="form-grid">
 									<div class="field">
@@ -439,10 +522,9 @@
 									<div class="field">
 										<label for="o-email">E-Mail *</label>
 										<input id="o-email" type="email" name="email" required autocomplete="email">
-										<p class="hint">Hierhin kommen Bestätigung &amp; Foto vom fertigen Bild.</p>
 									</div>
 									<div class="field">
-										<label for="o-phone">Handy <span class="hint">(optional, nur für Rückfragen)</span></label>
+										<label for="o-phone">Handy <span class="hint">(optional)</span></label>
 										<input id="o-phone" type="tel" name="Telefon" autocomplete="tel">
 									</div>
 									<div class="field">
@@ -483,15 +565,11 @@
 								</div>
 								<div class="order-q">
 									<p class="order-label">Darf ich das fertige Bild auf Instagram zeigen?</p>
-									<label><input type="radio" name="Instagram" value="Ja, gern" checked> Ja, gern</label>
+									<label><input type="radio" name="Instagram" value="Ja, gern"> Ja, gern</label>
 									<label><input type="radio" name="Instagram" value="Ja, aber ohne Namen"> Ja, aber ohne Namen</label>
-									<label><input type="radio" name="Instagram" value="Nein, bitte privat"> Nein, bitte privat</label>
+									<label><input type="radio" name="Instagram" value="Nein, bitte privat" checked> Nein, bitte privat</label>
 								</div>
 
-								<label class="order-check">
-									<input type="checkbox" name="Bildrechte" value="Bestätigt" required>
-									<span>Ich darf das Foto verwenden (z. B. selbst aufgenommen) und die abgebildeten Personen sind mit dem Porträt einverstanden. *</span>
-								</label>
 							</fieldset>
 
 							<!-- STEP 4: check & order with obligation to pay (German "Button-Lösung", § 312j BGB) -->
@@ -500,16 +578,25 @@
 								<div class="order-review">
 									<ul class="price-list" data-order-summary></ul>
 									<p class="order-total">Gesamt: <strong data-order-total>–</strong></p>
+									<p class="order-total order-total--now" data-order-now-row hidden>Jetzt zu zahlen: <strong data-order-now>–</strong></p>
 									<p class="hint">Endpreis, keine Umsatzsteuer (§ 19 UStG).</p>
+								</div>
+
+								<!-- PAYMENT PLAN – share of the total paid now (data-share). Logic: /js/order.js (function parts) -->
+								<p class="order-label">Wie möchtest du zahlen?</p>
+								<div class="order-choices order-choices--3 order-plan">
+									<label class="order-card"><input type="radio" name="Zahlungsweise" value="100 % vorab" data-share="100" checked><span class="order-card-body"><strong>100 % vorab <em>am liebsten</em></strong><span class="hint">Alles auf einmal – so kann ich mich ganz aufs Malen konzentrieren.</span><span class="order-plan-amount" data-plan-amount></span></span></label>
+									<label class="order-card"><input type="radio" name="Zahlungsweise" value="50 % vorab, Rest nach der Linework" data-share="50"><span class="order-card-body"><strong>50 % vorab</strong><span class="hint">Du siehst die fertige Linework (Tusche-Linien) und zahlst dann den Rest.</span><span class="order-plan-amount" data-plan-amount></span></span></label>
+									<label class="order-card"><input type="radio" name="Zahlungsweise" value="20 % vorab, 30 % nach der Skizze, Rest nach der Linework" data-share="20"><span class="order-card-body"><strong>20 % vorab</strong><span class="hint">Du siehst erst die Skizze, dann die Linework, und zahlst jeweils den nächsten Teil.</span><span class="order-plan-amount" data-plan-amount></span></span></label>
 								</div>
 								<ol class="order-after">
 									<li><strong>Bestellen</strong> – du bekommst sofort eine Bestätigung per E-Mail.</li>
-									<li><strong>Bezahlen</strong> – direkt im nächsten Schritt mit PayPal oder Karte.</li>
-									<li><strong>Ich male</strong> – du bekommst ein Foto vom fertigen Bild, bevor es verschickt wird.</li>
+									<li><strong>Bezahlen</strong> – deine (erste) Zahlung direkt im nächsten Schritt mit PayPal oder Karte.</li>
+									<li><strong>Ich male</strong> – bei 20 % / 50 % bekommst du ein Foto von Skizze bzw. Linework mit dem Link für den nächsten Teil, und vor dem Versand ein Foto vom fertigen Bild.</li>
 								</ol>
 								<label class="order-check">
 									<input type="checkbox" name="Bedingungen" value="Akzeptiert" required>
-									<span>Ich weiß: Jedes Porträt ist ein handgemaltes Unikat, deshalb sind nach Fertigstellung keine Überarbeitungen möglich,
+									<span>Ich weiß: Jedes Porträt ist ein handgemaltes Unikat, deshalb sind nach Fertigstellung keine Überarbeitungen möglich (außer mit dem Extra „+1 Überarbeitung“),
 										und als Einzelanfertigung gibt es kein Widerrufsrecht (§ 312g Abs. 2 Nr. 1 BGB). Meine Angaben und Fotos werden nur
 										für diesen Auftrag verwendet (<a href="/ImpressumUndDatenschutz/Datenschutz.html">Datenschutz</a>). *</span>
 								</label>
@@ -524,10 +611,83 @@
 							<details class="order-sum" open>
 								<summary><span>Dein Preis</span> <strong data-order-total aria-live="polite">–</strong></summary>
 								<ul class="price-list" data-order-summary></ul>
+								<p class="order-now" data-order-now-row hidden><span>Jetzt zu zahlen</span> <strong data-order-now>–</strong></p>
 							</details>
+							<!-- Quick extras: tick here or in step 2, both stay in sync (/js/order.js, data-mirror = name of the real checkbox) -->
+							<div class="order-quick">
+								<p>Extras dazu</p>
+								<label><input type="checkbox" data-mirror="Hintergrund-Extra"> Aquarell-Hintergrund +10 €</label>
+								<label><input type="checkbox" data-mirror="Gold"> Goldtinte +30 €</label>
+								<label><input type="checkbox" data-mirror="Geschenkverpackung"> Geschenkverpackung +5 €</label>
+								<label><input type="checkbox" data-mirror="Express"> Express +10 €</label>
+								<label><input type="checkbox" data-mirror="Überarbeitung"> +1 Überarbeitung +25 €</label>
+							</div>
 						</aside>
 					</div>
 				</form>
+			</div>
+		</section>
+		<!-- LIVE APPOINTMENT: "Ich lass mich lieber live zeichnen" – any day of the week, no photo needed.
+		     Separate small form, because the price (travel, place) is agreed by e-mail first. -->
+		<section class="section" id="live-termin" aria-labelledby="live-title">
+			<div class="wrap">
+				<div class="center">
+					<span class="eyebrow">Statt Foto</span>
+					<h2 id="live-title">Ich lass mich lieber live zeichnen</h2>
+					<p class="lead">Such dir einen Tag aus, jeder Wochentag ist möglich. Ich zeichne dich bei dir zu Hause, im Büro, an deinem Lieblingsort oder an meinem Stand.</p>
+				</div>
+				<div class="form-card">
+					<form action="https://formsubmit.co/aydan@smileyfoxyportraits.com" method="POST">
+						<input type="hidden" name="_subject" value="Neue Anfrage: Live-Porträt-Termin">
+						<input type="hidden" name="_template" value="table">
+						<input type="hidden" name="_next" value="https://smileyfoxyportraits.com/danke.html">
+						<input type="hidden" name="_captcha" value="false">
+						<input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+						<div class="form-grid">
+							<div class="field">
+								<label for="l-name">Name *</label>
+								<input id="l-name" name="Name" required autocomplete="name">
+							</div>
+							<div class="field">
+								<label for="l-email">E-Mail *</label>
+								<input id="l-email" type="email" name="email" required autocomplete="email">
+							</div>
+							<div class="field">
+								<label for="l-date">Wunschtag *</label>
+								<input id="l-date" type="text" name="Live-Termin" placeholder="TT.MM.JJJJ" autocomplete="off" data-date-field data-min-days="1" required>
+								<p class="hint">Jeder Wochentag, ich bestätige dir den Termin per E-Mail.</p>
+							</div>
+							<div class="field">
+								<label for="l-place">Wo?</label>
+								<select id="l-place" name="Live-Ort">
+									<option>Bei dir (zu Hause, Büro …) – Aufpreis nach Absprache</option>
+									<option>An meinem Stand (z. B. Mauerpark)</option>
+									<option>Anderer Ort – steht in der Nachricht</option>
+								</select>
+							</div>
+							<div class="field">
+								<label for="l-size">Größe &amp; Stil</label>
+								<select id="l-size" name="Größe und Stil">
+									<option>A5 – 20 €, jeder Stil</option>
+									<option selected>A4 Tusche – 28 €</option>
+									<option>A4 Aquarell – 34 €</option>
+									<option>A4 Aquarell + Tusche – 40 €</option>
+									<option>Weiß ich noch nicht</option>
+								</select>
+							</div>
+							<div class="field">
+								<label for="l-people">Wie viele Personen?</label>
+								<input id="l-people" type="number" name="Personen" min="1" value="1">
+							</div>
+							<div class="field full">
+								<label for="l-notes">Uhrzeit, Anlass, Gefühl fürs Bild <span class="hint">(optional)</span></label>
+								<textarea id="l-notes" name="Notizen" rows="3" placeholder="z. B. ab 17 Uhr, Geburtstag meiner Schwester, fröhlich und leicht"></textarea>
+							</div>
+						</div>
+						<p class="form-legal">Unverbindlich: Ich melde mich mit Termin und Preis. Deine Angaben nutze ich nur für diese Anfrage (<a href="/ImpressumUndDatenschutz/Datenschutz.html">Datenschutz</a>).</p>
+						<button class="btn" type="submit">Live-Termin anfragen</button>
+					</form>
+				</div>
 			</div>
 		</section>
 
@@ -609,13 +769,14 @@
 					<p><a href="/spenden/">Spenden</a></p>
 					<p><a href="/bezahlen.html">Vor Ort bezahlen</a></p>
 					<p><a href="https://tr.ee/u1wxA4" target="_blank" rel="noopener">Kostenlos: Bewertung abgeben</a></p>
+					<p><a href="https://www.google.com/preferences/source?q=smileyfoxyportraits.com" target="_blank" rel="noopener">Kostenlos: bei Google als bevorzugte Quelle wählen</a></p>
 					<p><a href="/support-free/">Kostenlos unterstützen</a></p>
 				</div>
 
 				<div>
 					<h3>Kontakt</h3>
 					<p><a href="/contact/">Kontaktseite</a></p>
-					<p><a class="footer-pair" href="mailto:aydan@smileyfoxyportraits.com">Schreib mir eine E-Mail<br><span class="footer-mail">aydan@smileyfoxyportraits.com</span></a></p>
+					<p><a class="footer-pair" href="mailto:aydan@smileyfoxyportraits.com">Schreib mir eine E-Mail<br><span class="footer-mail">aydan@<wbr>smileyfoxyportraits.com</span></a></p>
 					<p><a href="https://www.instagram.com/smileyfoxyportraits">Instagram</a></p>
 					<p><a class="footer-pair" href="https://aydanligon.substack.com/subscribe">E-Mail-Liste<br><span class="footer-mail">max. 1 E-Mail im Monat</span></a></p>
 				</div>
