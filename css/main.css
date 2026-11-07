@@ -1889,3 +1889,7 @@ h1, h2, h3 { overflow-wrap: break-word; }
 	.nav-long { display: none; }
 }
 @media (max-width: 720px) { .site-header .btn--small { padding: 0.4em 0.75em; font-size: 0.75rem; } }
+
+/* Header button: "Anfrageformular / Enquiry form" when there is room, "Anfragen / Enquire" when the header is tight */
+.btn-long { display: none; }
+@media (min-width: 1200px) { .site-header .btn-long { display: inline; } .site-header .btn-short { display: none; } }
