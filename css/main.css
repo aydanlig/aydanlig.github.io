@@ -1834,16 +1834,16 @@ h1, h2, h3 { overflow-wrap: break-word; }
 /* Paint splashes switched off (Nov 2026) – js/splashes.js is no longer loaded */
 .splash-layer { display: none !important; }
 
-/* Black ears (dark bands + footer): the ear shape continues 12px down into the band (same colour, so invisible).
+/* Black ears (dark bands + footer): the ear shape continues 30px down into the band (same colour, so invisible).
    When the ears wiggle/hop, their base swings but stays "in" the band – no gap, no page background peeking through. */
 .section--dark::before, .site-footer::before {
-	height: 34px; bottom: calc(100% - 12px); transform-origin: 50% 64.7%;
-	--ears: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 34'%3E%3Cpath d='M0 34 L2 26 L4 22 L12 3 Q14 0 16 3 L24 22 L26 26 L28 34 Z M36 34 L38 26 L40 22 L48 3 Q50 0 52 3 L60 22 L62 26 L64 34 Z' fill='black'/%3E%3C/svg%3E");
+	height: 52px; bottom: calc(100% - 30px); transform-origin: 50% 42.3%;
+	--ears: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 52'%3E%3Cpath d='M-8 52 L0 30 L4 22 L12 3 Q14 0 16 3 L24 22 L28 30 L34 52 Z M30 52 L36 30 L40 22 L48 3 Q50 0 52 3 L60 22 L64 30 L72 52 Z' fill='black'/%3E%3C/svg%3E");
 }
 .section--dark::after, .site-footer::after {
-	height: 34px; bottom: calc(100% - 12px); transform-origin: 50% 64.7%;
-	-webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 34'%3E%3Cpath d='M9 22 L13.5 10 Q14 8.5 14.5 10 L19 22 Z M45 22 L49.5 10 Q50 8.5 50.5 10 L55 22 Z' fill='black'/%3E%3C/svg%3E") no-repeat center / contain;
-	mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 34'%3E%3Cpath d='M9 22 L13.5 10 Q14 8.5 14.5 10 L19 22 Z M45 22 L49.5 10 Q50 8.5 50.5 10 L55 22 Z' fill='black'/%3E%3C/svg%3E") no-repeat center / contain;
+	height: 52px; bottom: calc(100% - 30px); transform-origin: 50% 42.3%;
+	-webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 52'%3E%3Cpath d='M9 22 L13.5 10 Q14 8.5 14.5 10 L19 22 Z M45 22 L49.5 10 Q50 8.5 50.5 10 L55 22 Z' fill='black'/%3E%3C/svg%3E") no-repeat center / contain;
+	mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 52'%3E%3Cpath d='M9 22 L13.5 10 Q14 8.5 14.5 10 L19 22 Z M45 22 L49.5 10 Q50 8.5 50.5 10 L55 22 Z' fill='black'/%3E%3C/svg%3E") no-repeat center / contain;
 }
 
 /* Nav: "Wo & wann" + "Termine" are top-level now (not hidden in the Über-mich menu); on phones the menu wraps to two rows instead of overflowing */
