@@ -27,6 +27,7 @@
 		pickSize: 'Please pick a size and style first.',
 		needPhoto: 'Please add at least one photo – I paint from it.',
 		tooMany: 'Up to 3 photos – the rest were left out.',
+		tooBig: 'This photo is too big to send (max. 3 MB, e.g. HEIC from an iPhone). Please pick a JPEG or a screenshot of it.',
 		remove: 'Remove',
 		photoBusy: 'Preparing photo …',
 		base: 'Portrait', people: 'extra person/pet', peopleN: 'extra people/pets',
@@ -47,6 +48,7 @@
 		pickSize: 'Bitte wähle zuerst Größe und Stil.',
 		needPhoto: 'Bitte lade mindestens ein Foto hoch – danach male ich.',
 		tooMany: 'Höchstens 3 Fotos – die übrigen wurden weggelassen.',
+		tooBig: 'Dieses Foto ist zu groß zum Senden (max. 3 MB, z. B. HEIC vom iPhone). Bitte wähle ein JPEG oder einen Screenshot davon.',
 		remove: 'Entfernen',
 		photoBusy: 'Foto wird vorbereitet …',
 		base: 'Porträt', people: 'weitere Person/Tier', peopleN: 'weitere Personen/Tiere',
@@ -262,6 +264,7 @@
 	var list = $('[data-photo-list]');
 	var note = $('[data-photo-note]');
 	var photos = [];
+	var MAX_PHOTO = 3 * 1024 * 1024;   // 3 photos x 3 MB stays under formsubmit's 10 MB limit
 	var hasDataTransfer = (function () { try { return !!new DataTransfer(); } catch (e) { return false; } })();
 
 	if (drop && hasDataTransfer) {
@@ -278,7 +281,12 @@
 		var room = slots.length - photos.length;
 		note.textContent = incoming.length > room ? T.tooMany : '';
 		incoming.slice(0, room).forEach(function (f) {
-			var item = { file: f, ready: shrink(f).then(function (small) { item.file = small; sync(); }) };
+			var item = { file: f, ready: shrink(f).then(function (small) {
+				item.file = small; item.done = true;
+				// formsubmit takes max. 10 MB per submission – a photo that couldn't be shrunk (HEIC etc.) is dropped
+				if (small.size > MAX_PHOTO) { photos.splice(photos.indexOf(item), 1); note.textContent = T.tooBig; }
+				sync();
+			}) };
 			photos.push(item);
 		});
 		sync();
@@ -286,10 +294,10 @@
 
 	function shrink(file) {
 		return new Promise(function (resolve) {
-			if (!/^image\/(jpeg|png|webp)$/.test(file.type) || file.size < 700 * 1024) return resolve(file);
+			if (!/^image\/(jpeg|png|webp)$/.test(file.type) || file.size < 400 * 1024) return resolve(file);
 			var img = new Image(), url = URL.createObjectURL(file);
 			img.onload = function () {
-				var max = 1800, w = img.naturalWidth, h = img.naturalHeight, k = Math.min(1, max / Math.max(w, h));
+				var max = 1600, w = img.naturalWidth, h = img.naturalHeight, k = Math.min(1, max / Math.max(w, h));
 				var c = document.createElement('canvas');
 				c.width = Math.round(w * k); c.height = Math.round(h * k);
 				c.getContext('2d').drawImage(img, 0, 0, c.width, c.height);
@@ -335,6 +343,15 @@
 	form.addEventListener('submit', function (e) {
 		for (var k = 0; k < steps.length; k++) {
 			if (!valid(steps[k], true)) { e.preventDefault(); go(k, true); valid(steps[k]); return; }
+		}
+		// photos still being shrunk: wait for them, otherwise the full-size originals get uploaded
+		var pending = photos.filter(function (p) { return !p.done; });
+		if (pending.length) {
+			e.preventDefault();
+			Promise.all(photos.map(function (p) { return p.ready; })).then(function () {
+				if (form.requestSubmit) form.requestSubmit(); else form.submit();
+			});
+			return;
 		}
 		var s = render();
 		var d = new Date();
