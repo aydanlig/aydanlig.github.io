@@ -1857,3 +1857,27 @@ h1, h2, h3 { overflow-wrap: break-word; }
 .termin { grid-template-columns: max-content minmax(0, 1fr) auto; }
 @media (max-width: 520px) { .termine-list li { grid-template-columns: 1fr; } }
 @media (max-width: 600px) { .termin { grid-template-columns: minmax(0, 1fr) auto; } }
+
+/* =========================================================
+   FOOTER, Nov 2026: fills the whole screen, easier to scan
+   newsletter on top · link columns in the middle · © + legal at the very bottom
+   ========================================================= */
+.site-footer { min-height: 100vh; min-height: 100svh; display: flex; flex-direction: column; padding: clamp(56px, 8vh, 96px) 0 28px; font-size: 1.02rem; }
+.site-footer > .wrap { flex: 1; display: flex; flex-direction: column; width: 100%; }
+.footer-newsletter { margin-bottom: clamp(40px, 7vh, 72px); }
+.footer-newsletter h3 { font-size: clamp(1.5rem, 3vw, 2rem); }
+.footer-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 36px 40px; }
+/* column titles: fox orange, bigger, with a short line under them */
+.site-footer .footer-grid h3 { font-family: var(--font-head); font-size: 1.15rem; letter-spacing: 0.01em; text-transform: none; color: var(--fox); margin: 0 0 0.9em; padding-bottom: 0.45em; border-bottom: 2px solid var(--plum); }
+.footer-grid p { margin: 0 0 0.75em; line-height: 1.35; }
+.footer-grid a { display: inline-block; padding: 2px 0; }
+.footer-grid a:hover { text-decoration: underline; text-underline-offset: 3px; }
+/* legal links: a quiet row at the bottom instead of a fifth column */
+.footer-grid .footer-legal { grid-column: 1 / -1; display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 22px; margin-top: auto; padding-top: 22px; border-top: 1px solid var(--plum); }
+.footer-grid .footer-legal h3 { border: 0; padding: 0; margin: 0; font-family: var(--font-body); font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mauve); }
+.footer-grid .footer-legal p { margin: 0; font-size: 0.88rem; }
+.footer-grid .footer-legal a { color: #D9C9D1; }
+.footer-grid { flex: 1; align-content: start; }
+.footer-bottom { margin-top: 18px; border-top: 0; padding-top: 0; font-size: 0.85rem; }
+@media (max-width: 900px) { .footer-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 30px 28px; } }
+@media (max-width: 420px) { .footer-grid { grid-template-columns: 1fr; } .site-footer { font-size: 1rem; } }
