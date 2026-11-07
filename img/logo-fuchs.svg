@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 112" role="img" aria-label="Lachender Fuchs – SmileyFoxyPortraits">
+	<!-- STAND-IN LOGO until Aydan's hand-painted fox is scanned: replace this file with img/logo-fuchs.png/.svg (same name in the HTML) -->
+	<defs>
+		<!-- wobbly ink line, like drawn with a brush pen -->
+		<filter id="ink" x="-10%" y="-10%" width="120%" height="120%">
+			<feTurbulence type="fractalNoise" baseFrequency="0.06" numOctaves="2" seed="4"/>
+			<feDisplacementMap in="SourceGraphic" scale="2.6"/>
+		</filter>
+		<!-- watercolour fill: uneven pigment + ragged wet edge -->
+		<filter id="wash" x="-15%" y="-15%" width="130%" height="130%">
+			<feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="3" seed="9" result="n"/>
+			<feDisplacementMap in="SourceGraphic" in2="n" scale="5" result="edge"/>
+			<feTurbulence type="fractalNoise" baseFrequency="0.11" numOctaves="2" seed="2" result="grain"/>
+			<feColorMatrix in="grain" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -0.9 1.05" result="speckle"/>
+			<feComposite in="edge" in2="speckle" operator="in"/>
+		</filter>
+	</defs>
+	<g filter="url(#wash)">
+		<!-- ears -->
+		<path d="M16 50 L24 8 Q27 2 32 7 L54 34 Z" fill="#FF6B35"/>
+		<path d="M104 50 L96 8 Q93 2 88 7 L66 34 Z" fill="#FF6B35"/>
+		<!-- inner ears (darker wash) -->
+		<path d="M24 36 L28 14 L44 32 Z" fill="#9A3412" opacity=".55"/>
+		<path d="M96 36 L92 14 L76 32 Z" fill="#9A3412" opacity=".55"/>
+		<!-- head -->
+		<path d="M12 48 Q12 26 40 30 Q60 24 80 30 Q108 26 108 48 Q108 74 80 92 Q68 101 60 104 Q52 101 40 92 Q12 74 12 48 Z" fill="#FF6B35"/>
+		<!-- cream cheeks + chin -->
+		<path d="M13 54 Q30 66 46 69 Q54 84 60 104 Q66 84 74 69 Q90 66 107 54 Q103 78 80 93 Q68 102 60 104 Q52 102 40 93 Q17 78 13 54 Z" fill="#FBF3EA"/>
+		<!-- blush -->
+		<circle cx="31" cy="66" r="6" fill="#E0457B" opacity=".55"/>
+		<circle cx="89" cy="66" r="6" fill="#E0457B" opacity=".55"/>
+	</g>
+	<g filter="url(#ink)" fill="none" stroke="#1A1615" stroke-linecap="round" stroke-linejoin="round">
+		<!-- ear outlines -->
+		<path d="M18 40 L24 8 Q27 2 32 7 L50 30" stroke-width="2.2"/>
+		<path d="M102 40 L96 8 Q93 2 88 7 L70 30" stroke-width="2.2"/>
+		<!-- happy closed eyes -->
+		<path d="M34 52 Q41 43 48 52" stroke-width="4.2"/>
+		<path d="M72 52 Q79 43 86 52" stroke-width="4.2"/>
+		<!-- big smile -->
+		<path d="M46 82 Q60 96 74 82" stroke-width="3.6"/>
+		<!-- outline, loose like a sketch -->
+		<path d="M12 48 Q12 26 40 30 Q60 24 80 30 Q108 26 108 48 Q108 74 80 92 Q68 101 60 104 Q52 101 40 92 Q12 74 12 48" stroke-width="2.2"/>
+	</g>
+	<ellipse cx="60" cy="75" rx="7" ry="5" fill="#1A1615" filter="url(#ink)"/>
+</svg>

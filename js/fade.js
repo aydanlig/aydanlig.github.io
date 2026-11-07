@@ -7,6 +7,8 @@
    look at the first pictures in peace. After that they change every 5 seconds
    (or data-fade on the first stack of the section, in milliseconds).
    Inside a homepage tile with class="fit" the tile's --bg follows the picture that is showing.
+   While the mouse (or keyboard focus) is on a tile, that tile holds still, and a click
+   opens the big view of exactly the picture you are looking at (js/gallery.js uses the link).
    People who prefer reduced motion only see the first picture.
    ========================================================= */
 (function () {
@@ -22,16 +24,25 @@
 			imgs[0].classList.add('on');
 			var box = stack.closest('section') || document.body;
 			if (!groups.has(box)) groups.set(box, []);
-			groups.get(box).push({ imgs: imgs, i: 0, tile: stack.closest('.fit'), wait: parseInt(stack.getAttribute('data-fade'), 10) || 5000 });
+			var s = { imgs: imgs, i: 0, tile: stack.closest('.fit'), link: stack.closest('[data-lightbox] a'), paused: false, wait: parseInt(stack.getAttribute('data-fade'), 10) || 5000 };
+			if (s.link) {   // hold still while someone is looking at it
+				s.link.addEventListener('mouseenter', function () { s.paused = true; });
+				s.link.addEventListener('mouseleave', function () { s.paused = false; });
+				s.link.addEventListener('focus', function () { s.paused = true; });
+				s.link.addEventListener('blur', function () { s.paused = false; });
+			}
+			groups.get(box).push(s);
 		});
 
 		function step(list) {
 			if (document.documentElement.classList.contains('crop-edit')) return;   // paused while framing (js/crop.js)
 			list.forEach(function (s) {
+				if (s.paused) return;
 				s.imgs[s.i].classList.remove('on');
 				s.i = (s.i + 1) % s.imgs.length;
 				s.imgs[s.i].classList.add('on');
 				if (s.tile) s.tile.style.setProperty('--bg', 'url("' + s.imgs[s.i].getAttribute('src') + '")');
+				if (s.link) s.link.setAttribute('href', s.imgs[s.i].getAttribute('src'));
 			});
 		}
 

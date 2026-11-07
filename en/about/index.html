@@ -40,6 +40,8 @@
 	<meta name="twitter:card" content="summary_large_image">
 
 	<link rel="stylesheet" href="/css/main.css">
+	<link rel="stylesheet" href="/css/art-focus.css">
+	<link rel="stylesheet" href="/css/ink.css">
 </head>
 
 <body>
@@ -53,8 +55,9 @@
 	</div>
 	<header class="site-header">
 		<div class="wrap">
-			<a class="logo" href="/en/">SmileyFoxy<span>Portraits</span><small class="logo-since">Portraits since 2020</small></a>
+			<a class="logo" href="/en/" aria-label="SmileyFoxyPortraits – home"><span class="logo-ph" title="Platzhalter: hier kommt dein gemaltes Fuchs-Logo hin (img/logo.png)">Logo</span><span class="logo-word">SmileyFoxy<span>Portraits</span><small class="logo-since">Drawing portraits for 6 years</small></span></a>
 			<nav class="main-nav" aria-label="Main menu">
+				<a class="nav-art" href="/en/portfolio.html">Art</a>
 				<a href="/en/events.html#live-events"><span class="nav-long">Live </span>Events</a>
 				<a href="/en/events.html#kleckerkasten">Kleckerkasten</a>
 				<a href="/en/commission.html"><span class="nav-long">Commission a </span>Portrait</a>
@@ -71,6 +74,7 @@
 						<a href="/en/about/#faq">FAQ</a>
 					</div>
 				</div>
+				<a class="nav-shop" href="/en/shop/">Shop</a>
 			</nav>
 			<a class="lang-switch" data-translate lang="de" title="Deutsche Version dieser Seite" href="/about/">DE</a>
 			<a class="btn btn--small" href="/en/events.html#anfrage-kleckerkasten">Enquire</a>
@@ -100,6 +104,15 @@
 						<a href="#faq">Questions</a>
 						<a href="#kontakt">Contact</a>
 					</nav>
+					<!-- PLATZHALTER P04: ARTIST STATEMENT (draft by Claude – rewrite it in your own words).
+					     Same text on /en/about/ and /en/portfolio.html (+ German). Then remove class="ph-block" and data-ph. -->
+					<div class="statement ph-block" data-ph="P04">
+						<span class="eyebrow">Artist statement · draft</span>
+						<p>I draw people by feel – not the way they look in a photo, but the way they feel in that moment. With fineliner,
+							ink and watercolour I work fast and direct: lines may smear, colour may bleed, chance is part of it.</p>
+						<p>My subjects are people, Berlin and the short live moments in between – at Mauerpark, at concerts, at festivals.
+							Every portrait happens on the spot, in a few minutes, face to face.</p>
+					</div>
 				</div>
 				<figure class="intro-photo">
 					<img src="/img/fotos/aydan-profil.jpg" alt="Aydan Lig'on, the artist behind SmileyFoxyPortraits" width="900" height="1200" fetchpriority="high" decoding="async">
@@ -507,7 +520,11 @@
 	</script>
 
 	<!-- ================= FOOTER (same on every English page) ================= -->
-	<footer class="site-footer">
+	<footer class="site-footer site-footer--big">
+		<!-- FULL-HEIGHT FOOTER – same as the German one (placeholder animation: img/footer-aquarell-platzhalter.webp) -->
+		<img class="footer-anim" src="/img/footer-aquarell-platzhalter.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
+		<div class="footer-shade"></div>
+		<span class="ph-label footer-anim-label">Placeholder · watercolour video</span>
 		<div class="wrap">
 			<div class="footer-newsletter">
 				<div>
@@ -525,11 +542,15 @@
 			<div class="footer-grid">
 				<div>
 					<h3>Services</h3>
-					<p><a href="/en/events.html#live-events">Live portraits for events</a></p>
-					<p><a href="/en/events.html#kleckerkasten">Kleckerkasten workshop</a></p>
-					<p><a href="/en/commission.html">Commission a portrait</a></p>
-					<p><a href="/en/where-i-draw/">Where &amp; when I draw</a></p>
-					<p><a href="/en/about/#referenzen">References</a></p>
+					<a href="/en/events.html#live-events">Live portraits for events</a>
+					<a href="/en/events.html#kleckerkasten">Kleckerkasten workshop</a>
+					<a href="/en/commission.html">Commission a portrait</a>
+					<details><summary>more</summary>
+						<a href="/en/portfolio.html">My art (portfolio)</a>
+						<a href="/en/where-i-draw/">Where &amp; when I draw</a>
+						<a href="/en/about/#referenzen">References</a>
+						<a href="/en/store/">Originals &amp; prints</a>
+					</details>
 				</div>
 
 				<div>
@@ -543,19 +564,24 @@
 
 				<div>
 					<h3>Support</h3>
-					<p><a href="/en/spenden/">Donate</a></p>
-					<p><a href="/en/bezahlen.html">Pay on the spot</a></p>
-					<p><a href="https://tr.ee/u1wxA4" target="_blank" rel="noopener">Free: leave a review</a></p>
-					<p><a href="https://www.google.com/preferences/source?q=smileyfoxyportraits.com" target="_blank" rel="noopener">Free: pick me as a preferred source on Google</a></p>
-					<p><a href="/support-free/">Support for free (German)</a></p>
+					<a href="/en/spenden/">Donate</a>
+					<a href="/en/bezahlen.html">Pay on the spot</a>
+					<details><summary>more</summary>
+						<a href="https://tr.ee/u1wxA4" target="_blank" rel="noopener">Free: leave a review</a>
+						<a href="https://www.google.com/preferences/source?q=smileyfoxyportraits.com" target="_blank" rel="noopener">Free: pick me as a preferred source on Google</a>
+						<a href="/support-free/">Support for free (German)</a>
+					</details>
 				</div>
 
 				<div>
 					<h3>Contact</h3>
-					<p><a href="/en/contact/">Contact page</a></p>
-					<p><a class="footer-pair" href="mailto:aydan@smileyfoxyportraits.com">Send me an e-mail<br><span class="footer-mail">aydan@<wbr>smileyfoxyportraits.com</span></a></p>
-					<p><a href="https://www.instagram.com/smileyfoxyportraits">Instagram</a></p>
-					<p><a class="footer-pair" href="https://aydanligon.substack.com/subscribe">Email list<br><span class="footer-mail">one e-mail a month at most</span></a></p>
+					<a class="footer-pair" href="mailto:aydan@smileyfoxyportraits.com">Send me an e-mail<span class="footer-mail">aydan@<wbr>smileyfoxyportraits.com</span></a>
+					<a href="/en/contact/">Contact page</a>
+					<details><summary>more</summary>
+						<a href="https://www.instagram.com/smileyfoxyportraits">Instagram</a>
+						<a href="https://discord.gg/pQaBQjBv4U">Discord: Aydan's Fox Den</a>
+						<a href="https://aydanligon.substack.com/subscribe">Email list (one e-mail a month at most)</a>
+					</details>
 				</div>
 
 				<div class="footer-legal">

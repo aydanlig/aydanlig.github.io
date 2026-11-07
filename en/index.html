@@ -19,6 +19,7 @@
 	<script src="/js/gallery.js" defer></script>
 	<script src="/js/confirm-link.js" defer></script>
 	<script src="/js/smiley.js" defer></script>
+	<script src="/js/rotator.js" defer></script>
 	<script src="/js/home.js" defer></script>
 
 	<title>SmileyFoxyPortraits by Aydan Lig'on – Ink & Watercolour Portraits, Berlin</title>
@@ -49,6 +50,8 @@
 	<meta name="twitter:card" content="summary_large_image">
 
 	<link rel="stylesheet" href="/css/main.css">
+	<link rel="stylesheet" href="/css/art-focus.css">
+	<link rel="stylesheet" href="/css/ink.css">
 </head>
 
 <body>
@@ -62,8 +65,9 @@
 	</div>
 	<header class="site-header">
 		<div class="wrap">
-			<a class="logo" href="/en/">SmileyFoxy<span>Portraits</span><small class="logo-since">Portraits since 2020</small></a>
+			<a class="logo" href="/en/" aria-label="SmileyFoxyPortraits – home"><span class="logo-ph" title="Platzhalter: hier kommt dein gemaltes Fuchs-Logo hin (img/logo.png)">Logo</span><span class="logo-word">SmileyFoxy<span>Portraits</span><small class="logo-since">Drawing portraits for 6 years</small></span></a>
 			<nav class="main-nav" aria-label="Main menu">
+				<a class="nav-art" href="/en/portfolio.html">Art</a>
 				<a href="/en/events.html#live-events"><span class="nav-long">Live </span>Events</a>
 				<a href="/en/events.html#kleckerkasten">Kleckerkasten</a>
 				<a href="/en/commission.html"><span class="nav-long">Commission a </span>Portrait</a>
@@ -80,6 +84,7 @@
 						<a href="/en/about/#faq">FAQ</a>
 					</div>
 				</div>
+				<a class="nav-shop" href="/en/shop/">Shop</a>
 			</nav>
 			<a class="lang-switch" data-translate lang="de" title="Deutsche Version dieser Seite" href="/">DE</a>
 			<a class="btn btn--small" href="/en/events.html#anfrage-kleckerkasten">Enquire</a>
@@ -89,162 +94,219 @@
 
 	<main>
 
-		<!-- ================= HERO (from the redesign, idea: jackiedroujko.com) =================
-		     LEFT: one big artwork with my name on top + animated "Portfolio ansehen" button.
-		     RIGHT: what I offer + the two main buttons.
-		     Swap the artwork: change the src of the <img> inside .jd-art (and the credit line). -->
+		<!-- ================= HERO (idea: jackiedroujko.com) =================
+		     LEFT: one big artwork fills half the screen, my name on top of it, animated "Portfolio" button.
+		     RIGHT: placeholder for the film of me drawing strangers.
+		     Swap the artwork: change the src of the first <img> (and the credit line). -->
 		<section class="hero hero--jd">
 			<div class="jd-grid">
 				<div class="jd-art">
-					<img src="/img/fotos/aquarell-fineliner-detail-4x5.jpg" alt="Expressive watercolour and fineliner portrait by Aydan Lig'on: man with glasses and beard" width="960" height="1200" fetchpriority="high" decoding="async">
-					<p class="hero-hi">Hi, I’m</p>
+					<img src="/img/fotos/aquarell-fineliner-detail-4x5.jpg" alt="" width="960" height="1200" fetchpriority="high" decoding="async">
+					<p class="hero-hi">Hi, I'm 👋</p>
 					<!-- Only ONE <h1> per page – my name + what I do -->
-					<h1 class="jd-name">Aydan Lig'on<small class="sr-only"> – SmileyFoxyPortraits, live portraits in ink &amp; watercolour from Berlin</small></h1>
+					<h1 class="jd-name">Aydan Lig'on<small>SmileyFoxyPortraits · live portraits in Berlin</small></h1>
 					<ul class="jd-roles" aria-label="What I do">
 						<li>Live portraits</li>
 						<li>Ink &amp; watercolour</li>
 						<li>Events &amp; teams</li>
 					</ul>
-					<a class="btn-portfolio" href="/portfolio.html">See portfolio <b aria-hidden="true">→</b></a>
-					<span class="art-credit">Drawn live in 25 min at Mauerpark</span>
+					<a class="btn-portfolio" href="/en/portfolio.html">See my portfolio <b aria-hidden="true">→</b></a>
+					<p class="saturday-line"><strong>Every Saturday 2–10 pm</strong> at Mauerpark –
+						<a href="https://maps.app.goo.gl/ZhjvUq1bMy8CyVk18" target="_blank" rel="noopener">map</a> · <a href="/en/where-i-draw/">all times &amp; places</a></p>
+					<span class="art-credit">Picture: drawn live in 25 min, Mauerpark</span>
 				</div>
 
-				<!-- RIGHT: kept short on purpose (Jackie Droujko style) – one line, two buttons, where to find me -->
-				<div class="jd-side">
-					<p class="jd-claim"><em>Live portraits</em> &amp; team events in Berlin.</p>
-					<div class="btn-row">
-						<a class="btn" href="/en/events.html#live-events">Book an event</a>
-						<a class="btn btn--fox" href="/en/events.html#kleckerkasten">Kleckerkasten</a>
+				<div class="jd-film">
+					<!-- PLACEHOLDER – FILM: replace the whole <div class="ph-box …">…</div> with:
+					     <video src="/img/film/fremde-zeichnen.mp4" poster="/img/film/fremde-zeichnen.jpg" autoplay muted loop playsinline></video> -->
+					<div class="ph-box" role="img" aria-label="Placeholder for a video">
+						<span class="play" aria-hidden="true"></span>
+						<span class="ph-label">Placeholder · film</span>
+						<strong>Drawing strangers in Berlin</strong>
+						<small>Short film (20–40 s): you drawing, people laughing, the finished picture. No sound, looping, portrait 4:5 (1080×1350), MP4 up to ~8 MB.</small>
+						<code>img/film/fremde-zeichnen.mp4</code>
 					</div>
-					<p class="jd-more"><a href="/en/commission.html">Rather a portrait from a photo? Order here →</a></p>
-					<p class="saturday-line"><strong>Saturdays 2–10 pm</strong> at Mauerpark ·
-						<a href="https://maps.app.goo.gl/ZhjvUq1bMy8CyVk18" target="_blank" rel="noopener" data-photoautomat>Map</a> · <a href="#termine">next dates</a></p>
 				</div>
 			</div>
-			<!-- Scroll hint: gently bouncing arrow, fades out as soon as the visitor scrolls -->
-			<a class="scroll-hint" href="#kunst" aria-label="Scroll down: my art"><span>My art</span><b aria-hidden="true">↓</b></a>
 		</section>
 
-		<!-- ================= MY ART: big examples right after the hero =================
-		     Click = big view (js/gallery.js). The first tile is the big one. To swap a picture: change src/href + alt. -->
-		<section class="section art-show" id="kunst" aria-labelledby="art-title">
+		<!-- ================= HAPPY FACES: me + happy customers, scroll sideways (idea: wimpykid.com book row) =================
+		     Add a photo: copy a <figure>…</figure>. -->
+		<section class="section" aria-labelledby="faces-title">
+			<div class="wrap">
+				<div class="faces-head">
+					<div>
+						<span class="eyebrow">Happy faces</span>
+						<h2 id="faces-title">Strangers become friends</h2>
+					</div>
+					<span class="scroll-note">Click or scroll</span>
+				</div>
+				<div class="faces">
+					<figure><img src="/img/fotos/kunden-mit-aquarell-1x1.jpg" alt="Aydan and a musician laughing and holding up his watercolour portrait" loading="lazy" decoding="async"><figcaption>His portrait now hangs framed in his home</figcaption></figure>
+					<figure><img src="/img/fotos/gaeste-mit-portraets-4x5.jpg" alt="Two guests laughing and holding up their freshly drawn portraits" loading="lazy" decoding="async"><figcaption>Just finished – already framed in their heads</figcaption></figure>
+					<figure><img src="/img/musik/cevil-selfie.jpg" alt="Selfie: Aydan and the musician CEVIL with her signed album" loading="lazy" decoding="async"><figcaption>CEVIL after the gig – with a signed album</figcaption></figure>
+					<figure><img src="/img/fotos/aydan-mauerpark-1x1.jpg" alt="Aydan drawing at Mauerpark in front of a graffiti wall" loading="lazy" decoding="async"><figcaption>Saturdays at Mauerpark</figcaption></figure>
+					<figure><img src="/img/fotos/dankbare-reaktion.jpg" alt="Instagram story of a grateful person with their portrait" loading="lazy" decoding="async"><figcaption>A message, a few days later</figcaption></figure>
+					<figure><img src="/img/fotos/zeichnen-2024-2.jpg" alt="Aydan drawing a young man on a bench" loading="lazy" decoding="async"><figcaption>Five minutes, one smile</figcaption></figure>
+					<!-- PLACEHOLDER: more photos of you with customers -->
+					<figure><div class="ph-box"><span class="ph-label">Placeholder · photo</span><strong>You + customer + picture</strong><small>Portrait 4:5, at least 1000 px wide</small><code>img/fotos/kunde-XX.jpg</code></div><figcaption>Your next favourite photo goes here</figcaption></figure>
+				</div>
+			</div>
+		</section>
+
+		<!-- ================= BLOB + SLIDER (idea: wimpykid.com – the cheese with holes + front-page slider) =================
+		     LEFT: placeholder for the watercolour blob Aydan paints, with round holes for text (see notizen/TODO.md).
+		     RIGHT: slider (js/rotator.js). Add a slide: copy one <article class="rot-slide">…</article>. -->
+		<section class="section section--alt" id="wege" aria-labelledby="welcome-title">
+			<div class="wrap blob-row">
+				<div class="blob">
+					<span class="ph-label">Placeholder · your watercolour blob with round holes</span>
+					<div class="hole hole--main">
+						<h2 id="welcome-title">Welcome!</h2>
+						<p>I draw people in a few minutes – from the gut, with ink and watercolour. Every picture a one-off.</p>
+						<a class="btn btn--small" href="/en/about/">Who I am</a>
+					</div>
+					<a class="hole hole--img" href="/en/where-i-draw/"><img src="/img/fotos/ein-euro-portraet.jpg" alt="€1 portrait in marker: a couple" loading="lazy" decoding="async" style="object-position:50% 15%"><span>€1 at Mauerpark</span></a>
+					<div class="hole hole--small"><strong>5–15</strong><span>minutes per portrait</span></div>
+					<div class="hole hole--tiny">100 % one-off</div>
+				</div>
+
+				<div class="rotator" data-rotator aria-roledescription="carousel" aria-label="My offers">
+					<div class="rot-track">
+						<article class="rot-slide">
+							<img src="/img/fotos/stand-saunasplash-portraets-3x2.jpg" alt="My portrait stand full of live-drawn portraits at Saunasplash" loading="lazy" decoding="async">
+							<div>
+								<span class="tag">For companies &amp; parties</span>
+								<h3>Live at your event</h3>
+								<p>Live portrait artist for company parties, weddings, festivals &amp; birthdays – every guest goes home with an original.</p>
+								<a class="btn" href="/en/events.html#live-events">Enquire about an event</a>
+							</div>
+						</article>
+						<article class="rot-slide">
+							<img src="/img/fotos/aquarell-kleckse-4x5.jpg" alt="Expressive portrait with blue paint splashes and black ink" loading="lazy" decoding="async">
+							<div>
+								<span class="tag">Pilot team wanted: −50 %</span>
+								<h3>The Kleckerkasten</h3>
+								<p>Expressive team building: you paint yourselves, let off steam and end up with a shared artwork for the office.</p>
+								<a class="btn btn--fox" href="/en/events.html#kleckerkasten">Discover the workshop</a>
+							</div>
+						</article>
+						<article class="rot-slide">
+							<img src="/img/fotos/spaghettaria-1a.jpg" alt="Framed portrait in blue ink and watercolour" loading="lazy" decoding="async">
+							<div>
+								<span class="tag">As a gift</span>
+								<h3>Portrait from a photo</h3>
+								<p>A5 €20, A4 from €28 – framed or as a canvas if you like, even sent straight to your favourite person far away.</p>
+								<a class="btn" href="/en/commission.html">Order a portrait</a>
+							</div>
+						</article>
+						<article class="rot-slide">
+							<img src="/img/auktion/rote-skizze-15-minuten.jpg" alt="Red original sketch, drawn live in 15 minutes" loading="lazy" decoding="async">
+							<div>
+								<span class="tag">Until 31 Dec</span>
+								<h3>An original sketch up for auction</h3>
+								<p>A red sketch, drawn live in 15 minutes – no starting price. Bid what it's worth to you (German page).</p>
+								<a class="btn" href="/labor/auktion.html">Place a bid</a>
+							</div>
+						</article>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- ================= THE LATEST (idea: wimpykid.com) – newest things first, one row each =================
+		     Keep 2–3 rows. New thing: copy a <div class="latest-row">…</div> to the top, delete the oldest. -->
+		<section class="section" aria-labelledby="latest-title">
+			<div class="wrap">
+				<span class="eyebrow">The latest</span>
+				<h2 id="latest-title" class="sr-only">The latest</h2>
+				<div class="latest-row">
+					<img src="/img/fotos/goldig-tusche-1x1.jpg" alt="Ink drawing of the band Revolte Tanzbein on stage" loading="lazy" decoding="async">
+					<div>
+						<p class="date">Autumn 2026</p>
+						<h3>Bands, drawn <span>live</span></h3>
+						<p>In the dark, in the crowd, to the beat: I draw musicians right during the gig – and some bands take their picture home after the show.</p>
+						<a class="btn" href="/en/about/#bands">All concert drawings</a><span class="doodle-arrow" aria-hidden="true"></span>
+					</div>
+				</div>
+				<div class="latest-row">
+					<img src="/img/fotos/aquarell-kleckse-4x5.jpg" alt="Blue watercolour splashes around an ink portrait" loading="lazy" decoding="async">
+					<div>
+						<p class="date">Right now</p>
+						<h3>Pilot team <span>wanted</span></h3>
+						<p>The first team gets the Kleckerkasten workshop at half price – in return for photos and a short review.</p>
+						<a class="btn btn--fox" href="/en/events.html#kleckerkasten">About the pilot</a><span class="doodle-arrow" aria-hidden="true"></span>
+					</div>
+				</div>
+				<div class="latest-row">
+					<!-- PLACEHOLDER until the Berlin watercolours exist -->
+					<div class="ph-box" style="aspect-ratio:4/3"><span class="ph-label">Placeholder · Berlin watercolour</span><strong>First picture of the series “Berlin between day and night”</strong><small>Landscape 4:3, photo or scan</small><code>img/berlin/motiv-1.jpg</code></div>
+					<div>
+						<p class="date">Soon</p>
+						<h3>Berlin between <span>day and night</span></h3>
+						<p>A watercolour series about this city: street art, demos, night owls at dawn. Join the email list to be the first to know when originals and prints are ready.</p>
+						<a class="btn btn--ghost" href="https://aydanligon.substack.com/subscribe">Join the email list</a>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- ================= SKETCHBOOK: a loose wall of real drawings (click = big view, js/gallery.js) ================= -->
+		<section class="section section--alt art-show" id="kunst" aria-labelledby="art-title">
 			<div class="wrap">
 				<div class="center">
-					<span class="eyebrow">My art</span>
-					<h2 id="art-title">Drawn by feeling</h2>
-					<p class="lead">Live on stage, at my portrait stand or from a photo – ink, watercolour or both.</p>
+					<span class="eyebrow">From the sketchbook</span>
+					<h2 id="art-title">Drawn from the gut</h2>
 				</div>
 				<!-- Main tile: paper-only crop (img/fotos/aquarell-gitarre-papier.jpg), object-position = which part stays visible (x% y%).
 			     Tiles with class="fit" (all of them now): the whole picture is shown, with a blurred copy of it (--bg) filling the rest of the tile. -->
 				<div class="art-grid" data-lightbox>
-					<!-- main tile fades between the watercolour + fineliner drawings (js/fade.js) -->
-					<a class="art-big fit" href="/img/fotos/aquarell-gitarre-papier.jpg" style="--bg: url('/img/fotos/aquarell-gitarre-papier.jpg')"><span class="fade-stack" data-fade="5000"><img src="/img/fotos/aquarell-gitarre-papier.jpg" alt="Watercolour portrait with fineliner: guitarist in the sketchbook" width="690" height="1075" loading="lazy" decoding="async"><img src="/img/fotos/aquarell-gitarre-2-papier.jpg" alt="Watercolour with fineliner: guitarist with two guitars, “Bro has not one but two guitars”" width="774" height="1200" loading="lazy" decoding="async"><img src="/img/fotos/a5-marker-fineliner-aquarell.jpg" alt="A5 portrait in marker, fineliner and watercolour: person with a beanie" width="900" height="1200" loading="lazy" decoding="async"></span><span>Watercolour &amp; fineliner</span></a>
-					<a class="fit" href="/img/fotos/tusche-portraet-4x5.jpg" style="--bg: url('/img/fotos/tusche-portraet-4x5.jpg')"><span class="fade-stack" data-fade="6000"><img src="/img/fotos/tusche-portraet-4x5.jpg" alt="Expressive portrait in black ink" width="1080" height="1350" loading="lazy" decoding="async"><img src="/img/fotos/tusche-portraet-2.jpg" alt="Serious ink portrait in the sketchbook" width="1080" height="1092" loading="lazy" decoding="async"></span><span>Ink</span></a>
-					<!-- CEVIL: concert sketch, our selfie with her signed album, her Instagram share (js/fade.js) -->
-					<a class="fit" href="/img/musik/band-3-buehne.jpg" style="--bg: url('/img/musik/band-3-buehne.jpg')"><span class="fade-stack" data-fade="5000"><img src="/img/musik/band-3-buehne.jpg" alt="Live sketch of the band CEVIL in pink stage light" width="739" height="1260" loading="lazy" decoding="async"><img src="/img/musik/cevil-selfie.jpg" alt="Selfie: Aydan and CEVIL after the concert, with her signed album" width="1050" height="1400" loading="lazy" decoding="async"><img src="/img/musik/band-7.jpg" alt="The live sketch, shared by CEVIL on Instagram: “this is the coolest thing ever”" loading="lazy" decoding="async"></span><span>CEVIL – live on stage</span></a>
-					<a class="fit" href="/img/fotos/gerahmtes-paar-3x4.jpg" style="--bg: url('/img/fotos/gerahmtes-paar-3x4.jpg')"><img src="/img/fotos/gerahmtes-paar-3x4.jpg" alt="Framed: 3 × €1 sketches, an A5 sketch for €20 and, top right, the photo strip from the photo booth" width="675" height="900" loading="lazy" decoding="async"><span>3 × €1 + A5 (€20), framed</span></a>
-					<a class="fit" href="/img/fotos/stand-saunasplash-portraets-3x2.jpg" style="--bg: url('/img/fotos/stand-saunasplash-portraets-3x2.jpg')"><img src="/img/fotos/stand-saunasplash-portraets-3x2.jpg" alt="My portrait stand full of live-drawn portraits at Saunasplash" width="742" height="495" loading="lazy" decoding="async"><span>My portrait stand</span></a>
-					<!-- 1-€ quick sketches (Saturdays at Mauerpark, ~5 min each): full-width tile in the third row, fades through the photos (js/fade.js) -->
-					<a class="art-wide fit" href="/img/fotos/ein-euro-portraet-kuss.jpg" style="--bg: url('/img/fotos/ein-euro-portraet-kuss.jpg')"><span class="fade-stack" data-fade="4500"><img src="/img/fotos/ein-euro-portraet-kuss.jpg" alt="€1 quick sketch in black marker: two women kissing" width="1400" height="1050" loading="lazy" decoding="async"><img src="/img/fotos/ein-euro-portraet-skizzen.jpg" alt="Three €1 quick sketches in ink on sketchbook pages" width="607" height="430" loading="lazy" decoding="async"><img src="/img/fotos/ein-euro-portraet.jpg" alt="€1 quick sketch in black marker: a couple, she leans her head on his shoulder" width="706" height="877" loading="lazy" decoding="async"></span><span>€1 quick sketches · about 5 minutes each</span></a>
+					<a class="art-big fit" href="/img/fotos/aquarell-gitarre-papier.jpg" style="--bg: url('/img/fotos/aquarell-gitarre-papier.jpg')"><span class="fade-stack" data-fade="5000"><img src="/img/fotos/aquarell-gitarre-papier.jpg" alt="Watercolour portrait with fineliner: guitarist in a sketchbook" width="690" height="1075" loading="lazy" decoding="async"><img src="/img/fotos/aquarell-gitarre-2-papier.jpg" alt="Watercolour with fineliner: guitarist with two guitars, “Bro has not one but two guitars”" width="774" height="1200" loading="lazy" decoding="async"><img src="/img/fotos/a5-marker-fineliner-aquarell.jpg" alt="A5 portrait in marker, fineliner and watercolour: person wearing a cap" width="900" height="1200" loading="lazy" decoding="async"></span><span>Watercolour &amp; fineliner</span></a>
+					<a class="fit" href="/img/fotos/tusche-portraet-4x5.jpg" style="--bg: url('/img/fotos/tusche-portraet-4x5.jpg')"><span class="fade-stack" data-fade="6000"><img src="/img/fotos/tusche-portraet-4x5.jpg" alt="Expressive portrait in black ink" width="1080" height="1350" loading="lazy" decoding="async"><img src="/img/fotos/tusche-portraet-2.jpg" alt="Serious ink portrait in a sketchbook" width="1080" height="1092" loading="lazy" decoding="async"></span><span>Ink</span></a>
+					<a class="fit" href="/img/musik/band-3-buehne.jpg" style="--bg: url('/img/musik/band-3-buehne.jpg')"><span class="fade-stack" data-fade="5000"><img src="/img/musik/band-3-buehne.jpg" alt="Live sketch of CEVIL in pink stage light" width="739" height="1260" loading="lazy" decoding="async"><img src="/img/musik/cevil-selfie.jpg" alt="Selfie: Aydan and CEVIL after the concert, with her signed album" width="1050" height="1400" loading="lazy" decoding="async"><img src="/img/musik/band-7.jpg" alt="The live sketch, shared by CEVIL on Instagram: “this is the coolest thing ever”" loading="lazy" decoding="async"></span><span>CEVIL – live on stage</span></a>
+					<a class="fit" href="/img/fotos/gerahmtes-paar-3x4.jpg" style="--bg: url('/img/fotos/gerahmtes-paar-3x4.jpg')"><img src="/img/fotos/gerahmtes-paar-3x4.jpg" alt="Framed couple portrait in ink and watercolour with sketches and a photo strip" width="675" height="900" loading="lazy" decoding="async"><span>Commission, framed</span></a>
+					<a class="fit" href="/img/art/aquarell-saunasplash-portraets-1115.jpg" style="--bg: url('/img/art/aquarell-saunasplash-portraets-900.jpg')"><img src="/img/art/aquarell-saunasplash-portraets-900.jpg" alt="Watercolour portraits drawn live at Saunasplash" width="900" height="630" loading="lazy" decoding="async"><span>Live at Saunasplash</span></a>
 				</div>
-				<!-- The 6 tiles above are my highlights – everything else lives in the portfolio -->
-				<p class="center" style="margin-top:1.4em"><a class="btn-portfolio btn-portfolio--light" href="/portfolio.html">See the whole portfolio <b aria-hidden="true">→</b></a></p>
-				<!-- MORE ART: folded away, opens with "Mehr Kunst ansehen". Click = big view (js/gallery.js).
-				     The first tile (class="hl") is the big highlight piece. To add a picture: put it in img/kunst/ and copy one <a>…</a> line. -->
-				<details class="gallery-more" data-lightbox>
-					<summary><span class="gallery-tease" aria-hidden="true"><img src="/img/kunst/kunst-09a.jpg" alt="" decoding="async"><img src="/img/kunst/insta-2.jpg" alt="" decoding="async"><img src="/img/kunst/kunst-09b.jpg" alt="" decoding="async"><img src="/img/galerie/galerie-01.jpg" alt="" decoding="async"><img src="/img/kunst/insta-3.jpg" alt="" decoding="async"><img src="/img/kunst/insta-5.jpg" alt="" decoding="async"></span><span class="gm-pill">See more art <span>(34 pictures)</span></span></summary>
-					<div class="gallery-grid">
-						<a class="hl" href="/img/kunst/kunst-02.jpg"><img src="/img/kunst/kunst-02.jpg" alt="Ink portrait of a man with glasses and beard, blue watercolour wash" loading="lazy" decoding="async"></a>
-						<a href="/img/kunst/kunst-09a.jpg"><img src="/img/kunst/kunst-09a.jpg" alt="Watercolour portrait in orange and blue: couple under bunting" width="600" height="848" loading="lazy" decoding="async"></a>
-						<a href="/img/kunst/kunst-09b.jpg"><img src="/img/kunst/kunst-09b.jpg" alt="Watercolour portrait in pink and orange: woman with a fringe" width="600" height="848" loading="lazy" decoding="async"></a>
-						<a href="/img/kunst/insta-2.jpg"><img src="/img/kunst/insta-2.jpg" alt="Ink and blue watercolour: bassist in the sketchbook" loading="lazy" decoding="async"></a>
-						<a href="/img/galerie/galerie-01.jpg"><img src="/img/galerie/galerie-01.jpg" alt="A4 ink portrait: young woman with curls" loading="lazy" decoding="async"></a>
-						<a href="/img/kunst/insta-3.jpg"><img src="/img/kunst/insta-3.jpg" alt="Orange watercolour with ink: guitarist on stage" loading="lazy" decoding="async"></a>
-						<a href="/img/kunst/kunst-01.jpg"><img src="/img/kunst/kunst-01.jpg" alt="Ink portrait with blue watercolour background" loading="lazy" decoding="async"></a>
-						<a href="/img/kunst/insta-5.jpg"><img src="/img/kunst/insta-5.jpg" alt="Ink and watercolour: red face with a yellow glow" loading="lazy" decoding="async"></a>
-						<a href="/img/fotos/gruppe-tusche-4x5.jpg"><img src="/img/fotos/gruppe-tusche-4x5.jpg" alt="Group portrait in ink with blue watercolour" loading="lazy" decoding="async"></a>
-						<a href="/img/galerie/galerie-04.jpg"><img src="/img/galerie/galerie-04.jpg" alt="A5 sketch from my stand – fineliner &amp; watercolour: woman with purple hair" loading="lazy" decoding="async"></a>
-						<a href="/img/kunst/skizze-02.jpg"><img src="/img/kunst/skizze-02.jpg" alt="Ink sketch: woman with glasses in profile" loading="lazy" decoding="async"></a>
-						<a href="/img/fotos/a5-marker-fineliner-aquarell.jpg"><img src="/img/fotos/a5-marker-fineliner-aquarell.jpg" alt="A5 portrait in marker, fineliner and watercolour: person with a beanie" loading="lazy" decoding="async"></a>
-						<a href="/img/kunst/kunst-03.jpg"><img src="/img/kunst/kunst-03.jpg" alt="Expressive ink portrait of a man with curls" loading="lazy" decoding="async"></a>
-						<a href="/img/kunst/skizze-03.jpg"><img src="/img/kunst/skizze-03.jpg" alt="Ink sketch: person with glasses and curly hair in profile" loading="lazy" decoding="async"></a>
-						<a href="/img/fotos/goldig-aquarell-1x1.jpg"><img src="/img/fotos/goldig-aquarell-1x1.jpg" alt="Watercolour portrait of a Revolte Tanzbein musician" loading="lazy" decoding="async"></a>
-						<a href="/img/galerie/galerie-05.jpg"><img src="/img/galerie/galerie-05.jpg" alt="A5 sketch from my stand – ink &amp; red fineliner: person at a table" loading="lazy" decoding="async"></a>
-						<a href="/img/fotos/goldig-tusche-1x1.jpg"><img src="/img/fotos/goldig-tusche-1x1.jpg" alt="Ink drawing: Aydan and the musician with his portrait" loading="lazy" decoding="async"></a>
-						<a href="/img/kunst/skizze-05.jpg"><img src="/img/kunst/skizze-05.jpg" alt="Wax crayon portrait: Maxim in profile" loading="lazy" decoding="async"></a>
-						<a href="/img/kunst/kunst-05.jpg"><img src="/img/kunst/kunst-05.jpg" alt="Red fineliner sketch of a seated woman in the sketchbook" loading="lazy" decoding="async"></a>
-						<a href="/img/kunst/skizze-07.jpg"><img src="/img/kunst/skizze-07.jpg" alt="Ink and marker: “Pavel the vampire” with a red bow tie" loading="lazy" decoding="async"></a>
-						<a href="/img/galerie/galerie-07.jpg"><img src="/img/galerie/galerie-07.jpg" alt="A5 sketch from my stand – watercolour: man in an orange jumper" loading="lazy" decoding="async"></a>
-						<a href="/img/kunst/kunst-06.jpg"><img src="/img/kunst/kunst-06.jpg" alt="Blue watercolour of a guitarist" loading="lazy" decoding="async"></a>
-						<a href="/img/galerie/galerie-08.jpg"><img src="/img/galerie/galerie-08.jpg" alt="A5 sketch from my stand – orange Sharpie: seated person" loading="lazy" decoding="async"></a>
-						<a href="/img/kunst/kunst-07.jpg"><img src="/img/kunst/kunst-07.jpg" alt="Blue fineliner sketch: woman with red hair and a phone" loading="lazy" decoding="async"></a>
-						<a href="/img/kunst/kunst-11.jpg"><img src="/img/kunst/kunst-11.jpg" alt="Aydan and a guest laughing and holding up red sketches" loading="lazy" decoding="async"></a>
-						<a href="/img/kunst/skizze-08.jpg"><img src="/img/kunst/skizze-08.jpg" alt="Sketchbook page with several quick ink portraits" loading="lazy" decoding="async"></a>
-						<a href="/img/kunst/skizze-06.jpg"><img src="/img/kunst/skizze-06.jpg" alt="Fineliner sketch: seated person with a phone" loading="lazy" decoding="async"></a>
-						<a href="/img/galerie/galerie-06.jpg"><img src="/img/galerie/galerie-06.jpg" alt="A5 sketch from my stand – fineliner &amp; marker: woman with glasses in profile" loading="lazy" decoding="async"></a>
-						<a href="/img/galerie/galerie-09.jpg"><img src="/img/galerie/galerie-09.jpg" alt="A5 sketch from my stand – fineliner, ink &amp; yellow marker: man in profile" loading="lazy" decoding="async"></a>
-						<a href="/img/fotos/tusche-portraet-2.jpg"><img src="/img/fotos/tusche-portraet-2.jpg" alt="Serious ink portrait in the sketchbook" loading="lazy" decoding="async"></a>
-						<a href="/img/galerie/galerie-10.jpg"><img src="/img/galerie/galerie-10.jpg" alt="A5 sketch from my stand – fineliner, watercolour &amp; marker: person with a beanie" loading="lazy" decoding="async"></a>
-						<a href="/img/kunst/skizze-04.jpg"><img src="/img/kunst/skizze-04.jpg" alt="Ink sketch: person with long hair from behind" loading="lazy" decoding="async"></a>
-						<a href="/img/kunst/skizze-01.jpg"><img src="/img/kunst/skizze-01.jpg" alt="Blue fineliner with yellow marker: man with a moustache" loading="lazy" decoding="async"></a>
-						<a href="/img/galerie/galerie-03.jpg"><img src="/img/galerie/galerie-03.jpg" alt="A5 sketch from my stand – fineliner sketches of people at a concert" loading="lazy" decoding="async"></a>
-					</div>
-				</details>
-				<p class="center hint" style="margin-top:1em"><a href="/en/about/#bands">See more concert drawings →</a>
-					<span class="quiet-link">· Psst: an original sketch is up for auction – <a href="/labor/auktion.html">bid until 31 Dec →</a></span></p>
+				<p class="center"><a class="btn-portfolio" href="/en/portfolio.html">See all my work <b aria-hidden="true">→</b></a></p>
 			</div>
 		</section>
 
-		<!-- ================= NEXT DATES: where to meet me next (from my Todoist calendar) =================
-		     Add a date: copy one <li>…</li> and change data-date (YYYY-MM-DD), day, place and what.
-		     Dates in the past hide themselves automatically (small script at the bottom of this page). -->
-		<section class="section termine" id="termine" aria-labelledby="termine-title">
-			<div class="wrap">
-				<div class="center">
-					<span class="eyebrow">See it live</span>
-					<h2 id="termine-title">Where to find me next</h2>
-					<p class="lead">Concerts, markets &amp; Christmas markets – come by and get drawn, or just watch.</p>
+		<!-- ================= ARTIST STATEMENT ================= -->
+		<section class="section" id="ueber-mich" aria-labelledby="story-title">
+			<div class="wrap statement">
+				<figure class="statement-photo">
+					<img src="/img/fotos/aydan-profil.jpg" alt="Aydan Lig'on, the artist behind SmileyFoxyPortraits" width="900" height="1200" loading="lazy" decoding="async">
+					<figcaption>that's me 🦊</figcaption>
+				</figure>
+				<div class="statement-text">
+					<span class="eyebrow">Why I draw like this</span>
+					<h2 id="story-title">Art is my bridge to people.</h2>
+					<p class="first">I draw from the gut, not with a ruler – and look for the picture that fits each person exactly.</p>
+					<p>
+						My portraits happen live, in a few minutes, right in front of you: with fineliner and ink, which feel clear and serious,
+						and with watercolour, which is playful and a little chaotic. Whatever goes wrong stays in – that's exactly what makes every
+						picture a one-off. I draw strangers on Berlin's trains, musicians on stage, teams at company parties and people who sit down
+						at Mauerpark for one euro. What I'm after is the moment someone recognises themselves and laughs.
+					</p>
+					<div class="style-moods">
+						<div><strong>Ink &amp; fineliner</strong><span>often feels serious, clear and calm</span></div>
+						<div><strong>Watercolour</strong><span>playful, cheerful and a little chaotic</span></div>
+						<div><strong>Both mixed</strong><span>many-layered – strict and open at the same time</span></div>
+					</div>
+					<p><span class="signature">– Aydan</span></p>
+					<p><a href="/en/about/">Read my whole story →</a></p>
 				</div>
-				<ul class="termine-list">
-					<li class="termine-weekly"><span class="t-date">Every Sat</span><span class="t-what"><strong>Mauerpark</strong> · 2–10 pm, next to the photo booth · €1 sketches</span></li>
-					<li data-date="2026-11-09"><span class="t-date">Mon 9/11</span><span class="t-what"><strong>Schokoladen</strong> · drawing live at the concert of ¡YUMNUT!WORLDWIDE!</span></li>
-					<li data-date="2026-11-16"><span class="t-date">Mon 16/11</span><span class="t-what"><strong>Schokoladen</strong> · drawing live: ILA &amp; I Love You Honey Bunny, from 7 pm</span></li>
-					<li data-date="2026-11-21"><span class="t-date">Sat 21/11</span><span class="t-what"><strong>Schokoladen</strong> · drawing live at the concert of Buster Beat</span></li>
-					<li data-date="2026-11-25"><span class="t-date">Wed 25/11</span><span class="t-what"><strong>Christmas market at Charlottenburg Palace</strong> · live portraits in the pagoda tent, from 5 pm</span></li>
-					<li data-date="2026-11-30"><span class="t-date">Mon 30/11</span><span class="t-what"><strong>Christmas market at Charlottenburg Palace</strong> · live portraits, from 5 pm</span></li>
-					<li data-date="2026-12-09"><span class="t-date">Wed 9/12</span><span class="t-what"><strong>Christmas market at Charlottenburg Palace</strong> · live portraits, from 5 pm</span></li>
-					<li data-date="2026-12-13"><span class="t-date">Sun 13/12</span><span class="t-what"><strong>ZK/U Gütermarkt</strong> · winter Christmas edition, live portraits</span></li>
-					<li data-date="2026-12-14"><span class="t-date">Mon 14/12</span><span class="t-what"><strong>Christmas market at Charlottenburg Palace</strong> · live portraits, from 5 pm</span></li>
-					<li data-date="2026-12-21"><span class="t-date">Mon 21/12</span><span class="t-what"><strong>Christmas market at Charlottenburg Palace</strong> · live portraits in the pagoda tent</span></li>
-					<li data-date="2026-12-23"><span class="t-date">Wed 23/12</span><span class="t-what"><strong>Christmas market at Charlottenburg Palace</strong> · live portraits in the pagoda tent</span></li>
-					<li data-date="2027-01-30"><span class="t-date">29–30 Jan</span><span class="t-what"><strong>BE NOISE Live Battle</strong> · I draw the bands live, two nights</span></li>
-				</ul>
-				<p class="center hint" style="margin-top:1em">I post spontaneous dates in my <a href="https://www.instagram.com/smileyfoxyportraits">Instagram story</a> · <a href="/en/where-i-draw/">all places &amp; times →</a></p>
 			</div>
 		</section>
-		<script>
-			// hide dates that are already over (data-date = last day of the event)
-			(function () {
-				var today = new Date(); today.setHours(0, 0, 0, 0);
-				document.querySelectorAll('.termine-list li[data-date]').forEach(function (li) {
-					if (new Date(li.getAttribute('data-date') + 'T23:59:59') < today) li.remove();
-				});
-			})();
-		</script>
 
 		<!-- ================= SOCIAL PROOF: logos + testimonials ================= -->
 		<section class="section section--alt" aria-labelledby="proof-title">
 			<div class="wrap center">
 				<span class="eyebrow">Trust</span>
 				<h2 id="proof-title">Drawn for people, teams &amp; brands</h2>
-
-				<!-- Swap each box for a logo: <img src="/img/logo-xyz.png" alt="Firmenname" class="ph-img ph--logo"> -->
-				<!-- Add more client logos later (see notizen/TODO.md): copy the Spaghetteria <a>…</a> block -->
-				<div class="proof-logos proof-logos--few">
-					<!-- Saunasplash has no logo, so their banner is used (shown in its own shape, links to their website) -->
-					<!-- Logo (their white logo, recoloured dark) + banner side by side; takes the space of 2 boxes -->
-					<a class="proof-logo proof-logo--wide" href="https://saunasplash.de" target="_blank" rel="noopener" title="Saunasplash festival">
-						<img src="/img/logos/saunasplash-logo.png" alt="Logo of the Saunasplash festival" width="263" height="300" loading="lazy" decoding="async">
+				<div class="proof-line">
+					<a class="proof-logo proof-logo--wide" href="https://saunasplash.de" target="_blank" rel="noopener" title="Saunasplash Festival">
+						<img src="/img/logos/saunasplash-logo.png" alt="Saunasplash Festival logo" width="263" height="300" loading="lazy" decoding="async">
 						<img src="/img/logos/saunasplash-banner.jpg" alt="Saunasplash ’26" width="900" height="266" loading="lazy" decoding="async">
 					</a>
 					<!-- Spaghetteria (Berlin branch closed 2024): asks before opening the link, see /js/confirm-link.js -->
@@ -256,7 +318,12 @@
 					<a class="proof-logo" href="https://cevil.de" target="_blank" rel="noopener" title="CEVIL – Cinematic Pop, drawn live in concert">
 						<img src="/img/logos/cevil-logo.png" alt="Logo of CEVIL – Cinematic Pop" width="412" height="161" loading="lazy" decoding="async">
 					</a>
+					<!-- PLATZHALTER P13 + P14: next client logos (only with their OK) -->
+					<div class="proof-logo ph ph--logo" data-ph="P13">Next client logo</div>
+					<div class="proof-logo ph ph--logo" data-ph="P14">Next client logo</div>
 				</div>
+				<!-- PLATZHALTER P15: first press mention -->
+				<p class="hint" style="margin-top:1em">As seen in: <span class="ph-text" data-ph="P15">name of the paper / blog + link</span></p>
 
 				<!-- SENJA WIDGET (switched off on purpose – the testimonials there are too personal for now).
 				     To show it again: delete this comment's start and end markers.
@@ -269,133 +336,53 @@
 				<div class="quote-grid quote-grid--1">
 					<figure class="quote">
 						<div class="quote-photos">
-							<!-- each photo slowly fades into the drawing itself (js/fade.js) -->
-							<span class="fade-stack" data-fade="4500"><img src="/img/fotos/kunden-mit-aquarell-1x1.jpg" alt="Aydan and a musician laughing and showing his watercolour portrait, drawn outside the Schokoladen in Berlin" class="ph-img ph--1x1" width="1000" height="1000" loading="lazy" decoding="async"><img src="/img/fotos/goldig-aquarell-1x1.jpg" alt="The watercolour portrait of the Revolte Tanzbein musician in the sketchbook" class="ph-img ph--1x1" width="1000" height="1000" loading="lazy" decoding="async"></span>
-							<span class="fade-stack" data-fade="4500"><img src="/img/fotos/portraet-an-der-wand-1x1.jpg" alt="The same portrait now hangs framed on his wall at home" class="ph-img ph--1x1" width="1000" height="1000" loading="lazy" decoding="async"><img src="/img/fotos/goldig-tusche-1x1.jpg" alt="The ink drawing that hangs framed next to it" class="ph-img ph--1x1" width="1000" height="1000" loading="lazy" decoding="async"></span>
+							<span class="fade-stack" data-fade="4500"><img src="/img/fotos/kunden-mit-aquarell-1x1.jpg" alt="Aydan and a musician laughing and holding up his watercolour portrait, drawn outside the Schokoladen in Berlin" class="ph-img ph--1x1" width="1000" height="1000" loading="lazy" decoding="async"><img src="/img/fotos/goldig-aquarell-1x1.jpg" alt="The watercolour portrait of the Revolte Tanzbein musician in the sketchbook" class="ph-img ph--1x1" width="1000" height="1000" loading="lazy" decoding="async"></span>
+							<span class="fade-stack" data-fade="4500"><img src="/img/fotos/portraet-an-der-wand-1x1.jpg" alt="The same portrait now hangs framed on the wall at his home" class="ph-img ph--1x1" width="1000" height="1000" loading="lazy" decoding="async"><img src="/img/fotos/goldig-tusche-1x1.jpg" alt="The ink drawing that hangs framed next to it" class="ph-img ph--1x1" width="1000" height="1000" loading="lazy" decoding="async"></span>
 						</div>
 						<p class="hint photo-desc">A musician of the band Revolte Tanzbein, drawn live outside the <a href="https://www.schokoladen-mitte.de/">Schokoladen</a> in Berlin, Aydan’s favourite concert venue. Today the portrait hangs framed in his home.</p>
 						<p>“Goldig ❤️ ❤️ ❤️” <span class="hint">(German for “adorable”)</span></p>
 						<cite>– Barbara, wife of the Revolte Tanzbein musician, on Instagram (September 2026)</cite>
 					</figure>
 				</div>
-
-				<!-- HIDDEN for now (see notizen/TODO.md): show again once the Dankbarkeitswand has more reviews – remove "hidden" -->
-				<p style="margin-top:1.5em" hidden><a href="/thankyou/index.html">See all voices on the wall of thanks →</a></p>
+				<!-- PLATZHALTER P16 + P17: two more voices (same as on the German homepage) -->
+				<div class="quote-grid quote-grid--2">
+					<figure class="quote ph-block" data-ph="P16">
+						<div class="ph ph--1x1">Photo: person with their portrait [1000x1000]</div>
+						<p><span class="ph-text">“Quote from the review …”</span></p>
+						<cite>– <span class="ph-text">First name, occasion/place (month year)</span></cite>
+					</figure>
+					<figure class="quote ph-block" data-ph="P17">
+						<div class="ph ph--1x1">Photo: person with their portrait [1000x1000]</div>
+						<p><span class="ph-text">“Quote from the review …”</span></p>
+						<cite>– <span class="ph-text">First name, occasion/place (month year)</span></cite>
+					</figure>
+				</div>
 			</div>
 		</section>
 
-		<!-- ================= THE 3 SERVICES ================= -->
-		<section class="section" id="angebote" aria-labelledby="services-title">
+		<!-- ================= BERLIN SERIES (placeholders P06–P09, same pictures as on the German homepage) ================= -->
+		<p class="photo-note photo-note--section">I'm painting the Berlin series right now – the boxes below turn into the finished pictures soon.</p>
+		<section class="section" id="berlin" aria-labelledby="berlin-title">
 			<div class="wrap">
-				<div class="center">
-					<span class="eyebrow">Offers</span>
-					<h2 id="services-title">Three ways to your art</h2>
-					<p class="lead">Whether it’s 300 guests, a team that needs a breather, or a very personal gift.</p>
-				</div>
-
-				<div class="cards">
-					<!-- Service 1 -->
-					<article class="card card--featured">
-						<span class="tag">For event planners &amp; companies</span>
-						<img src="/img/fotos/event-saunasplash-3x2.jpg" alt="Live-drawn watercolour portraits from the Saunasplash event on Aydan’s drawing table" class="ph-img ph--3x2" width="1200" height="800" loading="lazy" decoding="async">
-						<h3>Live event portraits</h3>
-						<p>Live portrait artist for company parties, trade fairs, weddings &amp; festivals. Every guest goes home with an original.</p>
-						<ul>
-							<li>about 5 min (quick) to 25 min (detailed with watercolour) per portrait</li>
-							<li>A real encounter instead of a photo booth</li>
-							<li>Berlin &amp; surroundings</li>
-						</ul>
-						<div class="card-foot card-foot--hint">
-							<a class="btn" href="/en/events.html#live-events">Request an event</a>
-							<p class="hint" style="margin-top:10px">Also for birthdays &amp; private parties.</p>
-						</div>
-					</article>
-
-					<!-- Service 2 -->
-					<article class="card">
-						<span class="tag">For HR &amp; team leads</span>
-						<span class="tag tag--fox">Pilot team wanted: €20 off per person</span>
-						<img src="/img/platzhalter/kleckerkasten-nachstellung.svg" alt="Placeholder with colourful paint splashes: re-enactment photo coming soon" class="ph-img ph--3x2" width="1200" height="800" loading="lazy" decoding="async">
-						<h3>The Kleckerkasten</h3>
-						<p>Expressive team building: your team paints together, lets off steam and creates an artwork for the office.</p>
-						<ul>
-							<li>No experience needed</li>
-							<li>No pressure: no judging, no talent needed</li>
-							<li>A shared artwork on canvas</li>
-						</ul>
-						<div class="card-foot card-foot--hint">
-							<a class="btn btn--fox" href="/en/events.html#kleckerkasten">Discover the workshop</a>
-						</div>
-					</article>
-
-					<!-- Service 3 -->
-					<article class="card">
-						<span class="tag">For you, privately</span>
-						<img src="/img/fotos/auftrag-familie-3x2.jpg" alt="Ink and blue watercolour: family on the street" class="ph-img ph--3x2" width="1200" height="800" loading="lazy" decoding="async">
-						<h3>Commissioned portraits</h3>
-						<p>Individual portraits from a photo – in fineliner, watercolour or both.</p>
-						<ul>
-							<li>A5 €20, A4 from €28</li>
-							<li>Perfect as a gift</li>
-							<li>Also as an extra for events &amp; workshops</li>
-							<li>Shipping or pick-up</li>
-						</ul>
-						<div class="card-foot card-foot--hint">
-								<p class="hint" style="margin-top:10px">Birthday or party? <a href="/en/events.html#anfrage-event">Book me for your celebration →</a></p>
-						</div>
-					</article>
-				</div>
-				<!-- For visitors who are curious about Aydan rather than the offers -->
-				<p class="center hint" style="margin-top:1.5em">Curious who’s behind the portraits? <a href="#neugierige">More about me →</a></p>
-			</div>
-		</section>
-
-		<!-- ================= STORY & MISSION ================= -->
-		<section class="section section--alt" id="ueber-mich" aria-labelledby="story-title">
-			<div class="wrap">
-				<div class="split">
-					<img src="/img/fotos/aydan-profil.jpg" alt="Aydan Lig'on, the artist behind SmileyFoxyPortraits" class="ph-img ph--natural" width="900" height="1200" loading="lazy" decoding="async">
+				<div class="split split--reverse">
+					<!-- PLATZHALTER P06 -->
+					<div class="ph ph--4x5" data-ph="P06">Watercolour + fineliner: Berlin at night / at dawn [1200x1500]</div>
 					<div>
-						<span class="eyebrow">About me · My mission</span>
-						<h2 id="story-title">Hi, I'm Aydan Lig'on – and art is my bridge to people. <span class="spinning-smiley" aria-hidden="true"></span></h2>
+						<span class="eyebrow">Berlin landscapes</span>
+						<h2 id="berlin-title">Berlin between day and night</h2>
 						<p>
-							I’ve always had this unstoppable urge to create something. It started at the drawing meetups
-							of the art group “Creative Session”, my creative family back then – and then on Berlin’s trains: I drew strangers and
-							simply gave them the portraits.
+							In watercolour and fineliner I capture how this city feels: street art and demos,
+							night owls heading home at dawn, the little quirks on every corner.
 						</p>
-						<p>
-							The smiles, the reactions, the encouragement – that’s how a passion became a business.
-						</p>
-						<blockquote class="big-quote">“I draw by feeling – and look for the picture that fits each person exactly.”</blockquote>
-						<p>
-							That’s why I ask about the style first – every material tells something different about you:
-						</p>
-						<!-- STYLE MOODS: why I ask about the style (used on several pages – keep the wording in sync) -->
-						<div class="style-moods">
-							<div><strong>Ink &amp; fineliner</strong><span>often feels serious, clear and calm</span></div>
-							<div><strong>Watercolour</strong><span>playful, cheerful and a little chaotic</span></div>
-							<div><strong>Both mixed</strong><span>layered – strictness and openness at once</span></div>
-						</div>
-						<p class="sensitive-note">I draw for the joy of drawing. And because I’m a very sensitive person, it comes easily to me to ask how you’d like to be captured: with the feeling I sense in you right now – or rather strong and serious.</p>
+						<p>It's Berlin's raw randomness – and the honest feeling of having grown up here.</p>
+						<a class="btn btn--ghost" href="/en/commission.html#warteliste">Email list &amp; waiting list</a>
 					</div>
 				</div>
-
-				<div class="story-steps">
-					<div>
-						<div class="num">01</div>
-						<h3>Why I started</h3>
-						<p>Because a five-minute drawing can make two strangers laugh. Art has always been my quickest way to a real connection.</p>
-					</div>
-					<div>
-						<div class="num">02</div>
-						<h3>Why I keep going</h3>
-						<p>To show that creative independence beyond soulless office routines is possible. I’ve given myself one year fully for this work – and I’m giving it 100 %.</p>
-					</div>
-					<div>
-						<div class="num">03</div>
-						<h3>My mission</h3>
-						<p>Creating real local community and deeper human connections – through fast, expressive live art.</p>
-					</div>
+				<div class="gallery">
+					<!-- PLATZHALTER P07, P08, P09 -->
+					<div class="ph ph--1x1" data-ph="P07">Berlin motif: street art [1000x1000]</div>
+					<div class="ph ph--1x1" data-ph="P08">Berlin motif: nightlife / dawn [1000x1000]</div>
+					<div class="ph ph--1x1" data-ph="P09">Berlin motif: demo / street scene [1000x1000]</div>
 				</div>
 			</div>
 		</section>
@@ -463,32 +450,6 @@
 		<!-- ================= BERLIN AESTHETIC ================= -->
 		<!-- PHOTO NOTE – the Berlin artworks are still being painted; delete this line once the grey boxes below are real pictures -->
 		<p class="photo-note photo-note--section" hidden>I’m painting the Berlin motifs right now – the grey placeholders will soon be replaced by the finished pictures.</p>
-		<!-- HIDDEN until the Berlin artworks exist: delete the word "hidden" in the line below (and in the photo note above) -->
-		<section class="section" aria-labelledby="berlin-title" hidden>
-			<div class="wrap">
-				<div class="split split--reverse">
-					<div class="ph ph--4x5">Watercolour + fineliner: Berlin at night / dawn [1200x1500]</div>
-					<div>
-						<span class="eyebrow">Berlin landscapes</span>
-						<h2 id="berlin-title">Berlin between day and night</h2>
-						<p>
-							In watercolour and fineliner I capture how this city feels: street art and demos,
-							night owls heading home at dawn, the little quirks on every corner.
-						</p>
-						<p>
-							It’s Berlin’s raw randomness – and the honest feeling of having grown up here.
-						</p>
-						<a class="btn btn--ghost" href="/en/commission.html#warteliste">Mailing list &amp; waiting list</a>
-					</div>
-				</div>
-
-				<div class="gallery">
-					<div class="ph ph--1x1">Berlin motif: street art [1000x1000]</div>
-					<div class="ph ph--1x1">Berlin motif: nightlife / dawn [1000x1000]</div>
-					<div class="ph ph--1x1">Berlin motif: demo / street scene [1000x1000]</div>
-				</div>
-			</div>
-		</section>
 
 		<!-- ================= ART FOR EVERYONE ================= -->
 		<section class="section section--dark" aria-labelledby="access-title">
@@ -518,6 +479,9 @@
 							<a href="/img/fotos/ein-euro-portraet.jpg"><img src="/img/fotos/ein-euro-portraet.jpg" alt="€1 portrait in black marker: a couple, she leans her head on his shoulder" width="706" height="877" style="aspect-ratio: 1 / 1; object-position: 50% 20%" loading="lazy" decoding="async"></a>
 							<a href="/img/fotos/ein-euro-portraet-kuss.jpg"><img src="/img/fotos/ein-euro-portraet-kuss.jpg" alt="€1 portrait in black marker: two women kissing" width="1400" height="1050" loading="lazy" decoding="async"></a>
 							<a href="/img/fotos/ein-euro-portraet-skizzen.jpg"><img src="/img/fotos/ein-euro-portraet-skizzen.jpg" alt="Three quick €1 portraits in ink on sketchbook pages" width="607" height="430" loading="lazy" decoding="async"></a>
+							<!-- PLATZHALTER P11 + P12: more €1 portraits -->
+							<div class="ph" data-ph="P11">Another €1 portrait [1200x900]</div>
+							<div class="ph" data-ph="P12">Another €1 portrait [1200x900]</div>
 						</div>
 						<div class="swipe-dots" aria-label="Choose picture"></div>
 						<p class="hint" style="color:#F2EAE4;text-align:center;margin-top:4px">Real €1 portraits · <span class="on-touch">swipe for more</span><span class="on-mouse">arrows or dots for more</span></p>
@@ -526,33 +490,31 @@
 			</div>
 		</section>
 
-		<!-- ================= ORIGIN STORY VIDEO (switched off for now – see notizen/TODO.md) =================
-		     To show it again: record the reel, put it in below, and delete this line and the "END ORIGIN STORY" line.
-		<section class="section" aria-labelledby="reel-title">
+		<!-- ================= ORIGIN STORY VIDEO (placeholder P10) ================= -->
+		<section class="section" id="reel" aria-labelledby="reel-title">
 			<div class="wrap reel">
-				VIDEO: replace this box with your reel.
-				     YouTube (privacy-friendly): <iframe src="https://www.youtube-nocookie.com/embed/VIDEO_ID" ...></iframe>
-				     Or a self-hosted file: <video src="/img/reel.mp4" controls playsinline class="ph-img ph--9x16"></video>
-				<div class="ph ph--9x16">Reel: Aydans Origin Story – vom Zeichnen in der Bahn zum Business [1080x1920, Hochformat-Video]</div>
+				<!-- PLATZHALTER P10 – VIDEO: replace this box with your reel (1080x1920), e.g.
+				     <video src="/img/reel.mp4" controls playsinline preload="none" poster="/img/reel-poster.jpg" class="ph-img ph--9x16"></video> -->
+				<div class="ph ph--9x16" data-ph="P10">Reel: Aydan's origin story – from drawing on the train to a business [1080x1920, portrait video]</div>
 				<div>
-					<span class="eyebrow">Die Geschichte in 60 Sekunden</span>
-					<h2 id="reel-title">Wie aus Bahn-Skizzen ein Business wurde</h2>
+					<span class="eyebrow">The story in 60 seconds</span>
+					<h2 id="reel-title">How train sketches became a business</h2>
 					<p class="lead">
-						Fremde in der S-Bahn, ein geschenktes Porträt, ein überraschtes Lächeln – schau dir an, wie alles angefangen hat.
+						Strangers on the S-Bahn, a portrait given away, a surprised smile – see how it all began.
 					</p>
 					<div class="btn-row">
-						<a class="btn" href="https://www.instagram.com/smileyfoxyportraits/reels/">Mehr Reels auf Instagram</a>
+						<a class="btn" href="https://www.instagram.com/smileyfoxyportraits/reels/">More reels on Instagram</a>
 					</div>
 				</div>
 			</div>
 		</section>
-		 END ORIGIN STORY -->
 
 		<!-- ================= FINAL CALL TO ACTION ================= -->
-		<section class="section section--alt">
-			<div class="wrap center">
-				<h2>Let’s create something together.</h2>
-				<p class="lead">Tell me briefly what you have in mind – I’ll get back to you within 48 hours.</p>
+		<section class="section center" aria-labelledby="cta-title">
+			<div class="wrap">
+				<span class="eyebrow">Your turn</span>
+				<h2 id="cta-title">Let's create something together.</h2>
+				<p class="lead">Drop me a line about what you have in mind – I'll get back to you within 48 hours.</p>
 				<div class="btn-row">
 					<a class="btn" href="/en/events.html#anfrage-event">Book me for an event</a>
 					<a class="btn btn--fox" href="/en/events.html#anfrage-kleckerkasten">Request the Kleckerkasten</a>
@@ -561,34 +523,14 @@
 			</div>
 		</section>
 
-		<!-- ================= FOR THE CURIOUS =================
-		     Personal pages, deliberately small – not the focus of the site. -->
-		<section class="section" id="neugierige" style="padding-top:48px" aria-labelledby="curious-title">
-			<div class="wrap">
-				<span class="eyebrow">For the curious</span>
-				<h3 id="curious-title">More of me</h3>
-				<div class="curious">
-					<a href="/en/about/">
-						<strong>My whole story</strong>
-						<span>Background, goals, questions and answers</span>
-					</a>
-					<a href="/projects/index.html">
-						<strong>Projects</strong>
-						<span>Games, music, animations &amp; more</span>
-					</a>
-					<a href="/en/bezahlen.html">
-						<strong>Pay &amp; support</strong>
-						<span>PayPal or card (SumUp)</span>
-					</a>
-				</div>
-				</div>
-			</div>
-		</section>
-
 	</main>
 
 	<!-- ================= FOOTER (same on every English page) ================= -->
-	<footer class="site-footer">
+	<footer class="site-footer site-footer--big">
+		<!-- FULL-HEIGHT FOOTER – same as the German one (placeholder animation: img/footer-aquarell-platzhalter.webp) -->
+		<img class="footer-anim" src="/img/footer-aquarell-platzhalter.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
+		<div class="footer-shade"></div>
+		<span class="ph-label footer-anim-label">Placeholder · watercolour video</span>
 		<div class="wrap">
 			<div class="footer-newsletter">
 				<div>
@@ -606,11 +548,15 @@
 			<div class="footer-grid">
 				<div>
 					<h3>Services</h3>
-					<p><a href="/en/events.html#live-events">Live portraits for events</a></p>
-					<p><a href="/en/events.html#kleckerkasten">Kleckerkasten workshop</a></p>
-					<p><a href="/en/commission.html">Commission a portrait</a></p>
-					<p><a href="/en/where-i-draw/">Where &amp; when I draw</a></p>
-					<p><a href="/en/about/#referenzen">References</a></p>
+					<a href="/en/events.html#live-events">Live portraits for events</a>
+					<a href="/en/events.html#kleckerkasten">Kleckerkasten workshop</a>
+					<a href="/en/commission.html">Commission a portrait</a>
+					<details><summary>more</summary>
+						<a href="/en/portfolio.html">My art (portfolio)</a>
+						<a href="/en/where-i-draw/">Where &amp; when I draw</a>
+						<a href="/en/about/#referenzen">References</a>
+						<a href="/en/store/">Originals &amp; prints</a>
+					</details>
 				</div>
 
 				<div>
@@ -624,19 +570,24 @@
 
 				<div>
 					<h3>Support</h3>
-					<p><a href="/en/spenden/">Donate</a></p>
-					<p><a href="/en/bezahlen.html">Pay on the spot</a></p>
-					<p><a href="https://tr.ee/u1wxA4" target="_blank" rel="noopener">Free: leave a review</a></p>
-					<p><a href="https://www.google.com/preferences/source?q=smileyfoxyportraits.com" target="_blank" rel="noopener">Free: pick me as a preferred source on Google</a></p>
-					<p><a href="/support-free/">Support for free (German)</a></p>
+					<a href="/en/spenden/">Donate</a>
+					<a href="/en/bezahlen.html">Pay on the spot</a>
+					<details><summary>more</summary>
+						<a href="https://tr.ee/u1wxA4" target="_blank" rel="noopener">Free: leave a review</a>
+						<a href="https://www.google.com/preferences/source?q=smileyfoxyportraits.com" target="_blank" rel="noopener">Free: pick me as a preferred source on Google</a>
+						<a href="/support-free/">Support for free (German)</a>
+					</details>
 				</div>
 
 				<div>
 					<h3>Contact</h3>
-					<p><a href="/en/contact/">Contact page</a></p>
-					<p><a class="footer-pair" href="mailto:aydan@smileyfoxyportraits.com">Send me an e-mail<br><span class="footer-mail">aydan@<wbr>smileyfoxyportraits.com</span></a></p>
-					<p><a href="https://www.instagram.com/smileyfoxyportraits">Instagram</a></p>
-					<p><a class="footer-pair" href="https://aydanligon.substack.com/subscribe">Email list<br><span class="footer-mail">one e-mail a month at most</span></a></p>
+					<a class="footer-pair" href="mailto:aydan@smileyfoxyportraits.com">Send me an e-mail<span class="footer-mail">aydan@<wbr>smileyfoxyportraits.com</span></a>
+					<a href="/en/contact/">Contact page</a>
+					<details><summary>more</summary>
+						<a href="https://www.instagram.com/smileyfoxyportraits">Instagram</a>
+						<a href="https://discord.gg/pQaBQjBv4U">Discord: Aydan's Fox Den</a>
+						<a href="https://aydanligon.substack.com/subscribe">Email list (one e-mail a month at most)</a>
+					</details>
 				</div>
 
 				<div class="footer-legal">

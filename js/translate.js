@@ -17,7 +17,7 @@
 	// Pages that have a real English version in the /en/ folder (same path, "/en" in front).
 	// When adding an English page: copy the German one to /en/…, translate it, add its path here.
 	var EN_PAGES = ['/', '/events.html', '/commission.html', '/about/', '/contact/', '/where-i-draw/',
-		'/bezahlen.html', '/referenzen/', '/hallo/', '/danke.html', '/spenden/'];
+		'/bezahlen.html', '/referenzen/', '/hallo/', '/danke.html', '/spenden/', '/portfolio.html', '/shop/'];
 
 	function clean(path) { return path.replace(/index\.html$/, ''); }
 
