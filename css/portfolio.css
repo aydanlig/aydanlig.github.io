@@ -7,16 +7,9 @@
    - art shown BIG and uncropped in a masonry wall (whole picture, no cut-off heads)
    ========================================================= */
 
-@font-face {
-	font-family: "Ink Brush";
-	src: url("/css/fonts/caveat-brush-latin.woff2") format("woff2");
-	font-weight: 400;
-	font-style: normal;
-	font-display: swap;
-}
 
 .pf-page {
-	--font-ink: "Ink Brush", "Segoe Print", "Bradley Hand", var(--font-head);
+	--font-ink: var(--font-head); /* was a brush font; now one typeface site-wide */
 	--teal: #1F8A8A;
 	--rose: #E0457B;
 	background-image: url("/img/ink/paper.svg");
@@ -27,9 +20,9 @@
 /* ---------- Headings in brush ink ---------- */
 .pf-page h1, .pf-page h2 {
 	font-family: var(--font-ink);
-	font-weight: 400;
-	letter-spacing: 0.01em;
-	text-shadow: 0.4px 0.6px 1.2px rgba(26, 22, 21, 0.28);
+	font-weight: 800;
+	letter-spacing: -0.022em;
+	text-shadow: none;
 }
 .pf-page h2 { font-size: clamp(2.4rem, 5vw, 3.6rem); line-height: 1.02; margin-bottom: 0.15em; }
 .pf-page .section--dark h2 { text-shadow: 0 0 8px rgba(255, 107, 53, 0.25); }
@@ -42,7 +35,7 @@
 }
 .section--dark .pf-title::after { filter: invert(1) sepia(1) saturate(4) hue-rotate(-20deg) brightness(1.05); opacity: 0.7; }
 
-.pf-page .eyebrow { font-family: var(--font-ink); font-size: 1.5rem; font-weight: 400; letter-spacing: 0.02em; text-transform: none; transform: rotate(-2deg); transform-origin: left center; display: inline-block; }
+.pf-page .eyebrow {  transform-origin: left center; display: inline-block; }
 
 /* ---------- INTRO: name + short text left, one big artwork right ---------- */
 .pf-hero { position: relative; overflow: hidden; padding: clamp(32px, 5vw, 72px) 0 clamp(40px, 6vw, 80px); }
@@ -61,7 +54,7 @@
 .pf-hero-art::after { width: 70%; aspect-ratio: 1; right: -20%; bottom: -16%; background-image: url("/img/ink/bloom-warm.svg"); opacity: 0.8; }
 .pf-hero-art a { position: relative; z-index: 1; display: block; }
 .pf-hero-art img { width: 100%; border-radius: 6px; transform: rotate(1.2deg); box-shadow: 0 2px 0 rgba(26, 22, 21, 0.9), 0 26px 50px -18px rgba(26, 22, 21, 0.55); }
-.pf-hero-art figcaption { position: relative; z-index: 1; width: fit-content; margin: 16px 0 0 auto; padding: 0.1em 0.7em; border-radius: 999px; background: rgba(242, 234, 228, 0.9); font-family: var(--font-ink); font-size: 1.3rem; color: var(--ink); }
+.pf-hero-art figcaption { position: relative; z-index: 1; width: fit-content; margin: 16px 0 0 auto; padding: 0.1em 0.7em; border-radius: 999px; background: rgba(242, 234, 228, 0.9); font-family: var(--font-body); font-size: 0.9rem; font-weight: 600; color: var(--ink); }
 
 /* jump links to the series */
 .pf-jump { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; margin: 1.6em 0 0; }

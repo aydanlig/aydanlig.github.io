@@ -108,7 +108,7 @@
 	padding: 28px 16px; border: 2px dashed var(--ink-soft); border-radius: var(--wobble, 16px);
 	background: rgba(255, 255, 255, 0.7) var(--wash, none) no-repeat center / 80% auto;
 }
-.photo-drop label strong { font-family: var(--font-ink, inherit); font-size: 1.6rem; font-weight: 400; color: var(--accent); }
+.photo-drop label strong { font-family: var(--font-head); font-size: 1.6rem; font-weight: 800; color: var(--accent); }
 .photo-drop.is-over label, .photo-drop input:focus-visible + label { border-color: var(--fox); background-color: #FFF4EC; }
 .photo-list { list-style: none; padding: 0; margin: 12px 0 0; display: flex; flex-wrap: wrap; gap: 10px; }
 .photo-list:empty { display: none; }
@@ -126,7 +126,7 @@
 .order-review { background: var(--surface, #fff); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; }
 .order-review .price-list { margin: 0; }
 .order-total { display: flex; justify-content: space-between; align-items: baseline; margin: 10px 0 0; font-size: 1.15rem; font-weight: 700; }
-.order-total strong { font-family: var(--font-ink, inherit); font-size: 2rem; font-weight: 400; color: var(--accent); }
+.order-total strong { font-family: var(--font-head); font-size: 2rem; font-weight: 800; color: var(--accent); }
 .order-after { margin: 1.2em 0 0; padding-left: 1.3em; }
 .order-after li { margin: 4px 0; }
 .order-nav, .order-submit { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; margin-top: 1.6em; clear: both; }
@@ -141,7 +141,7 @@
 }
 .order-sum summary { display: flex; justify-content: space-between; align-items: baseline; cursor: pointer; list-style: none; font-weight: 700; }
 .order-sum summary::-webkit-details-marker { display: none; }
-.order-sum summary strong { font-family: var(--font-ink, inherit); font-size: 2rem; font-weight: 400; color: var(--fox); }
+.order-sum summary strong { font-family: var(--font-head); font-size: 2rem; font-weight: 800; color: var(--fox); }
 .order-sum .price-list { margin: 10px 0 0; font-size: 0.9rem; }
 .order-sum .price-list li { border-bottom-color: rgba(242, 234, 228, 0.18); }
 .order-sum .price-list strong { color: #fff; }

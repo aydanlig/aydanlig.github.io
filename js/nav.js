@@ -139,7 +139,7 @@
 			'<span class="termin-date"><span class="termin-day">' + esc(p.day) + "</span> " + esc(p.short) +
 			(p.year !== now.getFullYear() ? " " + p.year : "") + "</span>" +
 			'<span class="termin-what"><strong>' + esc(pick(t, "title")) + "</strong>" +
-			'<span class="termin-where">' + (time ? esc(time) + " · " : "") + place + (info ? " · " + esc(info) : "") + "</span></span>" +
+			'<span class="termin-where">' + (time ? esc(time) + " · " : "") + place + (info ? " · " + esc(info) : "") + (t.links || []).map(function (l) { return ' · <a href="' + esc(l[1]) + '" target="_blank" rel="noopener">' + esc(l[0]) + " ↗</a>"; }).join("") + "</span></span>" +
 			'<span class="termin-kind">' + esc(KIND[t.kind] || KIND.event) + "</span></li>";
 	}
 
@@ -240,4 +240,10 @@
 			d.classList.add('has-bottom-close');
 		});
 	});
+})();
+
+/* Picture framing on every page: saved crops (js/crop-data.js), then the crop tool (js/crop.js, secret edit mode inside) */
+(function () {
+	function load(src, done) { var s = document.createElement('script'); s.src = src; s.onload = s.onerror = done || null; document.head.appendChild(s); }
+	load('/js/crop-data.js?v=' + Date.now().toString(36).slice(0, -4), function () { load('/js/crop.js'); });
 })();

@@ -2232,3 +2232,49 @@ a.style-moods > a, .style-moods > a { display: block; color: inherit; text-decor
 	.site-header.nav-open .main-nav .nav-more-menu { position: static; display: block; box-shadow: none; background: none; border: 0; padding: 0 0 0 14px; margin: 0; min-width: 0; opacity: 1; visibility: visible; transform: none; }
 	.site-header.nav-open .main-nav .nav-more-menu a { padding: 10px 4px; font-size: 0.95rem; font-weight: 500; border-bottom: 1px solid rgba(0, 0, 0, .05); }
 }
+/* ---------- Dark mode fixes, round 2 (08.11.2026): hard-coded light colours that turned into white-on-white ---------- */
+/* light-band fox ears: same idea as in light mode (card fill + line outline), in the dark colours */
+:root.theme-dark .section--alt::before {
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 22'%3E%3Cpath d='M4 22 L12 3 Q14 0 16 3 L24 22 Z M40 22 L48 3 Q50 0 52 3 L60 22 Z' fill='%23211B24'/%3E%3Cpath d='M4 22 L12 3 Q14 0 16 3 L24 22 M40 22 L48 3 Q50 0 52 3 L60 22' fill='none' stroke='%233B3140' stroke-width='1' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E");
+}
+/* dark-band + footer ears: plum-black ears with a soft outline so they don't vanish into the dark page */
+:root.theme-dark .section--dark::before, :root.theme-dark .site-footer::before { color: #2B2230; }
+:root.theme-dark .site-footer { border-top: 1px solid var(--line); }
+:root.theme-dark .site-footer .footer-grid h3 { border-bottom-color: var(--line); }
+:root.theme-dark .footer-name { color: var(--ink); }
+/* pills, bubbles, boxes */
+:root.theme-dark .smiley-bubble { color: var(--ink); border-color: var(--ink); }
+:root.theme-dark .smiley-bubble::after { border-right-color: var(--ink); }
+:root.theme-dark .termin--konzert .termin-kind { background: var(--fox); border-color: var(--fox); color: var(--night); }
+:root.theme-dark .termin--markt .termin-kind { background: #1F3320; border-color: #2F5A22; color: #A8D69A; }
+:root.theme-dark .compare thead .highlight { color: var(--night); }
+:root.theme-dark .style-time { background: #3A2418; color: var(--accent); }
+:root.theme-dark .kk-nachstellung { background: var(--tint); }
+:root.theme-dark #venues { background: #2A2233 !important; }
+:root.theme-dark .fee { background: var(--surface); color: var(--ink); }
+:root.theme-dark .fee--zero { background: #1E3A28; color: #9FE0B4; }
+:root.theme-dark .fox-game-overlay { background: rgba(23, 19, 26, 0.85); }
+:root.theme-dark .pf-hero-art figcaption { background: rgba(33, 27, 36, 0.92); }
+:root.theme-dark .pf-story-ps { color: var(--ink-soft); }
+:root.theme-dark .placeholder-text { background: var(--surface); border-color: var(--line); }
+
+/* ---------- One typeface, Apple-style (08.11.2026) ----------
+   Before: Georgia headings + system body + a brush font on the portfolio + mixed button fonts.
+   Now: the system font everywhere (SF Pro on Apple, Segoe UI on Windows, Roboto on Android);
+   hierarchy comes from size + weight + tighter tracking on big text, like apple.com. */
+:root { --font-head: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+h1, h2 { letter-spacing: -0.022em; }
+h3 { letter-spacing: -0.012em; }
+.btn, button, input, select, textarea { font-family: var(--font-body); }
+.hero-hi { font-style: normal; font-weight: 600; }
+
+/* Crop mode v2 (js/crop.js): edge handles + mini toolbar on the selected picture */
+.crop-edit main img.crop-active { outline: 3px solid var(--fox); }
+.crop-tools { position: fixed; z-index: 99; pointer-events: none; display: none; }
+.crop-tools.show { display: block; }
+.crop-edge { position: absolute; left: 50%; width: 64px; height: 14px; margin-left: -32px; border-radius: 999px; background: var(--fox); box-shadow: 0 2px 8px rgba(0,0,0,.35); cursor: ns-resize; pointer-events: auto; touch-action: none; }
+.crop-edge--top { top: -7px; } .crop-edge--bottom { bottom: -7px; }
+.crop-mini { position: absolute; left: 8px; bottom: 14px; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; pointer-events: auto; padding: 6px 8px; border-radius: 12px; background: rgba(15,12,17,.85); }
+.crop-mini input { width: 90px; }
+.crop-mini button { font: 600 0.78rem var(--font-body); padding: 5px 10px; border-radius: 999px; border: 0; background: #3a2f37; color: #F2EAE4; cursor: pointer; }
+.crop-mini button.on { background: var(--fox); color: var(--night); }
