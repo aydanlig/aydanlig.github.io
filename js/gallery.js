@@ -50,19 +50,36 @@
 			box.classList.toggle('lb-single', links.length < 2);
 		}
 
+		// the big picture grows out of the thumbnail you tapped and shrinks back into it on close
+		var calm = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+		var ease = 'cubic-bezier(0.22, 1, 0.36, 1)';
+		function fromThumb() {
+			var t = links[index] && (links[index].querySelector('img') || links[index]);
+			var r = t && t.getBoundingClientRect();
+			if (!r || !r.width || r.bottom < 0 || r.top > innerHeight) return 'scale(0.92)';
+			return 'translate(' + (r.left + r.width / 2 - innerWidth / 2) + 'px,' + (r.top + r.height / 2 - innerHeight / 2) + 'px) scale(0.25)';
+		}
 		function open(list, i) {
 			links = list; lastFocus = document.activeElement;
 			show(i);
 			box.hidden = false;
 			document.body.style.overflow = 'hidden';
 			box.querySelector('.lb-close').focus();
+			if (calm || !box.animate) return;
+			box.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 220, easing: 'ease-out' });
+			fig.animate([{ transform: fromThumb(), opacity: 0.4 }, { transform: 'none', opacity: 1 }], { duration: 380, easing: ease });
 		}
 
 		function close() {
-			box.hidden = true;
-			img.removeAttribute('src');
-			document.body.style.overflow = '';
-			if (lastFocus) lastFocus.focus();
+			function done() {
+				box.hidden = true;
+				img.removeAttribute('src');
+				document.body.style.overflow = '';
+				if (lastFocus) lastFocus.focus();
+			}
+			if (calm || !box.animate) return done();
+			box.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 260, easing: 'ease-in', fill: 'forwards' }).onfinish = function (ev) { ev.target.cancel(); done(); };
+			fig.animate([{ transform: getComputedStyle(fig).transform === 'none' ? 'none' : getComputedStyle(fig).transform }, { transform: fromThumb(), opacity: 0.4 }], { duration: 260, easing: ease, fill: 'forwards' }).onfinish = function (ev) { ev.target.cancel(); };
 		}
 
 		// Each [data-set] inside a gallery is its own little carousel (first link visible, the rest hidden);

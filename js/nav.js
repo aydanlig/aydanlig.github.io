@@ -162,3 +162,27 @@
 		if (act && act.matches && act.matches('.info, .info-tip')) act.blur();
 	});
 })();
+
+/* Pictures fade in softly once loaded instead of popping in (only pictures still loading get hidden) */
+(function () {
+	if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+	function watch(img) {
+		if (img.complete) return;
+		img.classList.add('img-wait');
+		var done = function () { img.classList.remove('img-wait'); };
+		img.addEventListener('load', done, { once: true });
+		img.addEventListener('error', done, { once: true });
+	}
+	document.addEventListener('DOMContentLoaded', function () { document.querySelectorAll('main img').forEach(watch); });
+})();
+
+/* Wayfinding: the menu shows which page you are on */
+(function () {
+	document.addEventListener('DOMContentLoaded', function () {
+		var here = location.pathname.replace(/index\.html$/, '');
+		document.querySelectorAll('.main-nav a[href], .nav-more-menu a[href]').forEach(function (a) {
+			var u = new URL(a.getAttribute('href'), location.href);
+			if (!u.hash && u.pathname.replace(/index\.html$/, '') === here) a.setAttribute('aria-current', 'page');
+		});
+	});
+})();
