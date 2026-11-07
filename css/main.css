@@ -2278,3 +2278,6 @@ h3 { letter-spacing: -0.012em; }
 .crop-mini input { width: 90px; }
 .crop-mini button { font: 600 0.78rem var(--font-body); padding: 5px 10px; border-radius: 999px; border: 0; background: #3a2f37; color: #F2EAE4; cursor: pointer; }
 .crop-mini button.on { background: var(--fox); color: var(--night); }
+
+/* Dark mode: newsletter band in the footer (--plum turns light in dark mode) */
+:root.theme-dark .footer-newsletter { background: linear-gradient(120deg, #2A2230, #3A2530); border-color: var(--line); }
