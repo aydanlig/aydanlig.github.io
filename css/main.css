@@ -2118,3 +2118,6 @@ main img.img-wait { opacity: 0; }
 .form-grid.show-opt > .field.opt { animation: fade-down 0.25s ease-out; }
 .opt-toggle { background: none; border: 1px dashed var(--line); border-radius: 999px; padding: 0.5em 1.1em; font: inherit; font-weight: 700; color: var(--accent); cursor: pointer; }
 .opt-toggle:hover { border-color: var(--accent); }
+/* round 7: 4-step "how it works" rows sit 2 × 2 on phones instead of 4 tall cards */
+@media (max-width: 720px) { .story-steps--4 { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 10px; } .story-steps--4 > div { padding: 14px; } }
+@media (max-width: 360px) { .story-steps--4 { grid-template-columns: 1fr !important; } }
