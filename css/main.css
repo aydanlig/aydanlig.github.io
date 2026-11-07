@@ -1850,3 +1850,9 @@ h1, h2, h3 { overflow-wrap: break-word; }
 @media (max-width: 720px) {
 	.main-nav { flex-wrap: wrap; justify-content: flex-start; row-gap: 6px; column-gap: 14px; overflow-x: visible; }
 }
+
+/* Dates with a year ("Sa 02.01.2027") no longer spill into the text next to them: the date column is as wide as the date */
+.termine-list li { grid-template-columns: max-content minmax(0, 1fr); }
+.termine-list .t-date { white-space: nowrap; }
+.termin { grid-template-columns: max-content minmax(0, 1fr) auto; }
+@media (max-width: 520px) { .termine-list li { grid-template-columns: 1fr; } }
