@@ -107,8 +107,22 @@
 				dateFormat: 'd.m.Y',      // what the visitor sees AND what arrives in your email
 				minDate: daysFromToday(normalDays),
 				disableMobile: true,      // same German calendar on phones
-				allowInput: input.hasAttribute('data-date-typeable')   // <input data-date-typeable>: the date can also be typed (TT.MM.JJJJ)
+				allowInput: true   // every date can be picked OR typed (TT.MM.JJJJ, digits only is enough)
 			});
+
+			// Typing a date: phone number pads often have no "." key, so only digits are needed –
+			// the dots are added automatically (12122026 -> 12.12.2026) and a full date is handed to the calendar.
+			input.setAttribute('inputmode', 'numeric');
+			{
+				input.addEventListener('input', function (e) {
+					if (e.inputType && e.inputType.indexOf('delete') === 0) return;   // let backspace work normally
+					var d = input.value.replace(/\D/g, '').slice(0, 8);
+					var out = d.slice(0, 2) + (d.length > 2 ? '.' + d.slice(2, 4) : '') + (d.length > 4 ? '.' + d.slice(4) : '');
+					if (d.length === 2 || d.length === 4) out += '.';
+					input.value = out;
+					if (d.length === 8) picker.setDate(out, true, 'd.m.Y');
+				});
+			}
 
 			function updateMinDate() {
 				var days = (express && express.checked && expressDays !== null)
