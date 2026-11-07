@@ -137,13 +137,13 @@
 							<a class="btn btn--ghost" href="#pakete">Pakete &amp; Preise</a>
 						</div>
 						<ul class="live-stats" aria-label="Erfahrung in Zahlen">
-							<li><strong>1.500+</strong><span>Gäste beim Saunasplash</span></li>
+							<li><strong>50+</strong><span>Porträts beim Saunasplash</span></li>
 							<li><strong>5</strong><span>Konzerte live gezeichnet</span></li>
 							<li><strong>bis 12</strong><span>Porträts pro Stunde</span></li>
 							<li><strong>6 Jahre</strong><span>Porträt-Erfahrung</span></li>
 						</ul>
 					</div>
-					<img src="/img/fotos/aydan-am-stand.jpg" alt="Aydan zeichnet an seinem Stand auf dem Saunasplash-Event mit über 1.500 Gästen" class="ph-img ph--natural" width="1400" height="1050" loading="lazy" decoding="async">
+					<img src="/img/fotos/aydan-am-stand.jpg" alt="Aydan zeichnet an seinem Stand auf dem Saunasplash-Festival (1.500+ Besucher:innen)" class="ph-img ph--natural" width="1400" height="1050" loading="lazy" decoding="async">
 				</div>
 
 				<!-- Photos from real events -->
@@ -151,7 +151,7 @@
 					<!-- spans two photo slots (see .live-strip-wide in css/events.css) -->
 					<figure class="live-strip-wide">
 						<img src="/img/fotos/event-saunasplash-3x2.jpg" alt="Zwei live gemalte Aquarell-Porträts vom Saunasplash-Festival" width="1200" height="800" loading="lazy" decoding="async">
-						<figcaption>Live in Aquarell beim Saunasplash-Festival · 1.500+ Gäste</figcaption>
+						<figcaption>Live in Aquarell beim Saunasplash-Festival · 50+ Porträts, 1.500+ Besucher:innen</figcaption>
 					</figure>
 					<img src="/img/fotos/stand-saunasplash-nacht-4x5.jpg" alt="Der beleuchtete Porträt-Stand nachts beim Saunasplash-Festival" width="920" height="1150" loading="lazy" decoding="async">
 					<img src="/img/fotos/aquarell-gitarre-4x5.jpg" alt="Live gezeichnetes Aquarell-Porträt eines Gitarristen" width="1200" height="1500" loading="lazy" decoding="async">
@@ -287,17 +287,15 @@
 						<summary>Können die Gäste selbst bezahlen?</summary>
 						<p>Ja: Pauschale von Ihnen, Gäste zahlen selbst vor Ort oder auf Spendenbasis – im Formular auswählbar.</p>
 					</details>
-				</div>
-
-				<!-- IMAGE RIGHTS – same table on /commission.html, /en/events.html and /en/commission.html -->
-				<div class="form-card" id="bildrechte" style="margin-top:2.5em">
-					<h3>Bildrechte</h3>
-					<p class="hint">Das Urheberrecht bleibt bei mir. Sie bekommen Nutzungsrechte, je nachdem, wofür Sie die Bilder einsetzen möchten.</p>
-					<ul class="price-list">
+					<details id="bildrechte">
+						<summary>Wer darf die Bilder nutzen – Bildrechte?</summary>
+						<p>Das Urheberrecht bleibt bei mir. Sie bekommen Nutzungsrechte, je nachdem, wofür Sie die Bilder einsetzen möchten.</p>
+						<ul class="price-list">
 						<li><span>Nutzung mit Namensnennung (Website, Social Media, Presse, intern)</span><strong>inklusive, mit meiner Zustimmung</strong></li>
 						<li><span>Werbung (Anzeigen, Plakate, Verpackung, bezahlte Posts)</span><strong>+150 € pauschal</strong></li>
 						<li><span>Total Buyout: exklusive, zeitlich und räumlich unbegrenzte Nutzung ohne Namensnennung</span><strong>+400 € pauschal</strong></li>
 					</ul>
+					</details>
 				</div>
 
 				<!-- EVENT INQUIRY FORM
@@ -358,8 +356,8 @@
 							</div>
 							<div class="field">
 								<label for="ev-guests">Anzahl Gäste
-									<span class="info-tip" tabindex="0" role="button" aria-label="Info zur Gästezahl" aria-describedby="ev-guests-tip">?<span class="info-tip-text" id="ev-guests-tip" role="tooltip">Auch große Events: Beim Saunasplash-Festival 2026 hat mein Stand
-										über 1.500 Gäste versorgt. Ich war durchgehend am Zeichnen, und viele haben eine Karte mit nach Hause genommen.</span></span></label>
+									<span class="info-tip" tabindex="0" role="button" aria-label="Info zur Gästezahl" aria-describedby="ev-guests-tip">?<span class="info-tip-text" id="ev-guests-tip" role="tooltip">Auch große Events: Beim Saunasplash-Festival 2026 (1.500+ Besucher:innen)
+										habe ich an meinem Stand 50+ Porträts gezeichnet. Ich war durchgehend am Zeichnen, und viele haben eine Karte mit nach Hause genommen.</span></span></label>
 								<input id="ev-guests" type="number" name="Gäste" min="1" placeholder="z. B. 120">
 							</div>
 							<!-- Where: location next to the space for the drawing station -->
@@ -386,6 +384,15 @@
 									<option>Gäste zahlen selbst vor Ort (über Ihr oder mein Kassensystem)</option>
 									<option>Ehrenamtlich: kostenlos für Gäste, auf Spendenbasis (bar oder Karte)</option>
 									<option>Sonstiges – bitte unten in die Nachricht schreiben</option>
+								</select>
+							</div>
+							<div class="field full">
+								<label for="ev-rights">Bildrechte <a class="hint" href="#bildrechte">(was heißt das?)</a></label>
+								<select id="ev-rights" name="Bildrechte">
+									<option>Nutzung mit Namensnennung (Website, Social Media, Presse, intern) – inklusive</option>
+									<option>Werbung (Anzeigen, Plakate, Verpackung, bezahlte Posts) – +150 € pauschal</option>
+									<option>Total Buyout: exklusiv, ohne Namensnennung – +400 € pauschal</option>
+									<option>Weiß ich noch nicht – bitte beraten</option>
 								</select>
 							</div>
 							<!-- Optional: commission portraits from photos on top of the event / workshop -->

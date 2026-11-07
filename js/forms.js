@@ -190,3 +190,13 @@
 		});
 	});
 })();
+
+/* A link to a folded FAQ question (e.g. "#bildrechte") opens it */
+(function () {
+	function openTarget() {
+		var el = location.hash && document.getElementById(location.hash.slice(1));
+		if (el && el.tagName === 'DETAILS') el.open = true;
+	}
+	window.addEventListener('hashchange', openTarget);
+	document.addEventListener('DOMContentLoaded', openTarget);
+})();
