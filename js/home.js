@@ -3,7 +3,7 @@
 
    1. "Karte" links with data-photoautomat: first a little popup
       ("I'm right next to the photo booth"), then the map opens by itself after 3 seconds.
-   2. Fox ears on top of the coloured bands: wiggle on hover, wiggle harder on click.
+   (Fox ears moved to js/ears.js – loaded on every page.)
    ========================================================= */
 (function () {
 	var en = document.documentElement.lang === 'en';
@@ -27,39 +27,4 @@
 		pop.querySelector('.pa-x').addEventListener('click', function () { clearTimeout(timer); pop.remove(); });
 	});
 
-	/* ---------- 2. Wiggling fox ears ----------
-	   The ears are drawn with CSS (::before / ::after of .section--alt, .section--dark, .site-footer).
-	   Pseudo-elements can't be hovered, so an invisible button is laid exactly over each pair. */
-	document.addEventListener('DOMContentLoaded', function () {
-		var bands = document.querySelectorAll('.section--alt, .section--dark, .site-footer');
-		var hits = [];
-		bands.forEach(function (band) {
-			if (getComputedStyle(band).display === 'none') return;
-			var hit = document.createElement('span');
-			hit.className = 'ear-hit';
-			hit.setAttribute('aria-hidden', 'true');
-			band.appendChild(hit);
-			hit.addEventListener('mouseenter', function () { band.classList.add('ears-wiggle'); });
-			hit.addEventListener('mouseleave', function () { band.classList.remove('ears-wiggle'); });
-			hit.addEventListener('click', function () {
-				band.classList.remove('ears-wiggle-hard');
-				void band.offsetWidth;   // restart the animation on every click
-				band.classList.add('ears-wiggle-hard');
-			});
-			band.addEventListener('animationend', function (ev) {
-				if (ev.animationName === 'ears-hard') band.classList.remove('ears-wiggle-hard');
-			});
-			hits.push([band, hit]);
-		});
-		function place() {
-			hits.forEach(function (pair) {
-				var cs = getComputedStyle(pair[0], '::before');
-				var s = pair[1].style;
-				s.width = cs.width; s.height = cs.height;
-				s.left = cs.left; s.right = cs.right;
-			});
-		}
-		place();
-		window.addEventListener('resize', place);
-	});
 })();
