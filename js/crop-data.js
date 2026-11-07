@@ -251,6 +251,18 @@ window.SFP_CROPS = {
 			"x": 50,
 			"y": 50,
 			"z": 1
+		},
+		"/events.html|stand-saunasplash-nacht-4x5.jpg": {
+			"x": 50,
+			"y": 50,
+			"z": 1,
+			"r": 0.741
+		},
+		"/events.html|aquarell-gitarre-4x5.jpg": {
+			"x": 51.524,
+			"y": 82.391,
+			"z": 1.166,
+			"r": 0.737
 		}
 	},
 	"phone": {}
