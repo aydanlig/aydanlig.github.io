@@ -7,6 +7,30 @@
 (function () {
 	var EN = (document.documentElement.lang || "").toLowerCase().indexOf("en") === 0;
 
+
+	/* ---------- 1b. "Anfragen" header button = dropdown: a click only opens the list of enquiry pages ---------- */
+	(function () {
+		var a = document.querySelector(".site-header .wrap > a.btn--small");
+		if (!a) return;
+		var P = EN ? "/en" : "";
+		var items = EN
+			? [["Book live portraits for an event", P + "/events.html#anfrage-event"], ["Kleckerkasten team workshop", P + "/events.html#anfrage-kleckerkasten"], ["Commission a portrait", P + "/commission.html"], ["Concert venue? Invite me", P + "/events.html#venues"], ["Other questions: contact", P + "/contact/"]]
+			: [["Live-Porträts fürs Event", "/events.html#anfrage-event"], ["Kleckerkasten-Workshop fürs Team", "/events.html#anfrage-kleckerkasten"], ["Porträt-Auftrag", "/commission.html"], ["Konzert-Location? Lad mich ein", "/events.html#venues"], ["Sonstiges: Kontakt", "/contact/"]];
+		var wrap = document.createElement("div");
+		wrap.className = "nav-more enq-more";
+		var btn = document.createElement("button");
+		btn.type = "button";
+		btn.className = a.className + " nav-more-toggle enq-toggle";
+		btn.setAttribute("aria-expanded", "false");
+		btn.setAttribute("aria-haspopup", "true");
+		btn.innerHTML = a.innerHTML + ' <span aria-hidden="true">▾</span>';
+		var menu = document.createElement("div");
+		menu.className = "nav-more-menu enq-menu";
+		items.forEach(function (it) { var l = document.createElement("a"); l.href = it[1]; l.textContent = it[0]; menu.appendChild(l); });
+		wrap.appendChild(btn); wrap.appendChild(menu);
+		a.parentNode.replaceChild(wrap, a);
+	})();
+
 	/* ---------- 1. Dropdown ---------- */
 	function closeAll(except) {
 		document.querySelectorAll(".nav-more.open").forEach(function (el) {

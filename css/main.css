@@ -1984,3 +1984,28 @@ button.mc-day { cursor: pointer; }
 .ref-side { display: flex; flex-direction: column; align-items: center; gap: 16px; }
 .ref-side .ref-client-logo { max-width: 300px; width: 70%; margin-top: 0; }
 .ref-side .ref-client-logo img { width: 100%; height: auto; display: block; }
+
+/* Footer v2: full name on top, "Kostenlos" subtitle, newsletter + links stay together (© at the very bottom) */
+.footer-name { margin: 0 0 18px; font-family: var(--font-head); font-size: clamp(1.1rem, 2.4vw, 1.4rem); color: #fff; }
+.footer-name span { font-family: var(--font-body); font-size: .85em; color: var(--mauve, #B9A3B0); }
+.footer-sub { margin: 1.1em 0 .6em; font-size: .75rem; letter-spacing: .12em; text-transform: uppercase; color: var(--mauve, #B9A3B0); }
+.site-footer > .wrap { justify-content: flex-start; }
+.footer-newsletter { margin-bottom: 40px; }
+.footer-bottom { margin-top: auto; padding-top: 18px; }
+.footer-bottom a { color: inherit; }
+
+/* Homepage hero credit: light drop shadow so it stays readable on the drawing */
+.art-credit { text-shadow: 0 1px 3px rgba(0, 0, 0, .75), 0 0 8px rgba(0, 0, 0, .45); }
+
+/* Header "Anfragen" dropdown (js/nav.js) */
+.enq-more { position: relative; }
+.enq-toggle { cursor: pointer; border: 0; font: inherit; }
+.enq-toggle span { display: inline-block; font-size: .8em; transition: transform .2s; }
+.enq-more.open .enq-toggle { transform: none; }
+.enq-more.open .enq-toggle span { transform: rotate(180deg); }
+.enq-menu { min-width: 260px; }
+.enq-menu a { display: block; padding: 9px 12px; border-radius: 8px; font-size: .92rem; font-weight: 600; color: var(--ink); text-decoration: none; }
+.enq-menu a:hover, .enq-menu a:focus-visible { background: #FFF1EA; color: var(--accent); }
+.enq-menu a:nth-child(2) { margin-bottom: 0; padding-bottom: 9px; border-bottom: 0; border-radius: 8px; }
+.site-header .enq-more:hover .enq-toggle, .site-header .enq-more.open .enq-toggle { transform: none; color: inherit; }
+.site-header .enq-more:hover .enq-toggle span { transform: rotate(180deg); }
