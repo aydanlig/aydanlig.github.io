@@ -183,3 +183,9 @@
 .order input[type="checkbox"].is-missing, .order input[type="radio"].is-missing { outline: 2px solid #D7263D; outline-offset: 2px; accent-color: #D7263D; }
 .order label.is-missing { color: #B3122A; }
 .order label.order-card.is-missing .order-card-body { border-color: #D7263D !important; box-shadow: 0 0 0 3px rgba(215, 38, 61, .15); }
+
+/* Preview of a later step (earlier step not filled in yet): visible, slightly faded; any tap jumps back (js/order.js) */
+.step-preview-note { display: none; }
+.order-step.is-preview .step-preview-note { display: block; margin: 0.6em 0 0; padding: 10px 14px; border-radius: 12px; background: #FFF1EA; border: 1.5px dashed var(--fox); font-size: 0.92rem; }
+.order-step.is-preview > :not(legend):not(.step-preview-note):not(.order-nav) { opacity: 0.6; }
+.order-step.is-preview input, .order-step.is-preview select, .order-step.is-preview textarea, .order-step.is-preview label { cursor: pointer; }

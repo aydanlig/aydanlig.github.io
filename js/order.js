@@ -24,6 +24,7 @@
 	var EN = (document.documentElement.lang || '').indexOf('en') === 0;
 	var T = EN ? {
 		next: 'Next', back: 'Back', step: 'Step', of: 'of',
+		previewNote: '<strong>Preview</strong> – have a look around. To fill this in, tap any field and I’ll take you to the step that’s still open.',
 		pickSize: 'Please pick a size and style first.',
 		needPhoto: 'Please add at least one photo – I paint from it.',
 		tooMany: 'Up to 3 photos – the rest were left out.',
@@ -45,6 +46,7 @@
 		thanks: '/en/bestellt.html', money: function (n) { return '€' + n.toFixed(2); }
 	} : {
 		next: 'Weiter', back: 'Zurück', step: 'Schritt', of: 'von',
+		previewNote: '<strong>Vorschau</strong> – schau dich ruhig um. Zum Ausfüllen tippe einfach auf ein Feld, dann geht’s zum Schritt, der noch offen ist.',
 		pickSize: 'Bitte wähle zuerst Größe und Stil.',
 		needPhoto: 'Bitte lade mindestens ein Foto hoch – danach male ich.',
 		tooMany: 'Höchstens 3 Fotos – die übrigen wurden weggelassen.',
@@ -265,15 +267,43 @@
 	});
 	dots.forEach(function (dot, i) {
 		dot.addEventListener('click', function () {
-			// jump back freely, forward only through valid steps
-			for (var k = current; k < i; k++) { if (!valid(steps[k])) { go(k, true); return; } }
+			// jump back freely; a later step whose earlier steps aren't filled in yet opens as a PREVIEW
 			go(i, true);
 		});
 	});
 
+	// first step that still misses something (before step i), or -1
+	function firstOpen(i) {
+		for (var k = 0; k < i; k++) { if (!valid(steps[k], true)) return k; }
+		return -1;
+	}
+	// Preview: look around freely, but as soon as you try to fill something in, you're taken to the step that's still open
+	steps.forEach(function (step, i) {
+		var note = document.createElement('p');
+		note.className = 'step-preview-note';
+		note.innerHTML = T.previewNote;
+		step.insertBefore(note, step.querySelector('legend') ? step.querySelector('legend').nextSibling : step.firstChild);
+		function intercept(e) {
+			if (!step.classList.contains('is-preview')) return;
+			var t = e.target;
+			if (t.closest('[data-back]')) return;
+			if (!t.closest('input, select, textarea, label, button, [data-next]')) return;
+			e.preventDefault(); e.stopPropagation();
+			if (t.blur) t.blur();
+			var k = firstOpen(i);
+			go(k < 0 ? 0 : k, true);
+			if (k >= 0) valid(steps[k]);   // show what's missing there
+		}
+		step.addEventListener('mousedown', intercept, true);
+		step.addEventListener('touchstart', intercept, { capture: true, passive: false });
+		step.addEventListener('click', intercept, true);
+		step.addEventListener('focusin', intercept, true);
+	});
+
 	function go(i, scroll) {
 		current = Math.max(0, Math.min(steps.length - 1, i));
-		steps.forEach(function (s, k) { s.hidden = k !== current; });
+		var open = firstOpen(current);
+		steps.forEach(function (s, k) { s.hidden = k !== current; s.classList.toggle('is-preview', k === current && open >= 0); });
 		dots.forEach(function (d, k) {
 			d.classList.toggle('is-on', k === current);
 			d.classList.toggle('is-done', k < current);
