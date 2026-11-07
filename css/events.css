@@ -96,3 +96,13 @@ h3.kk-title { font-size: clamp(1.35rem, 2.6vw, 1.75rem); }
 	.main-nav { gap: 14px; }
 	.main-nav .nav-long { display: none; }
 }
+
+/* Stats cubes (Nov 2026): same size, short labels, each in its own soft colour */
+.live-stats { grid-auto-rows: 1fr; align-items: stretch; }
+.live-stats li { display: flex; flex-direction: column; justify-content: center; min-height: 96px; padding: 14px 10px; border: 0; }
+.live-stats li:nth-child(1) { background: #FFE3D3; }
+.live-stats li:nth-child(2) { background: #E9DDF0; }
+.live-stats li:nth-child(3) { background: #DDEBF7; }
+.live-stats li:nth-child(4) { background: #E3F0DC; }
+.live-stats strong { font-size: 1.5rem; color: var(--ink); white-space: nowrap; }
+.live-stats span { font-size: 0.8rem; color: var(--ink); opacity: .75; }
