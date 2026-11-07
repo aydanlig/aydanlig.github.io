@@ -14,6 +14,8 @@
 	<script src="/js/crop.js" defer></script>
 	<script src="/js/mail-reveal.js" defer></script>
 	<script src="/js/translate.js" defer></script>
+	<script src="/js/termine.js" defer></script>
+	<script src="/js/nav.js" defer></script>
 	<script src="/js/gallery.js" defer></script>
 	<script src="/js/confirm-link.js" defer></script>
 	<script src="/js/smiley.js" defer></script>
@@ -52,6 +54,12 @@
 <body>
 
 	<!-- ================= HEADER (same on every English page) ================= -->
+	<!-- LIVE BAR: where & when I draw – the next date comes from js/termine.js -->
+	<div class="live-bar">
+		<div class="wrap">
+			<a href="/en/where-i-draw/"><span class="live-bar-dot" aria-hidden="true"></span><span data-next-gig><strong>Live:</strong> Sat 2–10 pm Mauerpark · Thu Kollwitzplatz market · Christmas markets &amp; gigs</span><span class="live-bar-more">Where &amp; when →</span></a>
+		</div>
+	</div>
 	<header class="site-header">
 		<div class="wrap">
 			<a class="logo" href="/en/">SmileyFoxy<span>Portraits</span><small class="logo-since">Portraits since 2020</small></a>
@@ -59,7 +67,19 @@
 				<a href="/en/events.html#live-events"><span class="nav-long">Live </span>Events</a>
 				<a href="/en/events.html#kleckerkasten">Kleckerkasten</a>
 				<a href="/en/commission.html"><span class="nav-long">Commission a </span>Portrait</a>
-				<a href="/en/about/">About me</a>
+				<div class="nav-more">
+					<a href="/en/about/">About me</a><button class="nav-more-toggle" type="button" aria-expanded="false" aria-label="Show more: dates, references, blog and more"><span aria-hidden="true">▾</span></button>
+					<div class="nav-more-menu">
+						<a href="/en/where-i-draw/">Where &amp; when I draw</a>
+						<a href="/en/where-i-draw/#termine">Upcoming dates</a>
+						<a href="/labor/auktion.html" hreflang="de">First auction (German)</a>
+						<a href="/en/referenzen/">References</a>
+						<a href="/en/about/#bands">Bands drawn live</a>
+						<a href="/en/about/#blog">Blog</a>
+						<a href="/en/commission.html#warteliste">Email list &amp; waitlist</a>
+						<a href="/en/about/#faq">FAQ</a>
+					</div>
+				</div>
 			</nav>
 			<a class="lang-switch" data-translate lang="de" title="Deutsche Version dieser Seite" href="/">DE</a>
 			<a class="btn btn--small" href="/en/events.html#anfrage-kleckerkasten">Enquire</a>
@@ -386,9 +406,9 @@
 				<span class="eyebrow">How I see it differently</span>
 				<h2 id="view-title" style="margin-top:0">Real art is <em>not</em> out.</h2>
 				<p class="lead">
-					Many say that since Covid hardly anyone buys art, and nobody wants handmade, real experiences any more.
-					I see it differently. People still love the real thing – capturing a moment with a picture someone
-					drew just for them.
+					Many people say that since Covid hardly anyone buys art, and nobody wants real experiences any more. I disagree.
+					Right now, with AI spitting out images in seconds, <strong>handmade art is worth more than ever</strong>: a real moment,
+					captured by a person – in a picture someone drew just for you.
 				</p>
 				<blockquote class="big-quote">“Come on, let’s get drawn. We’ll remember this forever – and later the picture will make us so happy.”</blockquote>
 				<p>

@@ -13,6 +13,8 @@
 	<script src="/js/crop.js" defer></script>
 	<script src="/js/mail-reveal.js" defer></script>
 	<script src="/js/translate.js" defer></script>
+	<script src="/js/termine.js" defer></script>
+	<script src="/js/nav.js" defer></script>
 	<script src="/js/gallery.js" defer></script>
 	<script src="/js/confirm-link.js" defer></script>
 	<script src="/js/smiley.js" defer></script>
@@ -100,6 +102,12 @@
 <body>
 
 	<!-- ================= HEADER (same on every new page) ================= -->
+	<!-- LIVE BAR: where & when I draw – the next date comes from js/termine.js -->
+	<div class="live-bar">
+		<div class="wrap">
+			<a href="/where-i-draw/"><span class="live-bar-dot" aria-hidden="true"></span><span data-next-gig><strong>Live:</strong> Sa 14–22 Uhr Mauerpark · Do Ökomarkt Kollwitzplatz · Weihnachtsmärkte &amp; Konzerte</span><span class="live-bar-more">Wo &amp; wann →</span></a>
+		</div>
+	</div>
 	<header class="site-header">
 		<div class="wrap">
 			<a class="logo" href="/">SmileyFoxy<span>Portraits</span><small class="logo-since">Porträts seit 2020</small></a>
@@ -107,7 +115,19 @@
 				<a href="/events.html#live-events"><span class="nav-long">Live-</span>Events</a>
 				<a href="/events.html#kleckerkasten">Kleckerkasten</a>
 				<a href="/commission.html">Porträt<span class="nav-long">-Auftrag</span></a>
-				<a href="/about/">Über mich</a>
+				<div class="nav-more">
+					<a href="/about/">Über mich</a><button class="nav-more-toggle" type="button" aria-expanded="false" aria-label="Mehr anzeigen: Termine, Referenzen, Blog und mehr"><span aria-hidden="true">▾</span></button>
+					<div class="nav-more-menu">
+						<a href="/where-i-draw/">Wo &amp; wann ich zeichne</a>
+						<a href="/where-i-draw/#termine">Termine &amp; Kalender</a>
+						<a href="/labor/auktion.html">Erste Auktion</a>
+						<a href="/referenzen/">Referenzen</a>
+						<a href="/about/#bands">Bands, live gezeichnet</a>
+						<a href="/about/#blog">Blog</a>
+						<a href="/commission.html#warteliste">E-Mail-Liste &amp; Warteliste</a>
+						<a href="/about/#faq">Fragen &amp; Antworten</a>
+					</div>
+				</div>
 			</nav>
 			<a class="lang-switch" data-translate lang="en" title="English version of this page" href="/en/">EN</a>
 			<a class="btn btn--small" href="/events.html#anfrage-kleckerkasten">Anfragen</a>
@@ -434,9 +454,9 @@
 				<span class="eyebrow">Was ich anders sehe</span>
 				<h2 id="view-title" style="margin-top:0">Echte Kunst ist <em>nicht</em> out.</h2>
 				<p class="lead">
-					Viele sagen: Seit Corona kauft kaum noch jemand Kunst, und handgemachte, echte Erlebnisse will keiner mehr.
-					Ich sehe das anders. Menschen lieben das Echte immer noch – einen Moment festzuhalten, mit einem Bild, das jemand
-					nur für sie gezeichnet hat.
+					Viele sagen: Seit Corona kauft kaum noch jemand Kunst, und echte Erlebnisse will keiner mehr. Ich sehe das anders.
+					Gerade jetzt, wo KI in Sekunden Bilder ausspuckt, ist <strong>handgemachte Kunst mehr wert denn je</strong>: ein echter
+					Moment, festgehalten von einem Menschen – in einem Bild, das jemand nur für dich gezeichnet hat.
 				</p>
 				<blockquote class="big-quote">„Komm, lass uns zeichnen lassen. Daran erinnern wir uns für immer – und später macht uns das Bild so glücklich.“</blockquote>
 				<p>

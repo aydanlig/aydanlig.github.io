@@ -10,6 +10,8 @@
 	<script src="/js/splashes.js" defer></script>
 	<script src="/js/mail-reveal.js" defer></script>
 	<script src="/js/translate.js" defer></script>
+	<script src="/js/termine.js" defer></script>
+	<script src="/js/nav.js" defer></script>
 	<!-- German date picker (self-hosted flatpickr, MIT license) -->
 	<link rel="stylesheet" href="/css/vendor/flatpickr.min.css">
 	<script src="/js/vendor/flatpickr.min.js" defer></script>
@@ -50,6 +52,12 @@
 <body>
 
 	<!-- ================= HEADER ================= -->
+	<!-- LIVE BAR: where & when I draw – the next date comes from js/termine.js -->
+	<div class="live-bar">
+		<div class="wrap">
+			<a href="/where-i-draw/"><span class="live-bar-dot" aria-hidden="true"></span><span data-next-gig><strong>Live:</strong> Sa 14–22 Uhr Mauerpark · Do Ökomarkt Kollwitzplatz · Weihnachtsmärkte &amp; Konzerte</span><span class="live-bar-more">Wo &amp; wann →</span></a>
+		</div>
+	</div>
 	<header class="site-header">
 		<div class="wrap">
 			<a class="logo" href="/">SmileyFoxy<span>Portraits</span><small class="logo-since">Porträts seit 2020</small></a>
@@ -57,7 +65,19 @@
 				<a href="/events.html#live-events"><span class="nav-long">Live-</span>Events</a>
 				<a href="/events.html#kleckerkasten">Kleckerkasten</a>
 				<a href="/commission.html">Porträt<span class="nav-long">-Auftrag</span></a>
-				<a href="/about/">Über mich</a>
+				<div class="nav-more">
+					<a href="/about/">Über mich</a><button class="nav-more-toggle" type="button" aria-expanded="false" aria-label="Mehr anzeigen: Termine, Referenzen, Blog und mehr"><span aria-hidden="true">▾</span></button>
+					<div class="nav-more-menu">
+						<a href="/where-i-draw/">Wo &amp; wann ich zeichne</a>
+						<a href="/where-i-draw/#termine">Termine &amp; Kalender</a>
+						<a href="/labor/auktion.html">Erste Auktion</a>
+						<a href="/referenzen/">Referenzen</a>
+						<a href="/about/#bands">Bands, live gezeichnet</a>
+						<a href="/about/#blog">Blog</a>
+						<a href="/commission.html#warteliste">E-Mail-Liste &amp; Warteliste</a>
+						<a href="/about/#faq">Fragen &amp; Antworten</a>
+					</div>
+				</div>
 			</nav>
 			<a class="lang-switch" data-translate lang="en" title="English version of this page" href="/en/commission.html">EN</a>
 			<a class="btn btn--small" href="#bestellen">Bestellen</a>
@@ -156,9 +176,13 @@
 							<details class="schedule">
 								<summary>Wann &amp; wo finde ich dich?</summary>
 								<ul>
-									<li><strong>Ab und zu:</strong> Brandenburger Tor, ganz nach Gefühl</li>
 									<li><strong>Samstag:</strong> <a href="https://maps.app.goo.gl/ZhjvUq1bMy8CyVk18" target="_blank" rel="noopener">Mauerpark, neben dem Photoautomaten (Bernauer Str. 53)</a>, 14–22 Uhr</li>
-									<li><strong>Sonntag:</strong> manchmal im/am Mauerpark, ab 11 Uhr</li>
+									<li><strong>Donnerstag:</strong> Ökomarkt am Kollwitzplatz, ca. 12–19 Uhr (an ausgewählten Donnerstagen)</li>
+									<li><strong>Sonntag:</strong> auf einem Wochenmarkt</li>
+									<li><strong>Im Advent:</strong> Weihnachtsmärkte, z.&nbsp;B. am Schloss Charlottenburg ab 17 Uhr</li>
+									<li><strong>Konzertabende:</strong> nach der Show im Schokoladen (Ackerstr. 169)</li>
+									<li><strong>Ab und zu:</strong> Brandenburger Tor, ganz nach Gefühl</li>
+									<li><a href="/where-i-draw/#termine">Alle nächsten Termine →</a></li>
 								</ul>
 								<p class="hint">
 									Je nach Wetter und Sonne. Ob ich heute draußen bin, poste ich vorher in meiner

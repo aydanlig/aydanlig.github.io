@@ -1634,6 +1634,93 @@ h1, h2, h3 { overflow-wrap: break-word; }
 .stance li::before { position: absolute; left: 0; top: 0; font-size: 1.2rem; font-weight: 700; line-height: 1.3; }
 .stance--for li::before { content: "✓"; color: #1F8A8A; }
 .stance--against li::before { content: "✗"; color: #E0457B; }
+/* =========================================================
+   HEADER EXTRAS (js/nav.js + js/termine.js)
+   ========================================================= */
+
+/* Thin dark bar above the header: where & when I draw + next date */
+.live-bar { background: var(--night); color: var(--paper); font-size: 0.82rem; line-height: 1.3; }
+.live-bar .wrap { padding-block: 7px; }
+.live-bar a { display: flex; align-items: center; gap: 10px; color: var(--paper); text-decoration: none; min-width: 0; }
+.live-bar a:hover { color: #fff; }
+.live-bar [data-next-gig] { flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.live-bar strong { color: var(--fox); font-weight: 700; }
+.live-bar-more { flex: none; font-weight: 700; color: var(--fox); }
+.live-bar a:hover .live-bar-more { text-decoration: underline; }
+.live-bar-dot { flex: none; width: 8px; height: 8px; border-radius: 50%; background: var(--fox); box-shadow: 0 0 0 0 rgba(255, 107, 53, 0.7); animation: live-pulse 2s infinite; }
+@keyframes live-pulse {
+	0% { box-shadow: 0 0 0 0 rgba(255, 107, 53, 0.7); }
+	70% { box-shadow: 0 0 0 8px rgba(255, 107, 53, 0); }
+	100% { box-shadow: 0 0 0 0 rgba(255, 107, 53, 0); }
+}
+@media (prefers-reduced-motion: reduce) { .live-bar-dot { animation: none; } }
+@media (max-width: 720px) {
+	.live-bar { font-size: 0.75rem; }
+	.live-bar .wrap { padding-inline: 16px; }
+	.live-bar-place { display: none; }
+}
+
+/* "Über mich ▾": hover (desktop) or tap the arrow (phone) to open more links */
+.nav-more { position: relative; display: flex; align-items: center; gap: 2px; }
+.nav-more-toggle {
+	display: inline-flex; align-items: center; justify-content: center;
+	width: 22px; height: 22px; padding: 0; margin: 0;
+	border: 0; border-radius: 50%; background: transparent;
+	color: var(--ink); font-size: 0.85rem; line-height: 1; cursor: pointer;
+	transition: transform 0.25s ease, background 0.2s, color 0.2s;
+}
+.nav-more-toggle:hover, .nav-more-toggle:focus-visible { background: #FFF1EA; color: var(--accent); }
+.nav-more-menu {
+	position: absolute; top: 100%; right: -8px; z-index: 60;
+	min-width: 240px; max-width: calc(100vw - 32px);
+	margin-top: 10px; padding: 8px;
+	background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+	box-shadow: 0 14px 40px rgba(15, 12, 17, 0.16);
+	opacity: 0; visibility: hidden; transform: translateY(-6px) scaleY(0.96); transform-origin: top right;
+	transition: opacity 0.18s ease, transform 0.22s ease, visibility 0s linear 0.22s;
+}
+.nav-more-menu::before { content: ""; position: absolute; left: 0; right: 0; top: -14px; height: 14px; } /* hover bridge */
+.main-nav .nav-more-menu a { display: block; padding: 8px 12px; border-radius: 8px; font-size: 0.92rem; font-weight: 600; }
+.main-nav .nav-more-menu a:hover, .main-nav .nav-more-menu a:focus-visible { background: #FFF1EA; color: var(--accent); }
+.nav-more-menu a:nth-child(2) { margin-bottom: 4px; padding-bottom: 12px; border-bottom: 1px solid var(--line); border-radius: 8px 8px 0 0; }
+.nav-more.open .nav-more-menu { opacity: 1; visibility: visible; transform: none; transition-delay: 0s; }
+.nav-more.open .nav-more-toggle { transform: rotate(180deg); color: var(--accent); }
+@media (hover: hover) {
+	.nav-more:hover .nav-more-menu { opacity: 1; visibility: visible; transform: none; transition-delay: 0s; }
+	.nav-more:hover .nav-more-toggle { transform: rotate(180deg); color: var(--accent); }
+}
+@media (max-width: 720px) {
+	.nav-more-menu { right: 0; }
+	.main-nav .nav-more-menu a { font-size: 0.95rem; padding: 10px 12px; }
+}
+
+/* Upcoming dates list (about + where-i-draw) */
+.termin-rows { list-style: none; margin: 1em 0; padding: 0; border: 1px solid var(--line); border-radius: 14px; overflow: hidden; background: var(--card); }
+.termin { display: grid; grid-template-columns: 96px 1fr auto; gap: 4px 16px; align-items: center; padding: 12px 16px; border-top: 1px solid var(--line); }
+.termin:first-child { border-top: 0; background: #FFF1EA; }
+.termin-date { font-weight: 700; white-space: nowrap; }
+.termin-day { color: var(--accent); }
+.termin-what { display: flex; flex-direction: column; min-width: 0; }
+.termin-where { font-size: 0.85rem; color: var(--ink-soft); }
+.termin-kind { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; padding: 0.25em 0.7em; border-radius: 999px; background: var(--paper); border: 1px solid var(--line); white-space: nowrap; }
+.termin--konzert .termin-kind { background: var(--plum); border-color: var(--plum); color: var(--paper); }
+.termin--markt .termin-kind { background: #E6F0E1; border-color: #CBDDC2; color: #2F5A22; }
+@media (max-width: 600px) {
+	.termin { grid-template-columns: 1fr auto; }
+	.termin-what { grid-column: 1 / -1; }
+	.termin-kind { justify-self: start; }
+}
+
+/* Über mich intro: shorter photo, my note right underneath */
+.intro-photo { margin: 0; }
+.intro-photo img { width: 100%; max-height: 440px; aspect-ratio: 4 / 5; object-fit: cover; object-position: center 20%; border-radius: var(--radius); }
+.intro-photo figcaption { margin-top: 14px; padding-left: 14px; border-left: 3px solid var(--fox); font-family: var(--font-head); font-size: 1.02rem; line-height: 1.5; color: var(--ink); }
+.split--top { align-items: start; }
+@media (max-width: 900px) { .intro-photo img { max-height: 420px; } }
+
+/* Haltung: short bold highlights inside the text (the <strong> is the item title) */
+.stance b { font-weight: 700; color: var(--ink); }
+
 
 /* ==================================================   HOMEPAGE ROUND 2: calmer hero, polished art tiles, teaser for "Mehr Kunst",
    Photoautomat popup, wiggling fox ears

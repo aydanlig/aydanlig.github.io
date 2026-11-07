@@ -10,6 +10,8 @@
 	<script src="/js/splashes.js" defer></script>
 	<script src="/js/mail-reveal.js" defer></script>
 	<script src="/js/translate.js" defer></script>
+	<script src="/js/termine.js" defer></script>
+	<script src="/js/nav.js" defer></script>
 
 	<title>Kostenlos unterstützen | SmileyFoxyPortraits</title>
 	<meta name="description" content="So kannst du Aydan Lig'on und SmileyFoxyPortraits ohne Geld unterstützen – plus Ideen- und Ratschlag-Board.">
@@ -37,6 +39,12 @@
 
 <body>
 
+	<!-- LIVE BAR: where & when I draw – the next date comes from js/termine.js -->
+	<div class="live-bar">
+		<div class="wrap">
+			<a href="/where-i-draw/"><span class="live-bar-dot" aria-hidden="true"></span><span data-next-gig><strong>Live:</strong> Sa 14–22 Uhr Mauerpark · Do Ökomarkt Kollwitzplatz · Weihnachtsmärkte &amp; Konzerte</span><span class="live-bar-more">Wo &amp; wann →</span></a>
+		</div>
+	</div>
 	<header class="site-header">
 		<div class="wrap">
 			<a class="logo" href="/">SmileyFoxy<span>Portraits</span><small class="logo-since">Porträts seit 2020</small></a>
@@ -44,7 +52,19 @@
 				<a href="/events.html#live-events"><span class="nav-long">Live-</span>Events</a>
 				<a href="/events.html#kleckerkasten">Kleckerkasten</a>
 				<a href="/commission.html">Porträt<span class="nav-long">-Auftrag</span></a>
-				<a href="/about/">Über mich</a>
+				<div class="nav-more">
+					<a href="/about/">Über mich</a><button class="nav-more-toggle" type="button" aria-expanded="false" aria-label="Mehr anzeigen: Termine, Referenzen, Blog und mehr"><span aria-hidden="true">▾</span></button>
+					<div class="nav-more-menu">
+						<a href="/where-i-draw/">Wo &amp; wann ich zeichne</a>
+						<a href="/where-i-draw/#termine">Termine &amp; Kalender</a>
+						<a href="/labor/auktion.html">Erste Auktion</a>
+						<a href="/referenzen/">Referenzen</a>
+						<a href="/about/#bands">Bands, live gezeichnet</a>
+						<a href="/about/#blog">Blog</a>
+						<a href="/commission.html#warteliste">E-Mail-Liste &amp; Warteliste</a>
+						<a href="/about/#faq">Fragen &amp; Antworten</a>
+					</div>
+				</div>
 			</nav>
 			<a class="lang-switch" data-translate lang="en" title="Translate this page to English" href="https://smileyfoxyportraits-com.translate.goog/support-free/?_x_tr_sl=de&_x_tr_tl=en&_x_tr_hl=en">EN</a>
 			<a class="btn btn--small" href="/events.html#anfrage-kleckerkasten">Anfragen</a>

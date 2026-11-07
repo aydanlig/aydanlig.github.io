@@ -10,6 +10,8 @@
 	<script src="/js/splashes.js" defer></script>
 	<script src="/js/mail-reveal.js" defer></script>
 	<script src="/js/translate.js" defer></script>
+	<script src="/js/termine.js" defer></script>
+	<script src="/js/nav.js" defer></script>
 	<script src="/js/gallery.js" defer></script>
 
 	<title>Über mich & FAQ | SmileyFoxyPortraits</title>
@@ -40,6 +42,12 @@
 
 <body>
 
+	<!-- LIVE BAR: where & when I draw – the next date comes from js/termine.js -->
+	<div class="live-bar">
+		<div class="wrap">
+			<a href="/where-i-draw/"><span class="live-bar-dot" aria-hidden="true"></span><span data-next-gig><strong>Live:</strong> Sa 14–22 Uhr Mauerpark · Do Ökomarkt Kollwitzplatz · Weihnachtsmärkte &amp; Konzerte</span><span class="live-bar-more">Wo &amp; wann →</span></a>
+		</div>
+	</div>
 	<header class="site-header">
 		<div class="wrap">
 			<a class="logo" href="/">SmileyFoxy<span>Portraits</span><small class="logo-since">Porträts seit 2020</small></a>
@@ -47,7 +55,19 @@
 				<a href="/events.html#live-events"><span class="nav-long">Live-</span>Events</a>
 				<a href="/events.html#kleckerkasten">Kleckerkasten</a>
 				<a href="/commission.html">Porträt<span class="nav-long">-Auftrag</span></a>
-				<a href="/about/">Über mich</a>
+				<div class="nav-more">
+					<a href="/about/">Über mich</a><button class="nav-more-toggle" type="button" aria-expanded="false" aria-label="Mehr anzeigen: Termine, Referenzen, Blog und mehr"><span aria-hidden="true">▾</span></button>
+					<div class="nav-more-menu">
+						<a href="/where-i-draw/">Wo &amp; wann ich zeichne</a>
+						<a href="/where-i-draw/#termine">Termine &amp; Kalender</a>
+						<a href="/labor/auktion.html">Erste Auktion</a>
+						<a href="/referenzen/">Referenzen</a>
+						<a href="/about/#bands">Bands, live gezeichnet</a>
+						<a href="/about/#blog">Blog</a>
+						<a href="/commission.html#warteliste">E-Mail-Liste &amp; Warteliste</a>
+						<a href="/about/#faq">Fragen &amp; Antworten</a>
+					</div>
+				</div>
 			</nav>
 			<a class="lang-switch" data-translate lang="en" title="English version of this page" href="/en/about/">EN</a>
 			<a class="btn btn--small" href="/events.html#anfrage-kleckerkasten">Anfragen</a>
@@ -60,7 +80,7 @@
 
 		<!-- ================= INTRO ================= -->
 		<section class="section" style="padding-bottom:24px">
-			<div class="wrap split">
+			<div class="wrap split split--top">
 				<div>
 					<span class="eyebrow">Über mich</span>
 					<h1>Hi, ich bin Aydan.</h1>
@@ -70,6 +90,7 @@
 					</p>
 					<!-- Jump links to the sections below -->
 					<nav class="toc" aria-label="Inhalt">
+						<a href="#termine">Termine</a>
 						<a href="#referenzen">Referenzen</a>
 						<a href="#wer-bin-ich">Wer bin ich?</a>
 						<a href="#ziel">Mein Ziel</a>
@@ -80,7 +101,27 @@
 						<a href="#kontakt">Kontakt</a>
 					</nav>
 				</div>
-				<img src="/img/fotos/aydan-profil.jpg" alt="Aydan Lig'on, der Künstler hinter SmileyFoxyPortraits" class="ph-img ph--natural" width="900" height="1200" fetchpriority="high" decoding="async">
+				<figure class="intro-photo">
+					<img src="/img/fotos/aydan-profil.jpg" alt="Aydan Lig'on, der Künstler hinter SmileyFoxyPortraits" width="900" height="1200" fetchpriority="high" decoding="async">
+					<figcaption>
+						Ich zeichne aus Freude am Zeichnen. Und weil ich ein sehr feinfühliger Mensch bin, fällt es mir leicht,
+						dich zu fragen, wie du festgehalten werden möchtest: mit dem Gefühl, das ich gerade bei dir spüre – oder
+						lieber stark und ernst.
+					</figcaption>
+				</figure>
+			</div>
+		</section>
+
+		<!-- ================= NÄCHSTE TERMINE – edit the list in js/termine.js ================= -->
+		<section class="section" id="termine" style="padding-block:8px 36px">
+			<div class="wrap">
+				<span class="eyebrow">Live erleben</span>
+				<h2 style="margin-top:0">Hier zeichne ich als Nächstes</h2>
+				<p>Märkte, Weihnachtsmärkte und Bands, die ich live zeichne. Komm vorbei – und lass dich gleich mitzeichnen.
+					Jeden Samstag bin ich außerdem 14–22 Uhr im Mauerpark.</p>
+				<div data-termine data-limit="6">
+					<p class="hint">Die aktuellen Termine stehen auf <a href="/where-i-draw/">Wo &amp; wann ich zeichne</a> und in meiner <a href="https://www.instagram.com/smileyfoxyportraits">Instagram-Story</a>.</p>
+				</div>
 			</div>
 		</section>
 
@@ -119,10 +160,13 @@
 				<span class="eyebrow">In Arbeit</span>
 				<h2 style="margin-top:0">Woran ich gerade arbeite</h2>
 				<ul class="wip-list">
-					<li><strong>Berliner Märkte:</strong> Bald bin ich mit meinem mobilen Porträt-Stand auch auf regulären Berliner Märkten. Welche und wann, steht auf <a href="https://www.instagram.com/smileyfoxyportraits">Instagram</a>.</li>
+					<li><strong>Berliner Märkte:</strong> Mit meinem mobilen Porträt-Stand bin ich jetzt auch auf Märkten: auf dem Weihnachtsmarkt am Schloss Charlottenburg und donnerstags auf dem Ökomarkt am Kollwitzplatz – <a href="#termine">alle Termine</a>.</li>
 					<li><strong>Erste Auktion:</strong> Eine rote Original-Skizze, live in 15 Minuten gezeichnet – ohne Startpreis, <a href="/labor/auktion.html">mitbieten bis 31.12.2026</a>.</li>
 					<li><strong>Pilot-Team für den Kleckerkasten:</strong> Das erste Team bekommt den Workshop für 59 € statt 79 € pro Person – <a href="/events.html#pilot">mehr dazu</a>. Damit man sieht, wie er abläuft, stelle ich ihn gerade bei Freunden nach.</li>
 					<li><strong>„Berlin zwischen Tag und Nacht“:</strong> eine Aquarell-Serie über Streetart, Demos und Morgengrauen – später auch als Prints.</li>
+					<li><strong>Schmuck-Porträts:</strong> winzige Porträts als tragbares Schmuckstück. Du machst oder verkaufst Schmuck? <a href="mailto:aydan@smileyfoxyportraits.com?subject=Schmuck-Portr%C3%A4ts">Schreib mir</a> – lass uns zusammen etwas machen.</li>
+					<li><strong>Prints &amp; Kollektionen:</strong> limitierte und unlimitierte Prints, als erste Kollektion die „Berlin Crazies“ – die schrägsten Gestalten der Stadt.</li>
+					<li><strong>Landschaften:</strong> Berlin in Tusche und Aquarell – nicht nur Gesichter, auch Orte.</li>
 					<li><strong>Meine Geschichte als Reel:</strong> vom Zeichnen in der S-Bahn bis heute – in 60 Sekunden.</li>
 				</ul>
 				<p class="hint">Neuigkeiten dazu zuerst über meine <a href="https://aydanligon.substack.com/subscribe">E-Mail-Liste</a> (höchstens eine E-Mail im Monat).</p>
@@ -147,11 +191,10 @@
 				<p>
 					Beim Zeichnen frage ich gern nach dem Stil: Tusche und Fineliner wirken ernst und klar, Aquarell verspielt
 					und ein bisschen chaotisch – beides zusammen zeigt einen vielschichtigen Charakter.
-					Ich zeichne aus Freude am Zeichnen. Und weil ich ein sehr feinfühliger Mensch bin, fällt es mir leicht, Menschen zu fragen, wie sie festgehalten werden möchten: mit dem Gefühl, das ich gerade bei ihnen spüre – oder lieber stark und ernst.
 				</p>
 				<p>
 					Gerade bekommt die Kunst meine volle Zeit: draußen zeichnen, Events und der Kleckerkasten. Bis September 2027
-					soll sie mich selbst tragen – den Steuerbereich halte ich mir als zweites Standbein offen.
+					soll sie mich selbst tragen. Klappt das nicht, wechsle ich in ein duales Studium und zeichne danach in Teilzeit weiter.
 				</p>
 				<ul>
 					<li><strong>Meine 3 F:</strong> Familie, Fitness und Freiheit.</li>
@@ -177,6 +220,7 @@
 				<span class="eyebrow">Mein Ziel</span>
 				<h2 style="margin-top:0">Worin ich weltklasse werden will</h2>
 				<ol class="goal-list">
+					<li><strong>Blitzschnelle Aquarell-Porträts, die umhauen.</strong> Aquarell ist eigentlich ein langsames Medium – ich biege es mit Speed-Technik und Tusche zu schneller, atemberaubender Handarbeit, die keine KI nachmachen kann.</li>
 					<li><strong>Menschen verbinden.</strong> Teams und Berliner Kieze zusammenbringen – mit Live-Porträts und Kunst-Workshops.</li>
 					<li><strong>Kunst für alle.</strong> Handgemachte Kunst, die sich jede:r in Berlin leisten kann – damit wir Kunst, unsere Freundschaften, unsere Zeit auf dieser Welt und lokales Handwerk mehr wertschätzen.</li>
 					<li><strong>Die lustigsten Workshops der Stadt.</strong> Im <a href="/events.html#kleckerkasten">Kleckerkasten</a> dürfen Erwachsene wieder Kind sein: mit Freund:innen oder Kolleg:innen kleckern, lachen und sich kreativ ausdrücken.</li>
@@ -191,16 +235,17 @@
 					<div class="stance stance--for">
 						<h3>Dafür stehe ich</h3>
 						<ul>
-							<li><strong>Ehrlichkeit.</strong> Ich zeige dir, wie es wirklich läuft – mit klaren Preisen, auch wenn mal etwas schiefgeht, und mit meinen Zweifeln. Lieber offen als geschönt: Nur so entsteht Vertrauen.</li>
-							<li><strong>Gemeinschaft durch Kunst.</strong> Ein Porträt im Park, auf einem Konzert oder einem Festival bringt Menschen ins Gespräch, die sich sonst nie begegnet wären. Genau diese kleinen Verbindungen machen Berlin für mich aus – und die will ich stärken.</li>
-							<li><strong>KI mit Verstand.</strong> Ich nutze KI dort, wo sie mir Zeit schenkt: beim Sortieren meiner E-Mails, beim Planen und beim Aufbau meines kleinen Kunst-Business. So bleibt mehr Zeit für das, was nur ich kann – zeichnen.</li>
+							<li><strong>Handgemachte Kunst.</strong> Echte Tusche, echtes Aquarell, echtes Papier: <b>jedes Bild ein Unikat</b>, live vor deinen Augen gezeichnet.</li>
+							<li><strong>Ehrlichkeit.</strong> <b>Klare Preise</b> und offene Worte – auch wenn mal etwas schiefgeht.</li>
+							<li><strong>Gemeinschaft durch Kunst.</strong> Ein Porträt im Park oder auf einem Konzert <b>bringt Fremde ins Gespräch</b>. Genau das macht Berlin für mich aus.</li>
+							<li><strong>KI mit Verstand.</strong> KI hilft mir bei <b>E-Mails und Planung</b> – damit mehr Zeit <b>fürs Zeichnen</b> bleibt.</li>
 						</ul>
 					</div>
 					<div class="stance stance--against">
 						<h3>Dagegen bin ich</h3>
 						<ul>
-							<li><strong>KI-„Kunst“, die Künstler:innen kopiert.</strong> Bilder, die aus der Arbeit echter Künstler:innen zusammengerührt werden – ohne Zustimmung, ohne Nennung, ohne Bezahlung. Jedes Porträt von mir ist echte Tusche auf echtem Papier, von Hand und vor deinen Augen gezeichnet.</li>
-							<li><strong>Kunst, die nicht genug Rückhalt bekommt.</strong> Viele Künstler:innen in Berlin werden unterbezahlt und zu wenig unterstützt. Ein Beispiel aus meinem Alltag: Im Mauerpark und auf anderen Grünflächen darf ich laut Bezirk keine Porträts zeichnen und verkaufen. Ich wünsche mir, dass Berlin Straßenkunst mehr Raum gibt – und ich bleibe dazu gern im Gespräch.</li>
+							<li><strong>Zu wenig Rückhalt für Kunst.</strong> Viele Berliner Künstler:innen sind <b>unterbezahlt</b>. Im Mauerpark darf ich laut Bezirk eigentlich nicht zeichnen und verkaufen – ich wünsche mir <b>mehr Raum für Straßenkunst</b>.</li>
+							<li><strong>KI-„Kunst“, die Künstler:innen kopiert.</strong> Zusammengerührt <b>ohne Zustimmung, Nennung oder Bezahlung</b>. Bei mir gibt es nur Echtes: <b>von Hand, vor deinen Augen</b>.</li>
 						</ul>
 					</div>
 				</div>
@@ -423,9 +468,9 @@
 				<details>
 					<summary>Was siehst du in deiner Branche anders als andere?</summary>
 					<p>
-						Viele sagen, seit Corona gehen die Verkäufe runter und bleiben unten – und Menschen wollen echte, handgemachte
-						Kunst nicht mehr so wie früher. Ich sehe das anders: Menschen lieben das Echte immer noch, und einen Moment mit
-						einem schönen Bild festzuhalten, berührt sie genauso wie früher.
+						Viele sagen: Seit Corona kauft kaum noch jemand Kunst, und echte Erlebnisse will keiner mehr. Ich sehe das anders.
+						Gerade jetzt, wo KI in Sekunden Bilder ausspuckt, ist <strong>handgemachte Kunst mehr wert denn je</strong>: ein echter
+						Moment, festgehalten von einem Menschen – in einem Bild, das jemand nur für dich gezeichnet hat.
 					</p>
 					<p>
 						An Halloween lief eine Frau an meinem Porträt-Stand vorbei und sagte zu ihrer Freundin: „Komm, lass uns zeichnen lassen.
