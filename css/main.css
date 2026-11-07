@@ -1954,3 +1954,19 @@ button.mc-day { cursor: pointer; }
 	background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 52'%3E%3Cpath d='M0 52 L2 30 L4 22 L12 3 Q14 0 16 3 L24 22 L27 30 L30 52 Z M34 52 L37 30 L40 22 L48 3 Q50 0 52 3 L60 22 L62 30 L64 52 Z' fill='%23FBF7F3'/%3E%3Cpath d='M4 22 L12 3 Q14 0 16 3 L24 22 M40 22 L48 3 Q50 0 52 3 L60 22' fill='none' stroke='%23E2D6CE' stroke-width='1' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E") no-repeat center bottom / contain;
 }
 .section--alt:nth-of-type(even)::before { height: 42px; bottom: calc(100% - 24px); }
+
+/* Pay page: checkout-style summary card (js/pay-summary.js). Payment methods sit as faint wordmarks in the background. */
+.pay-summary { position: relative; overflow: hidden; background: #fff; border: 2px solid var(--night); text-align: center; }
+.pay-summary::before { content: "VISA  Mastercard  Apple Pay  Google Pay  PayPal  Maestro  VISA  Mastercard  Apple Pay  Google Pay  PayPal  Bar  VISA  Mastercard  Apple Pay  Google Pay  PayPal  Maestro";
+	position: absolute; inset: -40% -20%; z-index: 0; transform: rotate(-12deg); font: 800 1.5rem/2.1 var(--font-body); letter-spacing: .04em; word-spacing: .8em;
+	color: var(--night); opacity: .05; pointer-events: none; white-space: normal; text-align: center; }
+.pay-summary > * { position: relative; z-index: 1; }
+.pay-summary h2 { justify-content: center; }
+.pay-lines { list-style: none; padding: 0; margin: 0 0 10px; text-align: left; font-size: .95rem; }
+.pay-lines li { display: flex; justify-content: space-between; gap: 12px; padding: 6px 0; border-bottom: 1px dashed var(--line); }
+.pay-summary .pay-total { display: flex; justify-content: space-between; align-items: baseline; text-align: left; margin: 4px 0 8px; }
+.btn--pay { font-size: 1.15rem; padding: 16px 20px; }
+.pay-alt { font-size: .95rem; color: var(--ink-soft); }
+.pay-methods { font-size: .8rem; color: var(--ink-soft); margin: 10px 0 0; }
+/* Pay page: short footer – no full-screen height there */
+.site-footer.site-footer--short { min-height: 0; padding: 28px 0 20px; }

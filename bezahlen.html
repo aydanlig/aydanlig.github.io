@@ -8,6 +8,7 @@
 	<!-- Cookie-free visitor counter (GoatCounter) + click-to-load embeds: see /js/consent.js -->
 	<script src="/js/consent.js" defer></script>
 	<script src="/js/translate.js" defer></script>
+	<script src="/js/pay-summary.js" defer></script>
 
 	<!-- Payment page for in-person portraits. Tip: turn this URL into a QR code for your stand.
 	     "noindex" keeps it out of Google – it's only meant for people standing in front of you. -->
@@ -96,19 +97,18 @@
 					<p class="hint">Findest du, dein Porträt ist mehr wert, als ich verlange? Zahl gern, was es dir wert ist.</p>
 				</div>
 
-				<div class="pay-step pay-step--total">
-					<h2><span>3</span> Bezahlen</h2>
-					<p class="pay-total" aria-live="polite">Gesamt: <strong id="pay-sum">–</strong></p>
+				<div class="pay-step pay-step--total pay-summary">
+					<h2><span>3</span> Zusammenfassung</h2>
+					<ul class="pay-lines" id="pay-lines" hidden></ul>
+					<p class="pay-total" aria-live="polite"><span>Gesamt</span> <strong id="pay-sum">–</strong></p>
 					<p class="pay-tip-line" id="pay-tip-line" hidden>davon Spende: <strong id="pay-tip-sum"></strong> – danke!</p>
 					<p class="hint" id="pay-sum-hint">Wähle oben dein Format – dann siehst du hier den Betrag zum Eintippen.</p>
 					<div class="pay-buttons">
-						<a class="btn" data-pay href="https://pay.sumup.com/b2c/QMYZ8JO7">Mit Karte zahlen (SumUp)</a>
-						<a class="btn btn--ghost" data-pay data-paypal-me="SmileyFoxyPortraitsL" href="https://www.paypal.biz/SmileyFoxyPortraitsL">Mit PayPal zahlen</a>
+						<a class="btn btn--pay" data-pay href="https://pay.sumup.com/b2c/QMYZ8JO7">Jetzt bezahlen</a>
+						<a class="pay-alt" data-pay data-paypal-me="SmileyFoxyPortraitsL" href="https://www.paypal.biz/SmileyFoxyPortraitsL">oder mit PayPal</a>
 					</div>
-					<!-- PayPal: paypal.me/<data-paypal-me>/<total>EUR – opens the PayPal app on phones with the total filled in.
-					     SumUp links can't take an amount, so there the total is copied on tap. -->
 					<p class="pay-copied" id="pay-copied" role="status" hidden></p>
-					<p class="hint">Karte über SumUp hat die geringsten Gebühren, so kommt mehr bei mir an. Bar geht natürlich auch.</p>
+					<p class="pay-methods">Karte · Apple Pay · Google Pay über SumUp – oder einfach bar</p>
 				</div>
 
 				<!-- NEWSLETTER FUNNEL: right after paying – the email field opens Substack with the address already filled in -->
@@ -292,7 +292,7 @@
 	</script>
 
 	<!-- Short footer: legal links are required on every page -->
-	<footer class="site-footer">
+	<footer class="site-footer site-footer--short">
 		<div class="wrap footer-bottom" style="margin-top:0;border-top:0">
 			<span>© SmileyFoxyPortraits · Aydan Lig'on · Berlin</span>
 			<span>

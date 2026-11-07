@@ -8,6 +8,7 @@
 	<!-- ENGLISH VERSION of /bezahlen.html – keep prices in sync (data-price numbers + visible text). -->
 	<script src="/js/consent.js" defer></script>
 	<script src="/js/translate.js" defer></script>
+	<script src="/js/pay-summary.js" defer></script>
 
 	<title>Pay | SmileyFoxyPortraits</title>
 	<meta name="description" content="Pay for your live portrait: PayPal or card via SumUp.">
@@ -89,17 +90,18 @@
 					<p class="hint">Think your portrait is worth more than I'm asking? Feel free to pay what it's worth to you.</p>
 				</div>
 
-				<div class="pay-step pay-step--total">
-					<h2><span>3</span> Pay</h2>
-					<p class="pay-total" aria-live="polite">Total: <strong id="pay-sum">–</strong></p>
+				<div class="pay-step pay-step--total pay-summary">
+					<h2><span>3</span> Summary</h2>
+					<ul class="pay-lines" id="pay-lines" hidden></ul>
+					<p class="pay-total" aria-live="polite"><span>Total</span> <strong id="pay-sum">–</strong></p>
 					<p class="pay-tip-line" id="pay-tip-line" hidden>of which donation: <strong id="pay-tip-sum"></strong> – thank you!</p>
 					<p class="hint" id="pay-sum-hint">Choose your size above – then you'll see the amount to enter here.</p>
 					<div class="pay-buttons">
-						<a class="btn" data-pay href="https://pay.sumup.com/b2c/QMYZ8JO7">Pay by card (SumUp)</a>
-						<a class="btn btn--ghost" data-pay data-paypal-me="SmileyFoxyPortraitsL" href="https://www.paypal.biz/SmileyFoxyPortraitsL">Pay with PayPal</a>
+						<a class="btn btn--pay" data-pay href="https://pay.sumup.com/b2c/QMYZ8JO7">Pay now</a>
+						<a class="pay-alt" data-pay data-paypal-me="SmileyFoxyPortraitsL" href="https://www.paypal.biz/SmileyFoxyPortraitsL">or with PayPal</a>
 					</div>
 					<p class="pay-copied" id="pay-copied" role="status" hidden></p>
-					<p class="hint">Card via SumUp has the lowest fees, so more of it reaches me. Cash is fine too, of course.</p>
+					<p class="pay-methods">Card · Apple Pay · Google Pay via SumUp – or simply cash</p>
 				</div>
 
 				<div class="newsletter-box">
@@ -270,7 +272,7 @@
 		})();
 	</script>
 
-	<footer class="site-footer">
+	<footer class="site-footer site-footer--short">
 		<div class="wrap footer-bottom" style="margin-top:0;border-top:0">
 			<span>© SmileyFoxyPortraits · Aydan Lig'on · Berlin</span>
 			<span>
