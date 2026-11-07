@@ -617,7 +617,7 @@ body.silly-spinning { transform: rotate(360deg); }
 	border: 1px solid var(--line);
 	border-radius: var(--radius);
 	padding: clamp(20px, 4vw, 40px);
-	max-width: 760px;
+	max-width: none; /* forms as wide as the rest of the page */
 	margin: 2em auto 0;
 }
 .section--dark .form-card { color: var(--ink); }
