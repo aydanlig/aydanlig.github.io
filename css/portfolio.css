@@ -1,0 +1,180 @@
+/* =========================================================
+   SmileyFoxyPortraits – portfolio.css  (only used by portfolio.html)
+   Loaded AFTER main.css. Watercolour & ink look for the portfolio:
+   - brush font for the big headings (Caveat Brush, self-hosted, see css/fonts/)
+   - alcohol-ink blooms behind the hero artwork (img/ink/bloom-*.svg)
+   - smeared ink stroke under every series title (img/ink/smear.svg)
+   - art shown BIG and uncropped in a masonry wall (whole picture, no cut-off heads)
+   ========================================================= */
+
+@font-face {
+	font-family: "Ink Brush";
+	src: url("/css/fonts/caveat-brush-latin.woff2") format("woff2");
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+
+.pf-page {
+	--font-ink: "Ink Brush", "Segoe Print", "Bradley Hand", var(--font-head);
+	--teal: #1F8A8A;
+	--rose: #E0457B;
+	background-image: url("/img/ink/paper.svg");
+}
+
+.pf-page .wrap--wide { max-width: 1400px; }
+
+/* ---------- Headings in brush ink ---------- */
+.pf-page h1, .pf-page h2 {
+	font-family: var(--font-ink);
+	font-weight: 400;
+	letter-spacing: 0.01em;
+	text-shadow: 0.4px 0.6px 1.2px rgba(26, 22, 21, 0.28);
+}
+.pf-page h2 { font-size: clamp(2.4rem, 5vw, 3.6rem); line-height: 1.02; margin-bottom: 0.15em; }
+.pf-page .section--dark h2 { text-shadow: 0 0 8px rgba(255, 107, 53, 0.25); }
+
+/* smeared ink stroke under the series titles */
+.pf-title { position: relative; display: inline-block; padding-bottom: 0.18em; }
+.pf-title::after {
+	content: ""; position: absolute; left: -0.1em; right: -0.25em; bottom: -0.05em; height: 0.28em;
+	background: url("/img/ink/smear.svg") no-repeat center / 100% 100%; opacity: 0.85; pointer-events: none;
+}
+.section--dark .pf-title::after { filter: invert(1) sepia(1) saturate(4) hue-rotate(-20deg) brightness(1.05); opacity: 0.7; }
+
+.pf-page .eyebrow { font-family: var(--font-ink); font-size: 1.5rem; font-weight: 400; letter-spacing: 0.02em; text-transform: none; transform: rotate(-2deg); transform-origin: left center; display: inline-block; }
+
+/* ---------- INTRO: name + short text left, one big artwork right ---------- */
+.pf-hero { position: relative; overflow: hidden; padding: clamp(32px, 5vw, 72px) 0 clamp(40px, 6vw, 80px); }
+.pf-hero .wrap { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: clamp(28px, 5vw, 72px); align-items: center; }
+.pf-hero h1 { font-size: clamp(3.4rem, 9vw, 7rem); line-height: 0.9; margin: 0.05em 0 0.25em; }
+.pf-hero h1 small { display: block; font-family: var(--font-body); font-size: 1rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-soft); margin-top: 0.9em; text-shadow: none; hyphens: none; }
+.pf-lead { font-size: clamp(1.1rem, 1.6vw, 1.3rem); max-width: 34em; }
+.pf-lead strong { background: url("/img/ink/wash.svg") no-repeat 0 85% / 100% 55%; padding: 0 0.1em; }
+
+/* the artwork with alcohol-ink blooms bleeding out behind it */
+.pf-hero-art { position: relative; justify-self: center; width: min(100%, 560px); }
+.pf-hero-art::before, .pf-hero-art::after {
+	content: ""; position: absolute; z-index: 0; pointer-events: none; background: no-repeat center / contain;
+}
+.pf-hero-art::before { width: 78%; aspect-ratio: 1; left: -22%; top: -14%; background-image: url("/img/ink/bloom-cool.svg"); opacity: 0.75; }
+.pf-hero-art::after { width: 70%; aspect-ratio: 1; right: -20%; bottom: -16%; background-image: url("/img/ink/bloom-warm.svg"); opacity: 0.8; }
+.pf-hero-art a { position: relative; z-index: 1; display: block; }
+.pf-hero-art img { width: 100%; border-radius: 6px; transform: rotate(1.2deg); box-shadow: 0 2px 0 rgba(26, 22, 21, 0.9), 0 26px 50px -18px rgba(26, 22, 21, 0.55); }
+.pf-hero-art figcaption { position: relative; z-index: 1; width: fit-content; margin: 16px 0 0 auto; padding: 0.1em 0.7em; border-radius: 999px; background: rgba(242, 234, 228, 0.9); font-family: var(--font-ink); font-size: 1.3rem; color: var(--ink); }
+
+/* jump links to the series */
+.pf-jump { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; margin: 1.6em 0 0; }
+.pf-jump a { display: inline-block; padding: 0.4em 0.95em; border: 1.5px solid var(--ink); border-radius: 16px 22px 14px 24px / 22px 12px 24px 14px; color: var(--ink); text-decoration: none; font-weight: 600; font-size: 0.95rem; background: var(--card); transition: background .2s, color .2s, transform .2s; }
+.pf-jump a:hover { background: var(--ink); color: var(--paper); transform: rotate(-1.5deg); }
+
+/* ---------- SERIES ---------- */
+.pf-series { padding: clamp(48px, 7vw, 88px) 0; position: relative; }
+.pf-series-head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 6px 28px; margin-bottom: 1.4em; }
+.pf-series-head p { margin: 0; max-width: 34em; color: var(--ink-soft); }
+.section--dark .pf-series-head p { color: #E7DCE1; }
+
+/* masonry wall: every picture complete, in its own shape */
+.pf-wall { columns: 3 300px; column-gap: clamp(14px, 1.8vw, 24px); }
+.pf-wall--big { columns: 2 380px; }
+/* with JavaScript (js/masonry.js): balanced columns instead of CSS columns */
+.pf-wall.pf-masonry { columns: auto; display: flex; align-items: flex-start; gap: clamp(14px, 1.8vw, 24px); }
+.pf-col { flex: 1 1 0; min-width: 0; }
+.pf-wall a {
+	position: relative; display: block; break-inside: avoid; margin-bottom: clamp(14px, 1.8vw, 24px);
+	border-radius: 6px; overflow: hidden; background: #1A1615;
+	box-shadow: 0 1px 0 rgba(26, 22, 21, 0.6), 0 14px 30px -16px rgba(26, 22, 21, 0.55);
+	transition: transform .25s ease, box-shadow .25s ease;
+}
+.pf-wall a:nth-child(3n+1) { transform: rotate(-0.4deg); }
+.pf-wall a:nth-child(3n+2) { transform: rotate(0.35deg); }
+.pf-wall a:hover { transform: translateY(-3px) rotate(0deg); box-shadow: 0 1px 0 rgba(26, 22, 21, 0.6), 0 22px 40px -16px rgba(26, 22, 21, 0.6); }
+.pf-wall img { width: 100%; height: auto; }
+.pf-wall a > span {
+	position: absolute; left: 10px; bottom: 10px; max-width: calc(100% - 20px);
+	padding: 0.2em 0.7em; border-radius: 999px; background: rgba(15, 12, 17, 0.72); color: #FBF3EA;
+	font-size: 0.82rem; font-weight: 600; opacity: 0; transform: translateY(4px); transition: opacity .2s, transform .2s;
+}
+.pf-wall a:hover > span, .pf-wall a:focus-visible > span { opacity: 1; transform: none; }
+@media (hover: none) { .pf-wall a > span { opacity: 1; transform: none; } }
+
+/* "Mehr ansehen": hidden extra pictures (all visible without JavaScript) */
+.pf-js .pf-wall:not(.show-all) .more-item { display: none; }
+.pf-more { text-align: center; margin-top: 0.6em; }
+.pf-more-btn { font: inherit; font-weight: 700; cursor: pointer; padding: 0.7em 1.5em; border: 2px solid currentColor; border-radius: 16px 22px 14px 24px / 22px 12px 24px 14px; background: transparent; color: inherit; transition: background .2s, color .2s; }
+.pf-more-btn:hover { background: var(--fox); border-color: var(--fox); color: var(--night); }
+.pf-link { text-align: center; margin: 1em 0 0; }
+.section--dark .pf-link a { color: var(--fox); }
+
+/* a watercolour bloom peeking into some sections */
+.pf-bloom { overflow: hidden; }
+.pf-bloom::before { content: ""; position: absolute; width: min(46vw, 520px); aspect-ratio: 1; right: -12vw; top: -10%; background: url("/img/ink/bloom-plum.svg") no-repeat center / contain; opacity: 0.25; pointer-events: none; }
+.pf-bloom > .wrap { position: relative; }
+
+/* ---------- FILMS (6 reels, Instagram loads only after a click – js/consent.js) ---------- */
+.films { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(20px, 3vw, 40px); margin: 1.6em 0 1.4em; }
+.film h3 { color: #FBF3EA; margin: 14px 0 6px; font-size: 1.2rem; }
+.film p { color: #E7DCE1; font-size: 0.96rem; margin-bottom: 0.5em; }
+.film > a { color: var(--fox); font-weight: 700; }
+.film-play { position: relative; display: block; width: 100%; aspect-ratio: 9 / 16; max-height: 620px; padding: 0; border: 0; border-radius: 10px; overflow: hidden; cursor: pointer; background: #000; }
+.film-play img { width: 100%; height: 100%; object-fit: cover; transition: transform .3s ease, opacity .3s ease; opacity: 0.9; }
+.film-play--wide img { object-fit: contain; }
+.film-play:hover img { transform: scale(1.04); opacity: 1; }
+.film-icon { position: absolute; left: 50%; top: 50%; width: 72px; height: 72px; translate: -50% -50%; border-radius: 50%; background: var(--fox); box-shadow: 0 10px 24px rgba(0, 0, 0, .35); }
+.film-icon::before { content: ""; position: absolute; left: 29px; top: 22px; border-left: 22px solid var(--night); border-top: 14px solid transparent; border-bottom: 14px solid transparent; }
+.film iframe { max-height: 760px; }
+@media (max-width: 900px) { .films { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) {
+	.films { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px 12px; }
+	.film h3 { font-size: 1rem; }
+	.film p { font-size: 0.85rem; }
+	.film > a { font-size: 0.85rem; }
+	.film-icon { width: 54px; height: 54px; }
+	.film-icon::before { left: 21px; top: 16px; border-left-width: 17px; border-top-width: 11px; border-bottom-width: 11px; }
+}
+
+/* ---------- REFERENCES (newest first) ---------- */
+.pf-refs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(18px, 2.4vw, 32px); }
+.pf-ref { background: var(--card); border: 1px solid var(--line); border-radius: 22px 10px 26px 12px / 12px 24px 10px 26px; overflow: hidden; display: flex; flex-direction: column; }
+.pf-ref img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; }
+.pf-ref div { padding: 18px 20px 22px; display: flex; flex-direction: column; gap: 0.4em; flex: 1; }
+.pf-ref small { color: var(--accent); font-weight: 700; letter-spacing: 0.03em; text-transform: uppercase; font-size: 0.78rem; }
+.pf-ref h3 { margin: 0; font-size: 1.3rem; }
+.pf-ref p { margin: 0; font-size: 0.98rem; }
+.pf-ref a.btn { align-self: flex-start; margin-top: auto; }
+.pf-moments { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; margin-top: 1.4em; }
+.pf-moments a { display: block; border-radius: 8px; overflow: hidden; aspect-ratio: 3 / 4; background: #1A1615; }
+.pf-moments img { width: 100%; height: 100%; object-fit: cover; transition: transform .3s; }
+.pf-moments a:hover img { transform: scale(1.04); }
+@media (max-width: 900px) { .pf-refs { grid-template-columns: 1fr; max-width: 620px; } .pf-moments { grid-template-columns: repeat(3, minmax(0, 1fr)); } .pf-moments a:nth-child(n+4) { display: none; } }
+
+/* ---------- MARKET STAND (for applications) ---------- */
+.pf-stand { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: clamp(24px, 4vw, 56px); align-items: start; }
+.pf-stand .facts { margin-top: 0; grid-template-columns: 1fr 1fr; }
+.pf-stand .pf-wall { columns: 2 200px; }
+
+/* ---------- Phones ---------- */
+@media (max-width: 820px) {
+	.pf-hero .wrap { grid-template-columns: 1fr; }
+	.pf-hero-art { width: min(100%, 460px); }
+	.pf-stand { grid-template-columns: 1fr; }
+}
+@media (max-width: 560px) {
+	.pf-wall { columns: 2 140px; column-gap: 10px; }
+	.pf-wall a { margin-bottom: 10px; }
+	.pf-wall.pf-masonry { gap: 10px; }
+	.pf-wall--big { columns: 1; }
+	.pf-wall a > span { font-size: 0.72rem; left: 6px; bottom: 6px; }
+	.pf-stand .facts { grid-template-columns: 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.pf-wall a, .pf-wall a:nth-child(n) { transform: none; transition: none; }
+}
+
+@media print {
+	.pf-page { background-image: none; }
+	.pf-hero-art::before, .pf-hero-art::after, .pf-bloom::before, #filme, .pf-more { display: none !important; }
+	.pf-wall .more-item { display: none !important; }
+	.pf-wall a { box-shadow: none; transform: none !important; }
+}
