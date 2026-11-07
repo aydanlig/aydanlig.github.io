@@ -116,3 +116,5 @@ h3.kk-title { font-size: clamp(1.35rem, 2.6vw, 1.75rem); }
 .live-stats { grid-template-columns: repeat(5, 1fr); }
 .live-stats li:nth-child(5) { background: #FFF1C9; }
 @media (max-width: 700px) { .live-stats { grid-template-columns: repeat(2, 1fr); } .live-stats li:last-child { grid-column: 1 / -1; } }
+
+.kk-media .checks { margin-top: 1.4em; }
