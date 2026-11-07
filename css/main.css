@@ -2054,3 +2054,20 @@ details[open] > :not(summary) { animation: fade-down 0.25s ease-out; }
 	.nav-more-menu, details[open] > :not(summary) { animation: none; }
 	.card, .card:active { transition: none; transform: none; }
 }
+
+/* ---------- Apple-style polish, round 3 (site-wide) ---------- */
+/* links: underline sits a little lower and thinner, so it doesn't cut through letters */
+a { text-decoration-thickness: 1px; text-underline-offset: 0.18em; transition: color 0.15s ease; }
+/* prices: digits line up; long prices (e.g. "+100 % des Bildpreises") may wrap instead of pushing off-screen */
+.price-list strong { font-variant-numeric: tabular-nums; white-space: normal; text-align: right; min-width: 4.5em; }
+/* gallery tiles: gentle zoom on hover, press-down on tap */
+.gallery-grid a img { transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1); }
+@media (hover: hover) { .gallery-grid a:hover img { transform: scale(1.03); } }
+.gallery-grid a:active { transform: scale(0.98); transition: transform 80ms ease-out; }
+/* FAQ questions: clear hover/press feedback */
+.faq summary { transition: color 0.15s ease; }
+.faq summary:hover { color: var(--accent); }
+.faq summary:active { opacity: 0.7; }
+/* text selection in brand colour */
+::selection { background: rgba(226, 84, 27, 0.22); }
+@media (prefers-reduced-motion: reduce) { .gallery-grid a img, .gallery-grid a:active { transition: none; transform: none; } }
