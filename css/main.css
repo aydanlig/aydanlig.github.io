@@ -1713,3 +1713,6 @@ h1, h2, h3 { overflow-wrap: break-word; hyphens: auto; }
 .intro-photo figcaption { margin-top: 14px; padding-left: 14px; border-left: 3px solid var(--fox); font-family: var(--font-head); font-size: 1.02rem; line-height: 1.5; color: var(--ink); }
 .split--top { align-items: start; }
 @media (max-width: 900px) { .intro-photo img { max-height: 420px; } }
+
+/* Haltung: short bold highlights inside the text (the <strong> is the item title) */
+.stance b { font-weight: 700; color: var(--ink); }
