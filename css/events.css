@@ -106,3 +106,9 @@ h3.kk-title { font-size: clamp(1.35rem, 2.6vw, 1.75rem); }
 .live-stats li:nth-child(4) { background: #E3F0DC; }
 .live-stats strong { font-size: 1.5rem; color: var(--ink); white-space: nowrap; }
 .live-stats span { font-size: 0.8rem; color: var(--ink); opacity: .75; }
+
+/* Packages: short titles, room for the "gebucht" badge on every card, so title + price sit at the same height in all three */
+#pakete .card { padding-top: 52px; }
+#pakete .card-count { left: 18px; right: auto; max-width: calc(100% - 36px); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+#pakete .card h3 { white-space: nowrap; margin-top: 0; }
+#pakete .card .price { min-height: 1.6em; }
