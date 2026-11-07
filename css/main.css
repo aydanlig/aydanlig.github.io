@@ -2026,3 +2026,31 @@ h2 { letter-spacing: -0.012em; line-height: 1.12; }
 	.btn:active, .btn-portfolio:active, button:active, .btn:hover { transform: none; }
 	.btn-portfolio b, .btn-portfolio::after { animation: none; }
 }
+
+/* ---------- Apple-style polish, round 2 ---------- */
+/* anchor jumps land below the sticky header instead of under it */
+:target, section[id], [id].anchor { scroll-margin-top: 90px; }
+/* type: balanced headings, no lonely last words in paragraphs, optical sizing */
+h1, h2, h3 { text-wrap: balance; font-optical-sizing: auto; }
+p, li { text-wrap: pretty; }
+/* cards: springy lift on hover, press-down on click (critically-damped feel, no bounce) */
+.card { transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1); }
+.card:active { transform: translateY(-1px) scale(0.99); transition-duration: 80ms; }
+/* phones: no "stuck" hover lifts after a tap; hover effects only where a real mouse exists */
+@media (hover: none) { .card:hover, .btn:hover { transform: none; } }
+/* keyboard users: a clear, soft focus ring everywhere (mouse clicks stay ring-free) */
+:focus-visible { outline: 2px solid var(--fox); outline-offset: 3px; border-radius: 6px; }
+/* forms: soft glow on focus, inline error only after the user touched the field */
+.field input, .field select, .field textarea { transition: box-shadow 0.2s ease, border-color 0.2s ease; }
+.field input:focus, .field select:focus, .field textarea:focus { outline: none; box-shadow: 0 0 0 4px rgba(226, 84, 27, 0.18); }
+.field input:user-invalid, .field textarea:user-invalid { border-color: #C2410C; box-shadow: 0 0 0 4px rgba(194, 65, 12, 0.12); }
+/* dropdown menu grows out of its button (origin anchored to the trigger) */
+.nav-more-menu { transform-origin: top right; animation: menu-in 0.22s cubic-bezier(0.22, 1, 0.36, 1); }
+@keyframes menu-in { from { opacity: 0; transform: scale(0.96) translateY(-4px); } }
+/* FAQ / collapsibles: open with a gentle fade instead of a jump */
+details[open] > :not(summary) { animation: fade-down 0.25s ease-out; }
+@keyframes fade-down { from { opacity: 0; transform: translateY(-4px); } }
+@media (prefers-reduced-motion: reduce) {
+	.nav-more-menu, details[open] > :not(summary) { animation: none; }
+	.card, .card:active { transition: none; transform: none; }
+}
