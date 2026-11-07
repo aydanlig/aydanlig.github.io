@@ -62,6 +62,17 @@
 					form.setAttribute('data-sending', '');
 					form.querySelectorAll('[type="submit"]').forEach(function (b) { b.disabled = true; });
 					showWaitPopup();
+					// formsubmit.co sometimes hangs: after 45 s still on this page -> offer a way out instead of an endless spinner
+					setTimeout(function () {
+						var box = document.getElementById('wait-popup');
+						if (!box) return;
+						var span = box.querySelector('span');
+						if (span) span.innerHTML = EN
+							? 'This is taking unusually long. Please wait a little more – or write to me directly: <a href="mailto:aydan@smileyfoxyportraits.com">aydan@smileyfoxyportraits.com</a>. <button type="button" data-wait-close style="margin-top:12px;display:block;width:100%;padding:10px;border-radius:12px;border:2px solid #1A1615;background:#fff;font:inherit;cursor:pointer">Back to the form</button>'
+							: 'Das dauert ungewöhnlich lange. Bitte warte noch kurz – oder schreib mir direkt: <a href="mailto:aydan@smileyfoxyportraits.com">aydan@smileyfoxyportraits.com</a>. <button type="button" data-wait-close style="margin-top:12px;display:block;width:100%;padding:10px;border-radius:12px;border:2px solid #1A1615;background:#fff;font:inherit;cursor:pointer">Zurück zum Formular</button>';
+						var close = box.querySelector('[data-wait-close]');
+						if (close) close.addEventListener('click', hideWaitPopup);
+					}, 45000);
 				}, 0);
 			});
 		});
