@@ -88,3 +88,18 @@
 .order-quick input { accent-color: var(--accent); width: 16px; height: 16px; }
 @media (max-width: 860px) { .order-quick { display: none; } }
 .live-instead { padding: 8px 12px; }
+
+/* Extras in the price section: folded, the summary names only the popular ones */
+details.extras-box > summary { cursor: pointer; list-style: none; display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; }
+details.extras-box > summary::-webkit-details-marker { display: none; }
+.extras-sum-title { font-family: var(--font-display, inherit); font-size: 1.3rem; font-weight: 700; }
+.extras-pop { color: var(--ink-soft); font-size: 0.95rem; }
+.extras-more { margin-left: auto; color: var(--accent); font-weight: 700; font-size: 0.95rem; white-space: nowrap; }
+details.extras-box[open] .extras-more { visibility: hidden; }
+details.extras-box[open] > summary { margin-bottom: 0.8em; }
+/* Usage rights in the order form: folded, private is the default */
+.order-rights > summary { cursor: pointer; list-style: none; }
+.order-rights > summary::-webkit-details-marker { display: none; }
+.order-rights > summary::after { content: " ▾"; color: var(--accent); }
+.order-rights[open] > summary::after { content: " ▴"; }
+.order-rights > label { display: block; }

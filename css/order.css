@@ -177,3 +177,9 @@
 .order-now { display: flex; justify-content: space-between; align-items: baseline; margin: 10px 0 0; padding-top: 8px;
 	border-top: 1px solid rgba(242, 234, 228, 0.3); font-weight: 700; }
 .order-now strong { color: var(--fox); font-size: 1.25rem; }
+
+/* Required field still missing after "order & pay": red outline so it's easy to spot */
+.order input.is-missing:not([type="radio"]):not([type="checkbox"]), .order select.is-missing, .order textarea.is-missing { border-color: #D7263D !important; box-shadow: 0 0 0 3px rgba(215, 38, 61, .18); }
+.order input[type="checkbox"].is-missing, .order input[type="radio"].is-missing { outline: 2px solid #D7263D; outline-offset: 2px; accent-color: #D7263D; }
+.order label.is-missing { color: #B3122A; }
+.order label.order-card.is-missing .order-card-body { border-color: #D7263D !important; box-shadow: 0 0 0 3px rgba(215, 38, 61, .15); }

@@ -11,6 +11,17 @@
 	'use strict';
 
 	document.addEventListener('DOMContentLoaded', function () {
+		// "Collapse" buttons at the bottom of an opened <details> fold it again and jump back to where it started
+		document.querySelectorAll('[data-collapse]').forEach(function (btn) {
+			btn.addEventListener('click', function () {
+				var d = btn.closest('details');
+				if (!d) return;
+				d.open = false;
+				var top = d.getBoundingClientRect().top + window.pageYOffset - 120;
+				window.scrollTo({ top: top, behavior: 'smooth' });
+			});
+		});
+
 		var galleries = document.querySelectorAll('[data-lightbox]');
 		if (!galleries.length) return;
 

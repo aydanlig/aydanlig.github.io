@@ -8,7 +8,6 @@
 	<!-- ENGLISH VERSION of /commission.html – keep both in sync when prices or texts change.
 	     Form field names (name="…") stay German on purpose, so order e-mails look the same in both languages. -->
 	<script src="/js/consent.js" defer></script>
-	<script src="/js/splashes.js" defer></script>
 	<script src="/js/mail-reveal.js" defer></script>
 	<script src="/js/translate.js" defer></script>
 	<script src="/js/termine.js" defer></script>
@@ -235,8 +234,8 @@
 				</p>
 
 				<!-- EXTRAS (add-ons), grouped – change the prices here AND in the form below (and on /commission.html) -->
-				<div class="extras-box">
-					<h3>Extras</h3>
+				<details class="extras-box">
+					<summary><span class="extras-sum-title">Extras</span> <span class="extras-pop">Popular: extra person · colourful watercolour background · gold ink · frame · express</span> <span class="extras-more">All extras &amp; prices ▾</span></summary>
 					<div class="extras-groups">
 						<div>
 							<h4>More in the picture</h4>
@@ -281,7 +280,7 @@
 						</div>
 					</div>
 					<p class="hint extras-live"><strong>Live at your place?</strong> Home, office or favourite spot – surcharge by arrangement. <a href="#live-termin" style="white-space: nowrap">Request a date →</a></p>
-				</div>
+				</details>
 				<details class="terms">
 					<summary>Discount card, shipping &amp; terms</summary>
 					<p><strong>Discount card:</strong> Did you get a card from me in person? Then you get €5 off every portrait
@@ -448,18 +447,18 @@
 								<p class="order-label">All-round treatment</p>
 								<div class="order-pills order-tiers">
 									<label><input type="radio" name="Rundum-Behandlung" value="Keine" checked> None</label>
-									<label><input type="radio" name="Rundum-Behandlung" value="Queen (+100 €)" data-extra data-price="100" data-label="Queen treatment" data-tier-info="Queen: I paint your picture tailored to your story, after a short talk. You get progress photos and an art purchase certificate."> Queen +€100</label>
-									<label><input type="radio" name="Rundum-Behandlung" value="Majesty (+1.000 €)" data-extra data-price="1000" data-label="Majesty treatment" data-tier-info="Majesty: everything from Queen, plus a hand-picked size that fits your home, a frame I build by hand with my grandpa (a carpenter) and a making-of folder with an art purchase certificate."> Majesty +€1,000</label>
-									<label><input type="radio" name="Rundum-Behandlung" value="Godlike (+2.000 €)" data-extra data-price="2000" data-label="Godlike treatment" data-tier-info="Godlike: everything from Majesty, plus I rent a studio just for your project, use the best materials, we do several sessions and you get all the preparatory sketches."> Godlike +€2,000</label>
+									<label><input type="radio" name="Rundum-Behandlung" value="Queen (+100 €)" data-extra data-price="100" data-label="Queen treatment" data-tier-info="Queen: I paint your picture tailored to your story, after a short talk. You get progress photos and an art purchase certificate."> Queen +€100 <span class="info" tabindex="0" data-tip="Queen: I paint your picture tailored to your story, after a short talk. You get progress photos and an art purchase certificate.">?</span></label>
+									<label><input type="radio" name="Rundum-Behandlung" value="Majesty (+1.000 €)" data-extra data-price="1000" data-label="Majesty treatment" data-tier-info="Majesty: everything from Queen, plus a hand-picked size that fits your home, a frame I build by hand with my grandpa (a carpenter) and a making-of folder with an art purchase certificate."> Majesty +€1,000 <span class="info" tabindex="0" data-tip="Majesty: everything from Queen, plus a hand-picked size that fits your home, a frame I build by hand with my grandpa (a carpenter) and a making-of folder with an art purchase certificate.">?</span></label>
+									<label><input type="radio" name="Rundum-Behandlung" value="Godlike (+2.000 €)" data-extra data-price="2000" data-label="Godlike treatment" data-tier-info="Godlike: everything from Majesty, plus I rent a studio just for your project, use the best materials, we do several sessions and you get all the preparatory sketches."> Godlike +€2,000 <span class="info" tabindex="0" data-tip="Godlike: everything from Majesty, plus I rent a studio just for your project, use the best materials, we do several sessions and you get all the preparatory sketches.">?</span></label>
 								</div>
 								<p class="tier-info" data-tier-box hidden></p>
 
-								<div class="order-q">
-									<p class="order-label">How will the picture be used?</p>
+								<details class="order-q order-rights">
+									<summary class="order-label">Using it for advertising or a business? <span class="hint">(private use is included)</span></summary>
 									<label><input type="radio" name="Bildrechte Nutzung" value="Privat" checked> Private</label>
 									<label><input type="radio" name="Bildrechte Nutzung" value="Werbung, mit Namensnennung (+150 €)" data-extra data-price="150" data-label="Image rights for advertising, with name credit"> Advertising, with name credit +€150</label>
 									<label><input type="radio" name="Bildrechte Nutzung" value="Total Buyout (+400 €)" data-extra data-price="400" data-label="Total buyout"> Total buyout, no name credit +€400</label>
-								</div>
+								</details>
 
 								<div class="form-grid">
 									<div class="field">

@@ -290,7 +290,7 @@
 	function valid(step, quiet) {
 		var fields = $$('input, select, textarea', step).filter(function (f) { return !f.closest('[hidden]:not([data-step])') && f.willValidate; });
 		for (var k = 0; k < fields.length; k++) {
-			if (!fields[k].checkValidity()) { if (!quiet) fields[k].reportValidity(); return false; }
+			if (!fields[k].checkValidity()) { if (!quiet) flag(fields[k], step); return false; }
 		}
 		if (step.hasAttribute('data-photo-step') && !photos.length && hasDataTransfer) {
 			if (quiet) return false;
@@ -300,6 +300,31 @@
 		}
 		return true;
 	}
+
+	// A missing field: turn it (and every other empty required field in this step) red and scroll it to the middle of the screen
+	function flag(field, step) {
+		$$('input, select, textarea', step).forEach(function (f) {
+			if (f.willValidate && !f.checkValidity()) mark(f, true);
+		});
+		var box = field.closest('label, .order-card') || field;
+		var r = box.getBoundingClientRect();
+		window.scrollTo({ top: Math.max(0, r.top + window.pageYOffset - window.innerHeight / 2 + r.height / 2), behavior: 'smooth' });
+		setTimeout(function () { field.focus({ preventScroll: true }); field.reportValidity(); }, 350);
+	}
+	function mark(f, on) {
+		var group = f.type === 'radio' ? $$('[name="' + f.name + '"]', form) : [f];
+		group.forEach(function (g) {
+			g.classList.toggle('is-missing', on);
+			var l = g.closest('label');
+			if (l) l.classList.toggle('is-missing', on);
+		});
+	}
+	function unmark(e) {
+		var t = e.target;
+		if (t.classList && t.classList.contains('is-missing') && t.checkValidity()) mark(t, false);
+	}
+	form.addEventListener('change', unmark);
+	form.addEventListener('input', unmark);
 
 	/* ---------------- photos ----------------
 	   One friendly drop zone (no name = not sent itself). Photos are shrunk in the browser
@@ -388,7 +413,7 @@
 	/* ---------------- sending ---------------- */
 	form.addEventListener('submit', function (e) {
 		for (var k = 0; k < steps.length; k++) {
-			if (!valid(steps[k], true)) { e.preventDefault(); go(k, true); valid(steps[k]); return; }
+			if (!valid(steps[k], true)) { e.preventDefault(); go(k, false); valid(steps[k]); return; }
 		}
 		// photos still being shrunk: wait for them, otherwise the full-size originals get uploaded
 		var pending = photos.filter(function (p) { return !p.done; });

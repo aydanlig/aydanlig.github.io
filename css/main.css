@@ -1812,3 +1812,25 @@ h1, h2, h3 { overflow-wrap: break-word; }
 .chip { white-space: nowrap; }
 @media (max-width: 400px) { .chip { font-size: 0.85rem; padding: 10px 6px; } }
 .extras-list li > strong, .price-list li > strong, .extras li > strong { white-space: nowrap; }
+
+/* Gallery folds: once open, the "see more" pill disappears and a collapse button sits at the bottom */
+.gallery-more[open] > summary { display: none; }
+.gm-collapse { margin-top: 1.2em; padding: 10px 22px; border: 2px solid currentColor; border-radius: 999px; background: var(--paper); color: var(--accent); font: inherit; font-weight: 700; cursor: pointer; }
+.gm-collapse:hover { background: var(--card); }
+.concert-more { margin-top: 1.6em; }
+.concert-more .gm-pill { margin-top: 0; }
+/* Offer cards: the pilot badge sits on the picture so all three card titles line up */
+.card-media { position: relative; }
+.card-media .card-badge { position: absolute; left: 10px; bottom: 10px; margin: 0; box-shadow: 0 2px 8px rgba(0,0,0,.18); }
+/* "For the curious": my view on handmade art, folded away */
+.curious-more { margin-top: 18px; border: 1px solid var(--line, rgba(0,0,0,.12)); border-radius: 14px; background: var(--card); padding: 14px 18px; }
+.curious-more > summary { cursor: pointer; font-weight: 700; list-style: none; }
+.curious-more > summary::-webkit-details-marker { display: none; }
+.curious-more > summary::after { content: " ▾"; color: var(--accent); }
+.curious-more[open] > summary::after { content: " ▴"; }
+.curious-more .prose { margin-top: 12px; max-width: 70ch; }
+.curious-more .big-quote { font-size: 1.15rem; }
+.card .card-media { margin-bottom: 18px; }
+.card .card-media .ph-img { margin-bottom: 0; display: block; }
+/* Paint splashes switched off (Nov 2026) – js/splashes.js is no longer loaded */
+.splash-layer { display: none !important; }

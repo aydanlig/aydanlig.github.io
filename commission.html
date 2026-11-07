@@ -7,7 +7,6 @@
 
 	<!-- Cookie-free visitor counter (GoatCounter) + click-to-load embeds: see /js/consent.js -->
 	<script src="/js/consent.js" defer></script>
-	<script src="/js/splashes.js" defer></script>
 	<script src="/js/mail-reveal.js" defer></script>
 	<script src="/js/translate.js" defer></script>
 	<script src="/js/termine.js" defer></script>
@@ -252,8 +251,8 @@
 
 				<!-- EXTRAS (add-ons), grouped so they are quick to scan.
 				     Change a price here AND in the "Extras" / "Rahmen" fields of the form below (same order there). -->
-				<div class="extras-box">
-					<h3>Extras</h3>
+				<details class="extras-box">
+					<summary><span class="extras-sum-title">Extras</span> <span class="extras-pop">Beliebt: weitere Person · bunter Aquarell-Hintergrund · Goldtinte · Rahmen · Express</span> <span class="extras-more">Alle Extras &amp; Preise ▾</span></summary>
 					<div class="extras-groups">
 						<div>
 							<h4>Mehr auf dem Bild</h4>
@@ -300,7 +299,7 @@
 					</div>
 					<!-- Live at the customer's place: surcharge on purpose not shown (depends on distance etc.) -->
 					<p class="hint extras-live"><strong>Live bei dir?</strong> Zuhause, im Büro oder am Lieblingsort – Aufpreis nach Absprache. <a href="#live-termin" style="white-space: nowrap">Termin anfragen →</a></p>
-				</div>
+				</details>
 				<details class="terms">
 					<summary>Rabattkarte, Versand &amp; Bedingungen</summary>
 					<p><strong>Rabattkarte:</strong> Du hast persönlich eine Karte von mir bekommen? Dann erhältst du 5 € Rabatt auf jedes Porträt
@@ -470,18 +469,18 @@
 								<p class="order-label">Rundum-Behandlung</p>
 								<div class="order-pills order-tiers">
 									<label><input type="radio" name="Rundum-Behandlung" value="Keine" checked> Keine</label>
-									<label><input type="radio" name="Rundum-Behandlung" value="Queen (+100 €)" data-extra data-price="100" data-label="Queen-Behandlung" data-tier-info="Queen: Ich male dein Bild zugeschnitten auf deine Geschichte, nach einem kurzen Gespräch. Du bekommst Fortschrittsfotos und ein Kunstkauf-Zertifikat."> Queen +100 €</label>
-									<label><input type="radio" name="Rundum-Behandlung" value="Majesty (+1.000 €)" data-extra data-price="1000" data-label="Majesty-Behandlung" data-tier-info="Majesty: alles von Queen, dazu eine handverlesene Größe, die zu deinem Zuhause passt, ein Rahmen, den ich mit meinem Opa (Tischler) von Hand baue, und ein Making-of-Hefter mit Kunstkauf-Zertifikat."> Majesty +1.000 €</label>
-									<label><input type="radio" name="Rundum-Behandlung" value="Godlike (+2.000 €)" data-extra data-price="2000" data-label="Godlike-Behandlung" data-tier-info="Godlike: alles von Majesty, dazu miete ich ein Studio nur für dein Projekt, nehme die besten Materialien, wir machen mehrere Sitzungen und du bekommst alle Vorskizzen dazu."> Godlike +2.000 €</label>
+									<label><input type="radio" name="Rundum-Behandlung" value="Queen (+100 €)" data-extra data-price="100" data-label="Queen-Behandlung" data-tier-info="Queen: Ich male dein Bild zugeschnitten auf deine Geschichte, nach einem kurzen Gespräch. Du bekommst Fortschrittsfotos und ein Kunstkauf-Zertifikat."> Queen +100 € <span class="info" tabindex="0" data-tip="Queen: Ich male dein Bild zugeschnitten auf deine Geschichte, nach einem kurzen Gespräch. Du bekommst Fortschrittsfotos und ein Kunstkauf-Zertifikat.">?</span></label>
+									<label><input type="radio" name="Rundum-Behandlung" value="Majesty (+1.000 €)" data-extra data-price="1000" data-label="Majesty-Behandlung" data-tier-info="Majesty: alles von Queen, dazu eine handverlesene Größe, die zu deinem Zuhause passt, ein Rahmen, den ich mit meinem Opa (Tischler) von Hand baue, und ein Making-of-Hefter mit Kunstkauf-Zertifikat."> Majesty +1.000 € <span class="info" tabindex="0" data-tip="Majesty: alles von Queen, dazu eine handverlesene Größe, die zu deinem Zuhause passt, ein Rahmen, den ich mit meinem Opa (Tischler) von Hand baue, und ein Making-of-Hefter mit Kunstkauf-Zertifikat.">?</span></label>
+									<label><input type="radio" name="Rundum-Behandlung" value="Godlike (+2.000 €)" data-extra data-price="2000" data-label="Godlike-Behandlung" data-tier-info="Godlike: alles von Majesty, dazu miete ich ein Studio nur für dein Projekt, nehme die besten Materialien, wir machen mehrere Sitzungen und du bekommst alle Vorskizzen dazu."> Godlike +2.000 € <span class="info" tabindex="0" data-tip="Godlike: alles von Majesty, dazu miete ich ein Studio nur für dein Projekt, nehme die besten Materialien, wir machen mehrere Sitzungen und du bekommst alle Vorskizzen dazu.">?</span></label>
 								</div>
 								<p class="tier-info" data-tier-box hidden></p>
 
-								<div class="order-q">
-									<p class="order-label">Nutzung des Bildes</p>
+								<details class="order-q order-rights">
+									<summary class="order-label">Nutzung für Werbung oder Firmen? <span class="hint">(privat ist inklusive)</span></summary>
 									<label><input type="radio" name="Bildrechte Nutzung" value="Privat" checked> Privat</label>
 									<label><input type="radio" name="Bildrechte Nutzung" value="Werbung, mit Namensnennung (+150 €)" data-extra data-price="150" data-label="Bildrechte für Werbung, mit Namensnennung"> Werbung, mit Namensnennung +150 €</label>
 									<label><input type="radio" name="Bildrechte Nutzung" value="Total Buyout (+400 €)" data-extra data-price="400" data-label="Total Buyout"> Total Buyout, ohne Namensnennung +400 €</label>
-								</div>
+								</details>
 
 								<div class="form-grid">
 									<div class="field">
