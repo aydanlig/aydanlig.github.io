@@ -93,7 +93,8 @@
 				locale: EN ? 'default' : 'de',   // 'default' = flatpickr's built-in English
 				dateFormat: 'd.m.Y',      // what the visitor sees AND what arrives in your email
 				minDate: daysFromToday(normalDays),
-				disableMobile: true       // same German calendar on phones
+				disableMobile: true,      // same German calendar on phones
+				allowInput: input.hasAttribute('data-date-typeable')   // <input data-date-typeable>: the date can also be typed (TT.MM.JJJJ)
 			});
 
 			function updateMinDate() {
