@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Websites by Aydan – for you, your project or your business · SmileyFoxyPortraits</title>
+	<meta name="description" content="Like this site? I build websites too: simple, fast, handmade in Berlin. Packages from 290 €.">
+	<link rel="canonical" href="https://smileyfoxyportraits.com/en/websites/">
+	<link rel="alternate" hreflang="de" href="https://smileyfoxyportraits.com/websites/">
+	<link rel="alternate" hreflang="en" href="https://smileyfoxyportraits.com/en/websites/">
+	<link rel="icon" href="/favicon.ico" sizes="48x48">
+	<link rel="icon" type="image/png" sizes="96x96" href="/favicon.png">
+	<meta property="og:title" content="Like this site? I'll build yours too.">
+	<meta property="og:description" content="Like this site? I build websites too: simple, fast, handmade in Berlin. Packages from 290 €.">
+	<meta property="og:image" content="https://smileyfoxyportraits.com/img/og-share.jpg?v=2">
+	<!-- Standalone page with own styles (like /infoblatt/). Generated layout; twin: /websites/ -->
+	<style>
+		:root { --ink: #1A1615; --muted: #6B5560; --bg: #FBF7F3; --card: #FFFFFF; --soft: #F2EAE4; --accent: #FF6B35; --accent-dark: #C2410C; --line: #E6DAD2; }
+		@media (prefers-color-scheme: dark) {
+			:root { --ink: #F3ECE8; --muted: #B9A9B1; --bg: #171312; --card: #221C1A; --soft: #2C2421; --accent: #FF8A5C; --accent-dark: #FF8A5C; --line: #3A302C; }
+		}
+		* { box-sizing: border-box; }
+		body { margin: 0; background: var(--bg); color: var(--ink); font-family: "Segoe UI", system-ui, -apple-system, Helvetica, Arial, sans-serif; font-size: 17px; line-height: 1.55; }
+		a { color: var(--accent-dark); }
+		.wrap { max-width: 980px; margin: 0 auto; padding: 0 16px; }
+		header { border-bottom: 3px solid var(--accent); background: var(--card); }
+		header .wrap { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding-top: 14px; padding-bottom: 14px; flex-wrap: wrap; }
+		.logo { font-family: Georgia, serif; font-weight: 700; font-size: 1.25rem; color: var(--ink); text-decoration: none; }
+		.logo span { color: var(--accent-dark); }
+		.lang { font-size: .9rem; }
+		h1 { font-family: Georgia, serif; font-size: clamp(1.8rem, 5vw, 2.6rem); line-height: 1.15; margin: 40px 0 10px; }
+		.lead { color: var(--muted); font-size: 1.1rem; max-width: 680px; margin: 0 0 28px; }
+		.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 18px; }
+		.card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 22px; display: flex; flex-direction: column; }
+		.tag { font-size: .75rem; letter-spacing: .08em; text-transform: uppercase; color: var(--accent-dark); font-weight: 700; }
+		.card h2 { font-family: Georgia, serif; font-size: 1.35rem; margin: 6px 0 8px; }
+		.card p { margin: 0 0 12px; }
+		.card ul { margin: 0 0 14px; padding-left: 18px; }
+		.card li { margin: 4px 0; }
+		.price { background: var(--soft); border-radius: 10px; padding: 10px 12px; font-size: .95rem; margin: 0 0 16px; }
+		.actions { margin-top: auto; display: flex; flex-direction: column; gap: 8px; }
+		.btn { display: inline-block; text-align: center; background: var(--accent); color: #fff; text-decoration: none; font-weight: 600; padding: 11px 16px; border-radius: 999px; }
+		.btn:hover { background: var(--accent-dark); }
+		.btn--ghost { background: transparent; color: var(--accent-dark); border: 1.5px solid var(--line); font-weight: 600; padding: 9px 16px; font-size: .95rem; }
+		.btn--ghost:hover { background: var(--soft); border-color: var(--accent); }
+		.box { background: var(--soft); border-radius: 14px; padding: 22px; margin: 28px 0 0; }
+		.box h2 { font-family: Georgia, serif; font-size: 1.3rem; margin: 0 0 8px; }
+		.box p { margin: 0 0 8px; }
+		.contact { margin: 28px 0 40px; display: flex; flex-wrap: wrap; gap: 10px 24px; align-items: center; }
+		.contact strong { font-family: Georgia, serif; font-size: 1.15rem; }
+		.phone { flex-basis: 100%; display: flex; flex-wrap: wrap; gap: 8px 10px; align-items: center; }
+		.phone-num { font-weight: 600; margin-right: 6px; }
+		footer { border-top: 1px solid var(--line); color: var(--muted); font-size: .85rem; padding: 18px 0 28px; }
+		footer a { color: var(--muted); }
+			.steps { counter-reset: s; list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr)); gap: 14px; }
+		.steps li { counter-increment: s; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 18px; }
+		.steps li::before { content: counter(s); display: flex; width: 28px; height: 28px; border-radius: 50%; background: var(--accent); color: #fff; font-weight: 700; align-items: center; justify-content: center; margin-bottom: 8px; }
+		h2.sec { font-family: Georgia, serif; font-size: 1.5rem; margin: 44px 0 14px; }
+		.amount { font-family: Georgia, serif; font-size: 2rem; font-weight: 700; margin: 0 0 4px !important; }
+		.card--hi { border: 2px solid var(--accent); }
+		.demos { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: 14px; }
+		.demo { display: block; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 18px; text-decoration: none; color: var(--ink); }
+		.demo:hover { border-color: var(--accent); }
+		.demo b { display: block; font-family: Georgia, serif; font-size: 1.15rem; }
+		.demo small { color: var(--muted); }
+	</style>
+</head>
+<body>
+	<header>
+		<div class="wrap">
+			<a class="logo" href="/en/">SmileyFoxy<span>Portraits</span></a>
+			<a class="lang" href="/websites/" hreflang="de" lang="de">Deutsch</a>
+		</div>
+	</header>
+
+	<main class="wrap">
+		<h1>Like this site? I'll build yours too.</h1>
+		<p class="lead">I'm Aydan, an artist in Berlin, and I built this website myself. Now I build websites for others too: for you as a person, your small business, your goal or your hobby. Simple, fast, great on phones and with a personal touch. I hold the freeCodeCamp HTML/CSS certificate, so I understand the code I write with AI support.</p>
+
+		<h2 class="sec">Packages</h2>
+		<div class="cards">
+			<section class="card">
+				<span class="tag">For people &amp; hobbies</span>
+				<h2>Business card</h2>
+				<p class="amount">290 €</p>
+				<p>One page that shows what matters.</p>
+				<ul><li>1 page (one-pager)</li><li>Mobile-friendly</li><li>Contact, map, opening hours or links</li><li>Online in about 1–2 weeks</li></ul>
+			</section>
+			<section class="card card--hi">
+				<span class="tag">For small businesses</span>
+				<h2>Small website</h2>
+				<p class="amount">590 €</p>
+				<p>The classic for shops, cafés and freelancers.</p>
+				<ul><li>Up to 5 pages</li><li>Contact form</li><li>Google basics (SEO)</li><li>2 rounds of changes</li></ul>
+			</section>
+			<section class="card">
+				<span class="tag">For more</span>
+				<h2>Website with extras</h2>
+				<p class="amount">from 990 €</p>
+				<p>When it needs to do a bit more.</p>
+				<ul><li>Bilingual (DE/EN)</li><li>Shop, booking or order form</li><li>A hand-drawn illustration by me, if you like</li><li>Custom quote</li></ul>
+			</section>
+		</div>
+		<p class="lead" style="font-size:.95rem;margin-top:14px">Hosting usually costs nothing extra with me, only your domain (about 1–2 € a month). Later changes: 30 € per hour. I'm new to making websites, so my prices are deliberately below agency rates.</p>
+
+		<h2 class="sec">How it works</h2>
+		<ol class="steps"><li>You tell me briefly what you need.</li><li>We meet for a coffee or chat by message, I make a draft.</li><li>You give feedback, I finish it.</li><li>Your site goes live. Only then do you pay.</li></ol>
+
+		<h2 class="sec">Examples</h2>
+		<p>Concept drafts for Berlin shops I built for practice (unofficial, not commissioned):</p>
+		<div class="demos">
+			<a class="demo" href="/websites/demos/demo-1/"><b>Café</b><small>One-pager with menu and opening hours</small></a>
+			<a class="demo" href="/websites/demos/demo-2/"><b>Craft &amp; service</b><small>Services, prices, directions</small></a>
+			<a class="demo" href="/websites/demos/demo-3/"><b>Shop</b><small>Range, opening hours, contact</small></a>
+		</div>
+		<p>And of course <a href="/en/">this site right here</a>.</p>
+
+		<div class="contact">
+			<strong>Write to me, no strings attached:</strong>
+			<a class="btn" href="mailto:aydan@smileyfoxyportraits.com?subject=Website%20enquiry">Send an e-mail</a>
+			<a href="mailto:aydan@smileyfoxyportraits.com?subject=Website%20enquiry">aydan@smileyfoxyportraits.com</a>
+			<a href="https://www.instagram.com/smileyfoxyportraits/">Instagram @smileyfoxyportraits</a>
+		</div>
+	</main>
+
+	<footer>
+		<div class="wrap">
+			SmileyFoxyPortraits · Aydan Lig'on · Berlin · Final prices, no VAT charged under § 19 UStG.<br>
+			<a href="/ImpressumUndDatenschutz/Impressum.html">Legal notice</a> · <a href="/ImpressumUndDatenschutz/Datenschutz.html">Privacy policy</a>
+		</div>
+	</footer>
+</body>
+</html>
