@@ -96,13 +96,28 @@
 			if (e.key === 'ArrowRight') show(index + 1);
 		});
 
-		// swipe on phones
-		var startX = null;
-		box.addEventListener('touchstart', function (e) { startX = e.touches[0].clientX; }, { passive: true });
+		// swipe on phones: the picture follows the finger 1:1; a flick sideways = next/previous,
+		// pulling down = close; anything shorter springs back. Direction is locked after ~10 px.
+		var startX = null, startY = 0, startT = 0, dir = null, fig = box.querySelector('figure');
+		box.addEventListener('touchstart', function (e) {
+			startX = e.touches[0].clientX; startY = e.touches[0].clientY; startT = Date.now(); dir = null;
+			fig.style.transition = 'none';
+		}, { passive: true });
+		box.addEventListener('touchmove', function (e) {
+			if (startX === null) return;
+			var dx = e.touches[0].clientX - startX, dy = e.touches[0].clientY - startY;
+			if (!dir && Math.max(Math.abs(dx), Math.abs(dy)) > 10) dir = Math.abs(dx) > Math.abs(dy) ? 'x' : 'y';
+			if (dir === 'x') fig.style.transform = 'translateX(' + dx + 'px)';
+			if (dir === 'y' && dy > 0) { fig.style.transform = 'translateY(' + dy + 'px) scale(' + Math.max(0.85, 1 - dy / 1500) + ')'; box.style.opacity = Math.max(0.4, 1 - dy / 500); }
+		}, { passive: true });
 		box.addEventListener('touchend', function (e) {
 			if (startX === null) return;
-			var dx = e.changedTouches[0].clientX - startX;
-			if (Math.abs(dx) > 50) show(index + (dx < 0 ? 1 : -1));
+			var dx = e.changedTouches[0].clientX - startX, dy = e.changedTouches[0].clientY - startY;
+			var v = (dir === 'x' ? Math.abs(dx) : dy) / Math.max(1, Date.now() - startT);   // px per ms
+			fig.style.transition = 'transform .32s cubic-bezier(0.22, 1, 0.36, 1)'; box.style.transition = 'opacity .32s ease';
+			if (dir === 'x' && (Math.abs(dx) > 60 || v > 0.5)) show(index + (dx < 0 ? 1 : -1));
+			if (dir === 'y' && (dy > 120 || v > 0.6)) close();
+			fig.style.transform = ''; box.style.opacity = '';
 			startX = null;
 		});
 	});

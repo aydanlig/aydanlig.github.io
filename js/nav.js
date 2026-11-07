@@ -135,3 +135,18 @@
 		if (target) { target.classList.add("termin--target"); target.scrollIntoView({ block: "center" }); }
 	}
 })();
+
+/* Info bubbles ("?"): on phones a tap opens them, a second tap or a tap anywhere else closes them */
+(function () {
+	var open = null;
+	document.addEventListener('pointerdown', function (e) {
+		var t = e.target.closest && e.target.closest('.info, .info-tip');
+		open = t && t === document.activeElement ? t : null;
+	});
+	document.addEventListener('click', function (e) {
+		var t = e.target.closest && e.target.closest('.info, .info-tip');
+		var act = document.activeElement;
+		if (t) { if (open === t) t.blur(); else t.focus(); return; }
+		if (act && act.matches && act.matches('.info, .info-tip')) act.blur();
+	});
+})();

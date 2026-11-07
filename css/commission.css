@@ -132,3 +132,12 @@ details.extras-box[open] > .extras-live { order: 1; }
 .extras-groups h4 { margin-top: 0.2em; }
 @media (min-width: 1100px) { .extras-groups { column-count: 3; } .extras-box { max-width: 1180px; } }
 @media (max-width: 720px) { .extras-groups { column-count: 1; } }
+
+/* finished steps show a tick instead of their number (is-done is set by js/order.js) */
+[data-step-dot].is-done > span { font-size: 0; }
+[data-step-dot].is-done > span::before { content: "✓"; font-size: 0.85rem; font-weight: 800; }
+[data-step-dot].is-done { color: var(--ink); }
+/* phones: info bubbles open only by tap (focus), never get stuck open from a leftover hover */
+@media (hover: none) {
+	.info:hover:not(:focus)::after, .info:hover:not(:focus) .info-pop { opacity: 0; visibility: hidden; }
+}

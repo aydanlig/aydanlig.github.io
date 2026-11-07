@@ -23,10 +23,16 @@
 			var box = stack.closest('section') || document.body;
 			if (!groups.has(box)) groups.set(box, []);
 			groups.get(box).push({ imgs: imgs, i: 0, tile: stack.closest('.fit'), wait: parseInt(stack.getAttribute('data-fade'), 10) || 5000 });
+			// pause the whole group while a mouse rests on / a finger touches one of its pictures
+			var list = groups.get(box), hold = stack.closest('.fit') || stack;
+			hold.addEventListener('pointerenter', function () { list.held = true; });
+			hold.addEventListener('pointerleave', function () { list.held = false; });
+			hold.addEventListener('pointercancel', function () { list.held = false; });
 		});
 
 		function step(list) {
 			if (document.documentElement.classList.contains('crop-edit')) return;   // paused while framing (js/crop.js)
+			if (list.held) return;
 			list.forEach(function (s) {
 				s.imgs[s.i].classList.remove('on');
 				s.i = (s.i + 1) % s.imgs.length;

@@ -1344,27 +1344,27 @@ main:has(> .section--alt:last-of-type) + .site-footer::after { background: var(-
 .hero { position: relative; }
 .scroll-hint { position: absolute; left: 50%; bottom: 14px; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center;
 	gap: 0; color: var(--ink-soft); text-decoration: none; font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; transition: opacity 0.4s ease; }
-.scroll-hint b { font-size: 1.6rem; line-height: 0.8; color: var(--fox); animation: hint-bounce 2.2s ease-in-out infinite; }
+.scroll-hint b { font-size: 1.6rem; line-height: 0.8; color: var(--fox); animation: hint-bounce 2.2s ease-in-out 3; }
 body.scrolled .scroll-hint { opacity: 0; pointer-events: none; }
 @keyframes hint-bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(6px); } }
 
 /* "Mich zum Event buchen": a soft light sweep across the button */
 .btn-shine { position: relative; overflow: hidden; }
 .btn-shine::after { content: ""; position: absolute; top: 0; left: -60%; width: 40%; height: 100%;
-	background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.35), transparent); transform: skewX(-20deg); animation: btn-shine 6s ease-in-out infinite; }
+	background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.35), transparent); transform: skewX(-20deg); animation: btn-shine 6s ease-in-out 2; }
 @keyframes btn-shine { 0%, 70% { left: -60%; } 85%, 100% { left: 130%; } }
 
 /* "Kleckerkasten Workshop": a little paint splash wobble, half a loop later */
 .btn-splash { position: relative; }
 .btn-splash::before { content: ""; position: absolute; right: -6px; top: -6px; width: 14px; height: 14px; border-radius: 50% 40% 55% 45%;
-	background: var(--fox); border: 2px solid var(--paper); animation: btn-splash 6s ease-in-out infinite 3s; transform: scale(0); }
+	background: var(--fox); border: 2px solid var(--paper); animation: btn-splash 6s ease-in-out 2 3s; transform: scale(0); }
 @keyframes btn-splash { 0%, 70%, 100% { transform: scale(0) rotate(0); } 78% { transform: scale(1.15) rotate(20deg); } 88% { transform: scale(0.95) rotate(-10deg); } 95% { transform: scale(0); } }
-.btn-splash { animation: btn-wiggle 6s ease-in-out infinite 3s; }
+.btn-splash { animation: btn-wiggle 6s ease-in-out 2 3s; }
 @keyframes btn-wiggle { 0%, 72%, 100% { transform: rotate(0); } 76% { transform: rotate(-1.5deg); } 80% { transform: rotate(1.5deg); } 84% { transform: rotate(0); } }
 
 /* "Spenden" in the short footer of the pay-on-site page: the heart beats now and then, the word wiggles along */
-.footer-donate { display: inline-block; font-weight: 700; color: var(--fox) !important; animation: btn-wiggle 5s ease-in-out infinite 1.5s; }
-.footer-donate b { display: inline-block; animation: donate-beat 5s ease-in-out infinite 1.5s; }
+.footer-donate { display: inline-block; font-weight: 700; color: var(--fox) !important; animation: btn-wiggle 5s ease-in-out 2 1.5s; }
+.footer-donate b { display: inline-block; animation: donate-beat 5s ease-in-out 2 1.5s; }
 @keyframes donate-beat { 0%, 70%, 100% { transform: scale(1); } 75% { transform: scale(1.35); } 80% { transform: scale(1); } 85% { transform: scale(1.25); } 90% { transform: scale(1); } }
 
 @media (max-width: 720px) { .scroll-hint { bottom: 6px; } }
@@ -1541,9 +1541,9 @@ h1, h2, h3 { overflow-wrap: break-word; }
 /* animated "visit portfolio" button: wiggles every few seconds, arrow keeps nudging, a light sweep runs across */
 .btn-portfolio { position: relative; display: inline-flex; align-items: center; gap: 12px; align-self: flex-start; margin-top: 24px; overflow: hidden;
 	padding: .9em 1.5em; border-radius: 999px; background: var(--fox); color: var(--night); font-weight: 800; letter-spacing: .06em; text-transform: uppercase; font-size: .88rem;
-	text-decoration: none; box-shadow: 0 10px 24px -8px rgba(255, 107, 53, .7); animation: pf-wiggle 5s ease-in-out infinite 1.5s; }
-.btn-portfolio b { display: inline-block; font-size: 1.2em; animation: pf-arrow 1.4s ease-in-out infinite; }
-.btn-portfolio::after { content: ""; position: absolute; top: 0; bottom: 0; width: 40%; left: -60%; background: linear-gradient(100deg, transparent, rgba(255,255,255,.55), transparent); transform: skewX(-20deg); animation: pf-shine 5s ease-in-out infinite; }
+	text-decoration: none; box-shadow: 0 10px 24px -8px rgba(255, 107, 53, .7); animation: pf-wiggle 5s ease-in-out 2 1.5s; }
+.btn-portfolio b { display: inline-block; font-size: 1.2em; animation: pf-arrow 1.4s ease-in-out 3; }
+.btn-portfolio::after { content: ""; position: absolute; top: 0; bottom: 0; width: 40%; left: -60%; background: linear-gradient(100deg, transparent, rgba(255,255,255,.55), transparent); transform: skewX(-20deg); animation: pf-shine 5s ease-in-out 2; }
 .btn-portfolio:hover { color: var(--night); background: #FF8555; animation-play-state: paused; }
 .btn-portfolio--light { margin-top: 0; }
 @keyframes pf-arrow { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(6px); } }
@@ -1572,7 +1572,7 @@ h1, h2, h3 { overflow-wrap: break-word; }
 .smiley-bubble { position: absolute; left: calc(100% + 12px); top: 50%; transform: translateY(-50%); white-space: nowrap; pointer-events: none;
 	font-family: var(--font-body); font-size: .8rem; font-weight: 700; letter-spacing: .01em; line-height: 1; color: var(--night);
 	background: #fff; border: 2px solid var(--night); border-radius: 14px; padding: 7px 11px; box-shadow: 3px 3px 0 var(--fox);
-	animation: bubble-pop 2.6s ease-in-out infinite; transition: opacity .3s ease; }
+	animation: bubble-pop 2.6s ease-in-out 3; transition: opacity .3s ease; }
 .smiley-bubble::after { content: ""; position: absolute; right: 100%; top: 50%; transform: translateY(-50%); border: 7px solid transparent; border-right-color: var(--night); }
 .smiley-wrap.is-spinning .smiley-bubble, .smiley-wrap.was-spun .smiley-bubble { opacity: 0; }
 @keyframes bubble-pop { 0%, 100% { transform: translateY(-50%) translateX(0) rotate(-3deg); } 50% { transform: translateY(-50%) translateX(5px) rotate(2deg); } }
@@ -1647,7 +1647,7 @@ h1, h2, h3 { overflow-wrap: break-word; }
 .live-bar strong { color: var(--fox); font-weight: 700; }
 .live-bar-more { flex: none; font-weight: 700; color: var(--fox); }
 .live-bar a:hover .live-bar-more { text-decoration: underline; }
-.live-bar-dot { flex: none; width: 8px; height: 8px; border-radius: 50%; background: var(--fox); box-shadow: 0 0 0 0 rgba(255, 107, 53, 0.7); animation: live-pulse 2s infinite; }
+.live-bar-dot { flex: none; width: 8px; height: 8px; border-radius: 50%; background: var(--fox); box-shadow: 0 0 0 0 rgba(255, 107, 53, 0.7); animation: live-pulse 2s 3; }
 @keyframes live-pulse {
 	0% { box-shadow: 0 0 0 0 rgba(255, 107, 53, 0.7); }
 	70% { box-shadow: 0 0 0 8px rgba(255, 107, 53, 0); }
@@ -1775,7 +1775,7 @@ h1, h2, h3 { overflow-wrap: break-word; }
 .ear-hit { position: absolute; bottom: 100%; z-index: 3; cursor: pointer; padding: 6px; margin: -6px; box-sizing: content-box; }
 .section--alt::before, .section--dark::before, .site-footer::before,
 .section--dark::after, .site-footer::after { transform-origin: 50% 100%; }
-.ears-wiggle::before, .ears-wiggle::after { animation: ears-soft .9s ease-in-out infinite; }
+.ears-wiggle::before, .ears-wiggle::after { animation: ears-soft .9s ease-in-out 2; }
 .ears-wiggle-hard::before, .ears-wiggle-hard::after { animation: ears-perk .9s cubic-bezier(.3,1.4,.5,1) 1; }
 @keyframes ears-soft { 0%, 40%, 100% { transform: rotate(0); } 8% { transform: rotate(-7deg) scaleY(1.06); } 16% { transform: rotate(5deg); } 24% { transform: rotate(-3deg); } 32% { transform: rotate(0); } }
 @keyframes ears-perk { 0%, 100% { transform: translateY(0) scale(1); } 15% { transform: translateY(2px) scale(1.2, .75); } 40% { transform: translateY(-14px) scale(.9, 1.35); } 55% { transform: translateY(-14px) scale(.9, 1.35) rotate(-8deg); } 65% { transform: translateY(-10px) scale(.95, 1.25) rotate(8deg); } 82% { transform: translateY(1px) scale(1.12, .88); } }
@@ -2071,3 +2071,9 @@ a { text-decoration-thickness: 1px; text-underline-offset: 0.18em; transition: c
 /* text selection in brand colour */
 ::selection { background: rgba(226, 84, 27, 0.22); }
 @media (prefers-reduced-motion: reduce) { .gallery-grid a img, .gallery-grid a:active { transition: none; transform: none; } }
+@media (hover: none) { .info-tip:hover:not(:focus):not(:focus-within) .info-tip-text { opacity: 0; visibility: hidden; } }
+/* photo-booth popup leaves the way it came (slides back down) */
+.pa-pop.pa-out { animation: pa-out .2s ease-in forwards; }
+@keyframes pa-out { to { opacity: 0; transform: translate(-50%, 12px); } }
+/* lightbox: room for the finger-follow swipe */
+.lightbox figure { will-change: transform; touch-action: none; }

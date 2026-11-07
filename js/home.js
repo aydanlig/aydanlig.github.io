@@ -24,7 +24,12 @@
 			: '<strong>Ich bin direkt neben dem Photoautomaten!</strong><span>Mauerpark, Bernauer Str. 53 – die Karte öffnet sich gleich …</span><span class="pa-row"><a class="btn btn--small" href="' + a.href + '">Karte jetzt öffnen</a><button type="button" class="pa-x">Abbrechen</button></span><i class="pa-bar"></i>';
 		document.body.appendChild(pop);
 		var timer = setTimeout(function () { window.location.href = a.href; }, 3000);
-		pop.querySelector('.pa-x').addEventListener('click', function () { clearTimeout(timer); pop.remove(); });
+		pop.querySelector('.pa-x').addEventListener('click', function () {
+			clearTimeout(timer);
+			// leave the way it came: slide back down, then remove
+			pop.classList.add('pa-out');
+			setTimeout(function () { pop.remove(); }, 220);
+		});
 	});
 
 })();
