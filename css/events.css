@@ -61,3 +61,25 @@
 @media (max-width: 600px) {
 	.style-pick { grid-template-columns: 1fr; }
 }
+
+/* ---------- Kleckerkasten: big, bold "BAM" titles ---------- */
+.kk-bam {
+	margin: 0.1em 0 0.15em; font-family: var(--font-head); font-weight: 900; line-height: 0.95;
+	font-size: clamp(2.4rem, 7.5vw, 3.7rem); letter-spacing: -0.02em; color: var(--fox);
+	transform: rotate(-2deg); transform-origin: left center; hyphens: manual;
+	text-shadow: 3px 3px 0 var(--ink), 7px 7px 0 rgba(47, 111, 181, 0.35);
+	animation: kk-pop 0.6s cubic-bezier(.2, 1.6, .4, 1) both;
+}
+.kk-bam span { display: block; font-size: 0.42em; color: var(--ink); text-shadow: none; letter-spacing: 0.02em; }
+.kk-title { font-weight: 900; letter-spacing: -0.01em; }
+h2.kk-title { font-size: clamp(1.7rem, 3.6vw, 2.4rem); }
+h3.kk-title { font-size: clamp(1.35rem, 2.6vw, 1.75rem); }
+@keyframes kk-pop { from { transform: rotate(-2deg) scale(0.6); opacity: 0; } to { transform: rotate(-2deg) scale(1); opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .kk-bam { animation: none; } }
+
+/* Tablet widths (721–900 px): logo + menu + EN + "Anfragen ▾" did not fit in one row → tighter header */
+@media (min-width: 721px) and (max-width: 900px) {
+	.site-header .wrap { gap: 14px; }
+	.main-nav { gap: 14px; }
+	.main-nav .nav-long { display: none; }
+}
