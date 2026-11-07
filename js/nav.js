@@ -26,8 +26,8 @@
 		if (!a) return;
 		var P = EN ? "/en" : "";
 		var items = EN
-			? [["Book live portraits for an event", P + "/events.html#anfrage-event"], ["Kleckerkasten team workshop", P + "/events.html#anfrage-kleckerkasten"], ["Commission a portrait", P + "/commission.html"], ["Concert venue? Invite me", P + "/events.html#venues"], ["Other questions: contact", P + "/contact/"]]
-			: [["Live-Porträts fürs Event", "/events.html#anfrage-event"], ["Kleckerkasten-Workshop fürs Team", "/events.html#anfrage-kleckerkasten"], ["Porträt-Auftrag", "/commission.html"], ["Konzert-Location? Lad mich ein", "/events.html#venues"], ["Sonstiges: Kontakt", "/contact/"]];
+			? [["Book live portraits for an event", P + "/events.html#anfrage-event"], ["Kleckerkasten team workshop", P + "/events.html#anfrage-kleckerkasten"], ["Commission a portrait", P + "/commission.html"], ["Concert venue? Invite me", P + "/events.html#venues"], ["A website for you", "/en/websites/"], ["Other questions: contact", P + "/contact/"]]
+			: [["Live-Porträts fürs Event", "/events.html#anfrage-event"], ["Kleckerkasten-Workshop fürs Team", "/events.html#anfrage-kleckerkasten"], ["Porträt-Auftrag", "/commission.html"], ["Konzert-Location? Lad mich ein", "/events.html#venues"], ["Website für dich", "/websites/"], ["Sonstiges: Kontakt", "/contact/"]];
 		var wrap = document.createElement("div");
 		wrap.className = "nav-more enq-more";
 		var btn = document.createElement("button");

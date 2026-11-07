@@ -2103,3 +2103,13 @@ main img.img-wait { opacity: 0; }
 .main-nav a[aria-current="page"], .nav-more-menu a[aria-current="page"] { color: var(--accent); text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 0.35em; }
 /* bigger tap area for the small "?" bubbles (Apple: at least ~44 px), without changing their look */
 .info::before, .info-tip::before { content: ""; position: absolute; inset: -12px; }
+
+/* ---------- Apple polish round 6 ---------- */
+/* header "Anfragen": a real pill button again (it inherited the 22 px round toggle style and overlapped "EN") */
+.site-header .enq-toggle.btn { width: auto; height: auto; padding: 0.5em 1.05em; border-radius: 999px; background: var(--plum); color: #F2EAE4;
+	font-weight: 700; font-size: 0.88rem; white-space: nowrap; gap: 4px; }
+.site-header .enq-more:hover .enq-toggle.btn, .site-header .enq-more.open .enq-toggle.btn { background: var(--night); color: var(--fox); }
+.site-header .enq-more { margin-left: 4px; }
+.enq-menu { transform-origin: top right; }
+@media (max-width: 720px) { .site-header .enq-toggle.btn { padding: 0.42em 0.8em; font-size: 0.75rem; } }
+:root.theme-dark .site-header .enq-toggle.btn { background: var(--fox); color: var(--night); }
