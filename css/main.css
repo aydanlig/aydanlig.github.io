@@ -1877,7 +1877,7 @@ h1, h2, h3 { overflow-wrap: break-word; }
 .footer-grid .footer-legal h3 { border: 0; padding: 0; margin: 0; font-family: var(--font-body); font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mauve); }
 .footer-grid .footer-legal p { margin: 0; font-size: 0.88rem; }
 .footer-grid .footer-legal a { color: #D9C9D1; }
-.footer-grid { flex: 1; align-content: start; }
+.site-footer > .wrap { justify-content: space-between; } /* newsletter top, links middle, © bottom */
 .footer-bottom { margin-top: 18px; border-top: 0; padding-top: 0; font-size: 0.85rem; }
 @media (max-width: 900px) { .footer-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 30px 28px; } }
 @media (max-width: 420px) { .footer-grid { grid-template-columns: 1fr; } .site-footer { font-size: 1rem; } }
