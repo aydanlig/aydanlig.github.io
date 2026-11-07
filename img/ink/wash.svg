@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 60" preserveAspectRatio="none">
+	<!-- watercolour highlighter wash: a loose orange stroke with a darker pooled edge, sits behind highlighted words -->
+	<defs>
+		<linearGradient id="c" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FF6B35" stop-opacity=".35"/><stop offset=".55" stop-color="#FF8A55" stop-opacity=".28"/><stop offset=".9" stop-color="#E0457B" stop-opacity=".45"/><stop offset="1" stop-color="#C2410C" stop-opacity=".6"/></linearGradient>
+		<filter id="w" x="-5%" y="-30%" width="110%" height="160%"><feTurbulence type="fractalNoise" baseFrequency="0.02 0.08" numOctaves="3" seed="14"/><feDisplacementMap in="SourceGraphic" scale="14"/></filter>
+	</defs>
+	<path filter="url(#w)" fill="url(#c)" d="M8 14 C70 6 160 10 230 8 C260 7 285 10 294 16 C297 30 296 44 290 52 C220 55 140 53 70 55 C40 56 16 55 6 50 C3 38 4 24 8 14 Z"/>
+</svg>
