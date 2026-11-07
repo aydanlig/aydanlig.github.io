@@ -5,127 +5,470 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<!-- PORTFOLIO for market stand applications (Kunstmärkte, Flohmärkte, Festivals).
-	     Send the link, or open it and click "Als PDF speichern" to attach it to an application.
-	     "noindex" until the placeholders are replaced with real photos. -->
+	<!-- PORTFOLIO: all my art in one place – series, films, references and the facts for market applications.
+	     Pictures: small copies in img/portfolio/ (fast), the click opens the original (js/gallery.js).
+	     Add a picture: copy one <a>…</a> line inside a .pf-wall and change href (original), src (small copy) and alt. -->
 	<title>Portfolio | SmileyFoxyPortraits – Aydan Lig'on</title>
-	<meta name="description" content="Portfolio von Aydan Lig'on (SmileyFoxyPortraits): Live-Porträts in Fineliner und Aquarell, Berlin-Motive und Marktstand.">
-	<meta name="robots" content="noindex, follow">
+	<meta name="description" content="Portfolio von Aydan Lig'on (SmileyFoxyPortraits): handgemachte Live-Porträts in Aquarell und Tusche, Konzert-Zeichnungen, Aufträge, Filme und Referenzen aus Berlin.">
+	<meta name="author" content="Aydan Lig'on">
+	<meta name="robots" content="index, follow">
 	<link rel="canonical" href="https://smileyfoxyportraits.com/portfolio.html">
 	<link rel="icon" href="/favicon.ico" sizes="48x48">
 	<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
 	<link rel="icon" type="image/png" sizes="96x96" href="/favicon.png">
 	<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
+	<meta property="og:type" content="website">
+	<meta property="og:locale" content="de_DE">
+	<meta property="og:url" content="https://smileyfoxyportraits.com/portfolio.html">
+	<meta property="og:site_name" content="SmileyFoxyPortraits">
+	<meta property="og:title" content="Portfolio | SmileyFoxyPortraits – Aydan Lig'on">
+	<meta property="og:description" content="Handgemachte Live-Porträts in Aquarell und Tusche, Konzert-Zeichnungen, Aufträge und Filme von Aydan Lig'on aus Berlin.">
+	<meta property="og:image" content="https://smileyfoxyportraits.com/img/og-share.jpg?v=2">
+	<meta property="og:image:width" content="1200">
+	<meta property="og:image:height" content="630">
+	<meta name="twitter:card" content="summary_large_image">
+
+	<link rel="preload" href="/css/fonts/caveat-brush-latin.woff2" as="font" type="font/woff2" crossorigin>
 	<link rel="stylesheet" href="/css/main.css">
+	<link rel="stylesheet" href="/css/portfolio.css">
 	<script src="/js/consent.js" defer></script>
 	<script src="/js/splashes.js" defer></script>
 	<script src="/js/mail-reveal.js" defer></script>
 	<script src="/js/translate.js" defer></script>
+	<script src="/js/termine.js" defer></script>
+	<script src="/js/nav.js" defer></script>
+	<script src="/js/gallery.js" defer></script>
+	<script src="/js/masonry.js" defer></script>
 </head>
 
-<body>
+<body class="pf-page">
 
+	<!-- ================= HEADER (same on every page) ================= -->
+	<!-- LIVE BAR: where & when I draw – the next date comes from js/termine.js -->
+	<div class="live-bar">
+		<div class="wrap">
+			<a href="/where-i-draw/"><span class="live-bar-dot" aria-hidden="true"></span><span data-next-gig><strong>Live:</strong> Sa 14–22 Uhr Mauerpark · Do Ökomarkt Kollwitzplatz · Weihnachtsmärkte &amp; Konzerte</span><span class="live-bar-more">Wo &amp; wann →</span></a>
+		</div>
+	</div>
 	<header class="site-header">
 		<div class="wrap">
 			<a class="logo" href="/">SmileyFoxy<span>Portraits</span><small class="logo-since">Seit 6 Jahren Porträts</small></a>
-			<!-- Opens the browser's print dialog -> choose "Als PDF speichern" -->
+			<nav class="main-nav" aria-label="Hauptmenü">
+				<a href="/events.html#live-events"><span class="nav-long">Live-</span>Events</a>
+				<a href="/events.html#kleckerkasten">Kleckerkasten</a>
+				<a href="/commission.html">Porträt<span class="nav-long">-Auftrag</span></a>
+				<div class="nav-more">
+					<a href="/about/">Über mich</a><button class="nav-more-toggle" type="button" aria-expanded="false" aria-label="Mehr anzeigen: Termine, Referenzen, Blog und mehr"><span aria-hidden="true">▾</span></button>
+					<div class="nav-more-menu">
+						<a href="/where-i-draw/">Wo &amp; wann ich zeichne</a>
+						<a href="/where-i-draw/#termine">Termine &amp; Kalender</a>
+						<a href="/labor/auktion.html">Erste Auktion</a>
+						<a href="/referenzen/">Referenzen</a>
+						<a href="/about/#bands">Bands, live gezeichnet</a>
+						<a href="/about/#blog">Blog</a>
+						<a href="/commission.html#warteliste">E-Mail-Liste &amp; Warteliste</a>
+						<a href="/about/#faq">Fragen &amp; Antworten</a>
+					</div>
+				</div>
+			</nav>
 			<a class="lang-switch" data-translate lang="en" title="Translate this page to English" href="https://smileyfoxyportraits-com.translate.goog/portfolio.html?_x_tr_sl=de&_x_tr_tl=en&_x_tr_hl=en">EN</a>
-			<button class="btn btn--small no-print" onclick="window.print()">Als PDF speichern</button>
+			<a class="btn btn--small" href="/events.html#anfrage-kleckerkasten">Anfragen</a>
 		</div>
 	</header>
-	<!-- PHOTO NOTE – delete this block once all grey placeholders are replaced by real photos -->
-	<p class="photo-note">Die grauen Bildplatzhalter ersetze ich in Kürze durch echte Fotos.</p>
-
 
 	<main>
 
-		<!-- ================= SHORT PROFILE ================= -->
-		<section class="section" style="padding-bottom:32px">
-			<div class="wrap split">
+		<!-- ================= INTRO: name + a few words left, one big artwork right =================
+		     Swap the artwork: change href + src + alt inside .pf-hero-art. -->
+		<section class="pf-hero">
+			<div class="wrap wrap--wide">
 				<div>
-					<span class="eyebrow">Portfolio · Marktstand</span>
-					<h1>SmileyFoxyPortraits</h1>
-					<p class="lead">
-						Ausdrucksstarke Live-Porträts in Fineliner und Aquarell, gezeichnet in wenigen Minuten,
-						direkt vor Ort. Von Aydan Lig'on, Berlin.
+					<span class="eyebrow">Portfolio</span>
+					<h1>Aydan Lig'on<small>SmileyFoxyPortraits · Berlin · Porträts seit 2020</small></h1>
+					<p class="pf-lead">
+						Ich male schnell mit einem langsamen Medium: <strong>Aquarell und Tusche</strong>, live vor Ort, in wenigen Minuten.
+						In Zeiten von KI ist ein Bild, das jemand <strong>nur für dich von Hand</strong> gemalt hat, mehr wert denn je.
 					</p>
-					<p>
-						„Ich zeichne nach Gefühl – und suche für jeden Menschen das Bild, das genau zu ihm passt.“ Meine Porträts sind bewusst günstig,
-						damit sich jede:r Kunst leisten kann – schon ab einem Euro. Am Stand entsteht so ein ständiger Treffpunkt, der Besucher:innen anzieht und verweilen lässt.
-					</p>
+					<ul class="pf-jump" aria-label="Zu den Serien springen">
+						<li><a href="#aquarell">Aquarell &amp; Tusche</a></li>
+						<li><a href="#tusche">Tusche</a></li>
+						<li><a href="#konzerte">Konzerte</a></li>
+						<li><a href="#skizzen">Live-Skizzen</a></li>
+						<li><a href="#auftraege">Aufträge</a></li>
+						<li><a href="#filme">Filme</a></li>
+						<li><a href="#referenzen">Referenzen</a></li>
+						<li><a href="#maerkte">Für Märkte</a></li>
+					</ul>
 				</div>
-				<img src="/img/fotos/aydan-am-stand.jpg" alt="Aydan zeichnet an seinem Stand auf dem Saunasplash-Event" class="ph-img ph--natural" width="1400" height="1050" fetchpriority="high" decoding="async">
+				<figure class="pf-hero-art" data-lightbox>
+					<a href="/img/fotos/aquarell-fineliner-detail-4x5.jpg"><img src="/img/fotos/aquarell-fineliner-detail-4x5.jpg" alt="Porträt in Tusche und Aquarell: Mann mit Brille und Bart vor blauer Aquarellfläche" width="960" height="1200" fetchpriority="high" decoding="async"></a>
+					<figcaption>Tusche &amp; Aquarell, live gemalt</figcaption>
+				</figure>
 			</div>
+		</section>
 
-			<!-- Key facts market organisers usually ask for – fill in the ___ -->
-			<div class="wrap">
-				<div class="facts">
-					<div><strong>Live-Porträts</strong><span>A6 · A5 · A4, ca. 5 Min. (schnell) bis 25 Min. (ausführlich mit Aquarell) pro Porträt</span></div>
-					<div><strong>ab 5 €</strong><span>Preise vor Ort (A6/A7 5 €, A5 ab 15 €, A4 ab 28 €; samstags im Mauerpark auch die 1-€-Schnellskizze)</span></div>
-					<div><strong>Stand flexibel</strong><span>Standard: Klapptisch (1,35 m), ein Stuhl für mich, eine Bank oder 2 Stühle für Gäste. Für größere Märkte anpassbar; kein Strom nötig</span></div>
-					<div><strong>Erfahrung</strong><span>Mauerpark, Brandenburger Tor, Events mit 1.500+ Gästen</span></div>
+		<!-- ================= SERIES 1: WATERCOLOUR + INK ================= -->
+		<section class="pf-series section--alt" id="aquarell" aria-labelledby="aquarell-title">
+			<div class="wrap wrap--wide">
+				<div class="pf-series-head">
+					<h2 class="pf-title" id="aquarell-title">Aquarell &amp; Tusche</h2>
+					<p>Mein Herzstück: Tusche für den Ausdruck, Aquarell für das Gefühl. Live gemalt an meinem Stand, auf Festivals und im Konzert.</p>
+				</div>
+				<div class="pf-wall" data-lightbox>
+					<a href="/img/kunst/kunst-09a.jpg"><img src="/img/portfolio/kunst-09a.jpg" alt="Aquarell-Porträt in Orange und Blau: Paar unter Wimpelketten" width="600" height="848" loading="lazy" decoding="async"><span>Saunasplash-Festival</span></a>
+					<a href="/img/portfolio/insta-3-gross.jpg"><img src="/img/portfolio/insta-3.jpg" alt="Oranges Aquarell mit Tusche: Gitarrist von Revolte Tanzbein" width="720" height="741" loading="lazy" decoding="async"><span>Revolte Tanzbein, live</span></a>
+					<a href="/img/kunst/kunst-01.jpg"><img src="/img/portfolio/kunst-01.jpg" alt="Tusche-Porträt mit blauen Aquarell-Klecksen" width="720" height="720" loading="lazy" decoding="async"><span>Tusche &amp; Aquarell-Kleckse</span></a>
+					<a href="/img/kunst/kunst-09b.jpg"><img src="/img/portfolio/kunst-09b.jpg" alt="Aquarell-Porträt in Pink und Orange: Frau mit Pony" width="600" height="848" loading="lazy" decoding="async"><span>Saunasplash-Festival</span></a>
+					<a href="/img/portfolio/insta-5-gross.jpg"><img src="/img/portfolio/insta-5.jpg" alt="Tusche und Aquarell: rotes Gesicht mit gelbem Leuchten" width="720" height="742" loading="lazy" decoding="async"><span>Tusche &amp; Aquarell</span></a>
+					<a href="/img/fotos/aquarell-gitarre-papier.jpg"><img src="/img/portfolio/aquarell-gitarre-papier.jpg" alt="Blaues Aquarell mit Fineliner: Gitarrist im Skizzenbuch" width="690" height="1075" loading="lazy" decoding="async"><span>Live im Konzert</span></a>
+					<a href="/img/galerie/galerie-07.jpg"><img src="/img/portfolio/galerie-07.jpg" alt="A5-Aquarell von meinem Stand: Mann im orangen Pulli" width="720" height="960" loading="lazy" decoding="async"><span>A5, an meinem Stand</span></a>
+					<a href="/img/portfolio/insta-2-gross.jpg"><img src="/img/portfolio/insta-2.jpg" alt="Tusche und blaues Aquarell: Bassist im Skizzenbuch" width="660" height="883" loading="lazy" decoding="async"><span>Live im Konzert</span></a>
+					<a href="/img/galerie/galerie-04.jpg"><img src="/img/portfolio/galerie-04.jpg" alt="A5-Skizze in Fineliner und Aquarell: Frau mit lila Haaren" width="720" height="1043" loading="lazy" decoding="async"><span>A5, an meinem Stand</span></a>
+					<a href="/img/galerie/galerie-10.jpg"><img src="/img/portfolio/galerie-10.jpg" alt="A5-Porträt in Fineliner, Aquarell und Marker: Person mit Mütze" width="720" height="987" loading="lazy" decoding="async"><span>A5, an meinem Stand</span></a>
 				</div>
 			</div>
 		</section>
 
-		<!-- ================= WORK SAMPLES ================= -->
-		<section class="section section--alt" style="padding-top:40px">
-			<div class="wrap">
-				<h2>Arbeitsproben</h2>
-
-				<h3>Fineliner-Porträts</h3>
-				<div class="portfolio-grid">
-					<img src="/img/fotos/tusche-portraet-4x5.jpg" alt="Porträt in schwarzer Tusche" class="ph-img ph--4x5" width="1200" height="1500" loading="lazy" decoding="async">
-					<img src="/img/fotos/gerahmtes-paar-4x5.jpg" alt="Gerahmtes Porträt eines Paares in Fineliner, daneben Tusche-Skizzen und ein Fotostreifen" class="ph-img ph--4x5" width="1200" height="1500" loading="lazy" decoding="async">
-					<img src="/img/fotos/gruppe-tusche-4x5.jpg" alt="Gruppenporträt in Tusche mit blauem Aquarell" class="ph-img ph--4x5" width="1200" height="1500" loading="lazy" decoding="async">
+		<!-- ================= SERIES 2: INK ================= -->
+		<section class="pf-series" id="tusche" aria-labelledby="tusche-title">
+			<div class="wrap wrap--wide">
+				<div class="pf-series-head">
+					<h2 class="pf-title" id="tusche-title">Tusche</h2>
+					<p>Schwarze Tusche mit dem Pinsel: große Flächen, harte Kanten, nichts zum Radieren.</p>
 				</div>
-
-				<h3 style="margin-top:1.5em">Aquarell</h3>
-				<div class="portfolio-grid">
-					<img src="/img/fotos/aquarell-kleckse-4x5.jpg" alt="Aquarell-Porträt mit blauen Farbklecksen" class="ph-img ph--4x5" width="1200" height="1500" loading="lazy" decoding="async">
-					<img src="/img/fotos/aquarell-gitarre-4x5.jpg" alt="Aquarell-Porträt eines Gitarristen im Skizzenbuch" class="ph-img ph--4x5" width="1200" height="1500" loading="lazy" decoding="async">
-					<img src="/img/fotos/aquarell-fineliner-detail-4x5.jpg" alt="Detail eines Porträts in Aquarell und Fineliner" class="ph-img ph--4x5" width="1200" height="1500" loading="lazy" decoding="async">
-				</div>
-
-				<h3 style="margin-top:1.5em">Berlin-Motive &amp; Prints</h3>
-				<div class="portfolio-grid">
-					<div class="ph ph--4x5">Berlin bei Nacht / Morgengrauen [1200x1500]</div>
-					<div class="ph ph--4x5">Streetart / Straßenszene [1200x1500]</div>
-					<div class="ph ph--4x5">Prints im Verkaufsformat [1200x1500]</div>
+				<div class="pf-wall" data-lightbox>
+					<a href="/img/fotos/tusche-portraet-4x5.jpg"><img src="/img/portfolio/tusche-portraet-4x5.jpg" alt="Ausdrucksstarkes Porträt in schwarzer Tusche" width="720" height="900" loading="lazy" decoding="async"><span>Tusche, Pinsel</span></a>
+					<a href="/img/fotos/gruppe-tusche-4x5.jpg"><img src="/img/portfolio/gruppe-tusche-4x5.jpg" alt="Gruppenporträt in Tusche mit blauem Aquarell" width="720" height="900" loading="lazy" decoding="async"><span>Gruppenporträt</span></a>
+					<a href="/img/fotos/tusche-portraet-2.jpg"><img src="/img/portfolio/tusche-portraet-2.jpg" alt="Ernstes Tusche-Porträt im Skizzenbuch" width="720" height="728" loading="lazy" decoding="async"><span>Skizzenbuch</span></a>
+					<a href="/img/kunst/skizze-07.jpg"><img src="/img/portfolio/skizze-07.jpg" alt="Tusche und Marker: „Pavel the vampire“ mit roter Fliege" width="276" height="369" loading="lazy" decoding="async"><span>„Pavel the vampire“</span></a>
+					<a href="/img/fotos/goldig-tusche-1x1.jpg"><img src="/img/portfolio/goldig-tusche-1x1.jpg" alt="Tusche-Zeichnung einer Band auf der Bühne" width="720" height="720" loading="lazy" decoding="async"><span>Revolte Tanzbein</span></a>
 				</div>
 			</div>
 		</section>
 
-		<!-- ================= THE STAND ================= -->
-		<section class="section" style="padding-top:40px">
-			<div class="wrap">
-				<h2>Der Stand</h2>
-				<div class="gallery">
-					<img src="/img/fotos/stand-zelt-3x2.jpg" alt="Aydans Porträt-Stand komplett von vorne" class="ph-img ph--3x2" width="1200" height="800" loading="lazy" decoding="async">
-					<img src="/img/fotos/stand-tisch-3x2.jpg" alt="Preisschild und Beispielporträts auf Aydans Zeichentisch" class="ph-img ph--3x2" width="1200" height="800" loading="lazy" decoding="async">
-					<img src="/img/fotos/gaeste-mit-portraets-3x2.jpg" alt="Gäste mit ihren frisch gezeichneten Porträts" class="ph-img ph--3x2" width="1200" height="800" loading="lazy" decoding="async">
+		<!-- ================= SERIES 3: CONCERTS ================= -->
+		<section class="pf-series section--dark pf-bloom" id="konzerte" aria-labelledby="konzerte-title">
+			<div class="wrap wrap--wide">
+				<div class="pf-series-head">
+					<h2 class="pf-title" id="konzerte-title">Live auf der Bühne</h2>
+					<p>Musiker:innen beim Spielen, gemalt im Dunkeln, im Gedränge und im Takt.</p>
 				</div>
-				<p style="margin-top:1.5em">
-					<strong>Kontakt:</strong> Aydan Lig'on · <a href="mailto:aydan@smileyfoxyportraits.com">aydan@smileyfoxyportraits.com</a> ·
-					smileyfoxyportraits.com · Instagram: @smileyfoxyportraits
-				</p>
-				<p class="hint">Gemäß § 19 UStG wird keine Umsatzsteuer berechnet.</p>
+				<div class="pf-wall" data-lightbox data-series="konzerte">
+					<a href="/img/musik/band-3.jpg"><img src="/img/portfolio/band-3.jpg" alt="Live-Skizze der Band CEVIL im pinken Bühnenlicht" width="720" height="1559" loading="lazy" decoding="async"><span>CEVIL</span></a>
+					<a href="/img/musik/band-29.jpg"><img src="/img/portfolio/band-29.jpg" alt="Tusche und Aquarell: Bassist mit Schlagzeug im Hintergrund" width="720" height="982" loading="lazy" decoding="async"><span>Live im Konzert</span></a>
+					<a href="/img/musik/band-7.jpg"><img src="/img/portfolio/band-7.jpg" alt="Aquarell-Skizze, von CEVIL geteilt: „this is the coolest thing ever“" width="720" height="1112" loading="lazy" decoding="async"><span>„the coolest thing ever“</span></a>
+					<a href="/img/musik/band-14.jpg"><img src="/img/portfolio/band-14.jpg" alt="Blaues Aquarell einer Musikerin" width="720" height="1559" loading="lazy" decoding="async"><span>Live im Konzert</span></a>
+					<a href="/img/musik/band-25.jpg"><img src="/img/portfolio/band-25.jpg" alt="Tusche-Skizze: Gitarrist mit Brille" width="720" height="1093" loading="lazy" decoding="async"><span>Tusche</span></a>
+					<a href="/img/musik/band-17.jpg"><img src="/img/portfolio/band-17.jpg" alt="Tusche-Skizze einer Sängerin mit langen Haaren" width="720" height="960" loading="lazy" decoding="async"><span>Live im Konzert</span></a>
+					<a href="/img/musik/band-34.jpg"><img src="/img/portfolio/band-34.jpg" alt="Tusche auf rotem Aquarell: Gitarrist im Gegenlicht" width="720" height="1190" loading="lazy" decoding="async"><span>Live im Konzert</span></a>
+					<a href="/img/musik/band-24.jpg"><img src="/img/portfolio/band-24.jpg" alt="Rotbraune Pinselskizze einer Band" width="720" height="1000" loading="lazy" decoding="async"><span>Pinsel</span></a>
+					<a href="/img/musik/band-39.jpg"><img src="/img/portfolio/band-39.jpg" alt="Tusche im pinken Bühnenlicht: Musiker mit Brille" width="720" height="1029" loading="lazy" decoding="async"><span>Im Bühnenlicht</span></a>
+					<a href="/img/musik/band-36.jpg"><img src="/img/portfolio/band-36.jpg" alt="Tusche-Skizze eines Bassisten mit Hut" width="720" height="1081" loading="lazy" decoding="async"><span>Tusche</span></a>
+					<a href="/img/musik/band-10.jpg"><img src="/img/portfolio/band-10.jpg" alt="Blaues Aquarell einer ganzen Band" width="720" height="1559" loading="lazy" decoding="async"><span>Ganze Band</span></a>
+					<a href="/img/musik/band-20.jpg"><img src="/img/portfolio/band-20.jpg" alt="Drei Aquarelle im orangen Bühnenlicht" width="720" height="720" loading="lazy" decoding="async"><span>Ein Abend, drei Bilder</span></a>
+					<a class="more-item" href="/img/musik/band-38.jpg"><img src="/img/portfolio/band-38.jpg" alt="Tusche im blauen Bühnenlicht" width="720" height="1003" loading="lazy" decoding="async"><span>Im Bühnenlicht</span></a>
+					<a class="more-item" href="/img/musik/band-26.jpg"><img src="/img/portfolio/band-26.jpg" alt="Rotbraune Pinselskizze: Schlagzeuger" width="720" height="1062" loading="lazy" decoding="async"><span>Pinsel</span></a>
+					<a class="more-item" href="/img/musik/band-33.jpg"><img src="/img/portfolio/band-33.jpg" alt="Tusche-Skizze eines Sängers" width="720" height="1210" loading="lazy" decoding="async"><span>Tusche</span></a>
+					<a class="more-item" href="/img/musik/band-40.jpg"><img src="/img/portfolio/band-40.jpg" alt="Tusche auf blauem Aquarell: Musiker im Scheinwerferlicht" width="720" height="439" loading="lazy" decoding="async"><span>Im Bühnenlicht</span></a>
+					<a class="more-item" href="/img/musik/band-9.jpg"><img src="/img/portfolio/band-9.jpg" alt="Tusche-Lettering „Ich bin da“ mit blauen Figuren" width="720" height="1559" loading="lazy" decoding="async"><span>Live im Konzert</span></a>
+					<a class="more-item" href="/img/musik/band-11.jpg"><img src="/img/portfolio/band-11.jpg" alt="Zwei blaue Aquarell-Skizzen von Musikern" width="720" height="332" loading="lazy" decoding="async"><span>Aquarell</span></a>
+					<a class="more-item" href="/img/musik/band-19.jpg"><img src="/img/portfolio/band-19.jpg" alt="Aquarell-Skizzen von Musikern im Skizzenbuch" width="720" height="540" loading="lazy" decoding="async"><span>Skizzenbuch</span></a>
+					<a class="more-item" href="/img/musik/band-21.jpg"><img src="/img/portfolio/band-21.jpg" alt="Viele Konzert-Skizzen auf einem Tisch ausgebreitet" width="720" height="333" loading="lazy" decoding="async"><span>Ein Abend voller Skizzen</span></a>
+					<a class="more-item" href="/img/musik/band-27.jpg"><img src="/img/portfolio/band-27.jpg" alt="Expressive Tusche-Skizze einer Band" width="720" height="1019" loading="lazy" decoding="async"><span>Tusche</span></a>
+					<a class="more-item" href="/img/musik/band-32.jpg"><img src="/img/portfolio/band-32.jpg" alt="Tusche-Skizze einer Band auf der Bühne" width="720" height="519" loading="lazy" decoding="async"><span>Tusche</span></a>
+					<a class="more-item" href="/img/musik/band-37.jpg"><img src="/img/portfolio/band-37.jpg" alt="Blaues Aquarell eines Gitarristen" width="720" height="960" loading="lazy" decoding="async"><span>Aquarell</span></a>
+					<a class="more-item" href="/img/musik/band-6.jpg"><img src="/img/portfolio/band-6.jpg" alt="Drei Aquarell-Skizzen von Musikern nebeneinander" width="720" height="540" loading="lazy" decoding="async"><span>Aquarell</span></a>
+				</div>
+				<p class="pf-more"><button class="pf-more-btn" type="button" data-see-more="konzerte">Mehr Konzert-Bilder ansehen (+12)</button></p>
+				<p class="pf-link"><a href="/about/#bands">Die Geschichten zu den Konzert-Zeichnungen →</a></p>
 			</div>
 		</section>
 
+		<!-- ================= SERIES 4: LIVE SKETCHES ================= -->
+		<section class="pf-series" id="skizzen" aria-labelledby="skizzen-title">
+			<div class="wrap wrap--wide">
+				<div class="pf-series-head">
+					<h2 class="pf-title" id="skizzen-title">Live-Skizzen</h2>
+					<p>Fineliner, Marker und Tusche, oft in fünf bis fünfzehn Minuten: im Mauerpark, an meinem Stand und unterwegs.</p>
+				</div>
+				<div class="pf-wall" data-lightbox data-series="skizzen">
+					<a href="/img/galerie/galerie-09.jpg"><img src="/img/portfolio/galerie-09.jpg" alt="A5-Skizze in Fineliner, Tusche und gelbem Marker: Mann im Profil" width="720" height="980" loading="lazy" decoding="async"><span>Fineliner &amp; Marker</span></a>
+					<a href="/img/galerie/galerie-01.jpg"><img src="/img/portfolio/galerie-01.jpg" alt="A4-Porträt in Tusche: junge Frau mit Locken" width="720" height="1065" loading="lazy" decoding="async"><span>A4, Tusche</span></a>
+					<a href="/img/fotos/ein-euro-portraet-kuss.jpg"><img src="/img/portfolio/ein-euro-portraet-kuss.jpg" alt="Schnellskizze in schwarzem Marker: zwei Frauen küssen sich" width="720" height="540" loading="lazy" decoding="async"><span>Schnellskizze, ca. 5 Min.</span></a>
+					<a href="/img/galerie/galerie-08.jpg"><img src="/img/portfolio/galerie-08.jpg" alt="A5-Skizze in orangem Marker: sitzende Person" width="720" height="970" loading="lazy" decoding="async"><span>15 Min., Marker</span></a>
+					<a href="/img/kunst/skizze-05.jpg"><img src="/img/portfolio/skizze-05.jpg" alt="Wachsmalkreide-Porträt: Maxim im Profil" width="270" height="329" loading="lazy" decoding="async"><span>Wachsmalkreide</span></a>
+					<a href="/img/galerie/galerie-06.jpg"><img src="/img/portfolio/galerie-06.jpg" alt="A5-Skizze in Fineliner und Marker: Frau mit Brille im Profil" width="720" height="1032" loading="lazy" decoding="async"><span>Fineliner &amp; Marker</span></a>
+					<a href="/img/fotos/ein-euro-portraet.jpg"><img src="/img/portfolio/ein-euro-portraet.jpg" alt="Schnellskizze in schwarzem Marker: ein Paar, sie lehnt den Kopf an seine Schulter" width="706" height="877" loading="lazy" decoding="async"><span>Schnellskizze, ca. 5 Min.</span></a>
+					<a href="/img/galerie/galerie-05.jpg"><img src="/img/portfolio/galerie-05.jpg" alt="A5-Skizze in Tusche und rotem Fineliner: Person am Tisch" width="720" height="1067" loading="lazy" decoding="async"><span>Fineliner</span></a>
+					<a href="/img/kunst/skizze-02.jpg"><img src="/img/portfolio/skizze-02.jpg" alt="Tusche-Skizze: Frau mit Brille im Profil" width="276" height="369" loading="lazy" decoding="async"><span>Fineliner</span></a>
+					<a href="/img/fotos/aquarell-gitarre-2-papier.jpg"><img src="/img/portfolio/aquarell-gitarre-2-papier.jpg" alt="Fineliner-Skizze: Gitarrist mit zwei Gitarren" width="720" height="1116" loading="lazy" decoding="async"><span>„Bro has two guitars“</span></a>
+					<a class="more-item" href="/img/kunst/skizze-03.jpg"><img src="/img/portfolio/skizze-03.jpg" alt="Tusche-Skizze: Person mit Brille und lockigem Haar im Profil" width="275" height="369" loading="lazy" decoding="async"><span>Fineliner</span></a>
+					<a class="more-item" href="/img/galerie/galerie-03.jpg"><img src="/img/portfolio/galerie-03.jpg" alt="Fineliner-Skizzen von Menschen beim Konzert" width="720" height="1061" loading="lazy" decoding="async"><span>Skizzenbuch</span></a>
+					<a class="more-item" href="/img/kunst/skizze-01.jpg"><img src="/img/portfolio/skizze-01.jpg" alt="Blauer Fineliner mit gelbem Marker: Mann mit Schnurrbart" width="276" height="369" loading="lazy" decoding="async"><span>Fineliner &amp; Marker</span></a>
+					<a class="more-item" href="/img/kunst/skizze-08.jpg"><img src="/img/portfolio/skizze-08.jpg" alt="Skizzenbuchseite mit mehreren schnellen Tusche-Porträts" width="275" height="369" loading="lazy" decoding="async"><span>Skizzenbuch</span></a>
+					<a class="more-item" href="/img/fotos/ein-euro-portraet-skizzen.jpg"><img src="/img/portfolio/ein-euro-portraet-skizzen.jpg" alt="Drei Schnellskizzen in Tusche auf Skizzenbuchseiten" width="607" height="430" loading="lazy" decoding="async"><span>Schnellskizzen</span></a>
+					<a class="more-item" href="/img/kunst/skizze-06.jpg"><img src="/img/portfolio/skizze-06.jpg" alt="Fineliner-Skizze: Person mit Handy, sitzend" width="276" height="369" loading="lazy" decoding="async"><span>Fineliner</span></a>
+					<a class="more-item" href="/img/kunst/skizze-04.jpg"><img src="/img/portfolio/skizze-04.jpg" alt="Tusche-Skizze: Person mit langen Haaren von hinten" width="276" height="369" loading="lazy" decoding="async"><span>Fineliner</span></a>
+				</div>
+				<p class="pf-more"><button class="pf-more-btn" type="button" data-see-more="skizzen">Mehr Skizzen ansehen (+7)</button></p>
+			</div>
+		</section>
+
+		<!-- ================= SERIES 5: COMMISSIONS ================= -->
+		<section class="pf-series section--alt" id="auftraege" aria-labelledby="auftraege-title">
+			<div class="wrap wrap--wide">
+				<div class="pf-series-head">
+					<h2 class="pf-title" id="auftraege-title">Aufträge &amp; Team-Porträts</h2>
+					<p>Nach Foto, gerahmt, als Geschenk oder als einheitliche Serie für ein ganzes Team.</p>
+				</div>
+				<div class="pf-wall" data-lightbox>
+					<a href="/img/fotos/spaghettaria-1a.jpg"><img src="/img/portfolio/spaghettaria-1a.jpg" alt="Gerahmtes Mitarbeiter-Porträt in blauer Tusche" width="460" height="670" loading="lazy" decoding="async"><span>Spaghetteria-Team</span></a>
+					<a href="/img/fotos/gerahmtes-paar-4x5.jpg"><img src="/img/portfolio/gerahmtes-paar-4x5.jpg" alt="Gerahmtes Paar-Porträt mit Skizzen und Fotostreifen" width="720" height="900" loading="lazy" decoding="async"><span>Paar-Porträt nach Foto</span></a>
+					<a href="/img/fotos/spaghettaria-1b.jpg"><img src="/img/portfolio/spaghettaria-1b.jpg" alt="Gerahmtes Porträt in blauem Aquarell: Mann mit Locken und Bart" width="452" height="670" loading="lazy" decoding="async"><span>Spaghetteria-Team</span></a>
+					<a href="/img/fotos/auftrag-familie-3x2.jpg"><img src="/img/portfolio/auftrag-familie-3x2.jpg" alt="Familien-Porträt in Tusche und blauem Aquarell" width="720" height="480" loading="lazy" decoding="async"><span>Familie nach Foto</span></a>
+					<a href="/img/fotos/spaghettaria-3.jpg"><img src="/img/portfolio/spaghettaria-3.jpg" alt="Gerahmtes Porträt: junger Mann mit blauem Haar" width="720" height="560" loading="lazy" decoding="async"><span>Spaghetteria-Team</span></a>
+					<a href="/img/fotos/spaghettaria-2.jpg"><img src="/img/portfolio/spaghettaria-2.jpg" alt="Gerahmtes Porträt einer Person mit Locken" width="720" height="560" loading="lazy" decoding="async"><span>Spaghetteria-Team</span></a>
+					<a href="/img/exhibition%20WIP.jpeg"><img src="/img/portfolio/exhibition-wip.jpg" alt="Ein Porträt der Spaghetteria-Serie entsteht" width="720" height="715" loading="lazy" decoding="async"><span>In Arbeit</span></a>
+				</div>
+				<div class="btn-row" style="justify-content:center">
+					<a class="btn" href="/commission.html">Eigenes Porträt bestellen</a>
+				</div>
+			</div>
+		</section>
+
+		<!-- ================= FILMS: 6 reels with a short description =================
+		     Add a reel: copy an <article class="film">, change the reel ID (from the Instagram link) in 3 places,
+		     save its cover as img/reels/ID.jpg. Instagram only loads after a click (privacy, js/consent.js). -->
+		<section class="pf-series section--dark" id="filme" aria-labelledby="filme-title">
+			<div class="wrap wrap--wide">
+				<div class="pf-series-head">
+					<h2 class="pf-title" id="filme-title">Hinter den Bildern</h2>
+					<p>Kurze Filme vom Zeichnen, vom Stand und vom Künstler-Alltag. Ein Klick lädt das Video von Instagram.</p>
+				</div>
+				<div class="films">
+					<article class="film">
+					<button class="film-play" type="button" data-embed-src="https://www.instagram.com/reel/Dd7cqNmoz81/embed" data-embed-title="Porträts zeichnen im Mauerpark"
+						data-embed-style="width:100%;aspect-ratio:9/16;min-height:520px;border:0;border-radius:10px;background:#fff">
+						<img src="/img/reels/Dd7cqNmoz81.jpg" alt="" loading="lazy" decoding="async"><span class="film-icon" aria-hidden="true"></span><span class="sr-only">Video abspielen: Porträts zeichnen im Mauerpark</span>
+					</button>
+					<h3>Porträts zeichnen im Mauerpark</h3>
+					<p>Ein Samstag an meinem Platz im Mauerpark: Leute setzen sich, ich zeichne, sie gehen mit ihrem Bild nach Hause.</p>
+					<a href="https://www.instagram.com/reel/Dd7cqNmoz81/" target="_blank" rel="noopener">Auf Instagram ansehen →</a>
+				</article>
+				<article class="film">
+					<button class="film-play film-play--wide" type="button" data-embed-src="https://www.instagram.com/reel/DePOG1GIV0O/embed" data-embed-title="Abend-Doodle zum Runterkommen"
+						data-embed-style="width:100%;aspect-ratio:9/16;min-height:520px;border:0;border-radius:10px;background:#fff">
+						<img src="/img/reels/DePOG1GIV0O.jpg" alt="" loading="lazy" decoding="async"><span class="film-icon" aria-hidden="true"></span><span class="sr-only">Video abspielen: Abend-Doodle zum Runterkommen</span>
+					</button>
+					<h3>Abend-Doodle zum Runterkommen</h3>
+					<p>Eine kleine Zeichnung zum Abschalten, bevor ich meinen reisenden Porträt-Stand für die Nacht zusammenpacke.</p>
+					<a href="https://www.instagram.com/reel/DePOG1GIV0O/" target="_blank" rel="noopener">Auf Instagram ansehen →</a>
+				</article>
+				<article class="film">
+					<button class="film-play" type="button" data-embed-src="https://www.instagram.com/reel/Dc5pUYYICng/embed" data-embed-title="Hinter den Kulissen: die Verpackung"
+						data-embed-style="width:100%;aspect-ratio:9/16;min-height:520px;border:0;border-radius:10px;background:#fff">
+						<img src="/img/reels/Dc5pUYYICng.jpg" alt="" loading="lazy" decoding="async"><span class="film-icon" aria-hidden="true"></span><span class="sr-only">Video abspielen: Hinter den Kulissen: die Verpackung</span>
+					</button>
+					<h3>Hinter den Kulissen: die Verpackung</h3>
+					<p>Wie meine handgeschriebene A5-Porträtverpackung entsteht – mit Schnitt etwa vier Stunden Arbeit.</p>
+					<a href="https://www.instagram.com/reel/Dc5pUYYICng/" target="_blank" rel="noopener">Auf Instagram ansehen →</a>
+				</article>
+				<article class="film">
+					<button class="film-play" type="button" data-embed-src="https://www.instagram.com/reel/DeUa043IBml/embed" data-embed-title="Leben als Porträtkünstler #3 – die langweilige Seite"
+						data-embed-style="width:100%;aspect-ratio:9/16;min-height:520px;border:0;border-radius:10px;background:#fff">
+						<img src="/img/reels/DeUa043IBml.jpg" alt="" loading="lazy" decoding="async"><span class="film-icon" aria-hidden="true"></span><span class="sr-only">Video abspielen: Leben als Porträtkünstler #3 – die langweilige Seite</span>
+					</button>
+					<h3>Leben als Porträtkünstler #3 – die langweilige Seite</h3>
+					<p>Buchhaltung. Ich baue mir ein kleines Mini-Büro für mein Business – ja, früh, so organisiert zu sein, aber schaden kann's nicht.</p>
+					<a href="https://www.instagram.com/reel/DeUa043IBml/" target="_blank" rel="noopener">Auf Instagram ansehen →</a>
+				</article>
+				<article class="film">
+					<button class="film-play" type="button" data-embed-src="https://www.instagram.com/reel/DeUlb_XoKsi/embed" data-embed-title="Wie du dein eigenes mobiles Kunst-Business startest"
+						data-embed-style="width:100%;aspect-ratio:9/16;min-height:520px;border:0;border-radius:10px;background:#fff">
+						<img src="/img/reels/DeUlb_XoKsi.jpg" alt="" loading="lazy" decoding="async"><span class="film-icon" aria-hidden="true"></span><span class="sr-only">Video abspielen: Wie du dein eigenes mobiles Kunst-Business startest</span>
+					</button>
+					<h3>Wie du dein eigenes mobiles Kunst-Business startest</h3>
+					<p>Was ich über Reisegewerbe und Reisegewerbekarte gelernt habe – für alle, die selbst draußen Kunst verkaufen wollen.</p>
+					<a href="https://www.instagram.com/reel/DeUlb_XoKsi/" target="_blank" rel="noopener">Auf Instagram ansehen →</a>
+				</article>
+				<article class="film">
+					<button class="film-play" type="button" data-embed-src="https://www.instagram.com/reel/Dc8lCmntKsV/embed" data-embed-title="Wie ich bei meiner Arbeit denke"
+						data-embed-style="width:100%;aspect-ratio:9/16;min-height:520px;border:0;border-radius:10px;background:#fff">
+						<img src="/img/reels/Dc8lCmntKsV.jpg" alt="" loading="lazy" decoding="async"><span class="film-icon" aria-hidden="true"></span><span class="sr-only">Video abspielen: Wie ich bei meiner Arbeit denke</span>
+					</button>
+					<h3>Wie ich bei meiner Arbeit denke</h3>
+					<p>Ich möchte mehr davon zeigen, was mir beim Zeichnen durch den Kopf geht.</p>
+					<a href="https://www.instagram.com/reel/Dc8lCmntKsV/" target="_blank" rel="noopener">Auf Instagram ansehen →</a>
+				</article>
+				</div>
+				</div>
+				<div class="btn-row" style="justify-content:center">
+					<a class="btn btn--fox" href="https://www.youtube.com/@SmileyFoxyPortraits" target="_blank" rel="noopener">Mehr auf YouTube</a>
+					<a class="btn btn--ghost" style="color:#F2EAE4;border-color:#F2EAE4" href="https://www.instagram.com/smileyfoxyportraits/reels/" target="_blank" rel="noopener">Alle Reels auf Instagram</a>
+				</div>
+			</div>
+		</section>
+
+		<!-- ================= REFERENCES: newest first ================= -->
+		<section class="pf-series" id="referenzen" aria-labelledby="referenzen-title">
+			<div class="wrap wrap--wide">
+				<div class="pf-series-head">
+					<h2 class="pf-title" id="referenzen-title">Referenzen</h2>
+					<p>Wo meine Kunst schon war, das Neueste zuerst. Die ganzen Geschichten stehen auf der <a href="/referenzen/">Referenzen-Seite</a>.</p>
+				</div>
+				<div class="pf-refs">
+					<article class="pf-ref">
+						<img src="/img/fotos/stand-saunasplash-portraets-3x2.jpg" alt="Zeichentisch voller live gemalter Porträts beim Saunasplash-Festival" width="742" height="495" loading="lazy" decoding="async">
+						<div>
+							<small>2026 · Live-Event · 3 Tage</small>
+							<h3>Saunasplash-Festival</h3>
+							<p>Drei Tage mit meinem Stand für <strong>1.500+ Gäste</strong> da, durchgehend am Malen. Viele haben ein Porträt mit nach Hause genommen.</p>
+							<a class="btn btn--ghost btn--small" href="/referenzen/#saunasplash">Die Geschichte</a>
+						</div>
+					</article>
+					<article class="pf-ref">
+						<img src="/img/fotos/ausstellung-berlin-things-3x2.jpg" alt="Aydan bei der Gruppenausstellung „Berlin Things“ neben der eigenen gerahmten Tusche-Zeichnung" width="1200" height="800" loading="lazy" decoding="async">
+						<div>
+							<small>August 2023 · Ausstellung</small>
+							<h3>Gruppenausstellung „Berlin Things“</h3>
+							<p>Mit der Berliner Zeichengruppe Creative Sessions: meine Tusche-Zeichnung <strong>an der Galeriewand</strong>.</p>
+							<a class="btn btn--ghost btn--small" href="/referenzen/#ausstellung">Mehr erfahren</a>
+						</div>
+					</article>
+					<article class="pf-ref">
+						<img src="/img/fotos/spaghettaria-2-3x2.jpg" alt="Gerahmtes Mitarbeiter-Porträt an der Wand der Spaghetteria" width="1200" height="800" loading="lazy" decoding="async">
+						<div>
+							<small>Bezahlter Auftrag · Porträt-Serie</small>
+							<h3>Team-Porträts für die Spaghetteria</h3>
+							<p>Das ganze Team in Tusche und blauem Aquarell, gerahmt und danach <strong>als Ausstellung im Restaurant</strong>.</p>
+							<a class="btn btn--ghost btn--small" href="/referenzen/#mitarbeiter-portraets">Mehr erfahren</a>
+						</div>
+					</article>
+				</div>
+				<!-- Moments: people with their portraits -->
+				<div class="pf-moments" data-lightbox aria-label="Menschen mit ihren Porträts">
+					<a href="/img/kunst/kunst-10.jpg"><img src="/img/portfolio/kunst-10.jpg" alt="Aydan und ein Musiker mit seinem frisch gemalten Aquarell-Porträt" width="720" height="960" loading="lazy" decoding="async"></a>
+					<a href="/img/musik/cevil-selfie.jpg"><img src="/img/portfolio/cevil-selfie.jpg" alt="Selfie: Aydan und CEVIL nach dem Konzert, mit ihrem signierten Album" width="720" height="960" loading="lazy" decoding="async"></a>
+					<a href="/img/kunst/kunst-11.jpg"><img src="/img/portfolio/kunst-11.jpg" alt="Aydan und ein Gast halten lachend rote Skizzen hoch" width="720" height="960" loading="lazy" decoding="async"></a>
+					<a href="/img/musik/band-13.jpg"><img src="/img/portfolio/band-13.jpg" alt="Eine Musikerin hält ihr Porträt in die Kamera" width="720" height="1559" loading="lazy" decoding="async"></a>
+					<a href="/img/fotos/dankbare-reaktion.jpg"><img src="/img/portfolio/dankbare-reaktion.jpg" alt="Instagram-Story eines Gastes: „seeing this made me smile again“" width="682" height="1200" loading="lazy" decoding="async"></a>
+				</div>
+			</div>
+		</section>
+
+		<!-- ================= FOR MARKET ORGANISERS: key facts + the stand (send this link with applications) ================= -->
+		<section class="pf-series section--alt" id="maerkte" aria-labelledby="maerkte-title">
+			<div class="wrap wrap--wide">
+				<div class="pf-series-head">
+					<h2 class="pf-title" id="maerkte-title">Mein Stand</h2>
+					<p>Für Märkte, Festivals und Veranstalter: das Wichtigste auf einen Blick.</p>
+				</div>
+				<div class="pf-stand">
+					<div>
+						<div class="facts">
+							<div><strong>Live-Porträts</strong><span>A6 · A5 · A4, ca. 5 Min. (schnell) bis 25 Min. (ausführlich mit Aquarell)</span></div>
+							<div><strong>ab 5 €</strong><span>A6/A7 5 €, A5 ab 15 €, A4 ab 28 €; samstags im Mauerpark auch die 1-€-Schnellskizze</span></div>
+							<div><strong>Stand flexibel</strong><span>Klapptisch (1,35 m), ein Stuhl für mich, Bank oder 2 Stühle für Gäste. Kein Strom nötig</span></div>
+							<div><strong>Erfahrung</strong><span>Mauerpark, Brandenburger Tor, Events mit 1.500+ Gästen</span></div>
+						</div>
+						<p style="margin-top:1.4em"><strong>Kontakt:</strong> Aydan Lig'on · <a href="mailto:aydan@smileyfoxyportraits.com">aydan@smileyfoxyportraits.com</a> · Instagram: @smileyfoxyportraits</p>
+						<p class="hint">Gemäß § 19 UStG wird keine Umsatzsteuer berechnet.</p>
+						<button class="btn btn--small btn--ghost no-print" type="button" onclick="window.print()">Als PDF speichern</button>
+					</div>
+					<div class="pf-wall pf-wall--two" data-lightbox>
+					<a href="/img/fotos/stand-saunasplash-nacht-4x5.jpg"><img src="/img/portfolio/stand-saunasplash-nacht-4x5.jpg" alt="Der beleuchtete Porträt-Stand bei Nacht auf dem Saunasplash" width="720" height="900" loading="lazy" decoding="async"><span>Saunasplash, nachts</span></a>
+					<a href="/img/fotos/stand-zelt-3x2.jpg"><img src="/img/portfolio/stand-zelt-3x2.jpg" alt="Aydans Porträt-Stand von vorne" width="720" height="480" loading="lazy" decoding="async"><span>Der Stand</span></a>
+					<a href="/img/fotos/zeichnen-2024-4.jpg"><img src="/img/portfolio/zeichnen-2024-4.jpg" alt="Aydan zeichnet mit Staffelei im Mauerpark" width="720" height="960" loading="lazy" decoding="async"><span>Mauerpark</span></a>
+					<a href="/img/fotos/stand-tisch-3x2.jpg"><img src="/img/portfolio/stand-tisch-3x2.jpg" alt="Preisschild und Beispielporträts auf dem Zeichentisch" width="720" height="480" loading="lazy" decoding="async"><span>Preise &amp; Beispiele</span></a>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- "Mehr ansehen": shows the hidden pictures of a series (without JavaScript all pictures are visible) -->
+		<script>
+			document.documentElement.classList.add('pf-js');
+			document.querySelectorAll('[data-see-more]').forEach(function (btn) {
+				btn.addEventListener('click', function () {
+					var wall = document.querySelector('[data-series="' + btn.getAttribute('data-see-more') + '"]');
+					wall.classList.add('show-all');
+					document.dispatchEvent(new CustomEvent('pf:more', { detail: wall }));
+					btn.parentNode.remove();
+				});
+			});
+		</script>
 	</main>
 
 	<footer class="site-footer">
-		<div class="wrap footer-bottom" style="margin-top:0;border-top:0">
-			<span>© SmileyFoxyPortraits · Aydan Lig'on · Berlin</span>
-			<span>
-				<a href="/ImpressumUndDatenschutz/Impressum.html">Impressum</a> ·
-				<a href="/ImpressumUndDatenschutz/Datenschutz.html">Datenschutz</a>
-			</span>
+		<div class="wrap">
+			<!-- NEWSLETTER BAND: the email field opens Substack with the address already filled in -->
+			<div class="footer-newsletter">
+				<div>
+					<h3>Bleib in Kontakt</h3>
+					<p>Erfahre zuerst, wann und wo ich zeichne – und sichere dir neue Originale &amp; Prints vor allen anderen.
+						Kostenlos, höchstens eine E-Mail im Monat. <a href="https://aydanligon.substack.com/archive">Archiv lesen →</a></p>
+				</div>
+				<form class="newsletter-form" action="https://aydanligon.substack.com/subscribe" method="get" target="_blank">
+					<label class="sr-only" for="footer-email">E-Mail-Adresse</label>
+					<input id="footer-email" type="email" name="email" placeholder="deine@email.de" required autocomplete="email">
+					<button class="btn btn--fox" type="submit">Kostenlos abonnieren</button>
+				</form>
+			</div>
+
+			<!-- LINK COLUMNS: offers · about me · support · contact · legal -->
+			<div class="footer-grid">
+				<div>
+					<h3>Angebote</h3>
+					<p><a href="/events.html#live-events">Live-Porträts für Events</a></p>
+					<p><a href="/events.html#kleckerkasten">Kleckerkasten-Workshop</a></p>
+					<p><a href="/commission.html">Porträt-Auftrag</a></p>
+					<p><a href="/where-i-draw/">Wo &amp; wann ich zeichne</a></p>
+					<p><a href="/about/#referenzen">Referenzen</a></p>
+				</div>
+
+				<div>
+					<h3>Über mich</h3>
+					<p><a href="/about/">Meine Geschichte</a></p>
+					<p><a href="/projects/index.html">Projekte</a></p>
+					<p><a href="https://smileyfoxyportraits.bandcamp.com/">Musik auf Bandcamp</a></p>
+					<p><a href="/thankyou/index.html">Dankbarkeitswand &amp; Bewertungen</a></p>
+					<p><a href="/about/#faq">Fragen und Antworten</a></p>
+					<p><a href="/jobs/">Jobs: Mach mit</a></p>
+				</div>
+
+				<div>
+					<h3>Unterstützen</h3>
+					<p><a href="/spenden/">Spenden</a></p>
+					<p><a href="/bezahlen.html">Vor Ort bezahlen</a></p>
+					<p><a href="https://tr.ee/u1wxA4" target="_blank" rel="noopener">Kostenlos: Bewertung abgeben</a></p>
+					<p><a href="https://www.google.com/preferences/source?q=smileyfoxyportraits.com" target="_blank" rel="noopener">Kostenlos: bei Google als bevorzugte Quelle wählen</a></p>
+					<p><a href="/support-free/">Kostenlos unterstützen</a></p>
+				</div>
+
+				<div>
+					<h3>Kontakt</h3>
+					<p><a href="/contact/">Kontaktseite</a></p>
+					<p><a class="footer-pair" href="mailto:aydan@smileyfoxyportraits.com">Schreib mir eine E-Mail<br><span class="footer-mail">aydan@smileyfoxyportraits.com</span></a></p>
+					<p><a href="https://www.instagram.com/smileyfoxyportraits">Instagram</a></p>
+					<p><a class="footer-pair" href="https://aydanligon.substack.com/subscribe">E-Mail-Liste<br><span class="footer-mail">max. 1 E-Mail im Monat</span></a></p>
+				</div>
+
+				<div class="footer-legal">
+					<h3>Rechtliches</h3>
+					<p><a href="/ImpressumUndDatenschutz/Impressum.html">Impressum</a></p>
+					<p><a href="/ImpressumUndDatenschutz/Datenschutz.html">Datenschutzerklärung</a></p>
+					<p><a href="/einwilligung.html">Einwilligung Foto &amp; Video</a></p>
+					<p><a href="/about/#kontakt">Löschanfragen</a></p>
+				</div>
+			</div>
+
+			<div class="footer-bottom">
+				<span>© SmileyFoxyPortraits · Aydan Lig'on · Berlin</span>
+				<a href="#">↑ nach oben</a>
+			</div>
 		</div>
 	</footer>
-
 </body>
 
 </html>

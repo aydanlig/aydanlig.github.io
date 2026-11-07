@@ -73,7 +73,7 @@
 	document.querySelectorAll("[data-termine]").forEach(function (box) {
 		if (!upcoming.length) return; // keep the fallback text inside the box
 		var limit = parseInt(box.getAttribute("data-limit"), 10) || upcoming.length;
-		var html = '<ol class="termine-list">';
+		var html = '<ol class="termin-rows">';
 		upcoming.slice(0, limit).forEach(function (t) {
 			var p = parts(t);
 			var time = pick(t, "time");
