@@ -112,3 +112,7 @@ h3.kk-title { font-size: clamp(1.35rem, 2.6vw, 1.75rem); }
 #pakete .card-count { left: 18px; right: auto; max-width: calc(100% - 36px); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 #pakete .card h3 { white-space: nowrap; margin-top: 0; }
 #pakete .card .price { min-height: 1.6em; }
+/* 5 stat cubes (70th birthday added) */
+.live-stats { grid-template-columns: repeat(5, 1fr); }
+.live-stats li:nth-child(5) { background: #FFF1C9; }
+@media (max-width: 700px) { .live-stats { grid-template-columns: repeat(2, 1fr); } .live-stats li:last-child { grid-column: 1 / -1; } }
