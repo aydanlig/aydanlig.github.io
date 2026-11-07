@@ -1,95 +1,172 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://smileyfoxyportraits.com/</loc>
-    <lastmod>2026-10-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="de" href="https://smileyfoxyportraits.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smileyfoxyportraits.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://smileyfoxyportraits.com/"/>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://smileyfoxyportraits.com/events.html</loc>
-    <lastmod>2026-10-21</lastmod>
-    <changefreq>monthly</changefreq>
+    <loc>https://smileyfoxyportraits.com/en/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://smileyfoxyportraits.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smileyfoxyportraits.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://smileyfoxyportraits.com/"/>
+    <lastmod>2026-11-08</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://smileyfoxyportraits.com/commission.html</loc>
-    <lastmod>2026-10-21</lastmod>
+    <loc>https://smileyfoxyportraits.com/events.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://smileyfoxyportraits.com/events.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smileyfoxyportraits.com/en/events.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://smileyfoxyportraits.com/events.html"/>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://smileyfoxyportraits.com/about/</loc>
-    <lastmod>2026-10-21</lastmod>
+    <loc>https://smileyfoxyportraits.com/en/events.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://smileyfoxyportraits.com/events.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smileyfoxyportraits.com/en/events.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://smileyfoxyportraits.com/events.html"/>
+    <lastmod>2026-11-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://smileyfoxyportraits.com/commission.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://smileyfoxyportraits.com/commission.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smileyfoxyportraits.com/en/commission.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://smileyfoxyportraits.com/commission.html"/>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://smileyfoxyportraits.com/en/commission.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://smileyfoxyportraits.com/commission.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smileyfoxyportraits.com/en/commission.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://smileyfoxyportraits.com/commission.html"/>
+    <lastmod>2026-11-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://smileyfoxyportraits.com/where-i-draw/</loc>
-    <lastmod>2026-10-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="de" href="https://smileyfoxyportraits.com/where-i-draw/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smileyfoxyportraits.com/en/where-i-draw/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://smileyfoxyportraits.com/where-i-draw/"/>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://smileyfoxyportraits.com/spenden/</loc>
-    <lastmod>2026-10-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://smileyfoxyportraits.com/support-free/</loc>
-    <lastmod>2026-10-21</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://smileyfoxyportraits.com/en/where-i-draw/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://smileyfoxyportraits.com/where-i-draw/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smileyfoxyportraits.com/en/where-i-draw/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://smileyfoxyportraits.com/where-i-draw/"/>
+    <lastmod>2026-11-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://smileyfoxyportraits.com/referenzen/</loc>
-    <lastmod>2026-10-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://smileyfoxyportraits.com/projects/</loc>
-    <lastmod>2026-10-21</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://smileyfoxyportraits.com/thankyou/</loc>
-    <lastmod>2026-10-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="de" href="https://smileyfoxyportraits.com/referenzen/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smileyfoxyportraits.com/en/referenzen/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://smileyfoxyportraits.com/referenzen/"/>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://smileyfoxyportraits.com/ImpressumUndDatenschutz/Impressum.html</loc>
-    <lastmod>2026-10-21</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.4</priority>
+    <loc>https://smileyfoxyportraits.com/en/referenzen/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://smileyfoxyportraits.com/referenzen/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smileyfoxyportraits.com/en/referenzen/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://smileyfoxyportraits.com/referenzen/"/>
+    <lastmod>2026-11-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://smileyfoxyportraits.com/ImpressumUndDatenschutz/Datenschutz.html</loc>
-    <lastmod>2026-10-21</lastmod>
-    <changefreq>yearly</changefreq>
+    <loc>https://smileyfoxyportraits.com/spenden/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://smileyfoxyportraits.com/spenden/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smileyfoxyportraits.com/en/spenden/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://smileyfoxyportraits.com/spenden/"/>
+    <lastmod>2026-11-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://smileyfoxyportraits.com/en/spenden/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://smileyfoxyportraits.com/spenden/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smileyfoxyportraits.com/en/spenden/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://smileyfoxyportraits.com/spenden/"/>
+    <lastmod>2026-11-08</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
     <loc>https://smileyfoxyportraits.com/contact/</loc>
-    <lastmod>2026-10-21</lastmod>
-    <changefreq>yearly</changefreq>
+    <xhtml:link rel="alternate" hreflang="de" href="https://smileyfoxyportraits.com/contact/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smileyfoxyportraits.com/en/contact/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://smileyfoxyportraits.com/contact/"/>
+    <lastmod>2026-11-08</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
-	<url><loc>https://smileyfoxyportraits.com/en/</loc></url>
-	<url><loc>https://smileyfoxyportraits.com/en/events.html</loc></url>
-	<url><loc>https://smileyfoxyportraits.com/en/commission.html</loc></url>
-	<url><loc>https://smileyfoxyportraits.com/en/about/</loc></url>
-	<url><loc>https://smileyfoxyportraits.com/en/contact/</loc></url>
-	<url><loc>https://smileyfoxyportraits.com/en/where-i-draw/</loc></url>
-	<url><loc>https://smileyfoxyportraits.com/en/referenzen/</loc></url>
-	<url><loc>https://smileyfoxyportraits.com/en/spenden/</loc></url>
   <url>
-    <loc>https://smileyfoxyportraits.com/jobs/</loc>
-    <lastmod>2026-11-06</lastmod>
+    <loc>https://smileyfoxyportraits.com/en/contact/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://smileyfoxyportraits.com/contact/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smileyfoxyportraits.com/en/contact/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://smileyfoxyportraits.com/contact/"/>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://smileyfoxyportraits.com/about/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://smileyfoxyportraits.com/about/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smileyfoxyportraits.com/en/about/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://smileyfoxyportraits.com/about/"/>
+    <lastmod>2026-11-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://smileyfoxyportraits.com/en/about/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://smileyfoxyportraits.com/about/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smileyfoxyportraits.com/en/about/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://smileyfoxyportraits.com/about/"/>
+    <lastmod>2026-11-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://smileyfoxyportraits.com/support-free/</loc>
+    <lastmod>2026-11-08</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://smileyfoxyportraits.com/projects/</loc>
+    <lastmod>2026-11-08</lastmod>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://smileyfoxyportraits.com/jobs/</loc>
+    <lastmod>2026-11-08</lastmod>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://smileyfoxyportraits.com/ImpressumUndDatenschutz/Impressum.html</loc>
+    <lastmod>2026-11-08</lastmod>
+    <priority>0.2</priority>
+  </url>
+  <url>
+    <loc>https://smileyfoxyportraits.com/ImpressumUndDatenschutz/Datenschutz.html</loc>
+    <lastmod>2026-11-08</lastmod>
+    <priority>0.2</priority>
   </url>
 </urlset>
