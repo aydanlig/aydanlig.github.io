@@ -1979,3 +1979,8 @@ button.mc-day { cursor: pointer; }
 .ref-receipts a:nth-child(2) img { transform: rotate(3deg); }
 .ref-receipts a:hover img { transform: rotate(0) scale(1.03); }
 .ref-receipts-cap { text-align: center; margin-top: 10px; }
+
+/* Referenzen · Spaghetteria: client logo sits above the photo in the image column, a bit larger */
+.ref-side { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+.ref-side .ref-client-logo { max-width: 300px; width: 70%; margin-top: 0; }
+.ref-side .ref-client-logo img { width: 100%; height: auto; display: block; }
