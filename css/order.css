@@ -22,7 +22,7 @@
 	display: inline-grid; place-items: center; width: 26px; height: 26px; border-radius: 50%;
 	background: var(--line); color: var(--ink); font-size: 0.85rem; flex: none;
 }
-.order-progress .is-on { border-color: var(--ink); color: var(--ink); background: #fff; }
+.order-progress .is-on { border-color: var(--ink); color: var(--ink); background: var(--surface, #fff); }
 .order-progress .is-on span { background: var(--fox); color: var(--night); }
 .order-progress .is-done span { background: var(--ink); color: #fff; }
 .order-progress .is-done span::after { content: "✓"; }
@@ -55,7 +55,7 @@
 .order-choices--3 { grid-template-columns: repeat(3, 1fr); }
 .order-card {
 	position: relative; display: flex; flex-direction: column; cursor: pointer; overflow: hidden;
-	border: 2px solid var(--line); border-radius: var(--wobble-soft, 14px); background: #fff;
+	border: 2px solid var(--line); border-radius: var(--wobble-soft, 14px); background: var(--surface, #fff);
 	transition: border-color 0.15s, transform 0.15s, box-shadow 0.15s;
 }
 .order-card:hover { border-color: var(--ink-soft); transform: translateY(-2px); }
@@ -64,7 +64,7 @@
 .order-card-body strong { font-size: 1.02rem; }
 .order-card-body em { font-style: normal; color: var(--accent); white-space: nowrap; }
 .order-card-body .hint { margin: 0; }
-.order-card:has(input:checked) { border-color: var(--fox); background: #FFF4EC; box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.22); }
+.order-card:has(input:checked) { border-color: var(--fox); background: var(--tint, #FFF4EC); box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.22); }
 .order-card:has(input:checked)::after {
 	content: "✓"; position: absolute; top: 8px; right: 8px; width: 28px; height: 28px; display: grid; place-items: center;
 	border-radius: 50%; background: var(--fox); color: var(--night); font-weight: 800;
@@ -84,9 +84,9 @@
 .order-extras { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; margin-bottom: 1.4em; }
 .order-extras label {
 	display: flex; gap: 10px; align-items: flex-start; padding: 10px 12px; cursor: pointer;
-	border: 1px solid var(--line); border-radius: 12px; background: #fff;
+	border: 1px solid var(--line); border-radius: 12px; background: var(--surface, #fff);
 }
-.order-extras label:has(input:checked) { border-color: var(--fox); background: #FFF4EC; }
+.order-extras label:has(input:checked) { border-color: var(--fox); background: var(--tint, #FFF4EC); }
 .order-extras label.is-off { opacity: 0.45; cursor: not-allowed; }
 .order-extras input { margin-top: 2px; }
 .order-q { margin-top: 1.2em; }
@@ -123,7 +123,7 @@
 .photo-tips { margin: 10px 0 0; padding-left: 1.2em; font-size: 0.88rem; color: var(--ink-soft); }
 
 /* ---------- review + submit ---------- */
-.order-review { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; }
+.order-review { background: var(--surface, #fff); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; }
 .order-review .price-list { margin: 0; }
 .order-total { display: flex; justify-content: space-between; align-items: baseline; margin: 10px 0 0; font-size: 1.15rem; font-weight: 700; }
 .order-total strong { font-family: var(--font-ink, inherit); font-size: 2rem; font-weight: 400; color: var(--accent); }
@@ -186,7 +186,7 @@
 
 /* Preview of a later step (earlier step not filled in yet): visible, slightly faded; any tap jumps back (js/order.js) */
 .step-preview-note { display: none; }
-.order-step.is-preview .step-preview-note { display: block; margin: 0.6em 0 0; padding: 10px 14px; border-radius: 12px; background: #FFF1EA; border: 1.5px dashed var(--fox); font-size: 0.92rem; }
+.order-step.is-preview .step-preview-note { display: block; margin: 0.6em 0 0; padding: 10px 14px; border-radius: 12px; background: var(--tint, #FFF1EA); border: 1.5px dashed var(--fox); font-size: 0.92rem; }
 .order-step.is-preview > :not(legend):not(.step-preview-note):not(.order-nav) { opacity: 0.6; }
 .order-step.is-preview input, .order-step.is-preview select, .order-step.is-preview textarea, .order-step.is-preview label { cursor: pointer; }
 

@@ -34,13 +34,13 @@
 /* ---------- Form: "Weiß ich noch nicht" spans the whole style row; feeling quick-picks ---------- */
 .choice--wide { grid-column: 1 / -1; }
 .feel-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
-.feel-chips button { font: inherit; font-size: 0.85rem; padding: 5px 12px; border-radius: 999px; border: 1px solid #d6cdbf; background: #fff; color: var(--ink); cursor: pointer; }
-.feel-chips button:hover, .feel-chips button[aria-pressed="true"] { border-color: var(--accent); background: #FFF1EA; }
+.feel-chips button { font: inherit; font-size: 0.85rem; padding: 5px 12px; border-radius: 999px; border: 1px solid #d6cdbf; background: var(--surface, #fff); color: var(--ink); cursor: pointer; }
+.feel-chips button:hover, .feel-chips button[aria-pressed="true"] { border-color: var(--accent); background: var(--tint, #FFF1EA); }
 .form-grid [hidden] { display: none !important; }
 
 /* ---------- Order form (from /css/order.css): feeling field + "lieber live" note ---------- */
 .order-feel { margin-top: 1.2em; }
-.live-instead { margin: 0 0 1.2em; padding: 12px 14px; border-radius: 12px; background: #FFF1EA; border: 1px dashed var(--fox); font-size: 0.95rem; }
+.live-instead { margin: 0 0 1.2em; padding: 12px 14px; border-radius: 12px; background: var(--tint, #FFF1EA); border: 1px dashed var(--fox); font-size: 0.95rem; }
 
 /* ---------- Info "?" bubbles: short explanations and example pictures on hover / tap ---------- */
 .info { position: relative; display: inline-grid; place-items: center; width: 1.25em; height: 1.25em; margin-left: 2px; vertical-align: 0.08em;
@@ -49,7 +49,7 @@
 	width: max-content; max-width: min(260px, 80vw); padding: 8px 10px; border-radius: 10px; background: var(--night); color: #F2EAE4;
 	font: 400 0.82rem/1.4 var(--font-body); text-align: left; white-space: normal; opacity: 0; visibility: hidden; pointer-events: none; transition: opacity 0.15s; }
 .info:hover::after, .info:focus::after, .info:hover .info-pop, .info:focus .info-pop { opacity: 1; visibility: visible; }
-.info-pop { position: absolute; z-index: 30; right: 0; bottom: calc(100% + 8px); width: 170px; padding: 4px; border-radius: 10px; background: #fff;
+.info-pop { position: absolute; z-index: 30; right: 0; bottom: calc(100% + 8px); width: 170px; padding: 4px; border-radius: 10px; background: var(--surface, #fff);
 	box-shadow: 0 12px 30px rgba(15, 12, 17, 0.3); opacity: 0; visibility: hidden; pointer-events: none; transition: opacity 0.15s; }
 .info-pop img { width: 100%; height: auto; border-radius: 7px; }
 .price-list .info { margin-left: 6px; }
@@ -74,10 +74,10 @@
 @media (max-width: 860px) { .order--steps .order-progress { gap: 22px; } .order-progress li + li::before { left: -20px; width: 12px; } .order-progress li + li::after { left: -9px; } }
 
 /* tiers + their info, scan/frame question */
-.order-tiers label { padding: 6px 12px; border: 1px solid var(--line); border-radius: 999px; background: #fff; }
-.order-tiers label:has(input:checked) { border-color: var(--fox); background: #FFF4EC; }
-.tier-info { margin: 10px 0 0; padding: 10px 14px; border-left: 3px solid var(--fox); background: #FFF4EC; border-radius: 0 10px 10px 0; font-size: 0.9rem; }
-.scan-frame { margin-top: 8px; padding: 10px 12px; border-radius: 10px; background: #FFF4EC; border: 1px dashed var(--fox); font-size: 0.88rem; }
+.order-tiers label { padding: 6px 12px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface, #fff); }
+.order-tiers label:has(input:checked) { border-color: var(--fox); background: var(--tint, #FFF4EC); }
+.tier-info { margin: 10px 0 0; padding: 10px 14px; border-left: 3px solid var(--fox); background: var(--tint, #FFF4EC); border-radius: 0 10px 10px 0; font-size: 0.9rem; }
+.scan-frame { margin-top: 8px; padding: 10px 12px; border-radius: 10px; background: var(--tint, #FFF4EC); border: 1px dashed var(--fox); font-size: 0.88rem; }
 .scan-frame p { margin: 0 0 8px; }
 .scan-frame .btn { margin-right: 6px; }
 

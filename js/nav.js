@@ -1,3 +1,15 @@
+/* Dark mode: follow the device setting (add ?dark or ?light to a URL to test) */
+(function () {
+	var q = location.search, mq = window.matchMedia && matchMedia('(prefers-color-scheme: dark)');
+	function apply() {
+		var dark = /[?&]dark\b/.test(q) || (!/[?&]light\b/.test(q) && mq && mq.matches);
+		document.documentElement.classList.toggle('theme-dark', !!dark);
+	}
+	apply();
+	if (mq && mq.addEventListener) mq.addEventListener('change', apply);
+})();
+
+
 /* =========================================================
    nav.js – header extras on every page
    1. "Über mich ▾" dropdown: opens on hover (desktop) and on tap of the arrow (phone)
