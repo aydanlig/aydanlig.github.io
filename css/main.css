@@ -2087,8 +2087,8 @@ a { text-decoration-thickness: 1px; text-underline-offset: 0.18em; transition: c
 }
 :root.theme-dark body { background: var(--paper); color: var(--ink); }
 :root.theme-dark .site-header { background: rgba(23, 19, 26, 0.72); box-shadow: 0 1px 0 rgba(255, 255, 255, 0.06), 0 8px 24px -16px rgba(0, 0, 0, 0.6); }
-:root.theme-dark .btn:not(.btn--ghost):not(.btn--fox) { background: var(--ink); border-color: var(--ink); color: var(--night); }
-:root.theme-dark .btn:not(.btn--ghost):not(.btn--fox):hover { background: var(--fox); border-color: var(--fox); color: var(--night); }
+:root.theme-dark main .btn:not(.btn--ghost):not(.btn--fox), :root.theme-dark .site-footer .btn:not(.btn--ghost):not(.btn--fox) { background: var(--ink); border-color: var(--ink); color: var(--night); }
+:root.theme-dark main .btn:not(.btn--ghost):not(.btn--fox):hover { background: var(--fox); border-color: var(--fox); color: var(--night); }
 :root.theme-dark input, :root.theme-dark select, :root.theme-dark textarea { background: var(--surface); color: var(--ink); border-color: var(--line); }
 :root.theme-dark img { filter: brightness(0.94); }
 :root.theme-dark .scroll-hint { color: var(--night); }

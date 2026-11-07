@@ -14,66 +14,84 @@
 	<meta property="og:description" content="Like this site? I build websites too: simple, fast, handmade in Berlin. Packages from 290 €.">
 	<meta property="og:image" content="https://smileyfoxyportraits.com/img/og-share.jpg?v=2">
 	<!-- Standalone page with own styles (like /infoblatt/). Generated layout; twin: /websites/ -->
+		<script src="/js/consent.js" defer></script>
+	<script src="/js/mail-reveal.js" defer></script>
+	<script src="/js/translate.js" defer></script>
+	<script src="/js/termine.js" defer></script>
+	<script src="/js/nav.js" defer></script>
+	<script src="/js/ears.js" defer></script>
+	<script src="/js/gallery.js" defer></script>
+	<link rel="stylesheet" href="/css/main.css">
 	<style>
-		:root { --ink: #1A1615; --muted: #6B5560; --bg: #FBF7F3; --card: #FFFFFF; --soft: #F2EAE4; --accent: #FF6B35; --accent-dark: #C2410C; --line: #E6DAD2; }
-		@media (prefers-color-scheme: dark) {
-			:root { --ink: #F3ECE8; --muted: #B9A9B1; --bg: #171312; --card: #221C1A; --soft: #2C2421; --accent: #FF8A5C; --accent-dark: #FF8A5C; --line: #3A302C; }
-		}
-		* { box-sizing: border-box; }
-		body { margin: 0; background: var(--bg); color: var(--ink); font-family: "Segoe UI", system-ui, -apple-system, Helvetica, Arial, sans-serif; font-size: 17px; line-height: 1.55; }
-		a { color: var(--accent-dark); }
-		.wrap { max-width: 980px; margin: 0 auto; padding: 0 16px; }
-		header { border-bottom: 3px solid var(--accent); background: var(--card); }
-		header .wrap { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding-top: 14px; padding-bottom: 14px; flex-wrap: wrap; }
-		.logo { font-family: Georgia, serif; font-weight: 700; font-size: 1.25rem; color: var(--ink); text-decoration: none; }
-		.logo span { color: var(--accent-dark); }
-		.lang { font-size: .9rem; }
-		h1 { font-family: Georgia, serif; font-size: clamp(1.8rem, 5vw, 2.6rem); line-height: 1.15; margin: 40px 0 10px; }
-		.lead { color: var(--muted); font-size: 1.1rem; max-width: 680px; margin: 0 0 28px; }
-		.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 18px; }
-		.card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 22px; display: flex; flex-direction: column; }
-		.tag { font-size: .75rem; letter-spacing: .08em; text-transform: uppercase; color: var(--accent-dark); font-weight: 700; }
-		.card h2 { font-family: Georgia, serif; font-size: 1.35rem; margin: 6px 0 8px; }
-		.card p { margin: 0 0 12px; }
-		.card ul { margin: 0 0 14px; padding-left: 18px; }
-		.card li { margin: 4px 0; }
-		.price { background: var(--soft); border-radius: 10px; padding: 10px 12px; font-size: .95rem; margin: 0 0 16px; }
-		.actions { margin-top: auto; display: flex; flex-direction: column; gap: 8px; }
-		.btn { display: inline-block; text-align: center; background: var(--accent); color: #fff; text-decoration: none; font-weight: 600; padding: 11px 16px; border-radius: 999px; }
-		.btn:hover { background: var(--accent-dark); }
-		.btn--ghost { background: transparent; color: var(--accent-dark); border: 1.5px solid var(--line); font-weight: 600; padding: 9px 16px; font-size: .95rem; }
-		.btn--ghost:hover { background: var(--soft); border-color: var(--accent); }
-		.box { background: var(--soft); border-radius: 14px; padding: 22px; margin: 28px 0 0; }
-		.box h2 { font-family: Georgia, serif; font-size: 1.3rem; margin: 0 0 8px; }
-		.box p { margin: 0 0 8px; }
-		.contact { margin: 28px 0 40px; display: flex; flex-wrap: wrap; gap: 10px 24px; align-items: center; }
-		.contact strong { font-family: Georgia, serif; font-size: 1.15rem; }
-		.phone { flex-basis: 100%; display: flex; flex-wrap: wrap; gap: 8px 10px; align-items: center; }
-		.phone-num { font-weight: 600; margin-right: 6px; }
-		footer { border-top: 1px solid var(--line); color: var(--muted); font-size: .85rem; padding: 18px 0 28px; }
-		footer a { color: var(--muted); }
-			.steps { counter-reset: s; list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr)); gap: 14px; }
-		.steps li { counter-increment: s; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 18px; }
-		.steps li::before { content: counter(s); display: flex; width: 28px; height: 28px; border-radius: 50%; background: var(--accent); color: #fff; font-weight: 700; align-items: center; justify-content: center; margin-bottom: 8px; }
-		h2.sec { font-family: Georgia, serif; font-size: 1.5rem; margin: 44px 0 14px; }
-		.amount { font-family: Georgia, serif; font-size: 2rem; font-weight: 700; margin: 0 0 4px !important; }
-		.card--hi { border: 2px solid var(--accent); }
-		.demos { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: 14px; }
-		.demo { display: block; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 18px; text-decoration: none; color: var(--ink); }
-		.demo:hover { border-color: var(--accent); }
-		.demo b { display: block; font-family: Georgia, serif; font-size: 1.15rem; }
-		.demo small { color: var(--muted); }
+		.ws { --muted: var(--ink-soft); --soft: var(--tint, #FFF1EA); --bg: var(--paper); }
+		.ws h1 { margin: 40px 0 10px; }
+		.ws .lead { max-width: 680px; }
+		.ws .lead { color: var(--muted); font-size: 1.1rem; max-width: 680px; margin: 0 0 28px; }
+		.ws .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 18px; }
+		.ws .card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 22px; display: flex; flex-direction: column; }
+		.ws .tag { font-size: .75rem; letter-spacing: .08em; text-transform: uppercase; color: var(--accent-dark); font-weight: 700; }
+		.ws .card h2 { font-family: Georgia, serif; font-size: 1.35rem; margin: 6px 0 8px; }
+		.ws .card p { margin: 0 0 12px; }
+		.ws .card ul { margin: 0 0 14px; padding-left: 18px; }
+		.ws .card li { margin: 4px 0; }
+		.ws .price { background: var(--soft); border-radius: 10px; padding: 10px 12px; font-size: .95rem; margin: 0 0 16px; }
+		.ws .actions { margin-top: auto; display: flex; flex-direction: column; gap: 8px; }
+		.ws .box { background: var(--soft); border-radius: 14px; padding: 22px; margin: 28px 0 0; }
+		.ws .box h2 { font-family: Georgia, serif; font-size: 1.3rem; margin: 0 0 8px; }
+		.ws .box p { margin: 0 0 8px; }
+		.ws .contact { margin: 28px 0 40px; display: flex; flex-wrap: wrap; gap: 10px 24px; align-items: center; }
+		.ws .contact strong { font-family: Georgia, serif; font-size: 1.15rem; }
+		.ws .phone { flex-basis: 100%; display: flex; flex-wrap: wrap; gap: 8px 10px; align-items: center; }
+		.ws .phone-num { font-weight: 600; margin-right: 6px; }
+		.ws .steps { counter-reset: s; list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr)); gap: 14px; }
+		.ws .steps li { counter-increment: s; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 18px; }
+		.ws .steps li::before { content: counter(s); display: flex; width: 28px; height: 28px; border-radius: 50%; background: var(--accent); color: #fff; font-weight: 700; align-items: center; justify-content: center; margin-bottom: 8px; }
+		.ws h2.sec { font-family: Georgia, serif; font-size: 1.5rem; margin: 44px 0 14px; }
+		.ws .amount { font-family: Georgia, serif; font-size: 2rem; font-weight: 700; margin: 0 0 4px !important; }
+		.ws .card--hi { border: 2px solid var(--accent); }
+		.ws .demos { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: 14px; }
+		.ws .demo { display: block; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 18px; text-decoration: none; color: var(--ink); }
+		.ws .demo:hover { border-color: var(--accent); }
+		.ws .demo b { display: block; font-family: Georgia, serif; font-size: 1.15rem; }
+		.ws .demo small { color: var(--muted); }
 	</style>
 </head>
 <body>
-	<header>
+
+	<!-- ================= HEADER (same on every English page) ================= -->
+	<!-- LIVE BAR: where & when I draw – the next date comes from js/termine.js -->
+	<div class="live-bar">
 		<div class="wrap">
-			<a class="logo" href="/en/">SmileyFoxy<span>Portraits</span></a>
-			<a class="lang" href="/websites/" hreflang="de" lang="de">Deutsch</a>
+			<a href="/en/where-i-draw/"><span class="live-bar-dot" aria-hidden="true"></span><span data-next-gig><strong>Live:</strong> Sat 2–10 pm Mauerpark · Thu Kollwitzplatz market · Christmas markets &amp; gigs</span><span class="live-bar-more">Where &amp; when →</span></a>
+		</div>
+	</div>
+	<header class="site-header">
+		<div class="wrap">
+			<a class="logo" href="/en/">SmileyFoxy<span>Portraits</span><small class="logo-since">Portraits since 2020</small></a>
+			<nav class="main-nav" aria-label="Main menu">
+				<a href="/en/events.html#live-events"><span class="nav-long">Live </span>Events</a>
+				<a href="/en/events.html#kleckerkasten">Kleckerkasten</a>
+				<a href="/en/commission.html"><span class="nav-long">Commission a </span>Portrait</a>
+				<a href="/en/where-i-draw/" class="nav-when">Dates &amp; places</a>
+				<div class="nav-more">
+					<a href="/en/about/">About me</a><button class="nav-more-toggle" type="button" aria-expanded="false" aria-label="Show more: dates, references, blog and more"><span aria-hidden="true">▾</span></button>
+					<div class="nav-more-menu">
+						<a href="/en/auction/">First auction</a>
+						<a href="/en/referenzen/">References</a>
+						<a href="/en/about/#bands">Bands drawn live</a>
+						<a href="/en/about/#blog">Blog</a>
+						<a href="/en/commission.html#warteliste">Email list &amp; waitlist</a>
+						<a href="/en/about/#faq">Questions &amp; answers</a>
+						<a href="/jobs/" hreflang="de">Jobs: join in (German)</a>
+					</div>
+				</div>
+			</nav>
+			<a class="lang-switch" data-translate lang="de" title="Deutsche Version dieser Seite" href="/about/">DE</a>
+			<a class="btn btn--small" href="/en/events.html#anfrage-kleckerkasten">Enquire</a>
 		</div>
 	</header>
 
-	<main class="wrap">
+	<main class="wrap ws">
 		<h1>Like this site? I'll build yours too.</h1>
 		<p class="lead">I'm Aydan, an artist in Berlin, and I built this website myself. Now I build websites for others too: for you as a person, your small business, your goal or your hobby. Simple, fast, great on phones and with a personal touch. I hold the freeCodeCamp HTML/CSS certificate, so I understand the code I write with AI support.</p>
 
@@ -123,11 +141,81 @@
 		</div>
 	</main>
 
-	<footer>
+	<footer class="site-footer">
 		<div class="wrap">
-			SmileyFoxyPortraits · Aydan Lig'on · Berlin · Final prices, no VAT charged under § 19 UStG.<br>
-			<a href="/ImpressumUndDatenschutz/Impressum.html">Legal notice</a> · <a href="/ImpressumUndDatenschutz/Datenschutz.html">Privacy policy</a>
+			<p class="footer-name">Aydan Jason Lig'on <span>· speed portrait artist, Berlin</span></p>
+			<div class="footer-newsletter">
+				<div>
+					<h3>Stay in touch</h3>
+					<p>Be the first to know when and where I'm drawing – and get new originals &amp; prints before anyone else.
+						Free, one e-mail a month at most. <a href="https://aydanligon.substack.com/archive">Read the archive →</a></p>
+				</div>
+				<form class="newsletter-form" action="https://aydanligon.substack.com/subscribe" method="get" target="_blank">
+					<label class="sr-only" for="footer-email">E-mail address</label>
+					<input id="footer-email" type="email" name="email" placeholder="you@email.com" required autocomplete="email">
+					<button class="btn btn--fox" type="submit">Subscribe for free</button>
+				</form>
+			</div>
+
+			<div class="footer-grid">
+				<div>
+					<h3>Offers</h3>
+					<p><a href="/en/events.html#live-events">Live portraits for events</a></p>
+					<p><a href="/en/events.html#kleckerkasten">Kleckerkasten workshop</a></p>
+					<p><a href="/en/commission.html">Commission a portrait</a></p>
+					<p><a href="/en/auction/">Art auction</a></p>
+					<p><a href="/en/where-i-draw/#termine">Upcoming dates</a></p>
+					<p><a href="/en/where-i-draw/">Where &amp; when I draw</a></p>
+					<p><a href="/en/referenzen/">References</a></p>
+					<p><a href="/jobs/" hreflang="de">Jobs: join in (German)</a></p>
+				</div>
+
+				<div>
+					<h3>About me</h3>
+					<p><a href="/en/about/">My story</a></p>
+					<p><a href="/projects/index.html">Projects</a></p>
+					<p><a href="/thankyou/index.html">Gratitude wall &amp; reviews</a></p>
+				</div>
+
+				<div>
+					<h3>Support</h3>
+					<p><a href="/en/spenden/">Donate</a></p>
+					<p><a href="/en/bezahlen.html">Pay on site</a></p>
+					<h4 class="footer-sub">For free</h4>
+					<p><a href="https://tr.ee/u1wxA4" target="_blank" rel="noopener">Leave a review</a></p>
+					<p><a href="https://www.google.com/preferences/source?q=smileyfoxyportraits.com" target="_blank" rel="noopener">Pick me as a preferred source on Google</a></p>
+					<p><a href="/labor/ab-test.html">A/B test: which art do you like best?</a></p>
+					<p><a href="/support-free/">More free ways</a></p>
+				</div>
+
+				<div>
+					<h3>Contact</h3>
+					<p><a href="/en/contact/">Contact page</a></p>
+					<p><a class="footer-pair" href="mailto:aydan@smileyfoxyportraits.com">Write me an email<br><span class="footer-mail">aydan@<wbr>smileyfoxyportraits.com</span></a></p>
+					<p><a href="https://www.instagram.com/smileyfoxyportraits">Instagram</a></p>
+					<p><a href="https://discord.gg/pQaBQjBv4U">Discord</a><br><a class="footer-mail" href="https://discord.gg/pQaBQjBv4U">Aydan's Fox Den</a></p>
+					<p><a class="footer-pair" href="https://aydanligon.substack.com/subscribe">Email list<br><span class="footer-mail">max. 1 email a month</span></a></p>
+					<p><a href="/en/about/#faq">Questions &amp; answers (FAQ)</a></p>
+				</div>
+
+				<div class="footer-legal">
+					<h3>Legal</h3>
+					<p><a href="/ImpressumUndDatenschutz/Impressum.html">Legal notice</a></p>
+					<p><a href="/ImpressumUndDatenschutz/Datenschutz.html">Privacy policy</a></p>
+					<p><a href="/einwilligung.html">Photo &amp; video consent</a></p>
+					<p><a href="/en/about/#kontakt">Deletion requests</a></p>
+				</div>
+			</div>
+
+			<div class="footer-bottom">
+				<span>© SmileyFoxyPortraits · Aydan Lig'on · Berlin · <a href="https://smileyfoxyportraits.bandcamp.com/">Music on Bandcamp</a></span>
+				<a href="#">↑ back to top</a>
+			</div>
+
 		</div>
+		<p class="footer-websites" style="text-align:center;font-size:.85rem;margin:14px 0 0;opacity:.85"><a href="/websites/">Gefällt dir die Seite? Ich baue auch deine Website →</a></p>
 	</footer>
+
 </body>
+
 </html>
