@@ -1639,12 +1639,12 @@ h1, h2, h3 { overflow-wrap: break-word; hyphens: auto; }
    a CSS blur alone can be undone by opening the image. Without the files they show as plain paper. */
 .ref-stack { position: relative; isolation: isolate; width: fit-content; max-width: 100%; margin: 18px auto 24px; }
 .ref-stack .ref-frame { position: relative; z-index: 2; box-shadow: 0 14px 30px rgba(43, 33, 40, 0.28); }
-.ref-stack__page { position: absolute; z-index: 0; inset: 0; border-radius: var(--radius); background-color: #FBF6EE; background-size: cover; background-position: top center;
+.ref-stack__page { position: absolute; z-index: 0; top: -9%; width: 52%; height: 118%; border-radius: 6px; background-color: #FBF6EE; background-size: cover; background-position: top left;
 	border: 1px solid #E4D6C8; box-shadow: 0 8px 20px rgba(43, 33, 40, 0.18); filter: saturate(0.6); }
-.ref-stack__page--1 { transform: rotate(-7deg) translate(-7%, -4%); }
-.ref-stack__page--2 { z-index: 1; transform: rotate(4deg) translate(6%, -6%); }
+.ref-stack__page--1 { left: -4%; top: -13%; transform: rotate(-6deg); }
+.ref-stack__page--2 { z-index: 1; right: -14%; top: -12%; transform: rotate(7deg); background-position: top right; }
 @media (max-width: 700px) {
-	.ref-stack { margin-inline: 14px; }
-	.ref-stack__page--1 { transform: rotate(-5deg) translate(-4%, -3%); }
-	.ref-stack__page--2 { transform: rotate(3deg) translate(4%, -4%); }
+	.ref-stack { margin-inline: 28px; }
+	.ref-stack__page--1 { left: -8%; transform: rotate(-6deg); }
+	.ref-stack__page--2 { right: -7%; transform: rotate(5deg); }
 }
