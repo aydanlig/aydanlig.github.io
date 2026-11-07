@@ -128,8 +128,11 @@
 
 				<!-- Photos from real events -->
 				<div class="live-strip">
-					<img src="/img/fotos/gaeste-mit-portraets-4x5.jpg" alt="Gäste halten stolz ihre frisch gezeichneten Porträts" width="1200" height="1500" loading="lazy" decoding="async">
-					<img src="/img/fotos/live-zeichnen-haende-4x5.jpg" alt="Hände beim Live-Zeichnen mit Tusche" width="640" height="800" loading="lazy" decoding="async">
+					<!-- spans two photo slots (see .live-strip-wide in css/events.css) -->
+					<figure class="live-strip-wide">
+						<img src="/img/fotos/event-saunasplash-3x2.jpg" alt="Zwei live gemalte Aquarell-Porträts vom Saunasplash-Festival" width="1200" height="800" loading="lazy" decoding="async">
+						<figcaption>Live in Aquarell beim Saunasplash-Festival · 1.500+ Gäste</figcaption>
+					</figure>
 					<img src="/img/fotos/stand-saunasplash-nacht-4x5.jpg" alt="Der beleuchtete Porträt-Stand nachts beim Saunasplash-Festival" width="920" height="1150" loading="lazy" decoding="async">
 					<img src="/img/fotos/aquarell-gitarre-4x5.jpg" alt="Live gezeichnetes Aquarell-Porträt eines Gitarristen" width="1200" height="1500" loading="lazy" decoding="async">
 				</div>
@@ -139,8 +142,8 @@
 				<div class="style-pick">
 					<div>
 						<span class="style-time">ca. 5 Min.</span>
-						<h4>Schnell-Porträt in Tusche</h4>
-						<p>Bis zu 12 Gäste pro Stunde. Klar, ausdrucksstark, oft ein bisschen ernst – perfekt, wenn viele Gäste drankommen sollen.</p>
+						<h4>Schnell-Porträt in Tusche oder Aquarell</h4>
+						<p>Bis zu 12 Gäste pro Stunde. Locker, ausdrucksstark und schnell – perfekt, wenn viele Gäste drankommen sollen.</p>
 					</div>
 					<div>
 						<span class="style-time">ca. 10–25 Min.</span>
@@ -160,7 +163,7 @@
 					<div>
 						<div class="num">02</div>
 						<h3>Angebot</h3>
-						<p>Innerhalb von 48 Stunden bekommen Sie ein festes Angebot.</p>
+						<p>Innerhalb von 48 Stunden bekommen Sie ein Angebot – über den Preis lässt sich reden.</p>
 					</div>
 					<div>
 						<div class="num">03</div>
@@ -198,9 +201,10 @@
 				     No crossed-out prices: a "regular price" that was never charged counts as misleading (§ 5 UWG). -->
 				<div class="cards" id="pakete">
 					<article class="card card--count">
-						<span class="card-count" title="So oft schon gebucht">2× gebucht</span>
+						<span class="card-count" title="So oft schon gebucht">schon zweimal gebucht</span>
 						<h3>Kompakt</h3>
-						<p class="price">360 €</p>
+						<p class="price">~360 €</p>
+						<p class="film-deal">−100 €, wenn ich filmen darf</p>
 						<ul>
 							<li>2 Stunden Live-Zeichnen</li>
 							<li>ca. 24 Schnell-Porträts <em>oder</em> 5–12 ausführliche</li>
@@ -211,7 +215,8 @@
 					</article>
 					<article class="card">
 						<h3>Event</h3>
-						<p class="price">540–720 €</p>
+						<p class="price">~540–720 €</p>
+						<p class="film-deal">−200 €, wenn ich filmen darf</p>
 						<ul>
 							<li>3–4 Stunden Live-Zeichnen</li>
 							<li>ca. 36–48 Schnell-Porträts <em>oder</em> 7–24 ausführliche</li>
@@ -221,7 +226,8 @@
 					</article>
 					<article class="card">
 						<h3>Messe, Festival &amp; Ganztag</h3>
-						<p class="price">1.290 € <small>pro Tag</small></p>
+						<p class="price">~1.290 € <small>pro Tag</small></p>
+						<p class="film-deal">−400 €, wenn ich filmen darf</p>
 						<ul>
 							<li>Ganztägig / mehrtägig</li>
 							<li>bis zu ca. 90 Schnell-Porträts pro Tag</li>
@@ -232,7 +238,14 @@
 						<a class="btn btn--ghost" href="#anfrage-event">Anfragen</a>
 					</article>
 				</div>
-				<p class="price-note">Endpreise in Berlin, Anfahrt außerhalb nach Absprache · Gemäß § 19 UStG wird keine Umsatzsteuer berechnet.</p>
+				<!-- Filming discount + payment options right under the prices, so smaller budgets aren't scared off -->
+				<div class="price-extras">
+					<p><strong>Filmrabatt:</strong> Darf ich Ihr Event filmen und auf meiner Website &amp; Social Media zeigen, ziehe ich 100 / 200 / 400 € ab.
+						Gesichter von Gästen ohne <a href="/einwilligung.html">Einwilligung (Bildrechte)</a> mache ich unkenntlich.</p>
+					<p><strong>So kann bezahlt werden:</strong> Pauschale von Ihnen · Gäste zahlen ihre Porträts selbst vor Ort · auf Spendenbasis.
+						Zahlen die Gäste selbst, kostet Sie mein Besuch fast nichts.</p>
+				</div>
+				<p class="price-note">Circa-Preise in Berlin, verhandelbar · Außerhalb Berlins +25 % auf den Gesamtpreis (Reisekosten) · Gemäß § 19 UStG wird keine Umsatzsteuer berechnet.</p>
 
 				<!-- FAQ – the questions event planners ask most -->
 				<div class="faq live-faq">
@@ -247,7 +260,7 @@
 					</details>
 					<details>
 						<summary>Kommen Sie auch außerhalb von Berlin?</summary>
-						<p>Ja, die Anfahrt außerhalb Berlins sprechen wir ab.</p>
+						<p>Ja, gegen Aufpreis: Außerhalb Berlins kommen für die Reisekosten 25 % auf den Gesamtpreis.</p>
 					</details>
 					<details>
 						<summary>Können die Gäste selbst bezahlen?</summary>
@@ -260,7 +273,7 @@
 					<h3>Bildrechte</h3>
 					<p class="hint">Das Urheberrecht bleibt bei mir. Sie bekommen Nutzungsrechte, je nachdem, wofür Sie die Bilder einsetzen möchten.</p>
 					<ul class="price-list">
-						<li><span>Nutzung mit Namensnennung (Website, Social Media, Presse, intern)</span><strong>inklusive</strong></li>
+						<li><span>Nutzung mit Namensnennung (Website, Social Media, Presse, intern)</span><strong>inklusive, mit meiner Zustimmung</strong></li>
 						<li><span>Werbung (Anzeigen, Plakate, Verpackung, bezahlte Posts)</span><strong>+150 € pauschal</strong></li>
 						<li><span>Total Buyout: exklusive, zeitlich und räumlich unbegrenzte Nutzung ohne Namensnennung</span><strong>+400 € pauschal</strong></li>
 					</ul>
@@ -323,9 +336,10 @@
 								</select>
 							</div>
 							<div class="field">
-								<label for="ev-guests">Anzahl Gäste</label>
-								<input id="ev-guests" type="number" name="Gäste" min="1" placeholder="z. B. 120 – Saunasplash: 1.500+">
-								<p class="hint">Auch große Events: Beim Saunasplash-Festival 2026 habe ich für über 1.500 Gäste gezeichnet.</p>
+								<label for="ev-guests">Anzahl Gäste
+									<span class="info-tip" tabindex="0" role="button" aria-label="Info zur Gästezahl" aria-describedby="ev-guests-tip">?<span class="info-tip-text" id="ev-guests-tip" role="tooltip">Auch große Events: Beim Saunasplash-Festival 2026 hat mein Stand
+										über 1.500 Gäste versorgt. Ich war durchgehend am Zeichnen, und viele haben eine Karte mit nach Hause genommen.</span></span></label>
+								<input id="ev-guests" type="number" name="Gäste" min="1" placeholder="z. B. 120">
 							</div>
 							<!-- Where: location next to the space for the drawing station -->
 							<div class="field">
@@ -334,14 +348,14 @@
 							</div>
 							<div class="field">
 								<!-- How much space the organiser can offer for the drawing station -->
-								<label for="ev-space">Platz für die Zeichenstation</label>
+								<label for="ev-space">Platz für die Zeichenstation
+									<span class="info-tip" tabindex="0" role="button" aria-label="Info zum Platz" aria-describedby="ev-space-tip">?<span class="info-tip-text" id="ev-space-tip" role="tooltip">Ideal: ca. 2–4 m² für einen Klapptisch (1,35 m) und Sitzplätze für Gäste.</span></span></label>
 								<select id="ev-space" name="Platz vor Ort">
 									<option>ca. 2–4 m² vorhanden (ideal)</option>
 									<option>Weniger als 2 m²</option>
 									<option>Mehr als 4 m²</option>
 									<option>Noch unklar</option>
 								</select>
-								<p class="hint">Ideal: ca. 2–4 m² für einen Klapptisch (1,35 m) und Sitzplätze für Gäste.</p>
 							</div>
 							<!-- How the event is paid – shows up as "Abrechnung" in the request e-mail -->
 							<div class="field full">
@@ -393,8 +407,9 @@
 				<div class="split split--reverse kk-split">
 					<img src="/img/platzhalter/kleckerkasten-nachstellung.svg" alt="Platzhalter mit bunten Farbklecksen: Nachstellungsbild wird erstellt" class="ph-img ph--3x2" width="1200" height="800" loading="lazy" decoding="async">
 					<div>
-						<span class="eyebrow">B · Der Kleckerkasten</span>
-						<h2 id="b-title">Expressives Teambuilding: einfach mal drauflos klecksen</h2>
+						<span class="eyebrow">B · Teambuilding-Workshop</span>
+						<p class="kk-bam" aria-hidden="true"><span>Der</span> Klecker&shy;kasten!</p>
+						<h2 id="b-title" class="kk-title">Expressives Teambuilding: einfach mal drauflos klecksen</h2>
 						<!-- Always say "inspiriert von Kunsttherapie", never "Kunsttherapie" alone (no therapy qualification). -->
 						<p>
 							Der Kleckerkasten ist ein mobiler Kreativ-Workshop, inspiriert von Methoden der Kunsttherapie:
@@ -489,7 +504,7 @@
 					<div class="pilot-grid">
 						<div>
 							<span class="tag tag--fox">Pilot-Angebot: nur für das erste Team</span>
-							<h3>Pilot-Workshop: 20 € Rabatt pro Person für das erste Team</h3>
+							<h3 class="kk-title">Pilot-Workshop: 20 € Rabatt pro Person für das erste Team</h3>
 							<!-- Crossed-out price = the real regular price after the pilot (§ 5 UWG: only show prices you actually charge) -->
 							<div class="deal">
 								<span class="deal-badge">−20 €</span>
@@ -526,7 +541,7 @@
 
 				<!-- KLECKERKASTEN INQUIRY FORM -->
 				<div class="form-card" id="anfrage-kleckerkasten">
-					<h3>Kleckerkasten für Ihr Team anfragen</h3>
+					<h3 class="kk-title">Kleckerkasten für Ihr Team anfragen</h3>
 					<p class="hint">Unverbindlich – gerne rufe ich Sie für ein 10-minütiges Kennenlerngespräch zurück.</p>
 					<form action="https://formsubmit.co/aydan@smileyfoxyportraits.com" method="POST">
 						<input type="hidden" name="_subject" value="Neue Kleckerkasten-Anfrage (Teambuilding)">
@@ -583,13 +598,14 @@
 								<select id="kk-place" name="Ort">
 									<option>Bei uns im Unternehmen</option>
 									<option>Externer Raum in Berlin</option>
+									<option>Aydan bucht einen Raum für uns (Kosten nach Absprache)</option>
 									<option>Noch offen</option>
 								</select>
 							</div>
 							<div class="field">
 								<label for="kk-goal">Hauptziel</label>
 								<select id="kk-goal" name="Ziel">
-									<option>Stressabbau &amp; Erholung</option>
+									<option>Gemeinsam Spaß haben &amp; kreativ werden</option>
 									<option>Team zusammenschweißen</option>
 									<option>Kreativität fördern</option>
 									<option>Feier / Teamtag</option>
@@ -677,7 +693,7 @@
 				<div>
 					<h3>Kontakt</h3>
 					<p><a href="/contact/">Kontaktseite</a></p>
-					<p><a class="footer-pair" href="mailto:aydan@smileyfoxyportraits.com">Schreib mir eine E-Mail<br><span class="footer-mail">aydan@smileyfoxyportraits.com</span></a></p>
+					<p><a class="footer-pair" href="mailto:aydan@smileyfoxyportraits.com">Schreib mir eine E-Mail<br><span class="footer-mail">aydan@<wbr>smileyfoxyportraits.com</span></a></p>
 					<p><a href="https://www.instagram.com/smileyfoxyportraits">Instagram</a></p>
 					<p><a class="footer-pair" href="https://aydanligon.substack.com/subscribe">E-Mail-Liste<br><span class="footer-mail">max. 1 E-Mail im Monat</span></a></p>
 				</div>
