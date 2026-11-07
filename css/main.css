@@ -1694,7 +1694,6 @@ h1, h2, h3 { overflow-wrap: break-word; }
 @keyframes ears-hard { 0%, 100% { transform: rotate(0) scale(1); } 15% { transform: rotate(-16deg) scale(1.15) translateY(-3px); } 35% { transform: rotate(14deg) scale(1.15) translateY(-3px); }
 	55% { transform: rotate(-10deg) scale(1.08); } 75% { transform: rotate(7deg) scale(1.04); } }
 @media (prefers-reduced-motion: reduce) { .ears-wiggle::before, .ears-wiggle::after, .ears-wiggle-hard::before, .ears-wiggle-hard::after, .pa-pop, .pa-bar { animation: none; } }
-=======
 /* Referenzen: main photos sit in a frame so they can be re-framed in the crop mode (/referenzen/#zuschnitt, js/crop.js) */
 .ref-frame { display: block; width: fit-content; max-width: 100%; margin-inline: auto; overflow: hidden; border-radius: var(--radius); }
 .ref-frame .ph-img { border-radius: 0; }
