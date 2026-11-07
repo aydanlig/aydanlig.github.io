@@ -1289,6 +1289,8 @@ main:has(> .section--alt:last-of-type) + .site-footer::after { background: var(-
 .st-row { display: grid; grid-template-columns: 110px 180px 1fr auto; gap: 6px 16px; align-items: center; padding: 12px 16px; border-top: 1px solid var(--line); }
 .st-row:first-child { border-top: 0; }
 .st-row--main { background: #FFF1EA; }
+.st-row[hidden], .termine[hidden] { display: none; }
+.termine .btn { margin-top: -.2em; }
 .st-day { font-weight: 700; }
 .st-time { color: var(--ink-soft); }
 .st-map { font-weight: 600; white-space: nowrap; }
@@ -1633,8 +1635,7 @@ h1, h2, h3 { overflow-wrap: break-word; }
 .stance--for li::before { content: "✓"; color: #1F8A8A; }
 .stance--against li::before { content: "✗"; color: #E0457B; }
 
-/* =========================================================
-   HOMEPAGE ROUND 2: calmer hero, polished art tiles, teaser for "Mehr Kunst",
+/* ==================================================   HOMEPAGE ROUND 2: calmer hero, polished art tiles, teaser for "Mehr Kunst",
    Photoautomat popup, wiggling fox ears
    ========================================================= */
 /* calmer hero: no wiggle / light sweep / shine / splash, the arrow only moves on hover */
@@ -1693,3 +1694,21 @@ h1, h2, h3 { overflow-wrap: break-word; }
 @keyframes ears-hard { 0%, 100% { transform: rotate(0) scale(1); } 15% { transform: rotate(-16deg) scale(1.15) translateY(-3px); } 35% { transform: rotate(14deg) scale(1.15) translateY(-3px); }
 	55% { transform: rotate(-10deg) scale(1.08); } 75% { transform: rotate(7deg) scale(1.04); } }
 @media (prefers-reduced-motion: reduce) { .ears-wiggle::before, .ears-wiggle::after, .ears-wiggle-hard::before, .ears-wiggle-hard::after, .pa-pop, .pa-bar { animation: none; } }
+=======
+/* Referenzen: main photos sit in a frame so they can be re-framed in the crop mode (/referenzen/#zuschnitt, js/crop.js) */
+.ref-frame { display: block; width: fit-content; max-width: 100%; margin-inline: auto; overflow: hidden; border-radius: var(--radius); }
+.ref-frame .ph-img { border-radius: 0; }
+/* Saunasplash: two receipt "pages" peeking out behind the main photo.
+   The files img/fotos/saunasplash-beleg-1.jpg / -2.jpg must already have the amounts blacked out –
+   a CSS blur alone can be undone by opening the image. Without the files they show as plain paper. */
+.ref-stack { position: relative; isolation: isolate; width: fit-content; max-width: 100%; margin: 18px auto 24px; }
+.ref-stack .ref-frame { position: relative; z-index: 2; box-shadow: 0 14px 30px rgba(43, 33, 40, 0.28); }
+.ref-stack__page { position: absolute; z-index: 0; top: -9%; width: 52%; height: 118%; border-radius: 6px; background-color: #FBF6EE; background-size: cover; background-position: top left;
+	border: 1px solid #E4D6C8; box-shadow: 0 8px 20px rgba(43, 33, 40, 0.18); filter: saturate(0.6); }
+.ref-stack__page--1 { left: -4%; top: -13%; transform: rotate(-6deg); }
+.ref-stack__page--2 { z-index: 1; right: -14%; top: -12%; transform: rotate(7deg); background-position: top right; }
+@media (max-width: 700px) {
+	.ref-stack { margin-inline: 28px; }
+	.ref-stack__page--1 { left: -8%; transform: rotate(-6deg); }
+	.ref-stack__page--2 { right: -7%; transform: rotate(5deg); }
+}
