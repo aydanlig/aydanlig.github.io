@@ -3,6 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="robots" content="noindex, noarchive, nosnippet">
 	<title>Infoblatt – Angebote auf einen Blick · SmileyFoxyPortraits</title>
 	<meta name="description" content="Alle Angebote von SmileyFoxyPortraits auf einen Blick: Auftrags-Porträts, Live-Porträts für Events und der Kleckerkasten-Teamworkshop in Berlin – mit Preisen und Infoblättern als PDF.">
 	<link rel="canonical" href="https://smileyfoxyportraits.com/infoblatt/">
@@ -36,6 +37,16 @@
 		.examples summary::-webkit-details-marker { display: none; }
 		.examples summary::after { content: "+"; color: var(--accent-dark); font-size: 1.4rem; line-height: 1; }
 		.examples[open] summary::after { content: "–"; }
+		.examples summary::after { width: 32px; height: 32px; flex: none; border-radius: 50%; background: var(--soft); display: inline-flex; align-items: center; justify-content: center; }
+		.examples .open-hint { margin-left: auto; margin-right: 12px; font-family: "Segoe UI", system-ui, sans-serif; font-weight: 600; font-size: .85rem; color: var(--accent-dark); white-space: nowrap; }
+		.examples[open] .open-hint { display: none; }
+		.examples:not([open]) { animation: examples-glow 2.4s ease-in-out infinite; }
+		.examples:not([open]) summary::after { animation: examples-nudge 2.4s ease-in-out infinite; }
+		.examples[open] .gallery { animation: examples-drop .35s ease-out; }
+		@keyframes examples-glow { 0%, 100% { box-shadow: 0 0 0 0 rgba(255, 107, 53, 0); } 50% { box-shadow: 0 0 0 4px rgba(255, 107, 53, .28); } }
+		@keyframes examples-nudge { 0%, 55%, 100% { transform: translateY(0); } 65% { transform: translateY(5px); } 75% { transform: translateY(0); } 85% { transform: translateY(3px); } }
+		@keyframes examples-drop { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: none; } }
+		@media (prefers-reduced-motion: reduce) { .examples, .examples summary::after, .examples .gallery { animation: none !important; } }
 		.examples summary small { font-family: "Segoe UI", system-ui, sans-serif; font-weight: 400; font-size: .85rem; color: var(--muted); margin-left: 8px; }
 		.gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; padding: 0 20px 20px; }
 		.gallery a { display: block; position: relative; border-radius: 10px; overflow: hidden; aspect-ratio: 4 / 5; background: var(--soft); }
@@ -61,6 +72,8 @@
 		.box p { margin: 0 0 8px; }
 		.contact { margin: 28px 0 40px; display: flex; flex-wrap: wrap; gap: 10px 24px; align-items: center; }
 		.contact strong { font-family: Georgia, serif; font-size: 1.15rem; }
+		.phone { flex-basis: 100%; display: flex; flex-wrap: wrap; gap: 8px 10px; align-items: center; }
+		.phone-num { font-weight: 600; margin-right: 6px; }
 		footer { border-top: 1px solid var(--line); color: var(--muted); font-size: .85rem; padding: 18px 0 28px; }
 		footer a { color: var(--muted); }
 	</style>
@@ -69,7 +82,7 @@
 
 	<header>
 		<div class="wrap">
-			<a class="logo" href="/">SmileyFoxy<span>Portraits</span></a>
+			<a class="logo" href="/">SmileyFoxy<span>Portraits</span><small class="logo-since">Seit 6 Jahren Porträts</small></a>
 			<a class="lang" href="/en/infoblatt/" hreflang="en" lang="en">English</a>
 		</div>
 	</header>
@@ -80,7 +93,7 @@
 
 		<!-- Collapsed by default; images only load when opened -->
 		<details class="examples">
-			<summary>Beispiele meiner Arbeit <small>Tusche &amp; Aquarell</small></summary>
+			<summary>Beispiele meiner Arbeit <small>Tusche &amp; Aquarell</small><span class="open-hint">Antippen zum Öffnen</span></summary>
 			<div class="gallery">
 				<a href="/img/fotos/aquarell-fineliner-detail-4x5.jpg"><img src="/img/fotos/aquarell-fineliner-detail-4x5.jpg" alt="Porträt in Aquarell und Fineliner: Mann mit Brille und Bart" loading="lazy" decoding="async"><span>Aquarell & Fineliner</span></a>
 				<a href="/img/fotos/tusche-portraet-4x5.jpg"><img src="/img/fotos/tusche-portraet-4x5.jpg" alt="Ausdrucksstarkes Porträt in schwarzer Tusche" loading="lazy" decoding="async"><span>Tusche</span></a>
@@ -104,7 +117,7 @@
 					<li>Für die Wand, vom A5-Porträt bis zum Großformat</li>
 					<li>Mitarbeiter-Porträts im einheitlichen Stil, z. B. für die Team-Seite</li>
 				</ul>
-				<p class="price">A5: 20 € · A4: 40–60 € · größere Formate und Team-Pakete auf Anfrage</p>
+				<p class="price">Startpreis 2026: A5 20 € · A4 40–60 € (ab 2027 regulär A5 35 €, A4 ab 75 €) · größere Formate und Team-Pakete auf Anfrage</p>
 				<div class="actions">
 					<a class="btn" href="/downloads/infoblatt-portraets-privat-und-teams.pdf">Infoblatt als PDF</a>
 					<a class="btn btn--ghost" href="/commission.html#bestellen">Angebot buchen</a>
@@ -114,13 +127,13 @@
 			<section class="card">
 				<span class="tag">Firmenfeiern, Messen, Jubiläen</span>
 				<h2>Live-Porträts für Events</h2>
-				<p>Ich zeichne Ihre Gäste live: als Schnell-Porträt in ca. 5 Minuten oder ausführlich in ca. 15 Minuten. Jeder Gast nimmt ein Original mit nach Hause.</p>
+				<p>Ich zeichne Ihre Gäste live, jeder Gast nimmt ein Original mit nach Hause. Zeichenzeit pro Person: Schnell-Porträt ca. 5 Minuten, ausführlich in Tusche ca. 10–15 Minuten, mit Aquarell bis zu 25 Minuten.</p>
 				<ul>
 					<li>Kompakt: 2 Stunden, ca. 24 Schnell-Porträts</li>
 					<li>Event: 3–4 Stunden, ca. 36–48 Schnell-Porträts</li>
 					<li>Messe &amp; Ganztag: bis zu ca. 90 Porträts pro Tag</li>
 				</ul>
-				<p class="price">Individuelles Angebot innerhalb von 48 Stunden. Ein Tisch und zwei Stühle genügen.</p>
+				<p class="price">Startpreis 2026: Kompakt 250 € · Event 380–500 € · Ganztag 900 € (ab 2027 regulär 180 € pro Stunde) · Tisch und Stühle bringe ich mit, Strom brauche ich nicht. Nutzung der Bilder mit Namensnennung inklusive, Werbung +150 €, Total Buyout +400 €.</p>
 				<div class="actions">
 					<a class="btn" href="/downloads/infoblatt-live-portraits-events.pdf">Infoblatt als PDF</a>
 					<a class="btn btn--ghost" href="/events.html#anfrage-event">Angebot buchen</a>
@@ -154,6 +167,7 @@
 			<a href="mailto:aydan@smileyfoxyportraits.com">aydan@smileyfoxyportraits.com</a>
 			<a href="/">smileyfoxyportraits.com</a>
 			<a href="https://www.instagram.com/smileyfoxyportraits/">Instagram @smileyfoxyportraits</a>
+			<div class="phone" id="phone"><button type="button" class="btn btn--ghost" id="phone-show">Telefonnummer anzeigen</button></div>
 		</div>
 	</main>
 
@@ -164,5 +178,27 @@
 		</div>
 	</footer>
 
+	<script>
+		// Number is only assembled after a click, so it never appears in the HTML for scrapers
+		document.getElementById('phone-show').addEventListener('click', function () {
+			var c = [32,20,14,14,32,14,23,17,17,26,14,38,23];
+			var n = c.slice().reverse().map(function (v) { return (v - 11) / 3; }).join('');
+			var href = { wa: 'https://wa.me/' + n, sig: 'https://signal.me/#p/+' + n, tg: 'https://t.me/+' + n, sms: 'sms:+' + n, tel: 'tel:+' + n };
+			var box = document.getElementById('phone');
+			box.textContent = '';
+			var num = document.createElement('span');
+			num.className = 'phone-num';
+			num.textContent = '+' + n.slice(0, 2) + ' ' + n.slice(2, 5) + ' ' + n.slice(5);
+			box.appendChild(num);
+			[['WhatsApp','wa'],['Signal','sig'],['Telegram','tg'],['SMS','sms'],['Anrufen','tel']].forEach(function (l) {
+				var a = document.createElement('a');
+				a.className = 'btn btn--ghost';
+				a.href = href[l[1]];
+				a.textContent = l[0];
+				if (l[1] === 'wa' || l[1] === 'sig' || l[1] === 'tg') { a.target = '_blank'; a.rel = 'noopener'; }
+				box.appendChild(a);
+			});
+		});
+	</script>
 </body>
 </html>

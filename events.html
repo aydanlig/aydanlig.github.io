@@ -38,11 +38,13 @@
 	<meta property="og:image" content="https://smileyfoxyportraits.com/img/og-share.jpg?v=2">
 	<meta property="og:image:width" content="1200">
 	<meta property="og:image:height" content="630">
-	<meta property="og:image:alt" content="SmileyFoxyPortraits – Live-Porträts ab 1 € in Berlin">
+	<meta property="og:image:alt" content="SmileyFoxyPortraits – Porträts in Tusche & Aquarell aus Berlin">
 	<meta name="twitter:card" content="summary_large_image">
 
 	<link rel="stylesheet" href="/css/main.css">
 	<link rel="stylesheet" href="/css/ink.css">
+	<link rel="stylesheet" href="/css/events.css">
+	<script src="/js/ask-menu.js" defer></script>
 </head>
 
 <body>
@@ -50,7 +52,7 @@
 	<!-- ================= HEADER ================= -->
 	<header class="site-header">
 		<div class="wrap">
-			<a class="logo" href="/" aria-label="SmileyFoxyPortraits – Startseite"><span class="logo-ph" title="Platzhalter: hier kommt dein gemaltes Fuchs-Logo hin (img/logo.png)">Logo</span><span class="logo-word">SmileyFoxy<span>Portraits</span></span></a>
+			<a class="logo" href="/" aria-label="SmileyFoxyPortraits – Startseite"><span class="logo-ph" title="Platzhalter: hier kommt dein gemaltes Fuchs-Logo hin (img/logo.png)">Logo</span><span class="logo-word">SmileyFoxy<span>Portraits</span><small class="logo-since">Seit 6 Jahren Porträts</small></span></a>
 			<nav class="main-nav" aria-label="Hauptmenü">
 				<a class="nav-art" href="/portfolio.html">Kunst</a>
 				<a href="/events.html#live-events"><span class="nav-long">Live-</span>Events</a>
@@ -60,7 +62,17 @@
 				<a class="nav-shop" href="/shop/">Shop</a>
 			</nav>
 			<a class="lang-switch" data-translate lang="en" title="English version of this page" href="/en/events.html">EN</a>
-			<a class="btn btn--small" href="#anfrage-kleckerkasten">Anfragen</a>
+			<!-- ANFRAGEN DROPDOWN – styles in /css/events.css, closing logic in /js/ask-menu.js -->
+			<details class="ask-menu">
+				<summary class="btn btn--small">Anfragen <span aria-hidden="true">▾</span></summary>
+				<div class="ask-menu-list">
+					<a href="/events.html#anfrage-event"><strong>Live-Porträts fürs Event</strong><small>Firmenfeier, Messe, Party</small></a>
+					<a href="/events.html#anfrage-kleckerkasten"><strong>Kleckerkasten-Workshop</strong><small>Teambuilding mit Farbe</small></a>
+					<a href="/where-i-draw/"><strong>Live-Porträt-Stand</strong><small>Wo &amp; wann ich zeichne</small></a>
+					<a href="/commission.html"><strong>Auftragsporträt</strong><small>nach deinem Foto</small></a>
+					<a href="/labor/auktion.html"><strong>Auktion</strong><small>Original-Skizze ersteigern</small></a>
+				</div>
+			</details>
 		</div>
 	</header>
 	<!-- PHOTO NOTE – delete this block once all grey placeholders are replaced by real photos -->
@@ -93,80 +105,169 @@
 		     ========================================================= -->
 		<section class="section section--alt" id="live-events" aria-labelledby="a-title">
 			<div class="wrap">
-				<div class="split">
+				<!-- LAYOUT like a professional live-portrait artist page:
+				     pitch + numbers → photos from real events → two styles → how it works → audiences → packages → FAQ → form -->
+				<div class="split live-intro">
 					<div>
 						<span class="eyebrow">A · Live-Event-Porträts</span>
 						<h2 id="a-title" style="hyphens:manual">Das Highlight für Firmenfeier, Party&nbsp;&amp;&nbsp;Geburtstag</h2>
-						<p>
-							Ob Sommerfest mit hunderten Gästen oder Geburtstagsparty im Wohnzimmer: Jeder Gast nimmt ein
-							handgezeichnetes Original mit nach Hause – ein Programmpunkt, über den noch Wochen geredet wird.
-							Wählbar sind <strong>Schnell-Porträts</strong> in ca. 5 Minuten (bis zu 12 Gäste pro Stunde) oder
-							<strong>ausführliche Porträts</strong> in ca. 15 Minuten (ca. 4 pro Stunde) – auch gemischt. Ich zeichne nach Gefühl:
-							Tusche wirkt oft ernst und klar, Aquarell verspielt und fröhlich, beides zusammen vielschichtig.
+						<p class="lead">
+							Ich zeichne Ihre Gäste live – jeder nimmt ein handgezeichnetes Original mit nach Hause.
+							Ein Programmpunkt, über den noch Wochen geredet wird.
 						</p>
-						<!-- Two audiences: companies/event planners (Sie) and private parties (du) -->
-						<div class="audience-grid">
-							<div class="audience">
-								<h3>Für Eventplaner &amp; Firmen</h3>
-								<ul class="checks">
-									<li>Publikumsmagnet für Firmenfeier, Messe oder Festival</li>
-									<li>Ihr Logo oder Event-Motto auf dem Porträtpapier</li>
-									<li>Erfahrung mit über 1.500 Gästen, Angebot innerhalb von 48 Stunden</li>
-								</ul>
-							</div>
-							<div class="audience">
-								<h3>Für deine Party &amp; deinen Geburtstag</h3>
-								<ul class="checks">
-									<li>Geburtstag, Hochzeit, Jubiläum oder WG-Party – schon ab 2 Stunden</li>
-									<li>Alle gehen mit einer echten Erinnerung nach Hause statt mit Fotobox-Streifen</li>
-									<li>Ich bringe alles mit, ein Tisch und zwei Stühle reichen</li>
-								</ul>
-							</div>
+						<div class="btn-row">
+							<a class="btn" href="#anfrage-event">Verfügbarkeit anfragen</a>
+							<a class="btn btn--ghost" href="#pakete">Pakete &amp; Preise</a>
 						</div>
-						<ul class="checks">
-							<li><strong>Gäste-Gutschein zum Mitnehmen:</strong> Jeder Gast erhält eine Karte mit 5 € Rabatt auf Porträts und 50 € Rabatt auf eine Event-Buchung oder den Kleckerkasten-Workshop.</li>
-							<li><strong>Die Zeichenstation wird zum Treffpunkt:</strong> Gäste kommen ins Gespräch und schauen gern zu.</li>
+						<ul class="live-stats" aria-label="Erfahrung in Zahlen">
+							<li><strong>1.500+</strong><span>Gäste beim Saunasplash-Festival</span></li>
+							<li><strong>5</strong><span>Konzerte live gezeichnet</span></li>
+							<li><strong>bis 12</strong><span>Porträts pro Stunde</span></li>
+							<li><strong>6 Jahre</strong><span>Porträts</span></li>
 						</ul>
 					</div>
 					<img src="/img/fotos/aydan-am-stand.jpg" alt="Aydan zeichnet an seinem Stand auf dem Saunasplash-Event mit über 1.500 Gästen" class="ph-img ph--natural" width="1400" height="1050" loading="lazy" decoding="async">
 				</div>
 
-				<!-- PACKAGES – prices are quoted per event ("auf Anfrage") -->
-				<div class="cards">
-					<article class="card">
+				<!-- Photos from real events -->
+				<div class="live-strip">
+					<img src="/img/fotos/gaeste-mit-portraets-4x5.jpg" alt="Gäste halten stolz ihre frisch gezeichneten Porträts" width="1200" height="1500" loading="lazy" decoding="async">
+					<img src="/img/fotos/live-zeichnen-haende-4x5.jpg" alt="Hände beim Live-Zeichnen mit Tusche" width="640" height="800" loading="lazy" decoding="async">
+					<img src="/img/fotos/stand-saunasplash-nacht-4x5.jpg" alt="Der beleuchtete Porträt-Stand nachts beim Saunasplash-Festival" width="920" height="1150" loading="lazy" decoding="async">
+					<img src="/img/fotos/aquarell-gitarre-4x5.jpg" alt="Live gezeichnetes Aquarell-Porträt eines Gitarristen" width="1200" height="1500" loading="lazy" decoding="async">
+				</div>
+
+				<!-- Two styles -->
+				<h3 class="center live-subtitle">Zwei Stile – auch gemischt</h3>
+				<div class="style-pick">
+					<div>
+						<span class="style-time">ca. 5 Min.</span>
+						<h4>Schnell-Porträt in Tusche</h4>
+						<p>Bis zu 12 Gäste pro Stunde. Klar, ausdrucksstark, oft ein bisschen ernst – perfekt, wenn viele Gäste drankommen sollen.</p>
+					</div>
+					<div>
+						<span class="style-time">ca. 10–25 Min.</span>
+						<h4>Ausführlich mit Aquarell</h4>
+						<p>Ca. 2–6 Gäste pro Stunde. Tusche und Aquarell, verspielt und farbig – ein Original, das gerahmt an der Wand landet.</p>
+					</div>
+				</div>
+
+				<!-- How it works -->
+				<h3 class="center live-subtitle">So läuft's ab</h3>
+				<div class="story-steps story-steps--4">
+					<div>
+						<div class="num">01</div>
+						<h3>Anfragen</h3>
+						<p>Datum, Ort und Gästezahl ins Formular – dauert eine Minute.</p>
+					</div>
+					<div>
+						<div class="num">02</div>
+						<h3>Angebot</h3>
+						<p>Innerhalb von 48 Stunden bekommen Sie ein festes Angebot.</p>
+					</div>
+					<div>
+						<div class="num">03</div>
+						<h3>Ich baue auf</h3>
+						<p>Tisch, Stühle und Material bringe ich mit. Strom brauche ich nicht.</p>
+					</div>
+					<div>
+						<div class="num">04</div>
+						<h3>Originale für alle</h3>
+						<p>Jeder Gast nimmt sein Porträt und eine Gutscheinkarte mit nach Hause.</p>
+					</div>
+				</div>
+
+				<!-- Two audiences: companies/event planners (Sie) and private parties (du) -->
+				<div class="audience-grid live-audience">
+					<div class="audience">
+						<h3>Für Eventplaner &amp; Firmen</h3>
+						<ul class="checks">
+							<li>Publikumsmagnet für Firmenfeier, Messe oder Festival</li>
+							<li>Auf Wunsch Ihr Logo oder Event-Motto auf dem Porträtpapier (bei Messe, Festival &amp; Ganztag inklusive)</li>
+							<li>Die Zeichenstation wird zum Treffpunkt: Gäste kommen ins Gespräch und schauen gern zu</li>
+						</ul>
+					</div>
+					<div class="audience">
+						<h3>Für deine Party &amp; deinen Geburtstag</h3>
+						<ul class="checks">
+							<li>Geburtstag, Hochzeit, Jubiläum oder WG-Party – schon ab 2 Stunden</li>
+							<li>Alle gehen mit einer echten Erinnerung nach Hause statt mit Fotobox-Streifen</li>
+							<li>Gäste-Gutschein: 5 € Rabatt auf Porträts, 50 € auf eine Event-Buchung oder den Kleckerkasten</li>
+						</ul>
+					</div>
+				</div>
+
+				<!-- PACKAGES – change here AND on /en/events.html.
+				     No crossed-out prices: a "regular price" that was never charged counts as misleading (§ 5 UWG). -->
+				<div class="cards" id="pakete">
+					<article class="card card--count">
+						<span class="card-count" title="So oft schon gebucht">2× gebucht</span>
 						<h3>Kompakt</h3>
-						<p class="price">auf Anfrage <small>je nach Dauer &amp; Gästezahl</small></p>
+						<p class="price">360 €</p>
 						<ul>
 							<li>2 Stunden Live-Zeichnen</li>
-							<li>ca. 24 Schnell-Porträts <em>oder</em> 8 ausführliche</li>
+							<li>ca. 24 Schnell-Porträts <em>oder</em> 5–12 ausführliche</li>
+							<li>Gutscheinkarten für Gäste inklusive</li>
 							<li>Ideal für Geburtstage, Partys &amp; Empfänge</li>
 						</ul>
 						<a class="btn btn--ghost" href="#anfrage-event">Anfragen</a>
 					</article>
-					<article class="card card--featured">
-						<span class="tag">Beliebteste Wahl</span>
+					<article class="card">
 						<h3>Event</h3>
-						<p class="price">auf Anfrage <small>je nach Dauer &amp; Gästezahl</small></p>
+						<p class="price">540–720 €</p>
 						<ul>
 							<li>3–4 Stunden Live-Zeichnen</li>
-							<li>ca. 36–48 Schnell-Porträts <em>oder</em> 12–16 ausführliche</li>
+							<li>ca. 36–48 Schnell-Porträts <em>oder</em> 7–24 ausführliche</li>
 							<li>Gutscheinkarten für Gäste inklusive</li>
 						</ul>
-						<a class="btn" href="#anfrage-event">Anfragen</a>
+						<a class="btn btn--ghost" href="#anfrage-event">Anfragen</a>
 					</article>
 					<article class="card">
-						<h3>Messe &amp; Ganztag</h3>
-						<p class="price">auf Anfrage</p>
+						<h3>Messe, Festival &amp; Ganztag</h3>
+						<p class="price">1.290 € <small>pro Tag</small></p>
 						<ul>
 							<li>Ganztägig / mehrtägig</li>
 							<li>bis zu ca. 90 Schnell-Porträts pro Tag</li>
 							<li>Gebrandetes Papier mit Ihrem Logo</li>
+							<li>Gutscheinkarten für Gäste inklusive</li>
 							<li>Publikumsmagnet für Ihren Messestand</li>
 						</ul>
 						<a class="btn btn--ghost" href="#anfrage-event">Anfragen</a>
 					</article>
 				</div>
-				<p class="price-note">Gemäß § 19 UStG wird keine Umsatzsteuer berechnet.</p>
+				<p class="price-note">Endpreise in Berlin, Anfahrt außerhalb nach Absprache · Gemäß § 19 UStG wird keine Umsatzsteuer berechnet.</p>
+
+				<!-- FAQ – the questions event planners ask most -->
+				<div class="faq live-faq">
+					<h3 class="center live-subtitle">Häufige Fragen</h3>
+					<details>
+						<summary>Wie viel Platz brauchen Sie?</summary>
+						<p>Ca. 2–4 m² für einen Klapptisch (1,35 m) und Sitzplätze für die Gäste. Drinnen oder draußen, Strom brauche ich nicht.</p>
+					</details>
+					<details>
+						<summary>Wie viele Gäste schaffen Sie?</summary>
+						<p>Bis zu 12 Schnell-Porträts pro Stunde oder 2–6 ausführliche mit Aquarell. Bei vielen Gästen empfehle ich Schnell-Porträts oder eine Mischung.</p>
+					</details>
+					<details>
+						<summary>Kommen Sie auch außerhalb von Berlin?</summary>
+						<p>Ja, die Anfahrt außerhalb Berlins sprechen wir ab.</p>
+					</details>
+					<details>
+						<summary>Können die Gäste selbst bezahlen?</summary>
+						<p>Ja: Pauschale von Ihnen, Gäste zahlen selbst vor Ort oder auf Spendenbasis – im Formular auswählbar.</p>
+					</details>
+				</div>
+
+				<!-- IMAGE RIGHTS – same table on /commission.html, /en/events.html and /en/commission.html -->
+				<div class="form-card" id="bildrechte" style="margin-top:2.5em">
+					<h3>Bildrechte</h3>
+					<p class="hint">Das Urheberrecht bleibt bei mir. Sie bekommen Nutzungsrechte, je nachdem, wofür Sie die Bilder einsetzen möchten.</p>
+					<ul class="price-list">
+						<li><span>Nutzung mit Namensnennung (Website, Social Media, Presse, intern)</span><strong>inklusive</strong></li>
+						<li><span>Werbung (Anzeigen, Plakate, Verpackung, bezahlte Posts)</span><strong>+150 € pauschal</strong></li>
+						<li><span>Total Buyout: exklusive, zeitlich und räumlich unbegrenzte Nutzung ohne Namensnennung</span><strong>+400 € pauschal</strong></li>
+					</ul>
+				</div>
 
 				<!-- EVENT INQUIRY FORM
 				     Sends to your email via formsubmit.co (same service as the old store page).
@@ -289,12 +390,11 @@
 		     ========================================================= -->
 		<section class="section" id="kleckerkasten" aria-labelledby="b-title">
 			<div class="wrap">
-				<a class="pilot-banner" href="#pilot"><strong>Pilot-Angebot: −50 % für das erste Team</strong><span>Der komplette Workshop zum halben Preis – im Gegenzug Fotos &amp; eine kurze Bewertung. Details →</span></a>
-				<!-- Photo slot switched ON (placeholder P21). After the pilot workshop: replace the box with
-				     <img src="/img/fotos/kleckerkasten-3x2.jpg" alt="…" class="ph-img ph--3x2" width="1200" height="800" loading="lazy" decoding="async"> -->
-				<div class="kk-intro split split--reverse">
-					<!-- PLATZHALTER P21 -->
-					<div class="ph ph--3x2" data-ph="P21">Der Kleckerkasten: Box mit Farben, Pinseln, Team-Hände voller Farbe [1200x800]</div>
+				<a class="pilot-banner" href="#pilot"><strong>Pilot-Angebot: 10 € Rabatt pro Person für das erste Team</strong><span>59 € statt 69 € pro Person – im Gegenzug Fotos &amp; eine kurze Bewertung. Details →</span></a>
+				<!-- Placeholder picture until the photos of the re-enactment (Nachstellung) exist:
+				     swap the src of the <img> below for the real photo (3:2, e.g. 1200x800). -->
+				<div class="split split--reverse kk-split">
+					<img src="/img/platzhalter/kleckerkasten-nachstellung.svg" alt="Platzhalter mit bunten Farbklecksen: Nachstellungsbild wird erstellt" class="ph-img ph--3x2" width="1200" height="800" loading="lazy" decoding="async">
 					<div>
 						<span class="eyebrow">B · Der Kleckerkasten</span>
 						<h2 id="b-title">Expressives Teambuilding: einfach mal drauflos klecksen</h2>
@@ -365,7 +465,7 @@
 								<th scope="row">Preis (½ Tag, ganzes Team)</th>
 								<td data-label="Team-Coaching-Workshop">ca. 800–1.800 € zzgl. MwSt.</td>
 								<td data-label="Kunsttherapeutischer Team-Workshop">ab ca. 600 € zzgl. MwSt.</td>
-								<td data-label="Der Kleckerkasten" class="highlight"><strong>59 € pro Person</strong> · ab 11 Personen <strong>pauschal 650 €</strong><br><small>Endpreis für den ganzen Workshop</small><br><span class="deal-inline">Pilot-Team: <s>59 €</s> <strong>29,50 €</strong> · pauschal <s>650 €</s> <strong>325 €</strong></span></td>
+								<td data-label="Der Kleckerkasten" class="highlight"><strong>69 € pro Person</strong> · ab 11 Personen <strong>pauschal 750 €</strong><br><small>Endpreis für den ganzen Workshop</small><br><span class="deal-inline">Pilot-Team: <s>69 €</s> <strong>59 €</strong> · pauschal <s>750 €</s> <strong>650 €</strong></span></td>
 							</tr>
 							<tr>
 								<th scope="row">Format</th>
@@ -385,24 +485,29 @@
 				<p class="price-note">Marktpreise: typische Honorare Berliner Team-Coaches und Kunsttherapeut:innen, Stand Oktober 2026, ohne Gewähr.</p>
 
 				<!-- PILOT OFFER – only the very first team. Remove/replace this box once the pilot is booked.
-				     Prices: 59 € per person; from 11 people a flat 650 € for the whole workshop (11 × 59 € = 649 €, so no price jump). Pilot: 50 % off,
+				     Prices: 69 € per person; from 11 people a flat 750 € for the whole workshop (11 × 69 € = 759 €, so no price jump).
+				     Pilot: 59 € per person (10 € off) or a flat 650 € from 11 people (11 × 59 € = 649 €). Same numbers in the info-sheet PDF;
 				     in return the team helps with photos + a review (fills the missing Kleckerkasten photos). -->
 				<div class="pilot" id="pilot">
 					<div class="pilot-grid">
 						<div>
 							<span class="tag tag--fox">Pilot-Angebot: nur für das erste Team</span>
-							<h3>Pilot-Workshop: 50 % Rabatt für das erste Team</h3>
+							<h3>Pilot-Workshop: 10 € Rabatt pro Person für das erste Team</h3>
 							<!-- Crossed-out price = the real regular price after the pilot (§ 5 UWG: only show prices you actually charge) -->
 							<div class="deal">
-								<span class="deal-badge">−50 %</span>
-								<div class="deal-row"><s class="deal-old">59 €</s><span class="deal-new">29,50 €</span><span class="deal-unit">pro Person</span></div>
-								<div class="deal-row"><s class="deal-old">650 €</s><span class="deal-new">325 €</span><span class="deal-unit">pauschal ab 11 Personen</span></div>
-								<small>Regulärer Preis nach dem Pilot: 59 € pro Person bzw. 650 € pauschal · Endpreise für den ganzen Workshop</small>
+								<span class="deal-badge">−10 €</span>
+								<div class="deal-row"><s class="deal-old">69 €</s><span class="deal-new">59 €</span><span class="deal-unit">pro Person</span></div>
+								<div class="deal-row"><s class="deal-old">750 €</s><span class="deal-new">650 €</span><span class="deal-unit">pauschal ab 11 Personen</span></div>
+								<small>Regulärer Preis nach dem Pilot: 69 € pro Person bzw. 750 € pauschal · Endpreise für den ganzen Workshop</small>
 							</div>
 							<p>
 								Ich entwickle den Kleckerkasten aktuell mit ausgewählten Partnern in Berlin weiter. Das erste Team
-								erhält den kompletten Workshop als Pilot zum <strong>halben Preis</strong> – also 29,50 € pro Person
-								bzw. 325 € pauschal ab 11 Personen. Im Gegenzug helfen Sie mir mit Fotos vom Workshop und einer kurzen Bewertung.
+								erhält den kompletten Workshop als Pilot für <strong>59 € statt 69 € pro Person</strong>
+								bzw. 650 € pauschal ab 11 Personen. Im Gegenzug helfen Sie mir mit Fotos vom Workshop und einer kurzen Bewertung.
+							</p>
+							<p class="kk-nachstellung">
+								<strong>Gerade in Arbeit:</strong> Ich stelle den Workshop bei Freunden nach, damit Sie sehen, wie er
+								abläuft. Die Fotos davon kommen bald hierher.
 							</p>
 						</div>
 						<div>
@@ -534,29 +639,12 @@
 		<div class="footer-shade"></div>
 		<span class="ph-label footer-anim-label">Platzhalter · Aquarell-Video</span>
 		<div class="wrap">
-			<!-- BIG "FOLLOW ME" -->
-			<div class="follow-big">
-				<p class="eyebrow">Folge mir auf Instagram</p>
-				<a class="follow-handle" href="https://www.instagram.com/smileyfoxyportraits" target="_blank" rel="noopener">@smileyfoxyportraits</a>
-				<p>Wo ich heute zeichne, frische Bilder und die Geschichten dahinter – jeden Tag in meiner Story.</p>
-				<p class="follow-mail"><a href="mailto:aydan@smileyfoxyportraits.com">aydan@smileyfoxyportraits.com</a></p>
-				<div class="follow-links">
-					<a href="https://www.instagram.com/smileyfoxyportraits" target="_blank" rel="noopener">Instagram</a>
-					<a href="https://www.youtube.com/@SmileyFoxyPortraits" target="_blank" rel="noopener">YouTube</a>
-					<a href="https://aydanligon.substack.com" target="_blank" rel="noopener">Blog (Substack)</a>
-					<a href="https://discord.gg/pQaBQjBv4U" target="_blank" rel="noopener">Discord: Fox Den</a>
-					<a href="https://smileyfoxyportraits.bandcamp.com/" target="_blank" rel="noopener">Musik</a>
-				</div>
-			</div>
-
 			<!-- NEWSLETTER BAND: the email field opens Substack with the address already filled in -->
 			<div class="footer-newsletter">
 				<div>
-					<h3>Bleib in Kontakt 🦊</h3>
+					<h3>Bleib in Kontakt</h3>
 					<p>Erfahre zuerst, wann und wo ich zeichne – und sichere dir neue Originale &amp; Prints vor allen anderen.
 						Kostenlos, höchstens eine E-Mail im Monat. <a href="https://aydanligon.substack.com/archive">Archiv lesen →</a></p>
-					<!-- PLATZHALTER P05: your thank-you for signing up (same text in every footer – search & replace "P05") -->
-					<p class="newsletter-gift">🎁 Dankeschön fürs Eintragen: <span class="ph-text" data-ph="P05">gratis Handy-Hintergrundbild eines Berlin-Motivs</span></p>
 				</div>
 				<form class="newsletter-form" action="https://aydanligon.substack.com/subscribe" method="get" target="_blank">
 					<label class="sr-only" for="footer-email">E-Mail-Adresse</label>
@@ -565,10 +653,9 @@
 				</form>
 			</div>
 
-			<!-- LINK GROUPS: the most important links are always visible, the rest sits under "mehr".
-			     Impressum + Datenschutz stay visible on purpose (must be reachable with one click). -->
-			<nav class="footer-groups" aria-label="Alle Seiten">
-				<div class="fg">
+			<!-- LINK COLUMNS: offers · about me · support · contact · legal -->
+			<div class="footer-grid">
+				<div>
 					<h3>Angebote</h3>
 					<a href="/events.html#live-events">Live-Porträts für Events</a>
 					<a href="/events.html#kleckerkasten">Kleckerkasten-Workshop</a>
@@ -580,26 +667,29 @@
 						<a href="/store/">Originale &amp; Prints</a>
 					</details>
 				</div>
-				<div class="fg">
+
+				<div>
 					<h3>Über mich</h3>
-					<a href="/about/">Meine Geschichte</a>
-					<a href="/about/#faq">Fragen &amp; Antworten</a>
-					<details><summary>mehr</summary>
-						<a href="/projects/index.html">Projekte</a>
-						<a href="https://smileyfoxyportraits.bandcamp.com/">Musik auf Bandcamp</a>
-						<a href="/thankyou/index.html">Dankbarkeitswand &amp; Bewertungen</a>
-					</details>
+					<p><a href="/about/">Meine Geschichte</a></p>
+					<p><a href="/projects/index.html">Projekte</a></p>
+					<p><a href="https://smileyfoxyportraits.bandcamp.com/">Musik auf Bandcamp</a></p>
+					<p><a href="/thankyou/index.html">Dankbarkeitswand &amp; Bewertungen</a></p>
+					<p><a href="/about/#faq">Fragen und Antworten</a></p>
+					<p><a href="/jobs/">Jobs: Mach mit</a></p>
 				</div>
-				<div class="fg">
+
+				<div>
 					<h3>Unterstützen</h3>
 					<a href="/spenden/">Spenden</a>
 					<a href="/bezahlen.html">Vor Ort bezahlen</a>
 					<details><summary>mehr</summary>
 						<a href="https://tr.ee/u1wxA4" target="_blank" rel="noopener">Kostenlos: Bewertung abgeben</a>
+						<a href="https://www.google.com/preferences/source?q=smileyfoxyportraits.com" target="_blank" rel="noopener">Kostenlos: bei Google als bevorzugte Quelle wählen</a>
 						<a href="/support-free/">Kostenlos unterstützen</a>
 					</details>
 				</div>
-				<div class="fg">
+
+				<div>
 					<h3>Kontakt</h3>
 					<a class="footer-pair" href="mailto:aydan@smileyfoxyportraits.com">Schreib mir eine E-Mail<span class="footer-mail">aydan@<wbr>smileyfoxyportraits.com</span></a>
 					<a href="/contact/">Kontaktseite</a>
@@ -609,16 +699,15 @@
 						<a href="https://aydanligon.substack.com/subscribe">E-Mail-Liste (max. 1 E-Mail im Monat)</a>
 					</details>
 				</div>
-				<div class="fg footer-legal">
+
+				<div class="footer-legal">
 					<h3>Rechtliches</h3>
-					<a href="/ImpressumUndDatenschutz/Impressum.html">Impressum</a>
-					<a href="/ImpressumUndDatenschutz/Datenschutz.html">Datenschutzerklärung</a>
-					<details><summary>mehr</summary>
-						<a href="/einwilligung.html">Einwilligung Foto &amp; Video</a>
-						<a href="/about/#kontakt">Löschanfragen</a>
-					</details>
+					<p><a href="/ImpressumUndDatenschutz/Impressum.html">Impressum</a></p>
+					<p><a href="/ImpressumUndDatenschutz/Datenschutz.html">Datenschutzerklärung</a></p>
+					<p><a href="/einwilligung.html">Einwilligung Foto &amp; Video</a></p>
+					<p><a href="/about/#kontakt">Löschanfragen</a></p>
 				</div>
-			</nav>
+			</div>
 
 			<div class="footer-bottom">
 				<span>© SmileyFoxyPortraits · Aydan Lig'on · Berlin</span>

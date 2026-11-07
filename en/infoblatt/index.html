@@ -3,6 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="robots" content="noindex, noarchive, nosnippet">
 	<title>Info sheet – all offers at a glance · SmileyFoxyPortraits</title>
 	<meta name="description" content="All SmileyFoxyPortraits offers at a glance: commissioned portraits, live portraits for events and the Kleckerkasten team workshop in Berlin – with prices and PDF info sheets.">
 	<link rel="canonical" href="https://smileyfoxyportraits.com/en/infoblatt/">
@@ -36,6 +37,16 @@
 		.examples summary::-webkit-details-marker { display: none; }
 		.examples summary::after { content: "+"; color: var(--accent-dark); font-size: 1.4rem; line-height: 1; }
 		.examples[open] summary::after { content: "–"; }
+		.examples summary::after { width: 32px; height: 32px; flex: none; border-radius: 50%; background: var(--soft); display: inline-flex; align-items: center; justify-content: center; }
+		.examples .open-hint { margin-left: auto; margin-right: 12px; font-family: "Segoe UI", system-ui, sans-serif; font-weight: 600; font-size: .85rem; color: var(--accent-dark); white-space: nowrap; }
+		.examples[open] .open-hint { display: none; }
+		.examples:not([open]) { animation: examples-glow 2.4s ease-in-out infinite; }
+		.examples:not([open]) summary::after { animation: examples-nudge 2.4s ease-in-out infinite; }
+		.examples[open] .gallery { animation: examples-drop .35s ease-out; }
+		@keyframes examples-glow { 0%, 100% { box-shadow: 0 0 0 0 rgba(255, 107, 53, 0); } 50% { box-shadow: 0 0 0 4px rgba(255, 107, 53, .28); } }
+		@keyframes examples-nudge { 0%, 55%, 100% { transform: translateY(0); } 65% { transform: translateY(5px); } 75% { transform: translateY(0); } 85% { transform: translateY(3px); } }
+		@keyframes examples-drop { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: none; } }
+		@media (prefers-reduced-motion: reduce) { .examples, .examples summary::after, .examples .gallery { animation: none !important; } }
 		.examples summary small { font-family: "Segoe UI", system-ui, sans-serif; font-weight: 400; font-size: .85rem; color: var(--muted); margin-left: 8px; }
 		.gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; padding: 0 20px 20px; }
 		.gallery a { display: block; position: relative; border-radius: 10px; overflow: hidden; aspect-ratio: 4 / 5; background: var(--soft); }
@@ -61,6 +72,8 @@
 		.box p { margin: 0 0 8px; }
 		.contact { margin: 28px 0 40px; display: flex; flex-wrap: wrap; gap: 10px 24px; align-items: center; }
 		.contact strong { font-family: Georgia, serif; font-size: 1.15rem; }
+		.phone { flex-basis: 100%; display: flex; flex-wrap: wrap; gap: 8px 10px; align-items: center; }
+		.phone-num { font-weight: 600; margin-right: 6px; }
 		footer { border-top: 1px solid var(--line); color: var(--muted); font-size: .85rem; padding: 18px 0 28px; }
 		footer a { color: var(--muted); }
 	</style>
@@ -69,7 +82,7 @@
 
 	<header>
 		<div class="wrap">
-			<a class="logo" href="/en/">SmileyFoxy<span>Portraits</span></a>
+			<a class="logo" href="/en/">SmileyFoxy<span>Portraits</span><small class="logo-since">Drawing portraits for 6 years</small></a>
 			<a class="lang" href="/infoblatt/" hreflang="de" lang="de">Deutsch</a>
 		</div>
 	</header>
@@ -80,7 +93,7 @@
 
 		<!-- Collapsed by default; images only load when opened -->
 		<details class="examples">
-			<summary>Examples of my work <small>ink &amp; watercolour</small></summary>
+			<summary>Examples of my work <small>ink &amp; watercolour</small><span class="open-hint">Tap to open</span></summary>
 			<div class="gallery">
 				<a href="/img/fotos/aquarell-fineliner-detail-4x5.jpg"><img src="/img/fotos/aquarell-fineliner-detail-4x5.jpg" alt="Watercolour and fineliner portrait: man with glasses and a beard" loading="lazy" decoding="async"><span>Watercolour & fineliner</span></a>
 				<a href="/img/fotos/tusche-portraet-4x5.jpg"><img src="/img/fotos/tusche-portraet-4x5.jpg" alt="Expressive portrait in black ink" loading="lazy" decoding="async"><span>Ink</span></a>
@@ -104,7 +117,7 @@
 					<li>For your wall, from A5 up to large formats</li>
 					<li>Staff portraits in one consistent style, e.g. for your team page</li>
 				</ul>
-				<p class="price">A5: €20 · A4: €40–60 · larger formats and team packages on request</p>
+				<p class="price">Launch price 2026: A5 €20 · A4 €40–60 (from 2027 regular price A5 €35, A4 from €75) · larger formats and team packages on request</p>
 				<div class="actions">
 					<a class="btn" href="/downloads/infoblatt-portraets-privat-und-teams.pdf">Info sheet (PDF)</a>
 					<a class="btn btn--ghost" href="/en/commission.html#bestellen">Book this offer</a>
@@ -114,13 +127,13 @@
 			<section class="card">
 				<span class="tag">Company parties, fairs, anniversaries</span>
 				<h2>Live portraits for events</h2>
-				<p>I draw your guests live: a quick portrait in about 5 minutes or a detailed one in about 15. Every guest takes an original home.</p>
+				<p>I draw your guests live, and every guest takes an original home. Drawing time per person: quick portrait about 5 minutes, detailed in ink about 10–15 minutes, with watercolour up to 25 minutes.</p>
 				<ul>
 					<li>Compact: 2 hours, about 24 quick portraits</li>
 					<li>Event: 3–4 hours, about 36–48 quick portraits</li>
 					<li>Trade fair &amp; full day: up to about 90 portraits a day</li>
 				</ul>
-				<p class="price">Individual quote within 48 hours. A table and two chairs are all I need.</p>
+				<p class="price">Launch price 2026: Compact €250 · Event €380–500 · Full day €900 (from 2027 regular price €180 per hour) · I bring my own table and chairs, no power needed. Use of the pictures with name credit included, advertising +€150, total buyout +€400.</p>
 				<div class="actions">
 					<a class="btn" href="/downloads/infoblatt-live-portraits-events.pdf">Info sheet (PDF)</a>
 					<a class="btn btn--ghost" href="/en/events.html#anfrage-event">Book this offer</a>
@@ -154,6 +167,7 @@
 			<a href="mailto:aydan@smileyfoxyportraits.com">aydan@smileyfoxyportraits.com</a>
 			<a href="/en/">smileyfoxyportraits.com</a>
 			<a href="https://www.instagram.com/smileyfoxyportraits/">Instagram @smileyfoxyportraits</a>
+			<div class="phone" id="phone"><button type="button" class="btn btn--ghost" id="phone-show">Show phone number</button></div>
 		</div>
 	</main>
 
@@ -164,5 +178,27 @@
 		</div>
 	</footer>
 
+	<script>
+		// Number is only assembled after a click, so it never appears in the HTML for scrapers
+		document.getElementById('phone-show').addEventListener('click', function () {
+			var c = [32,20,14,14,32,14,23,17,17,26,14,38,23];
+			var n = c.slice().reverse().map(function (v) { return (v - 11) / 3; }).join('');
+			var href = { wa: 'https://wa.me/' + n, sig: 'https://signal.me/#p/+' + n, tg: 'https://t.me/+' + n, sms: 'sms:+' + n, tel: 'tel:+' + n };
+			var box = document.getElementById('phone');
+			box.textContent = '';
+			var num = document.createElement('span');
+			num.className = 'phone-num';
+			num.textContent = '+' + n.slice(0, 2) + ' ' + n.slice(2, 5) + ' ' + n.slice(5);
+			box.appendChild(num);
+			[['WhatsApp','wa'],['Signal','sig'],['Telegram','tg'],['SMS','sms'],['Call','tel']].forEach(function (l) {
+				var a = document.createElement('a');
+				a.className = 'btn btn--ghost';
+				a.href = href[l[1]];
+				a.textContent = l[0];
+				if (l[1] === 'wa' || l[1] === 'sig' || l[1] === 'tg') { a.target = '_blank'; a.rel = 'noopener'; }
+				box.appendChild(a);
+			});
+		});
+	</script>
 </body>
 </html>

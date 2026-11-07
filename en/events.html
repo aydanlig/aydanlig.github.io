@@ -39,11 +39,13 @@
 	<meta property="og:image" content="https://smileyfoxyportraits.com/img/og-share.jpg?v=2">
 	<meta property="og:image:width" content="1200">
 	<meta property="og:image:height" content="630">
-	<meta property="og:image:alt" content="SmileyFoxyPortraits – live portraits from €1 in Berlin">
+	<meta property="og:image:alt" content="SmileyFoxyPortraits – ink & watercolour portraits from Berlin">
 	<meta name="twitter:card" content="summary_large_image">
 
 	<link rel="stylesheet" href="/css/main.css">
 	<link rel="stylesheet" href="/css/ink.css">
+	<link rel="stylesheet" href="/css/events.css">
+	<script src="/js/ask-menu.js" defer></script>
 </head>
 
 <body>
@@ -51,7 +53,7 @@
 	<!-- ================= HEADER (same on every English page) ================= -->
 	<header class="site-header">
 		<div class="wrap">
-			<a class="logo" href="/en/" aria-label="SmileyFoxyPortraits – home"><span class="logo-ph" title="Platzhalter: hier kommt dein gemaltes Fuchs-Logo hin (img/logo.png)">Logo</span><span class="logo-word">SmileyFoxy<span>Portraits</span></span></a>
+			<a class="logo" href="/en/" aria-label="SmileyFoxyPortraits – home"><span class="logo-ph" title="Platzhalter: hier kommt dein gemaltes Fuchs-Logo hin (img/logo.png)">Logo</span><span class="logo-word">SmileyFoxy<span>Portraits</span><small class="logo-since">Drawing portraits for 6 years</small></span></a>
 			<nav class="main-nav" aria-label="Main menu">
 				<a class="nav-art" href="/en/portfolio.html">Art</a>
 				<a href="/en/events.html#live-events"><span class="nav-long">Live </span>Events</a>
@@ -61,7 +63,17 @@
 				<a class="nav-shop" href="/en/shop/">Shop</a>
 			</nav>
 			<a class="lang-switch" data-translate lang="de" title="Deutsche Version dieser Seite" href="/events.html">DE</a>
-			<a class="btn btn--small" href="/en/events.html#anfrage-kleckerkasten">Enquire</a>
+			<!-- ENQUIRE DROPDOWN – styles in /css/events.css, closing logic in /js/ask-menu.js -->
+			<details class="ask-menu">
+				<summary class="btn btn--small">Enquire <span aria-hidden="true">▾</span></summary>
+				<div class="ask-menu-list">
+					<a href="/en/events.html#anfrage-event"><strong>Live portraits for your event</strong><small>Company party, trade fair, birthday</small></a>
+					<a href="/en/events.html#anfrage-kleckerkasten"><strong>Kleckerkasten workshop</strong><small>Team building with paint</small></a>
+					<a href="/en/where-i-draw/"><strong>Live portrait stand</strong><small>Where &amp; when I draw</small></a>
+					<a href="/en/commission.html"><strong>Commissioned portrait</strong><small>from your photo</small></a>
+					<a href="/labor/auktion.html"><strong>Auction</strong><small>Bid on an original sketch (German)</small></a>
+				</div>
+			</details>
 		</div>
 	</header>
 
@@ -91,79 +103,162 @@
 		     ========================================================= -->
 		<section class="section section--alt" id="live-events" aria-labelledby="a-title">
 			<div class="wrap">
-				<div class="split">
+				<!-- LAYOUT like a professional live-portrait artist page (same structure as /events.html) -->
+				<div class="split live-intro">
 					<div>
 						<span class="eyebrow">A · Live event portraits</span>
 						<h2 id="a-title" style="hyphens:manual">The highlight for company parties, celebrations&nbsp;&amp;&nbsp;birthdays</h2>
-						<p>
-							Whether it's a summer party with hundreds of guests or a birthday in your living room: every guest takes
-							a hand-drawn original home – a part of the programme people talk about for weeks.
-							You can choose <strong>quick portraits</strong> in about 5 minutes (up to 12 guests per hour) or
-							<strong>detailed portraits</strong> in about 15 minutes (about 4 per hour) – or a mix. I draw from the gut:
-							ink often feels serious and clear, watercolour playful and cheerful, both together many-layered.
+						<p class="lead">
+							I draw your guests live – everyone takes a hand-drawn original home.
+							A part of the programme people talk about for weeks.
 						</p>
-						<div class="audience-grid">
-							<div class="audience">
-								<h3>For event planners &amp; companies</h3>
-								<ul class="checks">
-									<li>A crowd magnet for company parties, trade fairs or festivals</li>
-									<li>Your logo or event theme on the portrait paper</li>
-									<li>Experience with 1,500+ guests, a quote within 48 hours</li>
-								</ul>
-							</div>
-							<div class="audience">
-								<h3>For your party &amp; your birthday</h3>
-								<ul class="checks">
-									<li>Birthday, wedding, anniversary or house party – from 2 hours</li>
-									<li>Everyone goes home with a real keepsake instead of a photo-booth strip</li>
-									<li>I bring everything – a table and two chairs are enough</li>
-								</ul>
-							</div>
+						<div class="btn-row">
+							<a class="btn" href="#anfrage-event">Check availability</a>
+							<a class="btn btn--ghost" href="#pakete">Packages &amp; prices</a>
 						</div>
-						<ul class="checks">
-							<li><strong>A voucher for every guest:</strong> each guest gets a card with €5 off portraits and €50 off an event booking or the Kleckerkasten workshop.</li>
-							<li><strong>The drawing station becomes a meeting point:</strong> guests get talking and love to watch.</li>
+						<ul class="live-stats" aria-label="Experience in numbers">
+							<li><strong>1,500+</strong><span>guests at Saunasplash festival</span></li>
+							<li><strong>5</strong><span>concerts drawn live</span></li>
+							<li><strong>up to 12</strong><span>portraits per hour</span></li>
+							<li><strong>6 years</strong><span>of portraits</span></li>
 						</ul>
 					</div>
 					<img src="/img/fotos/aydan-am-stand.jpg" alt="Aydan drawing at his stand at the Saunasplash event with 1,500+ guests" class="ph-img ph--natural" width="1400" height="1050" loading="lazy" decoding="async">
 				</div>
 
-				<!-- PACKAGES – prices are quoted per event ("on request") -->
-				<div class="cards">
-					<article class="card">
+				<div class="live-strip">
+					<img src="/img/fotos/gaeste-mit-portraets-4x5.jpg" alt="Guests proudly holding their freshly drawn portraits" width="1200" height="1500" loading="lazy" decoding="async">
+					<img src="/img/fotos/live-zeichnen-haende-4x5.jpg" alt="Hands drawing live in ink" width="640" height="800" loading="lazy" decoding="async">
+					<img src="/img/fotos/stand-saunasplash-nacht-4x5.jpg" alt="The lit-up portrait stand at night at Saunasplash festival" width="920" height="1150" loading="lazy" decoding="async">
+					<img src="/img/fotos/aquarell-gitarre-4x5.jpg" alt="Live-drawn watercolour portrait of a guitarist" width="1200" height="1500" loading="lazy" decoding="async">
+				</div>
+
+				<h3 class="center live-subtitle">Two styles – or a mix</h3>
+				<div class="style-pick">
+					<div>
+						<span class="style-time">approx. 5 min</span>
+						<h4>Quick portrait in ink</h4>
+						<p>Up to 12 guests per hour. Clear, expressive, often a little serious – perfect when lots of guests should get one.</p>
+					</div>
+					<div>
+						<span class="style-time">approx. 10–25 min</span>
+						<h4>Detailed with watercolour</h4>
+						<p>About 2–6 guests per hour. Ink and watercolour, playful and colourful – an original that ends up framed on the wall.</p>
+					</div>
+				</div>
+
+				<h3 class="center live-subtitle">How it works</h3>
+				<div class="story-steps story-steps--4">
+					<div>
+						<div class="num">01</div>
+						<h3>Enquire</h3>
+						<p>Date, place and number of guests in the form – takes a minute.</p>
+					</div>
+					<div>
+						<div class="num">02</div>
+						<h3>Quote</h3>
+						<p>You get a fixed quote within 48 hours.</p>
+					</div>
+					<div>
+						<div class="num">03</div>
+						<h3>I set up</h3>
+						<p>I bring table, chairs and materials. No power needed.</p>
+					</div>
+					<div>
+						<div class="num">04</div>
+						<h3>Originals for everyone</h3>
+						<p>Every guest takes their portrait and a voucher card home.</p>
+					</div>
+				</div>
+
+				<div class="audience-grid live-audience">
+					<div class="audience">
+						<h3>For event planners &amp; companies</h3>
+						<ul class="checks">
+							<li>A crowd magnet for company parties, trade fairs or festivals</li>
+							<li>On request your logo or event theme on the portrait paper (included for trade fair, festival &amp; full day)</li>
+							<li>The drawing station becomes a meeting point: guests get talking and love to watch</li>
+						</ul>
+					</div>
+					<div class="audience">
+						<h3>For your party &amp; your birthday</h3>
+						<ul class="checks">
+							<li>Birthday, wedding, anniversary or house party – from 2 hours</li>
+							<li>Everyone goes home with a real keepsake instead of a photo-booth strip</li>
+							<li>Guest voucher: €5 off portraits, €50 off an event booking or the Kleckerkasten</li>
+						</ul>
+					</div>
+				</div>
+
+				<!-- PACKAGES – no crossed-out prices (§ 5 UWG). Change here AND on /events.html. -->
+				<div class="cards" id="pakete">
+					<article class="card card--count">
+						<span class="card-count" title="Booked this many times">booked 2×</span>
 						<h3>Compact</h3>
-						<p class="price">on request <small>depending on duration &amp; number of guests</small></p>
+						<p class="price">€360</p>
 						<ul>
 							<li>2 hours of live drawing</li>
-							<li>approx. 24 quick portraits <em>or</em> 8 detailed ones</li>
+							<li>approx. 24 quick portraits <em>or</em> 5–12 detailed ones</li>
+							<li>Voucher cards for guests included</li>
 							<li>Ideal for birthdays, parties &amp; receptions</li>
 						</ul>
 						<a class="btn btn--ghost" href="#anfrage-event">Enquire</a>
 					</article>
-					<article class="card card--featured">
-						<span class="tag">Most popular</span>
+					<article class="card">
 						<h3>Event</h3>
-						<p class="price">on request <small>depending on duration &amp; number of guests</small></p>
+						<p class="price">€540–720</p>
 						<ul>
 							<li>3–4 hours of live drawing</li>
-							<li>approx. 36–48 quick portraits <em>or</em> 12–16 detailed ones</li>
+							<li>approx. 36–48 quick portraits <em>or</em> 7–24 detailed ones</li>
 							<li>Voucher cards for guests included</li>
 						</ul>
-						<a class="btn" href="#anfrage-event">Enquire</a>
+						<a class="btn btn--ghost" href="#anfrage-event">Enquire</a>
 					</article>
 					<article class="card">
-						<h3>Trade fair &amp; full day</h3>
-						<p class="price">on request</p>
+						<h3>Trade fair, festival &amp; full day</h3>
+						<p class="price">€1,290 <small>per day</small></p>
 						<ul>
 							<li>Full day / several days</li>
 							<li>up to approx. 90 quick portraits per day</li>
 							<li>Branded paper with your logo</li>
+							<li>Voucher cards for guests included</li>
 							<li>A crowd magnet for your trade-fair stand</li>
 						</ul>
 						<a class="btn btn--ghost" href="#anfrage-event">Enquire</a>
 					</article>
 				</div>
-				<p class="price-note">No VAT is charged (small business, § 19 UStG).</p>
+				<p class="price-note">Final prices in Berlin, travel outside Berlin by arrangement · No VAT is charged (small business, § 19 UStG).</p>
+
+				<div class="faq live-faq">
+					<h3 class="center live-subtitle">Frequently asked questions</h3>
+					<details>
+						<summary>How much space do you need?</summary>
+						<p>About 2–4 m² for a folding table (1.35 m) and seats for the guests. Indoors or outdoors, no power needed.</p>
+					</details>
+					<details>
+						<summary>How many guests can you draw?</summary>
+						<p>Up to 12 quick portraits per hour or 2–6 detailed ones with watercolour. For lots of guests I recommend quick portraits or a mix.</p>
+					</details>
+					<details>
+						<summary>Do you travel outside Berlin?</summary>
+						<p>Yes, we arrange travel outside Berlin together.</p>
+					</details>
+					<details>
+						<summary>Can guests pay for themselves?</summary>
+						<p>Yes: a flat fee from you, guests pay on site, or donation-based – you can choose in the form.</p>
+					</details>
+				</div>
+
+				<!-- IMAGE RIGHTS – same table on /events.html, /commission.html and /en/commission.html -->
+				<div class="form-card" id="bildrechte" style="margin-top:2.5em">
+					<h3>Image rights</h3>
+					<p class="hint">I keep the copyright. You get usage rights depending on what you'd like to use the pictures for.</p>
+					<ul class="price-list">
+						<li><span>Use with name credit (website, social media, press, internal)</span><strong>included</strong></li>
+						<li><span>Advertising (ads, posters, packaging, paid posts)</span><strong>+€150 flat</strong></li>
+						<li><span>Total buyout: exclusive use, unlimited in time and place, without name credit</span><strong>+€400 flat</strong></li>
+					</ul>
+				</div>
 
 				<!-- EVENT INQUIRY FORM (formsubmit.co) – thank-you page: /en/danke.html -->
 				<div class="form-card" id="anfrage-event">
@@ -281,10 +376,10 @@
 		     ========================================================= -->
 		<section class="section" id="kleckerkasten" aria-labelledby="b-title">
 			<div class="wrap">
-				<a class="pilot-banner" href="#pilot"><strong>Pilot offer: 50 % off for the first team</strong><span>The complete workshop at half price – in return for photos &amp; a short review. Details →</span></a>
-				<!-- PLATZHALTER P21: photo after the pilot workshop (same as the German page) -->
-				<div class="kk-intro split split--reverse">
-					<div class="ph ph--3x2" data-ph="P21">The Kleckerkasten: box of paints and brushes, team hands covered in paint [1200x800]</div>
+				<a class="pilot-banner" href="#pilot"><strong>Pilot offer: €10 off per person for the first team</strong><span>€59 instead of €69 per person – in return for photos &amp; a short review. Details →</span></a>
+				<!-- Placeholder picture until the re-enactment photos exist (same as /events.html) -->
+				<div class="split split--reverse kk-split">
+					<img src="/img/platzhalter/kleckerkasten-nachstellung.svg" alt="Placeholder with colourful paint splotches: re-enactment photo coming soon (German text)" class="ph-img ph--3x2" width="1200" height="800" loading="lazy" decoding="async">
 					<div>
 						<span class="eyebrow">B · The Kleckerkasten</span>
 						<h2 id="b-title">Expressive team building: just splash away</h2>
@@ -353,7 +448,7 @@
 								<th scope="row">Price (½ day, whole team)</th>
 								<td data-label="Team coaching workshop">approx. €800–1,800 plus VAT</td>
 								<td data-label="Art-therapy team workshop">from approx. €600 plus VAT</td>
-								<td data-label="The Kleckerkasten" class="highlight"><strong>€59 per person</strong> · from 11 people a <strong>flat €650</strong><br><small>Final price for the whole workshop</small><br><span class="deal-inline">Pilot team: <s>€59</s> <strong>€29.50</strong> · flat <s>€650</s> <strong>€325</strong></span></td>
+								<td data-label="The Kleckerkasten" class="highlight"><strong>€69 per person</strong> · from 11 people a <strong>flat €750</strong><br><small>Final price for the whole workshop</small><br><span class="deal-inline">Pilot team: <s>€69</s> <strong>€59</strong> · flat <s>€750</s> <strong>€650</strong></span></td>
 							</tr>
 							<tr>
 								<th scope="row">Format</th>
@@ -377,17 +472,21 @@
 					<div class="pilot-grid">
 						<div>
 							<span class="tag tag--fox">Pilot offer: only for the first team</span>
-							<h3>Pilot workshop: 50 % off for the first team</h3>
+							<h3>Pilot workshop: €10 off per person for the first team</h3>
 							<div class="deal">
-								<span class="deal-badge">−50 %</span>
-								<div class="deal-row"><s class="deal-old">€59</s><span class="deal-new">€29.50</span><span class="deal-unit">per person</span></div>
-								<div class="deal-row"><s class="deal-old">€650</s><span class="deal-new">€325</span><span class="deal-unit">flat from 11 people</span></div>
-								<small>Regular price after the pilot: €59 per person or a flat €650 · final prices for the whole workshop</small>
+								<span class="deal-badge">−€10</span>
+								<div class="deal-row"><s class="deal-old">€69</s><span class="deal-new">€59</span><span class="deal-unit">per person</span></div>
+								<div class="deal-row"><s class="deal-old">€750</s><span class="deal-new">€650</span><span class="deal-unit">flat from 11 people</span></div>
+								<small>Regular price after the pilot: €69 per person or a flat €750 · final prices for the whole workshop</small>
 							</div>
 							<p>
 								I'm currently developing the Kleckerkasten further with selected partners in Berlin. The first team
-								gets the complete workshop as a pilot at <strong>half price</strong> – that's €29.50 per person
-								or a flat €325 from 11 people. In return, you help me with photos of the workshop and a short review.
+								gets the complete workshop as a pilot for <strong>€59 instead of €69 per person</strong>
+								or a flat €650 from 11 people. In return, you help me with photos of the workshop and a short review.
+							</p>
+							<p class="kk-nachstellung">
+								<strong>In progress:</strong> I'm re-enacting the workshop at a friend's place so you can see how it
+								works. The photos will be up here soon.
 							</p>
 						</div>
 						<div>
@@ -514,27 +613,11 @@
 		<div class="footer-shade"></div>
 		<span class="ph-label footer-anim-label">Placeholder · watercolour video</span>
 		<div class="wrap">
-			<div class="follow-big">
-				<p class="eyebrow">Follow me on Instagram</p>
-				<a class="follow-handle" href="https://www.instagram.com/smileyfoxyportraits" target="_blank" rel="noopener">@smileyfoxyportraits</a>
-				<p>Where I'm drawing today, fresh pictures and the stories behind them – every day in my story.</p>
-				<p class="follow-mail"><a href="mailto:aydan@smileyfoxyportraits.com">aydan@smileyfoxyportraits.com</a></p>
-				<div class="follow-links">
-					<a href="https://www.instagram.com/smileyfoxyportraits" target="_blank" rel="noopener">Instagram</a>
-					<a href="https://www.youtube.com/@SmileyFoxyPortraits" target="_blank" rel="noopener">YouTube</a>
-					<a href="https://aydanligon.substack.com" target="_blank" rel="noopener">Blog (Substack)</a>
-					<a href="https://discord.gg/pQaBQjBv4U" target="_blank" rel="noopener">Discord: Fox Den</a>
-					<a href="https://smileyfoxyportraits.bandcamp.com/" target="_blank" rel="noopener">Music</a>
-				</div>
-			</div>
-
 			<div class="footer-newsletter">
 				<div>
-					<h3>Stay in touch 🦊</h3>
+					<h3>Stay in touch</h3>
 					<p>Be the first to know when and where I'm drawing – and get new originals &amp; prints before anyone else.
 						Free, one e-mail a month at most. <a href="https://aydanligon.substack.com/archive">Read the archive →</a></p>
-					<!-- PLATZHALTER P05: your thank-you for signing up (same text in every footer – search & replace "P05") -->
-					<p class="newsletter-gift">🎁 Your thank-you for signing up: <span class="ph-text" data-ph="P05">a free phone wallpaper of a Berlin motif</span></p>
 				</div>
 				<form class="newsletter-form" action="https://aydanligon.substack.com/subscribe" method="get" target="_blank">
 					<label class="sr-only" for="footer-email">E-mail address</label>
@@ -543,8 +626,8 @@
 				</form>
 			</div>
 
-			<nav class="footer-groups" aria-label="All pages">
-				<div class="fg">
+			<div class="footer-grid">
+				<div>
 					<h3>Services</h3>
 					<a href="/en/events.html#live-events">Live portraits for events</a>
 					<a href="/en/events.html#kleckerkasten">Kleckerkasten workshop</a>
@@ -556,26 +639,28 @@
 						<a href="/en/store/">Originals &amp; prints</a>
 					</details>
 				</div>
-				<div class="fg">
+
+				<div>
 					<h3>About me</h3>
-					<a href="/en/about/">My story</a>
-					<a href="/en/about/#faq">Questions &amp; answers</a>
-					<details><summary>more</summary>
-						<a href="/projects/index.html">Projects (German)</a>
-						<a href="https://smileyfoxyportraits.bandcamp.com/">Music on Bandcamp</a>
-						<a href="/thankyou/index.html">Wall of thanks &amp; reviews (German)</a>
-					</details>
+					<p><a href="/en/about/">My story</a></p>
+					<p><a href="/projects/index.html">Projects (German)</a></p>
+					<p><a href="https://smileyfoxyportraits.bandcamp.com/">Music on Bandcamp</a></p>
+					<p><a href="/thankyou/index.html">Wall of thanks &amp; reviews (German)</a></p>
+					<p><a href="/en/about/#faq">Questions and answers</a></p>
 				</div>
-				<div class="fg">
+
+				<div>
 					<h3>Support</h3>
 					<a href="/en/spenden/">Donate</a>
 					<a href="/en/bezahlen.html">Pay on the spot</a>
 					<details><summary>more</summary>
 						<a href="https://tr.ee/u1wxA4" target="_blank" rel="noopener">Free: leave a review</a>
+						<a href="https://www.google.com/preferences/source?q=smileyfoxyportraits.com" target="_blank" rel="noopener">Free: pick me as a preferred source on Google</a>
 						<a href="/support-free/">Support for free (German)</a>
 					</details>
 				</div>
-				<div class="fg">
+
+				<div>
 					<h3>Contact</h3>
 					<a class="footer-pair" href="mailto:aydan@smileyfoxyportraits.com">Send me an e-mail<span class="footer-mail">aydan@<wbr>smileyfoxyportraits.com</span></a>
 					<a href="/en/contact/">Contact page</a>
@@ -585,16 +670,15 @@
 						<a href="https://aydanligon.substack.com/subscribe">Email list (one e-mail a month at most)</a>
 					</details>
 				</div>
-				<div class="fg footer-legal">
+
+				<div class="footer-legal">
 					<h3>Legal (German)</h3>
-					<a href="/ImpressumUndDatenschutz/Impressum.html">Imprint (Impressum)</a>
-					<a href="/ImpressumUndDatenschutz/Datenschutz.html">Privacy policy</a>
-					<details><summary>more</summary>
-						<a href="/einwilligung.html">Photo &amp; video consent</a>
-						<a href="/en/about/#kontakt">Removal requests</a>
-					</details>
+					<p><a href="/ImpressumUndDatenschutz/Impressum.html">Imprint (Impressum)</a></p>
+					<p><a href="/ImpressumUndDatenschutz/Datenschutz.html">Privacy policy (Datenschutz)</a></p>
+					<p><a href="/einwilligung.html">Photo &amp; video consent</a></p>
+					<p><a href="/en/about/#kontakt">Removal requests</a></p>
 				</div>
-			</nav>
+			</div>
 
 			<div class="footer-bottom">
 				<span>© SmileyFoxyPortraits · Aydan Lig'on · Berlin</span>
