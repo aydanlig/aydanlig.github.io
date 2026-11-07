@@ -125,3 +125,10 @@ details.extras-box[open] > summary .extras-sum-title { display: none; }
 details.extras-box[open]::before { content: "Extras"; order: 0; font-family: var(--font-display, inherit); font-size: 1.3rem; font-weight: 700; margin-bottom: 0.4em; }
 details.extras-box[open] > .extras-groups { order: 1; }
 details.extras-box[open] > .extras-live { order: 1; }
+
+/* Expanded extras: groups flow in columns like a magazine (no empty holes next to short groups) */
+.extras-groups { display: block; column-count: 2; column-gap: 40px; }
+.extras-groups > div { break-inside: avoid; display: inline-block; width: 100%; margin-bottom: 14px; }
+.extras-groups h4 { margin-top: 0.2em; }
+@media (min-width: 1100px) { .extras-groups { column-count: 3; } .extras-box { max-width: 1180px; } }
+@media (max-width: 720px) { .extras-groups { column-count: 1; } }
