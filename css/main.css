@@ -1970,3 +1970,12 @@ button.mc-day { cursor: pointer; }
 .pay-methods { font-size: .8rem; color: var(--ink-soft); margin: 10px 0 0; }
 /* Pay page: short footer – no full-screen height there */
 .site-footer.site-footer--short { min-height: 0; padding: 28px 0 20px; }
+
+/* Referenzen: the two Saunasplash invoices now sit visibly BELOW the photo (amounts, bank data, tax note blacked out in the files) */
+.ref-receipts { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; max-width: 520px; margin: 22px auto 0; }
+.ref-receipts a { display: block; }
+.ref-receipts img { width: 100%; height: auto; border-radius: 6px; border: 1px solid #E4D6C8; background: #fff; box-shadow: 0 8px 20px rgba(43, 33, 40, 0.18); transition: transform .2s; }
+.ref-receipts a:nth-child(1) img { transform: rotate(-3deg); }
+.ref-receipts a:nth-child(2) img { transform: rotate(3deg); }
+.ref-receipts a:hover img { transform: rotate(0) scale(1.03); }
+.ref-receipts-cap { text-align: center; margin-top: 10px; }
