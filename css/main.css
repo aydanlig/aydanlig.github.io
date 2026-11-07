@@ -1286,12 +1286,12 @@ main:has(> .section--alt:last-of-type) + .site-footer::after { background: var(-
 
 /* Wo & wann: schedule at a glance + clean place cards */
 .schedule-table { margin: 1.4em 0 1em; border: 1px solid var(--line); border-radius: 14px; overflow: hidden; background: var(--card); }
-.st-row { display: grid; grid-template-columns: 110px 180px 1fr auto; gap: 6px 16px; align-items: center; padding: 12px 16px; border-top: 1px solid var(--line); }
+.st-row { display: grid; grid-template-columns: minmax(9.5em, max-content) 180px 1fr auto; gap: 6px 16px; align-items: center; padding: 12px 16px; border-top: 1px solid var(--line); }
 .st-row:first-child { border-top: 0; }
 .st-row--main { background: #FFF1EA; }
 .st-row[hidden], .termine[hidden] { display: none; }
 .termine .btn { margin-top: -.2em; }
-.st-day { font-weight: 700; }
+.st-day { font-weight: 700; min-width: 0; overflow-wrap: anywhere; hyphens: auto; }
 .st-time { color: var(--ink-soft); }
 .st-map { font-weight: 600; white-space: nowrap; }
 .places { display: grid; gap: 18px; padding-top: 8px; }
