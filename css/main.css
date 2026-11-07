@@ -2113,3 +2113,8 @@ main img.img-wait { opacity: 0; }
 .enq-menu { transform-origin: top right; }
 @media (max-width: 720px) { .site-header .enq-toggle.btn { padding: 0.42em 0.8em; font-size: 0.75rem; } }
 :root.theme-dark .site-header .enq-toggle.btn { background: var(--fox); color: var(--night); }
+/* round 7: optional form fields folded (js/nav.js) */
+.form-grid:not(.show-opt) > .field.opt { display: none; }
+.form-grid.show-opt > .field.opt { animation: fade-down 0.25s ease-out; }
+.opt-toggle { background: none; border: 1px dashed var(--line); border-radius: 999px; padding: 0.5em 1.1em; font: inherit; font-weight: 700; color: var(--accent); cursor: pointer; }
+.opt-toggle:hover { border-color: var(--accent); }

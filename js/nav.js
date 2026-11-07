@@ -186,3 +186,15 @@
 		});
 	});
 })();
+
+/* Forms: optional fields stay folded behind "Mehr Details (optional)" until someone wants them */
+(function () {
+	document.addEventListener('click', function (e) {
+		var b = e.target.closest && e.target.closest('[data-opt-toggle]');
+		if (!b) return;
+		var grid = b.closest('.form-grid');
+		var on = grid.classList.toggle('show-opt');
+		b.setAttribute('aria-expanded', on ? 'true' : 'false');
+		b.textContent = b.textContent.replace(on ? '▾' : '▴', on ? '▴' : '▾');
+	});
+})();

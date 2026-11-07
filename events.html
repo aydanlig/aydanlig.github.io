@@ -333,7 +333,7 @@
 								<label for="ev-name">Name *</label>
 								<input id="ev-name" name="Name" required autocomplete="name">
 							</div>
-							<div class="field">
+							<div class="field opt">
 								<label for="ev-company">Firma / Organisation</label>
 								<input id="ev-company" name="Firma" autocomplete="organization">
 							</div>
@@ -341,7 +341,7 @@
 								<label for="ev-email">E-Mail *</label>
 								<input id="ev-email" type="email" name="email" required autocomplete="email">
 							</div>
-							<div class="field">
+							<div class="field opt">
 								<label for="ev-phone">Telefon</label>
 								<input id="ev-phone" type="tel" name="Telefon" autocomplete="tel">
 							</div>
@@ -350,7 +350,7 @@
 								<label for="ev-date">Datum *</label>
 								<input id="ev-date" type="text" name="Datum" placeholder="TT.MM.JJJJ" autocomplete="off" required data-date-field data-min-days="2">
 							</div>
-							<div class="field">
+							<div class="field opt">
 								<label for="ev-time">Gewünschte Uhrzeit</label>
 								<input id="ev-time" name="Uhrzeit" placeholder="z. B. 18–21 Uhr">
 							</div>
@@ -380,7 +380,7 @@
 								<label for="ev-location">Ort / Location *</label>
 								<input id="ev-location" name="Ort" required placeholder="z. B. Berlin-Mitte, Hotel XY">
 							</div>
-							<div class="field">
+							<div class="field opt">
 								<!-- How much space the organiser can offer for the drawing station -->
 								<label for="ev-space">Platz für die Zeichenstation
 									<span class="info-tip" tabindex="0" role="button" aria-label="Info zum Platz" aria-describedby="ev-space-tip">?<span class="info-tip-text" id="ev-space-tip" role="tooltip">Ideal: ca. 2–4 m² für einen Klapptisch (1,35 m) und Sitzplätze für Gäste.</span></span></label>
@@ -392,7 +392,7 @@
 								</select>
 							</div>
 							<!-- How the event is paid – shows up as "Abrechnung" in the request e-mail -->
-							<div class="field full">
+							<div class="field opt full">
 								<label for="ev-pricing">Abrechnung</label>
 								<select id="ev-pricing" name="Abrechnung">
 									<option>Pauschale: Festpreis von Ihnen, für Ihre Gäste kostenlos (Material inklusive)</option>
@@ -401,7 +401,7 @@
 									<option>Sonstiges – bitte unten in die Nachricht schreiben</option>
 								</select>
 							</div>
-							<div class="field full">
+							<div class="field opt full">
 								<label for="ev-rights">Bildrechte <a class="hint" href="#bildrechte">(was heißt das?)</a></label>
 								<select id="ev-rights" name="Bildrechte">
 									<option>Nutzung mit Namensnennung (Website, Social Media, Presse, intern) – inklusive</option>
@@ -411,18 +411,19 @@
 								</select>
 							</div>
 							<!-- Optional: commission portraits from photos on top of the event / workshop -->
-							<div class="field full">
+							<div class="field opt full">
 								<label class="choice">
 									<input type="checkbox" id="ev-addon" name="Auftrags-Porträts" value="Ja – bitte beraten">
 									<span>Auftrags-Porträts nach Foto dazubuchen (z. B. Abschiedsgeschenk, Jubiläum, Team-Porträt)</span>
 								</label>
 							</div>
-							<div class="field full">
+							<div class="field opt full">
 								<label class="choice">
 									<input type="checkbox" name="Rabattkarte" value="Ja – 50 € Rabatt">
 									<span>Ich habe eine Karte von Aydan erhalten (50 € Rabatt)</span>
 								</label>
 							</div>
+							<div class="field full"><button type="button" class="opt-toggle" data-opt-toggle>Mehr Details (optional) ▾</button></div>
 							<div class="field full">
 								<label for="ev-msg">Nachricht / sonstige Wünsche</label>
 								<textarea id="ev-msg" name="Nachricht" rows="4" placeholder="Was ist das Motto? Gibt es Wünsche zum Branding?"></textarea>
