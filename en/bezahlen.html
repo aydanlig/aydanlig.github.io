@@ -21,6 +21,17 @@
 	<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
 	<link rel="stylesheet" href="/css/main.css">
+	<style>
+		/* Saturday-only 1 € special: a soft pulsing chip + a banner that only shows on Saturdays */
+		.sat-special { margin: 0 0 8px; padding: 8px 12px; border-radius: 12px; background: #FFF2CC; border: 2px dashed var(--fox); font-size: 0.92rem; animation: sat-pop 2.4s ease-in-out infinite; }
+		.chip--special { border-color: var(--fox); box-shadow: 0 0 0 0 rgba(255, 122, 69, 0.6); animation: sat-ring 1.8s ease-out infinite; }
+		@keyframes sat-pop { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.02); } }
+		@keyframes sat-ring { 0% { box-shadow: 0 0 0 0 rgba(255, 122, 69, 0.55); } 80%, 100% { box-shadow: 0 0 0 10px rgba(255, 122, 69, 0); } }
+		@media (prefers-reduced-motion: reduce) { .sat-special, .chip--special { animation: none; } }
+		.pay-step--tip .chip small { display: block; font-weight: 400; font-size: 0.78rem; min-height: 1em; }
+		.pay-tip-line { margin: 0 0 6px; color: var(--ink-soft); font-size: 0.95rem; }
+		.pay-tip-line strong { color: var(--accent); }
+	</style>
 </head>
 
 <body>
@@ -42,11 +53,12 @@
 				<div class="pay-step">
 					<h2><span>1</span> Your portrait</h2>
 					<!-- data-a5 / data-a4 = style extra in € (same numbers as on /bezahlen.html) -->
+					<p class="sat-special" data-sat-only hidden><strong>Saturday special:</strong> the quick mini sketch is only <b>€1</b> today – tap <b>A6/A7</b>!</p>
 					<div data-group="size">
 						<div class="chip-row chip-row--3">
-							<button type="button" class="chip" data-price="1" data-size="a6">A6/A7 · €1</button>
-							<button type="button" class="chip" data-price="10" data-size="a5">A5 · €10</button>
-							<button type="button" class="chip" data-price="20" data-size="a4">A4 · €20</button>
+							<button type="button" class="chip" data-price="5" data-size="a6" data-sat-price="1"><span data-a6-label>A6/A7&nbsp;·&nbsp;€5</span></button>
+							<button type="button" class="chip" data-price="15" data-size="a5">A5 · €15</button>
+							<button type="button" class="chip" data-price="28" data-size="a4">A4 · €28</button>
 						</div>
 						<label class="amount-field">Different price (as agreed):
 							<input type="number" inputmode="decimal" min="0" step="0.5" placeholder="€" data-custom="size"></label>
@@ -56,10 +68,10 @@
 						<div class="chip-row chip-row--3" data-group="style">
 							<button type="button" class="chip" data-price="5" data-a5="5" data-a4="10" data-name="Ink">Ink<br>+€5</button>
 							<button type="button" class="chip" data-price="8" data-a5="8" data-a4="20" data-name="Watercolour">Watercolour<br>+€8</button>
-							<button type="button" class="chip" data-price="10" data-a5="10" data-a4="40" data-name="Both">Both<br>+€10</button>
+							<button type="button" class="chip" data-price="15" data-a5="15" data-a4="40" data-name="Both">Both<br>+€15</button>
 						</div>
 					</div>
-					<p class="hint" data-a6-note hidden>A6/A7 is the quick live sketch for €1 – Saturdays at Mauerpark only.</p>
+					<p class="hint" data-a6-note hidden>A6/A7 is the quick live sketch – no style extra.</p>
 					<label class="pay-check"><input type="checkbox" id="pay-pack" data-price="1"> Packaging to take away (+€1)</label>
 				</div>
 
@@ -67,12 +79,12 @@
 					<h2><span>2</span> Add a donation?</h2>
 					<p class="hint">Donations keep me going and show me that my art is appreciated.</p>
 					<div class="chip-row" data-group="tip">
-						<button type="button" class="chip" data-price="0">None</button>
-						<button type="button" class="chip" data-price="2">+€2</button>
-						<button type="button" class="chip" data-price="5">+€5</button>
-						<button type="button" class="chip" data-price="10">+€10</button>
+						<button type="button" class="chip" data-price="0" data-pct="0">None</button>
+						<button type="button" class="chip" data-pct="20">+20 %<small data-tip-eur></small></button>
+						<button type="button" class="chip" data-pct="50">+50 %<small data-tip-eur></small></button>
+						<button type="button" class="chip" data-pct="200">+200 %<small data-tip-eur></small></button>
 					</div>
-					<label class="amount-field">Your own amount:
+					<label class="amount-field">Custom donation (€):
 						<input type="number" inputmode="decimal" min="0" step="0.5" placeholder="€" data-custom="tip"></label>
 					<p class="hint">Think your portrait is worth more than I'm asking? Feel free to pay what it's worth to you.</p>
 				</div>
@@ -80,10 +92,11 @@
 				<div class="pay-step pay-step--total">
 					<h2><span>3</span> Pay</h2>
 					<p class="pay-total" aria-live="polite">Total: <strong id="pay-sum">–</strong></p>
+					<p class="pay-tip-line" id="pay-tip-line" hidden>of which donation: <strong id="pay-tip-sum"></strong> – thank you!</p>
 					<p class="hint" id="pay-sum-hint">Choose your size above – then you'll see the amount to enter here.</p>
 					<div class="pay-buttons">
 						<a class="btn" data-pay href="https://pay.sumup.com/b2c/QMYZ8JO7">Pay by card (SumUp)</a>
-						<a class="btn btn--ghost" data-pay data-paypal="aydan@smileyfoxyportraits.com" href="https://www.paypal.biz/SmileyFoxyPortraitsL">Pay with PayPal</a>
+						<a class="btn btn--ghost" data-pay data-paypal-me="SmileyFoxyPortraitsL" href="https://www.paypal.biz/SmileyFoxyPortraitsL">Pay with PayPal</a>
 					</div>
 					<p class="pay-copied" id="pay-copied" role="status" hidden></p>
 					<p class="hint">Card via SumUp has the lowest fees, so more of it reaches me. Cash is fine too, of course.</p>
@@ -117,7 +130,7 @@
 				<div class="pay-qr">
 					<img src="/img/qr-bezahlen.svg" alt="QR code to smileyfoxyportraits.com/bezahlen.html" width="160" height="160">
 					<div>
-						<h2>Changed your mind? Someone else is paying – or wants to donate?</h2>
+						<h2>Someone else is paying – or wants to donate?</h2>
 						<p>Just scan this QR code – it leads straight to this payment page. Perfect if someone in your group
 							or another person would like to leave something too.</p>
 					</div>
@@ -134,36 +147,67 @@
 	<!-- Total calculator: size + style + packaging + tip (same logic as /bezahlen.html, English texts) -->
 	<script>
 		(function () {
+			var LANG = 'en';
+			var T = LANG === 'de'
+				? { copied: ' € kopiert – im nächsten Fenster einfach ins Betragsfeld einfügen.', a6: 'A6/A7\u00a0·\u00a0' }
+				: { copied: ' copied – just paste it into the amount field on the next screen.', a6: 'A6/A7\u00a0·\u00a0' };
+			function eur(n) {
+				var v = n.toLocaleString(LANG === 'de' ? 'de-DE' : 'en-GB', { minimumFractionDigits: n % 1 ? 2 : 0, maximumFractionDigits: 2 });
+				return LANG === 'de' ? v + '\u00a0€' : '€' + v;
+			}
 			var sum = document.getElementById('pay-sum'), hint = document.getElementById('pay-sum-hint');
+			var tipLine = document.getElementById('pay-tip-line'), tipSum = document.getElementById('pay-tip-sum');
 			var pack = document.getElementById('pay-pack');
 			var copied = document.getElementById('pay-copied'), currentTotal = null;
+
+			// SATURDAY SPECIAL: A6/A7 costs 5 € – on Saturdays (Berlin time) only 1 €, and only then the prompt shows.
+			// Test any day by adding ?samstag to the URL.
+			var day = new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Berlin', weekday: 'short' }).format(new Date());
+			var saturday = day === 'Sat' || /[?&]samstag/.test(location.search);
+			var a6 = document.querySelector('[data-size="a6"]');
+			if (saturday) {
+				a6.setAttribute('data-price', a6.dataset.satPrice);
+				a6.classList.add('chip--special');
+				a6.querySelector('[data-a6-label]').textContent = T.a6 + eur(+a6.dataset.satPrice);
+				document.querySelectorAll('[data-sat-only]').forEach(function (el) { el.hidden = false; });
+			}
+
+			// PAY BUTTONS: PayPal goes to paypal.me with the total filled in – on phones that link opens the PayPal app
+			// directly (no browser login). SumUp links can't take an amount, so there the total is copied on tap.
 			document.querySelectorAll('[data-pay]').forEach(function (link) {
 				link.addEventListener('click', function (e) {
 					if (currentTotal === null) return;
-					if (link.dataset.paypal) {
+					var amount = currentTotal.toFixed(2);   // point as decimal separator so it pastes cleanly
+					if (link.dataset.paypalMe) {
 						e.preventDefault();
-						window.location.href = 'https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=' + encodeURIComponent(link.dataset.paypal) +
-							'&item_name=' + encodeURIComponent('Portrait SmileyFoxyPortraits') + '&amount=' + currentTotal.toFixed(2) +
-							'&currency_code=EUR&no_shipping=1&lc=GB';
+						window.location.href = 'https://www.paypal.me/' + link.dataset.paypalMe + '/' + amount + 'EUR';
 						return;
 					}
 					if (!navigator.clipboard) return;
-					var amount = currentTotal.toFixed(2);
 					e.preventDefault();
 					var go = function () { window.location.href = link.href; };
 					navigator.clipboard.writeText(amount).then(function () {
-						copied.textContent = '✓ €' + amount + ' copied – just paste it into the amount field on the next screen.';
+						copied.textContent = '✓ ' + (LANG === 'de' ? amount : '€' + amount) + T.copied;
 						copied.hidden = false;
 						setTimeout(go, 1200);
 					}, go);
 				});
 			});
+
+			// value of a group: a typed amount wins, otherwise the chosen button
+			function typed(group) {
+				var input = document.querySelector('[data-custom="' + group + '"]');
+				return input && input.value !== '' ? (parseFloat(input.value.replace(',', '.')) || 0) : null;
+			}
+			function chosen(group) { return document.querySelector('[data-group="' + group + '"] .chip.on'); }
 			function value(group) {
-				var typed = document.querySelector('[data-custom="' + group + '"]');
-				if (typed && typed.value !== '') return parseFloat(typed.value.replace(',', '.')) || 0;
-				var on = document.querySelector('[data-group="' + group + '"] .chip.on');
+				var t = typed(group);
+				if (t !== null) return t;
+				var on = chosen(group);
 				return on ? parseFloat(on.getAttribute('data-price')) : null;
 			}
+
+			// Style extras follow the chosen size (A5 or A4); A6/A7 has none
 			var styleStep = document.querySelector('[data-style-step]');
 			var a6Note = document.querySelector('[data-a6-note]');
 			function sizeStyle(key) {
@@ -172,23 +216,34 @@
 				a6Note.hidden = !quick;
 				document.querySelectorAll('[data-group="style"] .chip').forEach(function (c) {
 					if (quick) { c.classList.remove('on'); c.setAttribute('aria-pressed', false); return; }
-					var extra = c.getAttribute('data-' + key);
+					var extra = +c.getAttribute('data-' + key);
 					c.setAttribute('data-price', extra);
-					c.innerHTML = c.dataset.name + '<br>+€' + extra;
+					c.innerHTML = c.dataset.name + '<br>+' + eur(extra);
 				});
 			}
-			// Tip buttons get a little face when chosen: "None :/" or "+€5 :D"
-			function faces(group) {
-				group.querySelectorAll('.chip').forEach(function (c) {
-					if (!c.dataset.label) c.dataset.label = c.textContent;
-					c.textContent = c.dataset.label + (c.classList.contains('on') ? (c.getAttribute('data-price') === '0' ? ' :/' : ' :D') : '');
+
+			// DONATION: 20 / 50 / 200 % of the portrait price (or a typed amount). Each button shows its euro amount.
+			var tipGroup = document.querySelector('[data-group="tip"]');
+			function tipFor(pct, base) { return Math.round(base * pct) / 100; }
+			function renderTips(base) {
+				tipGroup.querySelectorAll('.chip').forEach(function (c) {
+					var pct = +c.dataset.pct, small = c.querySelector('[data-tip-eur]');
+					if (small) small.textContent = base ? eur(tipFor(pct, base)) : '';
+					if (pct === 0) c.textContent = c.dataset.label || (c.dataset.label = c.textContent);
+					if (pct === 0 && c.classList.contains('on')) c.textContent += ' :/';
 				});
 			}
 			function update() {
 				var size = value('size');
-				if (size === null) { sum.textContent = '–'; hint.hidden = false; currentTotal = null; return; }
-				var total = size + (value('style') || 0) + (pack.checked ? 1 : 0) + (value('tip') || 0);
-				sum.textContent = '€' + total.toLocaleString('en-GB', { maximumFractionDigits: 2 });
+				var base = size === null ? 0 : size + (value('style') || 0) + (pack.checked ? 1 : 0);
+				renderTips(base);
+				if (size === null) { sum.textContent = '–'; hint.hidden = false; tipLine.hidden = true; currentTotal = null; return; }
+				var tip = typed('tip');
+				if (tip === null) { var on = chosen('tip'); tip = on ? tipFor(+on.dataset.pct, base) : 0; }
+				var total = Math.round((base + tip) * 100) / 100;
+				sum.textContent = eur(total);
+				tipLine.hidden = !tip;
+				tipSum.textContent = eur(tip);
 				currentTotal = total;
 				hint.hidden = true;
 			}
@@ -197,22 +252,21 @@
 					var group = chip.closest('[data-group]');
 					var again = chip.classList.contains('on') && group.getAttribute('data-group') === 'style';
 					group.querySelectorAll('.chip').forEach(function (c) { c.classList.toggle('on', c === chip && !again); c.setAttribute('aria-pressed', c === chip && !again); });
-					if (group.getAttribute('data-group') === 'tip') faces(group);
 					if (chip.dataset.size) sizeStyle(chip.dataset.size);
-					var typed = document.querySelector('[data-custom="' + group.getAttribute('data-group') + '"]');
-					if (typed) typed.value = '';
+					var input = document.querySelector('[data-custom="' + group.getAttribute('data-group') + '"]');
+					if (input) input.value = '';   // a button click replaces a typed amount
 					update();
 				});
 			});
 			document.querySelectorAll('[data-custom]').forEach(function (input) {
-				input.addEventListener('input', function () {
+				input.addEventListener('input', function () {   // typing replaces the chosen button
 					document.querySelectorAll('[data-group="' + input.getAttribute('data-custom') + '"] .chip').forEach(function (c) { c.classList.remove('on'); });
-					if (input.getAttribute('data-custom') === 'tip') faces(document.querySelector('[data-group="tip"]'));
 					if (input.getAttribute('data-custom') === 'size' && styleStep.hidden) sizeStyle('a5');
 					update();
 				});
 			});
 			pack.addEventListener('change', update);
+			update();
 		})();
 	</script>
 
