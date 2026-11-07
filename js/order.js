@@ -24,6 +24,7 @@
 	var EN = (document.documentElement.lang || '').indexOf('en') === 0;
 	var T = EN ? {
 		next: 'Next', back: 'Back', step: 'Step', of: 'of',
+		finishQ: 'Finish your order first?', finishText: 'You already started filling in your portrait order. It stays saved here on the page.', finishYes: 'Yes, back to my order', finishLater: 'Later',
 		previewNote: '<strong>Preview</strong> – have a look around. To fill this in, tap any field and I’ll take you to the step that’s still open.',
 		pickSize: 'Please pick a size and style first.',
 		needPhoto: 'Please add at least one photo – I paint from it.',
@@ -46,6 +47,7 @@
 		thanks: '/en/bestellt.html', money: function (n) { return '€' + n.toFixed(2); }
 	} : {
 		next: 'Weiter', back: 'Zurück', step: 'Schritt', of: 'von',
+		finishQ: 'Erst fertig bestellen?', finishText: 'Du hast schon angefangen, dein Porträt zu bestellen. Deine Angaben bleiben hier auf der Seite stehen.', finishYes: 'Ja, zurück zur Bestellung', finishLater: 'Später',
 		previewNote: '<strong>Vorschau</strong> – schau dich ruhig um. Zum Ausfüllen tippe einfach auf ein Feld, dann geht’s zum Schritt, der noch offen ist.',
 		pickSize: 'Bitte wähle zuerst Größe und Stil.',
 		needPhoto: 'Bitte lade mindestens ein Foto hoch – danach male ich.',
@@ -486,6 +488,44 @@
 	if (window.matchMedia && window.matchMedia('(max-width: 860px)').matches) {
 		$$('.order-sum').forEach(function (d) { d.open = false; });
 	}
+	/* ---------- "Finish your order first?" ----------
+	   Someone started filling in the form and scrolls on past it: ask once (per visit) whether they want to finish first. */
+	var touched = false, asked = false, sending = false;
+	try { asked = sessionStorage.getItem('sfp-order-asked') === '1'; } catch (err) { /* private mode */ }
+	function markTouched(e) { if (e.isTrusted !== false && e.target.type !== 'hidden') touched = true; }
+	form.addEventListener('input', markTouched);
+	form.addEventListener('change', markTouched);
+	form.addEventListener('submit', function () { sending = true; });
+	function askFinish() {
+		if (!touched || asked || sending || document.getElementById('finish-pop')) return;
+		if (form.getBoundingClientRect().bottom > 0) return;   // still on (or above) the form
+		asked = true;
+		try { sessionStorage.setItem('sfp-order-asked', '1'); } catch (err) { /* ignore */ }
+		var pop = document.createElement('div');
+		pop.id = 'finish-pop';
+		pop.setAttribute('role', 'dialog');
+		pop.setAttribute('aria-modal', 'true');
+		pop.setAttribute('aria-labelledby', 'finish-pop-t');
+		pop.innerHTML = '<div class="finish-box"><p id="finish-pop-t"><strong>' + T.finishQ + '</strong></p><p>' + T.finishText + '</p>' +
+			'<div class="finish-btns"><button type="button" class="btn btn--fox" data-finish>' + T.finishYes + '</button>' +
+			'<button type="button" class="btn btn--ghost" data-later>' + T.finishLater + '</button></div></div>';
+		document.body.appendChild(pop);
+		var yes = pop.querySelector('[data-finish]');
+		yes.focus();
+		function close() { pop.remove(); document.removeEventListener('keydown', esc); }
+		function esc(e) { if (e.key === 'Escape') close(); }
+		document.addEventListener('keydown', esc);
+		yes.addEventListener('click', function () {
+			close();
+			var top = form.getBoundingClientRect().top + window.pageYOffset - 90;
+			window.scrollTo({ top: top, behavior: 'smooth' });
+		});
+		pop.querySelector('[data-later]').addEventListener('click', close);
+		pop.addEventListener('click', function (e) { if (e.target === pop) close(); });
+	}
+	var scrollTimer;
+	window.addEventListener('scroll', function () { clearTimeout(scrollTimer); scrollTimer = setTimeout(askFinish, 250); }, { passive: true });
+
 	go(0);
 	render();
 })();

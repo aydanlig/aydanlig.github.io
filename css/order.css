@@ -189,3 +189,9 @@
 .order-step.is-preview .step-preview-note { display: block; margin: 0.6em 0 0; padding: 10px 14px; border-radius: 12px; background: #FFF1EA; border: 1.5px dashed var(--fox); font-size: 0.92rem; }
 .order-step.is-preview > :not(legend):not(.step-preview-note):not(.order-nav) { opacity: 0.6; }
 .order-step.is-preview input, .order-step.is-preview select, .order-step.is-preview textarea, .order-step.is-preview label { cursor: pointer; }
+
+/* "Erst fertig bestellen?" popup when scrolling past a started order (js/order.js) */
+#finish-pop { position: fixed; inset: 0; z-index: 1000; display: grid; place-items: center; padding: 16px; background: rgba(26, 22, 21, 0.45); }
+#finish-pop .finish-box { max-width: 420px; width: 100%; background: var(--paper); border: 2px solid var(--fox); border-radius: 18px; padding: 22px 22px 18px; box-shadow: 0 20px 50px -20px rgba(0, 0, 0, .5); }
+#finish-pop p { margin: 0 0 0.7em; }
+#finish-pop .finish-btns { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 1em; }
