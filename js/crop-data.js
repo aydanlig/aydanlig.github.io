@@ -252,20 +252,15 @@ window.SFP_CROPS = {
 			"y": 50,
 			"z": 1
 		},
-		"/commission.html|kunst-02.jpg": {
-			"x": 51.889,
-			"y": 28.879,
+		"/referenzen/|saunasplash-beleg-1.jpg": {
+			"x": 50,
+			"y": 50,
+			"z": 1.259
+		},
+		"/referenzen/|saunasplash-beleg-2.jpg": {
+			"x": 44.296,
+			"y": 35.232,
 			"z": 1.166
-		},
-		"/commission.html|galerie-01.jpg": {
-			"x": 19.741,
-			"y": 0,
-			"z": 1.08
-		},
-		"/commission.html|kunst-06.jpg": {
-			"x": 31.023,
-			"y": 63.42,
-			"z": 1.36
 		}
 	},
 	"phone": {}
