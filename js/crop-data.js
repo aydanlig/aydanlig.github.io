@@ -252,23 +252,12 @@ window.SFP_CROPS = {
 			"y": 50,
 			"z": 1
 		},
-		"/referenzen/|saunasplash-beleg-1.jpg": {
+		"/referenzen/|stand-zelt-3x2.jpg": {
 			"x": 50,
 			"y": 50,
-			"z": 1.259
-		},
-		"/referenzen/|saunasplash-beleg-2.jpg": {
-			"x": 44.296,
-			"y": 35.232,
-			"z": 1.166
+			"z": 1
 		},
 		"/referenzen/|stand-saunasplash-portraets-3x2.jpg": {
-			"x": 50,
-			"y": 50,
-			"z": 1,
-			"b": 1
-		},
-		"/referenzen/|stand-zelt-3x2.jpg": {
 			"x": 50,
 			"y": 50,
 			"z": 1,
@@ -279,46 +268,6 @@ window.SFP_CROPS = {
 			"y": 50,
 			"z": 1,
 			"b": 1
-		},
-		"/referenzen/|stand-klapptisch.jpg": {
-			"x": 50,
-			"y": 50,
-			"z": 1
-		},
-		"/referenzen/|stand-saunasplash-nacht-4x5.jpg": {
-			"x": 50,
-			"y": 50,
-			"z": 1.08
-		},
-		"/referenzen/|ausstellung-berlin-things-1.jpg": {
-			"x": 50,
-			"y": 50,
-			"z": 1
-		},
-		"/referenzen/|spaghettaria-2.jpg": {
-			"x": 55.022,
-			"y": 22.28,
-			"z": 1
-		},
-		"/referenzen/|spaghettaria-3.jpg": {
-			"x": 50.795,
-			"y": 51.612,
-			"z": 1.259
-		},
-		"/referenzen/|exhibition%20WIP.jpeg": {
-			"x": 50,
-			"y": 50,
-			"z": 1
-		},
-		"/referenzen/|spaghettaria-1b.jpg": {
-			"x": 78.95,
-			"y": 31.258,
-			"z": 1.469
-		},
-		"/referenzen/|spaghettaria-1a.jpg": {
-			"x": 44.804,
-			"y": 50.245,
-			"z": 1.166
 		}
 	},
 	"phone": {}
