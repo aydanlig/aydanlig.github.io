@@ -1798,3 +1798,17 @@ h1, h2, h3 { overflow-wrap: break-word; }
 	.ref-stack__page--1 { left: -8%; transform: rotate(-6deg); }
 	.ref-stack__page--2 { right: -7%; transform: rotate(5deg); }
 }
+
+/* ---------- Quote photos: one big photo + the "framed at home" photo as a small inset ----------
+   The wall photo is only 400 px, so it is shown small (stays sharp) on the corner of the main photo. */
+.quote-photos { grid-template-columns: 1fr; position: relative; max-width: 480px; margin: 0 auto 28px; }
+.quote-photos > .fade-stack + .fade-stack, .quote-photos > img + img {
+	position: absolute; left: -10px; bottom: -16px; width: 36%; max-width: 170px;
+	border: 4px solid var(--card, #FBF7F3); border-radius: 14px; box-shadow: 0 8px 22px rgba(26, 22, 21, 0.28);
+}
+@media (max-width: 480px) { .quote-photos > .fade-stack + .fade-stack, .quote-photos > img + img { left: -4px; width: 38%; } }
+
+/* ---------- Prices never split between number and € ---------- */
+.chip { white-space: nowrap; }
+@media (max-width: 400px) { .chip { font-size: 0.85rem; padding: 10px 6px; } }
+.extras-list li > strong, .price-list li > strong, .extras li > strong { white-space: nowrap; }
