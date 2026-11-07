@@ -1845,3 +1845,8 @@ h1, h2, h3 { overflow-wrap: break-word; }
 	-webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 34'%3E%3Cpath d='M9 22 L13.5 10 Q14 8.5 14.5 10 L19 22 Z M45 22 L49.5 10 Q50 8.5 50.5 10 L55 22 Z' fill='black'/%3E%3C/svg%3E") no-repeat center / contain;
 	mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 34'%3E%3Cpath d='M9 22 L13.5 10 Q14 8.5 14.5 10 L19 22 Z M45 22 L49.5 10 Q50 8.5 50.5 10 L55 22 Z' fill='black'/%3E%3C/svg%3E") no-repeat center / contain;
 }
+
+/* Nav: "Wo & wann" + "Termine" are top-level now (not hidden in the Über-mich menu); on phones the menu wraps to two rows instead of overflowing */
+@media (max-width: 720px) {
+	.main-nav { flex-wrap: wrap; justify-content: flex-start; row-gap: 6px; column-gap: 14px; overflow-x: visible; }
+}
