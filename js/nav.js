@@ -38,8 +38,11 @@
 	var list = window.TERMINE || [];
 	var now = new Date();
 	var today = now.getFullYear() + "-" + String(now.getMonth() + 1).padStart(2, "0") + "-" + String(now.getDate()).padStart(2, "0");
-	var upcoming = list.filter(function (t) { return t.date >= today; })
-		.sort(function (a, b) { return a.date < b.date ? -1 : a.date > b.date ? 1 : 0; });
+	list.forEach(function (t, i) { t._id = "termin-" + t.date + "-" + i; });   // anchor for links straight to one date
+	var byDate = function (a, b) { return a.date < b.date ? -1 : a.date > b.date ? 1 : 0; };
+	var upcoming = list.filter(function (t) { return t.date >= today; }).sort(byDate);
+	// done dates move to "Vergangene Termine" by themselves (newest first)
+	var past = list.filter(function (t) { return t.date < today; }).sort(byDate).reverse();
 
 	var DAYS = EN ? ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"] : ["So", "Mo", "Di", "Mi", "Do", "Fr", "Sa"];
 	var MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
@@ -66,31 +69,45 @@
 		var p = parts(next);
 		el.innerHTML = "<strong>" + (EN ? "Next:" : "Nächster Termin:") + "</strong> " +
 			esc(p.day + " " + p.short) + " · " + esc(pick(next, "title")) +
-			'<span class="live-bar-place"> · ' + esc(pick(next, "place")) + "</span>";
+			'<span class="live-bar-place"> · ' + esc(pick(next, "place")) + (pick(next, "info") ? " · " + esc(pick(next, "info")) : "") + "</span>";
+		// the bar jumps straight to that date on the where-&-when page
+		var a = el.closest("a");
+		if (a) a.setAttribute("href", (EN ? "/en/where-i-draw/#" : "/where-i-draw/#") + next._id);
 	});
+	function row(t) {
+		var p = parts(t);
+		var time = pick(t, "time");
+		var info = pick(t, "info");
+		var place = esc(pick(t, "place"));
+		if (t.map) place = '<a href="' + esc(t.map) + '" target="_blank" rel="noopener">' + place + " ↗</a>";
+		return '<li class="termin termin--' + esc(t.kind || "event") + '" id="' + t._id + '">' +
+			'<span class="termin-date"><span class="termin-day">' + esc(p.day) + "</span> " + esc(p.short) +
+			(p.year !== now.getFullYear() ? " " + p.year : "") + "</span>" +
+			'<span class="termin-what"><strong>' + esc(pick(t, "title")) + "</strong>" +
+			'<span class="termin-where">' + (time ? esc(time) + " · " : "") + place + (info ? " · " + esc(info) : "") + "</span></span>" +
+			'<span class="termin-kind">' + esc(KIND[t.kind] || KIND.event) + "</span></li>";
+	}
 
 	// Full lists
 	document.querySelectorAll("[data-termine]").forEach(function (box) {
-		if (!upcoming.length) return; // keep the fallback text inside the box
+		var limited = box.hasAttribute("data-limit");
+		if (!upcoming.length && (limited || !past.length)) return; // keep the fallback text inside the box
 		var limit = parseInt(box.getAttribute("data-limit"), 10) || upcoming.length;
-		var html = '<ol class="termin-rows">';
-		upcoming.slice(0, limit).forEach(function (t) {
-			var p = parts(t);
-			var time = pick(t, "time");
-			var place = esc(pick(t, "place"));
-			if (t.map) place = '<a href="' + esc(t.map) + '" target="_blank" rel="noopener">' + place + " ↗</a>";
-			html += '<li class="termin termin--' + esc(t.kind || "event") + '">' +
-				'<span class="termin-date"><span class="termin-day">' + esc(p.day) + "</span> " + esc(p.short) +
-				(p.year !== now.getFullYear() ? " " + p.year : "") + "</span>" +
-				'<span class="termin-what"><strong>' + esc(pick(t, "title")) + "</strong>" +
-				'<span class="termin-where">' + (time ? esc(time) + " · " : "") + place + "</span></span>" +
-				'<span class="termin-kind">' + esc(KIND[t.kind] || KIND.event) + "</span></li>";
-		});
-		html += "</ol>";
+		var html = upcoming.length ? '<ol class="termin-rows">' + upcoming.slice(0, limit).map(row).join("") + "</ol>" : "";
+		// full list only: past dates folded away underneath
+		if (!limited && past.length) {
+			html += '<details class="termine-past"><summary>' + (EN ? "Previous dates" : "Vergangene Termine") + " (" + past.length + ")</summary>" +
+				'<ol class="termin-rows">' + past.map(row).join("") + "</ol></details>";
+		}
 		if (upcoming.length > limit) {
 			html += '<p class="hint"><a href="' + (EN ? "/en/where-i-draw/#termine" : "/where-i-draw/#termine") + '">' +
 				(EN ? "All " + upcoming.length + " dates →" : "Alle " + upcoming.length + " Termine →") + "</a></p>";
 		}
 		box.innerHTML = html;
 	});
+	// the list is built after the page loaded, so jump to a #termin-… link by hand
+	if (/^#termin-/.test(location.hash)) {
+		var target = document.getElementById(location.hash.slice(1));
+		if (target) { target.classList.add("termin--target"); target.scrollIntoView({ block: "center" }); }
+	}
 })();
