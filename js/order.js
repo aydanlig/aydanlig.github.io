@@ -7,7 +7,7 @@
    (with order number, price and pay link), and lands on /bestellt.html to pay right away.
 
    PRICES live in the HTML (data-price="…" on the inputs), not here:
-   - size/style:   <input name="Stil" data-a5="20" data-a4="40">
+   - size/style:   <input name="Stil" data-a5="20" data-a4="28" data-a3="56" data-a2="84">
    - frame:        <input name="Rahmen" data-price="10">
    - extras:       <input type="checkbox" data-price="10">  (data-only="a5" = only for A5)
    - extra people: <input name="Personen pro Bild" data-a5="10" data-a4="20">
@@ -77,7 +77,7 @@
 
 	/* ---------------- price ---------------- */
 	function state() {
-		var size = ($('[name="Größe"]:checked') || {}).value === 'A5' ? 'a5' : ($('[name="Größe"]:checked') ? 'a4' : null);
+		var size = (($('[name="Größe"]:checked') || {}).value || '').toLowerCase() || null;   // a5 / a4 / a3 / a2
 		var style = $('[name="Stil"]:checked');
 		var lines = [], total = 0;
 		if (!size) return { size: size, ready: false, lines: [], total: 0 };
@@ -125,7 +125,7 @@
 		var del = $('[name="Lieferung"]');
 		var opt = del.selectedIndex > -1 ? del.options[del.selectedIndex] : null;
 		if (opt && opt.value) {
-			var ship = num(framed && opt.getAttribute('data-price-framed') ? opt.getAttribute('data-price-framed') : opt.getAttribute('data-price'));
+			var ship = num(opt.getAttribute('data-price-' + size + (framed ? '-framed' : '')) || (framed && opt.getAttribute('data-price-framed') ? opt.getAttribute('data-price-framed') : opt.getAttribute('data-price')));
 			lines.push([opt.getAttribute('data-label'), ship]);
 			total += ship;
 		}
@@ -242,6 +242,13 @@
 			var none = $('[name="Rahmen"][data-price="0"]');
 			if (none) { none.checked = true; render(); }
 		}
+	});
+
+	// "Extras überspringen" jumps to delivery
+	var skip = $('[data-skip-extras]');
+	if (skip) skip.addEventListener('click', function () {
+		var d = document.getElementById('o-delivery') || $('[name="Lieferung"]');
+		if (d) d.scrollIntoView({ behavior: 'smooth', block: 'center' });
 	});
 
 	// "Bestellen" buttons on the price cards pre-pick the size: <a href="#bestellen" data-order-size="A5">
@@ -497,16 +504,17 @@
 	}
 	/* ---------- "Finish your order first?" ----------
 	   Someone started filling in the form and scrolls on past it: ask once (per visit) whether they want to finish first. */
-	var touched = false, asked = false, sending = false;
+	var touched = false, asked = false, sending = false, changedSince = false;
 	try { asked = sessionStorage.getItem('sfp-order-asked') === '1'; } catch (err) { /* private mode */ }
-	function markTouched(e) { if (e.isTrusted !== false && e.target.type !== 'hidden') touched = true; }
+	function markTouched(e) { if (e.isTrusted !== false && e.target.type !== 'hidden') { touched = true; if (asked) changedSince = true; } }
 	form.addEventListener('input', markTouched);
 	form.addEventListener('change', markTouched);
 	form.addEventListener('submit', function () { sending = true; });
 	function askFinish() {
-		if (!touched || asked || sending || document.getElementById('finish-pop')) return;
-		if (form.getBoundingClientRect().bottom > 0) return;   // still on (or above) the form
-		asked = true;
+		if (!touched || (asked && !changedSince) || sending || document.getElementById('finish-pop')) return;
+		var fr = form.getBoundingClientRect();
+		if (fr.bottom > 0 && fr.top < window.innerHeight) return;   // form still in view
+		asked = true; changedSince = false;
 		try { sessionStorage.setItem('sfp-order-asked', '1'); } catch (err) { /* ignore */ }
 		var pop = document.createElement('div');
 		pop.id = 'finish-pop';

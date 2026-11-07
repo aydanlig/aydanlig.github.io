@@ -80,7 +80,7 @@
 	margin: 0.1em 0 0.15em; font-family: var(--font-head); font-weight: 900; line-height: 0.95;
 	font-size: clamp(2.4rem, 7.5vw, 3.7rem); letter-spacing: -0.02em; color: var(--fox);
 	transform: rotate(-2deg); transform-origin: left center; hyphens: manual;
-	text-shadow: 3px 3px 0 var(--ink), 7px 7px 0 rgba(47, 111, 181, 0.35);
+	text-shadow: 1.5px 1.5px 0 var(--ink), 3px 3px 0 rgba(47, 111, 181, 0.3);
 	animation: kk-pop 0.6s cubic-bezier(.2, 1.6, .4, 1) both;
 }
 .kk-bam span { display: block; font-size: 0.42em; color: var(--ink); text-shadow: none; letter-spacing: 0.02em; }

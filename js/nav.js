@@ -26,8 +26,8 @@
 		if (!a) return;
 		var P = EN ? "/en" : "";
 		var items = EN
-			? [["Book live portraits for an event", P + "/events.html#anfrage-event"], ["Kleckerkasten team workshop", P + "/events.html#anfrage-kleckerkasten"], ["Commission a portrait", P + "/commission.html"], ["Concert venue? Invite me", P + "/events.html#venues"], ["A website for you", "/en/websites/"], ["Other questions: contact", P + "/contact/"]]
-			: [["Live-Porträts fürs Event", "/events.html#anfrage-event"], ["Kleckerkasten-Workshop fürs Team", "/events.html#anfrage-kleckerkasten"], ["Porträt-Auftrag", "/commission.html"], ["Konzert-Location? Lad mich ein", "/events.html#venues"], ["Website für dich", "/websites/"], ["Sonstiges: Kontakt", "/contact/"]];
+			? [["Book live portraits for an event", P + "/events.html#anfrage-event"], ["Kleckerkasten team workshop", P + "/events.html#anfrage-kleckerkasten"], ["Commission a portrait", P + "/commission.html"], ["Concert or festival venue? Invite me", P + "/events.html#venues"], ["A website for you", "/en/websites/"], ["Other questions: contact", P + "/contact/"]]
+			: [["Live-Porträts fürs Event", "/events.html#anfrage-event"], ["Kleckerkasten-Workshop fürs Team", "/events.html#anfrage-kleckerkasten"], ["Porträt-Auftrag", "/commission.html"], ["Du bist eine Konzert- oder Festival-Location? Lad mich ein", "/events.html#venues"], ["Website für dich", "/websites/"], ["Sonstiges: Kontakt", "/contact/"]];
 		var wrap = document.createElement("div");
 		wrap.className = "nav-more enq-more";
 		var btn = document.createElement("button");
@@ -41,6 +41,25 @@
 		items.forEach(function (it) { var l = document.createElement("a"); l.href = it[1]; l.textContent = it[0]; menu.appendChild(l); });
 		wrap.appendChild(btn); wrap.appendChild(menu);
 		a.parentNode.replaceChild(wrap, a);
+	})();
+
+	/* ---------- 1c. Phone menu: burger button opens the main menu as a list (Apple style) ---------- */
+	(function () {
+		var head = document.querySelector(".site-header"), nav = head && head.querySelector(".main-nav");
+		if (!nav) return;
+		var b = document.createElement("button");
+		b.type = "button"; b.className = "nav-burger";
+		b.setAttribute("aria-expanded", "false");
+		b.setAttribute("aria-label", EN ? "Menu" : "Menü");
+		b.innerHTML = "<span></span><span></span>";
+		nav.parentNode.insertBefore(b, nav);
+		b.addEventListener("click", function () {
+			var on = head.classList.toggle("nav-open");
+			b.setAttribute("aria-expanded", on ? "true" : "false");
+		});
+		nav.addEventListener("click", function (e) {
+			if (e.target.closest("a")) { head.classList.remove("nav-open"); b.setAttribute("aria-expanded", "false"); }
+		});
 	})();
 
 	/* ---------- 1. Dropdown ---------- */

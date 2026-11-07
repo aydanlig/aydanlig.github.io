@@ -116,26 +116,48 @@
 		// swipe on phones: the picture follows the finger 1:1; a flick sideways = next/previous,
 		// pulling down = close; anything shorter springs back. Direction is locked after ~10 px.
 		var startX = null, startY = 0, startT = 0, dir = null, fig = box.querySelector('figure');
+		// Samsung-gallery style: neighbours wait just off-screen, follow the finger and slide into place
+		var peekP = document.createElement('img'), peekN = document.createElement('img');
+		peekP.className = peekN.className = 'lb-peek'; peekP.alt = peekN.alt = '';
+		box.appendChild(peekP); box.appendChild(peekN);
+		var GAP = 16;
+		function setPeeks() {
+			if (links.length < 2) { peekP.removeAttribute('src'); peekN.removeAttribute('src'); return; }
+			peekP.src = links[(index - 1 + links.length) % links.length].getAttribute('href');
+			peekN.src = links[(index + 1) % links.length].getAttribute('href');
+		}
+		function place(dx, anim) {
+			var w = innerWidth + GAP, t = anim ? 'transform .3s cubic-bezier(0.22, 1, 0.36, 1)' : 'none';
+			fig.style.transition = peekP.style.transition = peekN.style.transition = t;
+			fig.style.transform = dx ? 'translateX(' + dx + 'px)' : '';
+			peekP.style.transform = 'translate(-50%, -50%) translateX(' + (dx - w) + 'px)';
+			peekN.style.transform = 'translate(-50%, -50%) translateX(' + (dx + w) + 'px)';
+		}
 		box.addEventListener('touchstart', function (e) {
 			startX = e.touches[0].clientX; startY = e.touches[0].clientY; startT = Date.now(); dir = null;
-			fig.style.transition = 'none';
+			setPeeks(); place(0, false);
 		}, { passive: true });
 		box.addEventListener('touchmove', function (e) {
 			if (startX === null) return;
 			var dx = e.touches[0].clientX - startX, dy = e.touches[0].clientY - startY;
 			if (!dir && Math.max(Math.abs(dx), Math.abs(dy)) > 10) dir = Math.abs(dx) > Math.abs(dy) ? 'x' : 'y';
-			if (dir === 'x') fig.style.transform = 'translateX(' + dx + 'px)';
+			if (dir === 'x') place(links.length < 2 ? dx / 3 : dx, false);
 			if (dir === 'y' && dy > 0) { fig.style.transform = 'translateY(' + dy + 'px) scale(' + Math.max(0.85, 1 - dy / 1500) + ')'; box.style.opacity = Math.max(0.4, 1 - dy / 500); }
 		}, { passive: true });
 		box.addEventListener('touchend', function (e) {
 			if (startX === null) return;
 			var dx = e.changedTouches[0].clientX - startX, dy = e.changedTouches[0].clientY - startY;
 			var v = (dir === 'x' ? Math.abs(dx) : dy) / Math.max(1, Date.now() - startT);   // px per ms
-			fig.style.transition = 'transform .32s cubic-bezier(0.22, 1, 0.36, 1)'; box.style.transition = 'opacity .32s ease';
-			if (dir === 'x' && (Math.abs(dx) > 60 || v > 0.5)) show(index + (dx < 0 ? 1 : -1));
-			if (dir === 'y' && (dy > 120 || v > 0.6)) close();
-			fig.style.transform = ''; box.style.opacity = '';
 			startX = null;
+			box.style.transition = 'opacity .32s ease'; box.style.opacity = '';
+			if (dir === 'x' && links.length > 1 && (Math.abs(dx) > 60 || v > 0.5)) {
+				var step = dx < 0 ? 1 : -1;
+				place(-step * (innerWidth + GAP), true);   // slide the neighbour fully in
+				setTimeout(function () { show(index + step); place(0, false); setPeeks(); }, 300);
+				return;
+			}
+			if (dir === 'y' && (dy > 120 || v > 0.6)) { fig.style.transform = ''; close(); return; }
+			place(0, true);   // spring back
 		});
 	});
 })();
