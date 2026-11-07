@@ -198,3 +198,27 @@
 		b.textContent = b.textContent.replace(on ? '▾' : '▴', on ? '▴' : '▾');
 	});
 })();
+
+/* Expandable sections: a "collapse" button at the bottom when open (the top toggle then steps back),
+   folds the section and jumps back to where it started. Sections that already have one ([data-collapse]) are skipped. */
+(function () {
+	var EN = document.documentElement.lang === 'en';
+	document.addEventListener('DOMContentLoaded', function () {
+		document.querySelectorAll('details.curious-more, details.examples, details.archive, details.terms, details.schedule, details#bildrechte').forEach(function (d) {
+			if (d.querySelector('[data-collapse]')) return;
+			var b = document.createElement('button');
+			b.type = 'button';
+			b.className = 'auto-collapse';
+			b.textContent = EN ? 'Collapse ▴' : 'Einklappen ▴';
+			b.addEventListener('click', function () {
+				d.open = false;
+				var s = d.querySelector('summary');
+				var top = (s || d).getBoundingClientRect().top + window.pageYOffset - 120;
+				if (top < window.pageYOffset) window.scrollTo({ top: top, behavior: 'smooth' });
+				if (s) s.focus({ preventScroll: true });
+			});
+			d.appendChild(b);
+			d.classList.add('has-bottom-close');
+		});
+	});
+})();

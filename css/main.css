@@ -2122,3 +2122,12 @@ main img.img-wait { opacity: 0; }
 /* round 7: 4-step "how it works" rows sit 2 × 2 on phones instead of 4 tall cards */
 @media (max-width: 720px) { .story-steps--4 { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 10px; } .story-steps--4 > div { padding: 14px; } }
 @media (max-width: 360px) { .story-steps--4 { grid-template-columns: 1fr !important; } }
+/* expandable sections: bottom "Einklappen" button (js/nav.js); the top toggle loses its arrow/hint while open */
+.auto-collapse { display: table; margin: 1em auto 0.2em; padding: 8px 20px; border: 2px solid currentColor; border-radius: 999px; background: transparent;
+	color: var(--accent); font: inherit; font-weight: 700; font-size: 0.9rem; cursor: pointer; }
+.auto-collapse:hover { background: var(--tint, #FFF1EA); }
+.auto-collapse:active { transform: scale(0.97); }
+details.has-bottom-close[open] > summary { list-style: none; }
+details.has-bottom-close[open] > summary::-webkit-details-marker { display: none; }
+details.has-bottom-close[open] > summary::marker { content: ""; }
+details.has-bottom-close[open] > summary .open-hint { display: none; }
