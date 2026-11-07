@@ -55,6 +55,19 @@
 
 	document.addEventListener('DOMContentLoaded', function () {
 		document.querySelectorAll('form[action*="formsubmit.co"]').forEach(function (form) {
+			// formsubmit.co is sometimes down: a short e-mail fallback under the last send button of every form
+			var btns = form.querySelectorAll('[type="submit"]');
+			var last = btns[btns.length - 1];
+			if (last && !form.querySelector('.form-fallback')) {
+				var en = (document.documentElement.lang || '').indexOf('en') === 0;
+				var note = document.createElement('p');
+				note.className = 'form-fallback';
+				note.style.cssText = 'font-size:.85rem;opacity:.8;margin-top:.6em';
+				note.innerHTML = en
+					? 'Form not working? Our form service is sometimes down – just e-mail me instead: <a href="mailto:aydan@smileyfoxyportraits.com">aydan@smileyfoxyportraits.com</a>'
+					: 'Formular klappt nicht? Der Formular-Dienst ist manchmal kurz gestört – schreib mir einfach eine E-Mail: <a href="mailto:aydan@smileyfoxyportraits.com">aydan@smileyfoxyportraits.com</a>';
+				last.insertAdjacentElement('afterend', note);
+			}
 			form.addEventListener('submit', function (e) {
 				// wait one moment so other checks (e.g. the date check) can stop the sending first
 				setTimeout(function () {
