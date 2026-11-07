@@ -1946,3 +1946,11 @@ button.mc-day { cursor: pointer; }
 .mc-snip ul { margin: 4px 0 0; padding-left: 1.1em; }
 .mc-snip-date { font-weight: 700; }
 .mc-more { text-align: center; margin: 10px 0 0; font-size: .9rem; }
+
+/* Light ears (.section--alt): like the black ones, the cream ear shape continues 30px down into the band
+   (same colour as the band, so invisible). Wiggling/hopping no longer opens a gap at the base. */
+.section--alt::before {
+	height: 52px; bottom: calc(100% - 30px); transform-origin: 50% 42.3%;
+	background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 52'%3E%3Cpath d='M0 52 L2 30 L4 22 L12 3 Q14 0 16 3 L24 22 L27 30 L30 52 Z M34 52 L37 30 L40 22 L48 3 Q50 0 52 3 L60 22 L62 30 L64 52 Z' fill='%23FBF7F3'/%3E%3Cpath d='M4 22 L12 3 Q14 0 16 3 L24 22 M40 22 L48 3 Q50 0 52 3 L60 22' fill='none' stroke='%23E2D6CE' stroke-width='1' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E") no-repeat center bottom / contain;
+}
+.section--alt:nth-of-type(even)::before { height: 42px; bottom: calc(100% - 24px); }
