@@ -1120,7 +1120,11 @@ fieldset.field { border: 0; padding: 0; margin: 0; min-width: 0; }
 /* /hallo/ welcome page (Linktree + Instagram bio only) */
 .hallo { padding-top: 32px; }
 .hallo-intro { display: flex; gap: 16px; align-items: center; margin-bottom: 18px; }
-.hallo-intro img { width: 84px; height: 84px; border-radius: 50%; flex: none; border: 3px solid var(--fox); }
+.hallo-intro img { width: 104px; height: 104px; border-radius: 18px; flex: none; border: 3px solid var(--fox); object-fit: cover; }
+/* art teaser above the "whole website" link */
+.hallo-examples { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 1.5em; }
+.hallo-examples img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; border-radius: 10px; border: 1px solid var(--line); margin: 0; transition: transform 0.15s ease; }
+.hallo-examples:hover img { transform: translateY(-2px); }
 .hallo-intro h1 { margin: 0; font-size: 2rem; }
 .hallo-intro p { margin: 4px 0 0; color: var(--ink-soft); }
 .hallo-links { display: grid; gap: 10px; }
@@ -1911,11 +1915,14 @@ button.btn { font-family: inherit; }
 .footer-groups { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 26px; margin-top: 34px; }
 .fg h3 { margin: 0 0 8px; }
 .fg > a { display: block; padding: 3px 0; font-weight: 700; color: #FBF3EA; }
-.fg details { margin-top: 4px; }
+/* Open: the toggle moves below the extra links and reads "weniger" / "less" */
+.fg details { margin-top: 4px; display: flex; flex-direction: column; }
 .fg summary { cursor: pointer; list-style: none; font-size: .88rem; color: var(--mauve); }
 .fg summary::-webkit-details-marker { display: none; }
 .fg summary::after { content: " ▾"; }
-.fg details[open] summary::after { content: " ▴"; }
+.fg details[open] summary { order: 1; margin-top: 4px; font-size: 0; }
+.fg details[open] summary::after { content: "weniger ▴"; font-size: .88rem; }
+.fg details[open] summary:lang(en)::after { content: "less ▴"; }
 .fg details a { display: block; padding: 2px 0; font-size: .92rem; color: #E7DCE1; }
 .fg .footer-mail { font-size: .82rem; color: var(--mauve); }
 @media (max-width: 900px) { .footer-groups { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
@@ -2018,4 +2025,27 @@ button.btn { font-family: inherit; }
 .follow-mail a:hover { color: var(--fox); border-color: var(--fox); }
 .pf-text .series-nav a:hover { color: var(--fox); }
 .follow-big .eyebrow { display: block; margin-bottom: .2em; }
+/* ---------- Footer: follower count under the big handle (number from /data/followers.json via js/followers.js) ---------- */
+.follow-big .follow-count { margin-top: 12px; font-family: var(--font-hand); font-size: clamp(1.15rem, 2.6vw, 1.55rem); color: #FBF3EA; }
+.follow-count b { color: var(--fox); font-size: 1.35em; font-variant-numeric: tabular-nums; }
+.follow-count span { display: block; font-family: var(--font-body); font-size: .85rem; color: #E7DCE1; opacity: .8; }
 /* END REDESIGN 3 */
+
+/* ---------- Instagram shown boldly (tip from Mira, Berlin Drawing Room, 02.11.2026) ---------- */
+/* Header: Instagram pill next to EN/DE on every page */
+.ig-link { display: inline-flex; align-items: center; gap: 6px; padding: 0.35em 0.75em; border-radius: 48% 52% 46% 54%; background: var(--fox); color: #fff; font-weight: 800; font-size: 0.8rem; text-decoration: none; white-space: nowrap; }
+.ig-link:hover { background: var(--ink); color: var(--paper); transform: rotate(-2deg); }
+.main-nav ~ .ig-link { margin-left: 0; }
+.site-header .wrap > .ig-link:not(.main-nav ~ .ig-link) { margin-left: auto; } /* pages without a menu */
+.ig-link + .lang-switch { margin-left: 0; }
+@media (max-width: 720px) {
+	.main-nav ~ .ig-link { margin-left: auto; }
+	.ig-link { padding: 0.3em 0.55em; font-size: 0.72rem; }
+	.ig-link span { display: none; } /* phone: icon only */
+	.main-nav ~ .ig-link + .lang-switch { margin-left: 0; }
+}
+/* Homepage hero: big Instagram button under "Portfolio" */
+.hero-ig { display: inline-flex; align-items: center; gap: 10px; align-self: flex-start; margin-top: 14px; padding: 10px 18px; border: 2px solid #FBF3EA; border-radius: 999px; color: #FBF3EA; font-family: var(--font-hand); font-size: clamp(1.1rem, 2.2vw, 1.4rem); text-decoration: none; }
+.hero-ig svg { width: 24px; height: 24px; }
+.hero-ig b { font-family: var(--font-head); font-weight: 800; color: var(--fox); }
+.hero-ig:hover { background: #FBF3EA; color: var(--night); }
