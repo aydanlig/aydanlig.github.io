@@ -100,18 +100,25 @@
 			total += pp;
 		}
 
+		// data-price-a4 = other price for A4; data-pct + data-min = percent of the portrait price (usage rights)
+		var art = total;
+		var priceOf = function (el) {
+			if (el.hasAttribute('data-pct')) return Math.max(num(el.getAttribute('data-min')), Math.round(art * num(el.getAttribute('data-pct')) / 100));
+			return num(el.getAttribute('data-price-' + size) || el.getAttribute('data-price'));
+		};
+
 		var frame = $('[name="Rahmen"]:checked');
 		var framed = frame && num(frame.getAttribute('data-price')) > 0;
 		if (framed) {
 			var colour = frame.hasAttribute('data-frame-custom') ? null : $('[name="Rahmenfarbe"]:checked');
-			lines.push([frame.getAttribute('data-label') + (colour ? ' (' + colour.getAttribute('data-label') + ')' : ''), num(frame.getAttribute('data-price'))]);
-			total += num(frame.getAttribute('data-price'));
+			lines.push([frame.getAttribute('data-label') + (colour ? ' (' + colour.getAttribute('data-label') + ')' : ''), priceOf(frame)]);
+			total += priceOf(frame);
 		}
 
 		$$('[data-extra]').forEach(function (box) {
 			if (!box.checked || box.disabled) return;
-			lines.push([box.getAttribute('data-label'), num(box.getAttribute('data-price'))]);
-			total += num(box.getAttribute('data-price'));
+			lines.push([box.getAttribute('data-label'), priceOf(box)]);
+			total += priceOf(box);
 		});
 
 		// delivery only counts once it is chosen (pick-up is free)
