@@ -10,8 +10,12 @@
 	<script src="/js/splashes.js" defer></script>
 	<script src="/js/mail-reveal.js" defer></script>
 	<script src="/js/translate.js" defer></script>
+	<script src="/js/termine.js" defer></script>
+	<script src="/js/nav.js" defer></script>
 	<script src="/js/gallery.js" defer></script>
 	<script src="/js/confirm-link.js" defer></script>
+	<script src="/js/crop-data.js" defer></script>
+	<script src="/js/crop.js" defer></script>
 
 	<title>References: Events & Portrait Series | SmileyFoxyPortraits</title>
 	<meta name="description" content="References of Aydan Lig'on (SmileyFoxyPortraits): three days of live portraits at the Saunasplash Festival and staff portraits as an advanced-art-class project – with info sheets to download.">
@@ -45,6 +49,12 @@
 <body>
 
 	<!-- ================= HEADER (same on every English page) ================= -->
+	<!-- LIVE BAR: where & when I draw – the next date comes from js/termine.js -->
+	<div class="live-bar">
+		<div class="wrap">
+			<a href="/en/where-i-draw/"><span class="live-bar-dot" aria-hidden="true"></span><span data-next-gig><strong>Live:</strong> Sat 2–10 pm Mauerpark · Thu Kollwitzplatz market · Christmas markets &amp; gigs</span><span class="live-bar-more">Where &amp; when →</span></a>
+		</div>
+	</div>
 	<header class="site-header">
 		<div class="wrap">
 			<a class="logo" href="/en/" aria-label="SmileyFoxyPortraits – home"><span class="logo-ph" title="Platzhalter: hier kommt dein gemaltes Fuchs-Logo hin (img/logo.png)">Logo</span><span class="logo-word">SmileyFoxy<span>Portraits</span><small class="logo-since">Drawing portraits for 6 years</small></span></a>
@@ -53,7 +63,19 @@
 				<a href="/en/events.html#live-events"><span class="nav-long">Live </span>Events</a>
 				<a href="/en/events.html#kleckerkasten">Kleckerkasten</a>
 				<a href="/en/commission.html"><span class="nav-long">Commission a </span>Portrait</a>
-				<a href="/en/about/">About me</a>
+				<div class="nav-more">
+					<a href="/en/about/">About me</a><button class="nav-more-toggle" type="button" aria-expanded="false" aria-label="Show more: dates, references, blog and more"><span aria-hidden="true">▾</span></button>
+					<div class="nav-more-menu">
+						<a href="/en/where-i-draw/">Where &amp; when I draw</a>
+						<a href="/en/where-i-draw/#termine">Upcoming dates</a>
+						<a href="/labor/auktion.html" hreflang="de">First auction (German)</a>
+						<a href="/en/referenzen/">References</a>
+						<a href="/en/about/#bands">Bands drawn live</a>
+						<a href="/en/about/#blog">Blog</a>
+						<a href="/en/commission.html#warteliste">Email list &amp; waitlist</a>
+						<a href="/en/about/#faq">FAQ</a>
+					</div>
+				</div>
 				<a class="nav-shop" href="/en/shop/">Shop</a>
 			</nav>
 			<a class="lang-switch" data-translate lang="de" title="Deutsche Version dieser Seite" href="/referenzen/">DE</a>
@@ -68,47 +90,24 @@
 				<span class="eyebrow">References</span>
 				<h1>Experience you can see</h1>
 				<p class="lead">
-					Three projects, three sides of my work: a group exhibition, a festival with 1,500+ guests and a
+					Three projects, newest first: a festival with 1,500+ guests, a group exhibition and a
 					portrait series for a whole team. For every offer you'll find the proof here – and an info sheet to take away.
 				</p>
 				<nav class="toc" aria-label="Contents">
-					<a href="#ausstellung">Group exhibition</a>
-					<a href="#saunasplash">Saunasplash Festival</a>
-					<a href="#mitarbeiter-portraets">Staff portraits</a>
+					<a href="#saunasplash">Saunasplash Festival 2026</a>
+					<a href="#ausstellung">Group exhibition 2023</a>
+					<a href="#mitarbeiter-portraets">Staff portraits 2023</a>
 					<a href="#infoblaetter">All info sheets</a>
 				</nav>
 			</div>
 		</section>
 
-		<!-- ================= GROUP EXHIBITION ================= -->
-		<section class="section section--alt" id="ausstellung">
-			<div class="wrap split">
-				<a href="/img/fotos/ausstellung-berlin-things-1.jpg"><img src="/img/fotos/ausstellung-berlin-things-1.jpg" alt="Aydan at the group exhibition “Berlin Things” next to his framed ink drawing" class="ph-img ph--natural" width="1199" height="1599" loading="lazy" decoding="async"></a>
-				<div>
-					<span class="eyebrow">Exhibition · art on the wall</span>
-					<h2>Group exhibition “Berlin Things”</h2>
-					<p><strong>Creative Sessions, Berlin · 10–24 August 2023</strong></p>
-					<p>
-						My first exhibition: “Berlin Things” by the Berlin drawing group Creative Sessions, which has been bringing
-						together people who draw each other since 2016 – one table with six people grew into 60–80 per evening.
-						The show presented drawings made at those meetups, alongside many other Berlin artists. My piece was
-						“Typischer Berliner Waldspaziergang” (a typical Berlin forest walk), black brush pen on heavy paper, A4.
-					</p>
-					<p>
-						For me the exhibition shows that my drawings don't only work as a quick live experience, but also as
-						artworks on the wall – exactly what you get with a commissioned portrait.
-					</p>
-					<div class="btn-row"><a class="btn" href="/en/commission.html">Commission a portrait</a></div>
-				</div>
-			</div>
-		</section>
-
 		<!-- ================= SAUNASPLASH FESTIVAL ================= -->
-		<section class="section" id="saunasplash">
+		<section class="section section--alt" id="saunasplash">
 			<div class="wrap">
 				<div class="split">
 					<div>
-						<span class="eyebrow">Live event · 3 days · 1,500+ guests</span>
+						<span class="eyebrow">2026 · Live event · 3 days · 1,500+ guests · 50+ unique portraits</span>
 						<h2>Saunasplash: from Mauerpark straight to the festival</h2>
 						<p>
 							It all started on a Wednesday at 10 pm outside Mauerpark. I was sitting at my folding table
@@ -129,17 +128,22 @@
 						</p>
 						<div class="btn-row"><a class="btn" href="/en/events.html#anfrage-event">Book me for your event</a></div>
 					</div>
-					<img src="/img/fotos/aydan-am-stand.jpg" alt="Aydan drawing at his stand at the Saunasplash Festival" class="ph-img ph--natural" width="1400" height="1050" loading="lazy" decoding="async">
+					<!-- the two "pages" behind the photo: receipt screenshots with the amounts blacked out IN the image file (img/fotos/saunasplash-beleg-1.jpg / -2.jpg); until those files exist they show as plain paper -->
+					<div class="ref-stack">
+						<span class="ref-stack__page ref-stack__page--1" style="background-image:url(/img/fotos/saunasplash-beleg-1.jpg)" role="img" aria-label="Payment receipts from the festival (amounts made unreadable)"></span>
+						<span class="ref-stack__page ref-stack__page--2" style="background-image:url(/img/fotos/saunasplash-beleg-2.jpg)" aria-hidden="true"></span>
+						<div class="ref-frame"><img src="/img/fotos/aydan-am-stand.jpg" alt="Aydan drawing at his stand at the Saunasplash Festival" class="ph-img ph--natural" width="1400" height="1050" loading="lazy" decoding="async"></div>
+					</div>
 				</div>
 
 				<h3 style="margin-top:2em">My stand at the festival</h3>
 				<p class="hint">Click a picture to see it big.</p>
 				<div class="band-grid ref-grid" data-lightbox>
 					<a href="/img/fotos/stand-saunasplash-nacht-4x5.jpg"><img src="/img/fotos/stand-saunasplash-nacht-4x5.jpg" alt="The lit-up portrait stand at night at Saunasplash" width="920" height="1150" loading="lazy" decoding="async"></a>
-					<a href="/img/fotos/stand-saunasplash-portraets-3x2.jpg"><img src="/img/fotos/stand-saunasplash-portraets-3x2.jpg" alt="Drawing table full of live-drawn portraits at Saunasplash" width="742" height="495" loading="lazy" decoding="async"></a>
+					<a href="/img/fotos/stand-saunasplash-portraets-3x2.jpg"><img src="/img/fotos/stand-saunasplash-portraets-3x2.jpg" alt="Drawing table full of live-drawn portraits at Saunasplash" width="742" height="495" style="object-position: 22% 50%" loading="lazy" decoding="async"></a>
 					<a href="/img/fotos/stand-zelt-3x2.jpg"><img src="/img/fotos/stand-zelt-3x2.jpg" alt="The whole portrait stand from the front" width="1200" height="800" loading="lazy" decoding="async"></a>
 					<a href="/img/fotos/stand-tisch-3x2.jpg"><img src="/img/fotos/stand-tisch-3x2.jpg" alt="Price sign and sample portraits on the drawing table" width="1200" height="800" loading="lazy" decoding="async"></a>
-					<a href="/img/fotos/stand-klapptisch.jpg"><img src="/img/fotos/stand-klapptisch.jpg" alt="The stand with folding table, price sign and portraits" width="1400" height="647" loading="lazy" decoding="async"></a>
+					<a href="/img/fotos/stand-klapptisch.jpg"><img src="/img/fotos/stand-klapptisch.jpg" alt="The stand with folding table, price sign and portraits" width="1400" height="647" style="object-position: 62% 50%" loading="lazy" decoding="async"></a>
 				</div>
 				<div class="pdf-links">
 					<span class="hint">Info sheet to take away (German):</span>
@@ -149,13 +153,36 @@
 			</div>
 		</section>
 
+		<!-- ================= GROUP EXHIBITION ================= -->
+		<section class="section" id="ausstellung">
+			<div class="wrap split">
+				<a class="ref-frame" href="/img/fotos/ausstellung-berlin-things-1.jpg"><img src="/img/fotos/ausstellung-berlin-things-1.jpg" alt="Aydan at the group exhibition “Berlin Things” next to his framed ink drawing" class="ph-img ph--natural" width="1199" height="1599" loading="lazy" decoding="async"></a>
+				<div>
+					<span class="eyebrow">August 2023 · Exhibition · art on the wall</span>
+					<h2>Group exhibition “Berlin Things”</h2>
+					<p><strong>Creative Sessions, Berlin · 10–24 August 2023</strong></p>
+					<p>
+						My first exhibition: “Berlin Things” by the Berlin drawing group Creative Sessions, which has been bringing
+						together people who draw each other since 2016 – one table with six people grew into 60–80 per evening.
+						The show presented drawings made at those meetups, alongside many other Berlin artists. My piece was
+						“Typischer Berliner Waldspaziergang” (a typical Berlin forest walk), black brush pen on heavy paper, A4.
+					</p>
+					<p>
+						For me the exhibition shows that my drawings don't only work as a quick live experience, but also as
+						artworks on the wall – exactly what you get with a commissioned portrait.
+					</p>
+					<div class="btn-row"><a class="btn" href="/en/commission.html">Commission a portrait</a></div>
+				</div>
+			</div>
+		</section>
+
 		<!-- ================= STAFF PORTRAITS ================= -->
 		<section class="section section--alt" id="mitarbeiter-portraets">
 			<div class="wrap">
 				<div class="split split--reverse">
-					<img src="/img/fotos/spaghettaria-2.jpg" alt="Framed blue watercolour portrait of a staff member on the restaurant wall" class="ph-img ph--natural" width="1000" height="778" loading="lazy" decoding="async">
+					<div class="ref-frame"><img src="/img/fotos/spaghettaria-2.jpg" alt="Framed blue watercolour portrait of a staff member on the restaurant wall" class="ph-img ph--natural" width="1000" height="778" loading="lazy" decoding="async"></div>
 					<div>
-						<span class="eyebrow">Portrait series · team · exhibition</span>
+						<span class="eyebrow">2023 · Portrait series · team · exhibition</span>
 						<h2>Paid staff portraits for the Spaghetteria</h2>
 						<p>
 							As a paid commission – and at the same time a project for my advanced art class at secondary school – I portrayed the staff of the Berlin restaurant

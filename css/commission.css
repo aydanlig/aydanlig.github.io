@@ -19,30 +19,6 @@
 .style-guide > .hint { padding: 0 20px 16px; margin-top: 14px; text-align: center; }
 @media (max-width: 860px) { .style-guide-grid { grid-template-columns: 1fr 1fr; } }
 
-/* ---------- A4 card: two real examples with their price ---------- */
-.price-examples { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 0 0 1.2em; }
-.price-examples figure { margin: 0; }
-.price-examples img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; border-radius: 8px; border: 1px solid var(--line); }
-.price-examples figcaption { margin-top: 4px; font-size: 0.78rem; text-align: center; color: var(--ink-soft); }
-
-/* ---------- "1 € nur samstags": eyecatcher with a bouncing coin + ink splash ---------- */
-.one-euro { position: relative; display: flex; align-items: center; gap: 12px; margin: 0 0 1em; padding: 10px 12px;
-	border-radius: 14px; background: #FFF1EA; border: 2px dashed var(--fox); font-size: 0.92rem; line-height: 1.35; }
-.one-euro-coin { position: relative; flex: none; display: grid; place-items: center; width: 52px; height: 52px; border-radius: 50%;
-	background: var(--fox); color: var(--night); font: 800 1rem var(--font-head); box-shadow: 0 4px 0 #C2410C;
-	animation: coin-hop 3.2s ease-in-out infinite; }
-/* the ink splash that blooms behind the coin */
-.one-euro-coin::before { content: ""; position: absolute; inset: -8px; z-index: -1; border-radius: 46% 54% 38% 62% / 55% 40% 60% 45%;
-	background: var(--plum); opacity: 0; animation: coin-splash 3.2s ease-out infinite; }
-@keyframes coin-hop {
-	0%, 60%, 100% { transform: translateY(0) rotate(0); }
-	68% { transform: translateY(-10px) rotate(-12deg); }
-	76% { transform: translateY(0) rotate(8deg); }
-	82% { transform: translateY(-4px) rotate(-4deg); }
-	88% { transform: translateY(0) rotate(0); }
-}
-@keyframes coin-splash { 0%, 70% { opacity: 0; transform: scale(0.6) rotate(0); } 76% { opacity: 0.45; transform: scale(1.15) rotate(25deg); } 100% { opacity: 0; transform: scale(1.45) rotate(40deg); } }
-@media (prefers-reduced-motion: reduce) { .one-euro-coin, .one-euro-coin::before { animation: none; } }
 
 /* ---------- Extras: wide box, grouped in columns so it is quick to scan ---------- */
 .extras-box { max-width: 980px; margin: 2.5em auto 0; padding: clamp(20px, 4vw, 34px); background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); }
@@ -65,3 +41,50 @@
 /* ---------- Order form (from /css/order.css): feeling field + "lieber live" note ---------- */
 .order-feel { margin-top: 1.2em; }
 .live-instead { margin: 0 0 1.2em; padding: 12px 14px; border-radius: 12px; background: #FFF1EA; border: 1px dashed var(--fox); font-size: 0.95rem; }
+
+/* ---------- Info "?" bubbles: short explanations and example pictures on hover / tap ---------- */
+.info { position: relative; display: inline-grid; place-items: center; width: 1.25em; height: 1.25em; margin-left: 2px; vertical-align: 0.08em;
+	border-radius: 50%; border: 1.5px solid currentColor; color: var(--accent); font: 700 0.75rem/1 var(--font-body); cursor: help; }
+.info[data-tip]::after { content: attr(data-tip); position: absolute; z-index: 30; left: 50%; bottom: calc(100% + 8px); transform: translateX(-50%);
+	width: max-content; max-width: min(260px, 80vw); padding: 8px 10px; border-radius: 10px; background: var(--night); color: #F2EAE4;
+	font: 400 0.82rem/1.4 var(--font-body); text-align: left; white-space: normal; opacity: 0; visibility: hidden; pointer-events: none; transition: opacity 0.15s; }
+.info:hover::after, .info:focus::after, .info:hover .info-pop, .info:focus .info-pop { opacity: 1; visibility: visible; }
+.info-pop { position: absolute; z-index: 30; right: 0; bottom: calc(100% + 8px); width: 170px; padding: 4px; border-radius: 10px; background: #fff;
+	box-shadow: 0 12px 30px rgba(15, 12, 17, 0.3); opacity: 0; visibility: hidden; pointer-events: none; transition: opacity 0.15s; }
+.info-pop img { width: 100%; height: auto; border-radius: 7px; }
+.price-list .info { margin-left: 6px; }
+
+/* ---------- Order form round 2 ---------- */
+.order-section .wrap { max-width: 1320px; }       /* room for 4 style cards next to the price box */
+.order-section .order { max-width: 1280px; }
+.order-choices--4 { grid-template-columns: repeat(4, 1fr); }
+@media (max-width: 1100px) { .order-choices--4 { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 640px) {
+	.order-choices--4:not(.order-frames) { grid-template-columns: 1fr; }
+	.order-choices--4 .order-card--art { flex-direction: row; align-items: center; }
+}
+/* the check mark sits top right: keep text out from under it */
+.order-card:not(.order-card--art) .order-card-body { padding-right: 44px; }
+
+/* progress: dotted arrows between the steps */
+.order--steps .order-progress { gap: 30px; }
+.order-progress li { position: relative; }
+.order-progress li + li::before { content: ""; position: absolute; top: 50%; left: -26px; width: 18px; border-top: 2px dotted var(--ink-soft); }
+.order-progress li + li::after { content: ""; position: absolute; top: calc(50% - 4px); left: -12px; border: 5px solid transparent; border-left-color: var(--ink-soft); border-right: 0; }
+@media (max-width: 860px) { .order--steps .order-progress { gap: 22px; } .order-progress li + li::before { left: -20px; width: 12px; } .order-progress li + li::after { left: -9px; } }
+
+/* tiers + their info, scan/frame question */
+.order-tiers label { padding: 6px 12px; border: 1px solid var(--line); border-radius: 999px; background: #fff; }
+.order-tiers label:has(input:checked) { border-color: var(--fox); background: #FFF4EC; }
+.tier-info { margin: 10px 0 0; padding: 10px 14px; border-left: 3px solid var(--fox); background: #FFF4EC; border-radius: 0 10px 10px 0; font-size: 0.9rem; }
+.scan-frame { margin-top: 8px; padding: 10px 12px; border-radius: 10px; background: #FFF4EC; border: 1px dashed var(--fox); font-size: 0.88rem; }
+.scan-frame p { margin: 0 0 8px; }
+.scan-frame .btn { margin-right: 6px; }
+
+/* quick extras under the live price */
+.order-quick { margin-top: 10px; padding: 12px 14px; border: 1px solid var(--line); border-radius: 14px; background: var(--card); font-size: 0.9rem; }
+.order-quick p { margin: 0 0 6px; font-weight: 700; }
+.order-quick label { display: flex; align-items: center; gap: 8px; margin: 4px 0; cursor: pointer; }
+.order-quick input { accent-color: var(--accent); width: 16px; height: 16px; }
+@media (max-width: 860px) { .order-quick { display: none; } }
+.live-instead { padding: 8px 12px; }

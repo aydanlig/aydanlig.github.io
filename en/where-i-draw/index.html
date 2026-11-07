@@ -10,6 +10,8 @@
 	<script src="/js/splashes.js" defer></script>
 	<script src="/js/mail-reveal.js" defer></script>
 	<script src="/js/translate.js" defer></script>
+	<script src="/js/termine.js" defer></script>
+	<script src="/js/nav.js" defer></script>
 
 	<title>Where & when I draw – Mauerpark Berlin | SmileyFoxyPortraits</title>
 	<meta name="description"
@@ -43,6 +45,12 @@
 <body>
 
 	<!-- ================= HEADER (same on every English page) ================= -->
+	<!-- LIVE BAR: where & when I draw – the next date comes from js/termine.js -->
+	<div class="live-bar">
+		<div class="wrap">
+			<a href="/en/where-i-draw/"><span class="live-bar-dot" aria-hidden="true"></span><span data-next-gig><strong>Live:</strong> Sat 2–10 pm Mauerpark · Thu Kollwitzplatz market · Christmas markets &amp; gigs</span><span class="live-bar-more">Where &amp; when →</span></a>
+		</div>
+	</div>
 	<header class="site-header">
 		<div class="wrap">
 			<a class="logo" href="/en/" aria-label="SmileyFoxyPortraits – home"><span class="logo-ph" title="Platzhalter: hier kommt dein gemaltes Fuchs-Logo hin (img/logo.png)">Logo</span><span class="logo-word">SmileyFoxy<span>Portraits</span><small class="logo-since">Drawing portraits for 6 years</small></span></a>
@@ -51,7 +59,19 @@
 				<a href="/en/events.html#live-events"><span class="nav-long">Live </span>Events</a>
 				<a href="/en/events.html#kleckerkasten">Kleckerkasten</a>
 				<a href="/en/commission.html"><span class="nav-long">Commission a </span>Portrait</a>
-				<a href="/en/about/">About me</a>
+				<div class="nav-more">
+					<a href="/en/about/">About me</a><button class="nav-more-toggle" type="button" aria-expanded="false" aria-label="Show more: dates, references, blog and more"><span aria-hidden="true">▾</span></button>
+					<div class="nav-more-menu">
+						<a href="/en/where-i-draw/">Where &amp; when I draw</a>
+						<a href="/en/where-i-draw/#termine">Upcoming dates</a>
+						<a href="/labor/auktion.html" hreflang="de">First auction (German)</a>
+						<a href="/en/referenzen/">References</a>
+						<a href="/en/about/#bands">Bands drawn live</a>
+						<a href="/en/about/#blog">Blog</a>
+						<a href="/en/commission.html#warteliste">Email list &amp; waitlist</a>
+						<a href="/en/about/#faq">FAQ</a>
+					</div>
+				</div>
 				<a class="nav-shop" href="/en/shop/">Shop</a>
 			</nav>
 			<a class="lang-switch" data-translate lang="de" title="Deutsche Version dieser Seite" href="/where-i-draw/">DE</a>
@@ -76,10 +96,28 @@
 						<a class="st-map" role="cell" href="https://maps.app.goo.gl/ZhjvUq1bMy8CyVk18" target="_blank" rel="noopener">Map ↗</a>
 					</div>
 					<div class="st-row" role="row">
+						<span class="st-day" role="cell">Thursday</span>
+						<span class="st-time" role="cell">approx. 12–7 pm</span>
+						<span class="st-place" role="cell"><a href="#kollwitzplatz">Organic market at Kollwitzplatz</a> · on selected Thursdays</span>
+						<a class="st-map" role="cell" href="https://maps.google.com/?q=%C3%96komarkt+Kollwitzplatz+Berlin" target="_blank" rel="noopener">Map ↗</a>
+					</div>
+					<div class="st-row" role="row">
 						<span class="st-day" role="cell">Sunday</span>
-						<span class="st-time" role="cell">often from 11 am</span>
-						<span class="st-place" role="cell"><a href="#mauerpark">Mauerpark</a> · depending on mood &amp; weather</span>
-						<a class="st-map" role="cell" href="https://maps.app.goo.gl/ZhjvUq1bMy8CyVk18" target="_blank" rel="noopener">Map ↗</a>
+						<span class="st-time" role="cell">varies</span>
+						<span class="st-place" role="cell">Weekly market · which one is in my Instagram story beforehand</span>
+						<span class="st-map" role="cell"></span>
+					</div>
+					<div class="st-row" role="row">
+						<span class="st-day" role="cell">Advent</span>
+						<span class="st-time" role="cell">from 5 pm</span>
+						<span class="st-place" role="cell"><a href="#weihnachtsmarkt">Christmas market at Charlottenburg Palace</a> &amp; ZK/U Gütermarkt · <a href="#termine">dates</a></span>
+						<a class="st-map" role="cell" href="https://maps.google.com/?q=Weihnachtsmarkt+Schloss+Charlottenburg" target="_blank" rel="noopener">Map ↗</a>
+					</div>
+					<div class="st-row" role="row">
+						<span class="st-day" role="cell">Gig nights</span>
+						<span class="st-time" role="cell">after the show</span>
+						<span class="st-place" role="cell"><a href="#schokoladen">Schokoladen</a> · I draw the band live, then you</span>
+						<a class="st-map" role="cell" href="https://maps.google.com/?q=Schokoladen+Ackerstra%C3%9Fe+169+Berlin" target="_blank" rel="noopener">Map ↗</a>
 					</div>
 					<div class="st-row" role="row">
 						<span class="st-day" role="cell">Now and then</span>
@@ -93,6 +131,17 @@
 			</div>
 		</section>
 
+		<!-- ================= UPCOMING DATES – edit the list in js/termine.js ================= -->
+		<section class="section" id="termine" style="padding-block:8px 32px">
+			<div class="wrap">
+				<h2>Upcoming dates</h2>
+				<p>Markets, Christmas markets and bands I draw live – past dates disappear by themselves.</p>
+				<div data-termine>
+					<p class="hint">Current dates are in my <a href="https://www.instagram.com/smileyfoxyportraits">Instagram story</a>.</p>
+				</div>
+			</div>
+		</section>
+
 		<!-- ================= PLACES ================= -->
 		<div class="wrap places">
 			<article class="place" id="mauerpark">
@@ -100,11 +149,45 @@
 				<div>
 					<h2>Mauerpark</h2>
 					<ul class="place-facts">
-						<li><strong>When:</strong> Saturday 2–10 pm · Sunday often from 11 am</li>
+						<li><strong>When:</strong> every Saturday 2–10 pm</li>
 						<li><strong>Exactly where:</strong> Bernauer Str. 53, right next to the photo booth – <a href="https://maps.app.goo.gl/ZhjvUq1bMy8CyVk18" target="_blank" rel="noopener">Google Maps ↗</a></li>
 						<li><strong>Getting there:</strong> U Eberswalder Straße or S+U Gesundbrunnen</li>
 					</ul>
 					<p>Between the flea market, karaoke and street music, this is where my €1 quick sketch happens on Saturdays – art that really anyone can afford.</p>
+				</div>
+			</article>
+
+			<article class="place place--compact" id="kollwitzplatz">
+				<div>
+					<h2>Organic market at Kollwitzplatz</h2>
+					<ul class="place-facts">
+						<li><strong>When:</strong> on selected Thursdays, approx. 12–7 pm (Jan–Mar until 6 pm) – <a href="#termine">dates</a></li>
+						<li><strong>Exactly where:</strong> Kollwitzplatz, Prenzlauer Berg – <a href="https://maps.google.com/?q=%C3%96komarkt+Kollwitzplatz+Berlin" target="_blank" rel="noopener">Google Maps ↗</a></li>
+						<li><strong>Getting there:</strong> U Senefelderplatz</li>
+					</ul>
+				</div>
+			</article>
+
+			<article class="place place--compact" id="weihnachtsmarkt">
+				<div>
+					<h2>Christmas markets</h2>
+					<ul class="place-facts">
+						<li><strong>Charlottenburg Palace:</strong> in the pagoda tent, on selected evenings from 5 pm – <a href="#termine">dates</a></li>
+						<li><strong>ZK/U Gütermarkt:</strong> winter Christmas edition on Sun 13 Dec, Siemensstr. 27 (Moabit)</li>
+					</ul>
+					<p>A portrait as a Christmas present, drawn live while you sip your mulled wine.</p>
+				</div>
+			</article>
+
+			<article class="place place--compact" id="schokoladen">
+				<div>
+					<h2>Gigs at Schokoladen</h2>
+					<ul class="place-facts">
+						<li><strong>When:</strong> on gig nights – which bands is listed under <a href="#termine">dates</a></li>
+						<li><strong>Exactly where:</strong> Schokoladen, Ackerstr. 169, Berlin-Mitte – <a href="https://maps.google.com/?q=Schokoladen+Ackerstra%C3%9Fe+169+Berlin" target="_blank" rel="noopener">Google Maps ↗</a></li>
+					</ul>
+					<p>During the set I draw the band live. After the show I'm happy to draw you too – just come and say hi.
+						<a href="/en/about/#bands">Bands I've drawn so far →</a></p>
 				</div>
 			</article>
 
@@ -127,35 +210,6 @@
 						on rainy days? <a href="mailto:aydan@smileyfoxyportraits.com?subject=A%20place%20for%20rainy%20days">I'd love to hear from you.</a></p>
 				</div>
 			</article>
-			<!-- PLATZHALTER P23: MARKETS – one row per market date. Copy a row, fill in date, time, market name + a Google Maps link
-			     (like the Mauerpark row at the top: <a class="st-map" role="cell" href="…" target="_blank" rel="noopener">Map ↗</a>). -->
-			<article class="place place--compact ph-block" id="maerkte" data-ph="P23">
-				<div>
-					<h2>Berlin markets</h2>
-					<p>Soon you'll find my mobile portrait stand at Berlin markets too. The next dates:</p>
-					<div class="schedule-table" role="table" aria-label="Market dates">
-						<div class="st-row" role="row">
-							<span class="st-day ph-text" role="cell">Date</span>
-							<span class="st-time ph-text" role="cell">__–__</span>
-							<span class="st-place ph-text" role="cell">Name of the market · district</span>
-							<span class="st-map" role="cell"></span>
-						</div>
-						<div class="st-row" role="row">
-							<span class="st-day ph-text" role="cell">Date</span>
-							<span class="st-time ph-text" role="cell">__–__</span>
-							<span class="st-place ph-text" role="cell">Name of the market · district</span>
-							<span class="st-map" role="cell"></span>
-						</div>
-						<div class="st-row" role="row">
-							<span class="st-day ph-text" role="cell">Date</span>
-							<span class="st-time ph-text" role="cell">__–__</span>
-							<span class="st-place ph-text" role="cell">Name of the market · district</span>
-							<span class="st-map" role="cell"></span>
-						</div>
-					</div>
-				</div>
-			</article>
-
 		</div>
 
 		<!-- ================= TESTIMONIAL ================= -->

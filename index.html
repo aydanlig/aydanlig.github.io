@@ -13,15 +13,18 @@
 	<script src="/js/crop.js" defer></script>
 	<script src="/js/mail-reveal.js" defer></script>
 	<script src="/js/translate.js" defer></script>
+	<script src="/js/termine.js" defer></script>
+	<script src="/js/nav.js" defer></script>
 	<script src="/js/gallery.js" defer></script>
 	<script src="/js/confirm-link.js" defer></script>
 	<script src="/js/smiley.js" defer></script>
 	<script src="/js/rotator.js" defer></script>
+	<script src="/js/home.js" defer></script>
 
 	<!-- SEO: title + description are what Google shows in search results.
 	     Keep the title under ~60 characters, the description under ~155. -->
 	<!-- Brand + your name come first so Google matches both "SmileyFoxyPortraits" and "Aydan Lig'on" -->
-	<title>SmileyFoxyPortraits – Porträts in Tusche & Aquarell aus Berlin</title>
+	<title>SmileyFoxyPortraits von Aydan Lig'on – Porträts in Tusche & Aquarell, Berlin</title>
 	<meta name="description"
 		content="Aydan Lig'on zeichnet live im Mauerpark Berlin – Porträts in Tusche & Aquarell, samstags auch als 1-€-Schnellskizze. Auch für Events, Partys, Team-Workshops und als Auftrag nach Foto.">
 	<meta name="author" content="Aydan Lig'on">
@@ -40,13 +43,13 @@
 	<meta property="og:locale" content="de_DE">
 	<meta property="og:url" content="https://smileyfoxyportraits.com/">
 	<meta property="og:site_name" content="SmileyFoxyPortraits">
-	<meta property="og:title" content="SmileyFoxyPortraits – Porträts in Tusche & Aquarell aus Berlin">
+	<meta property="og:title" content="SmileyFoxyPortraits von Aydan Lig'on – Porträts in Tusche & Aquarell, Berlin">
 	<meta property="og:description"
 		content="Schnellzeichner für Events, expressive Teamevents und Auftrags-Porträts – gezeichnet nach Gefühl, passend zu jedem Menschen.">
 	<meta property="og:image" content="https://smileyfoxyportraits.com/img/og-share.jpg?v=2">
 	<meta property="og:image:width" content="1200">
 	<meta property="og:image:height" content="630">
-	<meta property="og:image:alt" content="SmileyFoxyPortraits – Porträts in Tusche & Aquarell aus Berlin">
+	<meta property="og:image:alt" content="SmileyFoxyPortraits von Aydan Lig'on – Porträts in Tusche & Aquarell, Berlin">
 	<meta name="twitter:card" content="summary_large_image">
 
 	<!-- Structured data: tells Google who you are (person), what the business is,
@@ -69,7 +72,7 @@
 				"name": "Aydan Lig'on",
 				"alternateName": ["Aydan Ligon", "Aydan Lig on"],
 				"jobTitle": "Künstler & Live-Porträtzeichner",
-				"url": "https://smileyfoxyportraits.com/about/",
+				"url": "https://smileyfoxyportraits.com/",
 				"email": "aydan@smileyfoxyportraits.com",
 				"sameAs": [
 					"https://www.instagram.com/smileyfoxyportraits",
@@ -103,6 +106,12 @@
 <body>
 
 	<!-- ================= HEADER (same on every new page) ================= -->
+	<!-- LIVE BAR: where & when I draw – the next date comes from js/termine.js -->
+	<div class="live-bar">
+		<div class="wrap">
+			<a href="/where-i-draw/"><span class="live-bar-dot" aria-hidden="true"></span><span data-next-gig><strong>Live:</strong> Sa 14–22 Uhr Mauerpark · Do Ökomarkt Kollwitzplatz · Weihnachtsmärkte &amp; Konzerte</span><span class="live-bar-more">Wo &amp; wann →</span></a>
+		</div>
+	</div>
 	<header class="site-header">
 		<div class="wrap">
 			<a class="logo" href="/" aria-label="SmileyFoxyPortraits – Startseite"><span class="logo-ph" title="Platzhalter: hier kommt dein gemaltes Fuchs-Logo hin (img/logo.png)">Logo</span><span class="logo-word">SmileyFoxy<span>Portraits</span><small class="logo-since">Seit 6 Jahren Porträts</small></span></a>
@@ -111,7 +120,19 @@
 				<a href="/events.html#live-events"><span class="nav-long">Live-</span>Events</a>
 				<a href="/events.html#kleckerkasten">Kleckerkasten</a>
 				<a href="/commission.html">Porträt<span class="nav-long">-Auftrag</span></a>
-				<a href="/about/">Über mich</a>
+				<div class="nav-more">
+					<a href="/about/">Über mich</a><button class="nav-more-toggle" type="button" aria-expanded="false" aria-label="Mehr anzeigen: Termine, Referenzen, Blog und mehr"><span aria-hidden="true">▾</span></button>
+					<div class="nav-more-menu">
+						<a href="/where-i-draw/">Wo &amp; wann ich zeichne</a>
+						<a href="/where-i-draw/#termine">Termine &amp; Kalender</a>
+						<a href="/labor/auktion.html">Erste Auktion</a>
+						<a href="/referenzen/">Referenzen</a>
+						<a href="/about/#bands">Bands, live gezeichnet</a>
+						<a href="/about/#blog">Blog</a>
+						<a href="/commission.html#warteliste">E-Mail-Liste &amp; Warteliste</a>
+						<a href="/about/#faq">Fragen &amp; Antworten</a>
+					</div>
+				</div>
 				<a class="nav-shop" href="/shop/">Shop</a>
 			</nav>
 			<a class="lang-switch" data-translate lang="en" title="English version of this page" href="/en/">EN</a>
@@ -130,9 +151,9 @@
 			<div class="jd-grid">
 				<div class="jd-art">
 					<img src="/img/fotos/aquarell-fineliner-detail-4x5.jpg" alt="Ausdrucksstarkes Porträt in Aquarell und Fineliner von Aydan Lig'on: Mann mit Brille und Bart" width="960" height="1200" fetchpriority="high" decoding="async">
-					<p class="hero-hi">Hi, ich bin 👋</p>
+					<p class="hero-hi">Hi, ich bin</p>
 					<!-- Only ONE <h1> per page – my name + what I do -->
-					<h1 class="jd-name">Aydan Lig'on<small>SmileyFoxyPortraits · Live-Porträts in Tusche &amp; Aquarell, Berlin</small></h1>
+					<h1 class="jd-name">Aydan Lig'on<small class="sr-only"> – SmileyFoxyPortraits, Live-Porträts in Tusche &amp; Aquarell aus Berlin</small></h1>
 					<ul class="jd-roles" aria-label="Was ich mache">
 						<li>Live-Porträts</li>
 						<li>Tusche &amp; Aquarell</li>
@@ -440,8 +461,8 @@
 						<p>
 							Die 1-€-Skizze (A6, in ca. 5 Minuten gezeichnet) ist ein exklusives Samstags-Angebot: nur samstags, nur live im Mauerpark. Ausgearbeitete Porträts in Tusche und Aquarell, Aufträge und Events haben ihren eigenen Preis. Wann ich draußen bin, poste ich vorher in meiner Instagram-Story – wer ganz sicher gehen will, wo genau ich gerade zeichne, schaut dort kurz rein.
 						</p>
-						<p>📍 <strong>Jeden Samstag 14–22 Uhr</strong> im Mauerpark, direkt neben dem Photoautomaten (Bernauer Str. 53) –
-							<a href="https://maps.app.goo.gl/ZhjvUq1bMy8CyVk18" target="_blank" rel="noopener" style="color:var(--fox)">auf Google Maps ansehen ↗</a></p>
+						<p><strong>Jeden Samstag 14–22 Uhr</strong> im Mauerpark, direkt neben dem Photoautomaten (Bernauer Str. 53) –
+							<a href="https://maps.app.goo.gl/ZhjvUq1bMy8CyVk18" target="_blank" rel="noopener" style="color:var(--fox)" data-photoautomat>auf Google Maps ansehen ↗</a></p>
 						<div class="btn-row">
 							<a class="btn btn--fox" href="/where-i-draw/">Zeiten &amp; Orte ansehen</a>
 							<a class="btn btn--ghost" style="color:#F2EAE4;border-color:#F2EAE4" href="https://www.instagram.com/smileyfoxyportraits">Instagram folgen</a>

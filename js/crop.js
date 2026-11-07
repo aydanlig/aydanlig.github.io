@@ -13,10 +13,11 @@
    browser tools) to frame the phone view. When done: "Datei herunterladen" and replace
    js/crop-data.js with it (or "Werte kopieren" and send it to Claude).
 
-   Which pictures can be framed: homepage tiles (.art-grid), the 1 € slider and the review photos.
+   Which pictures can be framed: homepage tiles (.art-grid), the 1 € slider, the review photos and
+   every photo on the Referenzen page (/referenzen/#zuschnitt – the German and English page share the framing).
    ========================================================= */
 (function () {
-	var TARGETS = '.art-grid img, .swipe-track img, .quote-photos img';
+	var TARGETS = '.art-grid img, .swipe-track img, .quote-photos img, .ref-grid img, .ref-frame img';
 	var PHONE = 700;
 	var data = window.SFP_CROPS || { desktop: {}, phone: {} };
 	data.desktop = data.desktop || {}; data.phone = data.phone || {};
@@ -186,7 +187,7 @@
 
 	// links and the big-picture view stay off while framing
 	document.addEventListener('click', function (e) {
-		if (editing && e.target.closest && e.target.closest('.art-grid a, .swipe-track a, .quote-photos') && !e.target.closest('.crop-switch')) {
+		if (editing && e.target.closest && e.target.closest('.art-grid a, .swipe-track a, .quote-photos, .ref-grid a, a.ref-frame') && !e.target.closest('.crop-switch')) {
 			e.preventDefault(); e.stopPropagation();
 		}
 	}, true);

@@ -10,8 +10,12 @@
 	<script src="/js/splashes.js" defer></script>
 	<script src="/js/mail-reveal.js" defer></script>
 	<script src="/js/translate.js" defer></script>
+	<script src="/js/termine.js" defer></script>
+	<script src="/js/nav.js" defer></script>
 	<script src="/js/gallery.js" defer></script>
 	<script src="/js/confirm-link.js" defer></script>
+	<script src="/js/crop-data.js" defer></script>
+	<script src="/js/crop.js" defer></script>
 
 	<title>Referenzen: Ausstellung, Events & Porträt-Serien | SmileyFoxyPortraits</title>
 	<meta name="description" content="Referenzen von Aydan Lig'on (SmileyFoxyPortraits): Gruppenausstellung, drei Tage Live-Porträts beim Saunasplash-Festival und Mitarbeiter-Porträts als Kunst-Leistungskurs-Projekt – mit Infoblättern zum Download.">
@@ -43,6 +47,12 @@
 
 <body>
 
+	<!-- LIVE BAR: where & when I draw – the next date comes from js/termine.js -->
+	<div class="live-bar">
+		<div class="wrap">
+			<a href="/where-i-draw/"><span class="live-bar-dot" aria-hidden="true"></span><span data-next-gig><strong>Live:</strong> Sa 14–22 Uhr Mauerpark · Do Ökomarkt Kollwitzplatz · Weihnachtsmärkte &amp; Konzerte</span><span class="live-bar-more">Wo &amp; wann →</span></a>
+		</div>
+	</div>
 	<header class="site-header">
 		<div class="wrap">
 			<a class="logo" href="/" aria-label="SmileyFoxyPortraits – Startseite"><span class="logo-ph" title="Platzhalter: hier kommt dein gemaltes Fuchs-Logo hin (img/logo.png)">Logo</span><span class="logo-word">SmileyFoxy<span>Portraits</span><small class="logo-since">Seit 6 Jahren Porträts</small></span></a>
@@ -51,7 +61,19 @@
 				<a href="/events.html#live-events"><span class="nav-long">Live-</span>Events</a>
 				<a href="/events.html#kleckerkasten">Kleckerkasten</a>
 				<a href="/commission.html">Porträt<span class="nav-long">-Auftrag</span></a>
-				<a href="/about/">Über mich</a>
+				<div class="nav-more">
+					<a href="/about/">Über mich</a><button class="nav-more-toggle" type="button" aria-expanded="false" aria-label="Mehr anzeigen: Termine, Referenzen, Blog und mehr"><span aria-hidden="true">▾</span></button>
+					<div class="nav-more-menu">
+						<a href="/where-i-draw/">Wo &amp; wann ich zeichne</a>
+						<a href="/where-i-draw/#termine">Termine &amp; Kalender</a>
+						<a href="/labor/auktion.html">Erste Auktion</a>
+						<a href="/referenzen/">Referenzen</a>
+						<a href="/about/#bands">Bands, live gezeichnet</a>
+						<a href="/about/#blog">Blog</a>
+						<a href="/commission.html#warteliste">E-Mail-Liste &amp; Warteliste</a>
+						<a href="/about/#faq">Fragen &amp; Antworten</a>
+					</div>
+				</div>
 				<a class="nav-shop" href="/shop/">Shop</a>
 			</nav>
 			<a class="lang-switch" data-translate lang="en" title="English version of this page" href="/en/referenzen/">EN</a>
@@ -69,24 +91,75 @@
 				<span class="eyebrow">Referenzen</span>
 				<h1>Erfahrung, die man sehen kann</h1>
 				<p class="lead">
-					Drei Projekte, drei Seiten meiner Arbeit: eine Gruppenausstellung, ein Festival mit über 1.500 Gästen und eine
+					Drei Projekte, die neuesten zuerst: ein Festival mit über 1.500 Gästen, eine Gruppenausstellung und eine
 					Porträt-Serie fürs ganze Team. Zu jedem Angebot findest du hier den Beweis – und ein Infoblatt zum Mitnehmen.
 				</p>
 				<nav class="toc" aria-label="Inhalt">
-					<a href="#ausstellung">Gruppenausstellung</a>
-					<a href="#saunasplash">Saunasplash-Festival</a>
-					<a href="#mitarbeiter-portraets">Mitarbeiter-Porträts</a>
+					<a href="#saunasplash">Saunasplash-Festival 2026</a>
+					<a href="#ausstellung">Gruppenausstellung 2023</a>
+					<a href="#mitarbeiter-portraets">Mitarbeiter-Porträts 2023</a>
 					<a href="#infoblaetter">Alle Infoblätter</a>
 				</nav>
 			</div>
 		</section>
 
-		<!-- ================= 1. GROUP EXHIBITION ================= -->
-		<section class="section section--alt" id="ausstellung">
+		<!-- ================= 1. SAUNASPLASH FESTIVAL (newest first) ================= -->
+		<section class="section section--alt" id="saunasplash">
+			<div class="wrap">
+				<div class="split">
+					<div>
+						<span class="eyebrow">2026 · Live-Event · 3 Tage · 1.500+ Gäste · 50+ Unikate</span>
+						<h2>Saunasplash: vom Mauerpark direkt aufs Festival</h2>
+						<p>
+							Angefangen hat alles an einem Mittwoch um 22 Uhr vor dem Mauerpark. Ich saß mit meinem Klapptisch
+							da und bot Live-Porträts an – und zeichnete einen Mann, der sich als Veranstalter des Saunasplash
+							herausstellte. Zwei Tage später, am Freitag, kam spontan die Einladung: Komm doch vorbei und zeichne
+							bei uns.
+						</p>
+						<p>
+							Also stand ich am Freitag mit meinem Stand auf dem Festival und habe von Freitag bis Sonntag das
+							ganze Event gezeichnet. Am Sonntag habe ich selbst die Saunen ausprobiert – und das hat etwas
+							verändert: Ich wurde ruhiger, habe mich auf die Stimmung eingelassen und angefangen, mit Aquarell
+							zu malen. Die Porträts gab es ehrenamtlich, kostenlos bzw. auf Spendenbasis, das Festival hat
+							mich dafür unterstützt.
+						</p>
+						<p>
+							Und genau die entspannten Aquarell-Porträts mochten die Gäste am meisten. Seitdem weiß ich: Ich
+							passe mich dem Event an – vom schnellen Fineliner-Strich im Trubel bis zum ruhigen Aquarell.
+						</p>
+						<div class="btn-row"><a class="btn" href="/events.html#anfrage-event">Mich zum Event buchen</a></div>
+					</div>
+					<!-- the two "pages" behind the photo: receipt screenshots with the amounts blacked out IN the image file (img/fotos/saunasplash-beleg-1.jpg / -2.jpg); until those files exist they show as plain paper -->
+					<div class="ref-stack">
+						<span class="ref-stack__page ref-stack__page--1" style="background-image:url(/img/fotos/saunasplash-beleg-1.jpg)" role="img" aria-label="Zahlungsbelege vom Festival (Beträge unkenntlich)"></span>
+						<span class="ref-stack__page ref-stack__page--2" style="background-image:url(/img/fotos/saunasplash-beleg-2.jpg)" aria-hidden="true"></span>
+						<div class="ref-frame"><img src="/img/fotos/aydan-am-stand.jpg" alt="Aydan zeichnet an seinem Stand auf dem Saunasplash-Festival" class="ph-img ph--natural" width="1400" height="1050" loading="lazy" decoding="async"></div>
+					</div>
+				</div>
+
+				<h3 style="margin-top:2em">Mein Stand auf dem Festival</h3>
+				<p class="hint">Klick auf ein Bild, um es groß zu sehen.</p>
+				<div class="band-grid ref-grid" data-lightbox>
+						<a href="/img/fotos/stand-saunasplash-nacht-4x5.jpg"><img src="/img/fotos/stand-saunasplash-nacht-4x5.jpg" alt="Der beleuchtete Porträt-Stand bei Nacht auf dem Saunasplash" width="920" height="1150" loading="lazy" decoding="async"></a>
+						<a href="/img/fotos/stand-saunasplash-portraets-3x2.jpg"><img src="/img/fotos/stand-saunasplash-portraets-3x2.jpg" alt="Zeichentisch voller live gezeichneter Porträts beim Saunasplash" width="742" height="495" style="object-position: 22% 50%" loading="lazy" decoding="async"></a>
+						<a href="/img/fotos/stand-zelt-3x2.jpg"><img src="/img/fotos/stand-zelt-3x2.jpg" alt="Der Porträt-Stand komplett von vorne" width="1200" height="800" loading="lazy" decoding="async"></a>
+						<a href="/img/fotos/stand-tisch-3x2.jpg"><img src="/img/fotos/stand-tisch-3x2.jpg" alt="Preisschild und Beispielporträts auf dem Zeichentisch" width="1200" height="800" loading="lazy" decoding="async"></a>
+						<a href="/img/fotos/stand-klapptisch.jpg"><img src="/img/fotos/stand-klapptisch.jpg" alt="Der Stand mit Klapptisch, Preisschild und Porträts" width="1400" height="647" style="object-position: 62% 50%" loading="lazy" decoding="async"></a>
+				</div>
+					<div class="pdf-links">
+						<span class="hint">Infoblatt zum Mitnehmen:</span>
+						<a class="btn btn--ghost btn--small" href="/downloads/infoblatt-live-portraits-events.pdf" target="_blank" rel="noopener">Live-Porträts für Events (PDF)</a>
+						<a class="btn btn--ghost btn--small" href="/downloads/infoblatt-kleckerkasten-teamworkshop.pdf" target="_blank" rel="noopener">Kleckerkasten-Teamworkshop (PDF)</a>
+					</div>
+			</div>
+		</section>
+
+		<!-- ================= 2. GROUP EXHIBITION ================= -->
+		<section class="section" id="ausstellung">
 			<div class="wrap split">
-				<a href="/img/fotos/ausstellung-berlin-things-1.jpg"><img src="/img/fotos/ausstellung-berlin-things-1.jpg" alt="Aydan bei der Gruppenausstellung „Berlin Things“ neben der eigenen gerahmten Tusche-Zeichnung" class="ph-img ph--natural" width="1199" height="1599" loading="lazy" decoding="async"></a>
+				<a class="ref-frame" href="/img/fotos/ausstellung-berlin-things-1.jpg"><img src="/img/fotos/ausstellung-berlin-things-1.jpg" alt="Aydan bei der Gruppenausstellung „Berlin Things“ neben der eigenen gerahmten Tusche-Zeichnung" class="ph-img ph--natural" width="1199" height="1599" loading="lazy" decoding="async"></a>
 				<div>
-					<span class="eyebrow">Ausstellung · Kunst an der Wand</span>
+					<span class="eyebrow">August 2023 · Ausstellung · Kunst an der Wand</span>
 					<h2>Gruppenausstellung „Berlin Things“</h2>
 					<p><strong>Creative Sessions, Berlin · 10.–24. August 2023</strong></p>
 					<p>
@@ -109,59 +182,14 @@
 			</div>
 		</section>
 
-		<!-- ================= 2. SAUNASPLASH FESTIVAL ================= -->
-		<section class="section" id="saunasplash">
-			<div class="wrap">
-				<div class="split">
-					<div>
-						<span class="eyebrow">Live-Event · 3 Tage · 1.500+ Gäste</span>
-						<h2>Saunasplash: vom Mauerpark direkt aufs Festival</h2>
-						<p>
-							Angefangen hat alles an einem Mittwoch um 22 Uhr vor dem Mauerpark. Ich saß mit meinem Klapptisch
-							da und bot Live-Porträts an – und zeichnete einen Mann, der sich als Veranstalter des Saunasplash
-							herausstellte. Zwei Tage später, am Freitag, kam spontan die Einladung: Komm doch vorbei und zeichne
-							bei uns.
-						</p>
-						<p>
-							Also stand ich am Freitag mit meinem Stand auf dem Festival und habe von Freitag bis Sonntag das
-							ganze Event gezeichnet. Am Sonntag habe ich selbst die Saunen ausprobiert – und das hat etwas
-							verändert: Ich wurde ruhiger, habe mich auf die Stimmung eingelassen und angefangen, mit Aquarell
-							zu malen. Die Porträts gab es ehrenamtlich, kostenlos bzw. auf Spendenbasis, das Festival hat
-							mich dafür unterstützt.
-						</p>
-						<p>
-							Und genau die entspannten Aquarell-Porträts mochten die Gäste am meisten. Seitdem weiß ich: Ich
-							passe mich dem Event an – vom schnellen Fineliner-Strich im Trubel bis zum ruhigen Aquarell.
-						</p>
-						<div class="btn-row"><a class="btn" href="/events.html#anfrage-event">Mich zum Event buchen</a></div>
-					</div>
-					<img src="/img/fotos/aydan-am-stand.jpg" alt="Aydan zeichnet an seinem Stand auf dem Saunasplash-Festival" class="ph-img ph--natural" width="1400" height="1050" loading="lazy" decoding="async">
-				</div>
-
-				<h3 style="margin-top:2em">Mein Stand auf dem Festival</h3>
-				<p class="hint">Klick auf ein Bild, um es groß zu sehen.</p>
-				<div class="band-grid ref-grid" data-lightbox>
-						<a href="/img/fotos/stand-saunasplash-nacht-4x5.jpg"><img src="/img/fotos/stand-saunasplash-nacht-4x5.jpg" alt="Der beleuchtete Porträt-Stand bei Nacht auf dem Saunasplash" width="920" height="1150" loading="lazy" decoding="async"></a>
-						<a href="/img/fotos/stand-saunasplash-portraets-3x2.jpg"><img src="/img/fotos/stand-saunasplash-portraets-3x2.jpg" alt="Zeichentisch voller live gezeichneter Porträts beim Saunasplash" width="742" height="495" loading="lazy" decoding="async"></a>
-						<a href="/img/fotos/stand-zelt-3x2.jpg"><img src="/img/fotos/stand-zelt-3x2.jpg" alt="Der Porträt-Stand komplett von vorne" width="1200" height="800" loading="lazy" decoding="async"></a>
-						<a href="/img/fotos/stand-tisch-3x2.jpg"><img src="/img/fotos/stand-tisch-3x2.jpg" alt="Preisschild und Beispielporträts auf dem Zeichentisch" width="1200" height="800" loading="lazy" decoding="async"></a>
-						<a href="/img/fotos/stand-klapptisch.jpg"><img src="/img/fotos/stand-klapptisch.jpg" alt="Der Stand mit Klapptisch, Preisschild und Porträts" width="1400" height="647" loading="lazy" decoding="async"></a>
-				</div>
-					<div class="pdf-links">
-						<span class="hint">Infoblatt zum Mitnehmen:</span>
-						<a class="btn btn--ghost btn--small" href="/downloads/infoblatt-live-portraits-events.pdf" target="_blank" rel="noopener">Live-Porträts für Events (PDF)</a>
-						<a class="btn btn--ghost btn--small" href="/downloads/infoblatt-kleckerkasten-teamworkshop.pdf" target="_blank" rel="noopener">Kleckerkasten-Teamworkshop (PDF)</a>
-					</div>
-			</div>
-		</section>
-
-		<!-- ================= 3. STAFF PORTRAITS (LK Kunst) ==========		     TODO: check that these are the right photos (Spaghetteria staff portraits) and correct the text if needed -->
+		<!-- ================= 3. STAFF PORTRAITS (LK Kunst) =================
+		     TODO: check that these are the right photos (Spaghetteria staff portraits) and correct the text if needed -->
 		<section class="section section--alt" id="mitarbeiter-portraets">
 			<div class="wrap">
 				<div class="split split--reverse">
-					<img src="/img/fotos/spaghettaria-2.jpg" alt="Gerahmtes blaues Aquarell-Porträt eines Mitarbeiters an der Wand des Restaurants" class="ph-img ph--natural" width="1000" height="778" loading="lazy" decoding="async">
+					<div class="ref-frame"><img src="/img/fotos/spaghettaria-2.jpg" alt="Gerahmtes blaues Aquarell-Porträt eines Mitarbeiters an der Wand des Restaurants" class="ph-img ph--natural" width="1000" height="778" loading="lazy" decoding="async"></div>
 					<div>
-						<span class="eyebrow">Porträt-Serie · Team · Ausstellung</span>
+						<span class="eyebrow">2023 · Porträt-Serie · Team · Ausstellung</span>
 						<h2>Bezahlte Mitarbeiter-Porträts für die Spaghetteria</h2>
 						<p>
 							Als bezahlten Auftrag – und zugleich als Projekt für meinen Kunst-Leistungskurs am Gymnasium – habe ich die Mitarbeiter:innen des Berliner Restaurants

@@ -27,6 +27,7 @@
 		pickSize: 'Please pick a size and style first.',
 		needPhoto: 'Please add at least one photo – I paint from it.',
 		tooMany: 'Up to 3 photos – the rest were left out.',
+		tooBig: 'This photo is too big to send (max. 3 MB, e.g. HEIC from an iPhone). Please pick a JPEG or a screenshot of it.',
 		remove: 'Remove',
 		photoBusy: 'Preparing photo …',
 		base: 'Portrait', people: 'extra person/pet', peopleN: 'extra people/pets',
@@ -47,6 +48,7 @@
 		pickSize: 'Bitte wähle zuerst Größe und Stil.',
 		needPhoto: 'Bitte lade mindestens ein Foto hoch – danach male ich.',
 		tooMany: 'Höchstens 3 Fotos – die übrigen wurden weggelassen.',
+		tooBig: 'Dieses Foto ist zu groß zum Senden (max. 3 MB, z. B. HEIC vom iPhone). Bitte wähle ein JPEG oder einen Screenshot davon.',
 		remove: 'Entfernen',
 		photoBusy: 'Foto wird vorbereitet …',
 		base: 'Porträt', people: 'weitere Person/Tier', peopleN: 'weitere Personen/Tiere',
@@ -74,10 +76,17 @@
 		var size = ($('[name="Größe"]:checked') || {}).value === 'A5' ? 'a5' : ($('[name="Größe"]:checked') ? 'a4' : null);
 		var style = $('[name="Stil"]:checked');
 		var lines = [], total = 0;
-		if (!size || !style) return { size: size, ready: false, lines: [], total: 0 };
+		if (!size) return { size: size, ready: false, lines: [], total: 0 };
 
-		var base = num(style.getAttribute('data-' + size));
-		lines.push([T.base + ' ' + size.toUpperCase() + ' · ' + style.getAttribute('data-label'), base]);
+		// the price shows as soon as a size is picked: without a style yet, the cheapest style counts
+		var base;
+		if (style) {
+			base = num(style.getAttribute('data-' + size));
+			lines.push([T.base + ' ' + size.toUpperCase() + ' · ' + style.getAttribute('data-label'), base]);
+		} else {
+			base = Math.min.apply(null, $$('[name="Stil"]').map(function (r) { return num(r.getAttribute('data-' + size)); }));
+			lines.push([T.base + ' ' + size.toUpperCase(), base]);
+		}
 		total += base;
 
 		var people = Math.max(1, parseInt($('[name="Personen pro Bild"]').value, 10) || 1) - 1;
@@ -90,7 +99,7 @@
 		var frame = $('[name="Rahmen"]:checked');
 		var framed = frame && num(frame.getAttribute('data-price')) > 0;
 		if (framed) {
-			var colour = $('[name="Rahmenfarbe"]:checked');
+			var colour = frame.hasAttribute('data-frame-custom') ? null : $('[name="Rahmenfarbe"]:checked');
 			lines.push([frame.getAttribute('data-label') + (colour ? ' (' + colour.getAttribute('data-label') + ')' : ''), num(frame.getAttribute('data-price'))]);
 			total += num(frame.getAttribute('data-price'));
 		}
@@ -101,18 +110,22 @@
 			total += num(box.getAttribute('data-price'));
 		});
 
+		// delivery only counts once it is chosen (pick-up is free)
 		var del = $('[name="Lieferung"]');
-		var opt = del.options[del.selectedIndex];
-		var ship = num(framed && opt.getAttribute('data-price-framed') ? opt.getAttribute('data-price-framed') : opt.getAttribute('data-price'));
-		lines.push([opt.getAttribute('data-label'), ship]);
-		total += ship;
+		var opt = del.selectedIndex > -1 ? del.options[del.selectedIndex] : null;
+		if (opt && opt.value) {
+			var ship = num(framed && opt.getAttribute('data-price-framed') ? opt.getAttribute('data-price-framed') : opt.getAttribute('data-price'));
+			lines.push([opt.getAttribute('data-label'), ship]);
+			total += ship;
+		}
 
 		var card = $('[name="Rabattkarte"]');
 		if (card && card.checked) {
 			lines.push([T.discount, num(card.getAttribute('data-price'))]);
 			total += num(card.getAttribute('data-price'));
 		}
-		return { size: size, ready: true, lines: lines, total: Math.max(0, total), framed: framed, shipping: opt.hasAttribute('data-address') };
+		return { size: size, ready: true, lines: lines, total: Math.max(0, total), framed: framed, frame: frame,
+			shipping: !!(opt && opt.hasAttribute('data-address')), scanOnly: !!(opt && /Scan/.test(opt.value)) };
 	}
 
 	var summaries = $$('[data-order-summary]', document);
@@ -137,10 +150,29 @@
 		if (pp) pp.textContent = T.money(num($('[name="Personen pro Bild"]').getAttribute('data-' + (s.size || 'a4')))).replace(/[.,]00/, '');
 		// frame colour only with a frame
 		var colours = $('[data-frame-colours]');
+		var custom = !!(s.frame && s.frame.hasAttribute('data-frame-custom'));   // grandpa's frame: wishes instead of a colour
 		if (colours) {
-			colours.hidden = !s.framed;
-			$$('input', colours).forEach(function (i) { i.disabled = !s.framed; });   // no colour in the e-mail without a frame
+			var showC = s.framed && !custom;
+			colours.hidden = !showC;
+			$$('input', colours).forEach(function (i) { i.disabled = !showC; });   // no colour in the e-mail without a frame
 		}
+		var wish = $('[data-frame-wish]');
+		if (wish) { wish.hidden = !custom; $$('textarea', wish).forEach(function (t) { t.disabled = !custom; }); }
+		// scan only + a frame: ask whether the frame should stay
+		var sf = $('[data-scan-frame]');
+		if (sf) sf.hidden = !(s.scanOnly && s.framed && !keepFrame);
+		// tier: show what's included once one is picked
+		var tier = $('[name="Rundum-Behandlung"]:checked'), tbox = $('[data-tier-box]');
+		if (tbox) {
+			var info = tier && tier.getAttribute('data-tier-info');
+			tbox.hidden = !info;
+			tbox.textContent = info || '';
+		}
+		// quick extras under the price box mirror the real checkboxes in step 2
+		$$('[data-mirror]', document).forEach(function (m) {
+			var real = $('input[name="' + m.getAttribute('data-mirror') + '"]');
+			if (real) m.checked = real.checked;
+		});
 		// address only when it gets shipped
 		var addr = $('[data-address-fields]');
 		if (addr) {
@@ -182,8 +214,24 @@
 
 	function esc(t) { return String(t).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
 
-	form.addEventListener('change', render);
-	form.addEventListener('input', render);
+	var keepFrame = false;
+	form.addEventListener('change', function (e) {
+		var m = e.target.closest('[data-mirror]');
+		if (m) {
+			var real = $('input[name="' + m.getAttribute('data-mirror') + '"]');
+			if (real) { real.checked = m.checked; real.dispatchEvent(new Event('change', { bubbles: true })); return; }
+		}
+		if (e.target.name === 'Lieferung' || e.target.name === 'Rahmen') keepFrame = false;
+		render();
+	});
+	form.addEventListener('input', function (e) { if (!e.target.closest('[data-mirror]')) render(); });   // mirrors are handled on change
+	form.addEventListener('click', function (e) {
+		if (e.target.closest('[data-keep-frame]')) { keepFrame = true; render(); }
+		if (e.target.closest('[data-drop-frame]')) {
+			var none = $('[name="Rahmen"][data-price="0"]');
+			if (none) { none.checked = true; render(); }
+		}
+	});
 
 	// "Bestellen" buttons on the price cards pre-pick the size: <a href="#bestellen" data-order-size="A5">
 	$$('[data-order-size]', document).forEach(function (a) {
@@ -262,6 +310,7 @@
 	var list = $('[data-photo-list]');
 	var note = $('[data-photo-note]');
 	var photos = [];
+	var MAX_PHOTO = 3 * 1024 * 1024;   // 3 photos x 3 MB stays under formsubmit's 10 MB limit
 	var hasDataTransfer = (function () { try { return !!new DataTransfer(); } catch (e) { return false; } })();
 
 	if (drop && hasDataTransfer) {
@@ -278,7 +327,12 @@
 		var room = slots.length - photos.length;
 		note.textContent = incoming.length > room ? T.tooMany : '';
 		incoming.slice(0, room).forEach(function (f) {
-			var item = { file: f, ready: shrink(f).then(function (small) { item.file = small; sync(); }) };
+			var item = { file: f, ready: shrink(f).then(function (small) {
+				item.file = small; item.done = true;
+				// formsubmit takes max. 10 MB per submission – a photo that couldn't be shrunk (HEIC etc.) is dropped
+				if (small.size > MAX_PHOTO) { photos.splice(photos.indexOf(item), 1); note.textContent = T.tooBig; }
+				sync();
+			}) };
 			photos.push(item);
 		});
 		sync();
@@ -286,10 +340,10 @@
 
 	function shrink(file) {
 		return new Promise(function (resolve) {
-			if (!/^image\/(jpeg|png|webp)$/.test(file.type) || file.size < 700 * 1024) return resolve(file);
+			if (!/^image\/(jpeg|png|webp)$/.test(file.type) || file.size < 400 * 1024) return resolve(file);
 			var img = new Image(), url = URL.createObjectURL(file);
 			img.onload = function () {
-				var max = 1800, w = img.naturalWidth, h = img.naturalHeight, k = Math.min(1, max / Math.max(w, h));
+				var max = 1600, w = img.naturalWidth, h = img.naturalHeight, k = Math.min(1, max / Math.max(w, h));
 				var c = document.createElement('canvas');
 				c.width = Math.round(w * k); c.height = Math.round(h * k);
 				c.getContext('2d').drawImage(img, 0, 0, c.width, c.height);
@@ -335,6 +389,15 @@
 	form.addEventListener('submit', function (e) {
 		for (var k = 0; k < steps.length; k++) {
 			if (!valid(steps[k], true)) { e.preventDefault(); go(k, true); valid(steps[k]); return; }
+		}
+		// photos still being shrunk: wait for them, otherwise the full-size originals get uploaded
+		var pending = photos.filter(function (p) { return !p.done; });
+		if (pending.length) {
+			e.preventDefault();
+			Promise.all(photos.map(function (p) { return p.ready; })).then(function () {
+				if (form.requestSubmit) form.requestSubmit(); else form.submit();
+			});
+			return;
 		}
 		var s = render();
 		var d = new Date();

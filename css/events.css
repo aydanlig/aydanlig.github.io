@@ -29,6 +29,17 @@
 
 .live-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 2.5em; }
 .live-strip img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 12px; display: block; }
+/* the Saunasplash watercolour photo takes two slots; height follows the 4:5 photos next to it */
+.live-strip-wide { grid-column: span 2; position: relative; margin: 0; }
+.live-strip .live-strip-wide img { aspect-ratio: auto; height: 100%; }
+.live-strip-wide figcaption { position: absolute; left: 10px; bottom: 10px; right: 10px; width: fit-content; max-width: calc(100% - 20px);
+	padding: 5px 12px; border-radius: 999px; background: rgba(31, 27, 36, 0.78); color: #F2EAE4; font-size: 0.85rem; font-weight: 600; line-height: 1.3; }
+
+/* "−100 € if I may film" under each package price + filming/payment notes below the cards */
+.film-deal { margin: -0.4em 0 0.8em; font-size: 0.85rem; font-weight: 700; color: var(--accent-dark); }
+.price-extras { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 1.4em; }
+.price-extras p { margin: 0; padding: 14px 16px; background: var(--card); border: 1px solid var(--line); border-radius: 12px; font-size: 0.92rem; color: var(--ink-soft); }
+.price-extras strong { color: var(--ink); }
 
 .live-subtitle { margin: 2.4em 0 0; font-family: var(--font-head); font-size: clamp(1.3rem, 2.6vw, 1.7rem); }
 .live-subtitle + .story-steps { margin-top: 1.2em; }
@@ -56,10 +67,12 @@
 
 @media (max-width: 900px) {
 	.live-strip { grid-template-columns: repeat(2, 1fr); }
+	.live-strip .live-strip-wide img { aspect-ratio: 3 / 2; height: auto; }
 	.live-stats { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 600px) {
 	.style-pick { grid-template-columns: 1fr; }
+	.price-extras { grid-template-columns: 1fr; }
 }
 
 /* ---------- Kleckerkasten: big, bold "BAM" titles ---------- */
