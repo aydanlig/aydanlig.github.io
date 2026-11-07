@@ -29,6 +29,17 @@
 
 .live-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 2.5em; }
 .live-strip img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 12px; display: block; }
+/* the Saunasplash watercolour photo takes two slots; height follows the 4:5 photos next to it */
+.live-strip-wide { grid-column: span 2; position: relative; margin: 0; }
+.live-strip .live-strip-wide img { aspect-ratio: auto; height: 100%; }
+.live-strip-wide figcaption { position: absolute; left: 10px; bottom: 10px; right: 10px; width: fit-content; max-width: calc(100% - 20px);
+	padding: 5px 12px; border-radius: 999px; background: rgba(31, 27, 36, 0.78); color: #F2EAE4; font-size: 0.85rem; font-weight: 600; line-height: 1.3; }
+
+/* "−100 € if I may film" under each package price + filming/payment notes below the cards */
+.film-deal { margin: -0.4em 0 0.8em; font-size: 0.85rem; font-weight: 700; color: var(--accent-dark); }
+.price-extras { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 1.4em; }
+.price-extras p { margin: 0; padding: 14px 16px; background: var(--card); border: 1px solid var(--line); border-radius: 12px; font-size: 0.92rem; color: var(--ink-soft); }
+.price-extras strong { color: var(--ink); }
 
 .live-subtitle { margin: 2.4em 0 0; font-family: var(--font-head); font-size: clamp(1.3rem, 2.6vw, 1.7rem); }
 .live-subtitle + .story-steps { margin-top: 1.2em; }
@@ -56,8 +67,32 @@
 
 @media (max-width: 900px) {
 	.live-strip { grid-template-columns: repeat(2, 1fr); }
+	.live-strip .live-strip-wide img { aspect-ratio: 3 / 2; height: auto; }
 	.live-stats { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 600px) {
 	.style-pick { grid-template-columns: 1fr; }
+	.price-extras { grid-template-columns: 1fr; }
+}
+
+/* ---------- Kleckerkasten: big, bold "BAM" titles ---------- */
+.kk-bam {
+	margin: 0.1em 0 0.15em; font-family: var(--font-head); font-weight: 900; line-height: 0.95;
+	font-size: clamp(2.4rem, 7.5vw, 3.7rem); letter-spacing: -0.02em; color: var(--fox);
+	transform: rotate(-2deg); transform-origin: left center; hyphens: manual;
+	text-shadow: 3px 3px 0 var(--ink), 7px 7px 0 rgba(47, 111, 181, 0.35);
+	animation: kk-pop 0.6s cubic-bezier(.2, 1.6, .4, 1) both;
+}
+.kk-bam span { display: block; font-size: 0.42em; color: var(--ink); text-shadow: none; letter-spacing: 0.02em; }
+.kk-title { font-weight: 900; letter-spacing: -0.01em; }
+h2.kk-title { font-size: clamp(1.7rem, 3.6vw, 2.4rem); }
+h3.kk-title { font-size: clamp(1.35rem, 2.6vw, 1.75rem); }
+@keyframes kk-pop { from { transform: rotate(-2deg) scale(0.6); opacity: 0; } to { transform: rotate(-2deg) scale(1); opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .kk-bam { animation: none; } }
+
+/* Tablet widths (721–900 px): logo + menu + EN + "Anfragen ▾" did not fit in one row → tighter header */
+@media (min-width: 721px) and (max-width: 900px) {
+	.site-header .wrap { gap: 14px; }
+	.main-nav { gap: 14px; }
+	.main-nav .nav-long { display: none; }
 }

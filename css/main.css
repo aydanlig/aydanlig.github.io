@@ -1382,7 +1382,9 @@ body.scrolled .scroll-hint { opacity: 0; pointer-events: none; }
 
 /* ---------- Phone overflow guards (nothing may stick out to the right) ---------- */
 /* long German words in big headings ("Dankbarkeitswand") break with a hyphen instead of overflowing */
-h1, h2, h3 { overflow-wrap: break-word; hyphens: auto; }
+h1, h2, h3 { overflow-wrap: break-word; }
+/* hyphenate only on phones – on wide screens it split words like "expres-sive" for no reason */
+@media (max-width: 600px) { h1, h2, h3 { hyphens: auto; } }
 /* grid columns may shrink below their content (images, long words) */
 .split > *, .cards > * { min-width: 0; }
 @media (max-width: 480px) {
