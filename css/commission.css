@@ -103,3 +103,25 @@ details.extras-box[open] > summary { margin-bottom: 0.8em; }
 .order-rights > summary::after { content: " ▾"; color: var(--accent); }
 .order-rights[open] > summary::after { content: " ▴"; }
 .order-rights > label { display: block; }
+
+/* Extras: same "spoiler" as the homepage gallery – the notable extras clearly at the top,
+   the rest as a blurred, fading peek with a pill to open everything */
+details.extras-box > summary { display: block; }
+.extras-top { margin: 0.6em 0 0; }
+.extras-tease { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 6px 36px; margin-top: 10px; pointer-events: none; filter: blur(4px); opacity: .7; user-select: none; }
+.extras-tease span { padding: 6px 0; border-bottom: 1px dashed var(--line); }
+.extras-tease::after { content: ""; position: absolute; inset: -6px; background: linear-gradient(to bottom, transparent 10%, var(--card) 95%); }
+.extras-pill { position: relative; z-index: 1; display: table; margin: -26px auto 0; padding: 10px 22px; border: 2px solid currentColor; border-radius: 999px; background: var(--card); font-weight: 700; color: var(--accent); }
+.extras-pill span { font-weight: 400; color: var(--ink-soft); }
+details.extras-box > summary:hover .extras-pill { background: var(--paper); }
+.extras-pill--close { display: none; }
+/* open: the peek and the top list go (the full list repeats them), the close pill sits at the bottom of the box */
+details.extras-box[open] > summary .extras-top, details.extras-box[open] > summary .extras-tease, details.extras-box[open] > summary .extras-pill:not(.extras-pill--close) { display: none; }
+details.extras-box[open] { display: flex; flex-direction: column; }
+details.extras-box[open] > summary { order: 2; margin: 1em 0 0; }
+details.extras-box[open] .extras-pill--close { display: table; margin: 0 auto; }
+@media (max-width: 720px) { .extras-tease { grid-template-columns: 1fr; } .extras-tease span:nth-child(n+4) { display: none; } }
+details.extras-box[open] > summary .extras-sum-title { display: none; }
+details.extras-box[open]::before { content: "Extras"; order: 0; font-family: var(--font-display, inherit); font-size: 1.3rem; font-weight: 700; margin-bottom: 0.4em; }
+details.extras-box[open] > .extras-groups { order: 1; }
+details.extras-box[open] > .extras-live { order: 1; }
