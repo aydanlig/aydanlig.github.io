@@ -252,17 +252,20 @@ window.SFP_CROPS = {
 			"y": 50,
 			"z": 1
 		},
-		"/events.html|stand-saunasplash-nacht-4x5.jpg": {
-			"x": 50,
-			"y": 50,
-			"z": 1,
-			"r": 0.741
+		"/commission.html|kunst-02.jpg": {
+			"x": 51.889,
+			"y": 28.879,
+			"z": 1.166
 		},
-		"/events.html|aquarell-gitarre-4x5.jpg": {
-			"x": 51.524,
-			"y": 82.391,
-			"z": 1.166,
-			"r": 0.737
+		"/commission.html|galerie-01.jpg": {
+			"x": 19.741,
+			"y": 0,
+			"z": 1.08
+		},
+		"/commission.html|kunst-06.jpg": {
+			"x": 31.023,
+			"y": 63.42,
+			"z": 1.36
 		}
 	},
 	"phone": {}
