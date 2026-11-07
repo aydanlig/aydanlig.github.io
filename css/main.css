@@ -2281,3 +2281,8 @@ h3 { letter-spacing: -0.012em; }
 
 /* Dark mode: newsletter band in the footer (--plum turns light in dark mode) */
 :root.theme-dark .footer-newsletter { background: linear-gradient(120deg, #2A2230, #3A2530); border-color: var(--line); }
+
+/* Referenzen: text tile at the end of the Spaghetteria row ("I've improved a lot since then") */
+.ref-note { display: flex; flex-direction: column; justify-content: center; gap: 10px; aspect-ratio: 1 / 1; padding: 18px; border-radius: 10px; background: var(--card); border: 1px solid var(--line); font-size: 0.92rem; line-height: 1.4; }
+.ref-note p { margin: 0; }
+.band-grid .ref-note a { display: inline; background: none; border-radius: 0; overflow: visible; font-weight: 700; color: var(--accent, var(--fox)); }
