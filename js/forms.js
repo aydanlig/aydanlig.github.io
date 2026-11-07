@@ -53,42 +53,51 @@
 		document.querySelectorAll('form[data-sending] [type="submit"]').forEach(function (b) { b.disabled = false; });
 	}
 
-	document.addEventListener('DOMContentLoaded', function () {
-		document.querySelectorAll('form[action*="formsubmit.co"]').forEach(function (form) {
-			// formsubmit.co is sometimes down: a short e-mail fallback under the last send button of every form
-			var btns = form.querySelectorAll('[type="submit"]');
-			var last = btns[btns.length - 1];
-			if (last && !form.querySelector('.form-fallback')) {
-				var en = (document.documentElement.lang || '').indexOf('en') === 0;
-				var note = document.createElement('p');
-				note.className = 'form-fallback';
-				note.style.cssText = 'font-size:.85rem;opacity:.8;margin-top:.6em';
-				note.innerHTML = en
-					? 'Form not working? Our form service is sometimes down – just e-mail me instead: <a href="mailto:aydan@smileyfoxyportraits.com">aydan@smileyfoxyportraits.com</a>'
-					: 'Formular klappt nicht? Der Formular-Dienst ist manchmal kurz gestört – schreib mir einfach eine E-Mail: <a href="mailto:aydan@smileyfoxyportraits.com">aydan@smileyfoxyportraits.com</a>';
-				last.insertAdjacentElement('afterend', note);
-			}
-			form.addEventListener('submit', function (e) {
-				// wait one moment so other checks (e.g. the date check) can stop the sending first
-				setTimeout(function () {
-					if (e.defaultPrevented) return;
-					form.setAttribute('data-sending', '');
-					form.querySelectorAll('[type="submit"]').forEach(function (b) { b.disabled = true; });
-					showWaitPopup();
-					// formsubmit.co sometimes hangs: after 45 s still on this page -> offer a way out instead of an endless spinner
-					setTimeout(function () {
-						var box = document.getElementById('wait-popup');
-						if (!box) return;
-						var span = box.querySelector('span');
-						if (span) span.innerHTML = EN
-							? 'This is taking unusually long. Please wait a little more – or write to me directly: <a href="mailto:aydan@smileyfoxyportraits.com">aydan@smileyfoxyportraits.com</a>. <button type="button" data-wait-close style="margin-top:12px;display:block;width:100%;padding:10px;border-radius:12px;border:2px solid #1A1615;background:#fff;font:inherit;cursor:pointer">Back to the form</button>'
-							: 'Das dauert ungewöhnlich lange. Bitte warte noch kurz – oder schreib mir direkt: <a href="mailto:aydan@smileyfoxyportraits.com">aydan@smileyfoxyportraits.com</a>. <button type="button" data-wait-close style="margin-top:12px;display:block;width:100%;padding:10px;border-radius:12px;border:2px solid #1A1615;background:#fff;font:inherit;cursor:pointer">Zurück zum Formular</button>';
-						var close = box.querySelector('[data-wait-close]');
-						if (close) close.addEventListener('click', hideWaitPopup);
-					}, 45000);
-				}, 0);
-			});
-		});
+	// formsubmit.co is sometimes down and then redirects to its own timeout page.
+	// So forms are sent in the background (formsubmit's AJAX endpoint): success -> our thank-you page (_next),
+	// error or no answer -> a popup with the e-mail address instead of the timeout page.
+	// Forms with file uploads keep the normal sending (attachments), but get the popup after a long wait.
+	var MAIL = '<a href="mailto:aydan@smileyfoxyportraits.com">aydan@smileyfoxyportraits.com</a>';
+	function showFailPopup() {
+		showWaitPopup();
+		var box = document.getElementById('wait-popup');
+		var spin = box.querySelector('.wait-spinner'); if (spin) spin.remove();
+		box.querySelector('strong').textContent = EN ? 'Form not working?' : 'Formular klappt nicht?';
+		box.querySelector('span').innerHTML = (EN
+			? 'Our form service is sometimes down – just e-mail me instead: '
+			: 'Der Formular-Dienst ist manchmal kurz gestört – schreib mir einfach eine E-Mail: ') + MAIL +
+			'<button type="button" data-wait-close style="margin-top:14px;display:block;width:100%;padding:10px;border-radius:12px;border:2px solid #1A1615;background:#fff;color:#1A1615;font:inherit;cursor:pointer">' +
+			(EN ? 'Back to the form' : 'Zurück zum Formular') + '</button>';
+		box.querySelector('[data-wait-close]').addEventListener('click', hideWaitPopup);
+	}
+	// listening on the document: runs after the forms' own checks (e.g. the date check), so e.defaultPrevented is final
+	document.addEventListener('submit', function (e) {
+		var form = e.target;
+		if (e.defaultPrevented || !form.matches || !form.matches('form[action*="formsubmit.co"]')) return;
+		form.setAttribute('data-sending', '');
+		var useAjax = !form.querySelector('input[type="file"]') && window.fetch && window.FormData;
+		var data = useAjax ? new FormData(form) : null;   // read before the buttons get disabled
+		if (useAjax && e.submitter && e.submitter.name) data.append(e.submitter.name, e.submitter.value);
+		form.querySelectorAll('[type="submit"]').forEach(function (b) { b.disabled = true; });
+		showWaitPopup();
+		if (!useAjax) {
+			setTimeout(function () { if (document.getElementById('wait-popup')) showFailPopup(); }, 45000);
+			return;
+		}
+		e.preventDefault();
+		var url = form.action.replace('formsubmit.co/', 'formsubmit.co/ajax/').replace('/ajax/ajax/', '/ajax/');
+		var next = data.get('_next');
+		var done = false;
+		var timer = setTimeout(function () { if (!done) { done = true; showFailPopup(); } }, 25000);
+		fetch(url, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } })
+			.then(function (r) { return r.ok ? r.json() : { success: 'false' }; })
+			.then(function (j) {
+				if (done) return; done = true; clearTimeout(timer);
+				if (String(j.success) !== 'true') return showFailPopup();
+				if (next) location.href = next;
+				else { hideWaitPopup(); form.reset(); alert(EN ? 'Thank you – your message has been sent!' : 'Danke – deine Nachricht ist angekommen!'); }
+			})
+			.catch(function () { if (!done) { done = true; clearTimeout(timer); showFailPopup(); } });
 	});
 	// Coming back with the browser's back button: remove the popup again
 	window.addEventListener('pageshow', hideWaitPopup);
