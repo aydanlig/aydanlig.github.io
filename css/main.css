@@ -1630,3 +1630,64 @@ h1, h2, h3 { overflow-wrap: break-word; hyphens: auto; }
 .stance li::before { position: absolute; left: 0; top: 0; font-size: 1.2rem; font-weight: 700; line-height: 1.3; }
 .stance--for li::before { content: "✓"; color: #1F8A8A; }
 .stance--against li::before { content: "✗"; color: #E0457B; }
+
+/* =========================================================
+   HOMEPAGE ROUND 2: calmer hero, polished art tiles, teaser for "Mehr Kunst",
+   Photoautomat popup, wiggling fox ears
+   ========================================================= */
+/* calmer hero: no wiggle / light sweep / shine / splash, the arrow only moves on hover */
+.hero--jd .btn-portfolio, .art-show .btn-portfolio { animation: none; }
+.hero--jd .btn-portfolio::after, .art-show .btn-portfolio::after { display: none; }
+.btn-portfolio b { animation: none; transition: transform .2s ease; }
+.btn-portfolio:hover b { transform: translateX(5px); }
+.jd-side { gap: 0; }
+.jd-claim { font-size: clamp(1.7rem, 3vw, 2.6rem); margin: 0 0 .7em; max-width: 16em; }
+.jd-side .btn-row { margin-top: 0; }
+.jd-side .saturday-line { margin-top: 1.1em; }
+.jd-more { margin: .9em 0 0; font-size: .95rem; }
+.scroll-hint b { animation: none; }
+
+/* art tiles: the picture sits on a calm paper mat instead of a blurry copy of itself */
+/* art tiles: the picture fills its tile (no blurry copy behind it); rows are taller so portrait art keeps its shape.
+   Which part stays visible = object-position (use the crop editor, js/crop.js) */
+.art-grid { grid-template-rows: 340px 340px; grid-auto-rows: 340px; }
+.art-grid a.fit::before { display: none; }
+.art-grid a.fit img { object-fit: cover; object-position: 50% 30%; }
+.art-grid span:not(.fade-stack) { z-index: 2; }
+.art-grid .art-wide img { object-position: 50% 45%; }
+@media (max-width: 760px) { .art-grid { grid-template-rows: 420px 260px 260px; grid-auto-rows: 240px; } }
+
+/* "Mehr Kunst ansehen": blurred peek at what's inside while it is closed */
+.gallery-tease { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; margin: 14px auto 0; max-width: 900px; position: relative; pointer-events: none; }
+.gallery-tease img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 10px; filter: blur(5px) saturate(.9); opacity: .75; }
+.gallery-tease::after { content: ""; position: absolute; inset: -6px; background: linear-gradient(to bottom, transparent 20%, var(--paper) 95%); }
+.gallery-more[open] .gallery-tease { display: none; }
+.gallery-more > summary { display: block; text-align: center; padding: 0; border: 0; border-radius: 0; }
+.gallery-more .gm-pill { position: relative; z-index: 1; display: inline-block; margin-top: -54px; padding: 10px 22px; border: 2px solid currentColor; border-radius: 999px; background: var(--paper); font-weight: 700; color: var(--accent); }
+.gallery-more .gm-pill span { font-weight: 400; color: var(--ink-soft); }
+.gallery-more[open] .gm-pill { margin-top: 0; }
+.gallery-more > summary:hover .gm-pill { background: var(--card); }
+@media (max-width: 600px) { .gallery-tease { grid-template-columns: repeat(3, 1fr); } .gallery-tease img:nth-child(n+4) { display: none; } }
+
+/* Photoautomat popup (js/home.js) */
+.pa-pop { position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%); z-index: 100; width: min(92vw, 380px); overflow: hidden;
+	display: flex; flex-direction: column; gap: 6px; padding: 16px 18px 20px; background: var(--card); color: var(--ink);
+	border: 2px solid var(--night); border-radius: 16px; box-shadow: 5px 6px 0 var(--fox); animation: pa-in .25s ease-out; }
+.pa-pop strong { font-family: var(--font-head); font-size: 1.15rem; }
+.pa-pop span { font-size: .92rem; }
+.pa-row { display: flex; gap: 10px; align-items: center; margin-top: 6px; }
+.pa-x { background: none; border: 0; color: var(--ink-soft); text-decoration: underline; cursor: pointer; font: inherit; }
+.pa-bar { position: absolute; left: 0; bottom: 0; height: 4px; width: 100%; background: var(--fox); transform-origin: left; animation: pa-bar 3s linear forwards; }
+@keyframes pa-in { from { opacity: 0; transform: translate(-50%, 12px); } }
+@keyframes pa-bar { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+/* fox ears: invisible hover target over each pair (js/home.js), wiggle on hover, harder on click */
+.ear-hit { position: absolute; bottom: 100%; z-index: 3; cursor: pointer; }
+.section--alt::before, .section--dark::before, .site-footer::before,
+.section--dark::after, .site-footer::after { transform-origin: 50% 100%; }
+.ears-wiggle::before, .ears-wiggle::after { animation: ears-soft .6s ease-in-out infinite; }
+.ears-wiggle-hard::before, .ears-wiggle-hard::after { animation: ears-hard .7s ease-in-out 1; }
+@keyframes ears-soft { 0%, 100% { transform: rotate(0); } 25% { transform: rotate(-5deg); } 75% { transform: rotate(5deg); } }
+@keyframes ears-hard { 0%, 100% { transform: rotate(0) scale(1); } 15% { transform: rotate(-16deg) scale(1.15) translateY(-3px); } 35% { transform: rotate(14deg) scale(1.15) translateY(-3px); }
+	55% { transform: rotate(-10deg) scale(1.08); } 75% { transform: rotate(7deg) scale(1.04); } }
+@media (prefers-reduced-motion: reduce) { .ears-wiggle::before, .ears-wiggle::after, .ears-wiggle-hard::before, .ears-wiggle-hard::after, .pa-pop, .pa-bar { animation: none; } }

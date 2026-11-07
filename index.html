@@ -16,6 +16,7 @@
 	<script src="/js/gallery.js" defer></script>
 	<script src="/js/confirm-link.js" defer></script>
 	<script src="/js/smiley.js" defer></script>
+	<script src="/js/home.js" defer></script>
 
 	<!-- SEO: title + description are what Google shows in search results.
 	     Keep the title under ~60 characters, the description under ~155. -->
@@ -101,7 +102,7 @@
 	<!-- ================= HEADER (same on every new page) ================= -->
 	<header class="site-header">
 		<div class="wrap">
-			<a class="logo" href="/">SmileyFoxy<span>Portraits</span><small class="logo-since">Seit 6 Jahren Porträts</small></a>
+			<a class="logo" href="/">SmileyFoxy<span>Portraits</span><small class="logo-since">Porträts seit 2020</small></a>
 			<nav class="main-nav" aria-label="Hauptmenü">
 				<a href="/events.html#live-events"><span class="nav-long">Live-</span>Events</a>
 				<a href="/events.html#kleckerkasten">Kleckerkasten</a>
@@ -124,9 +125,9 @@
 			<div class="jd-grid">
 				<div class="jd-art">
 					<img src="/img/fotos/aquarell-fineliner-detail-4x5.jpg" alt="Ausdrucksstarkes Porträt in Aquarell und Fineliner von Aydan Lig'on: Mann mit Brille und Bart" width="960" height="1200" fetchpriority="high" decoding="async">
-					<p class="hero-hi">Hi, ich bin 👋</p>
+					<p class="hero-hi">Hi, ich bin</p>
 					<!-- Only ONE <h1> per page – my name + what I do -->
-					<h1 class="jd-name">Aydan Lig'on<small>SmileyFoxyPortraits · Live-Porträts in Tusche &amp; Aquarell, Berlin</small></h1>
+					<h1 class="jd-name">Aydan Lig'on<small class="sr-only"> – SmileyFoxyPortraits, Live-Porträts in Tusche &amp; Aquarell aus Berlin</small></h1>
 					<ul class="jd-roles" aria-label="Was ich mache">
 						<li>Live-Porträts</li>
 						<li>Tusche &amp; Aquarell</li>
@@ -136,23 +137,16 @@
 					<span class="art-credit">Bild: in 25 Min. live gezeichnet, Mauerpark</span>
 				</div>
 
+				<!-- RIGHT: kept short on purpose (Jackie Droujko style) – one line, two buttons, where to find me -->
 				<div class="jd-side">
-					<span class="eyebrow">Aydan Lig'on · Berlin</span>
-					<p class="jd-claim">Ausdrucksstarke <em>Live-Porträtkunst</em> &amp; expressive Teamevents in Berlin</p>
-					<p class="lead">
-						Ich zeichne Menschen in wenigen Minuten – mit Fineliner, Aquarell und ganz viel Gefühl.
-						Für dein Event, dein Team oder einfach für dich.
-					</p>
+					<p class="jd-claim"><em>Live-Porträts</em> &amp; Teamevents in Berlin.</p>
 					<div class="btn-row">
-						<a class="btn btn-shine" href="/events.html#live-events">Mich zum Event buchen</a>
-						<a class="btn btn--fox btn-splash" href="/events.html#kleckerkasten">Kleckerkasten Workshop</a>
+						<a class="btn" href="/events.html#live-events">Event buchen</a>
+						<a class="btn btn--fox" href="/events.html#kleckerkasten">Kleckerkasten</a>
 					</div>
-					<p class="hero-note">
-						Lieber ein persönliches Porträt? <a href="/commission.html">Hier geht's zum Auftrags-Porträt →</a>
-					</p>
-					<!-- Quick one-liner: where to find me every Saturday -->
-					<p class="saturday-line"><strong>Jeden Samstag 14–22 Uhr</strong> im Mauerpark, direkt neben dem Photoautomaten –
-						<a href="https://maps.app.goo.gl/ZhjvUq1bMy8CyVk18" target="_blank" rel="noopener">Karte</a> · <a href="#termine">nächste Termine</a></p>
+					<p class="jd-more"><a href="/commission.html">Lieber ein Porträt nach Foto? Hier bestellen →</a></p>
+					<p class="saturday-line"><strong>Samstags 14–22 Uhr</strong> im Mauerpark ·
+						<a href="https://maps.app.goo.gl/ZhjvUq1bMy8CyVk18" target="_blank" rel="noopener" data-photoautomat>Karte</a> · <a href="#termine">nächste Termine</a></p>
 				</div>
 			</div>
 			<!-- Scroll hint: gently bouncing arrow, fades out as soon as the visitor scrolls -->
@@ -176,7 +170,7 @@
 					<a class="fit" href="/img/fotos/tusche-portraet-4x5.jpg" style="--bg: url('/img/fotos/tusche-portraet-4x5.jpg')"><span class="fade-stack" data-fade="6000"><img src="/img/fotos/tusche-portraet-4x5.jpg" alt="Ausdrucksstarkes Porträt in schwarzer Tusche" width="1080" height="1350" loading="lazy" decoding="async"><img src="/img/fotos/tusche-portraet-2.jpg" alt="Ernstes Tusche-Porträt im Skizzenbuch" width="1080" height="1092" loading="lazy" decoding="async"></span><span>Tusche</span></a>
 					<!-- CEVIL: concert sketch, our selfie with her signed album, her Instagram share (js/fade.js) -->
 					<a class="fit" href="/img/musik/band-3-buehne.jpg" style="--bg: url('/img/musik/band-3-buehne.jpg')"><span class="fade-stack" data-fade="5000"><img src="/img/musik/band-3-buehne.jpg" alt="Live-Skizze der Band CEVIL im pinken Bühnenlicht" width="739" height="1260" loading="lazy" decoding="async"><img src="/img/musik/cevil-selfie.jpg" alt="Selfie: Aydan und CEVIL nach dem Konzert, mit ihrem signierten Album" width="1050" height="1400" loading="lazy" decoding="async"><img src="/img/musik/band-7.jpg" alt="Die Live-Skizze, von CEVIL auf Instagram geteilt: „this is the coolest thing ever“" loading="lazy" decoding="async"></span><span>CEVIL – live auf der Bühne</span></a>
-					<a class="fit" href="/img/fotos/gerahmtes-paar-3x4.jpg" style="--bg: url('/img/fotos/gerahmtes-paar-3x4.jpg')"><img src="/img/fotos/gerahmtes-paar-3x4.jpg" alt="Gerahmtes Paar-Porträt in Tusche und Aquarell mit Skizzen und Fotostreifen" width="675" height="900" loading="lazy" decoding="async"><span>Auftrag, gerahmt</span></a>
+					<a class="fit" href="/img/fotos/gerahmtes-paar-3x4.jpg" style="--bg: url('/img/fotos/gerahmtes-paar-3x4.jpg')"><img src="/img/fotos/gerahmtes-paar-3x4.jpg" alt="Gerahmt: 3× 1-€-Skizzen, eine A5-Skizze für 20 € und oben rechts der Fotostreifen aus dem Photoautomaten" width="675" height="900" loading="lazy" decoding="async"><span>3× 1 € + A5 (20 €), gerahmt</span></a>
 					<a class="fit" href="/img/fotos/stand-saunasplash-portraets-3x2.jpg" style="--bg: url('/img/fotos/stand-saunasplash-portraets-3x2.jpg')"><img src="/img/fotos/stand-saunasplash-portraets-3x2.jpg" alt="Mein Porträt-Stand voller live gezeichneter Porträts beim Saunasplash" width="742" height="495" loading="lazy" decoding="async"><span>Mein Porträt-Stand</span></a>
 					<!-- 1-€ quick sketches (Saturdays at Mauerpark, ~5 min each): full-width tile in the third row, fades through the photos (js/fade.js) -->
 					<a class="art-wide fit" href="/img/fotos/ein-euro-portraet-kuss.jpg" style="--bg: url('/img/fotos/ein-euro-portraet-kuss.jpg')"><span class="fade-stack" data-fade="4500"><img src="/img/fotos/ein-euro-portraet-kuss.jpg" alt="1-€-Schnellskizze in schwarzem Marker: zwei Frauen küssen sich" width="1400" height="1050" loading="lazy" decoding="async"><img src="/img/fotos/ein-euro-portraet-skizzen.jpg" alt="Drei 1-€-Schnellskizzen in Tusche auf Skizzenbuchseiten" width="607" height="430" loading="lazy" decoding="async"><img src="/img/fotos/ein-euro-portraet.jpg" alt="1-€-Schnellskizze in schwarzem Marker: ein Paar, sie lehnt den Kopf an seine Schulter" width="706" height="877" loading="lazy" decoding="async"></span><span>1-€-Schnellskizzen · je ca. 5 Minuten</span></a>
@@ -186,7 +180,7 @@
 				<!-- MORE ART: folded away, opens with "Mehr Kunst ansehen". Click = big view (js/gallery.js).
 				     The first tile (class="hl") is the big highlight piece. To add a picture: put it in img/kunst/ and copy one <a>…</a> line. -->
 				<details class="gallery-more" data-lightbox>
-					<summary>Mehr Kunst ansehen <span>(34 Bilder)</span></summary>
+					<summary><span class="gallery-tease" aria-hidden="true"><img src="/img/kunst/kunst-09a.jpg" alt="" decoding="async"><img src="/img/kunst/insta-2.jpg" alt="" decoding="async"><img src="/img/kunst/kunst-09b.jpg" alt="" decoding="async"><img src="/img/galerie/galerie-01.jpg" alt="" decoding="async"><img src="/img/kunst/insta-3.jpg" alt="" decoding="async"><img src="/img/kunst/insta-5.jpg" alt="" decoding="async"></span><span class="gm-pill">Mehr Kunst ansehen <span>(34 Bilder)</span></span></summary>
 					<div class="gallery-grid">
 						<a class="hl" href="/img/kunst/kunst-02.jpg"><img src="/img/kunst/kunst-02.jpg" alt="Tusche-Porträt eines Mannes mit Brille und Bart, blaue Aquarellfläche" loading="lazy" decoding="async"></a>
 						<a href="/img/kunst/kunst-09a.jpg"><img src="/img/kunst/kunst-09a.jpg" alt="Aquarell-Porträt in Orange und Blau: Paar unter Wimpelketten" width="600" height="848" loading="lazy" decoding="async"></a>
@@ -244,13 +238,13 @@
 					<li data-date="2026-11-09"><span class="t-date">Mo 09.11.</span><span class="t-what"><strong>Schokoladen</strong> · Live-Zeichnung beim Konzert von ¡YUMNUT!WORLDWIDE!</span></li>
 					<li data-date="2026-11-16"><span class="t-date">Mo 16.11.</span><span class="t-what"><strong>Schokoladen</strong> · Live-Zeichnung: ILA &amp; I Love You Honey Bunny, ab 19 Uhr</span></li>
 					<li data-date="2026-11-21"><span class="t-date">Sa 21.11.</span><span class="t-what"><strong>Schokoladen</strong> · Live-Zeichnung beim Konzert von Buster Beat</span></li>
-					<li data-date="2026-11-25"><span class="t-date">Mi 25.11.</span><span class="t-what"><strong>Weihnachtsmarkt Schloss Charlottenburg</strong> · Live-Porträts im Pagodenzelt, ab 17 Uhr</span></li>
+					<li data-date="2026-11-25"><span class="t-date">Mit 25.11.</span><span class="t-what"><strong>Weihnachtsmarkt Schloss Charlottenburg</strong> · Live-Porträts im Pagodenzelt, ab 17 Uhr</span></li>
 					<li data-date="2026-11-30"><span class="t-date">Mo 30.11.</span><span class="t-what"><strong>Weihnachtsmarkt Schloss Charlottenburg</strong> · Live-Porträts, ab 17 Uhr</span></li>
-					<li data-date="2026-12-09"><span class="t-date">Mi 09.12.</span><span class="t-what"><strong>Weihnachtsmarkt Schloss Charlottenburg</strong> · Live-Porträts, ab 17 Uhr</span></li>
+					<li data-date="2026-12-09"><span class="t-date">Mit 09.12.</span><span class="t-what"><strong>Weihnachtsmarkt Schloss Charlottenburg</strong> · Live-Porträts, ab 17 Uhr</span></li>
 					<li data-date="2026-12-13"><span class="t-date">So 13.12.</span><span class="t-what"><strong>ZK/U Gütermarkt</strong> · Winterweihnachtsedition, Live-Porträts</span></li>
 					<li data-date="2026-12-14"><span class="t-date">Mo 14.12.</span><span class="t-what"><strong>Weihnachtsmarkt Schloss Charlottenburg</strong> · Live-Porträts, ab 17 Uhr</span></li>
 					<li data-date="2026-12-21"><span class="t-date">Mo 21.12.</span><span class="t-what"><strong>Weihnachtsmarkt Schloss Charlottenburg</strong> · Live-Porträts im Pagodenzelt</span></li>
-					<li data-date="2026-12-23"><span class="t-date">Mi 23.12.</span><span class="t-what"><strong>Weihnachtsmarkt Schloss Charlottenburg</strong> · Live-Porträts im Pagodenzelt</span></li>
+					<li data-date="2026-12-23"><span class="t-date">Mit 23.12.</span><span class="t-what"><strong>Weihnachtsmarkt Schloss Charlottenburg</strong> · Live-Porträts im Pagodenzelt</span></li>
 					<li data-date="2027-01-30"><span class="t-date">29.–30.01.</span><span class="t-what"><strong>BE NOISE Live Battle</strong> · ich zeichne die Bands live, zwei Abende</span></li>
 				</ul>
 				<p class="center hint" style="margin-top:1em">Spontane Termine poste ich in meiner <a href="https://www.instagram.com/smileyfoxyportraits">Instagram-Story</a> · <a href="/where-i-draw/">alle Orte &amp; Zeiten →</a></p>
@@ -349,7 +343,7 @@
 					<article class="card">
 						<span class="tag">Für Personal &amp; Teamleitungen</span>
 						<span class="tag tag--fox">Pilot-Team gesucht: −20 € p. P.</span>
-						<img src="/img/fotos/aquarell-kleckse-3x2.jpg" alt="Expressives Porträt mit blauen Farbklecksen und schwarzer Tusche" class="ph-img ph--3x2" width="1200" height="800" loading="lazy" decoding="async">
+						<img src="/img/platzhalter/kleckerkasten-nachstellung.svg" alt="Platzhalter mit bunten Farbklecksen: Nachstellungsbild wird erstellt" class="ph-img ph--3x2" width="1200" height="800" loading="lazy" decoding="async">
 						<h3>Der Kleckerkasten</h3>
 						<p>Expressives Teambuilding: Ihr Team malt gemeinsam, baut Stress ab und erschafft ein Kunstwerk fürs Büro.</p>
 						<ul>
@@ -375,8 +369,7 @@
 							<li>Versand oder Abholung</li>
 						</ul>
 						<div class="card-foot card-foot--hint">
-							<a class="btn btn--ghost" href="/commission.html">Porträt bestellen</a>
-							<p class="hint" style="margin-top:10px">Geburtstag oder Party? <a href="/events.html#anfrage-event">Mich für deine Feier buchen →</a></p>
+								<p class="hint" style="margin-top:10px">Geburtstag oder Party? <a href="/events.html#anfrage-event">Mich für deine Feier buchen →</a></p>
 						</div>
 					</article>
 				</div>
@@ -538,8 +531,8 @@
 						<p>
 							Die 1-€-Skizze (A6, in ca. 5 Minuten gezeichnet) ist ein exklusives Samstags-Angebot: nur samstags, nur live im Mauerpark. Ausgearbeitete Porträts in Tusche und Aquarell, Aufträge und Events haben ihren eigenen Preis. Wann ich draußen bin, poste ich vorher in meiner Instagram-Story – wer ganz sicher gehen will, wo genau ich gerade zeichne, schaut dort kurz rein.
 						</p>
-						<p>📍 <strong>Jeden Samstag 14–22 Uhr</strong> im Mauerpark, direkt neben dem Photoautomaten (Bernauer Str. 53) –
-							<a href="https://maps.app.goo.gl/ZhjvUq1bMy8CyVk18" target="_blank" rel="noopener" style="color:var(--fox)">auf Google Maps ansehen ↗</a></p>
+						<p><strong>Jeden Samstag 14–22 Uhr</strong> im Mauerpark, direkt neben dem Photoautomaten (Bernauer Str. 53) –
+							<a href="https://maps.app.goo.gl/ZhjvUq1bMy8CyVk18" target="_blank" rel="noopener" style="color:var(--fox)" data-photoautomat>auf Google Maps ansehen ↗</a></p>
 						<div class="btn-row">
 							<a class="btn btn--fox" href="/where-i-draw/">Zeiten &amp; Orte ansehen</a>
 							<a class="btn btn--ghost" style="color:#F2EAE4;border-color:#F2EAE4" href="https://www.instagram.com/smileyfoxyportraits">Instagram folgen</a>
