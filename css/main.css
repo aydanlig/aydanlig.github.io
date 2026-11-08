@@ -1499,8 +1499,8 @@ h1, h2, h3 { overflow-wrap: break-word; }
 
 /* Small line under the logo: "Seit 6 Jahren Porträts" (every page) */
 .logo { display: inline-block; line-height: 1.1; }
-.logo-since { display: block; margin-top: 2px; font-family: var(--font-body); font-size: 0.62rem; font-weight: 600; letter-spacing: 0.03em; color: var(--ink-soft); }
-@media (max-width: 520px) { .logo-since { font-size: 0.56rem; } }
+.logo-since { display: block; margin-top: 2px; font-family: var(--font-body); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.03em; color: var(--ink-soft); }
+@media (max-width: 520px) { .logo-since { font-size: 0.64rem; } }
 
 /* Sensitivity note under the style moods */
 .sensitive-note { margin-top: 1.2em; padding-left: 14px; border-left: 3px solid var(--fox); }
