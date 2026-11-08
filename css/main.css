@@ -2391,3 +2391,4 @@ body .btn:active { transform: translateY(0); box-shadow: 1px 2px 0 var(--fox, #F
 }
 .size-bar button[aria-pressed="true"] { background: var(--fox, #FF6B35); border-color: var(--fox, #FF6B35); color: #fff; }
 .extras-groups .price-list strong { font-size: 1.05em; color: var(--fox, #FF6B35); }
+.ref-side .pdf-links { justify-content: center; margin-top: 0; }
