@@ -2442,3 +2442,14 @@ body.scrolled .to-top{opacity:1;visibility:visible;transform:none}
 @media (prefers-reduced-motion: reduce) { .style-cycle img:nth-child(2) { opacity: 1; } }
 .extra-soon { opacity: .85; cursor: default; }
 .extra-soon input { cursor: not-allowed; }
+
+/* Hero photo (08.11.): no hover zoom (it blurred the picture on big screens), animated fox-gradient border instead; photo + doors share one wider column */
+@property --jd-spin { syntax: '<angle>'; inherits: false; initial-value: 0deg; }
+.jd-side .jd-photo, .doors, .jd-side .next-dates { width: min(100%, 640px); }
+.jd-side .jd-photo { max-height: 42svh; padding: 4px; box-sizing: border-box; border-radius: 16px;
+	background: conic-gradient(from var(--jd-spin), #FF6B35, #FFC15E, #A9583E, #FF6B35) border-box;
+	animation: jd-spin 6s linear infinite; transition: box-shadow .3s ease; }
+.jd-side .jd-photo:hover { transform: none; box-shadow: 0 20px 40px -14px rgba(255, 107, 53, .55); }
+@keyframes jd-spin { to { --jd-spin: 360deg; } }
+@media (max-width: 760px) { .jd-side .jd-photo { width: 100%; max-height: 40svh; } }
+@media (prefers-reduced-motion: reduce) { .jd-side .jd-photo { animation: none; } }
