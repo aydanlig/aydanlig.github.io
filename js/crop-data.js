@@ -311,8 +311,8 @@ window.SFP_CROPS = {
 			"z": 1
 		},
 		"/events.html|aydan-am-stand.jpg": {
-			"x": 50,
-			"y": 50,
+			"x": 0,
+			"y": 40.835,
 			"z": 1
 		},
 		"/events.html|stand-saunasplash-nacht-4x5.jpg": {
@@ -364,20 +364,30 @@ window.SFP_CROPS = {
 			"z": 1,
 			"b": 1
 		},
-		"/about/|band-15-klein.jpg": {
-			"x": 55.49,
-			"y": 81.454,
-			"z": 1.469
+		"/commission.html|gerahmtes-paar-3x4.jpg": {
+			"x": 50,
+			"y": 50,
+			"z": 1
 		},
-		"/about/|band-6-klein.jpg": {
-			"x": 86.605,
-			"y": 53.982,
-			"z": 1.714
+		"/commission.html|kunst-06.jpg": {
+			"x": 35.601,
+			"y": 68.676,
+			"z": 1.587
 		},
-		"/about/|band-5-klein.jpg": {
-			"x": 64.339,
-			"y": 16.819,
-			"z": 3.176
+		"/commission.html|kunst-02.jpg": {
+			"x": 50,
+			"y": 50,
+			"z": 1.166
+		},
+		"/commission.html|tusche-portraet-4x5.jpg": {
+			"x": 50,
+			"y": 50,
+			"z": 1
+		},
+		"/commission.html|galerie-01.jpg": {
+			"x": 44.181,
+			"y": 11.483,
+			"z": 1.08
 		}
 	},
 	"phone": {}
