@@ -22,3 +22,21 @@
 | 18 | Hook – retain – reward | ✅ already: hero photo → offers → CTA |
 | 19 | Single clear CTA | ✅ already: one button per card |
 | 20 | Track the numbers | ✅ Google Analytics (G-XDZB2DQ1KV) after cookie-banner consent |
+
+## Lessons 21–40 (website & sales)
+| # | Lesson | Status |
+|---|---|---|
+| 21–22 | Headline / above the fold | Covered (home + events heroes say what, who, next step) |
+| 23 | Call out the avatar | New: "Du planst eine Firmenfeier, Hochzeit oder Party?" on event form (DE/EN) |
+| 24–25 | Price per unit / anchor | Covered (~10 € pro Gast, market-price comparison) |
+| 26 | Good–better–best | Covered (event packages) |
+| 27–28 | Named bonuses | Open – needs a real bonus from Aydan |
+| 29 | Objections before form | Covered (events FAQ) |
+| 30 | Proof next to ask | Open – needs a real customer review |
+| 31 | Show the process | Covered (sketch photos, Instagram) |
+| 32–34 | Effort / time / speed to lead | Covered (48 h reply, no account, 2-week delivery) |
+| 35 | Follow up until a no | Done via campaigns |
+| 36–37 | Thank-you next step + referral | New: referral line on danke + bestellt (DE/EN) |
+| 38 | Conditional guarantee | Open – needs Aydan's OK |
+| 39 | Test one thing | ab-test.js → GA events |
+| 40 | Clarity | Ongoing check |
