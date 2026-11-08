@@ -21,4 +21,4 @@
 | 17 | Give, give, give, ask | ✅ preview: websites toolkit (Google, Claude + VS Code, skills) → then the ask |
 | 18 | Hook – retain – reward | ✅ already: hero photo → offers → CTA |
 | 19 | Single clear CTA | ✅ already: one button per card |
-| 20 | Track the numbers | ✅ GoatCounter (cookie-free) already counts visits · Google Analytics: waiting on your decision |
+| 20 | Track the numbers | ✅ Google Analytics (G-XDZB2DQ1KV) after cookie-banner consent |

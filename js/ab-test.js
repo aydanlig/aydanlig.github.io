@@ -1,8 +1,9 @@
 /* =========================================================
    ab-test.js – "Welche Kunst gefällt dir am besten?" (labor/ab-test.html)
 
-   Every answer is counted anonymously in GoatCounter (cookie-free, already used site-wide).
-   RESULTS: https://smileyfoxyportraits.goatcounter.com  → type "ab/" in the filter box.
+   Every answer is sent to Google Analytics as event "ab_test" (parameter ab_path) –
+   only for visitors who accepted the cookie banner (js/consent.js).
+   RESULTS: GA4 → Reports → Engagement → Events → ab_test (register ab_path as a custom dimension).
      ab/duell/gezeigt/<bild>   how often a picture was shown in a duel
      ab/duell/gewinnt/<bild>   how often it won  → win rate = gewinnt / gezeigt (fair, even if shown less)
      ab/aufhaengen/ja|vielleicht|nein/<bild>   "Würdest du es aufhängen?"
@@ -81,15 +82,9 @@
 	var root = document.querySelector('[data-abtest]');
 	if (!root) return;
 
-	// ---------- counting (GoatCounter loads async, so queue until it's there) ----------
-	var queue = [];
-	function count(path) { queue.push(path); flush(); }
-	function flush() {
-		if (!window.goatcounter || !window.goatcounter.count) { setTimeout(flush, 800); return; }
-		while (queue.length) {
-			var p = queue.shift();
-			try { window.goatcounter.count({ path: p, title: p, event: true }); } catch (e) { }
-		}
+	// ---------- counting: Google Analytics events, only if the visitor accepted the cookie banner ----------
+	function count(path) {
+		if (window.gtag) { try { window.gtag('event', 'ab_test', { ab_path: path }); } catch (e) { } }
 	}
 
 	function shuffle(a) { a = a.slice(); for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
