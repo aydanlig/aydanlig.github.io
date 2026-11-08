@@ -2416,3 +2416,12 @@ body .btn:active { transform: translateY(0); box-shadow: 1px 2px 0 var(--fox, #F
 /* hero photo: always as wide as the "Für Firmen & Events" buttons; if the box gets wider than the photo, crop.js fills the sides with a blur (b:1) */
 .jd-side .jd-photo { width: min(100%, 560px); max-width: none; aspect-ratio: 16 / 10; max-height: 34svh; }
 @media (max-width: 760px) { .jd-side .jd-photo { width: 100%; max-height: 40svh; } }
+/* auction: no empty strip under the bid button (the 20 spanned rows each added a gap), photo stays in view while you fill in the long form */
+@media (min-width: 761px) {
+	.lot:only-child { row-gap: 0; }
+	.lot:only-child > :not(img) { margin-bottom: 10px; }
+	.lot:only-child > :last-child { margin-bottom: 0; }
+	.lot:only-child > img { position: sticky; top: 96px; }
+}
+.lot-countdown { font-size: 1rem; }
+.polaroid figcaption{margin:10px 0 -38px;font-size:.85rem;line-height:1.25;text-align:center;color:#3a332c;font-style:italic}
