@@ -2235,7 +2235,7 @@ a.style-moods > a, .style-moods > a { display: block; color: inherit; text-decor
 /* ---------- Dark mode fixes, round 2 (08.11.2026): hard-coded light colours that turned into white-on-white ---------- */
 /* light-band fox ears: same idea as in light mode (card fill + line outline), in the dark colours */
 :root.theme-dark .section--alt::before {
-	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 22'%3E%3Cpath d='M4 22 L12 3 Q14 0 16 3 L24 22 Z M40 22 L48 3 Q50 0 52 3 L60 22 Z' fill='%23211B24'/%3E%3Cpath d='M4 22 L12 3 Q14 0 16 3 L24 22 M40 22 L48 3 Q50 0 52 3 L60 22' fill='none' stroke='%233B3140' stroke-width='1' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E");
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 52'%3E%3Cpath d='M0 52 L2 30 L4 22 L12 3 Q14 0 16 3 L24 22 L27 30 L30 52 Z M34 52 L37 30 L40 22 L48 3 Q50 0 52 3 L60 22 L62 30 L64 52 Z' fill='%23211B24'/%3E%3Cpath d='M4 22 L12 3 Q14 0 16 3 L24 22 M40 22 L48 3 Q50 0 52 3 L60 22' fill='none' stroke='%233B3140' stroke-width='1' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E");
 }
 /* dark-band + footer ears: plum-black ears with a soft outline so they don't vanish into the dark page */
 :root.theme-dark .section--dark::before, :root.theme-dark .site-footer::before { color: var(--night); }
@@ -2368,3 +2368,7 @@ body .btn:active { transform: translateY(0); box-shadow: 1px 2px 0 var(--fox, #F
 .big-quote { font-style: italic; }
 /* Framed photo (from the preview): dark outline + orange offset shadow, slight tilt */
 .photo-framed { transform: rotate(-1.5deg); box-shadow: 0 0 0 2px rgba(26,22,21,.88), 9px 11px 0 -1px rgba(255,107,53,.5), 0 22px 44px -22px rgba(0,0,0,.6); border-radius: 12px; }
+/* Events "Das Highlight": photo fills the column height next to the text instead of floating */
+.live-intro { align-items: stretch; }
+.live-intro > img { width: 100%; height: 100%; min-height: 420px; max-height: 600px; object-fit: cover; object-position: 10% 40%; align-self: stretch; }
+@media (max-width: 760px) { .live-intro > img { height: auto; aspect-ratio: 4 / 3; } }
