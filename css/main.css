@@ -2294,3 +2294,5 @@ h3 { letter-spacing: -0.012em; }
 :root.theme-dark .lab-ribbon { background: var(--surface); border-bottom: 1px solid var(--line); }
 .lab-ribbon a { color: #FF6B35; white-space: nowrap; }
 @media (max-width: 600px) { .lab-ribbon-long { display: none; } }
+:root.theme-dark .enq-menu a:hover, :root.theme-dark .enq-menu a:focus-visible,
+:root.theme-dark .main-nav .nav-more-menu a:hover, :root.theme-dark .main-nav .nav-more-menu a:focus-visible { background: rgba(255,107,53,.14); color: #FF8A5C; }
