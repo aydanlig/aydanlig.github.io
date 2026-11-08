@@ -2355,3 +2355,12 @@ a.door--light { background: transparent; color: inherit; border: 2px solid curre
 .hero--jd .scroll-hint { display: none; }
 @media (max-width: 760px) { .jd-side .jd-photo { width: 100%; max-height: none; } .jd-art { min-height: 62svh; } }
 .jd-side, .nd-col { min-width: 0; }
+
+/* Happy faces: sideways row of polaroids */
+.polaroids{display:flex;gap:1.6rem;overflow-x:auto;scroll-snap-type:x mandatory;padding:1.2rem .4rem 1.6rem;margin-top:1.2rem;-webkit-overflow-scrolling:touch}
+.polaroid{flex:0 0 clamp(200px,24vw,260px);margin:0;background:#fff;padding:10px 10px 46px;box-shadow:0 2px 4px rgba(0,0,0,.12),0 10px 24px rgba(0,0,0,.14);scroll-snap-align:start;transform:rotate(-1.5deg);transition:transform .25s ease}
+.polaroid:nth-child(even){transform:rotate(1.5deg)}
+.polaroid:hover{transform:rotate(0) translateY(-4px)}
+.polaroid img{display:block;width:100%;aspect-ratio:1;object-fit:cover}
+.polaroid--ph span{display:grid;place-items:center;aspect-ratio:1;background:#f1ece4;color:#7a6f63;font-size:.95rem;text-align:center;padding:1rem}
+@media (prefers-reduced-motion:reduce){.polaroid{transition:none}}
