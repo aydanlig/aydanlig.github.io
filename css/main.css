@@ -2472,3 +2472,16 @@ body.scrolled .to-top{opacity:1;visibility:visible;transform:none}
 .termin-sort button[aria-pressed="true"] { background: var(--fox, #FF6B35); border-color: var(--fox, #FF6B35); color: #1A1615; }
 .termin-sort button[data-dir="desc"]::after { content: " ↓"; }
 .termin-sort button[data-dir="asc"]::after, .termin-sort button[aria-pressed="true"]:not([data-dir])::after { content: " ↑"; }
+
+/* lightbox: above the cookie banner, arrows always on top of the picture, "← Zurück" button top left */
+.lightbox { z-index: 10001; }
+.lightbox .lb-prev, .lightbox .lb-next, .lightbox .lb-close, .lightbox .lb-back { z-index: 3; box-shadow: 0 2px 10px rgba(0,0,0,.35); }
+.lightbox .lb-prev, .lightbox .lb-next { background: rgba(23, 19, 26, .72); }
+.lightbox .lb-back { top: 12px; left: 12px; width: auto; height: 44px; padding: 0 16px; font-size: .95rem; font-weight: 700; }
+@media (max-width: 760px) {
+	/* phones: arrows sit at the bottom, under the caption, so they never cover the picture */
+	.lightbox { padding-bottom: 84px; }
+	.lb-prev, .lb-next { top: auto; bottom: 18px; transform: none; }
+	.lb-prev { left: calc(50% - 64px); } .lb-next { right: calc(50% - 64px); }
+	.lightbox img { max-height: calc(100svh - 210px); }
+}
