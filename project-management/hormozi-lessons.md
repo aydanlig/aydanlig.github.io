@@ -1,9 +1,9 @@
 # 20 Alex Hormozi lessons → SmileyFoxyPortraits
 
-1. **Value equation** – value = (dream outcome × likelihood) / (time × effort). Raise the top, shrink the bottom.
+1. **Value equation** – value = (dream outcome × likelihood) / (time × effort). Raise the top, shrink the bottom. ✅ applied (≈10 € per guest maths on homepage + events)
 2. **Sell the outcome, not the service** – "guests talk about your event" beats "live portraits". ✅ applied (services headline)
 3. **Grand Slam Offer** – make it so good people feel stupid saying no.
-4. **Risk reversal / guarantee** – remove the buyer's fear. ✅ applied ("redraw once for free" on commissions)
+4. **Risk reversal** – remove the buyer's fear. ✅ applied as "free & no obligation, reply in 48 h" (a free-redraw guarantee was dropped: it clashes with the paid +25 € revision extra)
 5. **Scarcity** – real limits sell (one event per day). ✅ applied (closing CTA)
 6. **Urgency** – a reason to act now (season, dates filling).
 7. **Value stacking** – list every bonus next to the price (story-ready original, extra prints, framing).
@@ -22,6 +22,6 @@
 20. **Track the numbers** – CAC, conversion, LTV; you can't improve what you don't measure.
 
 ## Ideas not yet applied (need your decision)
-- Value stack on events.html (what's included next to the price)
+- Value stack on events.html ✅ started (price-per-guest maths)
 - Free lead magnet for event planners
 - Raise 1-€ sketch price or reframe it as a lead-in to paid portraits
