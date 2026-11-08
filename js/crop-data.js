@@ -340,8 +340,23 @@ window.SFP_CROPS = {
 		"/about/|aydan-profil.jpg": {
 			"x": 50,
 			"y": 50,
-			"z": 1,
+			"z": 1.259,
 			"b": 1
+		},
+		"/about/|ausstellung-berlin-things-3x2.jpg": {
+			"x": 93.815,
+			"y": 31.225,
+			"z": 3.702
+		},
+		"/about/|stand-saunasplash-portraets-3x2.jpg": {
+			"x": 60.034,
+			"y": 67.56,
+			"z": 1
+		},
+		"/about/|spaghettaria-2-3x2.jpg": {
+			"x": 55.27,
+			"y": 45.26,
+			"z": 4
 		}
 	},
 	"phone": {}
