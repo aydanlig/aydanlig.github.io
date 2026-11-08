@@ -2398,3 +2398,11 @@ body .btn:active { transform: translateY(0); box-shadow: 1px 2px 0 var(--fox, #F
 .jobs-intro { display: grid; grid-template-columns: minmax(0, 1fr) minmax(200px, 300px); gap: 40px; align-items: center; }
 .jobs-flyer img { width: 100%; height: auto; display: block; }
 @media (max-width: 700px) { .jobs-intro { grid-template-columns: 1fr; } .jobs-flyer { max-width: 300px; margin: 0 auto; } }
+/* jobs: overview of all open positions at the top */
+.job-sum-title { margin: 1.6em 0 0.6em; }
+.job-sums { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 14px; }
+.job-sum { display: flex; flex-direction: column; gap: 8px; padding: 18px; text-decoration: none; color: inherit; transition: transform .15s; }
+.job-sum:hover { transform: translateY(-3px); }
+.job-sum strong { font-size: 1.15rem; }
+.job-sum-pay { color: var(--fox, #FF6B35); font-weight: 700; }
+.job-sum-more { margin-top: auto; font-weight: 600; text-decoration: underline; }
