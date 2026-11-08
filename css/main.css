@@ -2290,3 +2290,5 @@ h3 { letter-spacing: -0.012em; }
 /* dark mode: header buttons (Anfragen <summary>/<a>) – orange with dark text, like the menu toggle */
 :root.theme-dark .site-header .btn:not(.btn--ghost) { background: var(--fox); border-color: var(--fox); color: var(--night); }
 :root.theme-dark .site-header .btn:not(.btn--ghost):hover { background: var(--ink); border-color: var(--ink); color: var(--night); }
+/* dark mode: Labor preview ribbon (--plum turns light there -> white on white) */
+:root.theme-dark .lab-ribbon { background: var(--surface); border-bottom: 1px solid var(--line); }
