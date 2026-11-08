@@ -311,8 +311,8 @@ window.SFP_CROPS = {
 			"z": 1
 		},
 		"/events.html|aydan-am-stand.jpg": {
-			"x": 50,
-			"y": 50,
+			"x": 0,
+			"y": 27.181,
 			"z": 1
 		},
 		"/events.html|stand-saunasplash-nacht-4x5.jpg": {
