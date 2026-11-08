@@ -336,6 +336,12 @@ window.SFP_CROPS = {
 			"y": 50.284,
 			"z": 1,
 			"r": 0.733
+		},
+		"/about/|aydan-profil.jpg": {
+			"x": 50,
+			"y": 50,
+			"z": 1,
+			"b": 1
 		}
 	},
 	"phone": {}
