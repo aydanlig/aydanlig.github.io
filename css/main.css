@@ -2501,3 +2501,6 @@ body.scrolled .to-top{opacity:1;visibility:visible;transform:none}
 .jd-art .next-dates > strong { display: block; margin-bottom: 8px; }
 /* "Weiter unten" peek: centred at the bottom of the hero */
 .hero--jd .page-peek { margin: 18px auto 10px; text-align: left; }
+/* to-top: smaller circle, 2px outline like the EN/DE pill */
+.to-top { width: 28px; height: 28px; border-width: 2px; border-color: var(--ink); font-size: .9rem; }
+@media (max-width: 760px) { .to-top { width: 26px; height: 26px; } }
