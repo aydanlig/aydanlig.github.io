@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="de">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="robots" content="noindex">
+	<title>Seite nicht gefunden | SmileyFoxyPortraits</title>
+	<script>
+		// Friendly links: /de/… → German page, /english or /deutsch → home, wrong case → lower case
+		(function () {
+			var p = location.pathname, q = location.search + location.hash, t = null;
+			if (/^\/de(\/|$)/i.test(p)) t = p.replace(/^\/de/i, '') || '/';
+			else if (/^\/(english|eng)\/?$/i.test(p)) t = '/en/';
+			else if (/^\/(deutsch|german|ger)\/?$/i.test(p)) t = '/';
+			else if (p !== p.toLowerCase()) t = p.toLowerCase();
+			if (t && t !== p) location.replace(t + q);
+		})();
+	</script>
+	<link rel="icon" href="/favicon.ico" sizes="48x48">
+	<link rel="stylesheet" href="/css/main.css?v=20261108l">
+</head>
+<body>
+	<main>
+		<section class="section">
+			<div class="wrap center" style="max-width:640px">
+				<span class="eyebrow">404</span>
+				<h1>Hier ist nichts – aber der Fuchs ist nicht weit</h1>
+				<p class="lead">Diese Seite gibt es nicht (mehr). <span lang="en">This page doesn’t exist.</span></p>
+				<div class="btn-row">
+					<a class="btn" href="/">Zur Startseite</a>
+					<a class="btn btn--ghost" href="/en/">English homepage</a>
+				</div>
+			</div>
+		</section>
+	</main>
+</body>
+</html>
