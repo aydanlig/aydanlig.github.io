@@ -5,7 +5,7 @@
 3. **Grand Slam Offer** – make it so good people feel stupid saying no.
 4. **Risk reversal** – remove the buyer's fear. ✅ applied as "free & no obligation, reply in 48 h" (a free-redraw guarantee was dropped: it clashes with the paid +25 € revision extra)
 5. **Scarcity** – real limits sell (one event per day). ✅ applied (closing CTA)
-6. **Urgency** – a reason to act now (season, dates filling).
+6. **Urgency** – a reason to act now (season, dates filling). ✅ applied (Christmas order deadline on commission page)
 7. **Value stacking** – list every bonus next to the price (story-ready original, extra prints, framing).
 8. **Name the offer** – memorable names sell (Kleckerkasten is a good example).
 9. **Niche down** – one clear buyer per page (event planner vs. private gift).
