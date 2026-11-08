@@ -2485,3 +2485,12 @@ body.scrolled .to-top{opacity:1;visibility:visible;transform:none}
 	.lb-prev { left: calc(50% - 64px); } .lb-next { right: calc(50% - 64px); }
 	.lightbox img { max-height: calc(100svh - 210px); }
 }
+
+/* homepage hero: "Weiter unten" peek under the two doors – what else is on the page + bouncing arrow */
+.page-peek { width: min(100%, 640px); box-sizing: border-box; margin-top: 18px; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 2px 14px; padding: 14px 18px; border-radius: 12px; border: 1px dashed var(--line); color: inherit; text-decoration: none; transition: border-color .2s ease; }
+.page-peek:hover { border-color: var(--fox, #FF6B35); }
+.page-peek .sh-title { font-size: .75rem; text-transform: uppercase; letter-spacing: .06em; opacity: .7; }
+.page-peek .sh-list { grid-column: 1; font-size: .95rem; line-height: 1.45; }
+.page-peek b { grid-column: 2; grid-row: 1 / span 2; font-size: 1.6rem; color: var(--fox, #FF6B35); animation: hint-bounce 2.2s ease-in-out infinite; }
+@media (max-width: 760px) { .page-peek { width: 100%; } }
+@media (prefers-reduced-motion: reduce) { .page-peek b { animation: none; } }
