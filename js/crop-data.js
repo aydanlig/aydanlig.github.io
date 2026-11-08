@@ -363,6 +363,21 @@ window.SFP_CROPS = {
 			"y": 0,
 			"z": 1,
 			"b": 1
+		},
+		"/about/|band-15-klein.jpg": {
+			"x": 55.49,
+			"y": 81.454,
+			"z": 1.469
+		},
+		"/about/|band-6-klein.jpg": {
+			"x": 86.605,
+			"y": 53.982,
+			"z": 1.714
+		},
+		"/about/|band-5-klein.jpg": {
+			"x": 64.339,
+			"y": 16.819,
+			"z": 3.176
 		}
 	},
 	"phone": {}
