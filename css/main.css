@@ -2425,3 +2425,9 @@ body .btn:active { transform: translateY(0); box-shadow: 1px 2px 0 var(--fox, #F
 }
 .lot-countdown { font-size: 1rem; }
 .polaroid figcaption{margin:10px 0 -38px;font-size:.85rem;line-height:1.25;text-align:center;color:#3a332c;font-style:italic}
+/* Home: up arrow next to the logo once you've scrolled */
+.to-top{margin-left:-14px;width:34px;height:34px;flex:0 0 auto;border-radius:50%;border:1.5px solid currentColor;background:transparent;color:var(--ink);font-size:1.05rem;line-height:1;cursor:pointer;opacity:0;visibility:hidden;transform:translateY(6px);transition:opacity .25s,transform .25s,visibility .25s}
+body.scrolled .to-top{opacity:1;visibility:visible;transform:none}
+.to-top:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+@media (max-width:760px){.to-top{width:30px;height:30px;margin-left:-8px}}
+@media (prefers-reduced-motion:reduce){.to-top{transition:none}}
