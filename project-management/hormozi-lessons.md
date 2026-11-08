@@ -1,27 +1,24 @@
-# 20 Alex Hormozi lessons → SmileyFoxyPortraits
+# 20 Alex Hormozi lessons → where they live
 
-1. **Value equation** – value = (dream outcome × likelihood) / (time × effort). Raise the top, shrink the bottom. ✅ applied (≈10 € per guest maths on homepage + events)
-2. **Sell the outcome, not the service** – "guests talk about your event" beats "live portraits". ✅ applied (services headline)
-3. **Grand Slam Offer** – make it so good people feel stupid saying no.
-4. **Risk reversal** – remove the buyer's fear. ✅ applied as "free & no obligation, reply in 48 h" (a free-redraw guarantee was dropped: it clashes with the paid +25 € revision extra)
-5. **Scarcity** – real limits sell (one event per day). ✅ applied (closing CTA)
-6. **Urgency** – a reason to act now (season, dates filling). ✅ applied (Christmas order deadline on commission page)
-7. **Value stacking** – list every bonus next to the price (story-ready original, extra prints, framing).
-8. **Name the offer** – memorable names sell (Kleckerkasten is a good example).
-9. **Niche down** – one clear buyer per page (event planner vs. private gift).
-10. **Charge more** – higher price = more commitment and better clients; don't compete on cheap.
-11. **Proof over promises** – logos, reviews, photos of real events above the fold.
-12. **Specific numbers** – "5–25 min per portrait", "48 h reply" build trust.
-13. **Lead magnets** – give something free that solves one small problem (e.g. "Event-entertainment checklist").
-14. **Core four** – warm outreach, cold outreach, content, paid ads. Volume wins.
-15. **Rule of 100** – 100 outreach actions/day until it works.
-16. **More, better, new** – do more of what works first, then improve, only then try new.
-17. **Give, give, give, ask** – content mostly free value, then the soft CTA.
-18. **Hook – retain – reward** – every Reel/landing section grabs, holds and pays off.
-19. **Clear single CTA** – one obvious next step per section.
-20. **Track the numbers** – CAC, conversion, LTV; you can't improve what you don't measure.
-
-## Ideas not yet applied (need your decision)
-- Value stack on events.html ✅ started (price-per-guest maths)
-- Free lead magnet for event planners
-- Raise 1-€ sketch price or reframe it as a lead-in to paid portraits
+| # | Lesson | Status |
+|---|---|---|
+| 1 | Value equation | ✅ live: "ca. 10 € pro Gast" (homepage, events) |
+| 2 | Sell the outcome | ✅ live: "Momente, über die deine Gäste noch lange reden" |
+| 3 | Grand Slam Offer | ✅ preview: websites page = free toolkit + free check + pay-when-live |
+| 4 | Risk reversal | ✅ live (events "kostenlos & unverbindlich") · preview: websites "Null Risiko" |
+| 5 | Scarcity | ❌ dropped: "one event per day" wasn't true |
+| 6 | Urgency | ❌ dropped: Christmas date not OK |
+| 7 | Value stacking | ✅ already: event packages list everything included |
+| 8 | Name the offer | ✅ already: Kleckerkasten, Queen/Majesty/Godlike |
+| 9 | Niche down | ✅ already: tags "Für Eventplaner", "Für dich privat" |
+| 10 | Charge more | ✅ already: prices rise 2027 (shown on events) |
+| 11 | Proof | ✅ already: Referenzen, Sportsfreund, Schokoladen |
+| 12 | Specific numbers | ✅ already: 5–25 min, 48 h, 24 portraits |
+| 13 | Lead magnet | ✅ preview: free toolkit + free 3-tips website check |
+| 14 | Core four | 🔁 outside site: outreach campaigns + Reels |
+| 15 | Rule of 100 | 🔁 outside site: scheduled campaigns (you) |
+| 16 | More, better, new | 🔁 outside site: weekly review |
+| 17 | Give, give, give, ask | ✅ preview: websites toolkit (Google, Claude + VS Code, skills) → then the ask |
+| 18 | Hook – retain – reward | ✅ already: hero photo → offers → CTA |
+| 19 | Single clear CTA | ✅ already: one button per card |
+| 20 | Track the numbers | 🔁 outside site: follower stats + Notion insights |
