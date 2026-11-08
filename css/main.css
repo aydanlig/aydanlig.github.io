@@ -2394,3 +2394,7 @@ body .btn:active { transform: translateY(0); box-shadow: 1px 2px 0 var(--fox, #F
 .ref-side .pdf-links { justify-content: center; margin-top: 0; }
 /* footer fox ears: same grain as the footer */
 .site-footer::before { background: var(--night) url("/img/textur/papier-dunkel.jpg") 0 0 / 640px repeat; }
+/* jobs: promoter flyer next to the intro */
+.jobs-intro { display: grid; grid-template-columns: minmax(0, 1fr) minmax(200px, 300px); gap: 40px; align-items: center; }
+.jobs-flyer img { width: 100%; height: auto; display: block; }
+@media (max-width: 700px) { .jobs-intro { grid-template-columns: 1fr; } .jobs-flyer { max-width: 300px; margin: 0 auto; } }
