@@ -2355,3 +2355,8 @@ a.door--light { background: transparent; color: inherit; border: 2px solid curre
 .hero--jd .scroll-hint { display: none; }
 @media (max-width: 760px) { .jd-side .jd-photo { width: 100%; max-height: none; } .jd-art { min-height: 62svh; } }
 .jd-side, .nd-col { min-width: 0; }
+
+/* Shop link in the header (prints) */
+.main-nav a.nav-shop { padding: 4px 14px; border-radius: 999px; background: var(--fox); color: var(--night); font-weight: 800; }
+.main-nav a.nav-shop::after { display: none; }
+.main-nav a.nav-shop:hover, .main-nav a.nav-shop[aria-current="page"] { background: var(--night); color: var(--fox); }
