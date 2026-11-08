@@ -143,12 +143,31 @@
 			'<span class="termin-kind">' + esc(KIND[t.kind] || KIND.event) + "</span></li>";
 	}
 
+	// sort buttons above the list (date / event / type); a second click flips the order
+	function sortBar() {
+		var h = EN ? ["Sort:", "Date", "Event", "Type"] : ["Sortieren:", "Datum", "Event", "Art"];
+		return '<div class="termin-sort" role="group" aria-label="' + h[0] + '"><span>' + h[0] + "</span>" +
+			["date", "title", "kind"].map(function (k, i) { return '<button type="button" data-sort="' + k + '" aria-pressed="' + (i ? "false" : "true") + '">' + h[i + 1] + "</button>"; }).join("") + "</div>";
+	}
+	document.addEventListener("click", function (e) {
+		var btn = e.target.closest && e.target.closest(".termin-sort button");
+		if (!btn) return;
+		var bar = btn.parentNode, list = bar.nextElementSibling, key = btn.getAttribute("data-sort");
+		var dir = btn.getAttribute("aria-pressed") === "true" && btn.dataset.dir !== "desc" ? -1 : 1;
+		bar.querySelectorAll("button").forEach(function (b) { b.setAttribute("aria-pressed", "false"); delete b.dataset.dir; });
+		btn.setAttribute("aria-pressed", "true"); btn.dataset.dir = dir === 1 ? "asc" : "desc";
+		var val = function (li) { var d = li.id.slice(7, 17);
+			return key === "date" ? d : key === "kind" ? li.querySelector(".termin-kind").textContent + d : li.querySelector("strong").textContent.toLowerCase(); };
+		Array.prototype.slice.call(list.children).sort(function (a, b) { return val(a) < val(b) ? -dir : val(a) > val(b) ? dir : 0; })
+			.forEach(function (li) { list.appendChild(li); });
+	});
+
 	// Full lists
 	document.querySelectorAll("[data-termine]").forEach(function (box) {
 		var limited = box.hasAttribute("data-limit");
 		if (!upcoming.length && (limited || !past.length)) return; // keep the fallback text inside the box
 		var limit = parseInt(box.getAttribute("data-limit"), 10) || upcoming.length;
-		var html = upcoming.length ? '<ol class="termin-rows">' + upcoming.slice(0, limit).map(row).join("") + "</ol>" : "";
+		var html = upcoming.length ? sortBar() + '<ol class="termin-rows">' + upcoming.slice(0, limit).map(row).join("") + "</ol>" : "";
 		// full list only: past dates folded away underneath
 		if (!limited && past.length) {
 			html += '<details class="termine-past"><summary>' + (EN ? "Previous dates" : "Vergangene Termine") + " (" + past.length + ")</summary>" +
