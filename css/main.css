@@ -2300,3 +2300,58 @@ h3 { letter-spacing: -0.012em; }
 .jd-side .next-dates { display: block; margin-top: 10px; padding: 12px 14px; border-radius: 10px; background: var(--card); border: 1px solid var(--line); max-width: 30em; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
 .jd-side .next-dates > strong { font-size: .95rem; }
 .jd-side .next-dates ul { margin: .5em 0 .4em; }
+
+/* ===== Homepage hero (08.11.): photo + two doors on the right, Saturday line on the artwork ===== */
+.jd-art { justify-content: flex-start; }
+.jd-art .saturday-line { margin-top: auto; align-self: flex-start; padding: 10px 14px; border-radius: 12px; background: rgba(23, 19, 26, .45); border: 1px solid rgba(251, 243, 234, .25); color: #FBF3EA; text-shadow: 0 1px 3px rgba(0, 0, 0, .6); }
+.jd-art .saturday-line a { color: #FFB089; }
+.jd-side { gap: 12px; }
+.jd-photo { width: min(100%, 560px); aspect-ratio: 4 / 3; object-fit: cover; border-radius: 12px; box-shadow: 0 16px 34px -14px rgba(26, 22, 21, .45); transition: transform .3s ease; }
+.jd-photo:hover { transform: scale(1.02); }
+.doors { width: min(100%, 560px); display: grid; gap: 10px; }
+a.door { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 2px 12px; padding: 12px 18px; min-height: 44px; box-sizing: border-box;
+	border-radius: 12px; text-decoration: none; color: #1A1615; background: var(--fox, #FF6B35); transition: transform .2s ease, box-shadow .2s ease; }
+a.door span { font-size: .78rem; text-transform: uppercase; letter-spacing: .06em; opacity: .85; }
+a.door strong { font-size: 1.02rem; }
+a.door b { grid-column: 2; grid-row: 1 / span 2; font-size: 1.4rem; transition: transform .2s ease; }
+a.door:hover { transform: translateY(-2px); box-shadow: 3px 4px 0 #A9583E; }
+a.door:hover b { transform: translateX(4px); }
+a.door--light { background: transparent; color: inherit; border: 2px solid currentColor; }
+.jd-side .next-dates { width: min(100%, 560px); max-width: none; box-sizing: border-box; margin-top: 0; }
+.nd-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: .5em 0 .4em; }
+.nd-kind { display: block; font-size: .75rem; text-transform: uppercase; letter-spacing: .06em; opacity: .7; margin-bottom: .3em; }
+.nd-roll { height: 6.6em; overflow: hidden; -webkit-mask-image: linear-gradient(transparent, #000 12%, #000 88%, transparent); mask-image: linear-gradient(transparent, #000 12%, #000 88%, transparent); }
+.next-dates .nd-roll ul { margin: 0; }
+.next-dates .nd-roll li { font-size: .85rem; line-height: 1.3; }
+.next-dates .nd-roll li span:last-child { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.nd-roll ul.rolling { animation: nd-roll linear infinite; }
+.nd-roll:hover ul.rolling { animation-play-state: paused; }
+@keyframes nd-roll { to { transform: translateY(-50%); } }
+@media (max-width: 760px) {
+	.jd-side { padding: 20px 16px 28px; }
+	.jd-photo, .doors, .jd-side .next-dates { width: 100%; }
+	.art-credit { left: auto; right: 16px; bottom: 8px; }
+}
+@media (max-width: 420px) { .nd-cols { grid-template-columns: 1fr; } }
+@media (prefers-reduced-motion: reduce) {
+	.nd-roll { height: auto; max-height: 8em; overflow: auto; }
+	.nd-roll ul.rolling { animation: none; }
+	.jd-photo, a.door, a.door b { transition: none; }
+}
+.next-dates .nd-roll ul.rolling { display: block; }
+.next-dates .nd-roll ul.rolling li { margin-bottom: .35em; }
+
+/* ===== Portfolio buttons (from the redesign): brush-drawn edge + offset shadow that grows on hover ===== */
+.pf-page .btn { border-radius: 16px 26px 14px 30px / 30px 14px 26px 16px; box-shadow: 3px 4px 0 var(--fox, #FF6B35); transition: transform .2s ease, box-shadow .2s ease; }
+.pf-page .btn--fox { box-shadow: 3px 4px 0 #1A1615; }
+.pf-page .btn--ghost { box-shadow: 3px 4px 0 rgba(255, 107, 53, .55); }
+.pf-page .btn--small { box-shadow: 2px 3px 0 var(--fox, #FF6B35); }
+.pf-page .btn:hover { transform: translateY(-2px); box-shadow: 5px 6px 0 var(--fox, #FF6B35); }
+.pf-page .btn--fox:hover { box-shadow: 5px 6px 0 #1A1615; }
+.pf-page .btn:active { transform: translateY(0); box-shadow: 1px 2px 0 var(--fox, #FF6B35); }
+@media (prefers-reduced-motion: reduce) { .pf-page .btn { transition: none; } }
+.jd-side .jd-photo { height: auto; aspect-ratio: 16 / 10; max-height: 34svh; width: auto; max-width: min(100%, 560px); align-self: flex-start; }
+.jd-side { padding-top: clamp(16px, 2.5vw, 32px); padding-bottom: clamp(16px, 2.5vw, 32px); }
+.hero--jd .scroll-hint { display: none; }
+@media (max-width: 760px) { .jd-side .jd-photo { width: 100%; max-height: none; } .jd-art { min-height: 62svh; } }
+.jd-side, .nd-col { min-width: 0; }

@@ -32,15 +32,32 @@
 		});
 	});
 
-	/* ---------- 2. "nächste Termine" dropdown: next 4 dates from the #termine list ---------- */
-	var nd = document.querySelector('.next-dates ul');
-	if (nd) {
+	/* ---------- 2. "Nächste Termine": two rolling lists (concerts + live markets) from js/termine.js ---------- */
+	var rolls = document.querySelectorAll('.next-dates ul[data-kind]');
+	if (rolls.length && window.TERMINE) {
 		var today = new Date(); today.setHours(0, 0, 0, 0);
-		var items = [].filter.call(document.querySelectorAll('.termine-list li[data-date]'), function (li) {
-			return new Date(li.getAttribute('data-date') + 'T23:59:59') >= today;
-		}).slice(0, 3);
-		items.forEach(function (li) { nd.appendChild(li.cloneNode(true)); });
-		if (!items.length) nd.innerHTML = "<li>" + (en ? "None planned right now" : "Gerade keine geplant") + "</li>";
+		var days = en ? ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'] : ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'];
+		rolls.forEach(function (ul) {
+			var list = window.TERMINE.filter(function (t) {
+				return t.kind === ul.getAttribute('data-kind') && new Date(t.date + 'T23:59:59') >= today;
+			});
+			if (!list.length) { ul.innerHTML = '<li>' + (en ? 'None planned right now' : 'Gerade keine geplant') + '</li>'; return; }
+			list.forEach(function (t) {
+				var d = new Date(t.date + 'T12:00:00');
+				var li = document.createElement('li');
+				var a = document.createElement('span'); a.className = 't-date';
+				a.textContent = days[d.getDay()] + ' ' + ('0' + d.getDate()).slice(-2) + '.' + ('0' + (d.getMonth() + 1)).slice(-2) + '.';
+				var b = document.createElement('span');
+				b.textContent = ((en && t.place_en) || t.place).split(',')[0];
+				li.appendChild(a); li.appendChild(b); ul.appendChild(li);
+			});
+			// long list: copy it once and let it roll (CSS), so it loops without a jump
+			if (list.length > 3) {
+				[].slice.call(ul.children).forEach(function (li) { var c = li.cloneNode(true); c.setAttribute('aria-hidden', 'true'); ul.appendChild(c); });
+				ul.classList.add('rolling');
+				ul.style.animationDuration = (list.length * 1.6) + 's';
+			}
+		});
 	}
 
 	/* ---------- 3. Hover on "Karte": Google Maps preview of my spot ---------- */
