@@ -118,3 +118,7 @@ h3.kk-title { font-size: clamp(1.35rem, 2.6vw, 1.75rem); }
 @media (max-width: 700px) { .live-stats { grid-template-columns: repeat(2, 1fr); } .live-stats li:last-child { grid-column: 1 / -1; } }
 
 .kk-media .checks { margin-top: 1.4em; }
+
+/* Event date picker: days with a Termin look greyed out but stay clickable (js/forms.js) */
+.flatpickr-day.is-booked:not(.selected) { color: #b4aca6; background: #efe9e4; text-decoration: line-through; text-decoration-color: rgba(0,0,0,.25); }
+.booked-note { margin-top: 8px; padding: 10px 12px; border-radius: 10px; background: #fff3e6; color: #6b3d12; }

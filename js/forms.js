@@ -111,12 +111,39 @@
 			var form = input.form;
 			var express = form ? form.querySelector('input[name="Express"]') : null;
 
+			var booked = null, note = null;
+			if (input.hasAttribute('data-booked') && window.TERMINE) {
+				booked = {};
+				window.TERMINE.forEach(function (t) { booked[t.date] = t; });
+				note = document.createElement('p');
+				note.className = 'hint booked-note';
+				note.hidden = true;
+				input.insertAdjacentElement('afterend', note);
+			}
+			function ymd(d) { return d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2); }
+			function showBookedNote(d) {
+				var t = d && booked[ymd(d)];
+				note.hidden = !t;
+				if (t) note.textContent = EN
+					? 'I already have a date that day – but maybe I can do both! Tell me what makes your event special and convince me to come.'
+					: 'An dem Tag habe ich schon einen Termin – aber vielleicht schaffe ich beides! Erzähl mir, was dein Event besonders macht, und überzeug mich.';
+			}
+
 			var picker = window.flatpickr(input, {
 				locale: EN ? 'default' : 'de',   // 'default' = flatpickr's built-in English
 				dateFormat: 'd.m.Y',      // what the visitor sees AND what arrives in your email
 				minDate: daysFromToday(normalDays),
 				disableMobile: true,      // same German calendar on phones
-				allowInput: true   // every date can be picked OR typed (TT.MM.JJJJ, digits only is enough)
+				allowInput: true,   // every date can be picked OR typed (TT.MM.JJJJ, digits only is enough)
+				// Event forms (data-booked): days that already have a Termin (js/termine.js) look greyed out
+				// but stay clickable – picking one shows an inviting "convince me" note.
+				onDayCreate: function (_d, _s, _fp, day) {
+					if (booked && booked[ymd(day.dateObj)]) {
+						day.classList.add('is-booked');
+						day.title = EN ? 'I already have a date here' : 'Hier habe ich schon einen Termin';
+					}
+				},
+				onChange: function (sel) { if (booked) showBookedNote(sel[0]); }
 			});
 
 			// Typing a date: phone number pads often have no "." key, so only digits are needed –
