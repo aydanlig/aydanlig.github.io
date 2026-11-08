@@ -2440,3 +2440,5 @@ body.scrolled .to-top{opacity:1;visibility:visible;transform:none}
 @keyframes style-pair { 0% { opacity: 0; } 6%, 46% { opacity: 1; } 52%, 100% { opacity: 0; } }
 @media (max-width: 600px) { .style-cycle { aspect-ratio: 4 / 3; } }
 @media (prefers-reduced-motion: reduce) { .style-cycle img:nth-child(2) { opacity: 1; } }
+.extra-soon { opacity: .85; cursor: default; }
+.extra-soon input { cursor: not-allowed; }
