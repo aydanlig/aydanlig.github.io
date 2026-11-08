@@ -38,9 +38,9 @@
 		var today = new Date(); today.setHours(0, 0, 0, 0);
 		var items = [].filter.call(document.querySelectorAll('.termine-list li[data-date]'), function (li) {
 			return new Date(li.getAttribute('data-date') + 'T23:59:59') >= today;
-		}).slice(0, 4);
+		}).slice(0, 3);
 		items.forEach(function (li) { nd.appendChild(li.cloneNode(true)); });
-		if (!items.length) nd.parentNode.querySelector('summary').textContent += en ? ' (none planned)' : ' (gerade keine)';
+		if (!items.length) nd.innerHTML = "<li>" + (en ? "None planned right now" : "Gerade keine geplant") + "</li>";
 	}
 
 	/* ---------- 3. Hover on "Karte": Google Maps preview of my spot ---------- */

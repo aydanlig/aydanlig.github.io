@@ -2296,3 +2296,7 @@ h3 { letter-spacing: -0.012em; }
 @media (max-width: 600px) { .lab-ribbon-long { display: none; } }
 :root.theme-dark .enq-menu a:hover, :root.theme-dark .enq-menu a:focus-visible,
 :root.theme-dark .main-nav .nav-more-menu a:hover, :root.theme-dark .main-nav .nav-more-menu a:focus-visible { background: rgba(255,107,53,.14); color: #FF8A5C; }
+/* "Nächste Termine": own card under the Saturday/map line (homepage hero) */
+.jd-side .next-dates { display: block; margin-top: 10px; padding: 12px 14px; border-radius: 10px; background: var(--card); border: 1px solid var(--line); max-width: 30em; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+.jd-side .next-dates > strong { font-size: .95rem; }
+.jd-side .next-dates ul { margin: .5em 0 .4em; }
