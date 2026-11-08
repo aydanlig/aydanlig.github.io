@@ -701,11 +701,15 @@
 							</div>
 							<div class="field">
 								<label for="l-place">Wo?</label>
-								<select id="l-place" name="Live-Ort">
+								<select id="l-place" name="Live-Ort" onchange="var a=document.getElementById('l-home'),on=this.selectedIndex===0;a.hidden=!on;document.getElementById('l-address').required=on">
 									<option>Bei dir (zu Hause, Büro …) – Aufpreis nach Absprache</option>
 									<option>An meinem Stand (z. B. Mauerpark)</option>
 									<option>Anderer Ort – steht in der Nachricht</option>
 								</select>
+								<div id="l-home" style="margin-top:8px">
+									<input id="l-address" name="Adresse" autocomplete="street-address" placeholder="Straße, Hausnr., PLZ Ort" aria-label="Adresse" required>
+									<input id="l-bell" name="Klingel / Telefon" placeholder="Klingelname oder Telefonnummer (optional)" aria-label="Klingelname oder Telefon" style="margin-top:8px">
+								</div>
 							</div>
 							<div class="field">
 								<label for="l-size">Größe &amp; Stil</label>

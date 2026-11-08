@@ -678,11 +678,15 @@
 							</div>
 							<div class="field">
 								<label for="l-place">Where?</label>
-								<select id="l-place" name="Live-Ort">
+								<select id="l-place" name="Live-Ort" onchange="var a=document.getElementById('l-home'),on=this.selectedIndex===0;a.hidden=!on;document.getElementById('l-address').required=on">
 									<option>At your place (home, office …) – surcharge by arrangement</option>
 									<option>At my stand (e.g. Mauerpark)</option>
 									<option>Somewhere else – see message</option>
 								</select>
+								<div id="l-home" style="margin-top:8px">
+									<input id="l-address" name="Adresse" autocomplete="street-address" placeholder="Street, no., postcode, city" aria-label="Address" required>
+									<input id="l-bell" name="Klingel / Telefon" placeholder="Name on the doorbell or phone number (optional)" aria-label="Doorbell name or phone" style="margin-top:8px">
+								</div>
 							</div>
 							<div class="field">
 								<label for="l-size">Size &amp; style</label>
