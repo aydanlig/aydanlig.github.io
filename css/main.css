@@ -2458,3 +2458,6 @@ body.scrolled .to-top{opacity:1;visibility:visible;transform:none}
 .jd-art .saturday-line, .jd-art .next-dates { width: min(100%, 420px); max-width: 100%; box-sizing: border-box; }
 .jd-art .saturday-line { margin-top: auto; }
 .jd-art .next-dates { margin-top: 10px; }
+
+/* commission card: same gap under the image slideshow as the other cards */
+.card .style-cycle { margin-bottom: 18px; }
