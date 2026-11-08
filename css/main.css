@@ -2372,7 +2372,7 @@ body .btn:active { transform: translateY(0); box-shadow: 1px 2px 0 var(--fox, #F
 .live-intro { align-items: stretch; }
 .live-intro > img { width: 100%; height: 100%; min-height: 420px; max-height: 600px; object-fit: cover; object-position: 10% 40%; align-self: stretch; }
 @media (max-width: 760px) { .live-intro > img { height: auto; aspect-ratio: 4 / 3; } }
-.site-footer { background-image: url("/img/ink/paper-light.svg"), url("/img/ink/paper.svg"); background-repeat: repeat; background-size: 320px; }
+.site-footer { background: var(--night) url("/img/textur/papier-dunkel.jpg") repeat; background-size: 640px; }
 
 /* commission: brush stroke under the prices heading (from the preview) */
 #prices-title::after {
@@ -2393,4 +2393,4 @@ body .btn:active { transform: translateY(0); box-shadow: 1px 2px 0 var(--fox, #F
 .extras-groups .price-list strong { font-size: 1.05em; color: var(--fox, #FF6B35); }
 .ref-side .pdf-links { justify-content: center; margin-top: 0; }
 /* footer fox ears: same grain as the footer */
-.site-footer::before { background: url("/img/ink/paper-light.svg") 0 0 / 320px repeat, url("/img/ink/paper.svg") 0 0 / 320px repeat, currentColor; }
+.site-footer::before { background: var(--night) url("/img/textur/papier-dunkel.jpg") 0 0 / 640px repeat; }
