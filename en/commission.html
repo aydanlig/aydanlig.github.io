@@ -117,7 +117,7 @@
 			<div class="wrap">
 				<div class="center">
 					<span class="eyebrow">Prices</span>
-					<h2 id="prices-title">From the Saturday sketch to a picture for the office wall</h2>
+					<h2 id="prices-title">From the Saturday sketch<br> to a picture for the office wall</h2>
 					<p class="lead">What matters to me is finding the art and the style that suit you – and the feeling your picture should carry.</p>
 				</div>
 
@@ -241,11 +241,12 @@
 				<!-- EXTRAS (add-ons), grouped – change the prices here AND in the form below (and on /commission.html) -->
 				<details class="extras-box">
 					<summary><span class="extras-sum-title">Extras</span><ul class="price-list extras-top"><li><span>Each extra person or pet</span><strong>A5 +€10 · A4 +€20 · A3 +€40 · A2 +€60</strong></li><li><span>Colourful watercolour background</span><strong>+€10</strong></li><li><span>Gold ink / gold leaf</span><strong>+€30</strong></li><li><span>Hand-built with my grandpa (a carpenter)</span><strong>from +€50</strong></li><li><span>Express delivery, ready in 3 days</span><strong>+€20</strong></li></ul><span class="extras-tease" aria-hidden="true"><span>Frame simple / premium</span><span>Gift wrapping</span><span>Canvas or framed print</span><span>Image rights for advertising</span><span>Queen · Majesty · Godlike</span></span><span class="extras-pill">See all extras &amp; prices <span>(21)</span></span><span class="extras-pill extras-pill--close">Collapse extras ▴</span></summary>
+					<div class="size-bar" role="group" aria-label="Prices for size"><span>Prices for size:</span><button type="button" data-size="0" aria-pressed="true">A5</button><button type="button" data-size="1" aria-pressed="false">A4</button><button type="button" data-size="2" aria-pressed="false">A3</button><button type="button" data-size="3" aria-pressed="false">A2</button></div>
 					<div class="extras-groups">
 						<div>
 							<h4>More in the picture</h4>
 							<ul class="price-list">
-								<li><span>Each extra person or pet</span><strong>A5 +€10 · A4 +€20 · A3 +€40 · A2 +€60</strong></li>
+								<li><span>Each extra person or pet</span><strong data-sz="10,20,40,60">+€10</strong></li>
 								<li><span>Several portraits (family, team)</span><strong>volume discount</strong></li>
 							</ul>
 						</div>
@@ -267,11 +268,17 @@
 							</ul>
 						</div>
 						<div>
-							<h4>Frame &amp; delivery</h4>
+							<h4>Frame</h4>
+							<ul class="price-list">
+								<li><span>Simple frame<small>black, white or wood</small></span><strong data-sz="10,10,20,30">+€10</strong></li>
+								<li><span>Premium frame<small>black, white or wood</small></span><strong data-sz="20,20,40,60">+€20</strong></li>
+								<li><span>Hand-built with my grandpa (a carpenter)<small>to your wishes</small></span><strong data-sz="50,70,140,210">+€50</strong></li>
+							</ul>
+						</div>
+						<div>
+							<h4>Delivery</h4>
 							<ul class="price-list">
 								<li><span>Digital scan by e-mail</span><strong>free</strong></li>
-								<li><span>Frame simple / premium<small>black, white or wood</small></span><strong>+€10 / +€20<small>A3 ×2 · A2 ×3</small></strong></li>
-								<li><span>Hand-built with my grandpa (a carpenter)<small>to your wishes</small></span><strong>A5 +€50 · A4 +€70 · A3 +€140 · A2 +€210</strong></li>
 								<li><span>Gift wrapping</span><strong>+€5</strong></li>
 								<li><span>Express delivery<small>ready in 3 days</small></span><strong>+€20</strong></li>
 								<!-- CANVAS / PRINT COPY – printed on demand (Gelato), price depends on size, so: quote first -->
@@ -823,6 +830,14 @@
 		<p class="footer-websites" style="text-align:center;font-size:.85rem;margin:14px 0 0;opacity:.85"><a href="/websites/">Gefällt dir die Seite? Ich baue auch deine Website →</a></p>
 	</footer>
 
+<script>
+/* extras size bar: swaps the size-dependent extra prices (data-sz = A5,A4,A3,A2) */
+document.querySelectorAll('.size-bar button').forEach(function(b){b.addEventListener('click',function(){
+	var n=+b.dataset.size, de=document.documentElement.lang!=='en';
+	b.parentNode.querySelectorAll('button').forEach(function(x){x.setAttribute('aria-pressed',x===b)});
+	document.querySelectorAll('[data-sz]').forEach(function(el){var v=el.dataset.sz.split(',')[n];el.textContent=de?'+'+v+' €':'+€'+v;});
+});});
+</script>
 </body>
 
 </html>

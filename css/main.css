@@ -2373,3 +2373,21 @@ body .btn:active { transform: translateY(0); box-shadow: 1px 2px 0 var(--fox, #F
 .live-intro > img { width: 100%; height: 100%; min-height: 420px; max-height: 600px; object-fit: cover; object-position: 10% 40%; align-self: stretch; }
 @media (max-width: 760px) { .live-intro > img { height: auto; aspect-ratio: 4 / 3; } }
 .site-footer { background-image: url("/img/ink/paper-light.svg"), url("/img/ink/paper.svg"); background-repeat: repeat; background-size: 320px; }
+
+/* commission: brush stroke under the prices heading (from the preview) */
+#prices-title::after {
+	content: ""; display: block; width: min(240px, 62%); height: 16px; margin: 0.22em auto 0;
+	background: var(--fox, #FF6B35);
+	-webkit-mask: url("/img/ink/smear.svg") no-repeat center / 100% 100%;
+	mask: url("/img/ink/smear.svg") no-repeat center / 100% 100%;
+	opacity: 0.88;
+}
+/* extras: size switch A5–A2 + easier-to-read prices */
+.size-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 6px; margin: 18px 0 8px; }
+.size-bar span { font-weight: 600; margin-right: 4px; }
+.size-bar button {
+	min-width: 52px; min-height: 44px; padding: 6px 14px; border-radius: 999px; cursor: pointer;
+	font: inherit; font-weight: 700; color: var(--ink); background: transparent; border: 2px solid var(--ink);
+}
+.size-bar button[aria-pressed="true"] { background: var(--fox, #FF6B35); border-color: var(--fox, #FF6B35); color: #fff; }
+.extras-groups .price-list strong { font-size: 1.05em; color: var(--fox, #FF6B35); }

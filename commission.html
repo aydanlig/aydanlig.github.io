@@ -121,7 +121,7 @@
 			<div class="wrap">
 				<div class="center">
 					<span class="eyebrow">Preise</span>
-					<h2 id="prices-title">Von der Samstags-Skizze bis zum Bild für die Bürowand</h2>
+					<h2 id="prices-title">Von der Samstags-Skizze<br> bis zum Bild für die Bürowand</h2>
 					<p class="lead">Mir geht es darum, die Kunst und den Stil zu finden, die zu dir passen – und zu dem Gefühl, das dein Bild tragen soll.</p>
 				</div>
 
@@ -258,11 +258,12 @@
 				     Change a price here AND in the "Extras" / "Rahmen" fields of the form below (same order there). -->
 				<details class="extras-box">
 					<summary><span class="extras-sum-title">Extras</span><ul class="price-list extras-top"><li><span>Jede weitere Person oder jedes Haustier</span><strong>A5 +10 € · A4 +20 € · A3 +40 € · A2 +60 €</strong></li><li><span>Bunter Aquarell-Hintergrund</span><strong>+10 €</strong></li><li><span>Goldtinte / Blattgold</span><strong>+30 €</strong></li><li><span>Handgebaut mit meinem Opa (Tischler)</span><strong>ab +50 €</strong></li><li><span>Expresslieferung, fertig in 3 Tagen</span><strong>+20 €</strong></li></ul><span class="extras-tease" aria-hidden="true"><span>Rahmen einfach / hochwertig</span><span>Geschenkverpackung</span><span>Leinwand oder gerahmter Druck</span><span>Bildrechte für Werbung</span><span>Queen · Majesty · Godlike</span></span><span class="extras-pill">Alle Extras &amp; Preise ansehen <span>(21)</span></span><span class="extras-pill extras-pill--close">Extras einklappen ▴</span></summary>
+					<div class="size-bar" role="group" aria-label="Preise für Größe"><span>Preise für Größe:</span><button type="button" data-size="0" aria-pressed="true">A5</button><button type="button" data-size="1" aria-pressed="false">A4</button><button type="button" data-size="2" aria-pressed="false">A3</button><button type="button" data-size="3" aria-pressed="false">A2</button></div>
 					<div class="extras-groups">
 						<div>
 							<h4>Mehr auf dem Bild</h4>
 							<ul class="price-list">
-								<li><span>Jede weitere Person oder jedes Haustier</span><strong>A5 +10 € · A4 +20 € · A3 +40 € · A2 +60 €</strong></li>
+								<li><span>Jede weitere Person oder jedes Haustier</span><strong data-sz="10,20,40,60">+10 €</strong></li>
 								<li><span>Mehrere Porträts (Familie, Team)</span><strong>Mengenrabatt</strong></li>
 							</ul>
 						</div>
@@ -284,12 +285,17 @@
 							</ul>
 						</div>
 						<div>
-							<h4>Rahmen &amp; Lieferung</h4>
+							<h4>Rahmen</h4>
 							<ul class="price-list">
-								<!-- FRAMES – flat price, same for A5 and A4 -->
+								<li><span>Rahmen einfach<small>schwarz, weiß oder Holz</small></span><strong data-sz="10,10,20,30">+10 €</strong></li>
+								<li><span>Rahmen hochwertig<small>schwarz, weiß oder Holz</small></span><strong data-sz="20,20,40,60">+20 €</strong></li>
+								<li><span>Handgebaut mit meinem Opa (Tischler)<small>nach deinen Wünschen</small></span><strong data-sz="50,70,140,210">+50 €</strong></li>
+							</ul>
+						</div>
+						<div>
+							<h4>Lieferung</h4>
+							<ul class="price-list">
 								<li><span>Digitaler Scan per E-Mail</span><strong>kostenlos</strong></li>
-								<li><span>Rahmen einfach / hochwertig<small>schwarz, weiß oder Holz</small></span><strong>+10 € / +20 €<small>A3 ×2 · A2 ×3</small></strong></li>
-								<li><span>Handgebaut mit meinem Opa (Tischler)<small>nach deinen Wünschen</small></span><strong>A5 +50 € · A4 +70 € · A3 +140 € · A2 +210 €</strong></li>
 								<li><span>Geschenkverpackung</span><strong>+5 €</strong></li>
 								<li><span>Expresslieferung<small>fertig in 3 Tagen</small></span><strong>+20 €</strong></li>
 								<!-- CANVAS / PRINT COPY – printed on demand (Gelato), price depends on size, so: quote first -->
@@ -850,6 +856,14 @@
 		<p class="footer-websites" style="text-align:center;font-size:.85rem;margin:14px 0 0;opacity:.85"><a href="/websites/">Gefällt dir die Seite? Ich baue auch deine Website →</a></p>
 	</footer>
 
+<script>
+/* extras size bar: swaps the size-dependent extra prices (data-sz = A5,A4,A3,A2) */
+document.querySelectorAll('.size-bar button').forEach(function(b){b.addEventListener('click',function(){
+	var n=+b.dataset.size, de=document.documentElement.lang!=='en';
+	b.parentNode.querySelectorAll('button').forEach(function(x){x.setAttribute('aria-pressed',x===b)});
+	document.querySelectorAll('[data-sz]').forEach(function(el){var v=el.dataset.sz.split(',')[n];el.textContent=de?'+'+v+' €':'+€'+v;});
+});});
+</script>
 </body>
 
 </html>
