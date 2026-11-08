@@ -2453,3 +2453,8 @@ body.scrolled .to-top{opacity:1;visibility:visible;transform:none}
 @keyframes jd-spin { to { --jd-spin: 360deg; } }
 @media (max-width: 760px) { .jd-side .jd-photo { width: 100%; max-height: 40svh; } }
 @media (prefers-reduced-motion: reduce) { .jd-side .jd-photo { animation: none; } }
+
+/* Hero art (08.11.): Saturday line on top of next dates, same width, both pinned to the bottom (room for the portfolio button) */
+.jd-art .saturday-line, .jd-art .next-dates { width: min(100%, 420px); max-width: 100%; box-sizing: border-box; }
+.jd-art .saturday-line { margin-top: auto; }
+.jd-art .next-dates { margin-top: 10px; }
