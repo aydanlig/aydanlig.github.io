@@ -361,7 +361,8 @@ window.SFP_CROPS = {
 		"/|aydan-am-stand.jpg": {
 			"x": 39.667,
 			"y": 0,
-			"z": 1
+			"z": 1,
+			"b": 1
 		}
 	},
 	"phone": {}

@@ -2406,3 +2406,13 @@ body .btn:active { transform: translateY(0); box-shadow: 1px 2px 0 var(--fox, #F
 .job-sum strong { font-size: 1.15rem; }
 .job-sum-pay { color: var(--fox, #FF6B35); font-weight: 700; }
 .job-sum-more { margin-top: auto; font-weight: 600; text-decoration: underline; }
+/* hero: "Nächste Termine" now sits on the left under "Portfolio ansehen" */
+.jd-art .next-dates { position: relative; display: block; margin-top: 14px; padding: 12px 14px; width: min(100%, 420px); box-sizing: border-box; border-radius: 10px; background: var(--card); color: var(--ink); border: 1px solid var(--line); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+.jd-art .next-dates > strong { font-size: .95rem; }
+.jd-art .next-dates a { color: inherit; }
+.jd-art .next-dates { max-width: 100%; }
+.jd-art .nd-cols { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+.jd-art .next-dates { width: min(calc(100vw - 40px), 420px); }
+/* hero photo: always as wide as the "Für Firmen & Events" buttons; if the box gets wider than the photo, crop.js fills the sides with a blur (b:1) */
+.jd-side .jd-photo { width: min(100%, 560px); max-width: none; aspect-ratio: 16 / 10; max-height: 34svh; }
+@media (max-width: 760px) { .jd-side .jd-photo { width: 100%; max-height: 40svh; } }
