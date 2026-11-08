@@ -31,6 +31,7 @@
 		box.setAttribute('aria-modal', 'true');
 		box.hidden = true;
 		box.innerHTML =
+			'<button type="button" class="lb-back">' + (/^\/en\//.test(location.pathname) ? '← Back' : '← Zurück') + '</button>' +
 			'<button type="button" class="lb-close" aria-label="Schließen">✕</button>' +
 			'<button type="button" class="lb-prev" aria-label="Vorheriges Bild">‹</button>' +
 			'<figure><img alt=""><figcaption></figcaption></figure>' +
@@ -65,12 +66,15 @@
 			box.hidden = false;
 			document.body.style.overflow = 'hidden';
 			box.querySelector('.lb-close').focus();
+			// phone back button / back gesture closes the picture instead of leaving the page
+			try { history.pushState({ lb: 1 }, ''); } catch (e) {}
 			if (calm || !box.animate) return;
 			box.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 220, easing: 'ease-out' });
 			fig.animate([{ transform: fromThumb(), opacity: 0.4 }, { transform: 'none', opacity: 1 }], { duration: 380, easing: ease });
 		}
 
-		function close() {
+		function close(fromHistory) {
+			if (fromHistory !== true && history.state && history.state.lb) { history.back(); return; }
 			function done() {
 				box.hidden = true;
 				img.removeAttribute('src');
@@ -103,6 +107,8 @@
 		});
 
 		box.querySelector('.lb-close').addEventListener('click', close);
+		box.querySelector('.lb-back').addEventListener('click', close);
+		window.addEventListener('popstate', function () { if (!box.hidden) close(true); });
 		box.querySelector('.lb-prev').addEventListener('click', function () { show(index - 1); });
 		box.querySelector('.lb-next').addEventListener('click', function () { show(index + 1); });
 		box.addEventListener('click', function (e) { if (e.target === box) close(); });
