@@ -2366,3 +2366,5 @@ body .btn:active { transform: translateY(0); box-shadow: 1px 2px 0 var(--fox, #F
 @media (prefers-reduced-motion:reduce){.polaroid{transition:none}}
 .story-link { margin-top: .8em; padding-left: 17px; font-weight: 600; }
 .big-quote { font-style: italic; }
+/* Framed photo (from the preview): dark outline + orange offset shadow, slight tilt */
+.photo-framed { transform: rotate(-1.5deg); box-shadow: 0 0 0 2px rgba(26,22,21,.88), 9px 11px 0 -1px rgba(255,107,53,.5), 0 22px 44px -22px rgba(0,0,0,.6); border-radius: 12px; }
