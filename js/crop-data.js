@@ -312,7 +312,7 @@ window.SFP_CROPS = {
 		},
 		"/events.html|aydan-am-stand.jpg": {
 			"x": 0,
-			"y": 40.835,
+			"y": 39.713,
 			"z": 1
 		},
 		"/events.html|stand-saunasplash-nacht-4x5.jpg": {
@@ -322,9 +322,9 @@ window.SFP_CROPS = {
 			"r": 0.735
 		},
 		"/events.html|aquarell-gitarre-4x5.jpg": {
-			"x": 50,
-			"y": 50.284,
-			"z": 1,
+			"x": 39.123,
+			"y": 75.444,
+			"z": 1.36,
 			"r": 0.733
 		},
 		"/about/|aydan-profil.jpg": {
