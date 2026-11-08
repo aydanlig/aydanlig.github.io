@@ -357,6 +357,11 @@ window.SFP_CROPS = {
 			"x": 91.521,
 			"y": 30.302,
 			"z": 1.36
+		},
+		"/|aydan-am-stand.jpg": {
+			"x": 39.667,
+			"y": 0,
+			"z": 1
 		}
 	},
 	"phone": {}
