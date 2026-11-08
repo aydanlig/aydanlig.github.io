@@ -2494,3 +2494,8 @@ body.scrolled .to-top{opacity:1;visibility:visible;transform:none}
 .page-peek b { grid-column: 2; grid-row: 1 / span 2; font-size: 1.6rem; color: var(--fox, #FF6B35); animation: hint-bounce 2.2s ease-in-out infinite; }
 @media (max-width: 760px) { .page-peek { width: 100%; } }
 @media (prefers-reduced-motion: reduce) { .page-peek b { animation: none; } }
+
+/* Hero: breathing room between portfolio button, Samstag line and Termine card */
+.jd-art :has(+ .saturday-line) { margin-bottom: 18px; }
+.jd-art .next-dates { margin-top: 14px; padding: 16px 18px; }
+.jd-art .next-dates > strong { display: block; margin-bottom: 8px; }
