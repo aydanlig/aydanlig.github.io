@@ -7,7 +7,7 @@
 | 3 | Grand Slam Offer | ✅ preview: websites page = free toolkit + free check + pay-when-live |
 | 4 | Risk reversal | ✅ live (events "kostenlos & unverbindlich") · preview: websites "Null Risiko" |
 | 5 | Scarcity | ❌ dropped: "one event per day" wasn't true |
-| 6 | Urgency | ❌ dropped: Christmas date not OK |
+| 6 | Urgency | ✅ preview: Christmas order deadline (commission) |
 | 7 | Value stacking | ✅ already: event packages list everything included |
 | 8 | Name the offer | ✅ already: Kleckerkasten, Queen/Majesty/Godlike |
 | 9 | Niche down | ✅ already: tags "Für Eventplaner", "Für dich privat" |
