@@ -296,29 +296,19 @@ window.SFP_CROPS = {
 			"z": 1
 		},
 		"/referenzen/|spaghettaria-2.jpg": {
-			"x": 55.022,
-			"y": 22.28,
-			"z": 1
+			"x": 55.162,
+			"y": 48.166,
+			"z": 1.36
 		},
 		"/referenzen/|spaghettaria-3.jpg": {
-			"x": 50.795,
-			"y": 51.612,
-			"z": 1.259
+			"x": 51.246,
+			"y": 56.744,
+			"z": 1.587
 		},
 		"/referenzen/|exhibition%20WIP.jpeg": {
 			"x": 50,
 			"y": 50,
 			"z": 1
-		},
-		"/referenzen/|spaghettaria-1b.jpg": {
-			"x": 78.95,
-			"y": 31.258,
-			"z": 1.469
-		},
-		"/referenzen/|spaghettaria-1a.jpg": {
-			"x": 44.804,
-			"y": 50.245,
-			"z": 1.166
 		},
 		"/events.html|aydan-am-stand.jpg": {
 			"x": 50,
@@ -357,6 +347,16 @@ window.SFP_CROPS = {
 			"x": 55.27,
 			"y": 45.26,
 			"z": 4
+		},
+		"/referenzen/|spaghettaria-1a.jpg": {
+			"x": 32.259,
+			"y": 54.71,
+			"z": 1.259
+		},
+		"/referenzen/|spaghettaria-1b.jpg": {
+			"x": 91.521,
+			"y": 30.302,
+			"z": 1.36
 		}
 	},
 	"phone": {}
