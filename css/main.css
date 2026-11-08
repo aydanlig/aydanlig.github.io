@@ -2292,3 +2292,5 @@ h3 { letter-spacing: -0.012em; }
 :root.theme-dark .site-header .btn:not(.btn--ghost):hover { background: var(--ink); border-color: var(--ink); color: var(--night); }
 /* dark mode: Labor preview ribbon (--plum turns light there -> white on white) */
 :root.theme-dark .lab-ribbon { background: var(--surface); border-bottom: 1px solid var(--line); }
+.lab-ribbon a { color: #FF6B35; white-space: nowrap; }
+@media (max-width: 600px) { .lab-ribbon-long { display: none; } }
