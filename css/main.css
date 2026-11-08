@@ -2464,3 +2464,11 @@ body.scrolled .to-top{opacity:1;visibility:visible;transform:none}
 
 /* footer: generated watercolour paper texture (img/ink/watercolor-paper.svg) */
 .site-footer, .site-footer::before { background: var(--night) url("/img/ink/watercolor-paper.svg") 0 0 / 400px repeat; }
+
+/* Termine: small sort buttons above the list (Datum / Event / Art) */
+.termin-sort { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 1em 0 -.4em; font-size: .85rem; }
+.termin-sort span { color: var(--ink-soft); margin-right: 2px; }
+.termin-sort button { min-height: 36px; padding: 4px 14px; border-radius: 999px; cursor: pointer; font: inherit; font-weight: 700; color: var(--ink); background: transparent; border: 1px solid var(--line); }
+.termin-sort button[aria-pressed="true"] { background: var(--fox, #FF6B35); border-color: var(--fox, #FF6B35); color: #1A1615; }
+.termin-sort button[data-dir="desc"]::after { content: " ↓"; }
+.termin-sort button[data-dir="asc"]::after, .termin-sort button[aria-pressed="true"]:not([data-dir])::after { content: " ↑"; }
