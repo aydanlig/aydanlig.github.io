@@ -2499,3 +2499,5 @@ body.scrolled .to-top{opacity:1;visibility:visible;transform:none}
 .jd-art :has(+ .saturday-line) { margin-bottom: 18px; }
 .jd-art .next-dates { margin-top: 14px; padding: 16px 18px; }
 .jd-art .next-dates > strong { display: block; margin-bottom: 8px; }
+/* "Weiter unten" peek: centred at the bottom of the hero */
+.hero--jd .page-peek { margin: 18px auto 10px; text-align: left; }
