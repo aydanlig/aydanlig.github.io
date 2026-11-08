@@ -337,7 +337,7 @@
 					<h2 style="margin-top:0">Bewerbung</h2>
 					<p>Ein Lebenslauf ist nicht erforderlich. Schreib uns kurz, wer du bist, welche Stelle dich interessiert und wann du verfügbar bist.
 						Alternativ per Direktnachricht auf <a href="https://www.instagram.com/smileyfoxyportraits">Instagram</a>.</p>
-					<form action="https://formsubmit.co/aydan@smileyfoxyportraits.com" method="POST">
+					<form action="https://formsubmit.co/aydan@smileyfoxyportraits.com" method="POST" enctype="multipart/form-data">
 						<input type="hidden" name="_subject" value="Bewerbung über die Jobs-Seite">
 						<input type="hidden" name="_template" value="table">
 						<input type="hidden" name="_next" value="https://smileyfoxyportraits.com/danke.html">
@@ -361,6 +361,13 @@
 							<div class="field"><label for="job-insta">Instagram (optional)</label><input id="job-insta" name="Instagram" placeholder="@deinname"></div>
 							<div class="field full"><label for="job-when">Wann hast du Zeit?</label><input id="job-when" name="Zeit" placeholder="z. B. samstags ab 14 Uhr"></div>
 							<div class="field full"><label for="job-msg">Kurze Vorstellung</label><textarea id="job-msg" name="Nachricht" rows="4"></textarea></div>
+							<div class="field full"><label for="job-cv">Lebenslauf (PDF, optional)</label><input id="job-cv" type="file" name="Lebenslauf" accept=".pdf,.doc,.docx,image/*"></div>
+							<div class="field full"><label for="job-proof1">Nachweise &amp; Arbeitsproben (optional)</label><input id="job-proof1" type="file" name="Nachweis 1" accept=".pdf,image/*,video/*"></div>
+							<div class="field full"><input id="job-proof2" type="file" name="Nachweis 2" accept=".pdf,image/*,video/*" aria-label="Weiterer Nachweis"></div>
+							<div class="field full"><input id="job-proof3" type="file" name="Nachweis 3" accept=".pdf,image/*,video/*" aria-label="Weiterer Nachweis"></div>
+							<div class="field full"><label for="job-links">Links zu Arbeitsproben (Portfolio, Reels, Kampagnen)</label><textarea id="job-links" name="Links" rows="2" placeholder="z. B. Instagram-Reels, Drive-Ordner, YouTube"></textarea></div>
+							<div class="field full"><label for="job-results">Bisherige Ergebnisse &amp; Referenzen</label><textarea id="job-results" name="Ergebnisse" rows="3" placeholder="z. B. Aufrufe, Verkäufe, Buchungen, Werbe-Kennzahlen, Zeugnisse"></textarea></div>
+							<p class="hint field full">Zum Beispiel Screenshots von Insights oder Anzeigen-Statistiken, Zeugnisse, Zertifikate. Insgesamt max. 10 MB, größere Videos bitte als Link.</p>
 						</div>
 						<p class="hint form-legal">Mit dem Absenden willigst du ein, dass deine Angaben ausschließlich zur Bearbeitung deiner Bewerbung genutzt werden. Mehr in der <a href="/ImpressumUndDatenschutz/Datenschutz.html">Datenschutzerklärung</a>.</p>
 						<button class="btn" type="submit">Bewerbung senden</button>
