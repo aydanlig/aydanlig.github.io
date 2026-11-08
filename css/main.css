@@ -2506,3 +2506,5 @@ body.scrolled .to-top{opacity:1;visibility:visible;transform:none}
 @media (max-width: 760px) { .to-top { width: 26px; height: 26px; } }
 /* zoomed crops (crop mode) must stay inside their frame – stops sideways scroll on phones */
 :has(> img.is-cropped) { overflow: hidden; }
+/* footer: lighter, no grain: plum-black at 75% over light grey */
+.site-footer, .site-footer::before { background: linear-gradient(rgba(15,12,17,.75), rgba(15,12,17,.75)), #D9D4D6; }
