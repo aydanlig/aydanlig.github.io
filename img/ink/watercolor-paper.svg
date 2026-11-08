@@ -1,19 +1,14 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="600" height="600" viewBox="0 0 600 600">
-	<!-- generated watercolour paper for the dark footer: soft uneven washes + cold-press tooth (light bumps, dark pits) -->
-	<filter id="wash" x="0" y="0" width="100%" height="100%">
-		<feTurbulence type="fractalNoise" baseFrequency="0.006" numOctaves="4" seed="7" stitchTiles="stitch"/>
-		<feColorMatrix values="0 0 0 0 0.98  0 0 0 0 0.86  0 0 0 0 0.76  0 0 0 1.6 -0.75"/>
-	</filter>
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400">
+	<!-- generated raw watercolour paper for the dark footer: only the cold-press tooth (light bumps + fine fibres), no washes -->
 	<filter id="tooth" x="0" y="0" width="100%" height="100%">
-		<feTurbulence type="fractalNoise" baseFrequency="0.09" numOctaves="3" seed="2" stitchTiles="stitch" result="n"/>
-		<feDiffuseLighting in="n" surfaceScale="2.2" lighting-color="#fff" result="l"><feDistantLight azimuth="235" elevation="55"/></feDiffuseLighting>
-		<feColorMatrix in="l" values="0 0 0 0 1  0 0 0 0 0.95  0 0 0 0 0.9  2.2 0 0 0 -1.55"/>
+		<feTurbulence type="fractalNoise" baseFrequency="0.11" numOctaves="3" seed="2" stitchTiles="stitch" result="n"/>
+		<feDiffuseLighting in="n" surfaceScale="2" lighting-color="#fff" result="l"><feDistantLight azimuth="235" elevation="60"/></feDiffuseLighting>
+		<feColorMatrix in="l" values="0 0 0 0 1  0 0 0 0 0.97  0 0 0 0 0.93  1.8 0 0 0 -1.1"/>
 	</filter>
-	<filter id="grain" x="0" y="0" width="100%" height="100%">
-		<feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="4" stitchTiles="stitch"/>
-		<feColorMatrix values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -1.8 1.1"/>
+	<filter id="fibre" x="0" y="0" width="100%" height="100%">
+		<feTurbulence type="fractalNoise" baseFrequency="0.9 0.6" numOctaves="2" seed="5" stitchTiles="stitch"/>
+		<feColorMatrix values="0 0 0 0 1  0 0 0 0 0.97  0 0 0 0 0.93  1.6 0 0 0 -0.9"/>
 	</filter>
-	<rect width="600" height="600" filter="url(#wash)" opacity=".10"/>
-	<rect width="600" height="600" filter="url(#tooth)" opacity=".09"/>
-	<rect width="600" height="600" filter="url(#grain)" opacity=".25"/>
+	<rect width="400" height="400" filter="url(#tooth)" opacity=".16"/>
+	<rect width="400" height="400" filter="url(#fibre)" opacity=".10"/>
 </svg>

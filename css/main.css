@@ -2463,4 +2463,4 @@ body.scrolled .to-top{opacity:1;visibility:visible;transform:none}
 .card .style-cycle { margin-bottom: 18px; }
 
 /* footer: generated watercolour paper texture (img/ink/watercolor-paper.svg) */
-.site-footer, .site-footer::before { background: var(--night) url("/img/ink/watercolor-paper.svg") 0 0 / 600px repeat; }
+.site-footer, .site-footer::before { background: var(--night) url("/img/ink/watercolor-paper.svg") 0 0 / 400px repeat; }
