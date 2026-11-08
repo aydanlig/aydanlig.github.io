@@ -2342,14 +2342,14 @@ a.door--light { background: transparent; color: inherit; border: 2px solid curre
 .next-dates .nd-roll ul.rolling li { margin-bottom: .35em; }
 
 /* ===== Portfolio buttons (from the redesign): brush-drawn edge + offset shadow that grows on hover ===== */
-.pf-page .btn { border-radius: 16px 26px 14px 30px / 30px 14px 26px 16px; box-shadow: 3px 4px 0 var(--fox, #FF6B35); transition: transform .2s ease, box-shadow .2s ease; }
-.pf-page .btn--fox { box-shadow: 3px 4px 0 #1A1615; }
-.pf-page .btn--ghost { box-shadow: 3px 4px 0 rgba(255, 107, 53, .55); }
-.pf-page .btn--small { box-shadow: 2px 3px 0 var(--fox, #FF6B35); }
-.pf-page .btn:hover { transform: translateY(-2px); box-shadow: 5px 6px 0 var(--fox, #FF6B35); }
-.pf-page .btn--fox:hover { box-shadow: 5px 6px 0 #1A1615; }
-.pf-page .btn:active { transform: translateY(0); box-shadow: 1px 2px 0 var(--fox, #FF6B35); }
-@media (prefers-reduced-motion: reduce) { .pf-page .btn { transition: none; } }
+body .btn { border-radius: 16px 26px 14px 30px / 30px 14px 26px 16px; box-shadow: 3px 4px 0 var(--fox, #FF6B35); transition: transform .2s ease, box-shadow .2s ease; }
+body .btn--fox { box-shadow: 3px 4px 0 #1A1615; }
+body .btn--ghost { box-shadow: 3px 4px 0 rgba(255, 107, 53, .55); }
+body .btn--small { box-shadow: 2px 3px 0 var(--fox, #FF6B35); }
+body .btn:hover { transform: translateY(-2px); box-shadow: 5px 6px 0 var(--fox, #FF6B35); }
+body .btn--fox:hover { box-shadow: 5px 6px 0 #1A1615; }
+body .btn:active { transform: translateY(0); box-shadow: 1px 2px 0 var(--fox, #FF6B35); }
+@media (prefers-reduced-motion: reduce) { body .btn { transition: none; } }
 .jd-side .jd-photo { height: auto; aspect-ratio: 16 / 10; max-height: 34svh; width: auto; max-width: min(100%, 560px); align-self: flex-start; }
 .jd-side { padding-top: clamp(16px, 2.5vw, 32px); padding-bottom: clamp(16px, 2.5vw, 32px); }
 .hero--jd .scroll-hint { display: none; }
