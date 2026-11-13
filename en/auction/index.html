@@ -14,8 +14,8 @@
 	<script src="/js/ears.js" defer></script>
 
 	<!-- DONATE PAGE (English twin of /spenden/): linked as "Donate" in every English footer. The old link /donate/ redirects here. -->
-	<title>Art auctions | SmileyFoxyPortraits</title>
-	<meta name="description" content="Bid on original artworks by Aydan Lig’on.">
+	<title>Concert sketches at auction | SmileyFoxyPortraits</title>
+	<meta name="description" content="Bid on leftover live concert sketches by Aydan Lig’on – no starting price.">
 	<meta name="author" content="Aydan Lig'on">
 	<meta name="robots" content="noindex, nofollow">
 	<link rel="canonical" href="https://smileyfoxyportraits.com/en/auction/">
@@ -29,8 +29,8 @@
 	<meta property="og:type" content="website">
 	<meta property="og:locale" content="en_GB">
 	<meta property="og:url" content="https://smileyfoxyportraits.com/en/auction/">
-	<meta property="og:title" content="Art auctions | SmileyFoxyPortraits">
-	<meta property="og:description" content="Bid on original artworks by Aydan Lig’on.">
+	<meta property="og:title" content="Concert sketches at auction | SmileyFoxyPortraits">
+	<meta property="og:description" content="Bid on leftover live concert sketches by Aydan Lig’on – no starting price.">
 	<meta property="og:image" content="https://smileyfoxyportraits.com/img/og-share.jpg?v=2">
 	<meta property="og:image:width" content="1200">
 	<meta property="og:image:height" content="630">
@@ -81,6 +81,14 @@
 			.way .btn { grid-row: auto; grid-column: 1; justify-self: start; }
 		}
 	</style>
+	<style>
+		.leftover-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin: 1.2em 0 .6em; }
+		.leftover-strip img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 10px; display: block; }
+		.price-anchor { display: flex; flex-wrap: wrap; gap: 8px 20px; margin: .4em 0 0; padding: 0; list-style: none; }
+		.price-anchor li { font-weight: 600; }
+		.price-anchor s { opacity: .6; }
+		@media (max-width: 520px) { .leftover-strip { grid-template-columns: repeat(2, 1fr); } }
+	</style>
 </head>
 
 <body>
@@ -102,7 +110,7 @@
 				<div class="nav-more">
 					<a href="/en/about/">About me</a><button class="nav-more-toggle" type="button" aria-expanded="false" aria-label="Show more: dates, references, blog and more"><span aria-hidden="true">▾</span></button>
 					<div class="nav-more-menu">
-						<a href="/en/auction/">First auction</a>
+						<a href="/en/auction/">Concert sketch auction</a>
 						<a href="/en/referenzen/">References</a>
 						<a href="/en/about/#bands">Bands drawn live</a>
 						<a href="/en/about/#blog">Blog</a>
@@ -121,12 +129,18 @@
 
 		<section class="section" style="padding-bottom:24px">
 			<div class="wrap prose">
-				<span class="eyebrow">Auction</span>
-				<h1>Art auctions</h1>
+				<span class="eyebrow">Auction · Concert sketches</span>
+				<h1>Drawn live, still available</h1>
 				<p class="lead">
-					I auction selected originals here. You bid with your first name and one way to reach you (email, phone or delivery address) – only your
-					first name is shown. Whoever is ahead at the end gets the picture.
+					At gigs I draw the band while they play – ink, marker and water, right in the stage light.
+					Most sketches go home with the band or the audience that same night. The ones left over, I auction here.
 				</p>
+				<div class="leftover-strip"><img src="/img/musik/band-29-klein.jpg" alt="Ink sketch at robber robber, Schokoladen" width="600" height="600" loading="lazy" decoding="async"><img src="/img/musik/band-24-klein.jpg" alt="Concert sketch of Studio 20 in orange Sharpie" width="600" height="600" loading="lazy" decoding="async"><img src="/img/musik/band-36-klein.jpg" alt="SOUL CLEAR bassist in smudged ink" width="600" height="600" loading="lazy" decoding="async"><img src="/img/musik/band-39-klein.jpg" alt="MOVING AS A GIANT musician in ink" width="600" height="600" loading="lazy" decoding="async"></div>
+				<ul class="price-anchor">
+					<li>On the night: band €10 · audience €20</li>
+					<li>Here: no starting price – you decide what it’s worth</li>
+				</ul>
+				<p class="hint">You bid with your first name and one way to reach you (email, phone or delivery address) – only your first name is shown. Whoever is ahead at the end gets the original. All sketches: <a href="/en/about/#bands">Bands drawn live →</a></p>
 			</div>
 		</section>
 
@@ -152,7 +166,7 @@
 					<li><strong>Right of withdrawal:</strong> as a private person you have the statutory 14-day <a href="/labor/widerruf.html" hreflang="de">right of withdrawal (German)</a>.</li>
 					<li><strong>Privacy:</strong> your contact details (email, phone, address) stay private, are only used to handle the sale and are deleted afterwards. No VAT is charged under § 19 UStG (small business).</li>
 				</ul>
-				<p>I announce new auctions on my <a href="https://aydanligon.substack.com/subscribe">email list</a>.</p>
+				<p>I announce newly available sketches on my <a href="https://aydanligon.substack.com/subscribe">email list</a>.</p>
 			</div>
 		</section>
 
