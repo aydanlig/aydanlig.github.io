@@ -139,7 +139,9 @@
 			'<span class="termin-date"><span class="termin-day">' + esc(p.day) + "</span> " + esc(p.short) +
 			(p.year !== now.getFullYear() ? " " + p.year : "") + "</span>" +
 			'<span class="termin-what"><strong>' + esc(pick(t, "title")) + "</strong>" +
-			'<span class="termin-where">' + (time ? esc(time) + " · " : "") + place + (info ? " · " + esc(info) : "") + (t.links || []).map(function (l) { return ' · <a href="' + esc(l[1]) + '" target="_blank" rel="noopener">' + esc(l[0]) + " ↗</a>"; }).join("") + "</span></span>" +
+			'<span class="termin-where">' + (time ? esc(time) + " · " : "") + place + (info ? " · " + esc(info) : "") + (t.links || []).map(function (l) { return ' · <a href="' + esc(l[1]) + '" target="_blank" rel="noopener">' + esc(l[0]) + " ↗</a>"; }).join("") + "</span>" +
+			(t.date < today && t.img ? '<span class="termin-pics">' + t.img.map(function (n) { return '<a href="/img/musik/' + n + '.jpg" target="_blank" rel="noopener"><img src="/img/musik/' + n + '-klein.jpg" alt="' + esc(EN ? "Drawing from this night" : "Zeichnung von diesem Abend") + '" width="64" height="64" loading="lazy" decoding="async"></a>'; }).join("") + "</span>" : "") +
+			"</span>" +
 			'<span class="termin-kind">' + esc(KIND[t.kind] || KIND.event) + "</span></li>";
 	}
 
