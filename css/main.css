@@ -2504,3 +2504,5 @@ body.scrolled .to-top{opacity:1;visibility:visible;transform:none}
 :has(> img.is-cropped) { overflow: hidden; }
 /* footer: plain dark, no grain texture */
 .site-footer, .site-footer::before { background: var(--night); }
+.termin-pics { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+.termin-pics img { width: 56px; height: 56px; object-fit: cover; border-radius: 8px; display: block; }
