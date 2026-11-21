@@ -1877,7 +1877,8 @@ h1, h2, h3 { overflow-wrap: break-word; }
 .site-footer > .wrap { flex: 1; display: flex; flex-direction: column; width: 100%; }
 .footer-newsletter { margin-bottom: clamp(40px, 7vh, 72px); }
 .footer-newsletter h3 { font-size: clamp(1.5rem, 3vw, 2rem); }
-.footer-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 36px 40px; }
+.footer-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 36px 32px; }
+@media (max-width: 1100px) { .footer-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 /* column titles: fox orange, bigger, with a short line under them */
 .site-footer .footer-grid h3 { font-family: var(--font-head); font-size: 1.15rem; letter-spacing: 0.01em; text-transform: none; color: var(--fox); margin: 0 0 0.9em; padding-bottom: 0.45em; border-bottom: 2px solid var(--plum); }
 .footer-grid p { margin: 0 0 0.75em; line-height: 1.35; }
