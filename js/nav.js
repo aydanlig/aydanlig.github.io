@@ -53,6 +53,8 @@
 		b.setAttribute("aria-label", EN ? "Menu" : "Menü");
 		b.innerHTML = "<span></span><span></span>";
 		nav.parentNode.insertBefore(b, nav);
+		var when = nav.querySelector(".nav-when");
+		if (when) when.insertAdjacentHTML("beforeend", '<small class="nav-desc">' + (EN ? "Every Saturday at Mauerpark · Christmas markets · live concerts" : "Jeden Samstag Mauerpark · Weihnachtsmärkte · Live-Konzerte") + "</small>");
 		/* phone: the 3 offers (also under "Anfragen") fold into one "Angebote" row */
 		var offers = [].slice.call(nav.querySelectorAll(":scope > a")).filter(function (l) { return !l.classList.contains("nav-when"); });
 		if (offers.length) {
