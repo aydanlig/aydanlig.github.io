@@ -62,6 +62,13 @@
 			g.innerHTML = (EN ? "Offers" : "Angebote") + ' <span aria-hidden="true">▾</span>';
 			nav.insertBefore(g, offers[0]);
 			offers.forEach(function (l) { l.classList.add("nav-offer"); });
+			/* auction + bands also count as offers on the phone: copy them into the group, hide them under "Über mich" */
+			var last = offers[offers.length - 1];
+			nav.querySelectorAll('.nav-more-menu a[href*="auktion"], .nav-more-menu a[href*="auction"], .nav-more-menu a[href*="#bands"]').forEach(function (l) {
+				var c = l.cloneNode(true); c.classList.add("nav-offer", "nav-phone-only");
+				l.classList.add("nav-desk-only");
+				last.parentNode.insertBefore(c, last.nextSibling); last = c;
+			});
 			g.addEventListener("click", function () {
 				var on = nav.classList.toggle("offers-open");
 				g.setAttribute("aria-expanded", on ? "true" : "false");
