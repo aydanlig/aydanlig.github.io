@@ -1,8 +1,20 @@
 /* stand-carousel.js – homepage hero: comic-panel slideshow of my stand.
-   Slowly fades to the next photo every 7 s; arrows, tap on photo, swipe, arrow keys.
+   Slowly fades to the next photo every 7 s; arrows, swipe, arrow keys.
    Pauses while hovered / focused / tab hidden; no auto-play with "reduce motion". */
 (function () {
 	var DELAY = 7000;
+	// tap on photo = big view (js/gallery.js) starting at the photo you see: hidden link list,
+	// built now (deferred script, DOM ready) so gallery.js finds it on DOMContentLoaded
+	document.querySelectorAll('.stand-carousel').forEach(function (box) {
+		var list = document.createElement('div');
+		list.setAttribute('data-lightbox', ''); list.hidden = true;
+		box.querySelectorAll('.sc-slide img').forEach(function (im) {
+			var a = document.createElement('a');
+			a.href = im.getAttribute('src'); a.setAttribute('data-caption', im.alt);
+			list.appendChild(a);
+		});
+		box.appendChild(list);
+	});
 	document.addEventListener('DOMContentLoaded', function () {
 		document.querySelectorAll('.stand-carousel').forEach(function (box) {
 			var slides = box.querySelectorAll('.sc-slide'), count = box.querySelector('.sc-count');
@@ -19,7 +31,8 @@
 			function restart() { clearInterval(timer); if (!still && !paused) timer = setInterval(function () { if (!document.hidden) show(i + 1); }, DELAY); }
 			box.querySelector('.sc-prev').addEventListener('click', function () { go(-1); });
 			box.querySelector('.sc-next').addEventListener('click', function () { go(1); });
-			slides.forEach(function (s) { s.addEventListener('click', function () { go(1); }); });
+			var big = box.querySelectorAll('[data-lightbox] a');
+			slides.forEach(function (s, n) { s.addEventListener('click', function () { if (big[n]) big[n].click(); else go(1); }); });
 			box.addEventListener('mouseenter', function () { paused = true; restart(); });
 			box.addEventListener('mouseleave', function () { paused = false; restart(); });
 			box.tabIndex = 0;
