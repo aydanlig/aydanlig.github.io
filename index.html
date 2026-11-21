@@ -159,7 +159,7 @@
 						<li>Events &amp; Teams</li>
 					</ul>
 					<a class="btn-portfolio" href="/portfolio.html">Portfolio ansehen <b aria-hidden="true">→</b></a>
-					<div class="saturday-line"><strong>Jeden Samstag 14–22 Uhr</strong> im Mauerpark, neben dem Photoautomaten · <a href="https://maps.app.goo.gl/ZhjvUq1bMy8CyVk18" target="_blank" rel="noopener" data-photoautomat>📍 Karte</a></div>
+					<a class="scroll-tease" href="#kunst">Was ich sonst mache <b aria-hidden="true">↓</b></a>
 					<div class="next-dates">
 						<strong>Nächste Termine</strong>
 						<div class="nd-cols">
@@ -173,6 +173,7 @@
 
 				<!-- RIGHT: kept short on purpose (Jackie Droujko style) – one line, two buttons, where to find me -->
 				<div class="jd-side">
+					<div class="saturday-line" style="margin:0 0 10px"><strong>Jeden Samstag 14–22 Uhr</strong> im Mauerpark, neben dem Photoautomaten · <a href="https://maps.app.goo.gl/ZhjvUq1bMy8CyVk18" target="_blank" rel="noopener" data-photoautomat>📍 Karte</a></div>
 					<div class="stand-gallery" style="position:relative;max-width:100%">
 				<div class="sg-track" style="display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;scroll-behavior:smooth">
 					<div class="sg-slide" style="flex:0 0 100%;scroll-snap-align:start"><img src="/img/fotos/event-saunasplash-3x2.jpg" alt="Live gemalte Aquarell-Porträts vom Saunasplash-Festival" loading="lazy" decoding="async" style="width:100%;aspect-ratio:8/5;object-fit:cover;border-radius:12px;display:block"><p style="margin:.6em 0 0"><strong>Live-Porträts für Events</strong> – Festivals, Partys, Hochzeiten, Firmenfeiern – ich bringe den Stand mit <a href="/events.html#live-events">Mehr dazu →</a></p></div>
@@ -201,6 +202,14 @@ t.addEventListener('scroll',function(){if(lock)return;var i=Math.round(t.scrollL
 .stand-gallery:not(.sg-b) .sg-tabs button{display:flex!important;flex-direction:column;align-items:stretch;gap:5px;padding:4px!important;border-radius:12px!important;text-align:center!important;width:auto!important;font-size:.72em!important}
 .stand-gallery:not(.sg-b) .sg-th{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:9px}
 }
+</style><style>
+.scroll-tease{display:inline-flex!important;width:auto!important;align-self:flex-start;font-size:.9rem!important;align-items:center;gap:8px;margin-top:14px;padding:9px 18px;border-radius:999px;background:var(--fox,#FF6B35);color:#fff!important;font-weight:600;text-decoration:none;animation:tease-glow 2.4s ease-in-out infinite}
+.scroll-tease b{display:inline-block;animation:hint-bounce 2.2s ease-in-out infinite}
+.scroll-tease:hover{transform:translateY(-1px)}
+@keyframes tease-glow{0%,100%{box-shadow:0 0 0 0 rgba(255,107,53,.55)}50%{box-shadow:0 0 0 10px rgba(255,107,53,0)}}
+@media(prefers-reduced-motion:reduce){.scroll-tease,.scroll-tease b{animation:none}}
+@media(max-width:600px){.sg-tabs{gap:5px!important}.sg-tabs button{font-size:.68rem!important;padding:5px 9px!important;line-height:1.25!important;white-space:normal!important;max-width:100%}}
+@media(max-width:380px){.sg-tabs button{font-size:.62rem!important;padding:4px 7px!important}}
 </style><script src="/js/offer-ab.js" defer></script><script>(function(){var g=document.querySelector('.stand-gallery'),t=g.querySelector('.sg-track'),a=g.querySelectorAll('.sg-prev,.sg-next');function f(){var i=Math.round(t.scrollLeft/t.clientWidth),im=t.children[i]&&t.children[i].querySelector('img');if(im)a.forEach(function(x){x.style.top=(im.offsetTop+im.offsetHeight/2)+'px'})}t.addEventListener('scroll',f,{passive:true});addEventListener('resize',f);addEventListener('load',f);f()})();</script>
 					
 					<a class="pay-line" href="/bezahlen.html">Gerade live gezeichnet? <strong>Hier bezahlen →</strong></a>
