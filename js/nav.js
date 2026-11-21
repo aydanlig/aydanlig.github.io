@@ -119,13 +119,16 @@
 
 	// Bar above the header
 	var next = upcoming[0];
+	// Bar above the header: train-station ticker with the next dates (short: day · title · place)
 	document.querySelectorAll("[data-next-gig]").forEach(function (el) {
 		if (!next) return; // keep the static text
-		var p = parts(next);
-		el.innerHTML = "<strong>" + (EN ? "Next:" : "Nächster Termin:") + "</strong> " +
-			esc(p.day + " " + p.short) + " · " + esc(pick(next, "title")) +
-			'<span class="live-bar-place"> · ' + esc(pick(next, "place")) + (pick(next, "info") ? " · " + esc(pick(next, "info")) : "") + "</span>";
-		// the bar jumps straight to that date on the where-&-when page
+		var items = upcoming.slice(0, 6).map(function (t) {
+			var p = parts(t), place = pick(t, "place").split(",")[0];
+			return '<span class="tk-item"><b>' + esc(p.day + " " + p.short) + "</b> " + esc(pick(t, "title").replace(/\s*\([^)]*\)/g, "").replace(/^Live-Porträts?\s+(beim|auf dem|auf der|im|in der|bei)\s+/i, "").replace(/\s+live gezeichnet$/i, "")) + (place ? ' <span class="tk-place">· ' + esc(place) + "</span>" : "") + "</span>";
+		}).join('<span class="tk-sep" aria-hidden="true">•</span>');
+		el.innerHTML = "<strong>" + (EN ? "Next dates:" : "Nächste Termine:") + '</strong><span class="tk"><span class="tk-run">' + items + '<span class="tk-sep" aria-hidden="true">•</span><span aria-hidden="true">' + items + '<span class="tk-sep">•</span></span></span></span>';
+		var run = el.querySelector(".tk-run");
+		requestAnimationFrame(function () { run.style.animationDuration = Math.max(20, run.scrollWidth / 2 / 35) + "s"; });
 		var a = el.closest("a");
 		if (a) a.setAttribute("href", (EN ? "/en/where-i-draw/#" : "/where-i-draw/#") + next._id);
 	});
