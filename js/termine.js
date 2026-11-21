@@ -1,4 +1,4 @@
-/* =========================================================
+﻿/* =========================================================
    NÄCHSTE TERMINE – the one list of upcoming appearances
    (markets, Christmas markets, bands drawn live …)
 
@@ -41,7 +41,7 @@ window.TERMINE = [
 	{ date: "2026-12-14", time: "ab 17 Uhr", time_en: "from 5 pm", kind: "markt", title: "Live-Porträts auf dem Weihnachtsmarkt", title_en: "Live portraits at the Christmas market", place: "Schloss Charlottenburg · Pagodenzelt", place_en: "Charlottenburg Palace · pagoda tent", map: "https://maps.google.com/?q=Weihnachtsmarkt+Schloss+Charlottenburg" },
 	{ date: "2026-12-20", time: "12–19 Uhr", time_en: "12–7 pm", kind: "markt", title: "Live-Porträts auf dem Advents-Ökomarkt", title_en: "Live portraits at the Advent organic market", place: "Kollwitzplatz, Prenzlauer Berg", map: "https://maps.google.com/?q=%C3%96komarkt+Kollwitzplatz+Berlin" },
 	{ date: "2026-12-21", time: "ab 17 Uhr", time_en: "from 5 pm", kind: "markt", title: "Live-Porträts auf dem Weihnachtsmarkt", title_en: "Live portraits at the Christmas market", place: "Schloss Charlottenburg · Pagodenzelt", place_en: "Charlottenburg Palace · pagoda tent", map: "https://maps.google.com/?q=Weihnachtsmarkt+Schloss+Charlottenburg" },
-	{ date: "2027-01-09", time: "ab 20 Uhr", time_en: "from 8 pm", kind: "konzert", title: "Rat Hole live gezeichnet", title_en: "Drawing Rat Hole live", place: "Schokoladen, Ackerstr. 169", info: "ich zeichne Konzert-Skizzen", info_en: "drawing concert sketches", map: "https://maps.google.com/?q=Schokoladen+Ackerstra%C3%9Fe+169+Berlin" },
+	{ date: "2027-01-09", time: "ab 20 Uhr", time_en: "from 8 pm", kind: "konzert", title: "Rat Hole & Not The Ones live gezeichnet", title_en: "Drawing Rat Hole & Not The Ones live", place: "Schokoladen, Ackerstr. 169", info: "ich zeichne Konzert-Skizzen", info_en: "drawing concert sketches", map: "https://maps.google.com/?q=Schokoladen+Ackerstra%C3%9Fe+169+Berlin" },
 	{ date: "2027-01-25", kind: "konzert", title: "Knitting live gezeichnet", title_en: "Drawing Knitting live", place: "Schokoladen, Ackerstr. 169", info: "ich zeichne Konzert-Skizzen", info_en: "drawing concert sketches", map: "https://maps.google.com/?q=Schokoladen+Ackerstra%C3%9Fe+169+Berlin" },
 	{ date: "2027-01-27", kind: "konzert", title: "Euroteuro live gezeichnet", title_en: "Drawing Euroteuro live", place: "Schokoladen, Ackerstr. 169", info: "ich zeichne Konzert-Skizzen", info_en: "drawing concert sketches", links: [["Bandcamp", "https://euroteuro.bandcamp.com/"], ["Instagram", "https://www.instagram.com/euroteuro/"]], map: "https://maps.google.com/?q=Schokoladen+Ackerstra%C3%9Fe+169+Berlin" },
 	{ date: "2027-01-29", kind: "konzert", title: "BE NOISE Live Battle – Bands live gezeichnet (Abend 1)", title_en: "BE NOISE Live Battle – drawing bands live (night 1)", place: "BE NOISE, Berlin", map: "" },
