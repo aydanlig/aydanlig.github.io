@@ -1952,6 +1952,7 @@ h1, h2, h3 { overflow-wrap: break-word; }
 button.mc-day { cursor: pointer; }
 .mc-day.is-sat { background: rgba(255,107,53,.15); }
 .mc-day.has-event { background: #FF6B35; color: #fff; font-weight: 700; }
+@media (min-width: 901px) { .mc-month:nth-child(n+4) { filter: blur(3px); opacity: .45; pointer-events: none; user-select: none; } }
 .mc-day.has-img { background: transparent; color: #FF6B35; box-shadow: inset 0 0 0 2px #FF6B35; font-weight: 700; opacity: 1; cursor: pointer; }
 .mc-pics { display: flex; gap: 6px; margin: 4px 0 6px; }
 .mc-pics img { width: 64px; height: 64px; object-fit: cover; border-radius: 8px; }
