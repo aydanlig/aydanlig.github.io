@@ -2524,3 +2524,21 @@ body.scrolled .to-top{opacity:1;visibility:visible;transform:none}
 	.next-dates li { gap: .5em; }
 	.next-dates .t-date { min-width: 0; flex: none; }
 }
+
+/* Homepage hero: "So sieht mein Stand aus" comic-panel carousel (js/stand-carousel.js) */
+.stand-carousel { position: relative; width: min(100%, 640px); aspect-ratio: 4 / 3; box-sizing: border-box; background: #111; border: 5px solid #111; outline: 6px solid #fff; outline-offset: 0; box-shadow: 10px 10px 0 #111; transform: rotate(-1.2deg); margin: 6px 0 22px 6px; cursor: pointer; }
+.stand-carousel:focus-visible { outline-color: var(--fox); }
+.sc-slide { position: absolute; inset: 0; margin: 0; opacity: 0; transition: opacity 1.8s ease; overflow: hidden; }
+.sc-slide.is-on { opacity: 1; z-index: 1; }
+.sc-slide img { width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(1.15) contrast(1.08); transform: scale(1.06); transition: transform 8s linear; }
+.sc-slide.is-on img { transform: scale(1); }
+.sc-slide::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(rgba(0,0,0,.22) 1px, transparent 1.4px) 0 0 / 5px 5px; mix-blend-mode: multiply; opacity: .5; }
+.sc-slide figcaption { position: absolute; left: 12px; bottom: 12px; max-width: 75%; padding: 6px 10px; background: #FFE34D; color: #111; border: 3px solid #111; box-shadow: 4px 4px 0 #111; font-weight: 900; font-size: .78rem; line-height: 1.2; text-transform: uppercase; letter-spacing: .02em; transform: rotate(1deg); z-index: 2; }
+.sc-tag { position: absolute; top: -16px; left: -12px; z-index: 3; padding: 5px 12px; background: var(--fox); color: #111; border: 3px solid #111; box-shadow: 4px 4px 0 #111; font-weight: 900; font-size: .8rem; text-transform: uppercase; letter-spacing: .04em; transform: rotate(-3deg); }
+.sc-btn { position: absolute; top: 50%; z-index: 3; width: 38px; height: 38px; margin-top: -19px; display: grid; place-items: center; padding: 0; background: #fff; color: #111; border: 3px solid #111; border-radius: 50%; box-shadow: 3px 3px 0 #111; font: 900 1.4rem/1 sans-serif; cursor: pointer; }
+.sc-btn:hover { background: #FFE34D; }
+.sc-btn:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 #111; }
+.sc-prev { left: 10px; } .sc-next { right: 10px; }
+.sc-count { position: absolute; top: 10px; right: 10px; z-index: 3; padding: 2px 8px; background: #111; color: #fff; font-weight: 800; font-size: .75rem; font-variant-numeric: tabular-nums; }
+@media (max-width: 760px) { .stand-carousel { width: calc(100% - 16px); box-shadow: 6px 6px 0 #111; border-width: 4px; outline-width: 4px; } .sc-slide figcaption { font-size: .7rem; } }
+@media (prefers-reduced-motion: reduce) { .sc-slide, .sc-slide img { transition: none; transform: none; } }
