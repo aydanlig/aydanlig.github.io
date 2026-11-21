@@ -56,13 +56,11 @@
 			}
 			html += '</div></div>';
 		});
-		html += '</div><div class="mc-snip" aria-live="polite">' + T.hint + '</div>' +
-			'<p class="mc-more"><a href="' + T.link + '">' + T.more + '</a></p></div>' +
-			'<button type="button" class="btn btn--small mc-toggle" aria-expanded="false">' + T.open + '</button>';
-		box.className = 'mini-cal is-locked';
+		html += '</div><div class="mc-snip" aria-live="polite">' + T.hint + '</div></div>';
+		box.className = 'mini-cal';
 		box.innerHTML = html;
 
-		var snip = box.querySelector('.mc-snip'), toggle = box.querySelector('.mc-toggle');
+		var snip = box.querySelector('.mc-snip');
 		function show(k) {
 			var d = new Date(k + 'T00:00:00');
 			var head = d.toLocaleDateString(EN ? 'en-GB' : 'de-DE', { weekday: 'long', day: 'numeric', month: 'long' });
@@ -82,13 +80,5 @@
 			b.addEventListener('focus', function () { show(b.getAttribute('data-day')); });
 			b.addEventListener('click', function () { show(b.getAttribute('data-day')); });
 		});
-		function setOpen(open) {
-			box.classList.toggle('is-locked', !open);
-			toggle.textContent = open ? T.close : T.open;
-			toggle.setAttribute('aria-expanded', open);
-			box.querySelectorAll('[data-day]').forEach(function (b) { b.tabIndex = open ? 0 : -1; });
-		}
-		toggle.addEventListener('click', function () { setOpen(box.classList.contains('is-locked')); });
-		setOpen(false);
 	});
 })();
