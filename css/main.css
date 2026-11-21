@@ -2593,3 +2593,6 @@ body.scrolled .to-top{opacity:1;visibility:visible;transform:none}
 	.story-steps--plain > div { border-left: 0; padding: 18px 0; border-top: 1px solid rgba(255,255,255,.14); }
 	.story-steps--plain > div:first-child { border-top: 0; padding-top: 0; }
 }
+/* Polaroids: deeper drop shadow; in dark mode a soft light glow instead (inverted) */
+.polaroid{box-shadow:0 3px 6px rgba(0,0,0,.18),0 16px 34px rgba(0,0,0,.26)}
+:root.theme-dark .polaroid{box-shadow:0 3px 8px rgba(255,240,220,.10),0 14px 36px rgba(255,236,210,.16)}
