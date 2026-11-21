@@ -67,7 +67,8 @@
 			nav.querySelectorAll('.nav-more-menu a[href*="auktion"], .nav-more-menu a[href*="auction"], .nav-more-menu a[href*="#bands"]').forEach(function (l) {
 				var c = l.cloneNode(true); c.classList.add("nav-offer", "nav-phone-only");
 				l.classList.add("nav-desk-only");
-				last.parentNode.insertBefore(c, last.nextSibling); last = c;
+				if (/#bands/.test(l.getAttribute("href"))) { c.classList.add("nav-sub"); offers[0].parentNode.insertBefore(c, offers[0].nextSibling); }
+				else { last.parentNode.insertBefore(c, last.nextSibling); last = c; }
 			});
 			g.addEventListener("click", function () {
 				var on = nav.classList.toggle("offers-open");
