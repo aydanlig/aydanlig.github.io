@@ -58,7 +58,7 @@
 		if (offers.length) {
 			var g = document.createElement("button");
 			g.type = "button"; g.className = "nav-group-toggle";
-			g.setAttribute("aria-expanded", "false");
+			g.setAttribute("aria-expanded", "true"); nav.classList.add("offers-open");
 			g.innerHTML = (EN ? "Offers" : "Angebote") + ' <span aria-hidden="true">▾</span>';
 			nav.insertBefore(g, offers[0]);
 			offers.forEach(function (l) { l.classList.add("nav-offer"); });
