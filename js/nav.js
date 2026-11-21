@@ -53,6 +53,20 @@
 		b.setAttribute("aria-label", EN ? "Menu" : "Menü");
 		b.innerHTML = "<span></span><span></span>";
 		nav.parentNode.insertBefore(b, nav);
+		/* phone: the 3 offers (also under "Anfragen") fold into one "Angebote" row */
+		var offers = [].slice.call(nav.querySelectorAll(":scope > a")).filter(function (l) { return !l.classList.contains("nav-when"); });
+		if (offers.length) {
+			var g = document.createElement("button");
+			g.type = "button"; g.className = "nav-group-toggle";
+			g.setAttribute("aria-expanded", "false");
+			g.innerHTML = (EN ? "Offers" : "Angebote") + ' <span aria-hidden="true">▾</span>';
+			nav.insertBefore(g, offers[0]);
+			offers.forEach(function (l) { l.classList.add("nav-offer"); });
+			g.addEventListener("click", function () {
+				var on = nav.classList.toggle("offers-open");
+				g.setAttribute("aria-expanded", on ? "true" : "false");
+			});
+		}
 		b.addEventListener("click", function () {
 			var on = head.classList.toggle("nav-open");
 			b.setAttribute("aria-expanded", on ? "true" : "false");
