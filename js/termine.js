@@ -51,3 +51,38 @@ window.TERMINE = [
 	{ date: "2027-03-01", time: "ab 20 Uhr", time_en: "from 8 pm", kind: "konzert", title: "The Overjoyed live gezeichnet", title_en: "Drawing The Overjoyed live", place: "Schokoladen, Ackerstr. 169", info: "ich zeichne Konzert-Skizzen", info_en: "drawing concert sketches", map: "https://maps.google.com/?q=Schokoladen+Ackerstra%C3%9Fe+169+Berlin" },
 	{ date: "2027-03-11", kind: "konzert", title: "Death By Horse live gezeichnet", title_en: "Drawing Death By Horse live", place: "Schokoladen, Ackerstr. 169", info: "ich zeichne Konzert-Skizzen", info_en: "drawing concert sketches", links: [["Bandcamp", "https://deathbyhorse.bandcamp.com/"]], map: "https://maps.google.com/?q=Schokoladen+Ackerstra%C3%9Fe+169+Berlin" }
 ];
+
+/* TODAY POPUP – big flashy popup when a date above is today (Berlin time). Once per visit. */
+(function () {
+	var today = new Date().toLocaleDateString("sv-SE", { timeZone: "Europe/Berlin" });
+	var hits = window.TERMINE.filter(function (t) { return t.date === today; });
+	if (!hits.length) return;
+	try { if (sessionStorage.getItem("todayPopup") === today) return; sessionStorage.setItem("todayPopup", today); } catch (e) {}
+	var en = (document.documentElement.lang || "").indexOf("en") === 0;
+	var esc = function (s) { return String(s || "").replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); };
+	var items = hits.map(function (t) {
+		var time = en ? (t.time_en || t.time) : t.time, place = en ? (t.place_en || t.place) : t.place;
+		return "<li><strong>" + esc(en ? (t.title_en || t.title) : t.title) + "</strong><br>" + (time ? esc(time) + " · " : "") +
+			(t.map ? '<a href="' + esc(t.map) + '" target="_blank" rel="noopener">' + esc(place) + "</a>" : esc(place)) + "</li>";
+	}).join("");
+	var css = "#tp{position:fixed;inset:0;z-index:99999;display:grid;place-items:center;background:rgba(0,0,0,.6);padding:16px;animation:tpIn .3s}" +
+		"#tp .b{position:relative;max-width:440px;width:100%;padding:28px 24px;border-radius:24px;color:#fff;text-align:center;font:inherit;" +
+		"background:linear-gradient(135deg,#ff2d75,#ff9f0a,#ffd60a,#30d158,#0a84ff,#bf5af2);background-size:400% 400%;animation:tpBg 4s ease infinite,tpPop .5s cubic-bezier(.2,1.6,.4,1);box-shadow:0 0 40px #ff2d75,0 0 80px #ffd60a}" +
+		"#tp h2{margin:0 0 8px;font-size:2rem;line-height:1.1;text-shadow:0 2px 8px rgba(0,0,0,.4);animation:tpPulse 1s ease-in-out infinite}" +
+		"#tp ul{list-style:none;margin:12px 0 0;padding:0;text-shadow:0 1px 4px rgba(0,0,0,.5)}#tp li{margin:10px 0}#tp a{color:#fff;text-decoration:underline}" +
+		"#tp .x{position:absolute;top:10px;right:14px;background:none;border:0;color:#fff;font-size:1.8rem;cursor:pointer;line-height:1}" +
+		"@keyframes tpBg{0%,100%{background-position:0 50%}50%{background-position:100% 50%}}@keyframes tpPop{from{transform:scale(.3);opacity:0}}" +
+		"@keyframes tpPulse{50%{transform:scale(1.08)}}@keyframes tpIn{from{opacity:0}}" +
+		"@media (prefers-reduced-motion:reduce){#tp,#tp *{animation:none!important}}";
+	function show() {
+		var s = document.createElement("style"); s.textContent = css; document.head.appendChild(s);
+		var d = document.createElement("div"); d.id = "tp"; d.setAttribute("role", "dialog"); d.setAttribute("aria-modal", "true");
+		d.innerHTML = '<div class="b"><button class="x" aria-label="' + (en ? "Close" : "Schließen") + '">×</button><h2>' +
+			(en ? "🎨 I'm drawing live TODAY!" : "🎨 HEUTE zeichne ich live!") + "</h2><p>" + (en ? "Come by and say hi:" : "Komm vorbei:") + "</p><ul>" + items + "</ul></div>";
+		document.body.appendChild(d);
+		var close = function () { d.remove(); };
+		d.addEventListener("click", function (e) { if (e.target === d || e.target.className === "x") close(); });
+		document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
+	}
+	if (document.body) show(); else document.addEventListener("DOMContentLoaded", show);
+})();
