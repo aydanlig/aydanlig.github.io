@@ -2572,3 +2572,9 @@ body.scrolled .to-top{opacity:1;visibility:visible;transform:none}
 :root.theme-dark .sc-btn { background: rgba(0,0,0,.55); color: #fff; border: 1px solid rgba(255,255,255,.35); box-shadow: none; }
 :root.theme-dark .sc-btn:hover { background: var(--fox); color: #111; }
 :root.theme-dark .sc-count { background: rgba(0,0,0,.65); color: #fff; border-radius: 6px; }
+
+/* 1-€ wide tile: several sketches side by side at once */
+.art-grid .wide-strip { display: flex; gap: 6px; height: 100%; }
+.art-grid .wide-strip img { flex: 1 1 0; min-width: 0; height: 100%; object-fit: cover; object-position: 50% 40%; }
+.art-grid a.art-wide:hover img { transform: none; }
+@media (max-width: 720px) { .art-grid .wide-strip img:nth-child(n+4) { display: none; } }
