@@ -204,7 +204,8 @@ t.addEventListener('scroll',function(){if(lock)return;var i=Math.round(t.scrollL
 }
 </style><style>
 .hero--jd .page-peek{position:sticky;bottom:max(10px,env(safe-area-inset-bottom));z-index:5;background:var(--bg,#151515);border-style:solid;box-shadow:0 8px 28px rgba(0,0,0,.45)}
-@media(max-width:600px){.hero--jd .page-peek{padding:10px 14px}.hero--jd .page-peek .sh-list{font-size:.82rem}}
+.hero--jd .page-peek{display:flex!important;align-items:center;gap:10px;padding:6px 14px!important;width:auto!important;max-width:min(100%,720px)}.hero--jd .page-peek .sh-title{flex:none;font-size:.68rem}.hero--jd .page-peek .sh-list{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:.85rem}.hero--jd .page-peek b{font-size:1.15rem}
+@media(max-width:600px){.hero--jd .page-peek .sh-list{font-size:.75rem}}
 .scroll-tease{display:inline-flex!important;width:auto!important;align-self:flex-start;font-size:.9rem!important;align-items:center;gap:8px;margin-top:14px;padding:9px 18px;border-radius:999px;background:var(--fox,#FF6B35);color:#fff!important;font-weight:600;text-decoration:none;animation:tease-glow 2.4s ease-in-out infinite}
 .scroll-tease b{display:inline-block;animation:hint-bounce 2.2s ease-in-out infinite}
 .scroll-tease:hover{transform:translateY(-1px)}
