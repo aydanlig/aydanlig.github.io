@@ -27,6 +27,6 @@
 	var btn = document.createElement('button');
 	btn.type = 'button'; btn.className = 'btn btn--small termine-more';
 	btn.textContent = (en ? 'Show all ' : 'Alle ') + list.length + (en ? ' dates' : ' Termine anzeigen');
-	btn.addEventListener('click', function () { ul.classList.remove('is-collapsed'); btn.remove(); });
+	btn.addEventListener('click', function () { ul.classList.remove('is-collapsed'); btn.remove(); var mc = document.querySelector('.mini-cal.is-locked .mc-toggle'); if (mc) mc.click(); });
 	ul.insertAdjacentElement('afterend', btn);
 })();
