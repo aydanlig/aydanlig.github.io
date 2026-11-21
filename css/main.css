@@ -2596,3 +2596,5 @@ body.scrolled .to-top{opacity:1;visibility:visible;transform:none}
 /* Polaroids: deeper drop shadow; in dark mode a soft light glow instead (inverted) */
 .polaroid{box-shadow:0 3px 6px rgba(0,0,0,.18),0 16px 34px rgba(0,0,0,.26)}
 :root.theme-dark .polaroid{box-shadow:0 3px 8px rgba(255,240,220,.10),0 14px 36px rgba(255,236,210,.16)}
+.stand-gallery{min-width:0;width:100%}.sg-tabs button{flex:0 0 auto !important;width:auto !important;white-space:nowrap}.sg-tabs::-webkit-scrollbar{display:none}
+.places > *{min-width:0}
