@@ -2565,3 +2565,10 @@ body.scrolled .to-top{opacity:1;visibility:visible;transform:none}
 .sc-btn svg { width: 18px; height: 18px; display: block; }
 .sc-count { background: var(--ink); color: var(--card); }
 @media (max-width: 760px) { .stand-carousel { box-shadow: 6px 6px 0 var(--ink); } }
+/* Dark mode: calm, flat version of the carousel (no hard shadows / tilt) */
+:root.theme-dark .stand-carousel { background: #000; border: 1px solid var(--line); outline: none; box-shadow: 0 10px 30px -12px rgba(0,0,0,.7); transform: none; border-radius: 12px; overflow: hidden; margin-left: 0; }
+:root.theme-dark .sc-tag { top: 10px; left: 10px; transform: none; border: 0; box-shadow: none; color: #111; border-radius: 6px; }
+:root.theme-dark .sc-slide figcaption { background: rgba(0,0,0,.65); color: #fff; border: 0; box-shadow: none; transform: none; border-radius: 6px; text-transform: none; font-weight: 600; }
+:root.theme-dark .sc-btn { background: rgba(0,0,0,.55); color: #fff; border: 1px solid rgba(255,255,255,.35); box-shadow: none; }
+:root.theme-dark .sc-btn:hover { background: var(--fox); color: #111; }
+:root.theme-dark .sc-count { background: rgba(0,0,0,.65); color: #fff; border-radius: 6px; }
