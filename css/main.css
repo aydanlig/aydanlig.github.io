@@ -2553,3 +2553,12 @@ body.scrolled .to-top{opacity:1;visibility:visible;transform:none}
 .pay-line strong { color: var(--fox); text-decoration: underline; text-underline-offset: 3px; }
 .pay-line:hover { opacity: 1; }
 @media (max-width: 360px) { .doors--grid a.door strong { font-size: .84rem; } }
+
+/* Door grid colours – sunset palette: navy, orange, slate blue, sand */
+.doors--grid a.door { border: 2px solid transparent; box-shadow: 3px 3px 0 rgba(27,47,107,.35); }
+.doors--grid a.door:nth-child(1) { background: #1B2F6B; color: #FFF4C8; }
+.doors--grid a.door:nth-child(2) { background: #FF8000; color: #1B2F6B; }
+.doors--grid a.door:nth-child(3) { background: #5B6CA0; color: #FFF4C8; }
+.doors--grid a.door:nth-child(4) { background: #FFEFA0; color: #1B2F6B; }
+.doors--grid a.door:hover { box-shadow: 4px 5px 0 #1B2F6B; }
+.doors--grid a.door:nth-child(1):hover, .doors--grid a.door:nth-child(3):hover { box-shadow: 4px 5px 0 #FF8000; }
