@@ -35,7 +35,7 @@
 		var months = [], m = new Date(today.getFullYear(), today.getMonth(), 1);
 		var prev = new Date(today.getFullYear(), today.getMonth() - 1, 1);
 		if (Object.keys(byDay).some(function (k) { return new Date(k + 'T00:00:00') >= prev && new Date(k + 'T00:00:00') < m; })) months.push(new Date(prev));
-		while (m <= last && months.length < 6) { months.push(new Date(m)); m.setMonth(m.getMonth() + 1); }
+		while (months.length < 6) { months.push(new Date(m)); m.setMonth(m.getMonth() + 1); }
 		if (!months.length) months.push(new Date(today.getFullYear(), today.getMonth(), 1));
 
 		var html = '<div class="mc-inner"><div class="mc-months">';
@@ -58,8 +58,8 @@
 			}
 			html += '</div></div>';
 		});
-		html += '</div><div class="mc-snip" aria-live="polite">' + T.hint + '</div></div>';
-		box.className = 'mini-cal';
+		html += '</div>' + (months.length > 3 ? '<button type="button" class="mc-expand" aria-expanded="false">' + (EN ? 'More months ▾' : 'Mehr Monate ▾') + '</button>' : '') + '<div class="mc-snip" aria-live="polite">' + T.hint + '</div></div>';
+		box.className = 'mini-cal is-short';
 		box.innerHTML = html;
 
 		var snip = box.querySelector('.mc-snip');
@@ -83,8 +83,10 @@
 			b.addEventListener('focus', function () { stop(); show(b.getAttribute('data-day')); });
 			b.addEventListener('click', function () { stop(); show(b.getAttribute('data-day')); });
 		});
+		var ex = box.querySelector('.mc-expand');
+		if (ex) ex.addEventListener('click', function () { box.classList.remove('is-short'); ex.remove(); });
 		// autoplay: drawings from past dates first, then upcoming dates; stops once the visitor hovers or taps a day
-		var seq = Object.keys(byDay).sort().filter(function (k) { var b = box.querySelector('[data-day="' + k + '"]'); return b && getComputedStyle(b.closest('.mc-month')).pointerEvents !== 'none'; }), i = 0, timer = null;
+		var seq = Object.keys(byDay).sort().filter(function (k) { var b = box.querySelector('[data-day="' + k + '"]'); return b && !b.closest('.mc-month:nth-child(n+4)'); }), i = 0, timer = null;
 		function stop() { clearInterval(timer); timer = null; }
 		if (seq.length) { show(seq[0]); timer = setInterval(function () { i = (i + 1) % seq.length; show(seq[i]); }, 2200); }
 	});
