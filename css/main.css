@@ -383,7 +383,7 @@ body.silly-spinning { transform: rotate(360deg); }
 
 /* The 😄 next to "Hi, ich bin Aydan" – spins exponentially faster while hovered (see /js/smiley.js) */
 .spinning-smiley { display: inline-block; cursor: pointer; transform-origin: 50% 50%; line-height: 1; }
-.spinning-smiley::before { content: "😄"; }
+.spinning-smiley::before { content: ":D"; font-weight: 800; color: var(--fox); }
 
 /* ---------- "Wo & wann" page (where-i-draw) ----------
    Layout idea from akzynth.com/events: list of places -> each place gets
