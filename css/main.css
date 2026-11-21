@@ -1777,6 +1777,7 @@ h1, h2, h3 { overflow-wrap: break-word; }
 .pa-pop span { font-size: .92rem; }
 .pa-row { display: flex; gap: 10px; align-items: center; margin-top: 6px; }
 .pa-x { background: none; border: 0; color: var(--ink-soft); text-decoration: underline; cursor: pointer; font: inherit; }
+:root.theme-dark .pa-pop .btn { background: var(--fox); color: #fff; border-color: var(--fox); }
 .pa-bar { position: absolute; left: 0; bottom: 0; height: 4px; width: 100%; background: var(--fox); transform-origin: left; animation: pa-bar 3s linear forwards; }
 @keyframes pa-in { from { opacity: 0; transform: translate(-50%, 12px); } }
 @keyframes pa-bar { from { transform: scaleX(0); } to { transform: scaleX(1); } }
