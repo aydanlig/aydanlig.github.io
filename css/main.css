@@ -1959,11 +1959,14 @@ button.mc-day { cursor: pointer; }
 .mc-expand:hover { opacity: 1; color: #FF6B35; }
 .mc-day.has-img { background: transparent; color: #FF6B35; box-shadow: inset 0 0 0 2px #FF6B35; font-weight: 700; opacity: 1; cursor: pointer; }
 .mc-pics { display: flex; gap: 6px; margin: 4px 0 6px; }
-.mc-pics img { width: 64px; height: 64px; object-fit: cover; border-radius: 8px; }
+.mc-pics img { width: 120px; height: 120px; object-fit: cover; border-radius: 8px; }
 .mc-day.is-active, button.mc-day:hover { box-shadow: 0 0 0 2px #1A1615; }
 .mc-snip { margin-top: 14px; padding: 10px 14px; border-radius: 12px; background: rgba(255,107,53,.08); font-size: .9rem; min-height: 3em; }
 .mc-snip ul { margin: 4px 0 0; padding-left: 1.1em; }
 .mc-snip-date { font-weight: 700; }
+.mc-day.is-done { opacity: 1; border: 3px solid transparent; padding: 2px 0; background: linear-gradient(var(--paper, #fff), var(--paper, #fff)) padding-box, repeating-conic-gradient(#1A1615 0 25%, #fff 0 50%) 0 0 / 6px 6px border-box; box-shadow: none; color: inherit; font-weight: 700; cursor: pointer; }
+.mc-day.is-done.is-active, .mc-day.is-done:hover { outline: 2px solid #FF6B35; }
+@media (max-width: 600px) { .mc-pics img { width: 84px; height: 84px; } }
 .mc-more { text-align: center; margin: 10px 0 0; font-size: .9rem; }
 
 /* Light ears (.section--alt): like the black ones, the cream ear shape continues 30px down into the band

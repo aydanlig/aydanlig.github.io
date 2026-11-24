@@ -27,7 +27,6 @@
 		var byDay = {}, last = today;
 		(window.TERMINE || []).forEach(function (t) {
 			var d = new Date(t.date + 'T00:00:00');
-			if (d < today && !(t.img && t.img.length)) return; // past: only with drawings
 			(byDay[t.date] = byDay[t.date] || []).push(t);
 			if (d > last) last = d;
 		});
@@ -49,7 +48,7 @@
 				var k = key(d), cls = 'mc-day', past = d < today;
 				if (past) cls += ' is-past';
 				if (+d === +today) cls += ' is-today';
-				if (byDay[k]) cls += past ? ' has-img' : ' has-event';
+				if (byDay[k]) cls += past ? ' is-done' + (byDay[k].some(function (t) { return t.img && t.img.length; }) ? ' has-img' : '') : ' has-event';
 				else if (!past && d.getDay() === 6) cls += ' is-sat';
 				var hit = byDay[k] || (!past && d.getDay() === 6);
 				html += hit ? '<button type="button" class="' + cls + '" data-day="' + k + '">' + d.getDate() + '</button>'
@@ -70,6 +69,7 @@
 				var title = EN && t.title_en ? t.title_en : t.title, place = EN && t.place_en ? t.place_en : t.place;
 				var time = EN && t.time_en ? t.time_en : t.time;
 				var pics = (t.img || []).slice(0, 4).map(function (n) { return '<img src="/img/musik/' + esc(n) + '-klein.jpg" alt="" loading="lazy">'; }).join('');
+				if (d < today && !pics) return '<li><strong>' + esc(title) + '</strong></li>'; // past without drawings: title only
 				return '<li>' + (pics ? '<span class="mc-pics">' + pics + '</span>' : '') + '<strong>' + esc(title) + '</strong><br>' + esc(place) + (time ? ' · ' + esc(time) : '') +
 					(t.map ? ' · <a href="' + esc(t.map) + '" target="_blank" rel="noopener">Map ↗</a>' : '') + '</li>';
 			});
