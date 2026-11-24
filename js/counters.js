@@ -1,24 +1,30 @@
-// Live counters: portraits drawn (estimate: 1,360 on 24.11.2026, +10 per week) + followers from data/followers.json
+// Live counters as split-flap cards: portraits (estimate 1,360 on 24.11.2026, +10/week), followers (data/followers.json), past events (js/termine.js)
 (function(){
   var base=1360, t0=Date.UTC(2026,10,24), perMs=10/(7*864e5);
   var portraits=function(){return Math.floor(base+(Date.now()-t0)*perMs)};
-  var loc=document.documentElement.lang==='en'?'en-US':'de-DE';
-  function countUp(el,to){
-    var from=Math.max(0,to-Math.min(to,400)),d=1400,s=performance.now();
-    (function f(n){var p=Math.min(1,(n-s)/d);el.textContent=Math.round(from+(to-from)*(1-Math.pow(1-p,3))).toLocaleString(loc);if(p<1)requestAnimationFrame(f)})(s);
-  }
-  function set(el,v){var old=parseInt(el.textContent.replace(/\D/g,''),10);if(v===old)return;el.textContent=v.toLocaleString(loc);if(v>old){var b=document.createElement('em');b.className='lc-bump';b.textContent='+'+(v-old);el.parentNode.appendChild(b);el.classList.add('lc-pop');setTimeout(function(){b.remove();el.classList.remove('lc-pop')},1800)}}
-  function followers(f,first){fetch('/data/followers.json',{cache:'no-cache'}).then(function(r){return r.json()}).then(function(j){f.forEach(function(el){first?countUp(el,j.total):set(el,j.total)})}).catch(function(){})}
-  function start(){
-    document.querySelectorAll('[data-count="portraits"]').forEach(function(el){
-      countUp(el,portraits());
-      setInterval(function(){set(el,portraits())},60000);
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function set(el,v){
+    var pad=+el.dataset.pad||String(v).length, s=String(v).padStart(pad,'0');
+    if(el.dataset.v===s)return; el.dataset.v=s;
+    while(el.children.length<s.length){var c=document.createElement('span');c.className='fd';c.textContent='0';el.appendChild(c)}
+    el.setAttribute('aria-label',v);
+    [].forEach.call(el.children,function(c,i){
+      var d=s[i]; if(c.textContent===d)return;
+      if(reduce){c.textContent=d;return}
+      setTimeout(function(){c.classList.remove('flip');void c.offsetWidth;c.classList.add('flip');setTimeout(function(){c.textContent=d},200)},i*90);
     });
+  }
+  function init(el){var pad=+el.dataset.pad||1;el.textContent='';set(el,0);el.dataset.v=''.padStart(pad,'0')}
+  function followers(f){fetch('/data/followers.json',{cache:'no-cache'}).then(function(r){return r.json()}).then(function(j){f.forEach(function(el){set(el,j.total)})}).catch(function(){})}
+  function start(){
+    document.querySelectorAll('[data-count="portraits"]').forEach(function(el){set(el,portraits());setInterval(function(){set(el,portraits())},60000)});
     var f=document.querySelectorAll('[data-count="followers"]');
-    if(f.length){followers(f,true);setInterval(function(){followers(f)},120000)}
-    var ev=document.querySelectorAll('[data-count="events"]');if(ev.length&&window.TERMINE){var td=new Date().toISOString().slice(0,10);var n=window.TERMINE.filter(function(e){return e.date<td}).length;ev.forEach(function(el){countUp(el,n)})}
+    if(f.length){followers(f);setInterval(function(){followers(f)},120000)}
+    var ev=document.querySelectorAll('[data-count="events"]');
+    if(ev.length&&window.TERMINE){var td=new Date().toISOString().slice(0,10);var n=window.TERMINE.filter(function(e){return e.date<td}).length;ev.forEach(function(el){set(el,n)})}
   }
   var box=document.querySelector('.live-counters');
   if(!box)return;
-  if('IntersectionObserver' in window){var io=new IntersectionObserver(function(e){if(e[0].isIntersecting){io.disconnect();start()}});io.observe(box)}else start();
+  box.querySelectorAll('[data-count]').forEach(init);
+  if('IntersectionObserver' in window){var io=new IntersectionObserver(function(e){if(e[0].isIntersecting){io.disconnect();setTimeout(start,250)}});io.observe(box)}else start();
 })();
