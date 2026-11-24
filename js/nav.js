@@ -199,7 +199,7 @@
 		var html = upcoming.length ? sortBar() + '<ol class="termin-rows">' + upcoming.slice(0, limit).map(row).join("") + "</ol>" : "";
 		// full list only: past dates folded away underneath
 		if (!limited && past.length) {
-			html += '<details class="termine-past"><summary>' + (EN ? "Previous dates" : "Vergangene Termine") + " (" + past.length + ")</summary>" +
+			html += '<details class="termine-past" id="vergangene"' + (location.hash === "#vergangene" ? " open" : "") + '><summary>' + (EN ? "Previous dates" : "Vergangene Termine") + " (" + past.length + ")</summary>" +
 				'<ol class="termin-rows">' + past.map(row).join("") + "</ol></details>";
 		}
 		if (upcoming.length > limit) {
@@ -209,6 +209,7 @@
 		box.innerHTML = html;
 	});
 	// the list is built after the page loaded, so jump to a #termin-… link by hand
+	if (location.hash === "#vergangene") { var vp = document.getElementById("vergangene"); if (vp) vp.scrollIntoView({ block: "start" }); }
 	if (/^#termin-/.test(location.hash)) {
 		var target = document.getElementById(location.hash.slice(1));
 		if (target) { target.classList.add("termin--target"); target.scrollIntoView({ block: "center" }); }
