@@ -2650,3 +2650,12 @@ body.scrolled .to-top{opacity:1;visibility:visible;transform:none}
 .places > *{min-width:0}
 .sg-prev,.sg-next{color:#1a161c;line-height:1;display:grid;place-items:center;padding:0 0 3px}:root.theme-dark .sg-prev,:root.theme-dark .sg-next{background:rgba(23,19,26,.85)!important;color:#fff;box-shadow:0 0 0 1px rgba(255,255,255,.25),0 2px 8px rgba(0,0,0,.5)!important}
 .style-cycle--cover img { object-fit: cover !important; }
+
+/* Termine merged into Über mich: compact plain list, no cards */
+.um-divider { border: 0; border-top: 1px solid var(--line); margin: 2.6em auto 2em; max-width: 1000px; }
+.termine--compact { max-width: 1000px; margin: 0 auto; }
+.termine--compact h3 { margin: .2em 0 .4em; font-size: 1.25rem; }
+.termine--compact .termine-list { margin: 0; gap: 0 28px; }
+.termine--compact .termine-list li, .termine--compact .termine-list li.termine-weekly { background: none; border: 0; border-bottom: 1px solid var(--line); border-radius: 0; padding: 7px 0; font-size: .88rem; color: inherit; }
+.termine--compact .termine-list li.termine-weekly .t-date { color: var(--accent); }
+.termine--compact .hint { margin-top: .8em; font-size: .85rem; }
