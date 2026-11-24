@@ -558,12 +558,17 @@ t.addEventListener('scroll',function(){if(lock)return;var i=Math.round(t.scrollL
 					<span class="eyebrow">Portraits since 2020</span>
 					<h2 id="years-title">From hobby to profession</h2>
 					<p class="lead">Six years, countless portraits.</p>
+					<style>.live-counters{display:flex;justify-content:center;gap:clamp(24px,6vw,72px);margin:1.6em 0 .4em;flex-wrap:wrap}.live-counters div{text-align:center}.live-counters b{display:block;font-size:clamp(2.2rem,5vw,3.2rem);line-height:1;color:#FF6B35;font-variant-numeric:tabular-nums}.live-counters span{font-size:.9rem;opacity:.8}.live-counters i{display:inline-block;width:8px;height:8px;border-radius:50%;background:#3ddc84;margin-right:6px;animation:lc-pulse 1.6s infinite}@keyframes lc-pulse{50%{opacity:.3}}@media (prefers-reduced-motion:reduce){.live-counters i{animation:none}}</style>
+					<div class="live-counters" aria-live="off">
+						<div><b data-count="portraits">1.360</b><span><i></i>portraits drawn, still counting every week</span></div>
+						<div><b data-count="followers">150</b><span>followers on Instagram, YouTube &amp; Substack</span></div>
+					</div>
 				</div>
 				<style>.timeline.dia{display:grid!important;grid-template-columns:repeat(4,1fr);gap:28px;position:relative;padding-top:38px}.timeline.dia::before{content:"";position:absolute;left:7px;right:0;top:12px;height:2px;background:linear-gradient(90deg,#FF6B35 80%,rgba(255,107,53,0))}.timeline.dia>div{position:relative;border:0!important;background:none!important;padding:0!important;box-shadow:none!important;min-height:0!important}.timeline.dia>div::before{content:"";position:absolute;top:-33px;left:0;width:14px;height:14px;border-radius:50%;background:#FF6B35;box-shadow:0 0 0 5px var(--bg,#16131a)}.timeline.dia>div:last-child::before{background:var(--bg,#16131a);border:2px solid #FF6B35;width:10px;height:10px}.timeline.dia .num{font-size:1.6rem!important;color:#FF6B35;margin:0 0 4px!important}.timeline.dia h3{font-size:1rem;letter-spacing:0;text-transform:none;color:inherit}.timeline.dia p,.timeline.dia li{font-size:1rem}@media(max-width:760px){.timeline.dia{grid-template-columns:1fr;padding:0 0 0 30px}.timeline.dia::before{left:6px;right:auto;top:8px;bottom:0;width:2px;height:auto;background:linear-gradient(180deg,#FF6B35 85%,rgba(255,107,53,0))}.timeline.dia>div::before{top:8px;left:-30px}}</style><div class="story-steps story-steps--4 timeline dia">
 					<div>
 						<div class="num">2020</div>
 						<h3>The first portraits</h3>
-						<p>On a drawing tablet – faces haven’t let go of me since.</p>
+						<p>On a drawing tablet, faces haven’t let go of me since.</p>
 					</div>
 					<div>
 						<div class="num">2023</div>
@@ -573,7 +578,7 @@ t.addEventListener('scroll',function(){if(lock)return;var i=Math.round(t.scrollL
 					<div>
 						<div class="num">2024</div>
 						<h3>Out on the street</h3>
-						<p>Outside with my own sign – the start of SmileyFoxyPortraits.</p>
+						<p>Outside with my own sign, the start of SmileyFoxyPortraits.</p>
 					</div>
 					<div>
 						<div class="num">Today</div>
@@ -588,11 +593,11 @@ t.addEventListener('scroll',function(){if(lock)return;var i=Math.round(t.scrollL
 					</div>
 					<div>
 						<h3>Why I keep going</h3>
-						<p>I gave myself one year – fully for art, at 100 %.</p>
+						<p>I gave myself one year, fully for art, at 100 %.</p>
 					</div>
 					<div>
 						<h3>My goal</h3>
-						<p>Make a full living from my art by 2027 – and have made half of Berlin laugh at their portrait.</p>
+						<p>Make a full living from my art by 2027, and have made half of Berlin laugh at their portrait.</p>
 					</div>
 				</div>
 				<p class="center" style="margin-top:1.8em"><a class="btn btn--ghost" href="/en/referenzen/">See all references</a></p>
@@ -837,6 +842,7 @@ t.addEventListener('scroll',function(){if(lock)return;var i=Math.round(t.scrollL
 	<script>
 		addEventListener('scroll', function () { document.body.classList.toggle('scrolled', scrollY > 80); }, { passive: true });
 	</script>
+	<script src="/js/counters.js" defer></script>
 </body>
 
 </html>
