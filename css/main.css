@@ -1965,6 +1965,7 @@ button.mc-day { cursor: pointer; }
 .mc-snip ul { margin: 4px 0 0; padding-left: 1.1em; }
 .mc-snip-date { font-weight: 700; }
 .mc-day.is-done { opacity: 1; border: 3px solid transparent; padding: 2px 0; background: linear-gradient(var(--paper, #fff), var(--paper, #fff)) padding-box, repeating-conic-gradient(#1A1615 0 25%, #fff 0 50%) 0 0 / 6px 6px border-box; box-shadow: none; color: inherit; font-weight: 700; cursor: pointer; }
+.mc-day.is-done.has-img { background: none; border: 3px solid #FF6B35; border-radius: 50%; color: #FF6B35; }
 .mc-day.is-done.is-active, .mc-day.is-done:hover { outline: 2px solid #FF6B35; }
 @media (max-width: 600px) { .mc-pics img { width: 84px; height: 84px; } }
 .mc-more { text-align: center; margin: 10px 0 0; font-size: .9rem; }
