@@ -14,6 +14,7 @@
     });
     var f=document.querySelectorAll('[data-count="followers"]');
     if(f.length)fetch('/data/followers.json',{cache:'no-cache'}).then(function(r){return r.json()}).then(function(j){f.forEach(function(el){countUp(el,j.total)})}).catch(function(){});
+    var ev=document.querySelectorAll('[data-count="events"]');if(ev.length&&window.TERMINE){var td=new Date().toISOString().slice(0,10);var n=window.TERMINE.filter(function(e){return e.date<td}).length;ev.forEach(function(el){countUp(el,n)})}
   }
   var box=document.querySelector('.live-counters');
   if(!box)return;
