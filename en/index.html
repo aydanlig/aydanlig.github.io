@@ -357,33 +357,6 @@ t.addEventListener('scroll',function(){if(lock)return;var i=Math.round(t.scrollL
 			</div>
 		</section>
 
-		<!-- ================= NEXT DATES: where to meet me next (from my Todoist calendar) =================
-		     Add a date: copy one <li>…</li> and change data-date (YYYY-MM-DD), day, place and what.
-		     Dates in the past hide themselves automatically (small script at the bottom of this page). -->
-		<section class="section termine" id="termine" aria-labelledby="termine-title">
-			<div class="wrap">
-				<div class="center">
-					<span class="eyebrow">See it live</span>
-					<h2 id="termine-title">Where to find me next</h2>
-					<p class="lead">Concerts, markets &amp; Christmas markets – come by and get drawn, or just watch.</p>
-				</div>
-				<ul class="termine-list" data-auto>
-					<li class="termine-weekly"><span class="t-date">Every Sat</span><span class="t-what"><strong>Mauerpark</strong> · 2–10 pm, next to the photo booth · €1 sketches</span></li>
-				</ul>
-				<div data-mini-cal></div>
-				<p class="center hint" style="margin-top:1em">I post spontaneous dates in my <a href="https://www.instagram.com/smileyfoxyportraits">Instagram story</a> · <a href="/en/where-i-draw/">all places &amp; times →</a></p>
-			</div>
-		</section>
-		<script>
-			// hide dates that are already over (data-date = last day of the event)
-			(function () {
-				var today = new Date(); today.setHours(0, 0, 0, 0);
-				document.querySelectorAll('.termine-list li[data-date]').forEach(function (li) {
-					if (new Date(li.getAttribute('data-date') + 'T23:59:59') < today) li.remove();
-				});
-			})();
-		</script>
-
 		<!-- ================= SOCIAL PROOF: logos + testimonials ================= -->
 		<section class="section section--alt" aria-labelledby="proof-title">
 			<div class="wrap center">
@@ -491,6 +464,33 @@ t.addEventListener('scroll',function(){if(lock)return;var i=Math.round(t.scrollL
 			</div>
 		</div>
 		</section>
+
+		<!-- ================= NEXT DATES: where to meet me next (from my Todoist calendar) =================
+		     Add a date: copy one <li>…</li> and change data-date (YYYY-MM-DD), day, place and what.
+		     Dates in the past hide themselves automatically (small script at the bottom of this page). -->
+		<section class="section termine" id="termine" aria-labelledby="termine-title">
+			<div class="wrap">
+				<div class="center">
+					<span class="eyebrow">See it live</span>
+					<h2 id="termine-title">Where to find me next</h2>
+					<p class="lead">Concerts, markets &amp; Christmas markets – come by and get drawn, or just watch.</p>
+				</div>
+				<ul class="termine-list" data-auto>
+					<li class="termine-weekly"><span class="t-date">Every Sat</span><span class="t-what"><strong>Mauerpark</strong> · 2–10 pm, next to the photo booth · €1 sketches</span></li>
+				</ul>
+				<div data-mini-cal></div>
+				<p class="center hint" style="margin-top:1em">I post spontaneous dates in my <a href="https://www.instagram.com/smileyfoxyportraits">Instagram story</a> · <a href="/en/where-i-draw/">all places &amp; times →</a></p>
+			</div>
+		</section>
+		<script>
+			// hide dates that are already over (data-date = last day of the event)
+			(function () {
+				var today = new Date(); today.setHours(0, 0, 0, 0);
+				document.querySelectorAll('.termine-list li[data-date]').forEach(function (li) {
+					if (new Date(li.getAttribute('data-date') + 'T23:59:59') < today) li.remove();
+				});
+			})();
+		</script>
 
 		<!-- ================= THE 3 SERVICES ================= -->
 		<section class="section" id="angebote" aria-labelledby="services-title">
