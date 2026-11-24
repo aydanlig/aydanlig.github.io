@@ -462,7 +462,17 @@ t.addEventListener('scroll',function(){if(lock)return;var i=Math.round(t.scrollL
 				</div>
 				<p class="center" style="margin-top:1.8em;display:flex;gap:12px;justify-content:center;flex-wrap:wrap"><a class="btn btn--ghost" href="/en/about/">My whole story</a> <a class="btn btn--ghost" href="/en/referenzen/">All references</a> <a class="btn btn--fox" href="/en/where-i-draw/#termine">Come by: dates</a></p>
 			</div>
-		</div>
+		<hr class="um-divider">
+				<div class="termine termine--compact" id="termine" aria-labelledby="termine-title">
+					<span class="eyebrow">See it live</span>
+					<h3 id="termine-title">Where to find me next</h3>
+					<ul class="termine-list" data-auto>
+					<li class="termine-weekly"><span class="t-date">Every Sat</span><span class="t-what"><strong>Mauerpark</strong> · 2–10 pm, next to the photo booth · €1 sketches</span></li>
+				</ul>
+					<div data-mini-cal></div>
+					<p class="center hint">I post spontaneous dates in my <a href="https://www.instagram.com/smileyfoxyportraits">Instagram story</a> · <a href="/en/where-i-draw/">all places &amp; times →</a></p>
+				</div>
+			</div>
 		</section>
 
 		<!-- ================= NEXT DATES: where to meet me next (from my Todoist calendar) =================
@@ -590,17 +600,38 @@ t.addEventListener('scroll',function(){if(lock)return;var i=Math.round(t.scrollL
 						</div>
 					</div>
 				</div>
-
-			
 				<hr class="um-divider">
-				<div class="termine termine--compact" id="termine" aria-labelledby="termine-title">
-					<span class="eyebrow">See it live</span>
-					<h3 id="termine-title">Where to find me next</h3>
-					<ul class="termine-list" data-auto>
-					<li class="termine-weekly"><span class="t-date">Every Sat</span><span class="t-what"><strong>Mauerpark</strong> · 2–10 pm, next to the photo booth · €1 sketches</span></li>
-				</ul>
-					<div data-mini-cal></div>
-					<p class="center hint">I post spontaneous dates in my <a href="https://www.instagram.com/smileyfoxyportraits">Instagram story</a> · <a href="/en/where-i-draw/">all places &amp; times →</a></p>
+				<div id="neugierige" aria-labelledby="curious-title">
+				<span class="eyebrow">For the curious</span>
+				<h3 id="curious-title">More of me</h3>
+				<div class="curious">
+					<a href="/en/about/">
+						<strong>My whole story</strong>
+						<span>Background, goals, questions and answers</span>
+					</a>
+					<a href="/projects/index.html">
+						<strong>Projects</strong>
+						<span>Games, music, animations &amp; more</span>
+					</a>
+					<a href="/en/about/#blog">
+						<strong>My blog</strong>
+						<span>Behind the scenes, new art &amp; dates</span>
+					</a>
+				</div>
+				<details class="curious-more" id="meine-sicht">
+					<summary>How I see it differently: real art is <em>not</em> out</summary>
+					<div class="prose">
+						<p class="lead">Many say that since Covid hardly anyone buys art, and nobody wants handmade, real experiences any more. I see it differently. People still love the real thing – capturing a moment with a picture someone drew just for them. <strong>Especially in times of AI</strong>, when you often can’t tell what’s generated and what’s truly handmade and good, real handmade art is worth more than ever.</p>
+				<blockquote class="big-quote">“Come on, let’s get drawn. We’ll remember this forever – and later the picture will make us so happy.”</blockquote>
+				<p>
+					On Halloween a woman walked past my portrait stand and stopped. Her friend said: “Next time.”
+					But she didn’t let go – with exactly that sentence. So I drew the two of them, and they walked on
+					happy. For me that’s the proof: the need for real, handmade art hasn’t gone away.
+					Sometimes it just takes a little nudge.
+				</p>
+				<p>I stand for <strong>honesty</strong>, <strong>community through art</strong> and <strong>AI used wisely</strong> – and against AI “art” that copies artists. <a href="/en/about/#haltung">What I stand for – and against →</a></p>
+					</div>
+				</details>
 				</div>
 			</div>
 		</section>
@@ -672,43 +703,6 @@ t.addEventListener('scroll',function(){if(lock)return;var i=Math.round(t.scrollL
 					<a class="btn btn--fox" href="/en/events.html#anfrage-kleckerkasten">Request the Kleckerkasten</a>
 					<a class="btn btn--ghost" href="/en/commission.html">Order a portrait</a>
 				</div>
-			</div>
-		</section>
-
-		<!-- ================= FOR THE CURIOUS =================
-		     Personal pages, deliberately small – not the focus of the site. -->
-		<section class="section" id="neugierige" style="padding-top:48px" aria-labelledby="curious-title">
-			<div class="wrap">
-				<span class="eyebrow">For the curious</span>
-				<h3 id="curious-title">More of me</h3>
-				<div class="curious">
-					<a href="/en/about/">
-						<strong>My whole story</strong>
-						<span>Background, goals, questions and answers</span>
-					</a>
-					<a href="/projects/index.html">
-						<strong>Projects</strong>
-						<span>Games, music, animations &amp; more</span>
-					</a>
-					<a href="/en/about/#blog">
-						<strong>My blog</strong>
-						<span>Behind the scenes, new art &amp; dates</span>
-					</a>
-				</div>
-				<details class="curious-more" id="meine-sicht">
-					<summary>How I see it differently: real art is <em>not</em> out</summary>
-					<div class="prose">
-						<p class="lead">Many say that since Covid hardly anyone buys art, and nobody wants handmade, real experiences any more. I see it differently. People still love the real thing – capturing a moment with a picture someone drew just for them. <strong>Especially in times of AI</strong>, when you often can’t tell what’s generated and what’s truly handmade and good, real handmade art is worth more than ever.</p>
-				<blockquote class="big-quote">“Come on, let’s get drawn. We’ll remember this forever – and later the picture will make us so happy.”</blockquote>
-				<p>
-					On Halloween a woman walked past my portrait stand and stopped. Her friend said: “Next time.”
-					But she didn’t let go – with exactly that sentence. So I drew the two of them, and they walked on
-					happy. For me that’s the proof: the need for real, handmade art hasn’t gone away.
-					Sometimes it just takes a little nudge.
-				</p>
-				<p>I stand for <strong>honesty</strong>, <strong>community through art</strong> and <strong>AI used wisely</strong> – and against AI “art” that copies artists. <a href="/en/about/#haltung">What I stand for – and against →</a></p>
-					</div>
-				</details>
 			</div>
 		</section>
 
