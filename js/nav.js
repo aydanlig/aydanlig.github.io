@@ -53,6 +53,30 @@
 		b.setAttribute("aria-label", EN ? "Menu" : "Menü");
 		b.innerHTML = "<span></span><span></span>";
 		nav.parentNode.insertBefore(b, nav);
+		var when = nav.querySelector(".nav-when");
+		if (when) when.insertAdjacentHTML("beforeend", '<small class="nav-desc">' + (EN ? "Every Saturday at Mauerpark · Christmas markets · live concerts" : "Jeden Samstag Mauerpark · Weihnachtsmärkte · Live-Konzerte") + "</small>");
+		/* phone: the 3 offers (also under "Anfragen") fold into one "Angebote" row */
+		var offers = [].slice.call(nav.querySelectorAll(":scope > a")).filter(function (l) { return !l.classList.contains("nav-when"); });
+		if (offers.length) {
+			var g = document.createElement("button");
+			g.type = "button"; g.className = "nav-group-toggle";
+			g.setAttribute("aria-expanded", "true"); nav.classList.add("offers-open");
+			g.innerHTML = (EN ? "Offers" : "Angebote") + ' <span aria-hidden="true">▾</span>';
+			nav.insertBefore(g, offers[0]);
+			offers.forEach(function (l) { l.classList.add("nav-offer"); });
+			/* auction + bands also count as offers on the phone: copy them into the group, hide them under "Über mich" */
+			var last = offers[offers.length - 1];
+			nav.querySelectorAll('.nav-more-menu a[href*="auktion"], .nav-more-menu a[href*="auction"], .nav-more-menu a[href*="#bands"]').forEach(function (l) {
+				var c = l.cloneNode(true); c.classList.add("nav-offer", "nav-phone-only");
+				l.classList.add("nav-desk-only");
+				if (/#bands/.test(l.getAttribute("href"))) { c.classList.add("nav-sub"); offers[0].parentNode.insertBefore(c, offers[0].nextSibling); }
+				else { last.parentNode.insertBefore(c, last.nextSibling); last = c; }
+			});
+			g.addEventListener("click", function () {
+				var on = nav.classList.toggle("offers-open");
+				g.setAttribute("aria-expanded", on ? "true" : "false");
+			});
+		}
 		b.addEventListener("click", function () {
 			var on = head.classList.toggle("nav-open");
 			b.setAttribute("aria-expanded", on ? "true" : "false");
@@ -119,13 +143,16 @@
 
 	// Bar above the header
 	var next = upcoming[0];
+	// Bar above the header: train-station ticker with the next dates (short: day · title · place)
 	document.querySelectorAll("[data-next-gig]").forEach(function (el) {
 		if (!next) return; // keep the static text
-		var p = parts(next);
-		el.innerHTML = "<strong>" + (EN ? "Next:" : "Nächster Termin:") + "</strong> " +
-			esc(p.day + " " + p.short) + " · " + esc(pick(next, "title")) +
-			'<span class="live-bar-place"> · ' + esc(pick(next, "place")) + (pick(next, "info") ? " · " + esc(pick(next, "info")) : "") + "</span>";
-		// the bar jumps straight to that date on the where-&-when page
+		var items = upcoming.slice(0, 6).map(function (t) {
+			var p = parts(t), place = pick(t, "place").split(",")[0];
+			return '<span class="tk-item"><b>' + esc(p.day + " " + p.short) + "</b> " + esc(pick(t, "title").replace(/\s*\([^)]*\)/g, "").replace(/^Live-Porträts?\s+(beim|auf dem|auf der|im|in der|bei)\s+/i, "").replace(/\s+live gezeichnet$/i, "")) + (place ? ' <span class="tk-place">· ' + esc(place) + "</span>" : "") + "</span>";
+		}).join('<span class="tk-sep" aria-hidden="true">•</span>');
+		el.innerHTML = "<strong>" + (EN ? "Next dates:" : "Nächste Termine:") + '</strong><span class="tk"><span class="tk-run">' + items + '<span class="tk-sep" aria-hidden="true">•</span><span aria-hidden="true">' + items + '<span class="tk-sep">•</span></span></span></span>';
+		var run = el.querySelector(".tk-run");
+		requestAnimationFrame(function () { run.style.animationDuration = Math.max(20, run.scrollWidth / 2 / 35) + "s"; });
 		var a = el.closest("a");
 		if (a) a.setAttribute("href", (EN ? "/en/where-i-draw/#" : "/where-i-draw/#") + next._id);
 	});

@@ -27,13 +27,15 @@
 		var byDay = {}, last = today;
 		(window.TERMINE || []).forEach(function (t) {
 			var d = new Date(t.date + 'T00:00:00');
-			if (d < today) return;
+			if (d < today && !(t.img && t.img.length)) return; // past: only with drawings
 			(byDay[t.date] = byDay[t.date] || []).push(t);
 			if (d > last) last = d;
 		});
 		// show from this month up to the last date, at most 3 months
 		var months = [], m = new Date(today.getFullYear(), today.getMonth(), 1);
-		while (m <= last && months.length < 3) { months.push(new Date(m)); m.setMonth(m.getMonth() + 1); }
+		var prev = new Date(today.getFullYear(), today.getMonth() - 1, 1);
+		if (Object.keys(byDay).some(function (k) { return new Date(k + 'T00:00:00') >= prev && new Date(k + 'T00:00:00') < m; })) months.push(new Date(prev));
+		while (months.length < 6) { months.push(new Date(m)); m.setMonth(m.getMonth() + 1); }
 		if (!months.length) months.push(new Date(today.getFullYear(), today.getMonth(), 1));
 
 		var html = '<div class="mc-inner"><div class="mc-months">';
@@ -47,48 +49,45 @@
 				var k = key(d), cls = 'mc-day', past = d < today;
 				if (past) cls += ' is-past';
 				if (+d === +today) cls += ' is-today';
-				if (!past && byDay[k]) cls += ' has-event';
+				if (byDay[k]) cls += past ? ' has-img' : ' has-event';
 				else if (!past && d.getDay() === 6) cls += ' is-sat';
-				var hit = !past && (byDay[k] || d.getDay() === 6);
+				var hit = byDay[k] || (!past && d.getDay() === 6);
 				html += hit ? '<button type="button" class="' + cls + '" data-day="' + k + '">' + d.getDate() + '</button>'
 					: '<span class="' + cls + '">' + d.getDate() + '</span>';
 				d.setDate(d.getDate() + 1);
 			}
 			html += '</div></div>';
 		});
-		html += '</div><div class="mc-snip" aria-live="polite">' + T.hint + '</div>' +
-			'<p class="mc-more"><a href="' + T.link + '">' + T.more + '</a></p></div>' +
-			'<button type="button" class="btn btn--small mc-toggle" aria-expanded="false">' + T.open + '</button>';
-		box.className = 'mini-cal is-locked';
+		html += '</div>' + (months.length > 3 ? '<button type="button" class="mc-expand" aria-expanded="false">' + (EN ? 'More months ▾' : 'Mehr Monate ▾') + '</button>' : '') + '<div class="mc-snip" aria-live="polite">' + T.hint + '</div></div>';
+		box.className = 'mini-cal is-short';
 		box.innerHTML = html;
 
-		var snip = box.querySelector('.mc-snip'), toggle = box.querySelector('.mc-toggle');
+		var snip = box.querySelector('.mc-snip');
 		function show(k) {
 			var d = new Date(k + 'T00:00:00');
 			var head = d.toLocaleDateString(EN ? 'en-GB' : 'de-DE', { weekday: 'long', day: 'numeric', month: 'long' });
 			var items = (byDay[k] || []).map(function (t) {
 				var title = EN && t.title_en ? t.title_en : t.title, place = EN && t.place_en ? t.place_en : t.place;
 				var time = EN && t.time_en ? t.time_en : t.time;
-				return '<li><strong>' + esc(title) + '</strong><br>' + esc(place) + (time ? ' · ' + esc(time) : '') +
+				var pics = (t.img || []).slice(0, 4).map(function (n) { return '<img src="/img/musik/' + esc(n) + '-klein.jpg" alt="" loading="lazy">'; }).join('');
+				return '<li>' + (pics ? '<span class="mc-pics">' + pics + '</span>' : '') + '<strong>' + esc(title) + '</strong><br>' + esc(place) + (time ? ' · ' + esc(time) : '') +
 					(t.map ? ' · <a href="' + esc(t.map) + '" target="_blank" rel="noopener">Map ↗</a>' : '') + '</li>';
 			});
-			if (!items.length || d.getDay() === 6) items.push('<li>' + esc(T.sat) + '</li>');
+			if (!items.length || (d.getDay() === 6 && d >= today)) items.push('<li>' + esc(T.sat) + '</li>');
 			snip.innerHTML = '<span class="mc-snip-date">' + head + '</span><ul>' + items.join('') + '</ul>';
 			box.querySelectorAll('.mc-day.is-active').forEach(function (b) { b.classList.remove('is-active'); });
 			var b = box.querySelector('[data-day="' + k + '"]'); if (b) b.classList.add('is-active');
 		}
 		box.querySelectorAll('[data-day]').forEach(function (b) {
-			b.addEventListener('mouseenter', function () { if (!box.classList.contains('is-locked')) show(b.getAttribute('data-day')); });
-			b.addEventListener('focus', function () { show(b.getAttribute('data-day')); });
-			b.addEventListener('click', function () { show(b.getAttribute('data-day')); });
+			b.addEventListener('mouseenter', function () { stop(); show(b.getAttribute('data-day')); });
+			b.addEventListener('focus', function () { stop(); show(b.getAttribute('data-day')); });
+			b.addEventListener('click', function () { stop(); show(b.getAttribute('data-day')); });
 		});
-		function setOpen(open) {
-			box.classList.toggle('is-locked', !open);
-			toggle.textContent = open ? T.close : T.open;
-			toggle.setAttribute('aria-expanded', open);
-			box.querySelectorAll('[data-day]').forEach(function (b) { b.tabIndex = open ? 0 : -1; });
-		}
-		toggle.addEventListener('click', function () { setOpen(box.classList.contains('is-locked')); });
-		setOpen(false);
+		var ex = box.querySelector('.mc-expand');
+		if (ex) ex.addEventListener('click', function () { box.classList.remove('is-short'); ex.remove(); });
+		// autoplay: drawings from past dates first, then upcoming dates; stops once the visitor hovers or taps a day
+		var seq = Object.keys(byDay).sort().filter(function (k) { var b = box.querySelector('[data-day="' + k + '"]'); return b && !b.closest('.mc-month:nth-child(n+4)'); }), i = 0, timer = null;
+		function stop() { clearInterval(timer); timer = null; }
+		if (seq.length) { show(seq[0]); timer = setInterval(function () { i = (i + 1) % seq.length; show(seq[i]); }, 2200); }
 	});
 })();

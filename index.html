@@ -11,12 +11,13 @@
 	<script src="/js/mail-reveal.js" defer></script>
 	<script src="/js/translate.js" defer></script>
 	<script src="/js/termine.js" defer></script>
+	<script src="/js/termine-list.js" defer></script>
 	<script src="/js/nav.js" defer></script>
 	<script src="/js/ears.js" defer></script>
-	<script src="/js/gallery.js" defer></script>
+	<script src="/js/gallery.js?v=20261116z" defer></script>
 	<script src="/js/confirm-link.js" defer></script>
 	<script src="/js/smiley.js" defer></script>
-	<script src="/js/mini-cal.js" defer></script>
+	<script src="/js/mini-cal.js?v=6" defer></script>
 	<script src="/js/home.js?v=20261108" defer></script>
 
 	<!-- SEO: title + description are what Google shows in search results.
@@ -99,7 +100,7 @@
 	}
 	</script>
 
-	<link rel="stylesheet" href="/css/main.css?v=20261108m">
+	<link rel="stylesheet" href="/css/main.css?v=20261121f2">
 </head>
 
 <body>
@@ -123,7 +124,6 @@
 				<div class="nav-more">
 					<a href="/about/">Über mich</a><button class="nav-more-toggle" type="button" aria-expanded="false" aria-label="Mehr anzeigen: Termine, Referenzen, Blog und mehr"><span aria-hidden="true">▾</span></button>
 					<div class="nav-more-menu">
-						<a href="/labor/auktion.html">Erste Auktion</a>
 						<a href="/referenzen/">Referenzen</a>
 						<a href="/about/#bands">Bands, live gezeichnet</a>
 						<a href="/about/#blog">Blog</a>
@@ -158,8 +158,8 @@
 						<li>Events &amp; Teams</li>
 					</ul>
 					<a class="btn-portfolio" href="/portfolio.html">Portfolio ansehen <b aria-hidden="true">→</b></a>
-					<div class="saturday-line"><strong>Jeden Samstag 14–22 Uhr</strong> im Mauerpark, neben dem Photoautomaten · <a href="https://maps.app.goo.gl/ZhjvUq1bMy8CyVk18" target="_blank" rel="noopener" data-photoautomat>📍 Karte</a></div>
 					<div class="next-dates">
+						<div class="saturday-line"><strong>Jeden Samstag 14–22 Uhr</strong> im Mauerpark, neben dem Photoautomaten · <a href="https://maps.app.goo.gl/ZhjvUq1bMy8CyVk18" target="_blank" rel="noopener" data-photoautomat>📍 Karte</a></div>
 						<strong>Nächste Termine</strong>
 						<div class="nd-cols">
 							<div class="nd-col"><span class="nd-kind">Konzerte</span><div class="nd-roll"><ul data-kind="konzert"></ul></div></div>
@@ -172,12 +172,52 @@
 
 				<!-- RIGHT: kept short on purpose (Jackie Droujko style) – one line, two buttons, where to find me -->
 				<div class="jd-side">
-					<img class="jd-photo" src="/img/fotos/aydan-am-stand.jpg" alt="Aydan Lig'on am Zeichen-Stand mit Skizzenbuch und Aquarellfarben" width="1400" height="1050" decoding="async">
-					<div class="doors">
-						<a class="door" href="/events.html"><span>Für Firmen &amp; Events</span><strong>Live-Porträts &amp; Team-Workshop</strong><b aria-hidden="true">→</b></a>
-						<a class="door door--light" href="/where-i-draw/"><span>Für dich</span><strong>Samstags im Mauerpark · Porträt-Auftrag</strong><b aria-hidden="true">→</b></a>
-						<a class="door door--light" href="/bezahlen.html"><span>Gerade live gezeichnet?</span><strong>Hier bezahlen</strong><b aria-hidden="true">→</b></a>
-					</div>
+					<div class="stand-gallery" style="position:relative;max-width:100%">
+				<div class="sg-track" style="display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;scroll-behavior:smooth">
+					<div class="sg-slide" style="flex:0 0 100%;scroll-snap-align:start"><img src="/img/fotos/event-saunasplash-3x2.jpg" alt="Live gemalte Aquarell-Porträts vom Saunasplash-Festival" loading="lazy" decoding="async" style="width:100%;aspect-ratio:8/5;object-fit:cover;border-radius:12px;display:block"><p style="margin:.6em 0 0"><strong>Live-Porträts für Events</strong> – Festivals, Partys, Hochzeiten, Firmenfeiern – ich bringe den Stand mit <a href="/events.html#live-events">Mehr dazu →</a></p></div>
+					<div class="sg-slide" style="flex:0 0 100%;scroll-snap-align:start"><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px"><img src="/img/fotos/gaeste-mit-portraets-4x5.jpg" alt="Musiker mit ihren live gezeichneten Konzert-Porträts" loading="lazy" decoding="async" style="width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:12px;display:block"><img src="/img/fotos/pat-and-the-pissers-freunde.jpg" alt="Band und Fans mit Tusche-Skizzen im Schokoladen" loading="lazy" decoding="async" style="width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:12px;display:block"></div><p style="margin:.6em 0 0"><strong>Live-Konzerte</strong> – Action-Porträts der Band, live während der Show gezeichnet <a href="/portfolio.html#konzerte">Mehr dazu →</a></p></div>
+					<div class="sg-slide" style="flex:0 0 100%;scroll-snap-align:start"><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px"><img src="/img/fotos/stand-mauerpark-totale-klein.jpg" alt="Mein Stand im Mauerpark" loading="lazy" decoding="async" style="width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:12px;display:block"><img src="/img/fotos/stand-mauerpark-kundin-skizze-klein.jpg" alt="Glückliche Kundin mit ihrer 1-€-Skizze" loading="lazy" decoding="async" style="width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:12px;display:block"></div><p style="margin:.6em 0 0"><strong>1-€-Schnellskizze</strong> – Samstags im Mauerpark – und auf Wunsch zeichne ich dort auch meine Hauptstile (siehe <a href="/commission.html">Porträt-Auftrag</a>) <a href="#mauerpark">Mehr dazu →</a></p></div>
+					<div class="sg-slide" style="flex:0 0 100%;scroll-snap-align:start"><img src="/img/platzhalter/kleckerkasten-nachstellung.svg" alt="Platzhalter: Foto vom Kleckerkasten-Workshop wird nachgestellt" loading="lazy" decoding="async" style="width:100%;aspect-ratio:8/5;object-fit:cover;border-radius:12px;display:block"><p style="margin:.6em 0 0"><strong>Kleckerkasten-Workshop</strong> – Teambuilding mit Aquarell – Pilot-Team −20 € p. P. <a href="/events.html#kleckerkasten">Mehr dazu →</a></p></div>
+					<div class="sg-slide" style="flex:0 0 100%;scroll-snap-align:start"><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px"><img src="/img/fotos/portraet-an-der-wand-1x1.jpg" alt="Gerahmte Porträts an der Wand" loading="lazy" decoding="async" style="width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:12px;display:block"><img src="/img/fotos/paar-mit-tusche-portraet.jpg" alt="Glückliches Paar mit seinem Tusche-Porträt" loading="lazy" decoding="async" style="width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:12px;display:block"></div><p style="margin:.6em 0 0"><strong>Porträt-Auftrag</strong> – Nach Foto oder live bei dir – gerahmt fürs Wohnzimmer <a href="/commission.html">Mehr dazu →</a></p></div>
+					<div class="sg-slide" style="flex:0 0 100%;scroll-snap-align:start"><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px"><img src="/img/fotos/spaghettaria-2.jpg" alt="Gerahmtes Mitarbeiter-Porträt an der Wand der Spaghetteria" loading="lazy" decoding="async" style="width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:12px;display:block"><img src="/img/fotos/spaghettaria-1a.jpg" alt="Gerahmtes Aquarell-Porträt eines Mitarbeiters" loading="lazy" decoding="async" style="width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:12px;display:block"></div><p style="margin:.6em 0 0"><strong>Mitarbeiter-Porträts</strong> – Ihr Team gerahmt an der Wand, z. B. bei der Spaghetteria <a href="/referenzen/#mitarbeiter-portraets">Mehr dazu →</a></p></div>
+					
+				</div>
+				<button type="button" class="sg-prev" aria-label="Zurück" style="position:absolute;left:8px;top:40%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;border:0;background:rgba(255,255,255,.9);box-shadow:0 2px 8px rgba(0,0,0,.2);font-size:22px;cursor:pointer">‹</button>
+				<button type="button" class="sg-next" aria-label="Weiter" style="position:absolute;right:8px;top:40%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;border:0;background:rgba(255,255,255,.9);box-shadow:0 2px 8px rgba(0,0,0,.2);font-size:22px;cursor:pointer">›</button>
+				<style>.sg-tabs{display:grid!important;gap:10px;margin-top:.9em}.sg-row{display:grid;grid-template-columns:6.5em minmax(0,1fr);gap:10px;align-items:center}.sg-row>span{font-size:.72em;font-weight:700;text-transform:uppercase;letter-spacing:.08em;opacity:.7}.sg-row>div{display:flex;flex-wrap:wrap;gap:6px;min-width:0}.sg-row button{white-space:normal!important;text-align:left;max-width:100%}.sg-tabs button{font-size:.74em!important;padding:.38em .8em!important;min-height:0!important;line-height:1.25}@media(max-width:560px){.sg-row{grid-template-columns:1fr;gap:4px}}</style><div class="sg-tabs"><div class="sg-row"><span>Für Events</span><div><button type="button" class="btn btn--small" data-i="0"><img class="sg-th" src="/img/fotos/event-saunasplash-3x2.jpg" alt="" loading="lazy">Live-Porträts für Events</button><button type="button" class="btn btn--small btn--ghost" data-i="1"><img class="sg-th" src="/img/fotos/gaeste-mit-portraets-4x5.jpg" alt="" loading="lazy">Live-Konzerte</button></div></div><div class="sg-row"><span>Für Firmen &amp; Teams</span><div><button type="button" class="btn btn--small btn--ghost" data-i="3"><img class="sg-th" src="/img/platzhalter/kleckerkasten-nachstellung.svg" alt="" loading="lazy">Kleckerkasten-Workshop</button><button type="button" class="btn btn--small btn--ghost" data-i="5"><img class="sg-th" src="/img/fotos/spaghettaria-2.jpg" alt="" loading="lazy">Mitarbeiter-Porträts</button></div></div><div class="sg-row"><span>Für dich</span><div><button type="button" class="btn btn--small btn--ghost" data-i="2"><img class="sg-th" src="/img/fotos/stand-mauerpark-totale-klein.jpg" alt="" loading="lazy">1-€-Skizze von dir</button><button type="button" class="btn btn--small btn--ghost" data-i="4"><img class="sg-th" src="/img/fotos/portraet-an-der-wand-1x1.jpg" alt="" loading="lazy">Beauftrage mich</button></div></div></div>
+				</div>
+				<script>(function(){var c=document.currentScript.previousElementSibling,t=c.querySelector('.sg-track'),b=c.querySelectorAll('.sg-tabs button'),n=b.length,cur=0,lock=0,lt,auto,stop=function(){clearInterval(auto)};
+function go(i){lock=1;clearTimeout(lt);lt=setTimeout(function(){lock=0},900);cur=(i+n)%n;t.scrollLeft=cur*t.clientWidth;b.forEach(function(x,j){x.classList.toggle('btn--ghost',+x.dataset.i!==cur)});}
+c.querySelector('.sg-prev').onclick=function(){stop();go(cur-1)};c.querySelector('.sg-next').onclick=function(){stop();go(cur+1)};
+b.forEach(function(x){x.onclick=function(){stop();go(+x.dataset.i)}});t.addEventListener('pointerdown',stop);if(!matchMedia('(prefers-reduced-motion: reduce)').matches)auto=setInterval(function(){go(cur+1)},4500);
+t.addEventListener('scroll',function(){if(lock)return;var i=Math.round(t.scrollLeft/t.clientWidth);if(i!==cur){cur=i;b.forEach(function(x,j){x.classList.toggle('btn--ghost',+x.dataset.i!==cur)})}},{passive:true});})();</script><script>(function(){var r=document.querySelector('.sg-tabs'),down=false,moved=0,x0=0,s0=0;r.style.cursor='grab';r.addEventListener('pointerdown',function(e){if(e.pointerType!=='mouse')return;down=true;moved=0;x0=e.clientX;s0=r.scrollLeft});window.addEventListener('pointermove',function(e){if(!down)return;var d=e.clientX-x0;if(Math.abs(d)>4){moved=1;r.style.cursor='grabbing';r.style.userSelect='none'}r.scrollLeft=s0-d});window.addEventListener('pointerup',function(){if(!down)return;down=false;r.style.cursor='grab';r.style.userSelect=''});r.addEventListener('click',function(e){if(moved){e.stopPropagation();e.preventDefault();moved=0}},true);r.addEventListener('dragstart',function(e){e.preventDefault()});var sl=document.querySelectorAll('.sg-slide');r.querySelectorAll('button').forEach(function(b){b.title='Doppelklick: zum Angebot'});r.addEventListener('dblclick',function(e){var b=e.target.closest('button');if(!b)return;var a=sl[+b.dataset.i].querySelectorAll('p a');if(a.length)location.href=a[a.length-1].href})})();</script><style>
+:root:root .stand-gallery .sg-prev,:root:root .stand-gallery .sg-next{background:none!important;box-shadow:none!important;color:#fff!important;width:36px!important;height:36px!important;font-size:30px!important;filter:drop-shadow(0 1px 3px rgba(0,0,0,.85))}
+.sg-row,.sg-row>div{display:contents}.sg-row>span{display:none}
+.sg-tabs{display:flex!important;flex-wrap:wrap;gap:6px}
+.sg-th{display:none}
+@media(min-width:900px){
+.stand-gallery:not(.sg-b) .sg-tabs{display:grid!important;grid-template-columns:repeat(3,1fr);gap:8px}
+.stand-gallery:not(.sg-b) .sg-tabs button{display:flex!important;flex-direction:column;align-items:stretch;gap:5px;padding:4px!important;border-radius:12px!important;text-align:center!important;width:auto!important;font-size:.72em!important}
+.stand-gallery:not(.sg-b) .sg-th{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:9px}
+}
+</style><style>
+.hero--jd .page-peek{position:sticky;bottom:max(10px,env(safe-area-inset-bottom));z-index:5;background:var(--bg,#151515);border-style:solid;box-shadow:0 8px 28px rgba(0,0,0,.45)}
+.hero--jd .page-peek{display:flex!important;align-items:center;gap:10px;padding:6px 14px!important;width:auto!important;max-width:min(100%,720px)}.hero--jd .page-peek .sh-title{flex:none;font-size:.68rem}.hero--jd .page-peek .sh-list{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:.85rem}.hero--jd .page-peek b{font-size:1.15rem}
+@media(max-width:600px){.hero--jd .page-peek .sh-list{font-size:.75rem}}
+@media(min-width:901px){.hero--jd .jd-art>img{width:min(62%,900px)!important;max-width:none!important;object-fit:cover!important;object-position:50% 22%!important}}
+@media(max-width:900px){.hero--jd .art-credit{left:0!important;right:0!important;text-align:center;padding:0 12px}}
+.hero--jd .next-dates{margin-top:clamp(32px,14vh,200px)!important}
+.next-dates .saturday-line{margin:0 0 10px!important;padding:0!important;border:0!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;text-shadow:none!important;background:none!important;border-radius:0!important;box-shadow:none!important;font-size:.9rem}
+.scroll-tease{display:inline-flex!important;width:auto!important;align-self:flex-start;font-size:.9rem!important;align-items:center;gap:8px;margin-top:14px;padding:9px 18px;border-radius:999px;background:var(--fox,#FF6B35);color:#fff!important;font-weight:600;text-decoration:none;animation:tease-glow 2.4s ease-in-out infinite}
+.scroll-tease b{display:inline-block;animation:hint-bounce 2.2s ease-in-out infinite}
+.scroll-tease:hover{transform:translateY(-1px)}
+@keyframes tease-glow{0%,100%{box-shadow:0 0 0 0 rgba(255,107,53,.55)}50%{box-shadow:0 0 0 10px rgba(255,107,53,0)}}
+@media(prefers-reduced-motion:reduce){.scroll-tease,.scroll-tease b{animation:none}}
+@media(max-width:600px){.sg-tabs{gap:5px!important}.sg-tabs button{font-size:.68rem!important;padding:5px 9px!important;line-height:1.25!important;white-space:normal!important;max-width:100%}}
+@media(max-width:380px){.sg-tabs button{font-size:.62rem!important;padding:4px 7px!important}}
+</style><script src="/js/offer-ab.js" defer></script><script>(function(){var g=document.querySelector('.stand-gallery'),t=g.querySelector('.sg-track'),a=g.querySelectorAll('.sg-prev,.sg-next');function f(){var i=Math.round(t.scrollLeft/t.clientWidth),im=t.children[i]&&t.children[i].querySelector('img');if(im)a.forEach(function(x){x.style.top=(im.offsetTop+im.offsetHeight/2)+'px'})}t.addEventListener('scroll',f,{passive:true});addEventListener('resize',f);addEventListener('load',f);f()})();</script>
+					
+					<a class="pay-line" href="/bezahlen.html">Gerade live gezeichnet? <strong>Hier bezahlen →</strong></a>
 						<!-- what else is on the page + arrow down (fills the empty space under the doors) -->
 				</div>
 			</div>
@@ -227,7 +267,7 @@
 					<a class="fit" href="/img/fotos/gerahmtes-paar-3x4.jpg" style="--bg: url('/img/fotos/gerahmtes-paar-3x4.jpg')"><img src="/img/fotos/gerahmtes-paar-3x4.jpg" alt="Gerahmt: 3× 1-€-Skizzen, eine A5-Skizze für 20 € und oben rechts der Fotostreifen aus dem Photoautomaten" width="675" height="900" loading="lazy" decoding="async"><span>3× 1 € + A5 (20 €), gerahmt</span></a>
 					<a class="fit" href="/img/fotos/stand-saunasplash-portraets-3x2.jpg" style="--bg: url('/img/fotos/stand-saunasplash-portraets-3x2.jpg')"><img src="/img/fotos/stand-saunasplash-portraets-3x2.jpg" alt="Mein Porträt-Stand voller live gezeichneter Porträts beim Saunasplash" width="742" height="495" loading="lazy" decoding="async"><span>Mein Porträt-Stand</span></a>
 					<!-- 1-€ quick sketches (Saturdays at Mauerpark, ~5 min each): full-width tile in the third row, fades through the photos (js/fade.js) -->
-					<a class="art-wide fit" href="/img/fotos/ein-euro-portraet-kuss.jpg" style="--bg: url('/img/fotos/ein-euro-portraet-kuss.jpg')"><span class="fade-stack" data-fade="4500"><img src="/img/fotos/ein-euro-portraet-kuss.jpg" alt="1-€-Schnellskizze in schwarzem Marker: zwei Frauen küssen sich" width="1400" height="1050" loading="lazy" decoding="async"><img src="/img/fotos/ein-euro-portraet-skizzen.jpg" alt="Drei 1-€-Schnellskizzen in Tusche auf Skizzenbuchseiten" width="607" height="430" loading="lazy" decoding="async"><img src="/img/fotos/ein-euro-portraet.jpg" alt="1-€-Schnellskizze in Tusche: ein Paar, sie lehnt den Kopf an seine Schulter" width="706" height="877" loading="lazy" decoding="async"></span><span>1-€-Schnellskizzen · je ca. 5 Minuten</span></a>
+					<a class="art-wide" href="/img/fotos/ein-euro-ig-fellmuetze.jpg"><div class="wide-strip"><img src="/img/fotos/ein-euro-ig-fellmuetze.jpg" alt="Sie hat eine halbe Stunde gewartet: 1-€-Porträt mit Fellmütze" loading="lazy" decoding="async"><img src="/img/fotos/ein-euro-portraet-kuss.jpg" alt="1-€-Schnellskizze in schwarzem Marker: zwei Frauen küssen sich" loading="lazy" decoding="async"><img src="/img/fotos/ein-euro-ig-schal.jpg" alt="Kundin hält ihre 1-€-Tusche-Skizze vor dem Schal" loading="lazy" decoding="async"><img src="/img/fotos/ein-euro-portraet.jpg" alt="1-€-Schnellskizze in Tusche: ein Paar" loading="lazy" decoding="async"><img src="/img/fotos/ein-euro-ig-paar.jpg" alt="Paar mit ihrem live gezeichneten Porträt am Mauerpark" loading="lazy" decoding="async"><img src="/img/fotos/ein-euro-portraet-skizzen.jpg" alt="Drei 1-€-Schnellskizzen in Tusche" loading="lazy" decoding="async"></div><span>1-€-Schnellskizzen · je ca. 5 Minuten</span></a>
 				</div>
 				<!-- The 6 tiles above are my highlights – everything else lives in the portfolio -->
 				<!-- MORE ART: folded away, opens with "Mehr Kunst ansehen". Click = big view (js/gallery.js).
@@ -383,29 +423,8 @@
 					<h2 id="termine-title">Hier triffst du mich als Nächstes</h2>
 					<p class="lead">Konzerte, Märkte &amp; Weihnachtsmärkte – komm vorbei und lass dich zeichnen oder schau einfach zu.</p>
 				</div>
-				<ul class="termine-list">
+				<ul class="termine-list" data-auto>
 					<li class="termine-weekly"><span class="t-date">Jeden Sa</span><span class="t-what"><strong>Mauerpark</strong> · 14–22 Uhr, neben dem Photoautomaten · 1-€-Skizzen</span></li>
-					<li data-date="2026-11-09"><span class="t-date">Mo 09.11.</span><span class="t-what"><strong>Schokoladen</strong> · Live-Zeichnung beim Konzert von ¡YUMNUT!WORLDWIDE!</span></li>
-					<li data-date="2026-11-16"><span class="t-date">Mo 16.11.</span><span class="t-what"><strong>Schokoladen</strong> · Live-Zeichnung: ILA &amp; I Love You Honey Bunny, ab 19 Uhr</span></li>
-					<li data-date="2026-11-21"><span class="t-date">Sa 21.11.</span><span class="t-what"><strong>Schokoladen</strong> · Live-Zeichnung beim Konzert von Buster Beat</span></li>
-					<li data-date="2026-11-23"><span class="t-date">Mo 23.11.</span><span class="t-what"><strong>Schokoladen</strong> · Live-Zeichnung: The Black Elephant Band &amp; Gutter Romance</span></li>
-					<li data-date="2026-11-25"><span class="t-date">Mit 25.11.</span><span class="t-what"><strong>Weihnachtsmarkt Schloss Charlottenburg</strong> · Live-Porträts im Pagodenzelt, ab 17 Uhr</span></li>
-					<li data-date="2026-11-25"><span class="t-date">Mit 25.11.</span><span class="t-what"><strong>Junction Bar</strong> · Live-Zeichnung: Samt Martin &amp; deadPEASNTS, ab 20:30 Uhr</span></li>
-					<li data-date="2026-11-26"><span class="t-date">Do 26.11.</span><span class="t-what"><strong>Ökomarkt Kollwitzplatz</strong> · Live-Porträts, 12–19 Uhr</span></li>
-					<li data-date="2026-11-30"><span class="t-date">Mo 30.11.</span><span class="t-what"><strong>Weihnachtsmarkt Schloss Charlottenburg</strong> · Live-Porträts, ab 17 Uhr</span></li>
-					<li data-date="2026-12-06"><span class="t-date">So 06.12.</span><span class="t-what"><strong>Regenbogenfabrik</strong> · Winterbasar, Live-Porträts</span></li>
-					<li data-date="2026-12-09"><span class="t-date">Mit 09.12.</span><span class="t-what"><strong>Weihnachtsmarkt Schloss Charlottenburg</strong> · Live-Porträts, ab 17 Uhr</span></li>
-					<li data-date="2026-12-13"><span class="t-date">So 13.12.</span><span class="t-what"><strong>ZK/U Gütermarkt</strong> · Winterweihnachtsedition, Live-Porträts</span></li>
-					<li data-date="2026-12-14"><span class="t-date">Mo 14.12.</span><span class="t-what"><strong>Weihnachtsmarkt Schloss Charlottenburg</strong> · Live-Porträts, ab 17 Uhr</span></li>
-					<li data-date="2026-12-20"><span class="t-date">So 20.12.</span><span class="t-what"><strong>Advents-Ökomarkt Kollwitzplatz</strong> · Live-Porträts, 12–19 Uhr</span></li>
-					<li data-date="2026-12-21"><span class="t-date">Mo 21.12.</span><span class="t-what"><strong>Weihnachtsmarkt Schloss Charlottenburg</strong> · Live-Porträts im Pagodenzelt</span></li>
-					<li data-date="2026-12-23"><span class="t-date">Mit 23.12.</span><span class="t-what"><strong>Weihnachtsmarkt Schloss Charlottenburg</strong> · Live-Porträts im Pagodenzelt</span></li>
-					<li data-date="2027-01-25"><span class="t-date">Mo 25.01.</span><span class="t-what"><strong>Schokoladen</strong> · Live-Zeichnung beim Konzert von Knitting</span></li>
-					<li data-date="2027-01-27"><span class="t-date">Mit 27.01.</span><span class="t-what"><strong>Schokoladen</strong> · Live-Zeichnung beim Konzert von Euroteuro</span></li>
-					<li data-date="2027-01-30"><span class="t-date">29.–30.01.</span><span class="t-what"><strong>BE NOISE Live Battle</strong> · ich zeichne die Bands live, zwei Abende</span></li>
-					<li data-date="2027-02-15"><span class="t-date">Mo 15.02.</span><span class="t-what"><strong>Schokoladen</strong> · Live-Zeichnung beim Konzert von GLUT (BURN Tour)</span></li>
-					<li data-date="2027-03-01"><span class="t-date">Mo 01.03.</span><span class="t-what"><strong>Schokoladen</strong> · Live-Zeichnung beim Konzert von The Overjoyed</span></li>
-					<li data-date="2027-03-11"><span class="t-date">Do 11.03.</span><span class="t-what"><strong>Schokoladen</strong> · Live-Zeichnung beim Konzert von Death By Horse</span></li>
 				</ul>
 				<div data-mini-cal></div>
 				<p class="center hint" style="margin-top:1em">Spontane Termine poste ich in meiner <a href="https://www.instagram.com/smileyfoxyportraits">Instagram-Story</a> · <a href="/where-i-draw/">alle Orte &amp; Zeiten →</a></p>
@@ -481,6 +500,13 @@
 					<h2 id="services-title">Momente, über die deine Gäste noch lange reden</h2>
 					<p class="lead">Ob 300 Gäste, ein Team, das mal durchatmen muss, oder ein ganz persönliches Geschenk.</p>
 				</div>
+
+				<div class="doors doors--grid" style="margin:0 auto 32px;max-width:720px">
+						<a class="door" href="/events.html#live-events"><span>Für Events</span><strong>Live-Porträts für eure Gäste</strong><b aria-hidden="true">→</b></a>
+						<a class="door door--light" href="/events.html#kleckerkasten"><span>Für Teams</span><strong>Kleckerkasten-Workshop</strong><b aria-hidden="true">→</b></a>
+						<a class="door door--light" href="/mitarbeiter-portraets/"><span>Für Firmen</span><strong>Mitarbeiter-Porträts</strong><b aria-hidden="true">→</b></a>
+						<a class="door door--light" href="/commission.html"><span>Für dich</span><strong>Porträt-Auftrag</strong><b aria-hidden="true">→</b></a>
+					</div>
 
 				<div class="cards">
 					<!-- Service 1 -->
@@ -797,13 +823,19 @@
 			<!-- LINK COLUMNS: offers · about me · support · contact · legal -->
 			<div class="footer-grid">
 				<div>
-					<h3>Angebote</h3>
+					<h3>Kunst-Angebote</h3>
 					<p><a href="/events.html#live-events">Live-Porträts für Events</a></p>
 					<p><a href="/events.html#kleckerkasten">Kleckerkasten-Workshop</a></p>
 					<p><a href="/commission.html">Porträt-Auftrag</a></p>
+					<p><a href="/mitarbeiter-portraets/">Mitarbeiter-Porträts</a></p>
 					<p><a href="/labor/auktion.html">Kunst-Auktion</a></p>
-					<p><a href="/jobs/">Jobs: Mach mit</a></p>
+				</div>
+
+				<div>
+					<h3>Weitere Angebote</h3>
+					<p><a href="/umzugsdesign/">Umzugsdesign &amp; 3D-Visualisierung</a></p>
 					<p><a href="/webdesign/">Webdesign-Skills &amp; verantwortungsvolle KI</a></p>
+					<p><a href="/jobs/">Jobs: Mach mit</a></p>
 				</div>
 
 				<div>
