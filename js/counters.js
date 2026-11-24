@@ -15,7 +15,7 @@
     });
   }
   function init(el){var pad=+el.dataset.pad||1;el.textContent='';set(el,0);el.dataset.v=''.padStart(pad,'0')}
-  function followers(f){fetch('/data/followers.json',{cache:'no-cache'}).then(function(r){return r.json()}).then(function(j){f.forEach(function(el){set(el,j.total)})}).catch(function(){})}
+  function followers(f){fetch('/data/followers.json',{cache:'no-cache'}).then(function(r){return r.json()}).then(function(j){f.forEach(function(el){set(el,j.total)});var p=j.platforms||{},b=document.querySelector('#sechs-jahre .ib');if(b){var en=b.dataset.en==='1';b.dataset.tip='Instagram '+p.instagram+' + YouTube '+p.youtube+' + Substack '+p.substack+(en?'. Updates automatically.':'. Aktualisiert sich automatisch.')}}).catch(function(){})}
   function start(){
     document.querySelectorAll('[data-count="portraits"]').forEach(function(el){set(el,portraits());setInterval(function(){set(el,portraits())},60000)});
     var f=document.querySelectorAll('[data-count="followers"]');
@@ -23,6 +23,7 @@
     var ev=document.querySelectorAll('[data-count="events"]');
     if(ev.length&&window.TERMINE){var td=new Date().toISOString().slice(0,10);var n=window.TERMINE.filter(function(e){return e.date<td}).length;ev.forEach(function(el){set(el,n)})}
   }
+  document.addEventListener('click',function(e){if(e.target.closest&&e.target.closest('#sechs-jahre .ib'))e.preventDefault()});
   var box=document.querySelector('.live-counters');
   if(!box)return;
   box.querySelectorAll('[data-count]').forEach(init);
