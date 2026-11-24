@@ -2649,3 +2649,4 @@ body.scrolled .to-top{opacity:1;visibility:visible;transform:none}
 .stand-gallery{min-width:0;width:100%}.sg-tabs button{flex:0 0 auto !important;width:auto !important;white-space:nowrap}.sg-tabs::-webkit-scrollbar{display:none}
 .places > *{min-width:0}
 .sg-prev,.sg-next{color:#1a161c;line-height:1;display:grid;place-items:center;padding:0 0 3px}:root.theme-dark .sg-prev,:root.theme-dark .sg-next{background:rgba(23,19,26,.85)!important;color:#fff;box-shadow:0 0 0 1px rgba(255,255,255,.25),0 2px 8px rgba(0,0,0,.5)!important}
+.style-cycle--cover img { object-fit: cover !important; }
