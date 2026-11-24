@@ -259,7 +259,7 @@ p { margin: 0 0 1em; }
 }
 .card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(31, 27, 36, 0.08); }
 .card .ph, .card .ph-img { margin-bottom: 18px; }
-.card ul { padding-left: 1.1em; margin: 0 0 1.2em; color: var(--ink-soft); }
+.card ul { padding-left: 1.1em; margin: 0 0 .4em; color: var(--ink-soft); }
 .card .btn { margin-top: auto; align-self: flex-start; }
 .card--featured { border: 2px solid var(--accent); }
 .tag {
